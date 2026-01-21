@@ -3,8 +3,8 @@
 ## 개발 환경
 
 ```bash
-git clone https://github.com/algorima/fancall.git
-cd fancall
+git clone https://github.com/algorima/aidol.git
+cd aidol
 
 # Backend
 cd backend
@@ -41,15 +41,15 @@ Conventional Commits 형식: `<type>(<scope>): <한국어 제목>`
 
 ### Scope
 변경 영역을 나타냅니다:
-- 플랫폼: `frontend`, `backend`, `agent`
-- 비즈니스: `room`, `call`, `avatar`
+- 플랫폼: `frontend`, `backend`
+- 비즈니스: `aidol`, `companion`, `creation`, `chat`
 - 데이터: `db`, `models`, `api`
 - UI: `ui`, `theme`, `i18n`
-- 연동: `livekit`, `openai`, `fishaudio`, `hedra`
+- 연동: `openai`, `dalle`
 - 배포: `docker`, `deploy`, `config`, `workflow`
 - 기타: `deps`, `service`
 
-예시: `feat(frontend): 통화 화면 UI 구현`
+예시: `feat(frontend): 그룹 생성 UI 구현`
 
 ## 브랜치 네이밍
 
@@ -66,7 +66,7 @@ Conventional Commits 형식: `<type>(<scope>): <한국어 제목>`
 - 최대한 명사 사용
 - 단어 구분: - 로 가독성 향상
 
-예시: feat/agent-dispatch, refactor/room-repository, fix/livekit-token
+예시: feat/group-creation, refactor/companion-repository, fix/image-upload
 
 
 
