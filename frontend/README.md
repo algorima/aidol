@@ -1,16 +1,29 @@
-# Fancall Frontend
+# AIdol Frontend
 
-AI 아이돌 실시간 영상 통화 React 컴포넌트
+AI 아이돌 그룹 생성 및 채팅 React 컴포넌트
 
 ## 주요 컴포넌트
 
-- **AgentCall**: 음성 기반 AI 에이전트 통화 컴포넌트
-- **LiveRoomRepository**: API 클라이언트
+### 생성
+- **GroupCreation**: 멀티스텝 그룹 생성 폼
+- **EmblemGenerator**: DALL-E 3 이미지 생성
+
+### 랜딩
+- **HeroSection**: 메인 히어로 섹션
+- **DemoSection**: 데모 섹션
+
+### 프로필
+- **GroupHeader**: 그룹 프로필 헤더
+- **CompanionGrid**: 멤버 카드 그리드
+
+### Repository
+- **AIdolRepository**: AIdol API 클라이언트
+- **CompanionRepository**: Companion API 클라이언트
 
 ## 설치
 
 ```bash
-npm install fancall @aioia/core @livekit/components-react livekit-client
+npm install aidol @aioia/core
 ```
 
 ## 사용법
@@ -18,18 +31,25 @@ npm install fancall @aioia/core @livekit/components-react livekit-client
 ### 컴포넌트
 
 ```tsx
-import { AgentCall } from "fancall";
+import { GroupCreation, HeroSection } from "aidol";
 
-<AgentCall roomName={roomName} token={token} />;
+<HeroSection onStartClick={() => router.push("/create")} />
+<GroupCreation onSubmit={handleCreate} />
 ```
 
 ### Repository
 
 ```tsx
-import { LiveRoomRepository } from "fancall";
+import { AIdolRepository, CompanionRepository } from "aidol";
 
-const repository = new LiveRoomRepository(apiService);
-const response = await repository.create({ agent_name: "idol-agent" });
+const aidolRepo = new AIdolRepository(apiService);
+const companionRepo = new CompanionRepository(apiService);
+
+// 그룹 생성
+const aidol = await aidolRepo.create({ name: "My Group", concept: "cute" });
+
+// 이미지 생성
+const image = await aidolRepo.generateImage({ prompt: "K-pop idol emblem" });
 ```
 
 ### i18n 통합
@@ -42,8 +62,6 @@ const response = await repository.create({ agent_name: "idol-agent" });
 - Next.js 13 또는 14
 - Tailwind CSS with DaisyUI
 - @aioia/core
-- @livekit/components-react
-- livekit-client
 
 ## 라이선스
 
