@@ -64,14 +64,12 @@ class CompanionRouter(
         async def list_companions(
             current: int = Query(1, ge=1, description="Current page number"),
             page_size: int = Query(10, ge=1, le=100, description="Items per page"),
-            sort_param: str
-            | None = Query(
+            sort_param: str | None = Query(
                 None,
                 alias="sort",
                 description='Sorting criteria in JSON format. Example: [["createdAt","desc"]]',
             ),
-            filters_param: str
-            | None = Query(
+            filters_param: str | None = Query(
                 None,
                 alias="filters",
                 description="Filter conditions (JSON format)",
