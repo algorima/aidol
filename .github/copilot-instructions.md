@@ -1,6 +1,6 @@
 When performing a code review, respond in Korean.
 
-# Fancall 개발 가이드
+# AIdol 개발 가이드
 
 ## 프로젝트 구조
 
