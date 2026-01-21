@@ -1,0 +1,68 @@
+{
+  "share": "Share",
+  "companion": {
+    "promptPlaceholder": "How does your idol talk? Describe their vibe...",
+    "addMember": "Add Member"
+  },
+  "aidol": {
+    "notFound": "Group not found",
+    "members": "Members",
+    "noMembers": "No members yet"
+  },
+  "creation": {
+    "groupName": "Group Name",
+    "groupNamePlaceholder": "e.g. DREAMERS, STARLIGHT",
+    "memberName": "Member Name",
+    "memberNamePlaceholder": "e.g. Luna, Kai",
+    "concept": "Concept",
+    "selectConcept": "Select a concept",
+    "personality": "Personality",
+    "concepts": {
+      "cute": "Cute",
+      "cool": "Cool",
+      "elegant": "Elegant",
+      "powerful": "Powerful"
+    },
+    "personalities": {
+      "cheerful": {
+        "label": "Cheerful",
+        "description": "Always bright and positive"
+      },
+      "cool": { "label": "Cool", "description": "Calm and collected" },
+      "tsundere": {
+        "label": "Tsundere",
+        "description": "Cold outside, warm inside"
+      },
+      "gentle": { "label": "Gentle", "description": "Kind and caring" }
+    },
+    "step1": "Group",
+    "step2": "Members",
+    "step3": "Done",
+    "step1Title": "Create Your Group",
+    "step2Title": "Add Members",
+    "groupNameRequired": "Please enter a group name",
+    "memberNameRequired": "Please enter a member name",
+    "memberRequired": "Please add at least one member",
+    "emblem": "Emblem",
+    "emblemPromptPlaceholder": "Describe your group's emblem...",
+    "emblemRequired": "Please generate an emblem image",
+    "generate": "Generate",
+    "next": "Next",
+    "back": "Back",
+    "create": "Create",
+    "completeTitle": "Your Idol is Ready!",
+    "completeDescription": "Start chatting with your dream idol now",
+    "viewProfile": "View Profile"
+  },
+  "landing": {
+    "hero": {
+      "title": "Create Your Dream Idol",
+      "description": "Design your perfect idol and chat like a real fan",
+      "cta": "Start Creating"
+    },
+    "demo": {
+      "title": "Your Imagination, Your Idol",
+      "description": "Create idols with unique personalities and build your connection"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "share": "Bagikan",
+  "companion": {
+    "promptPlaceholder": "Gimana idol kamu ngobrol? Ceritain kepribadiannya...",
+    "addMember": "Tambah Anggota"
+  },
+  "aidol": {
+    "notFound": "Grup tidak ditemukan",
+    "members": "Anggota",
+    "noMembers": "Belum ada anggota"
+  },
+  "creation": {
+    "groupName": "Nama Grup",
+    "groupNamePlaceholder": "cth: DREAMERS, STARLIGHT",
+    "memberName": "Nama Anggota",
+    "memberNamePlaceholder": "cth: Luna, Kai",
+    "concept": "Konsep",
+    "selectConcept": "Pilih konsep",
+    "personality": "Kepribadian",
+    "concepts": {
+      "cute": "Imut",
+      "cool": "Keren",
+      "elegant": "Elegan",
+      "powerful": "Kuat"
+    },
+    "personalities": {
+      "cheerful": {
+        "label": "Ceria",
+        "description": "Selalu cerah dan positif"
+      },
+      "cool": { "label": "Keren", "description": "Tenang dan kalem" },
+      "tsundere": {
+        "label": "Tsundere",
+        "description": "Dingin di luar, hangat di dalam"
+      },
+      "gentle": { "label": "Lembut", "description": "Baik hati dan perhatian" }
+    },
+    "step1": "Grup",
+    "step2": "Anggota",
+    "step3": "Selesai",
+    "step1Title": "Buat Grup Kamu",
+    "step2Title": "Tambah Anggota",
+    "groupNameRequired": "Masukkan nama grup",
+    "memberNameRequired": "Masukkan nama anggota",
+    "memberRequired": "Tambahkan minimal satu anggota",
+    "emblem": "Emblem",
+    "emblemPromptPlaceholder": "Deskripsikan emblem grup kamu...",
+    "emblemRequired": "Buat gambar emblem dulu",
+    "generate": "Buat",
+    "next": "Lanjut",
+    "back": "Kembali",
+    "create": "Buat",
+    "completeTitle": "Idol Kamu Siap!",
+    "completeDescription": "Langsung ngobrol sama idol impianmu sekarang",
+    "viewProfile": "Lihat Profil"
+  },
+  "landing": {
+    "hero": {
+      "title": "Buat Idol Impianmu",
+      "description": "Desain idol sempurnamu dan ngobrol kayak fans beneran",
+      "cta": "Mulai Buat"
+    },
+    "demo": {
+      "title": "Imajinasimu Jadi Idol",
+      "description": "Buat idol unik dan bangun koneksi spesial"
+    }
+  }
+}

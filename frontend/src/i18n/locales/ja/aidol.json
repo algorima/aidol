@@ -1,0 +1,68 @@
+{
+  "share": "共有",
+  "companion": {
+    "promptPlaceholder": "どんな話し方をする？性格を教えてね...",
+    "addMember": "メンバー追加"
+  },
+  "aidol": {
+    "notFound": "グループが見つかりません",
+    "members": "メンバー",
+    "noMembers": "まだメンバーがいません"
+  },
+  "creation": {
+    "groupName": "グループ名",
+    "groupNamePlaceholder": "例: DREAMERS, STARLIGHT",
+    "memberName": "メンバー名",
+    "memberNamePlaceholder": "例: ルナ, カイ",
+    "concept": "コンセプト",
+    "selectConcept": "コンセプトを選択",
+    "personality": "性格",
+    "concepts": {
+      "cute": "キュート",
+      "cool": "クール",
+      "elegant": "エレガント",
+      "powerful": "パワフル"
+    },
+    "personalities": {
+      "cheerful": {
+        "label": "明るい",
+        "description": "いつも元気でポジティブ"
+      },
+      "cool": { "label": "クール", "description": "冷静で落ち着いている" },
+      "tsundere": {
+        "label": "ツンデレ",
+        "description": "外は冷たく中は温かい"
+      },
+      "gentle": { "label": "優しい", "description": "親切で思いやりがある" }
+    },
+    "step1": "グループ",
+    "step2": "メンバー",
+    "step3": "完了",
+    "step1Title": "グループを作ろう",
+    "step2Title": "メンバーを追加",
+    "groupNameRequired": "グループ名を入力してください",
+    "memberNameRequired": "メンバー名を入力してください",
+    "memberRequired": "メンバーを1人以上追加してください",
+    "emblem": "エンブレム",
+    "emblemPromptPlaceholder": "グループのエンブレムを説明してください...",
+    "emblemRequired": "エンブレム画像を生成してください",
+    "generate": "生成",
+    "next": "次へ",
+    "back": "戻る",
+    "create": "作成",
+    "completeTitle": "アイドル完成！",
+    "completeDescription": "さっそく推しと会話しよう",
+    "viewProfile": "プロフィールを見る"
+  },
+  "landing": {
+    "hero": {
+      "title": "夢のアイドルを作ろう",
+      "description": "理想のアイドルを作って、本物のファンみたいに会話しよう",
+      "cta": "作り始める"
+    },
+    "demo": {
+      "title": "想像がアイドルになる",
+      "description": "あなただけのアイドルを作り、特別な絆を築こう"
+    }
+  }
+}

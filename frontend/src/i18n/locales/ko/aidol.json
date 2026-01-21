@@ -1,0 +1,65 @@
+{
+  "share": "공유",
+  "companion": {
+    "promptPlaceholder": "어떤 말투로 대화할까요? 성격을 설명해 주세요...",
+    "addMember": "멤버 추가"
+  },
+  "aidol": {
+    "notFound": "그룹을 찾을 수 없습니다",
+    "members": "멤버",
+    "noMembers": "아직 멤버가 없습니다"
+  },
+  "creation": {
+    "groupName": "그룹 이름",
+    "groupNamePlaceholder": "예: 드리머즈, 스타라이트",
+    "memberName": "멤버 이름",
+    "memberNamePlaceholder": "예: 루나, 카이",
+    "concept": "컨셉",
+    "selectConcept": "컨셉을 선택하세요",
+    "personality": "성격",
+    "concepts": {
+      "cute": "큐트",
+      "cool": "쿨",
+      "elegant": "우아한",
+      "powerful": "파워풀"
+    },
+    "personalities": {
+      "cheerful": { "label": "활발한", "description": "항상 밝고 긍정적인" },
+      "cool": { "label": "쿨한", "description": "차분하고 침착한" },
+      "tsundere": {
+        "label": "츤데레",
+        "description": "겉은 차갑지만 속은 따뜻한"
+      },
+      "gentle": { "label": "다정한", "description": "친절하고 배려심 깊은" }
+    },
+    "step1": "그룹",
+    "step2": "멤버",
+    "step3": "완료",
+    "step1Title": "그룹 만들기",
+    "step2Title": "멤버 추가하기",
+    "groupNameRequired": "그룹 이름을 입력해 주세요",
+    "memberNameRequired": "멤버 이름을 입력해 주세요",
+    "memberRequired": "멤버를 한 명 이상 추가해 주세요",
+    "emblem": "엠블럼",
+    "emblemPromptPlaceholder": "그룹의 엠블럼을 설명해 주세요...",
+    "emblemRequired": "엠블럼 이미지를 생성해 주세요",
+    "generate": "생성",
+    "next": "다음",
+    "back": "이전",
+    "create": "만들기",
+    "completeTitle": "아이돌 완성!",
+    "completeDescription": "지금 바로 나만의 아이돌과 대화해 보세요",
+    "viewProfile": "프로필 보기"
+  },
+  "landing": {
+    "hero": {
+      "title": "꿈꾸던 아이돌, 직접 만들기",
+      "description": "나만의 아이돌을 만들고 진짜 팬처럼 대화하세요",
+      "cta": "만들기 시작"
+    },
+    "demo": {
+      "title": "상상 속 아이돌이 현실로",
+      "description": "나만의 아이돌을 만들고 특별한 관계를 쌓아보세요"
+    }
+  }
+}
