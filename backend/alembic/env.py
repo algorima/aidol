@@ -5,8 +5,8 @@ from aioia_core.settings import DatabaseSettings
 from sqlalchemy import create_engine
 from sqlalchemy.orm import configure_mappers
 
-from alembic import context  # pylint: disable=no-name-in-module
 from aidol.models import DBAIdol, DBCompanion  # Import models to register with Base
+from alembic import context  # pylint: disable=no-name-in-module
 
 database_settings = DatabaseSettings()
 database_url = database_settings.url
