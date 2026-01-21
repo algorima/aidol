@@ -55,14 +55,12 @@ export default function AIdolProfilePage({
         setIsLoading(true);
 
         // Fetch AIdol
-        const aidolResponse = await aidolRepository.getOne(aidolId);
+        const aidolResponse = await aidolRepository.getOne({ id: aidolId });
         setAidol(aidolResponse.data);
 
         // Fetch Companions
         const companionsResponse = await companionRepository.getList({
-          filters: JSON.stringify([
-            { field: "aidolId", operator: "eq", value: aidolId },
-          ]),
+          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
         });
         setCompanions(companionsResponse.data);
       } catch (err) {

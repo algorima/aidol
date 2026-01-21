@@ -82,7 +82,7 @@ export default function AIdolCreatePage({
           claimToken,
         };
 
-        const { data: aidol } = await aidolRepository.create<AIdol>({
+        const { data: aidol } = await aidolRepository.create({
           variables: aidolData,
         });
 
