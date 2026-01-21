@@ -9,11 +9,7 @@ import {
   type GroupCreationFormData,
 } from "@/components/creation/GroupCreation";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
-import type {
-  AIdol,
-  AIdolCreate,
-  ImageGenerationRequest,
-} from "@/schemas/aidol";
+import type { AIdolCreate, ImageGenerationRequest } from "@/schemas/aidol";
 import type { CompanionCreate } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
