@@ -66,7 +66,7 @@ Conventional Commits 형식: `<type>(<scope>): <한국어 제목>`
 - 최대한 명사 사용
 - 단어 구분: - 로 가독성 향상
 
-예시: feat/group-creation, refactor/companion-repository, fix/image-upload
+예시: feat/group-creation, refactor/companion-repository, fix/emblem-generation
 
 
 
