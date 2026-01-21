@@ -1,23 +1,25 @@
 """
-Standalone FastAPI application for Fancall.
+Standalone FastAPI application for AIdol.
 
-This module provides the entry point for running Fancall as an independent service.
+This module provides the entry point for running AIdol as an independent service.
 
 Usage:
     uvicorn main:app --reload
 
 Environment Variables:
     DATABASE_URL: PostgreSQL database URL
-    LIVEKIT_URL: LiveKit server URL
-    LIVEKIT_API_KEY: LiveKit API key
-    LIVEKIT_API_SECRET: LiveKit API secret
+    OPENAI_API_KEY: OpenAI API key for image generation
     JWT_SECRET_KEY: JWT secret key (default: dev-secret for development)
     LOG_LEVEL: Logging level (default: INFO)
 """
 
+import io
 import logging
 import os
+import uuid
+from pathlib import Path
 
+import PIL.Image
 from aioia_core.errors import (
     INTERNAL_SERVER_ERROR,
     VALIDATION_ERROR,
@@ -26,17 +28,19 @@ from aioia_core.errors import (
     get_error_detail_from_exception,
 )
 from aioia_core.models import Base
-from aioia_core.settings import DatabaseSettings, JWTSettings
+from aioia_core.settings import DatabaseSettings, JWTSettings, OpenAIAPISettings
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from fancall.api.router import create_fancall_router
-from fancall.factories import LiveRoomRepositoryFactory
-from fancall.settings import LiveKitSettings
+from aidol.api.aidol import create_aidol_router
+from aidol.api.companion import create_companion_router
+from aidol.factories import AIdolRepositoryFactory, CompanionRepositoryFactory
+from aidol.protocols import ImageStorageProtocol
 
 # Configure logging
 logging.basicConfig(
@@ -47,16 +51,44 @@ logger = logging.getLogger(__name__)
 
 
 # ==============================================================================
+# Local Image Storage (Standalone mode)
+# ==============================================================================
+
+
+class LocalImageStorage(ImageStorageProtocol):
+    """Local file system image storage for standalone mode."""
+
+    def __init__(self, storage_dir: Path, base_url: str):
+        self.storage_dir = storage_dir
+        self.base_url = base_url
+        self.storage_dir.mkdir(parents=True, exist_ok=True)
+
+    def upload_image(self, image: PIL.Image.Image) -> str:
+        """Save image to local storage and return URL."""
+        filename = f"{uuid.uuid4()}.png"
+        filepath = self.storage_dir / filename
+
+        # Convert to PNG and save
+        buffer = io.BytesIO()
+        image.save(buffer, format="PNG")
+        buffer.seek(0)
+
+        with open(filepath, "wb") as f:
+            f.write(buffer.getvalue())
+
+        return f"{self.base_url}/{filename}"
+
+
+# ==============================================================================
 # Initialize Settings from Environment Variables
 # ==============================================================================
 
 # BaseSettings automatically reads from environment variables
 db_settings = DatabaseSettings()  # DATABASE_URL
-livekit_settings = LiveKitSettings()  # LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET
+openai_settings = OpenAIAPISettings()  # OPENAI_API_KEY
 jwt_settings = JWTSettings()  # JWT_SECRET_KEY
 
 logger.info("Loaded settings from environment variables")
-logger.info("LiveKit URL: %s", livekit_settings.url)
 logger.info(
     "Database: %s", db_settings.url.rsplit("@", maxsplit=1)[-1]
 )  # Hide credentials
@@ -73,11 +105,27 @@ db_session_factory = sessionmaker(bind=engine)
 logger.info("Database initialized")
 
 
+# ==============================================================================
+# Initialize Image Storage
+# ==============================================================================
+
+IMAGES_DIR = Path(__file__).parent / "public" / "images"
+image_storage = LocalImageStorage(
+    storage_dir=IMAGES_DIR,
+    base_url="/images",
+)
+
+logger.info("Image storage initialized: %s", IMAGES_DIR)
+
+
+# ==============================================================================
 # Create FastAPI app
+# ==============================================================================
+
 app = FastAPI(
-    title="Fancall API",
+    title="AIdol API",
     version="0.1.0",
-    description="AI-powered video call with virtual companions",
+    description="Create and chat with your own AI idol group",
     docs_url="/docs",
     redoc_url="/redoc",
 )
@@ -90,6 +138,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount static files for images
+app.mount("/images", StaticFiles(directory=IMAGES_DIR), name="images")
 
 
 # ==============================================================================
@@ -159,17 +210,27 @@ async def internal_exception_handler(request: Request, exc: Exception):
 # Routes
 # ==============================================================================
 
-# Create and include Fancall router
-fancall_router = create_fancall_router(
-    livekit_settings=livekit_settings,
+# Create and include AIdol router
+aidol_router = create_aidol_router(
+    openai_settings=openai_settings,
     jwt_settings=jwt_settings,
     db_session_factory=db_session_factory,
-    repository_factory=LiveRoomRepositoryFactory(db_session_factory),
+    repository_factory=AIdolRepositoryFactory(),
+    image_storage=image_storage,
     user_info_provider=None,  # Standalone mode: no user authentication
 )
-app.include_router(fancall_router)
+app.include_router(aidol_router, prefix="/aidol")
 
-logger.info("Fancall router registered")
+# Create and include Companion router
+companion_router = create_companion_router(
+    jwt_settings=jwt_settings,
+    db_session_factory=db_session_factory,
+    repository_factory=CompanionRepositoryFactory(),
+    user_info_provider=None,  # Standalone mode: no user authentication
+)
+app.include_router(companion_router, prefix="/aidol")
+
+logger.info("AIdol and Companion routers registered")
 
 
 @app.get("/healthz", tags=["management"])
@@ -180,7 +241,7 @@ async def health_check():
     Returns:
         dict: Status message
     """
-    return {"status": "healthy", "service": "fancall"}
+    return {"status": "healthy", "service": "aidol"}
 
 
 @app.get("/", tags=["management"])
@@ -192,7 +253,7 @@ async def root():
         dict: Welcome message with documentation link
     """
     return {
-        "message": "Fancall API",
-        "description": "AI-powered video call with virtual companions",
+        "message": "AIdol API",
+        "description": "Create and chat with your own AI idol group",
         "docs": "/docs",
     }
