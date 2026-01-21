@@ -13,11 +13,10 @@ Environment Variables:
     LOG_LEVEL: Logging level (default: INFO)
 """
 
+import base64
 import io
 import logging
 import os
-import uuid
-from pathlib import Path
 
 import PIL.Image
 from aioia_core.errors import (
@@ -33,7 +32,6 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from fastapi.staticfiles import StaticFiles
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -51,32 +49,19 @@ logger = logging.getLogger(__name__)
 
 
 # ==============================================================================
-# Local Image Storage (Standalone mode)
+# Base64 Image Storage (Standalone mode)
 # ==============================================================================
 
 
-class LocalImageStorage(ImageStorageProtocol):
-    """Local file system image storage for standalone mode."""
-
-    def __init__(self, storage_dir: Path, base_url: str):
-        self.storage_dir = storage_dir
-        self.base_url = base_url
-        self.storage_dir.mkdir(parents=True, exist_ok=True)
+class Base64ImageStorage(ImageStorageProtocol):
+    """Base64 Data URL image storage for standalone mode."""
 
     def upload_image(self, image: PIL.Image.Image) -> str:
-        """Save image to local storage and return URL."""
-        filename = f"{uuid.uuid4()}.png"
-        filepath = self.storage_dir / filename
-
-        # Convert to PNG and save
+        """Convert image to Base64 Data URL."""
         buffer = io.BytesIO()
         image.save(buffer, format="PNG")
-        buffer.seek(0)
-
-        with open(filepath, "wb") as f:
-            f.write(buffer.getvalue())
-
-        return f"{self.base_url}/{filename}"
+        b64 = base64.b64encode(buffer.getvalue()).decode()
+        return f"data:image/png;base64,{b64}"
 
 
 # ==============================================================================
@@ -109,13 +94,9 @@ logger.info("Database initialized")
 # Initialize Image Storage
 # ==============================================================================
 
-IMAGES_DIR = Path(__file__).parent / "public" / "images"
-image_storage = LocalImageStorage(
-    storage_dir=IMAGES_DIR,
-    base_url="/images",
-)
+image_storage = Base64ImageStorage()
 
-logger.info("Image storage initialized: %s", IMAGES_DIR)
+logger.info("Image storage initialized (Base64 Data URL)")
 
 
 # ==============================================================================
@@ -138,9 +119,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Mount static files for images
-app.mount("/images", StaticFiles(directory=IMAGES_DIR), name="images")
 
 
 # ==============================================================================
