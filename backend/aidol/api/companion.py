@@ -2,7 +2,7 @@
 Companion API router
 
 Public endpoints for Companion creation and retrieval.
-Follows fancall pattern: public access, no authentication required.
+Public access pattern: no authentication required.
 """
 
 from aioia_core.auth import UserInfoProvider
@@ -41,12 +41,12 @@ class CompanionRouter(
     """
     Companion router with public endpoints.
 
-    Follows fancall pattern: public CRUD, no authentication required.
+    Public CRUD pattern: no authentication required.
     Returns CompanionPublic (excludes system_prompt) for all responses.
     """
 
     def _register_routes(self) -> None:
-        """Register routes (fancall pattern: public CRUD)"""
+        """Register routes (public CRUD)"""
         self._register_public_list_route()
         self._register_public_create_route()
         self._register_public_get_route()

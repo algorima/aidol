@@ -2,7 +2,7 @@
 AIdol API router
 
 Public endpoints for AIdol group creation and retrieval.
-Follows fancall pattern: public access, no authentication required.
+Public access pattern: no authentication required.
 """
 
 from aioia_core.auth import UserInfoProvider
@@ -42,7 +42,7 @@ class AIdolRouter(
     """
     AIdol router with public endpoints.
 
-    Follows fancall pattern: public CRUD, no authentication required.
+    Public CRUD pattern: no authentication required.
     Returns AIdolPublic (excludes claim_token) for all responses.
     """
 
@@ -57,7 +57,7 @@ class AIdolRouter(
         self.image_storage = image_storage
 
     def _register_routes(self) -> None:
-        """Register routes (fancall pattern: public CRUD + image generation)"""
+        """Register routes (public CRUD + image generation)"""
         self._register_image_generation_route()
         self._register_public_create_route()
         self._register_public_get_route()
