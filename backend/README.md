@@ -1,13 +1,13 @@
-# Fancall Backend
+# AIdol Backend
 
-AI 아이돌과 실시간 영상 통화 Python 패키지
+AI 아이돌 그룹 생성 및 채팅 Python 패키지
 
 ## 주요 기능
 
-- LiveKit 기반 실시간 음성/영상 통화
-- Fish Audio TTS 음성 합성
-- Hedra 아바타 지원 (선택)
-- 동적 설정 (voice_id, avatar_id, system_prompt)
+- AI 아이돌 그룹/멤버 CRUD
+- DALL-E 3 이미지 생성 (엠블럼, 프로필)
+- 텍스트 채팅 (페르소나 기반 응답)
+- Buppy 통합 Adapter 패턴
 
 ## 설치
 
@@ -21,50 +21,29 @@ API 문서:
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
-## LiveKit 설정
-
-### 서버
-
-```bash
-brew install livekit
-livekit-server --dev
-```
-
-서버: `ws://localhost:7880` (API Key: `devkey`, Secret: `secret`)
-
-### Agent
-
-```bash
-cd backend
-export OPENAI_API_KEY=sk-...
-export FISH_API_KEY=...
-
-# 개발 모드
-python -m fancall.agent.worker dev
-
-# 프로덕션 모드
-python -m fancall.agent.worker start
-
-# 특정 룸 연결
-python -m fancall.agent.worker connect --room <room-name>
-```
-
 ## 사용법
 
 ### FastAPI 통합
 
 ```python
-from fancall.api.router import create_fancall_router
-from fancall.factories import LiveRoomRepositoryFactory
-from fancall.settings import LiveKitSettings
+from aidol.api.aidol import AIdolRouter
+from aidol.api.companion import CompanionRouter
+from aidol.factories import AIdolRepositoryFactory, CompanionRepositoryFactory
 
-router = create_fancall_router(
-    livekit_settings=LiveKitSettings(),
-    jwt_settings=jwt_settings,
-    db_session_factory=db_session_factory,
-    repository_factory=LiveRoomRepositoryFactory(db_session_factory),
+# AIdol 라우터
+aidol_router = AIdolRouter(
+    repository_factory=AIdolRepositoryFactory(),
+    openai_settings=openai_settings,
+    image_storage=image_storage,
 )
-app.include_router(router, prefix="/api")
+
+# Companion 라우터
+companion_router = CompanionRouter(
+    repository_factory=CompanionRepositoryFactory(),
+)
+
+app.include_router(aidol_router.router, prefix="/api/aidol")
+app.include_router(companion_router.router, prefix="/api/aidol")
 ```
 
 ## 개발
@@ -85,7 +64,7 @@ make format
 make migrate
 ```
 
-새로운 마이그레이션을 생성하려면 (models.py 변경 후):
+새로운 마이그레이션을 생성하려면 (models 변경 후):
 
 ```bash
 poetry run alembic revision --autogenerate -m "변경 설명"
@@ -93,29 +72,27 @@ poetry run alembic revision --autogenerate -m "변경 설명"
 
 ## 환경 변수
 
-### 필수 (Agent 실행 시)
+### 필수 (이미지 생성 시)
 
 | 변수 | 설명 |
 |------|------|
 | `OPENAI_API_KEY` | OpenAI API 키 |
-| `FISH_API_KEY` | Fish Audio TTS API 키 |
 
-### 선택 (기능 활성화)
+### 선택
 
 | 변수 | 기본값 | 설명 |
 |------|--------|------|
-| `FANCALL_OPENAI_MODEL` | `gpt-4o-mini` | 사용할 OpenAI LLM 모델 |
-| `HEDRA_ENABLED` | `false` | Hedra 아바타 활성화 |
-| `HEDRA_API_KEY` | - | Hedra API 키 (enabled=true일 때 필수) |
+| `AIDOL_OPENAI_MODEL` | `gpt-4o-mini` | 채팅 응답 LLM 모델 |
 
-> **참고**: LiveKit, 데이터베이스, 모델 등 추가 설정은 기본값으로 로컬 개발 가능합니다.
-> 변경이 필요한 경우 `fancall/settings.py`의 Settings 클래스를 참고하세요.
+> **참고**: 데이터베이스, 모델 등 추가 설정은 기본값으로 로컬 개발 가능합니다.
+> 변경이 필요한 경우 `aidol/` 내 Settings 클래스를 참고하세요.
 
 ## 의존성
 
 - aioia-core (공통 인프라)
 - FastAPI, SQLAlchemy, Pydantic
-- livekit-api, livekit-agents
+- OpenAI (이미지 생성, 채팅)
+- Pillow (이미지 처리)
 
 ## 라이선스
 
