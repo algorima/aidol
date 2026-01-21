@@ -1,7 +1,7 @@
 import { BaseApiService } from "@aioia/core";
 
 /**
- * API Service for Fancall standalone app
+ * API Service for AIdol standalone app
  * No authentication required for public API access
  */
 export class ApiService extends BaseApiService {
