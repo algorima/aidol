@@ -1,37 +1,28 @@
-# Fancall
+# AIdol
 
-AI-powered video call with virtual companions
+Create and chat with your own AI idol group
+
+## Overview
+
+**"내가 상상한 아이돌을 만들고, 대화하고, 키우는 가장 쉬운 방법"**
+
+AIdol은 K-pop 팬이 자신만의 AI 아이돌 그룹을 생성하고, 텍스트 채팅으로 관계를 형성할 수 있는 서비스입니다.
 
 ## 주요 기능
 
-- LiveKit 기반 실시간 음성/영상 통화
-- AI 아이돌과 1:1 대화
-- Fish Audio TTS 음성 합성
-- Hedra 아바타 지원 (선택)
+- AI 아이돌 그룹/멤버 생성
+- DALL-E 3 기반 이미지 생성 (엠블럼, 프로필)
+- 텍스트 채팅 (페르소나 기반 응답)
+- 프로필 URL 공유
 
 ## 빠른 시작
 
 ### Backend
 
-LiveKit 서버:
-```bash
-brew install livekit
-livekit-server --dev
-```
-
-API 서버:
 ```bash
 cd backend
 poetry install
 poetry run uvicorn main:app --reload
-```
-
-LiveKit Agent:
-```bash
-cd backend
-export OPENAI_API_KEY=sk-...
-export FISH_API_KEY=...
-python -m fancall.agent.worker dev
 ```
 
 자세한 내용: [backend/README.md](backend/README.md)
@@ -52,8 +43,8 @@ npm run dev
 
 ## 문서
 
-- [Backend](backend/README.md) - Python 패키지
-- [Frontend](frontend/README.md) - React 컴포넌트
+- [Backend](backend/README.md) - Python 패키지 (PyPI: `py-aidol`)
+- [Frontend](frontend/README.md) - React 컴포넌트 (npm: `aidol`)
 - [통합 가이드](docs/integration-guide.md)
 - [기여 가이드](CONTRIBUTING.md)
 
