@@ -5,19 +5,19 @@ import { useMemo, useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
-import { AddMemberButton } from "@/lib/aidol/components/companion/AddMemberButton";
-import { ImagePreview } from "@/lib/aidol/components/companion/ImagePreview";
-import { PromptInput } from "@/lib/aidol/components/companion/PromptInput";
-import { ConceptSelector } from "@/lib/aidol/components/creation/ConceptSelector";
-import { EmblemGenerator } from "@/lib/aidol/components/creation/EmblemGenerator";
-import { GroupNameInput } from "@/lib/aidol/components/creation/GroupNameInput";
-import { MemberNameInput } from "@/lib/aidol/components/creation/MemberNameInput";
-import { PersonalitySelector } from "@/lib/aidol/components/creation/PersonalitySelector";
-import { StepIndicator } from "@/lib/aidol/components/creation/StepIndicator";
+import { AddMemberButton } from "@/components/companion/AddMemberButton";
+import { ImagePreview } from "@/components/companion/ImagePreview";
+import { PromptInput } from "@/components/companion/PromptInput";
+import { ConceptSelector } from "@/components/creation/ConceptSelector";
+import { EmblemGenerator } from "@/components/creation/EmblemGenerator";
+import { GroupNameInput } from "@/components/creation/GroupNameInput";
+import { MemberNameInput } from "@/components/creation/MemberNameInput";
+import { PersonalitySelector } from "@/components/creation/PersonalitySelector";
+import { StepIndicator } from "@/components/creation/StepIndicator";
 import {
   groupCreationSchema,
   type GroupCreationFormData,
-} from "@/lib/aidol/schemas/aidol";
+} from "@/schemas/aidol";
 
 export type { GroupCreationFormData };
 

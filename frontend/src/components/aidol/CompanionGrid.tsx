@@ -2,8 +2,8 @@
 
 import { useTranslation } from "react-i18next";
 
-import { Card } from "@/lib/aidol/components/companion/Card";
-import type { Companion } from "@/lib/aidol/schemas/companion";
+import { Card } from "@/components/companion/Card";
+import type { Companion } from "@/schemas/companion";
 
 export interface CompanionGridProps {
   companions: Companion[] | undefined;
