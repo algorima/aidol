@@ -6,6 +6,7 @@ authors = ["AIoIA, Inc. <devops@aioia.ai>"]
 readme = "README.md"
 license = "Apache-2.0"
 keywords = ["kpop", "idol", "aidol", "ai-companion", "chatbot", "image-generation"]
+packages = [{include = "aidol"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
