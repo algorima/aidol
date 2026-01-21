@@ -31,7 +31,7 @@ npm install aidol @aioia/core
 ### 컴포넌트
 
 ```tsx
-import { GroupCreation, HeroSection } from "aidol";
+import { GroupCreation, HeroSection } from "aidol/client";
 
 <HeroSection onStartClick={() => router.push("/create")} />
 <GroupCreation onSubmit={handleCreate} />

@@ -69,14 +69,13 @@ content: [
 
 | 엔트리 | 용도 | 환경 |
 |--------|------|------|
-| `aidol` | 컴포넌트, Repository | 클라이언트 |
-| `aidol/schemas` | 타입, Zod 스키마 | 서버/클라이언트 |
-| `aidol/locale` | i18n 리소스 | 서버/클라이언트 |
+| `aidol` | Repository, 타입, Zod 스키마, i18n | 서버/클라이언트 |
+| `aidol/client` | UI 컴포넌트 | 클라이언트 |
 
 ### 컴포넌트 (클라이언트)
 
 ```tsx
-import { GroupCreation, HeroSection } from "aidol";
+import { GroupCreation, HeroSection } from "aidol/client";
 
 <HeroSection onStartClick={() => router.push("/create")} />
 <GroupCreation onSubmit={handleCreate} />
@@ -101,22 +100,18 @@ const image = await aidolRepo.generateImage({ prompt: "K-pop idol emblem" });
 
 ```tsx
 // 서버 컴포넌트에서 타입 사용
-import type { AIdol, Companion } from "aidol/schemas";
-import { aidolSchema, companionSchema } from "aidol/schemas";
+import type { AIdol, Companion } from "aidol";
+import { aidolSchema, companionSchema } from "aidol";
 ```
 
 ### i18n 통합
 
 ```tsx
-// SSR/RSC 환경: locale 엔트리포인트 (권장)
-import { aidolTranslations, AIDOL_NS } from "aidol/locale";
-
-// 클라이언트 환경: 메인 엔트리포인트도 가능
 import { aidolTranslations, AIDOL_NS } from "aidol";
 ```
 
-> **SSR/RSC 환경**: `aidol/locale`은 i18n 리소스만 포함하도록 최적화된 엔트리포인트입니다.
-> 메인 엔트리포인트는 클라이언트 컴포넌트도 export하므로, 서버 환경에서는 `/locale` 사용을 권장합니다.
+> **서버 안전**: 메인 엔트리포인트(`aidol`)는 서버 안전 코드만 포함합니다.
+> UI 컴포넌트는 `aidol/client`에 분리되어 있어 서버 환경에서 안전하게 import 가능합니다.
 
 ```tsx
 // 호스트 앱의 i18n 인스턴스에 번역 리소스 추가
