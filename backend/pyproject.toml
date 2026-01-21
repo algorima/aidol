@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "aidol"
+name = "py-aidol"
 version = "0.1.0"
 description = "Create and chat with your own AI idol group"
 authors = ["AIoIA, Inc. <devops@aioia.ai>"]
