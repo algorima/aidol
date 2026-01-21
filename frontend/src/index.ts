@@ -26,7 +26,11 @@ export type {
 } from "./schemas/aidol";
 export { aidolSchema, imageGenerationResponseSchema } from "./schemas/aidol";
 
-export type { Companion, CompanionCreate, CompanionUpdate } from "./schemas/companion";
+export type {
+  Companion,
+  CompanionCreate,
+  CompanionUpdate,
+} from "./schemas/companion";
 export { companionSchema } from "./schemas/companion";
 
 // i18n - Server-safe exports (JSON resources and constants)

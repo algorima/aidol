@@ -87,7 +87,10 @@ export default function AIdolCreatePage({
           localStorage.getItem("aidol_claim_tokens") || "{}",
         ) as Record<string, string>;
         storedTokens[aidol.id] = claimToken;
-        localStorage.setItem("aidol_claim_tokens", JSON.stringify(storedTokens));
+        localStorage.setItem(
+          "aidol_claim_tokens",
+          JSON.stringify(storedTokens),
+        );
 
         // 2. Create companions
         for (const member of data.members) {

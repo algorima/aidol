@@ -5,18 +5,22 @@ AI 아이돌 그룹 생성 및 채팅 React 컴포넌트
 ## 주요 컴포넌트
 
 ### 생성
+
 - **GroupCreation**: 멀티스텝 그룹 생성 폼
 - **EmblemGenerator**: DALL-E 3 이미지 생성
 
 ### 랜딩
+
 - **HeroSection**: 메인 히어로 섹션
 - **DemoSection**: 데모 섹션
 
 ### 프로필
+
 - **GroupHeader**: 그룹 프로필 헤더
 - **CompanionGrid**: 멤버 카드 그리드
 
 ### Repository
+
 - **AIdolRepository**: AIdol API 클라이언트
 - **CompanionRepository**: Companion API 클라이언트
 
