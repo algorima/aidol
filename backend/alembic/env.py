@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import configure_mappers
 
 from alembic import context  # pylint: disable=no-name-in-module
-from fancall.models import DBLiveRoom  # Import models to register with Base
+from aidol.models import DBAIdol, DBCompanion  # Import models to register with Base
 
 database_settings = DatabaseSettings()
 database_url = database_settings.url
