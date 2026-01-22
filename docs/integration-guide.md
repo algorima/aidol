@@ -126,13 +126,6 @@ Object.entries(aidolTranslations).forEach(([lang, resources]) => {
 
 ## 데이터베이스
 
-### Migration
-
-```bash
-cd aidol/backend
-alembic upgrade head
-```
-
 ### 테이블
 
 - `aidols`: 그룹 정보 (name, concept, profile_image_url)

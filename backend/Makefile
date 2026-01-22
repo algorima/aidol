@@ -1,4 +1,4 @@
-.PHONY: lint code-style type-check unit-test integration-test format migrate check-migrations
+.PHONY: lint code-style type-check unit-test integration-test format
 
 PY_FILES=$(shell find . -type d -name '.venv' -prune -o -type f -name '*.py' -print | sed 's|^\./||')
 
@@ -22,9 +22,3 @@ integration-test:
 format:
 	poetry run isort .
 	poetry run black .
-
-migrate:
-	poetry run alembic upgrade head
-
-check-migrations:
-	poetry run alembic check
