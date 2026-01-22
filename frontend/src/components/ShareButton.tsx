@@ -6,23 +6,23 @@ import { useTranslation } from "react-i18next";
 
 interface ShareButtonProps {
   url: string;
-  onShare?: () => void;
+  onCopySuccess?: () => void;
 }
 
 /**
  * Share button that copies URL to clipboard.
  * Shows a check icon briefly after successful copy.
  */
-export function ShareButton({ url, onShare }: ShareButtonProps) {
+export function ShareButton({ url, onCopySuccess }: ShareButtonProps) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const handleShare = useCallback(async () => {
     await navigator.clipboard.writeText(url);
     setCopied(true);
-    onShare?.();
+    onCopySuccess?.();
     setTimeout(() => setCopied(false), 2000);
-  }, [url, onShare]);
+  }, [url, onCopySuccess]);
 
   return (
     <button
