@@ -1,0 +1,65 @@
+{
+  "share": "แชร์",
+  "companion": {
+    "promptPlaceholder": "ไอดอลของคุณพูดยังไง? บรรยายบุคลิกสักนิด...",
+    "addMember": "เพิ่มสมาชิก"
+  },
+  "aidol": {
+    "notFound": "ไม่พบกลุ่ม",
+    "members": "สมาชิก",
+    "noMembers": "ยังไม่มีสมาชิก"
+  },
+  "creation": {
+    "groupName": "ชื่อกลุ่ม",
+    "groupNamePlaceholder": "เช่น: DREAMERS, STARLIGHT",
+    "memberName": "ชื่อสมาชิก",
+    "memberNamePlaceholder": "เช่น: Luna, Kai",
+    "concept": "คอนเซ็ปต์",
+    "selectConcept": "เลือกคอนเซ็ปต์",
+    "personality": "บุคลิกภาพ",
+    "concepts": {
+      "cute": "น่ารัก",
+      "cool": "เท่",
+      "elegant": "สง่างาม",
+      "powerful": "ทรงพลัง"
+    },
+    "personalities": {
+      "cheerful": { "label": "ร่าเริง", "description": "สดใสและเป็นบวกเสมอ" },
+      "cool": { "label": "เท่", "description": "สงบและเยือกเย็น" },
+      "tsundere": {
+        "label": "ซึนเดเระ",
+        "description": "ภายนอกเย็นชา ภายในอบอุ่น"
+      },
+      "gentle": { "label": "อ่อนโยน", "description": "ใจดีและเอาใจใส่" }
+    },
+    "step1": "กลุ่ม",
+    "step2": "สมาชิก",
+    "step3": "เสร็จ",
+    "step1Title": "สร้างกลุ่มของคุณ",
+    "step2Title": "เพิ่มสมาชิก",
+    "groupNameRequired": "กรุณาใส่ชื่อกลุ่ม",
+    "memberNameRequired": "กรุณาใส่ชื่อสมาชิก",
+    "memberRequired": "กรุณาเพิ่มสมาชิกอย่างน้อย 1 คน",
+    "emblem": "ตราสัญลักษณ์",
+    "emblemPromptPlaceholder": "อธิบายตราสัญลักษณ์กลุ่ม...",
+    "emblemRequired": "กรุณาสร้างภาพตราสัญลักษณ์",
+    "generate": "สร้าง",
+    "next": "ถัดไป",
+    "back": "กลับ",
+    "create": "สร้าง",
+    "completeTitle": "ไอดอลพร้อมแล้ว!",
+    "completeDescription": "เริ่มแชทกับไอดอลในฝันของคุณได้เลย",
+    "viewProfile": "ดูโปรไฟล์"
+  },
+  "landing": {
+    "hero": {
+      "title": "สร้างไอดอลในฝัน",
+      "description": "ออกแบบไอดอลในอุดมคติและแชทเหมือนแฟนคลับตัวจริง",
+      "cta": "เริ่มสร้าง"
+    },
+    "demo": {
+      "title": "จินตนาการกลายเป็นไอดอล",
+      "description": "สร้างไอดอลที่มีเอกลักษณ์และสร้างสายสัมพันธ์พิเศษ"
+    }
+  }
+}

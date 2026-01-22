@@ -1,0 +1,71 @@
+{
+  "share": "I-share",
+  "companion": {
+    "promptPlaceholder": "Paano nagsasalita ang idol mo? Ilarawan ang personality...",
+    "addMember": "Magdagdag ng Miyembro"
+  },
+  "aidol": {
+    "notFound": "Hindi nahanap ang grupo",
+    "members": "Miyembro",
+    "noMembers": "Wala pang miyembro"
+  },
+  "creation": {
+    "groupName": "Pangalan ng Grupo",
+    "groupNamePlaceholder": "hal: DREAMERS, STARLIGHT",
+    "memberName": "Pangalan ng Miyembro",
+    "memberNamePlaceholder": "hal: Luna, Kai",
+    "concept": "Konsepto",
+    "selectConcept": "Pumili ng konsepto",
+    "personality": "Personalidad",
+    "concepts": {
+      "cute": "Cute",
+      "cool": "Cool",
+      "elegant": "Elegante",
+      "powerful": "Malakas"
+    },
+    "personalities": {
+      "cheerful": {
+        "label": "Masayahin",
+        "description": "Palaging masaya at positibo"
+      },
+      "cool": { "label": "Cool", "description": "Kalmado at mahinahon" },
+      "tsundere": {
+        "label": "Tsundere",
+        "description": "Malamig sa labas, mainit sa loob"
+      },
+      "gentle": {
+        "label": "Mabait",
+        "description": "Maalalahanin at mapagmahal"
+      }
+    },
+    "step1": "Grupo",
+    "step2": "Miyembro",
+    "step3": "Tapos",
+    "step1Title": "Gumawa ng Grupo",
+    "step2Title": "Magdagdag ng Miyembro",
+    "groupNameRequired": "Maglagay ng pangalan ng grupo",
+    "memberNameRequired": "Maglagay ng pangalan ng miyembro",
+    "memberRequired": "Magdagdag ng kahit isang miyembro",
+    "emblem": "Emblema",
+    "emblemPromptPlaceholder": "Ilarawan ang emblema ng grupo...",
+    "emblemRequired": "Gumawa ng imahe ng emblema",
+    "generate": "Lumikha",
+    "next": "Susunod",
+    "back": "Bumalik",
+    "create": "Gumawa",
+    "completeTitle": "Handa na ang Idol Mo!",
+    "completeDescription": "Mag-chat na sa iyong dream idol ngayon",
+    "viewProfile": "Tingnan ang Profile"
+  },
+  "landing": {
+    "hero": {
+      "title": "Likhain ang Idol ng Iyong Pangarap",
+      "description": "I-design ang perpektong idol at mag-chat na parang tunay na fan",
+      "cta": "Magsimulang Lumikha"
+    },
+    "demo": {
+      "title": "Ang Imahinasyon Mo, Ang Idol Mo",
+      "description": "Lumikha ng mga natatanging idol at magtayo ng koneksyon"
+    }
+  }
+}

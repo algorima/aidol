@@ -1,0 +1,68 @@
+{
+  "share": "Chia sẻ",
+  "companion": {
+    "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
+    "addMember": "Thêm Thành Viên"
+  },
+  "aidol": {
+    "notFound": "Không tìm thấy nhóm",
+    "members": "Thành Viên",
+    "noMembers": "Chưa có thành viên"
+  },
+  "creation": {
+    "groupName": "Tên Nhóm",
+    "groupNamePlaceholder": "vd: DREAMERS, STARLIGHT",
+    "memberName": "Tên Thành Viên",
+    "memberNamePlaceholder": "vd: Luna, Kai",
+    "concept": "Concept",
+    "selectConcept": "Chọn concept",
+    "personality": "Tính Cách",
+    "concepts": {
+      "cute": "Dễ thương",
+      "cool": "Ngầu",
+      "elegant": "Thanh lịch",
+      "powerful": "Mạnh mẽ"
+    },
+    "personalities": {
+      "cheerful": {
+        "label": "Vui vẻ",
+        "description": "Luôn tươi sáng và tích cực"
+      },
+      "cool": { "label": "Ngầu", "description": "Bình tĩnh và điềm đạm" },
+      "tsundere": {
+        "label": "Tsundere",
+        "description": "Lạnh lùng bên ngoài, ấm áp bên trong"
+      },
+      "gentle": { "label": "Dịu dàng", "description": "Tốt bụng và quan tâm" }
+    },
+    "step1": "Nhóm",
+    "step2": "Thành Viên",
+    "step3": "Xong",
+    "step1Title": "Tạo Nhóm",
+    "step2Title": "Thêm Thành Viên",
+    "groupNameRequired": "Vui lòng nhập tên nhóm",
+    "memberNameRequired": "Vui lòng nhập tên thành viên",
+    "memberRequired": "Vui lòng thêm ít nhất một thành viên",
+    "emblem": "Biểu tượng",
+    "emblemPromptPlaceholder": "Mô tả biểu tượng nhóm...",
+    "emblemRequired": "Vui lòng tạo hình biểu tượng",
+    "generate": "Tạo",
+    "next": "Tiếp",
+    "back": "Quay lại",
+    "create": "Tạo",
+    "completeTitle": "Idol Đã Sẵn Sàng!",
+    "completeDescription": "Bắt đầu trò chuyện với idol mơ ước ngay",
+    "viewProfile": "Xem Hồ Sơ"
+  },
+  "landing": {
+    "hero": {
+      "title": "Tạo Idol Mơ Ước",
+      "description": "Thiết kế idol hoàn hảo và trò chuyện như fan thật sự",
+      "cta": "Bắt Đầu Tạo"
+    },
+    "demo": {
+      "title": "Trí Tưởng Tượng Thành Idol",
+      "description": "Tạo idol độc đáo và xây dựng mối liên kết đặc biệt"
+    }
+  }
+}

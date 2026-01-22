@@ -1,0 +1,62 @@
+{
+  "share": "分享",
+  "companion": {
+    "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
+    "addMember": "添加成员"
+  },
+  "aidol": {
+    "notFound": "找不到该组合",
+    "members": "成员",
+    "noMembers": "暂无成员"
+  },
+  "creation": {
+    "groupName": "组合名",
+    "groupNamePlaceholder": "例如: DREAMERS, STARLIGHT",
+    "memberName": "成员名",
+    "memberNamePlaceholder": "例如: Luna, Kai",
+    "concept": "概念",
+    "selectConcept": "选择概念",
+    "personality": "性格",
+    "concepts": {
+      "cute": "可爱",
+      "cool": "酷",
+      "elegant": "优雅",
+      "powerful": "有力"
+    },
+    "personalities": {
+      "cheerful": { "label": "开朗", "description": "总是阳光积极" },
+      "cool": { "label": "冷酷", "description": "冷静沉着" },
+      "tsundere": { "label": "傲娇", "description": "外冷内热" },
+      "gentle": { "label": "温柔", "description": "善良体贴" }
+    },
+    "step1": "组合",
+    "step2": "成员",
+    "step3": "完成",
+    "step1Title": "创建组合",
+    "step2Title": "添加成员",
+    "groupNameRequired": "请输入组合名",
+    "memberNameRequired": "请输入成员名",
+    "memberRequired": "请至少添加一名成员",
+    "emblem": "徽章",
+    "emblemPromptPlaceholder": "描述你的组合徽章...",
+    "emblemRequired": "请生成徽章图片",
+    "generate": "生成",
+    "next": "下一步",
+    "back": "上一步",
+    "create": "创建",
+    "completeTitle": "偶像创建完成！",
+    "completeDescription": "现在就和你的梦想偶像聊天吧",
+    "viewProfile": "查看资料"
+  },
+  "landing": {
+    "hero": {
+      "title": "创造你的梦想偶像",
+      "description": "设计你的理想偶像，像真正的粉丝一样聊天",
+      "cta": "开始创作"
+    },
+    "demo": {
+      "title": "让想象变成偶像",
+      "description": "创建独特的偶像，建立特别的羁绊"
+    }
+  }
+}

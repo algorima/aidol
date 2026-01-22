@@ -1,0 +1,68 @@
+{
+  "share": "Compartir",
+  "companion": {
+    "promptPlaceholder": "¿Cómo habla tu idol? Describe su personalidad...",
+    "addMember": "Añadir Miembro"
+  },
+  "aidol": {
+    "notFound": "Grupo no encontrado",
+    "members": "Miembros",
+    "noMembers": "Aún no hay miembros"
+  },
+  "creation": {
+    "groupName": "Nombre del Grupo",
+    "groupNamePlaceholder": "ej: DREAMERS, STARLIGHT",
+    "memberName": "Nombre del Miembro",
+    "memberNamePlaceholder": "ej: Luna, Kai",
+    "concept": "Concepto",
+    "selectConcept": "Selecciona un concepto",
+    "personality": "Personalidad",
+    "concepts": {
+      "cute": "Lindo",
+      "cool": "Genial",
+      "elegant": "Elegante",
+      "powerful": "Poderoso"
+    },
+    "personalities": {
+      "cheerful": {
+        "label": "Alegre",
+        "description": "Siempre brillante y positivo"
+      },
+      "cool": { "label": "Genial", "description": "Tranquilo y sereno" },
+      "tsundere": {
+        "label": "Tsundere",
+        "description": "Frío por fuera, cálido por dentro"
+      },
+      "gentle": { "label": "Amable", "description": "Bondadoso y cariñoso" }
+    },
+    "step1": "Grupo",
+    "step2": "Miembros",
+    "step3": "Listo",
+    "step1Title": "Crea Tu Grupo",
+    "step2Title": "Añade Miembros",
+    "groupNameRequired": "Por favor ingresa un nombre de grupo",
+    "memberNameRequired": "Por favor ingresa un nombre de miembro",
+    "memberRequired": "Por favor añade al menos un miembro",
+    "emblem": "Emblema",
+    "emblemPromptPlaceholder": "Describe el emblema de tu grupo...",
+    "emblemRequired": "Por favor genera una imagen de emblema",
+    "generate": "Generar",
+    "next": "Siguiente",
+    "back": "Atrás",
+    "create": "Crear",
+    "completeTitle": "¡Tu Idol Está Listo!",
+    "completeDescription": "Empieza a chatear con tu idol soñado ahora",
+    "viewProfile": "Ver Perfil"
+  },
+  "landing": {
+    "hero": {
+      "title": "Crea Tu Idol Soñado",
+      "description": "Diseña tu idol perfecto y chatea como un verdadero fan",
+      "cta": "Empezar a Crear"
+    },
+    "demo": {
+      "title": "Tu Imaginación, Tu Idol",
+      "description": "Crea idols únicos y construye una conexión especial"
+    }
+  }
+}
