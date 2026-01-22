@@ -1,57 +1,12 @@
 /**
- * AIdol & Companion schemas
- * Matches backend definitions (Public only for MVP)
+ * AIdol (group) schemas
+ * Matches backend aidol/schemas/aidol.py definitions (Public only for MVP)
  */
 
 import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
-// ---------------------------------------------------------------------------
-// Companion (member) schemas
-// ---------------------------------------------------------------------------
-
-/**
- * Companion schema (public fields only, excludes system_prompt)
- */
-export const companionSchema = z.object({
-  id: z.string(),
-  aidolId: z.string().nullable().optional(),
-  name: z.string(),
-  biography: z.string().nullable().optional(),
-  profilePictureUrl: z.string().nullable().optional(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
-
-export interface Companion extends BaseRecord {
-  id: string;
-  aidolId?: string | null;
-  name: string;
-  biography?: string | null;
-  profilePictureUrl?: string | null;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface CompanionCreate {
-  aidolId?: string | null;
-  name: string;
-  biography?: string | null;
-  profilePictureUrl?: string | null;
-  systemPrompt?: string | null;
-}
-
-export interface CompanionUpdate {
-  aidolId?: string | null;
-  name?: string;
-  biography?: string | null;
-  profilePictureUrl?: string | null;
-  systemPrompt?: string | null;
-}
-
-// ---------------------------------------------------------------------------
-// AIdol (group) schemas
-// ---------------------------------------------------------------------------
+import type { Companion } from "./companion";
 
 /**
  * AIdol schema (public fields only, excludes claim_token)
@@ -75,6 +30,10 @@ export interface AIdol extends BaseRecord {
   companions?: Companion[];
 }
 
+/**
+ * Schema for creating an AIdol group
+ * claimToken is optional for anonymous ownership verification
+ */
 export interface AIdolCreate {
   name: string;
   concept?: string | null;
@@ -82,6 +41,9 @@ export interface AIdolCreate {
   claimToken?: string | null;
 }
 
+/**
+ * Schema for updating an AIdol group
+ */
 export interface AIdolUpdate {
   name?: string;
   concept?: string | null;
@@ -120,6 +82,9 @@ export type GroupCreationFormData = z.infer<typeof groupCreationSchema>;
 // Image Generation
 // ---------------------------------------------------------------------------
 
+/**
+ * Request schema for image generation
+ */
 export const imageGenerationRequestSchema = z.object({
   prompt: z.string().max(200),
 });
@@ -128,6 +93,9 @@ export type ImageGenerationRequest = z.infer<
   typeof imageGenerationRequestSchema
 >;
 
+/**
+ * Image generation result data
+ */
 export const imageGenerationDataSchema = z.object({
   imageUrl: z.string(),
   width: z.number(),
@@ -137,6 +105,9 @@ export const imageGenerationDataSchema = z.object({
 
 export type ImageGenerationData = z.infer<typeof imageGenerationDataSchema>;
 
+/**
+ * Response schema for image generation
+ */
 export const imageGenerationResponseSchema = z.object({
   data: imageGenerationDataSchema,
 });

@@ -9,8 +9,8 @@ import { GroupHeader } from "@/components/aidol/GroupHeader";
 import { ShareButton } from "@/components/ShareButton";
 import { AIDOL_NS } from "@/i18n";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
-import type { AIdol } from "@/schemas";
-import type { Companion } from "@/schemas";
+import type { AIdol } from "@/schemas/aidol";
+import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
 interface AIdolProfilePageProps {
