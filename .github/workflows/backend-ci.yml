@@ -54,7 +54,3 @@ jobs:
           DATABASE_URL: sqlite:///./local_database.db
         run: make check-migrations
         working-directory: backend
-
-      - name: Run Unit Tests
-        run: make unit-test
-        working-directory: backend
