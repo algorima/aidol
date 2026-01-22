@@ -17,7 +17,7 @@ import { StepIndicator } from "@/components/creation/StepIndicator";
 import {
   groupCreationSchema,
   type GroupCreationFormData,
-} from "@/schemas/aidol";
+} from "@/schemas";
 
 export type { GroupCreationFormData };
 

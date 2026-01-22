@@ -9,8 +9,8 @@ import {
   type GroupCreationFormData,
 } from "@/components/creation/GroupCreation";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
-import type { AIdolCreate, ImageGenerationRequest } from "@/schemas/aidol";
-import type { CompanionCreate } from "@/schemas/companion";
+import type { AIdolCreate, ImageGenerationRequest } from "@/schemas";
+import type { CompanionCreate } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
 
 interface AIdolCreatePageProps {

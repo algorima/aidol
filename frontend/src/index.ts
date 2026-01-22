@@ -20,19 +20,19 @@ export type {
   AIdol,
   AIdolCreate,
   AIdolUpdate,
+  Companion,
+  CompanionCreate,
+  CompanionUpdate,
   GroupCreationFormData,
   ImageGenerationData,
   ImageGenerationRequest,
   ImageGenerationResponse,
-} from "./schemas/aidol";
-export { aidolSchema, imageGenerationResponseSchema } from "./schemas/aidol";
-
-export type {
-  Companion,
-  CompanionCreate,
-  CompanionUpdate,
-} from "./schemas/companion";
-export { companionSchema } from "./schemas/companion";
+} from "./schemas";
+export {
+  aidolSchema,
+  companionSchema,
+  imageGenerationResponseSchema,
+} from "./schemas";
 
 // i18n - Server-safe exports (JSON resources and constants)
 export { AIDOL_NS, aidolTranslations } from "./i18n/translations";

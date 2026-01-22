@@ -3,7 +3,7 @@
 import { useTranslation } from "react-i18next";
 
 import { Card } from "@/components/companion/Card";
-import type { Companion } from "@/schemas/companion";
+import type { Companion } from "@/schemas";
 
 export interface CompanionGridProps {
   companions: Companion[] | undefined;
