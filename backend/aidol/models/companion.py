@@ -18,9 +18,7 @@ class DBCompanion(BaseModel):
     __tablename__ = "companions"
 
     # id, created_at, updated_at inherited from BaseModel
-    aidol_id: Mapped[str | None] = mapped_column(
-        ForeignKey("aidols.id"), nullable=True, index=True
-    )
+    aidol_id: Mapped[str | None] = mapped_column(ForeignKey("aidols.id"), nullable=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
     biography: Mapped[str | None] = mapped_column(Text, nullable=True)
     profile_picture_url: Mapped[str | None] = mapped_column(String, nullable=True)
