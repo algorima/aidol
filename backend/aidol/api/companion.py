@@ -133,9 +133,9 @@ class CompanionRouter(
 
 
 def create_companion_router(
-    jwt_settings: JWTSettings,
     db_session_factory: sessionmaker,
     repository_factory: CompanionRepositoryFactoryProtocol,
+    jwt_settings: JWTSettings | None = None,
     user_info_provider: UserInfoProvider | None = None,
     resource_name: str = "companions",
     tags: list[str] | None = None,
@@ -144,10 +144,10 @@ def create_companion_router(
     Create Companion router with dependency injection.
 
     Args:
-        jwt_settings: JWT settings for authentication (not used, but required by BaseCrudRouter)
         db_session_factory: Database session factory
         repository_factory: Factory implementing CompanionRepositoryFactoryProtocol
-        user_info_provider: Optional user info provider (not used for public endpoints)
+        jwt_settings: Optional JWT settings for authentication
+        user_info_provider: Optional user info provider
         resource_name: Resource name for routes (default: "companions")
         tags: Optional OpenAPI tags
 
@@ -161,7 +161,7 @@ def create_companion_router(
         db_session_factory=db_session_factory,
         repository_factory=repository_factory,
         user_info_provider=user_info_provider,
-        jwt_secret_key=jwt_settings.secret_key,
+        jwt_secret_key=jwt_settings.secret_key if jwt_settings else None,
         resource_name=resource_name,
         tags=tags or ["Companion"],
     )

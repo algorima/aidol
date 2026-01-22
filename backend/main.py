@@ -27,7 +27,7 @@ from aioia_core.errors import (
     get_error_detail_from_exception,
 )
 from aioia_core.models import Base
-from aioia_core.settings import DatabaseSettings, JWTSettings, OpenAIAPISettings
+from aioia_core.settings import DatabaseSettings, OpenAIAPISettings
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -71,7 +71,6 @@ class Base64ImageStorage(ImageStorageProtocol):
 # BaseSettings automatically reads from environment variables
 db_settings = DatabaseSettings()  # DATABASE_URL
 openai_settings = OpenAIAPISettings()  # OPENAI_API_KEY
-jwt_settings = JWTSettings()  # JWT_SECRET_KEY
 
 logger.info("Loaded settings from environment variables")
 logger.info(
@@ -191,20 +190,16 @@ async def internal_exception_handler(request: Request, exc: Exception):
 # Create and include AIdol router
 aidol_router = create_aidol_router(
     openai_settings=openai_settings,
-    jwt_settings=jwt_settings,
     db_session_factory=db_session_factory,
     repository_factory=AIdolRepositoryFactory(),
     image_storage=image_storage,
-    user_info_provider=None,  # Standalone mode: no user authentication
 )
 app.include_router(aidol_router, prefix="/aidol")
 
 # Create and include Companion router
 companion_router = create_companion_router(
-    jwt_settings=jwt_settings,
     db_session_factory=db_session_factory,
     repository_factory=CompanionRepositoryFactory(),
-    user_info_provider=None,  # Standalone mode: no user authentication
 )
 app.include_router(companion_router, prefix="/aidol")
 

@@ -149,10 +149,10 @@ class AIdolRouter(
 
 def create_aidol_router(
     openai_settings: OpenAIAPISettings,
-    jwt_settings: JWTSettings,
     db_session_factory: sessionmaker,
     repository_factory: AIdolRepositoryFactoryProtocol,
     image_storage: ImageStorageProtocol,
+    jwt_settings: JWTSettings | None = None,
     user_info_provider: UserInfoProvider | None = None,
     resource_name: str = "aidols",
     tags: list[str] | None = None,
@@ -162,11 +162,11 @@ def create_aidol_router(
 
     Args:
         openai_settings: OpenAI API settings for image generation
-        jwt_settings: JWT settings for authentication (not used, but required by BaseCrudRouter)
         db_session_factory: Database session factory
         repository_factory: Factory implementing AIdolRepositoryFactoryProtocol
         image_storage: Image storage for permanent URLs
-        user_info_provider: Optional user info provider (not used for public endpoints)
+        jwt_settings: Optional JWT settings for authentication
+        user_info_provider: Optional user info provider
         resource_name: Resource name for routes (default: "aidols")
         tags: Optional OpenAPI tags
 
@@ -182,7 +182,7 @@ def create_aidol_router(
         db_session_factory=db_session_factory,
         repository_factory=repository_factory,
         user_info_provider=user_info_provider,
-        jwt_secret_key=jwt_settings.secret_key,
+        jwt_secret_key=jwt_settings.secret_key if jwt_settings else None,
         resource_name=resource_name,
         tags=tags or ["AIdol"],
     )
