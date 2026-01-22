@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { getServerTranslationResources } from "@/i18n";
 import { languages } from "@/i18n/config";
+
 import { I18nProvider } from "../providers/I18nProvider";
 import { ToastProvider } from "../providers/Toast";
 

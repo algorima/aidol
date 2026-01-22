@@ -8,11 +8,12 @@ import { CompanionGrid } from "@/components/aidol/CompanionGrid";
 import { GroupHeader } from "@/components/aidol/GroupHeader";
 import { ShareButton } from "@/components/ShareButton";
 import { AIDOL_NS } from "@/i18n";
-import { useToast } from "../../providers/Toast";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
 import type { AIdol } from "@/schemas/aidol";
 import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
+
+import { useToast } from "../../providers/Toast";
 
 interface AIdolProfilePageProps {
   params: {
