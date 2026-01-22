@@ -8,6 +8,7 @@ import { CompanionGrid } from "@/components/aidol/CompanionGrid";
 import { GroupHeader } from "@/components/aidol/GroupHeader";
 import { ShareButton } from "@/components/ShareButton";
 import { AIDOL_NS } from "@/i18n";
+import { useToast } from "../../providers/Toast";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
 import type { AIdol } from "@/schemas/aidol";
 import type { Companion } from "@/schemas/companion";
@@ -32,6 +33,7 @@ export default function AIdolProfilePage({
   const { lang, aidolId } = params;
   const router = useRouter();
   const { t } = useTranslation();
+  const { showToast } = useToast();
 
   const [aidol, setAidol] = useState<AIdol | null>(null);
   const [companions, setCompanions] = useState<Companion[]>([]);
@@ -103,7 +105,10 @@ export default function AIdolProfilePage({
       <div className="mx-auto w-full max-w-2xl">
         <div className="flex items-start justify-between">
           <GroupHeader aidol={aidol} />
-          <ShareButton url={shareUrl} />
+          <ShareButton
+            url={shareUrl}
+            onCopySuccess={() => showToast(t("urlCopied", { ns: AIDOL_NS }), "accent")}
+          />
         </div>
         <CompanionGrid
           companions={companions}
