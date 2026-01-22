@@ -54,7 +54,7 @@ export default defineConfig({
       include: [
         "src/components/**/*",
         "src/repositories/**/*",
-        "src/schemas.ts",
+        "src/schemas/**/*",
         "src/index.ts",
         "src/client.ts",
         "src/i18n/translations.ts",
