@@ -22,7 +22,15 @@ import {
 
 export interface ToastMessage {
   id: string;
-  type: "info" | "success" | "error" | "warning" | "accent";
+  type:
+    | "info"
+    | "success"
+    | "error"
+    | "warning"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "neutral";
   message: string;
   duration?: number;
 }
@@ -158,12 +166,15 @@ export function ToastItem({ toast, onHide }: ToastItemProps): JSX.Element {
             aria-label="Warning"
           />
         );
+      case "primary":
+      case "secondary":
       case "accent":
+      case "neutral":
         return (
-          <CheckCircleIcon
+          <InformationCircleIcon
             className="size-6 shrink-0"
             role="img"
-            aria-label="Accent"
+            aria-label={toast.type}
           />
         );
       case "info":
@@ -186,8 +197,14 @@ export function ToastItem({ toast, onHide }: ToastItemProps): JSX.Element {
         return "alert-error";
       case "warning":
         return "alert-warning";
+      case "primary":
+        return "bg-primary text-primary-content";
+      case "secondary":
+        return "bg-secondary text-secondary-content";
       case "accent":
         return "bg-accent text-accent-content";
+      case "neutral":
+        return "bg-neutral text-neutral-content";
       case "info":
       default:
         return "alert-info";
