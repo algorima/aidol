@@ -18,7 +18,7 @@ export function AddMemberButton({ onClick, isLoading }: AddMemberButtonProps) {
     <button
       onClick={onClick}
       disabled={isLoading}
-      className="btn btn-neutral h-16 min-w-48 text-body-m font-medium text-neutral-content"
+      className="btn btn-neutral h-16 min-w-48 text-label-l text-neutral-content"
     >
       {isLoading ? (
         <span className="loading loading-spinner loading-sm" />
