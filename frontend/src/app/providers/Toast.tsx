@@ -60,7 +60,9 @@ interface ToastProviderProps {
 
 export function ToastProvider({ children }: ToastProviderProps): JSX.Element {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
-  const timerRefs = useRef<Map<string, NodeJS.Timeout>>(new Map());
+  const timerRefs = useRef<Map<string, ReturnType<typeof setTimeout>>>(
+    new Map(),
+  );
 
   const hideToast = useCallback((id: string) => {
     const timer = timerRefs.current.get(id);
