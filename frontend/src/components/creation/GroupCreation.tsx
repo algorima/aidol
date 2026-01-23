@@ -174,7 +174,7 @@ export function GroupCreation({
                   </div>
                 )}
                 {errors.profileImageUrl?.message && (
-                  <p className="mt-1 text-sm text-error">
+                  <p className="mt-1 text-label-m text-error">
                     {t(errors.profileImageUrl.message, { ns: "aidol" })}
                   </p>
                 )}
@@ -275,7 +275,7 @@ export function GroupCreation({
           {/* Step 3: Complete */}
           {step === 3 && (
             <div className="space-y-6 text-center">
-              <div className="text-6xl">🎉</div>
+              <div className="text-display-l">🎉</div>
               <h2 className="text-display-s font-bold">
                 {t("aidol:creation.completeTitle")}
               </h2>
