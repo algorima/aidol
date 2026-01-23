@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 
 import { getServerTranslationResources } from "@/i18n";
 import { languages } from "@/i18n/config";
-import { I18nProvider } from "@/providers/I18nProvider";
+
+import { I18nProvider } from "../providers/I18nProvider";
+import { ToastProvider } from "../providers/Toast";
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams() {
@@ -30,7 +32,7 @@ export default async function LangLayout({
     <html lang={lang}>
       <body>
         <I18nProvider lang={lang} resources={resources}>
-          {children}
+          <ToastProvider>{children}</ToastProvider>
         </I18nProvider>
       </body>
     </html>

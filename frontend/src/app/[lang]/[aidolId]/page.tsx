@@ -13,6 +13,8 @@ import type { AIdol } from "@/schemas/aidol";
 import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
+import { useToast } from "../../providers/Toast";
+
 interface AIdolProfilePageProps {
   params: {
     lang: string;
@@ -32,6 +34,7 @@ export default function AIdolProfilePage({
   const { lang, aidolId } = params;
   const router = useRouter();
   const { t } = useTranslation();
+  const { showToast } = useToast();
 
   const [aidol, setAidol] = useState<AIdol | null>(null);
   const [companions, setCompanions] = useState<Companion[]>([]);
@@ -103,7 +106,12 @@ export default function AIdolProfilePage({
       <div className="mx-auto w-full max-w-2xl">
         <div className="flex items-start justify-between">
           <GroupHeader aidol={aidol} />
-          <ShareButton url={shareUrl} />
+          <ShareButton
+            url={shareUrl}
+            onCopySuccess={() =>
+              showToast(t("urlCopied", { ns: AIDOL_NS }), "accent")
+            }
+          />
         </div>
         <CompanionGrid
           companions={companions}
