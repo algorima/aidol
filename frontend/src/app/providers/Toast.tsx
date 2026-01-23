@@ -187,7 +187,7 @@ export function ToastItem({ toast, onHide }: ToastItemProps): JSX.Element {
       case "warning":
         return "alert-warning";
       case "accent":
-        return "alert-accent";
+        return "bg-accent text-accent-content";
       case "info":
       default:
         return "alert-info";
