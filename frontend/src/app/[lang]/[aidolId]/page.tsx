@@ -108,7 +108,9 @@ export default function AIdolProfilePage({
           <GroupHeader aidol={aidol} />
           <ShareButton
             url={shareUrl}
-            onCopySuccess={() => showToast(t("urlCopied", { ns: AIDOL_NS }), "accent")}
+            onCopySuccess={() =>
+              showToast(t("urlCopied", { ns: AIDOL_NS }), "accent")
+            }
           />
         </div>
         <CompanionGrid
