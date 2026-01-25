@@ -106,7 +106,7 @@ const config: Config = {
       },
       {
         dark: {
-          primary: "#E70051",
+          primary: "#FF506D",
           "primary-content": "#FF90A8",
           secondary: "#9E54FF",
           "secondary-content": "#B881FF",
