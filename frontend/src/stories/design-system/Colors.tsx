@@ -30,25 +30,14 @@ export function Colors() {
   return (
     <div className="space-y-4 text-center">
       <div className="flex flex-wrap gap-4">
-        <ColorBox color="bg-primary" textColor="text-white">
+        <ColorBox color="bg-primary" textColor="text-primary-content">
           Primary
         </ColorBox>
-        <ColorBox color="bg-primary-content" textColor="text-white">
-          Primary Content
-        </ColorBox>
-        <ColorBox color="bg-secondary" textColor="text-white">
+        <ColorBox color="bg-secondary" textColor="text-secondary-content">
           Secondary
         </ColorBox>
-        <ColorBox color="bg-secondary-content" textColor="text-white">
-          Secondary Content
-        </ColorBox>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <ColorBox color="bg-accent" textColor="text-white">
+        <ColorBox color="bg-accent" textColor="text-accent-content">
           Accent
-        </ColorBox>
-        <ColorBox color="bg-accent-content" textColor="text-white">
-          Accent Content
         </ColorBox>
       </div>
       <div className="flex flex-wrap gap-4">
@@ -61,36 +50,22 @@ export function Colors() {
         <ColorBox color="bg-base-300" textColor="text-base-content">
           Base 300
         </ColorBox>
-        <ColorBox color="bg-neutral" textColor="text-white">
+        <ColorBox color="bg-neutral" textColor="text-neutral-content">
           Neutral
         </ColorBox>
       </div>
       <div className="flex flex-wrap gap-4">
-        <ColorBox color="bg-info" textColor="text-white">
+        <ColorBox color="bg-info" textColor="text-info-content">
           Info
         </ColorBox>
-        <ColorBox color="bg-info-content" textColor="text-white">
-          Info Content
-        </ColorBox>
-        <ColorBox color="bg-success" textColor="text-white">
+        <ColorBox color="bg-success" textColor="text-success-content">
           Success
         </ColorBox>
-        <ColorBox color="bg-success-content" textColor="text-white">
-          Success Content
-        </ColorBox>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <ColorBox color="bg-warning" textColor="text-white">
+        <ColorBox color="bg-warning" textColor="text-warning-content">
           Warning
         </ColorBox>
-        <ColorBox color="bg-warning-content" textColor="text-white">
-          Warning Content
-        </ColorBox>
-        <ColorBox color="bg-error" textColor="text-white">
+        <ColorBox color="bg-error" textColor="text-error-content">
           Error
-        </ColorBox>
-        <ColorBox color="bg-error-content" textColor="text-white">
-          Error Content
         </ColorBox>
       </div>
     </div>

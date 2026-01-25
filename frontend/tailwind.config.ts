@@ -83,9 +83,9 @@ const config: Config = {
       {
         light: {
           primary: "#E70051",
-          "primary-content": "#FF90A8",
+          "primary-content": "#FFFFFF",
           secondary: "#9E54FF",
-          "secondary-content": "#B881FF",
+          "secondary-content": "#FFFFFF",
           accent: "#2DD4BF",
           "accent-content": "#134E4A",
           neutral: "#374151",
@@ -107,9 +107,8 @@ const config: Config = {
       {
         dark: {
           primary: "#FF506D",
-          "primary-content": "#FF90A8",
           secondary: "#9E54FF",
-          "secondary-content": "#B881FF",
+          "secondary-content": "#FFFFFF",
           accent: "#2DD4BF",
           "accent-content": "#134E4A",
           neutral: "#4B5462",
