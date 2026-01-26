@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export function Header({ title, rightContent }: HeaderProps) {
   return (
-    <header className="flex h-[84px] items-center justify-between bg-base-100 px-6 py-4">
+    <header className="h-header flex items-center justify-between bg-base-100 px-6 py-4">
       <h1 className="text-headline-s text-base-content">{title}</h1>
       {rightContent && <div className="flex items-center">{rightContent}</div>}
     </header>

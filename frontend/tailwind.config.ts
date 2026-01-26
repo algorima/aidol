@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // 레이아웃 토큰
+      maxWidth: {
+        'mobile': '393px',
+      },
+      minWidth: {
+        'mobile': '360px',
+      },
+      height: {
+        'header': '84px',
+      },
       fontSize: {
         // Display - 히어로, 랜딩 페이지 (MD3 기반)
         "display-l": [
