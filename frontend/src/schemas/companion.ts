@@ -25,6 +25,8 @@ export interface Companion extends BaseRecord {
   name: string;
   biography?: string | null;
   profilePictureUrl?: string | null;
+  grade?: string | null;
+  position?: string | null;
   createdAt: string;
   updatedAt: string;
 }
