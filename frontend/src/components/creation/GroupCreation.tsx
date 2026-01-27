@@ -169,7 +169,6 @@ export function GroupCreation({
                     <ImagePreview
                       url={profileImageUrl}
                       alt={t("aidol:creation.emblem")}
-                      size="lg"
                     />
                   </div>
                 )}
@@ -204,11 +203,7 @@ export function GroupCreation({
                   className="space-y-4 rounded-lg border border-base-300 p-4"
                 >
                   <div className="flex items-center gap-4">
-                    <ImagePreview
-                      url={null}
-                      alt={members[index]?.name ?? ""}
-                      size="sm"
-                    />
+                    <ImagePreview url={null} alt={members[index]?.name ?? ""} />
                     <div className="flex-1">
                       <MemberNameInput
                         {...register(`members.${index}.name`)}
