@@ -28,7 +28,7 @@ function ColorBox({
  */
 export function Colors() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 text-center">
       <div className="flex flex-wrap gap-4">
         <ColorBox color="bg-primary" textColor="text-primary-content">
           Primary
@@ -36,8 +36,8 @@ export function Colors() {
         <ColorBox color="bg-secondary" textColor="text-secondary-content">
           Secondary
         </ColorBox>
-        <ColorBox color="bg-neutral" textColor="text-neutral-content">
-          Neutral
+        <ColorBox color="bg-accent" textColor="text-accent-content">
+          Accent
         </ColorBox>
       </div>
       <div className="flex flex-wrap gap-4">
@@ -49,6 +49,9 @@ export function Colors() {
         </ColorBox>
         <ColorBox color="bg-base-300" textColor="text-base-content">
           Base 300
+        </ColorBox>
+        <ColorBox color="bg-neutral" textColor="text-neutral-content">
+          Neutral
         </ColorBox>
       </div>
       <div className="flex flex-wrap gap-4">
