@@ -1,3 +1,117 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "@tailwindcss/typography";
+
+@source "../node_modules/@aioia/core/dist/**/*.{js,jsx,ts,tsx}";
+@source "../stories/**/*.{js,ts,jsx,tsx}";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #1e9cfd;
+  --color-primary-content: #ffffff;
+  --color-secondary: #88dbff;
+  --color-neutral: #374151;
+  --color-neutral-content: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #f7f7f7;
+  --color-base-300: #e5e5e5;
+  --color-base-content: #000000;
+  --color-info: #3abff8;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #1e9cfd;
+  --color-primary-content: #ffffff;
+  --color-secondary: #88dbff;
+  --color-neutral: #4b5563;
+  --color-neutral-content: #ffffff;
+  --color-base-100: #000000;
+  --color-base-200: #1a1a1a;
+  --color-base-300: #2d2d2d;
+  --color-base-content: #ffffff;
+  --color-info: #3abff8;
+}
+
+@theme {
+  /* Display - 히어로, 랜딩 페이지 (MD3 기반) */
+  --text-display-l: 4.5rem;
+  --text-display-l--line-height: 1;
+  --text-display-l--font-weight: 700;
+  --text-display-l--letter-spacing: 0;
+
+  --text-display-m: 3rem;
+  --text-display-m--line-height: 1;
+  --text-display-m--font-weight: 700;
+  --text-display-m--letter-spacing: 0;
+
+  --text-display-s: 2.25rem;
+  --text-display-s--line-height: 1.111;
+  --text-display-s--font-weight: 700;
+  --text-display-s--letter-spacing: 0;
+
+  /* Headline - 섹션 제목 */
+  --text-headline-l: 1.875rem;
+  --text-headline-l--line-height: 1.2;
+  --text-headline-l--font-weight: 700;
+  --text-headline-l--letter-spacing: 0;
+
+  --text-headline-m: 1.5rem;
+  --text-headline-m--line-height: 1.333;
+  --text-headline-m--font-weight: 700;
+  --text-headline-m--letter-spacing: 0;
+
+  --text-headline-s: 1.25rem;
+  --text-headline-s--line-height: 1.4;
+  --text-headline-s--font-weight: 700;
+  --text-headline-s--letter-spacing: 0;
+
+  /* Title - 본문 내 제목 */
+  --text-title-l: 1.5rem;
+  --text-title-l--line-height: 1.333;
+  --text-title-l--font-weight: 500;
+  --text-title-l--letter-spacing: 0;
+
+  --text-title-m: 1.25rem;
+  --text-title-m--line-height: 1.4;
+  --text-title-m--font-weight: 600;
+  --text-title-m--letter-spacing: 0;
+
+  --text-title-s: 1.125rem;
+  --text-title-s--line-height: 1.556;
+  --text-title-s--font-weight: 600;
+  --text-title-s--letter-spacing: 0;
+
+  /* Body - 본문 텍스트 */
+  --text-body-l: 1.25rem;
+  --text-body-l--line-height: 1.4;
+  --text-body-l--font-weight: 400;
+  --text-body-l--letter-spacing: 0;
+
+  --text-body-m: 1.125rem;
+  --text-body-m--line-height: 1.556;
+  --text-body-m--font-weight: 400;
+  --text-body-m--letter-spacing: 0;
+
+  --text-body-s: 0.875rem;
+  --text-body-s--line-height: 1.429;
+  --text-body-s--font-weight: 400;
+  --text-body-s--letter-spacing: 0.1px;
+
+  /* Label - 보조 텍스트 */
+  --text-label-l: 0.875rem;
+  --text-label-l--line-height: 1.429;
+  --text-label-l--font-weight: 500;
+  --text-label-l--letter-spacing: 0;
+
+  --text-label-m: 0.75rem;
+  --text-label-m--line-height: 1.333;
+  --text-label-m--font-weight: 500;
+  --text-label-m--letter-spacing: 0.1px;
+
+  --text-label-s: 0.6875rem;
+  --text-label-s--line-height: 1.455;
+  --text-label-s--font-weight: 500;
+  --text-label-s--letter-spacing: 0.1px;
+}
