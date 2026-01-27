@@ -4,7 +4,7 @@
     "plugin:storybook/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:tailwindcss/recommended"
+    "plugin:better-tailwindcss/legacy-recommended"
   ],
   "overrides": [
     {
@@ -70,10 +70,35 @@
       }
     ],
     "prefer-arrow-callback": "warn",
-    "tailwindcss/no-custom-classname": [
-      "warn",
+    "better-tailwindcss/multiline": "off",
+    "better-tailwindcss/enforce-consistent-line-wrapping": "off",
+    "better-tailwindcss/enforce-consistent-class-order": [
+      "error",
       {
-        "whitelist": ["bg\\-(primary|secondary)\\-focus"]
+        "order": "official",
+        "detectComponentClasses": true, // 👈 DaisyUI 클래스 인식을 위해 필수!
+        "componentClassPosition": "start", // 👈 Prettier와 맞추기 위해 맨 앞으로 설정
+        "entryPoint": "src/styles/globals.css"
+      }
+    ],
+    "better-tailwindcss/no-unknown-classes": [
+      "error",
+      {
+        "entryPoint": "src/styles/globals.css",
+        "ignore": [
+          "dropdown-content",
+          "dropdown-hover",
+          "indicator-item",
+          "textarea-bordered",
+          "form-control",
+          "label-text",
+          "label-text-alt",
+          "select-bordered",
+          "input-bordered",
+          "step",
+          "step-primary",
+          "bg\\-(primary|secondary)\\-focus"
+        ]
       }
     ]
   }

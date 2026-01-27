@@ -1,6 +1,6 @@
 import "../src/styles/globals.css";
 
-import type { Preview, Decorator } from "@storybook/react";
+import type { Preview, Decorator } from "@storybook/nextjs";
 import { I18nextProvider } from "react-i18next";
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import { allModes } from "../.storybook/modes";
