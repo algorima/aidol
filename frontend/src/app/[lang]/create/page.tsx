@@ -122,7 +122,7 @@ export default function AIdolCreatePage({
   return (
     <>
       {error && (
-        <div className="alert alert-error mb-4">
+        <div className="mb-4 alert alert-error">
           <span>{error.message}</span>
         </div>
       )}

@@ -220,10 +220,7 @@ export function ToastItem({ toast, onHide }: ToastItemProps): JSX.Element {
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, x: 300, scale: 0.5, transition: { duration: 0.2 } }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={clsx(
-        "alert min-w-[300px] max-w-[400px] shadow-lg",
-        getAlertClass(),
-      )}
+      className={clsx("alert max-w-100 min-w-75 shadow-lg", getAlertClass())}
       role="alert"
     >
       {getIcon()}

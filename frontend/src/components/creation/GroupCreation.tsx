@@ -184,7 +184,7 @@ export function GroupCreation({
                 type="button"
                 onClick={handleStep1Next}
                 disabled={!profileImageUrl}
-                className="btn btn-primary w-full"
+                className="btn w-full btn-primary"
               >
                 {t("aidol:creation.next")}
               </button>
@@ -252,18 +252,18 @@ export function GroupCreation({
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="btn btn-ghost flex-1"
+                  className="btn flex-1 btn-ghost"
                   disabled={isLoading}
                 >
                   {t("aidol:creation.back")}
                 </button>
                 <button
                   type="submit"
-                  className="btn btn-primary flex-1"
+                  className="btn flex-1 btn-primary"
                   disabled={isLoading}
                 >
                   {isLoading ? (
-                    <span className="loading loading-spinner loading-sm" />
+                    <span className="loading loading-sm loading-spinner" />
                   ) : (
                     t("aidol:creation.create")
                   )}
@@ -282,7 +282,7 @@ export function GroupCreation({
               <p className="text-body-l text-base-content/70">
                 {t("aidol:creation.completeDescription")}
               </p>
-              <button onClick={onComplete} className="btn btn-primary w-full">
+              <button onClick={onComplete} className="btn w-full btn-primary">
                 {t("aidol:creation.viewProfile")}
               </button>
             </div>

@@ -18,10 +18,10 @@ export function AddMemberButton({ onClick, isLoading }: AddMemberButtonProps) {
     <button
       onClick={onClick}
       disabled={isLoading}
-      className="btn btn-neutral h-16 min-w-48 text-label-l text-neutral-content"
+      className="btn h-16 min-w-48 text-label-l text-neutral-content btn-neutral"
     >
       {isLoading ? (
-        <span className="loading loading-spinner loading-sm" />
+        <span className="loading loading-sm loading-spinner" />
       ) : (
         <>
           <PlusIcon className="size-5" />

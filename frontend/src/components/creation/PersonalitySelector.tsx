@@ -49,7 +49,7 @@ export function PersonalitySelector({
               value={option.value}
               checked={value === option.value}
               onChange={(e) => onChange(e.target.value)}
-              className="radio-primary radio mt-0.5"
+              className="radio mt-0.5 radio-primary"
             />
             <div>
               <div className="font-medium text-base-content">

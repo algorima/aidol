@@ -28,7 +28,7 @@ export const GroupNameInput = forwardRef<HTMLInputElement, GroupNameInputProps>(
           type="text"
           placeholder={t("aidol:creation.groupNamePlaceholder")}
           className={clsx(
-            "input input-bordered w-full bg-base-100 text-base-content placeholder:text-base-content/50",
+            "input-bordered input w-full bg-base-100 text-base-content placeholder:text-base-content/50",
             error && "input-error",
           )}
           {...props}

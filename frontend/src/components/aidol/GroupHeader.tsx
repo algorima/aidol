@@ -25,7 +25,7 @@ export function GroupHeader({ aidol }: GroupHeaderProps) {
             className="object-cover"
           />
         ) : (
-          <div className="flex size-full items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
+          <div className="flex size-full items-center justify-center bg-linear-to-br from-primary/20 to-secondary/20">
             <UserGroupIcon className="size-16 text-base-content/50" />
           </div>
         )}

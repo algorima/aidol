@@ -34,7 +34,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="hero min-h-screen bg-gradient-to-b from-base-200 to-primary pt-20">
+    <div className="hero min-h-screen bg-linear-to-b from-base-200 to-primary pt-20">
       <motion.div
         variants={staggerContainer}
         initial="initial"
@@ -58,7 +58,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
         <motion.div variants={fadeInUp}>
           <button
             onClick={onGetStarted}
-            className="btn btn-primary font-semibold"
+            className="btn font-semibold btn-primary"
           >
             {t("aidol:landing.hero.cta")}
           </button>

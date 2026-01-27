@@ -29,7 +29,7 @@ export function ImagePreview({ url, alt, size = "md" }: ImagePreviewProps) {
       {url ? (
         <Image src={url} alt={alt} fill className="object-cover" />
       ) : (
-        <div className="flex size-full items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
+        <div className="flex size-full items-center justify-center bg-linear-to-br from-primary/20 to-secondary/20">
           <UserIcon className="size-1/2 text-base-content/50" />
         </div>
       )}

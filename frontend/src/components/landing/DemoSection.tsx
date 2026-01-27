@@ -39,7 +39,7 @@ export function DemoSection() {
       className="container mx-auto px-6 py-20 text-center md:py-28"
     >
       <motion.div variants={fadeInUp}>
-        <SparklesIcon className="mx-auto size-24 text-secondary drop-shadow-[0_0_16px_theme(colors.secondary)]" />
+        <SparklesIcon className="mx-auto size-24 text-secondary drop-shadow-[0_0_16px_var(--color-secondary)]" />
       </motion.div>
       <motion.h2
         variants={fadeInUp}

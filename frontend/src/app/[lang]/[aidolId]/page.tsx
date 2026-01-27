@@ -86,7 +86,7 @@ export default function AIdolProfilePage({
   if (isLoading) {
     return (
       <div className="flex min-h-dvh items-center justify-center">
-        <span className="loading loading-spinner loading-lg" />
+        <span className="loading loading-lg loading-spinner" />
       </div>
     );
   }
@@ -94,7 +94,7 @@ export default function AIdolProfilePage({
   if (error || !aidol) {
     return (
       <div className="flex min-h-dvh items-center justify-center">
-        <div className="alert alert-error max-w-md">
+        <div className="alert max-w-md alert-error">
           <span>{error?.message || t("aidol.notFound", { ns: AIDOL_NS })}</span>
         </div>
       </div>

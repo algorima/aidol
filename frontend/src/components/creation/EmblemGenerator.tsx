@@ -45,7 +45,7 @@ export function EmblemGenerator({
           onKeyDown={handleKeyDown}
           placeholder={t("aidol:creation.emblemPromptPlaceholder")}
           maxLength={200}
-          className="input input-bordered flex-1"
+          className="input-bordered input flex-1"
           disabled={disabled || isGenerating}
           data-testid="emblem-prompt-input"
         />
@@ -57,7 +57,7 @@ export function EmblemGenerator({
           data-testid="emblem-generate-button"
         >
           {isGenerating ? (
-            <span className="loading loading-spinner loading-sm" />
+            <span className="loading loading-sm loading-spinner" />
           ) : (
             t("aidol:creation.generate")
           )}
