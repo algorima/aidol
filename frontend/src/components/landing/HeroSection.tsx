@@ -43,7 +43,7 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="flex w-full max-w-mobile flex-col items-center text-center"
+        className="flex w-full flex-col items-center text-center"
       >
         {/* Logo */}
         <motion.div variants={fadeInUp} className="mb-6">
