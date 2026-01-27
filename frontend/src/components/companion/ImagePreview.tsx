@@ -1,4 +1,5 @@
 import { UserIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import Image from "next/image";
 
 interface ProfileProps {
@@ -17,11 +18,12 @@ const SIZE_CLASSES = {
  * Shows a placeholder when no image URL is provided.
  */
 export function ImagePreview({ url, alt, variant = "default" }: ProfileProps) {
-  const sizeClass = SIZE_CLASSES[variant];
-
   return (
     <div
-      className={`relative overflow-hidden rounded-lg border border-base-300 ${sizeClass}`}
+      className={clsx(
+        "relative overflow-hidden rounded-lg border border-base-300",
+        SIZE_CLASSES[variant],
+      )}
     >
       {url ? (
         <Image src={url} alt={alt} fill className="size-full object-cover" />
