@@ -3,7 +3,9 @@
   "urlCopied": "URL disalin!",
   "companion": {
     "promptPlaceholder": "Gimana idol kamu ngobrol? Ceritain kepribadiannya...",
-    "addMember": "Tambah Anggota"
+    "addMember": "Tambah Anggota",
+    "signed": "Sudah Dikontrak 🥺",
+    "grade": "Grade {{grade}}"
   },
   "aidol": {
     "notFound": "Grup tidak ditemukan",

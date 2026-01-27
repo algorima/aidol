@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 import { Companion } from "@/schemas";
 
@@ -13,16 +14,18 @@ interface CardProps {
 }
 
 export function Card({ companion, variant = "grade", onClick }: CardProps) {
+  const { t } = useTranslation();
   const isSigned = companion.aidolId !== null;
   const isPosition = variant === "position";
+  const isClickable = onClick && !isSigned;
 
   return (
     <div
       className={clsx(
         "relative h-card w-full max-w-card overflow-hidden rounded-lg border border-base-300",
-        onClick && "cursor-pointer",
+        isClickable && "cursor-pointer",
       )}
-      onClick={onClick}
+      onClick={isClickable ? onClick : undefined}
     >
       {/* 1. 배경 이미지 */}
       <div className="absolute inset-0">
@@ -41,7 +44,7 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
       {/* 3. 블러 위 계약 완료 레이어 */}
       {isSigned && (
         <div className="absolute left-4 top-4 z-20">
-          <span className="badge">계약 완료 🥺</span>
+          <span className="badge">{t("companion.signed")}</span>
         </div>
       )}
 
@@ -60,7 +63,7 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
 
         {!isPosition && (
           <span className="badge border-black bg-black text-white">
-            {companion.grade} 등급
+            {t("companion.grade", { grade: companion.grade })}
           </span>
         )}
         {isPosition && (
