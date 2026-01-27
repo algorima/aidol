@@ -44,7 +44,9 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
       {/* 3. 블러 위 계약 완료 레이어 */}
       {isSigned && (
         <div className="absolute left-4 top-4 z-20">
-          <span className="badge">{t("companion.signed")}</span>
+          <span className="w-fit rounded-lg bg-base-100 px-2 py-1 text-body-s text-base-content">
+            {t("companion.signed")}
+          </span>
         </div>
       )}
 
@@ -57,12 +59,13 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
           !isSigned && !isPosition && "opacity-60",
         )}
       />
+
       {/* 5. 이름 + 등급 */}
       <div className="absolute inset-x-4 bottom-4 z-10 flex flex-col gap-2">
         <span className="text-title-s text-white">{companion.name}</span>
 
         {!isPosition && (
-          <span className="badge border-black bg-black text-white">
+          <span className="w-fit rounded-lg bg-black px-2 py-1 text-body-s text-white">
             {t("companion.grade", { grade: companion.grade })}
           </span>
         )}
