@@ -50,14 +50,14 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
           <Image
             src="/images/logo.svg"
             alt="alola"
-            width={80}
-            height={32}
+            width={92}
+            height={28}
             priority
           />
         </motion.div>
 
         {/* Main Title */}
-        <motion.h1 variants={fadeInUp} className="mb-6 text-display-s">
+        <motion.h1 variants={fadeInUp} className="mb-3 text-display-s">
           {t("aidol:landing.hero.title.line1")}
           <br />
           {t("aidol:landing.hero.title.line2")}
@@ -66,18 +66,18 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
         {/* Description Lines */}
         <motion.div
           variants={fadeInUp}
-          className="mb-8 flex flex-col gap-1 text-body-m text-base-content"
+          className="mb-8 flex flex-col text-headline-s text-base-content"
         >
-          <p>{t("aidol:landing.hero.line1")}</p>
-          <p>{t("aidol:landing.hero.line2")}</p>
-          <p className="font-bold">{t("aidol:landing.hero.line3")}</p>
-          <p className="font-bold">{t("aidol:landing.hero.line4")}</p>
+          <p className="font-normal">{t("aidol:landing.hero.line1")}</p>
+          <p className="font-normal">{t("aidol:landing.hero.line2")}</p>
+          <p>{t("aidol:landing.hero.line3")}</p>
+          <p>{t("aidol:landing.hero.line4")}</p>
         </motion.div>
 
         {/* Hero Image */}
         <motion.div
           variants={fadeInUp}
-          className="relative mb-8 aspect-[3/4] w-full overflow-hidden rounded-lg"
+          className="relative mb-6 aspect-[345/368] w-full overflow-hidden rounded-lg"
         >
           <Image
             src={heroImageUrl ?? DEFAULT_HERO_IMAGE}
@@ -92,7 +92,7 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
         <motion.div variants={fadeInUp} className="w-full">
           <button
             onClick={onGetStarted}
-            className="btn btn-primary w-full rounded-xl text-title-s"
+            className="btn btn-primary h-[52px] w-full rounded-lg text-title-s"
           >
             {t("aidol:landing.hero.cta")}
           </button>
