@@ -11,13 +11,19 @@ const config: Config = {
       // 레이아웃 토큰
       maxWidth: {
         mobile: "393px",
+        card: "254px",
       },
       minWidth: {
         mobile: "360px",
       },
       height: {
         header: "84px",
+        card: "254px",
       },
+      size: {
+        "image-lg": "297px",
+      },
+
       fontSize: {
         // Display - 히어로, 랜딩 페이지 (MD3 기반)
         "display-l": [
