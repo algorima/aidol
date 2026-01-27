@@ -59,9 +59,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Buat Idol Impianmu",
-      "description": "Desain idol sempurnamu dan ngobrol kayak fans beneran",
-      "cta": "Mulai Buat"
+      "title": {
+        "line1": "Kemungkinan Tak Terbatas",
+        "line2": "Kelahiran Grup Idol"
+      },
+      "line1": "Fandom global",
+      "line2": "casting dan mendebut",
+      "line3": "Grup Idol AI Baru",
+      "line4": "Proyek Generasi Berikutnya",
+      "cta": "Casting Trainee"
     },
     "demo": {
       "title": "Imajinasimu Jadi Idol",

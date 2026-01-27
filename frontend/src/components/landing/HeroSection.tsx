@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 const fadeInUp: Variants = {
@@ -18,52 +19,85 @@ const fadeInUp: Variants = {
 const staggerContainer: Variants = {
   animate: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
 
+const DEFAULT_HERO_IMAGE = "/images/hero.png";
+
 interface HeroSectionProps {
   onGetStarted: () => void;
+  heroImageUrl?: string;
 }
 
 /**
  * Hero section for AIdol landing page.
  */
-export function HeroSection({ onGetStarted }: HeroSectionProps) {
+export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="hero min-h-screen bg-gradient-to-b from-base-200 to-primary pt-20">
+    <section className="flex min-h-screen w-full flex-col items-center bg-base-100 px-6 pb-8 pt-12">
       <motion.div
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="hero-content flex-col gap-12 text-center text-base-content"
+        className="flex w-full max-w-mobile flex-col items-center text-center"
       >
-        <div className="max-w-3xl">
-          <motion.h1
-            variants={fadeInUp}
-            className="mb-4 text-display-m md:text-display-l"
-          >
-            {t("aidol:landing.hero.title")}
-          </motion.h1>
-          <motion.p
-            variants={fadeInUp}
-            className="mx-auto mt-6 max-w-xl text-body-l text-neutral-content"
-          >
-            {t("aidol:landing.hero.description")}
-          </motion.p>
-        </div>
-        <motion.div variants={fadeInUp}>
+        {/* Logo */}
+        <motion.div variants={fadeInUp} className="mb-6">
+          <Image
+            src="/images/logo.svg"
+            alt="alola"
+            width={80}
+            height={32}
+            priority
+          />
+        </motion.div>
+
+        {/* Main Title */}
+        <motion.h1 variants={fadeInUp} className="mb-6 text-display-s">
+          {t("aidol:landing.hero.title.line1")}
+          <br />
+          {t("aidol:landing.hero.title.line2")}
+        </motion.h1>
+
+        {/* Description Lines */}
+        <motion.div
+          variants={fadeInUp}
+          className="mb-8 flex flex-col gap-1 text-body-m text-base-content"
+        >
+          <p>{t("aidol:landing.hero.line1")}</p>
+          <p>{t("aidol:landing.hero.line2")}</p>
+          <p className="font-bold">{t("aidol:landing.hero.line3")}</p>
+          <p className="font-bold">{t("aidol:landing.hero.line4")}</p>
+        </motion.div>
+
+        {/* Hero Image */}
+        <motion.div
+          variants={fadeInUp}
+          className="relative mb-8 aspect-[3/4] w-full overflow-hidden rounded-lg"
+        >
+          <Image
+            src={heroImageUrl ?? DEFAULT_HERO_IMAGE}
+            alt="AI Idol"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
+
+        {/* CTA Button */}
+        <motion.div variants={fadeInUp} className="w-full">
           <button
             onClick={onGetStarted}
-            className="btn btn-primary font-semibold"
+            className="btn btn-primary w-full rounded-xl text-title-s"
           >
             {t("aidol:landing.hero.cta")}
           </button>
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
 }

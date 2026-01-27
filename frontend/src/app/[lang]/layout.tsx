@@ -1,3 +1,4 @@
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { getServerTranslationResources } from "@/i18n";
@@ -5,6 +6,12 @@ import { languages } from "@/i18n/config";
 
 import { I18nProvider } from "../providers/I18nProvider";
 import { ToastProvider } from "../providers/Toast";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateStaticParams() {
@@ -30,7 +37,7 @@ export default async function LangLayout({
 
   return (
     <html lang={lang}>
-      <body>
+      <body className={inter.className}>
         <I18nProvider lang={lang} resources={resources}>
           <div className="mx-auto min-h-dvh min-w-mobile max-w-mobile">
             <ToastProvider>{children}</ToastProvider>

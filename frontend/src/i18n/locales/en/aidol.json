@@ -59,9 +59,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Create Your Dream Idol",
-      "description": "Design your perfect idol and chat like a real fan",
-      "cta": "Start Creating"
+      "title": {
+        "line1": "Infinite Possibilities",
+        "line2": "The Birth of Idol Group"
+      },
+      "line1": "Global fandom",
+      "line2": "casting and debuting",
+      "line3": "New AI Idol Group",
+      "line4": "Next Generation Project",
+      "cta": "Cast Trainees"
     },
     "demo": {
       "title": "Your Imagination, Your Idol",

@@ -59,9 +59,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Tạo Idol Mơ Ước",
-      "description": "Thiết kế idol hoàn hảo và trò chuyện như fan thật sự",
-      "cta": "Bắt Đầu Tạo"
+      "title": {
+        "line1": "Khả Năng Vô Hạn",
+        "line2": "Sự Ra Đời Của Nhóm Idol"
+      },
+      "line1": "Fandom toàn cầu",
+      "line2": "tuyển chọn và ra mắt",
+      "line3": "Nhóm Idol AI Mới",
+      "line4": "Dự Án Thế Hệ Tiếp Theo",
+      "cta": "Tuyển Thực Tập Sinh"
     },
     "demo": {
       "title": "Trí Tưởng Tượng Thành Idol",
