@@ -51,7 +51,6 @@ const signedCompanion: Companion = {
 export const Signed: Story = {
   args: {
     companion: signedCompanion,
-    variant: "signed",
   },
 };
 
