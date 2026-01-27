@@ -76,8 +76,8 @@
       "error",
       {
         "order": "official",
-        "detectComponentClasses": true, // 👈 DaisyUI 클래스 인식을 위해 필수!
-        "componentClassPosition": "start", // 👈 Prettier와 맞추기 위해 맨 앞으로 설정
+        "detectComponentClasses": true,
+        "componentClassPosition": "start",
         "entryPoint": "src/styles/globals.css"
       }
     ],
