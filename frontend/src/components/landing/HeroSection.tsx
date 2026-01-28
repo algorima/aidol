@@ -24,6 +24,7 @@ const staggerContainer: Variants = {
   },
 };
 
+// 수정 필요
 const DEFAULT_HERO_IMAGE = "/images/hero.png";
 
 interface HeroSectionProps {
@@ -45,7 +46,6 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
         animate="animate"
         className="flex w-full flex-col items-center text-center"
       >
-        {/* Logo */}
         <motion.div variants={fadeInUp} className="mb-6">
           <Image
             src="/images/logo.svg"
@@ -56,14 +56,12 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
           />
         </motion.div>
 
-        {/* Main Title */}
         <motion.h1 variants={fadeInUp} className="mb-3 text-display-s">
           {t("aidol:landing.hero.title.line1")}
           <br />
           {t("aidol:landing.hero.title.line2")}
         </motion.h1>
 
-        {/* Description Lines */}
         <motion.div
           variants={fadeInUp}
           className="mb-8 flex flex-col text-headline-s text-base-content"
@@ -74,7 +72,6 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
           <p>{t("aidol:landing.hero.line4")}</p>
         </motion.div>
 
-        {/* Hero Image */}
         <motion.div
           variants={fadeInUp}
           className="relative mb-6 aspect-[345/368] w-full overflow-hidden rounded-lg"
@@ -88,11 +85,10 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
           />
         </motion.div>
 
-        {/* CTA Button */}
         <motion.div variants={fadeInUp} className="w-full">
           <button
             onClick={onGetStarted}
-            className="btn btn-primary h-[52px] w-full rounded-lg text-title-s"
+            className="btn btn-primary min-h-[52px] w-full rounded-lg text-title-s"
           >
             {t("aidol:landing.hero.cta")}
           </button>
