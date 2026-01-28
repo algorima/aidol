@@ -3,8 +3,7 @@
     "next/core-web-vitals",
     "plugin:storybook/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:tailwindcss/recommended"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "overrides": [
     {
@@ -69,12 +68,6 @@
         }
       }
     ],
-    "prefer-arrow-callback": "warn",
-    "tailwindcss/no-custom-classname": [
-      "warn",
-      {
-        "whitelist": ["bg\\-(primary|secondary)\\-focus"]
-      }
-    ]
+    "prefer-arrow-callback": "warn"
   }
 }
