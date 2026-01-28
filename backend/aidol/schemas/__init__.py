@@ -20,6 +20,9 @@ from aidol.schemas.companion import (
     CompanionPublic,
     CompanionStats,
     CompanionUpdate,
+    Gender,
+    Grade,
+    Position,
 )
 
 __all__ = [
@@ -40,4 +43,7 @@ __all__ = [
     "CompanionPublic",
     "CompanionStats",
     "CompanionUpdate",
+    "Gender",
+    "Grade",
+    "Position",
 ]

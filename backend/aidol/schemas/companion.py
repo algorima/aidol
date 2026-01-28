@@ -11,9 +11,45 @@ Schema hierarchy:
 """
 
 from datetime import datetime
+from enum import Enum
 
 from humps import camelize
 from pydantic import BaseModel, ConfigDict, Field
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+
+class Gender(str, Enum):
+    """Gender options for companions."""
+
+    MALE = "male"
+    FEMALE = "female"
+
+
+class Grade(str, Enum):
+    """Grade levels for companions."""
+
+    A = "A"
+    B = "B"
+    C = "C"
+    F = "F"
+
+
+class Position(str, Enum):
+    """Position roles in the group."""
+
+    LEADER = "leader"
+    MAIN_VOCAL = "mainVocal"
+    SUB_VOCAL = "subVocal"
+    MAIN_DANCER = "mainDancer"
+    SUB_DANCER = "subDancer"
+    MAIN_RAPPER = "mainRapper"
+    SUB_RAPPER = "subRapper"
+    VISUAL = "visual"
+    MAKNAE = "maknae"
+
 
 # ---------------------------------------------------------------------------
 # Nested Objects
@@ -49,13 +85,13 @@ class CompanionBase(BaseModel):
 
     aidol_id: str | None = Field(default=None, description="AIdol group ID")
     name: str | None = Field(default=None, description="Companion name")
-    gender: str | None = Field(default=None, description="Gender")
-    grade: str | None = Field(default=None, description="Grade level")
+    gender: Gender | None = Field(default=None, description="Gender")
+    grade: Grade | None = Field(default=None, description="Grade level")
     biography: str | None = Field(default=None, description="Companion biography")
     profile_picture_url: str | None = Field(
         default=None, description="Profile picture URL"
     )
-    position: str | None = Field(default=None, description="Position in group")
+    position: Position | None = Field(default=None, description="Position in group")
 
     # MBTI scores (1-10)
     mbti_energy: int | None = Field(default=None, ge=1, le=10, description="E↔I (1-10)")
@@ -93,13 +129,13 @@ class CompanionUpdate(BaseModel):
 
     aidol_id: str | None = Field(default=None, description="AIdol group ID")
     name: str | None = Field(default=None, description="Companion name")
-    gender: str | None = Field(default=None, description="Gender")
-    grade: str | None = Field(default=None, description="Grade level")
+    gender: Gender | None = Field(default=None, description="Gender")
+    grade: Grade | None = Field(default=None, description="Grade level")
     biography: str | None = Field(default=None, description="Companion biography")
     profile_picture_url: str | None = Field(
         default=None, description="Profile picture URL"
     )
-    position: str | None = Field(default=None, description="Position in group")
+    position: Position | None = Field(default=None, description="Position in group")
     system_prompt: str | None = Field(
         default=None, description="AI system prompt (not exposed in responses)"
     )
@@ -159,13 +195,13 @@ class CompanionPublic(BaseModel):
     id: str = Field(..., description="Companion ID")
     aidol_id: str | None = Field(default=None, description="AIdol group ID")
     name: str | None = Field(default=None, description="Companion name")
-    gender: str | None = Field(default=None, description="Gender")
-    grade: str | None = Field(default=None, description="Grade level")
+    gender: Gender | None = Field(default=None, description="Gender")
+    grade: Grade | None = Field(default=None, description="Grade level")
     biography: str | None = Field(default=None, description="Companion biography")
     profile_picture_url: str | None = Field(
         default=None, description="Profile picture URL"
     )
-    position: str | None = Field(default=None, description="Position in group")
+    position: Position | None = Field(default=None, description="Position in group")
     mbti: str | None = Field(default=None, description="Calculated MBTI (e.g., ENFP)")
     stats: CompanionStats = Field(
         default_factory=CompanionStats, description="Ability stats"
