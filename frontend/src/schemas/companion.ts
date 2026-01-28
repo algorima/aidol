@@ -15,6 +15,8 @@ export const companionSchema = z.object({
   name: z.string(),
   biography: z.string().nullable().optional(),
   profilePictureUrl: z.string().nullable().optional(),
+  grade: z.string().nullable(),
+  position: z.string().nullable(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
