@@ -10,7 +10,15 @@ from aioia_core.repositories import BaseRepository
 from sqlalchemy.orm import Session
 
 from aidol.models import DBCompanion
-from aidol.schemas import Companion, CompanionCreate, CompanionStats, CompanionUpdate
+from aidol.schemas import (
+    Companion,
+    CompanionCreate,
+    CompanionStats,
+    CompanionUpdate,
+    Gender,
+    Grade,
+    Position,
+)
 
 
 def _convert_db_companion_to_model(db_companion: DBCompanion) -> Companion:
@@ -23,11 +31,11 @@ def _convert_db_companion_to_model(db_companion: DBCompanion) -> Companion:
         id=db_companion.id,
         aidol_id=db_companion.aidol_id,
         name=db_companion.name,
-        gender=db_companion.gender,
-        grade=db_companion.grade,
+        gender=Gender(db_companion.gender) if db_companion.gender else None,
+        grade=Grade(db_companion.grade) if db_companion.grade else None,
         biography=db_companion.biography,
         profile_picture_url=db_companion.profile_picture_url,
-        position=db_companion.position,
+        position=Position(db_companion.position) if db_companion.position else None,
         system_prompt=db_companion.system_prompt,
         mbti_energy=db_companion.mbti_energy,
         mbti_perception=db_companion.mbti_perception,

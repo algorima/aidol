@@ -7,13 +7,14 @@ Implements BaseRepository pattern for BaseCrudRouter compatibility.
 from datetime import timezone
 
 from aioia_core.repositories import BaseRepository
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from aidol.models import DBAIdolLead
 from aidol.schemas import AIdolLead, AIdolLeadCreate
 
 
-class _AIdolLeadUpdate:
+class _AIdolLeadUpdate(BaseModel):
     """Placeholder for update schema (not used)."""
 
 
