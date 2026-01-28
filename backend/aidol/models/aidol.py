@@ -22,3 +22,5 @@ class DBAIdol(BaseModel):
     concept: Mapped[str | None] = mapped_column(String, nullable=True)
     profile_image_url: Mapped[str] = mapped_column(String, nullable=False)
     claim_token: Mapped[str | None] = mapped_column(String(36), nullable=True)
+    email: Mapped[str | None] = mapped_column(String, nullable=True)
+    greeting: Mapped[str | None] = mapped_column(String, nullable=True)
