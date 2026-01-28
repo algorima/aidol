@@ -10,7 +10,7 @@ from aioia_core.repositories import BaseRepository
 from sqlalchemy.orm import Session
 
 from aidol.models import DBCompanion
-from aidol.schemas import Companion, CompanionCreate, CompanionUpdate
+from aidol.schemas import Companion, CompanionCreate, CompanionStats, CompanionUpdate
 
 
 def _convert_db_companion_to_model(db_companion: DBCompanion) -> Companion:
@@ -23,9 +23,24 @@ def _convert_db_companion_to_model(db_companion: DBCompanion) -> Companion:
         id=db_companion.id,
         aidol_id=db_companion.aidol_id,
         name=db_companion.name,
+        gender=db_companion.gender,
+        grade=db_companion.grade,
         biography=db_companion.biography,
         profile_picture_url=db_companion.profile_picture_url,
+        position=db_companion.position,
         system_prompt=db_companion.system_prompt,
+        mbti_energy=db_companion.mbti_energy,
+        mbti_perception=db_companion.mbti_perception,
+        mbti_judgment=db_companion.mbti_judgment,
+        mbti_lifestyle=db_companion.mbti_lifestyle,
+        stats=CompanionStats(
+            vocal=db_companion.vocal or 0,
+            dance=db_companion.dance or 0,
+            rap=db_companion.rap or 0,
+            visual=db_companion.visual or 0,
+            stamina=db_companion.stamina or 0,
+            charm=db_companion.charm or 0,
+        ),
         created_at=db_companion.created_at.replace(tzinfo=timezone.utc),
         updated_at=db_companion.updated_at.replace(tzinfo=timezone.utc),
     )
