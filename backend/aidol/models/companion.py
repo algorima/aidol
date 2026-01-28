@@ -19,7 +19,7 @@ class DBCompanion(BaseModel):
 
     # id, created_at, updated_at inherited from BaseModel
     aidol_id: Mapped[str | None] = mapped_column(ForeignKey("aidols.id"), nullable=True)
-    name: Mapped[str] = mapped_column(String, nullable=False)
+    name: Mapped[str | None] = mapped_column(String, nullable=True)
     gender: Mapped[str | None] = mapped_column(String, nullable=True)
     grade: Mapped[str | None] = mapped_column(String, nullable=True)
     biography: Mapped[str | None] = mapped_column(Text, nullable=True)
