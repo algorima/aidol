@@ -15,7 +15,7 @@ function ColorBox({
 }) {
   return (
     <div
-      className={`text-headline-s flex size-40 items-center justify-center rounded ${color} ${textColor}`}
+      className={`text-headline-s flex size-40 items-center justify-center rounded-sm ${color} ${textColor}`}
     >
       {children}
     </div>
