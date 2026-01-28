@@ -36,7 +36,7 @@ export function EmblemGenerator({
   };
 
   return (
-    <div className="form-control w-full">
+    <fieldset className="fieldset w-full">
       <div className="flex gap-2">
         <input
           type="text"
@@ -45,7 +45,7 @@ export function EmblemGenerator({
           onKeyDown={handleKeyDown}
           placeholder={t("aidol:creation.emblemPromptPlaceholder")}
           maxLength={200}
-          className="input input-bordered flex-1"
+          className="input flex-1"
           disabled={disabled || isGenerating}
           data-testid="emblem-prompt-input"
         />
@@ -68,6 +68,6 @@ export function EmblemGenerator({
           <progress className="progress w-full"></progress>
         </div>
       )}
-    </div>
+    </fieldset>
   );
 }

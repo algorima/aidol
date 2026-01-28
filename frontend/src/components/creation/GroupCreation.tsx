@@ -153,12 +153,8 @@ export function GroupCreation({
               />
 
               {/* Emblem Image Generation (follows ImageUpload pattern) */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-medium">
-                    {t("aidol:creation.emblem")}
-                  </span>
-                </label>
+              <fieldset className="fieldset">
+                <label className="label">{t("aidol:creation.emblem")}</label>
                 <EmblemGenerator
                   onGenerate={handleGenerateEmblem}
                   isGenerating={isGeneratingImage}
@@ -178,7 +174,7 @@ export function GroupCreation({
                     {t(errors.profileImageUrl.message, { ns: "aidol" })}
                   </p>
                 )}
-              </div>
+              </fieldset>
 
               <button
                 type="button"

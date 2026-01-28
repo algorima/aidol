@@ -26,12 +26,8 @@ export function PersonalitySelector({
   const { t } = useTranslation();
 
   return (
-    <div className="form-control w-full">
-      <label className="label">
-        <span className="label-text text-base-content">
-          {t("aidol:creation.personality")}
-        </span>
-      </label>
+    <fieldset className="fieldset w-full">
+      <label className="label">{t("aidol:creation.personality")}</label>
       <div className="space-y-2">
         {options.map((option) => (
           <label
@@ -64,6 +60,6 @@ export function PersonalitySelector({
           </label>
         ))}
       </div>
-    </div>
+    </fieldset>
   );
 }
