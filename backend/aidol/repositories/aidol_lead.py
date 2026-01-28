@@ -16,8 +16,6 @@ from aidol.schemas import AIdolLead, AIdolLeadCreate
 class _AIdolLeadUpdate:
     """Placeholder for update schema (not used)."""
 
-    pass
-
 
 def _convert_db_aidol_lead_to_model(db_lead: DBAIdolLead) -> AIdolLead:
     """Convert DB AIdolLead to Pydantic model."""

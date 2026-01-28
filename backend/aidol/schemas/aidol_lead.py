@@ -25,8 +25,6 @@ class AIdolLeadBase(BaseModel):
 class AIdolLeadCreate(AIdolLeadBase):
     """Schema for creating an AIdol lead (no id)."""
 
-    pass
-
 
 class AIdolLead(AIdolLeadBase):
     """AIdol Lead response schema with id and timestamps."""
