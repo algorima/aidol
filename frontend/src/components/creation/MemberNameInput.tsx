@@ -31,7 +31,7 @@ export const MemberNameInput = forwardRef<
         )}
         {...props}
       />
-      {error && <span className="text-error text-xs">{error}</span>}
+      {error && <span className="text-label-m text-error">{error}</span>}
     </fieldset>
   );
 });
