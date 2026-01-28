@@ -27,7 +27,7 @@ export const ConceptSelector = forwardRef<
       <label className="label">{t("aidol:creation.concept")}</label>
       <select
         ref={ref}
-        className="select w-full bg-base-100 text-base-content"
+        className="select bg-base-100 text-base-content w-full"
         {...props}
       >
         <option value="">{t("aidol:creation.selectConcept")}</option>

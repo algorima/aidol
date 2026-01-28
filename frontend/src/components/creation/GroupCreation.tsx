@@ -120,7 +120,7 @@ export function GroupCreation({
   };
 
   return (
-    <main className="flex min-h-dvh w-full flex-col items-center bg-base-100 px-6 py-20">
+    <main className="bg-base-100 flex min-h-dvh w-full flex-col items-center px-6 py-20">
       <div className="w-full max-w-lg">
         <StepIndicator
           currentStep={step}
@@ -170,7 +170,7 @@ export function GroupCreation({
                   </div>
                 )}
                 {errors.profileImageUrl?.message && (
-                  <p className="mt-1 text-label-m text-error">
+                  <p className="text-label-m text-error mt-1">
                     {t(errors.profileImageUrl.message, { ns: "aidol" })}
                   </p>
                 )}
@@ -197,7 +197,7 @@ export function GroupCreation({
               {fields.map((field, index) => (
                 <div
                   key={field.id}
-                  className="space-y-4 rounded-lg border border-base-300 p-4"
+                  className="border-base-300 space-y-4 rounded-lg border p-4"
                 >
                   <div className="flex items-center gap-4">
                     <ImagePreview
@@ -239,7 +239,7 @@ export function GroupCreation({
               <AddMemberButton onClick={handleAddMember} isLoading={false} />
 
               {errors.members?.root?.message && (
-                <p className="text-center text-error">
+                <p className="text-error text-center">
                   {t(errors.members.root.message, { ns: "aidol" })}
                 </p>
               )}

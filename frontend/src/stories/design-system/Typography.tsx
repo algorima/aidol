@@ -11,7 +11,7 @@ function TypeScale({
   description: string;
 }) {
   return (
-    <div className="flex flex-col gap-2 rounded-lg border border-base-300 p-4">
+    <div className="border-base-300 flex flex-col gap-2 rounded-lg border p-4">
       <div className="flex items-baseline justify-between gap-4">
         <span className={className}>The quick brown fox</span>
         <code className="text-body-s text-neutral">{className}</code>
@@ -29,7 +29,7 @@ export function Typography() {
   return (
     <div className="space-y-8">
       <section>
-        <h2 className="mb-4 text-headline-s">Display</h2>
+        <h2 className="text-headline-s mb-4">Display</h2>
         <div className="space-y-3">
           <TypeScale
             className="text-display-l"
@@ -47,7 +47,7 @@ export function Typography() {
       </section>
 
       <section>
-        <h2 className="mb-4 text-headline-s">Headline</h2>
+        <h2 className="text-headline-s mb-4">Headline</h2>
         <div className="space-y-3">
           <TypeScale className="text-headline-l" description="서브섹션 제목" />
           <TypeScale className="text-headline-m" description="카드/모달 제목" />
@@ -59,7 +59,7 @@ export function Typography() {
       </section>
 
       <section>
-        <h2 className="mb-4 text-headline-s">Title</h2>
+        <h2 className="text-headline-s mb-4">Title</h2>
         <div className="space-y-3">
           <TypeScale
             className="text-title-l"
@@ -71,7 +71,7 @@ export function Typography() {
       </section>
 
       <section>
-        <h2 className="mb-4 text-headline-s">Body</h2>
+        <h2 className="text-headline-s mb-4">Body</h2>
         <div className="space-y-3">
           <TypeScale
             className="text-body-l"
@@ -86,7 +86,7 @@ export function Typography() {
       </section>
 
       <section>
-        <h2 className="mb-4 text-headline-s">Label</h2>
+        <h2 className="text-headline-s mb-4">Label</h2>
         <div className="space-y-3">
           <TypeScale className="text-label-l" description="버튼, 폼 라벨" />
           <TypeScale className="text-label-m" description="캡션, 메타 정보" />

@@ -102,7 +102,7 @@ export default function AIdolProfilePage({
   }
 
   return (
-    <main className="min-h-dvh bg-base-200 px-6 py-20">
+    <main className="bg-base-200 min-h-dvh px-6 py-20">
       <div className="mx-auto w-full max-w-2xl">
         <div className="flex items-start justify-between">
           <GroupHeader aidol={aidol} />

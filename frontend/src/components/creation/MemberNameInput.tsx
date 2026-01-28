@@ -26,12 +26,12 @@ export const MemberNameInput = forwardRef<
         type="text"
         placeholder={t("aidol:creation.memberNamePlaceholder")}
         className={clsx(
-          "input w-full bg-base-100 text-base-content placeholder:text-base-content/50",
+          "input bg-base-100 text-base-content placeholder:text-base-content/50 w-full",
           error && "input-error",
         )}
         {...props}
       />
-      {error && <span className="text-xs text-error">{error}</span>}
+      {error && <span className="text-error text-xs">{error}</span>}
     </fieldset>
   );
 });

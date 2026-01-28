@@ -31,7 +31,7 @@ export function ShareButton({ url, onCopySuccess }: ShareButtonProps) {
       aria-label={t("aidol:share")}
     >
       {copied ? (
-        <CheckIcon className="size-6 text-success" />
+        <CheckIcon className="text-success size-6" />
       ) : (
         <ShareIcon className="size-6" />
       )}
