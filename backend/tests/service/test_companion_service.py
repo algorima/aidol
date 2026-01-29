@@ -5,7 +5,7 @@ Unit tests for Companion Service business logic.
 import unittest
 from datetime import datetime
 
-from aidol.schemas.companion import Companion, CompanionStats, Grade, Gender, Position
+from aidol.schemas.companion import Companion, CompanionStats, Gender, Grade, Position
 from aidol.services.companion_service import (
     calculate_grade,
     calculate_mbti,
