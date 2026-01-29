@@ -39,17 +39,17 @@ export function DemoSection() {
       className="container mx-auto px-6 py-20 text-center md:py-28"
     >
       <motion.div variants={fadeInUp}>
-        <SparklesIcon className="mx-auto size-24 text-secondary drop-shadow-[0_0_16px_theme(colors.secondary)]" />
+        <SparklesIcon className="text-secondary drop-shadow-[0_0_16px_theme(colors.secondary)] mx-auto size-24" />
       </motion.div>
       <motion.h2
         variants={fadeInUp}
-        className="mt-4 text-display-s md:text-display-m"
+        className="text-display-s md:text-display-m mt-4"
       >
         {t("aidol:landing.demo.title")}
       </motion.h2>
       <motion.p
         variants={fadeInUp}
-        className="mx-auto mt-4 max-w-lg text-body-l text-neutral-content"
+        className="text-body-l text-neutral-content mx-auto mt-4 max-w-lg"
       >
         {t("aidol:landing.demo.description")}
       </motion.p>

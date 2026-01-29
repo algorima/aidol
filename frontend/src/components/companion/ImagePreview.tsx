@@ -24,13 +24,13 @@ export function ImagePreview({ url, alt, size = "md" }: ImagePreviewProps) {
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl bg-base-200 ${sizeClass}`}
+      className={`bg-base-200 relative overflow-hidden rounded-2xl ${sizeClass}`}
     >
       {url ? (
         <Image src={url} alt={alt} fill className="object-cover" />
       ) : (
-        <div className="flex size-full items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-          <UserIcon className="size-1/2 text-base-content/50" />
+        <div className="from-primary/20 to-secondary/20 flex size-full items-center justify-center bg-gradient-to-br">
+          <UserIcon className="text-base-content/50 size-1/2" />
         </div>
       )}
     </div>
