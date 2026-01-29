@@ -8,7 +8,7 @@ interface GenderFilterTabsProps {
   onTabChange: (tab: GenderTab) => void;
 }
 
-const TABS: GenderTab[] = ["boy", "girl", "mixed"];
+const TABS: GenderTab[] = ["mixed", "boy", "girl"];
 
 export function GenderFilterTabs({
   activeTab,
