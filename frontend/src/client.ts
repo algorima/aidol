@@ -31,6 +31,7 @@ export type { MbtiValues } from "./components/creation";
 export { MbtiSlider } from "./components/creation";
 export { MemberNameInput } from "./components/creation";
 export { PersonalitySelector } from "./components/creation";
+export { ProfileImageGenerator } from "./components/creation";
 export { ProgressBar } from "./components/creation";
 export { StepCard } from "./components/creation";
 export { StepIndicator } from "./components/creation";

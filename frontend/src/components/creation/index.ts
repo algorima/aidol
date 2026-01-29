@@ -9,6 +9,7 @@ export type { MbtiValues } from "./MbtiForm";
 export { MbtiSlider } from "./MbtiSlider";
 export { MemberNameInput } from "./MemberNameInput";
 export { PersonalitySelector } from "./PersonalitySelector";
+export { ProfileImageGenerator } from "./ProfileImageGenerator";
 export { ProgressBar } from "./ProgressBar";
 export { StepCard } from "./StepCard";
 export { StepIndicator } from "./StepIndicator";
