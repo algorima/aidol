@@ -23,3 +23,10 @@ export const Default: Story = {
     alt: "프로필 이미지",
   },
 };
+
+export const Placeholder: Story = {
+  args: {
+    url: null,
+    alt: "프로필 이미지 플레이스홀더",
+  },
+};
