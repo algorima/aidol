@@ -82,8 +82,8 @@ google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
     logger.error("GOOGLE_API_KEY not found in environment variables.")
     raise ValueError("GOOGLE_API_KEY is required for image generation.")
-else:
-    logger.info("Google API Key loaded.")
+
+logger.info("Google API Key loaded.")
 
 logger.info("Loaded settings from environment variables")
 logger.info(

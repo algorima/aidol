@@ -12,6 +12,8 @@ from aidol.services.companion_service import (
     to_companion_public,
 )
 
+# pylint: disable=no-member
+
 
 class TestCompanionService(unittest.TestCase):
     """

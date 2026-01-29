@@ -57,7 +57,7 @@ class TestImageGenerationService(unittest.TestCase):
 
             # API 호출 검증
             mock_client.models.generate_content.assert_called_once()
-            args, kwargs = mock_client.models.generate_content.call_args
+            _, kwargs = mock_client.models.generate_content.call_args
             self.assertEqual(kwargs["model"], "gemini-3-pro-image-preview")
             self.assertEqual(kwargs["contents"], ["test prompt"])
 

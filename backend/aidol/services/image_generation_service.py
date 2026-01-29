@@ -36,7 +36,7 @@ class ImageGenerationService:
 
     def __init__(
         self, api_key: str | None = None, settings=None
-    ):  # pylint: disable=unused-argument
+    ):
         """
         Initialize the Image Generation service.
 
