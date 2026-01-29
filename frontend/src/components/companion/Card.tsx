@@ -22,7 +22,7 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
   return (
     <div
       className={clsx(
-        "relative h-card w-full max-w-card overflow-hidden rounded-lg border border-base-300",
+        "h-card max-w-card border-base-300 relative w-full overflow-hidden rounded-lg border",
         isClickable && "cursor-pointer",
       )}
       onClick={isClickable ? onClick : undefined}
@@ -43,8 +43,8 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
 
       {/* 3. 블러 위 계약 완료 레이어 */}
       {isSigned && (
-        <div className="absolute left-4 top-4 z-20">
-          <span className="w-fit rounded-lg bg-base-100 px-2 py-1 text-body-s text-base-content">
+        <div className="absolute top-4 left-4 z-20">
+          <span className="bg-base-100 text-body-s text-base-content w-fit rounded-lg px-2 py-1">
             {t("companion.signed")}
           </span>
         </div>
@@ -65,12 +65,12 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
         <span className="text-title-s text-white">{companion.name}</span>
 
         {!isPosition && (
-          <span className="w-fit rounded-lg bg-black px-2 py-1 text-body-s text-white">
+          <span className="text-body-s w-fit rounded-lg bg-black px-2 py-1 text-white">
             {t("companion.grade", { grade: companion.grade })}
           </span>
         )}
         {isPosition && (
-          <span className="w-fit rounded-lg bg-base-100 px-2 py-1 text-body-s text-base-content">
+          <span className="bg-base-100 text-body-s text-base-content w-fit rounded-lg px-2 py-1">
             {companion.position}
           </span>
         )}

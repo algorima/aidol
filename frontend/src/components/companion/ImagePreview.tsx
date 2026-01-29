@@ -21,7 +21,7 @@ export function ImagePreview({ url, alt, variant = "default" }: ProfileProps) {
   return (
     <div
       className={clsx(
-        "relative overflow-hidden rounded-lg border border-base-300",
+        "border-base-300 relative overflow-hidden rounded-lg border",
         SIZE_CLASSES[variant],
       )}
     >
@@ -29,7 +29,7 @@ export function ImagePreview({ url, alt, variant = "default" }: ProfileProps) {
         <Image src={url} alt={alt} fill className="size-full object-cover" />
       ) : (
         <div className="flex size-full items-center justify-center">
-          <UserIcon className="size-1/2 text-base-content/50" />
+          <UserIcon className="text-base-content/50 size-1/2" />
         </div>
       )}
     </div>

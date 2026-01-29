@@ -26,7 +26,7 @@ export default function AIdolLandingPage({
   };
 
   return (
-    <main className="flex w-full flex-col items-center justify-center bg-base-100">
+    <main className="bg-base-100 flex min-h-dvh w-full flex-col items-center justify-center">
       <HeroSection onGetStarted={handleStart} />
       <DemoSection />
     </main>
