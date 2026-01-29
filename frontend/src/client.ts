@@ -20,12 +20,14 @@ export { ProfileContent } from "./components/companion";
 export { PromptInput } from "./components/companion";
 
 // Creation flow components
+export { CompanionCreateLayout } from "./components/creation";
 export { ConceptSelector } from "./components/creation";
 export { EmblemGenerator } from "./components/creation";
 export { GroupCreation } from "./components/creation";
 export { GroupNameInput } from "./components/creation";
 export { MemberNameInput } from "./components/creation";
 export { PersonalitySelector } from "./components/creation";
+export { ProgressBar } from "./components/creation";
 export { StepCard } from "./components/creation";
 export { StepIndicator } from "./components/creation";
 
