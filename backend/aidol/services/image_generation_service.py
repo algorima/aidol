@@ -34,9 +34,7 @@ class ImageGenerationService:
 
     client: "genai.Client" | None = None
 
-    def __init__(
-        self, api_key: str | None = None, settings=None
-    ):
+    def __init__(self, api_key: str | None = None, settings=None):
         """
         Initialize the Image Generation service.
 
