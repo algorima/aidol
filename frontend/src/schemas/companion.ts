@@ -6,6 +6,8 @@
 import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
+export type Gender = "male" | "female";
+
 /**
  * Companion schema (public fields only, excludes system_prompt)
  */
@@ -18,6 +20,7 @@ export const companionSchema = z.object({
   grade: z.string().nullable().optional(),
   position: z.string().nullable().optional(),
   mbti: z.string().nullable().optional(),
+  gender: z.enum(["male", "female"]).nullable().optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -31,6 +34,7 @@ export interface Companion extends BaseRecord {
   grade?: string | null;
   position?: string | null;
   mbti?: string | null;
+  gender?: Gender | null;
   createdAt: string;
   updatedAt: string;
 }

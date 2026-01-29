@@ -11,4 +11,9 @@ export type {
 
 // Companion schemas
 export { companionSchema } from "./companion";
-export type { Companion, CompanionCreate, CompanionUpdate } from "./companion";
+export type {
+  Companion,
+  CompanionCreate,
+  CompanionUpdate,
+  Gender,
+} from "./companion";
