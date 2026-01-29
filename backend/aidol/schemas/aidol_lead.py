@@ -18,8 +18,8 @@ class AIdolLeadBase(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
 
-    aidol_id: str | None = Field(default=None, description="AIdol group ID")
-    email: str | None = Field(default=None, description="Viewer email")
+    aidol_id: str = Field(..., description="AIdol group ID")
+    email: str = Field(..., description="Viewer email")
 
 
 class AIdolLeadCreate(AIdolLeadBase):

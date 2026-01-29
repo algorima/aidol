@@ -18,5 +18,5 @@ class DBAIdolLead(BaseModel):
     __tablename__ = "aidol_leads"
 
     # id, created_at, updated_at inherited from BaseModel
-    aidol_id: Mapped[str] = mapped_column(String, nullable=True)
-    email: Mapped[str] = mapped_column(String, nullable=True)
+    aidol_id: Mapped[str] = mapped_column(String, nullable=False)
+    email: Mapped[str] = mapped_column(String, nullable=False)
