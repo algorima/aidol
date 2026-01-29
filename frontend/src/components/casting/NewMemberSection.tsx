@@ -19,7 +19,7 @@ export function NewMemberSection({ onNewMember }: NewMemberSectionProps) {
         className="btn btn-primary gap-2.5"
         onClick={onNewMember}
       >
-        {t("aidol:casting.newMember.button")}
+        {t("aidol:casting.addMember")}
         <PlusIcon className="size-6" />
       </button>
     </div>
