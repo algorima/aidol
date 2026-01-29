@@ -1,49 +1,79 @@
-import type { Companion } from "../../schemas";
+import clsx from "clsx";
+import { useTranslation } from "react-i18next";
+
+import { Companion } from "@/schemas";
 
 import { ImagePreview } from "./ImagePreview";
 
+type CardVariant = "grade" | "position";
+
 interface CardProps {
   companion: Companion;
+  variant?: CardVariant;
   onClick?: () => void;
 }
 
-/**
- * Companion card component displaying profile picture and name.
- */
-export function Card({ companion, onClick }: CardProps) {
+export function Card({ companion, variant = "grade", onClick }: CardProps) {
+  const { t } = useTranslation();
+  const isSigned = companion.aidolId !== null;
+  const isPosition = variant === "position";
+  const isClickable = onClick && !isSigned;
+
   return (
     <div
-      onClick={onClick}
-      className="card bg-base-200 cursor-pointer p-4 transition-shadow hover:shadow-lg"
-      role={onClick ? "button" : undefined}
-      tabIndex={onClick ? 0 : undefined}
-      onKeyDown={
-        onClick
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onClick();
-              }
-            }
-          : undefined
-      }
+      className={clsx(
+        "h-card max-w-card border-base-300 relative w-full overflow-hidden rounded-lg border",
+        isClickable && "cursor-pointer",
+      )}
+      onClick={isClickable ? onClick : undefined}
     >
-      <div className="flex items-center gap-4">
+      {/* 1. 배경 이미지 */}
+      <div className="absolute inset-0">
         <ImagePreview
           url={companion.profilePictureUrl}
           alt={companion.name}
-          size="md"
+          variant="profile"
         />
-        <div className="min-w-0 flex-1">
-          <h3 className="text-title-m text-base-content truncate font-semibold">
-            {companion.name}
-          </h3>
-          {companion.biography && (
-            <p className="text-body-s text-base-content/70 mt-1 line-clamp-2">
-              {companion.biography}
-            </p>
-          )}
+      </div>
+
+      {/* 2. 계약 완료 시 블러 */}
+      {isSigned && (
+        <div className="absolute inset-0 z-20 bg-black/40 backdrop-blur-sm" />
+      )}
+
+      {/* 3. 블러 위 계약 완료 레이어 */}
+      {isSigned && (
+        <div className="absolute top-4 left-4 z-20">
+          <span className="bg-base-100 text-body-s text-base-content w-fit rounded-lg px-2 py-1">
+            {t("companion.signed")}
+          </span>
         </div>
+      )}
+
+      {/* 4. 기존 하단 그라데이션 */}
+      <div
+        className={clsx(
+          "absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black to-transparent",
+          isSigned && "opacity-20",
+          isPosition && "opacity-30",
+          !isSigned && !isPosition && "opacity-60",
+        )}
+      />
+
+      {/* 5. 이름 + 등급 */}
+      <div className="absolute inset-x-4 bottom-4 z-10 flex flex-col gap-2">
+        <span className="text-title-s text-white">{companion.name}</span>
+
+        {!isPosition && (
+          <span className="text-body-s w-fit rounded-lg bg-black px-2 py-1 text-white">
+            {t("companion.grade", { grade: companion.grade })}
+          </span>
+        )}
+        {isPosition && (
+          <span className="bg-base-100 text-body-s text-base-content w-fit rounded-lg px-2 py-1">
+            {companion.position}
+          </span>
+        )}
       </div>
     </div>
   );
