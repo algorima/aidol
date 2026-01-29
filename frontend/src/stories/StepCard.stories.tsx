@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
@@ -25,22 +27,24 @@ function RadioButtonInteractive() {
         <button
           type="button"
           onClick={() => setSelected("female")}
-          className={`text-label-l flex-1 rounded-lg border px-2 py-4 ${
+          className={clsx(
+            "text-label-l flex-1 rounded-lg border px-2 py-4",
             selected === "female"
               ? "border-primary bg-primary/20 text-primary"
-              : "border-base-300 bg-base-200 text-base-content"
-          }`}
+              : "border-base-300 bg-base-200 text-base-content",
+          )}
         >
           여성
         </button>
         <button
           type="button"
           onClick={() => setSelected("male")}
-          className={`text-label-l flex-1 rounded-lg border px-2 py-4 ${
+          className={clsx(
+            "text-label-l flex-1 rounded-lg border px-2 py-4",
             selected === "male"
               ? "border-primary bg-primary/20 text-primary"
-              : "border-base-300 bg-base-200 text-base-content"
-          }`}
+              : "border-base-300 bg-base-200 text-base-content",
+          )}
         >
           남성
         </button>
@@ -62,7 +66,7 @@ export const TextInput: Story = {
       <input
         type="text"
         placeholder="예) 드리머즈, 스타라이트"
-        className="input border-base-300 text-base-300 border bg-white"
+        className="input border-base-300 placeholder:text-base-300 border bg-white"
       />
     ),
   },
@@ -78,7 +82,7 @@ export const ImageGeneration: Story = {
         <input
           type="text"
           placeholder="예)"
-          className="input border-base-300 text-base-300 border bg-white"
+          className="input border-base-300 placeholder:text-base-300 border bg-white"
         />
         <button type="button" className="btn btn-primary text-label-l w-full">
           이미지 생성
@@ -145,14 +149,14 @@ export const MultipleSteps: Story = {
         <input
           type="text"
           placeholder="이름을 입력해주세요"
-          className="input border-base-300 text-base-300 border bg-white"
+          className="input border-base-300 text-base-300 placeholder:text-base-300 border bg-white"
         />
       </StepCard>
       <StepCard step={5} title="이 아이돌의 서사를 알려주세요">
         <input
           type="text"
           placeholder="어떤 시간을 보냈나요?"
-          className="input border-base-300 text-base-300 border bg-white"
+          className="input border-base-300 text-base-300 placeholder:text-base-300 border bg-white"
         />
       </StepCard>
     </div>
