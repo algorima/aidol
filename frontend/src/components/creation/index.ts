@@ -1,5 +1,6 @@
 export { CompanionCreateLayout } from "./CompanionCreateLayout";
 export { ConceptSelector } from "./ConceptSelector";
+export { GenderSelector } from "./GenderSelector";
 export { EmblemGenerator } from "./EmblemGenerator";
 export { GroupCreation } from "./GroupCreation";
 export { GroupNameInput } from "./GroupNameInput";

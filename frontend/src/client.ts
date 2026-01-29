@@ -22,6 +22,7 @@ export { PromptInput } from "./components/companion";
 // Creation flow components
 export { CompanionCreateLayout } from "./components/creation";
 export { ConceptSelector } from "./components/creation";
+export { GenderSelector } from "./components/creation";
 export { EmblemGenerator } from "./components/creation";
 export { GroupCreation } from "./components/creation";
 export { GroupNameInput } from "./components/creation";
