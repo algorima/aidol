@@ -22,9 +22,12 @@ export function Modal({ isOpen, onClose, children, action }: ModalProps) {
 
   return (
     <>
-      <div className="fixed inset-0 z-50" onClick={onClose} />
       <div
-        className="max-w-mobile fixed inset-0 z-50 mx-auto flex items-center justify-center bg-black/80 p-6"
+        className="fixed top-0 left-0 z-40 h-screen w-screen bg-black/80"
+        onClick={onClose}
+      />
+      <div
+        className="max-w-mobile fixed inset-0 z-50 mx-auto flex items-center justify-center p-6"
         onClick={onClose}
       >
         <div
@@ -41,7 +44,7 @@ export function Modal({ isOpen, onClose, children, action }: ModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="bg-base-300 text-label-l text-base-content rounded-lg p-4"
+              className="btn btn-lg bg-base-300 text-label-l text-base-content rounded-lg p-4"
             >
               {t("aidol:common.close")}
             </button>
@@ -50,7 +53,7 @@ export function Modal({ isOpen, onClose, children, action }: ModalProps) {
                 type="button"
                 onClick={action.onClick}
                 className={clsx(
-                  "btn flex-1",
+                  "btn btn-lg text-label-l flex-1",
                   action.variant === "neutral" ? "btn-neutral" : "btn-primary",
                 )}
               >
