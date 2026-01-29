@@ -17,13 +17,19 @@ export function GenderFilterTabs({
   const { t } = useTranslation();
 
   return (
-    <div role="tablist" className="tabs tabs-box">
+    <div role="tablist" className="flex gap-2">
       {TABS.map((tab) => (
         <button
           key={tab}
           type="button"
           role="tab"
-          className={clsx("tab", activeTab === tab && "tab-active")}
+          aria-selected={activeTab === tab}
+          className={clsx(
+            "text-label-l rounded-lg border p-2",
+            activeTab === tab
+              ? "border-base-content text-base-content"
+              : "border-base-300 text-base-300",
+          )}
           onClick={() => onTabChange(tab)}
         >
           {t(`aidol:casting.tabs.${tab}`)}
