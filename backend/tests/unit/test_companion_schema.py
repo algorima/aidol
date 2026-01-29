@@ -14,7 +14,6 @@ from datetime import datetime
 from pydantic import ValidationError
 
 from aidol.schemas import (
-    Companion,
     CompanionCreate,
     CompanionPublic,
     CompanionStats,

@@ -8,6 +8,7 @@ AIdol 스키마 유닛 테스트
 
 import unittest
 from datetime import datetime
+from pydantic import ValidationError
 
 from aidol.schemas import AIdolCreate, AIdolPublic
 
@@ -17,7 +18,7 @@ class TestAIdolCreateSchema(unittest.TestCase):
 
     def test_claim_token_required(self):
         """claimToken 없이 생성하면 ValidationError 발생해야 함"""
-        from pydantic import ValidationError
+
 
         with self.assertRaises(ValidationError):
             AIdolCreate()

@@ -7,7 +7,6 @@ AIdolLead 스키마 유닛 테스트
 """
 
 import unittest
-from datetime import datetime
 
 from pydantic import ValidationError
 
