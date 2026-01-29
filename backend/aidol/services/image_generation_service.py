@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Literal
 import PIL.Image
 
 if TYPE_CHECKING:
-    import google.genai as genai  # pylint: disable=consider-using-from-import
+    import google.genai as _GenAI  # pylint: disable=consider-using-from-import
 
 try:
     import google.genai as genai  # pylint: disable=consider-using-from-import
@@ -35,7 +35,7 @@ class ImageGenerationResponse:
 class ImageGenerationService:
     """Service for generating images using Google Gemini 3 (Imagen)."""
 
-    client: "genai.Client | None" = None
+    client: "_GenAI.Client | None" = None
 
     def __init__(self, api_key: str | None = None, settings=None):
         """
