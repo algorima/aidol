@@ -25,6 +25,8 @@ def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
     return AIdol(
         id=db_aidol.id,
         name=db_aidol.name,
+        email=db_aidol.email,
+        greeting=db_aidol.greeting,
         concept=db_aidol.concept,
         profile_image_url=db_aidol.profile_image_url,
         claim_token=db_aidol.claim_token,

@@ -24,9 +24,11 @@ class AIdolBase(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
 
-    name: str = Field(..., description="AIdol group name")
+    name: str | None = Field(default=None, description="AIdol group name")
+    email: str | None = Field(default=None, description="Creator email")
+    greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
-    profile_image_url: str = Field(..., description="Profile image URL")
+    profile_image_url: str | None = Field(default=None, description="Profile image URL")
 
 
 class AIdolCreate(AIdolBase):
@@ -47,6 +49,8 @@ class AIdolUpdate(BaseModel):
     model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
 
     name: str | None = Field(default=None, description="AIdol group name")
+    email: str | None = Field(default=None, description="Creator email")
+    greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
     profile_image_url: str | None = Field(default=None, description="Profile image URL")
 

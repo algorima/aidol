@@ -12,12 +12,17 @@ from aidol.schemas.aidol import (
     ImageGenerationRequest,
     ImageGenerationResponse,
 )
+from aidol.schemas.aidol_lead import AIdolLead, AIdolLeadBase, AIdolLeadCreate
 from aidol.schemas.companion import (
     Companion,
     CompanionBase,
     CompanionCreate,
     CompanionPublic,
+    CompanionStats,
     CompanionUpdate,
+    Gender,
+    Grade,
+    Position,
 )
 
 __all__ = [
@@ -29,9 +34,16 @@ __all__ = [
     "ImageGenerationData",
     "ImageGenerationRequest",
     "ImageGenerationResponse",
+    "AIdolLead",
+    "AIdolLeadBase",
+    "AIdolLeadCreate",
     "Companion",
     "CompanionBase",
     "CompanionCreate",
     "CompanionPublic",
+    "CompanionStats",
     "CompanionUpdate",
+    "Gender",
+    "Grade",
+    "Position",
 ]
