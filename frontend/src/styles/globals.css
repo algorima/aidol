@@ -1,3 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  color-scheme: light;
+
+  --color-primary: #1e9cfd;
+  --color-primary-content: #fff;
+  --color-secondary: #88dbff;
+  --color-neutral: #374151;
+  --color-neutral-content: #fff;
+  --color-base-100: #fff;
+  --color-base-200: #f7f7f7;
+  --color-base-300: #e5e5e5;
+  --color-base-content: #000;
+  --color-info: #3abff8;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-primary: #1e9cfd;
+  --color-primary-content: #fff;
+  --color-secondary: #88dbff;
+  --color-neutral: #4b5563;
+  --color-neutral-content: #fff;
+  --color-base-100: #000;
+  --color-base-200: #1a1a1a;
+  --color-base-300: #2d2d2d;
+  --color-base-content: #fff;
+  --color-info: #3abff8;
+}

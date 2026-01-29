@@ -221,7 +221,7 @@ export function ToastItem({ toast, onHide }: ToastItemProps): JSX.Element {
       exit={{ opacity: 0, x: 300, scale: 0.5, transition: { duration: 0.2 } }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={clsx(
-        "alert min-w-[300px] max-w-[400px] shadow-lg",
+        "alert max-w-[400px] min-w-[300px] shadow-lg",
         getAlertClass(),
       )}
       role="alert"

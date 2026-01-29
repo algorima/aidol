@@ -21,10 +21,10 @@ export const PromptInput = forwardRef<HTMLTextAreaElement, PromptInputProps>(
           ref={ref}
           placeholder={placeholder ?? t("aidol:companion.promptPlaceholder")}
           maxLength={maxLength}
-          className="textarea textarea-bordered h-32 w-full resize-none bg-base-100 text-base-content placeholder:text-base-content/50 focus:border-primary focus:outline-none"
+          className="textarea bg-base-100 text-base-content placeholder:text-base-content/50 focus:border-primary h-32 w-full resize-none focus:outline-hidden"
           {...props}
         />
-        <div className="mt-1 text-right text-label-s text-base-content/50">
+        <div className="text-label-s text-base-content/50 mt-1 text-right">
           {charCount ?? 0}/{maxLength}
         </div>
       </div>
