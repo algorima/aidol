@@ -1,35 +1,34 @@
-"use client";
-
 import { UserIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import Image from "next/image";
 
-interface ImagePreviewProps {
+interface ProfileProps {
   url?: string | null;
   alt: string;
-  size?: "sm" | "md" | "lg";
+  variant?: "default" | "profile";
 }
 
 const SIZE_CLASSES = {
-  sm: "size-16",
-  md: "size-24",
-  lg: "size-32",
+  default: "size-profile",
+  profile: "size-full",
 };
 
 /**
- * Image preview component for companion profile pictures.
+ * Profile image component for companion.
  * Shows a placeholder when no image URL is provided.
  */
-export function ImagePreview({ url, alt, size = "md" }: ImagePreviewProps) {
-  const sizeClass = SIZE_CLASSES[size];
-
+export function ImagePreview({ url, alt, variant = "default" }: ProfileProps) {
   return (
     <div
-      className={`bg-base-200 relative overflow-hidden rounded-2xl ${sizeClass}`}
+      className={clsx(
+        "border-base-300 bg-base-200 relative overflow-hidden rounded-lg border",
+        SIZE_CLASSES[variant],
+      )}
     >
       {url ? (
-        <Image src={url} alt={alt} fill className="object-cover" />
+        <Image src={url} alt={alt} fill className="size-full object-cover" />
       ) : (
-        <div className="from-primary/20 to-secondary/20 flex size-full items-center justify-center bg-gradient-to-br">
+        <div className="flex size-full items-center justify-center">
           <UserIcon className="text-base-content/50 size-1/2" />
         </div>
       )}

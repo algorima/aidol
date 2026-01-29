@@ -3,7 +3,9 @@
   "urlCopied": "Đã sao chép URL!",
   "companion": {
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
-    "addMember": "Thêm Thành Viên"
+    "addMember": "Thêm Thành Viên",
+    "signed": "Đã ký hợp đồng 🥺",
+    "grade": "Hạng {{grade}}"
   },
   "aidol": {
     "notFound": "Không tìm thấy nhóm",

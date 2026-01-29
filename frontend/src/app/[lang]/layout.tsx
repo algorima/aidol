@@ -32,7 +32,9 @@ export default async function LangLayout({
     <html lang={lang}>
       <body>
         <I18nProvider lang={lang} resources={resources}>
-          <ToastProvider>{children}</ToastProvider>
+          <div className="min-w-mobile max-w-mobile mx-auto min-h-dvh">
+            <ToastProvider>{children}</ToastProvider>
+          </div>
         </I18nProvider>
       </body>
     </html>

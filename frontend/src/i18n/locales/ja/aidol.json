@@ -3,7 +3,9 @@
   "urlCopied": "URLがコピーされました！",
   "companion": {
     "promptPlaceholder": "どんな話し方をする？性格を教えてね...",
-    "addMember": "メンバー追加"
+    "addMember": "メンバー追加",
+    "signed": "契約完了 🥺",
+    "grade": "{{grade}} ランク"
   },
   "aidol": {
     "notFound": "グループが見つかりません",

@@ -15,6 +15,8 @@ export const companionSchema = z.object({
   name: z.string(),
   biography: z.string().nullable().optional(),
   profilePictureUrl: z.string().nullable().optional(),
+  grade: z.string().nullable(),
+  position: z.string().nullable(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -25,6 +27,8 @@ export interface Companion extends BaseRecord {
   name: string;
   biography?: string | null;
   profilePictureUrl?: string | null;
+  grade?: string | null;
+  position?: string | null;
   createdAt: string;
   updatedAt: string;
 }
