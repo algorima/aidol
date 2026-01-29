@@ -2,6 +2,20 @@
   "common": {
     "close": "ปิด"
   },
+  "casting": {
+    "title": "แคสติ้ง",
+    "infoBanner": "เลือกเทรนนี่ที่คุณชอบ",
+    "tabs": {
+      "boy": "บอยกรุ๊ป",
+      "girl": "เกิร์ลกรุ๊ป",
+      "mixed": "ผสม"
+    },
+    "newMember": {
+      "prompt": "ไม่มีเทรนนี่ที่ถูกใจเหรอ?",
+      "button": "สร้างสมาชิกใหม่"
+    },
+    "addMember": "สมาชิกใหม่"
+  },
   "share": "แชร์",
   "urlCopied": "คัดลอก URL แล้ว!",
   "companion": {

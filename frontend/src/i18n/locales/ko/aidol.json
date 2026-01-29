@@ -2,6 +2,20 @@
   "common": {
     "close": "닫기"
   },
+  "casting": {
+    "title": "캐스팅",
+    "infoBanner": "마음에 드는 연습생을 선택하세요",
+    "tabs": {
+      "boy": "보이그룹",
+      "girl": "걸그룹",
+      "mixed": "혼성"
+    },
+    "newMember": {
+      "prompt": "마음에 드는 연습생이 없으신가요?",
+      "button": "새 멤버 만들기"
+    },
+    "addMember": "새 멤버"
+  },
   "share": "공유",
   "urlCopied": "URL이 복사되었습니다!",
   "companion": {

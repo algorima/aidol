@@ -2,6 +2,20 @@
   "common": {
     "close": "Đóng"
   },
+  "casting": {
+    "title": "Casting",
+    "infoBanner": "Chọn thực tập sinh bạn thích",
+    "tabs": {
+      "boy": "Nhóm Nam",
+      "girl": "Nhóm Nữ",
+      "mixed": "Hỗn hợp"
+    },
+    "newMember": {
+      "prompt": "Không tìm thấy thực tập sinh yêu thích?",
+      "button": "Tạo Thành Viên Mới"
+    },
+    "addMember": "Thành Viên Mới"
+  },
   "share": "Chia sẻ",
   "urlCopied": "Đã sao chép URL!",
   "companion": {

@@ -2,6 +2,20 @@
   "common": {
     "close": "Close"
   },
+  "casting": {
+    "title": "Casting",
+    "infoBanner": "Choose the trainee you like",
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Mixed"
+    },
+    "newMember": {
+      "prompt": "Can't find a trainee you like?",
+      "button": "Create New Member"
+    },
+    "addMember": "New Member"
+  },
   "share": "Share",
   "urlCopied": "URL copied!",
   "companion": {

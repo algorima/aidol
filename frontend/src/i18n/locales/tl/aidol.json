@@ -2,6 +2,20 @@
   "common": {
     "close": "Isara"
   },
+  "casting": {
+    "title": "Casting",
+    "infoBanner": "Pumili ng trainee na gusto mo",
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Mixed"
+    },
+    "newMember": {
+      "prompt": "Walang trainee na gusto mo?",
+      "button": "Gumawa ng Bagong Miyembro"
+    },
+    "addMember": "Bagong Miyembro"
+  },
   "share": "I-share",
   "urlCopied": "Nakopya ang URL!",
   "companion": {

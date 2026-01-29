@@ -2,6 +2,20 @@
   "common": {
     "close": "Tutup"
   },
+  "casting": {
+    "title": "Casting",
+    "infoBanner": "Pilih trainee yang kamu suka",
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Campuran"
+    },
+    "newMember": {
+      "prompt": "Tidak ada trainee yang kamu suka?",
+      "button": "Buat Anggota Baru"
+    },
+    "addMember": "Anggota Baru"
+  },
   "share": "Bagikan",
   "urlCopied": "URL disalin!",
   "companion": {

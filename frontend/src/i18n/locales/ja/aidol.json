@@ -2,6 +2,20 @@
   "common": {
     "close": "閉じる"
   },
+  "casting": {
+    "title": "キャスティング",
+    "infoBanner": "お気に入りの練習生を選んでください",
+    "tabs": {
+      "boy": "ボーイグループ",
+      "girl": "ガールグループ",
+      "mixed": "混合"
+    },
+    "newMember": {
+      "prompt": "お気に入りの練習生がいませんか？",
+      "button": "新しいメンバーを作る"
+    },
+    "addMember": "新メンバー"
+  },
   "share": "共有",
   "urlCopied": "URLがコピーされました！",
   "companion": {

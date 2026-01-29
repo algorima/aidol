@@ -2,6 +2,20 @@
   "common": {
     "close": "关闭"
   },
+  "casting": {
+    "title": "选秀",
+    "infoBanner": "选择你喜欢的练习生",
+    "tabs": {
+      "boy": "男团",
+      "girl": "女团",
+      "mixed": "混合"
+    },
+    "newMember": {
+      "prompt": "没有喜欢的练习生吗？",
+      "button": "创建新成员"
+    },
+    "addMember": "新成员"
+  },
   "share": "分享",
   "urlCopied": "URL已复制！",
   "companion": {

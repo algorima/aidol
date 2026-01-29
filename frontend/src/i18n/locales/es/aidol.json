@@ -2,6 +2,20 @@
   "common": {
     "close": "Cerrar"
   },
+  "casting": {
+    "title": "Casting",
+    "infoBanner": "Elige al aprendiz que te guste",
+    "tabs": {
+      "boy": "Grupo de Chicos",
+      "girl": "Grupo de Chicas",
+      "mixed": "Mixto"
+    },
+    "newMember": {
+      "prompt": "¿No encuentras un aprendiz que te guste?",
+      "button": "Crear Nuevo Miembro"
+    },
+    "addMember": "Nuevo Miembro"
+  },
   "share": "Compartir",
   "urlCopied": "¡URL copiada!",
   "companion": {
