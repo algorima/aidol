@@ -39,6 +39,8 @@ export function CastingCardGrid({
           onClick={() => onCompanionClick(companion)}
         />
       ))}
+
+      <NewMemberSection onNewMember={onNewMember} />
     </div>
   );
 }
