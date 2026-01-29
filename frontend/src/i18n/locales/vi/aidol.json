@@ -26,7 +26,8 @@
     "castButton": "Casting",
     "castComplete": {
       "title": "Casting Hoàn Tất!",
-      "description": "Thực tập sinh đã gia nhập nhóm"
+      "description": "Thực tập sinh đã gia nhập nhóm",
+      "viewBoard": "Xem Bảng Casting"
     }
   },
   "share": "Chia sẻ",

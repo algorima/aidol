@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -29,7 +29,8 @@ const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
 
 export default function CastingPage() {
   const { t } = useTranslation();
-  const { aidolId: _aidolId } = useParams<{ aidolId: string }>();
+  const router = useRouter();
+  const { aidolId } = useParams<{ aidolId: string }>();
   const [activeTab, setActiveTab] = useState<GenderTab>("boy");
   const [selectedCompanion, setSelectedCompanion] = useState<Companion | null>(
     null,
@@ -55,8 +56,14 @@ export default function CastingPage() {
     setIsCastCompleteOpen(true);
   };
 
+  const handleCastComplete = () => {
+    setIsCastCompleteOpen(false);
+    router.push(`/aidols/${aidolId}/casting-board`);
+  };
+
   const handleNewMember = () => {
-    // TODO: POST /companions → /aidols/{aidolId}/companions/{companionId}/gender
+    // TODO: POST /companions 후 응답의 companionId로 이동
+    // router.push(`/aidols/${aidolId}/companions/${companionId}/gender`);
   };
 
   return (
@@ -104,6 +111,11 @@ export default function CastingPage() {
       <Modal
         isOpen={isCastCompleteOpen}
         onClose={() => setIsCastCompleteOpen(false)}
+        action={{
+          label: t("aidol:casting.castComplete.viewBoard"),
+          onClick: handleCastComplete,
+          variant: "primary",
+        }}
       >
         <div className="flex flex-col items-center gap-4 py-8">
           <CheckCircleIcon className="text-success size-16" />

@@ -26,7 +26,8 @@
     "castButton": "캐스팅하기",
     "castComplete": {
       "title": "캐스팅 완료!",
-      "description": "연습생이 그룹에 합류했습니다"
+      "description": "연습생이 그룹에 합류했습니다",
+      "viewBoard": "캐스팅 보드 보기"
     }
   },
   "share": "공유",

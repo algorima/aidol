@@ -26,7 +26,8 @@
     "castButton": "I-cast",
     "castComplete": {
       "title": "Tapos na ang Casting!",
-      "description": "Sumali na ang trainee sa grupo"
+      "description": "Sumali na ang trainee sa grupo",
+      "viewBoard": "Tingnan ang Casting Board"
     }
   },
   "share": "I-share",

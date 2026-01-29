@@ -26,7 +26,8 @@
     "castButton": "选秀",
     "castComplete": {
       "title": "选秀完成！",
-      "description": "练习生已加入组合"
+      "description": "练习生已加入组合",
+      "viewBoard": "查看选秀面板"
     }
   },
   "share": "分享",

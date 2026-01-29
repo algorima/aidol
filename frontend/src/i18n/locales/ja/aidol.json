@@ -26,7 +26,8 @@
     "castButton": "キャスティング",
     "castComplete": {
       "title": "キャスティング完了！",
-      "description": "練習生がグループに合流しました"
+      "description": "練習生がグループに合流しました",
+      "viewBoard": "キャスティングボードを見る"
     }
   },
   "share": "共有",

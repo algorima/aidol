@@ -26,7 +26,8 @@
     "castButton": "Casting",
     "castComplete": {
       "title": "¡Casting Completo!",
-      "description": "El aprendiz se ha unido al grupo"
+      "description": "El aprendiz se ha unido al grupo",
+      "viewBoard": "Ver Panel de Casting"
     }
   },
   "share": "Compartir",
