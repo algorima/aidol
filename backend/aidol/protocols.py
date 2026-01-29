@@ -17,6 +17,8 @@ from aidol.schemas import (
     AIdol,
     AIdolCreate,
     AIdolUpdate,
+    AIdolLead,
+    AIdolLeadCreate,
     Companion,
     CompanionCreate,
     CompanionUpdate,
@@ -63,6 +65,8 @@ class CompanionRepositoryProtocol(
     """
 
 
+
+
 class CompanionRepositoryFactoryProtocol(Protocol):
     """Protocol for factory that creates CompanionRepositoryProtocol instances.
 
@@ -97,4 +101,23 @@ class ImageStorageProtocol(Protocol):
         Args:
             image: PIL Image object to upload.
         """
+        ...
+
+
+class AIdolLeadRepositoryProtocol(
+    CrudRepositoryProtocol[AIdolLead, AIdolLeadCreate, None], Protocol
+):
+    """Protocol defining AIdolLead repository expectations.
+
+    Inherits CRUD operations from CrudRepositoryProtocol.
+    """
+
+
+class AIdolLeadRepositoryFactoryProtocol(Protocol):
+    """Protocol for factory that creates AIdolLeadRepositoryProtocol instances."""
+
+    def create_repository(
+        self, db_session: Session | None = None
+    ) -> AIdolLeadRepositoryProtocol:
+        """Create a repository instance."""
         ...
