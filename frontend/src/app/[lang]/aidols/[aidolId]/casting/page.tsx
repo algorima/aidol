@@ -1,5 +1,6 @@
 "use client";
 
+import { PlusIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -71,10 +72,11 @@ export default function CastingPage() {
         rightContent={
           <button
             type="button"
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary gap-2.5"
             onClick={handleNewMember}
           >
             {t("aidol:casting.addMember")}
+            <PlusIcon className="size-6" />
           </button>
         }
       />
