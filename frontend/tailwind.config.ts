@@ -21,7 +21,7 @@ const config: Config = {
         card: "254px",
       },
       size: {
-        "image-lg": "297px",
+        profile: "297px",
       },
 
       fontSize: {
