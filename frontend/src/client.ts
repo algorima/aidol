@@ -16,6 +16,7 @@ export { GroupHeader } from "./components/aidol";
 export { AddMemberButton } from "./components/companion";
 export { Card } from "./components/companion";
 export { ImagePreview } from "./components/companion";
+export { ProfileContent } from "./components/companion";
 export { PromptInput } from "./components/companion";
 
 // Creation flow components
@@ -25,10 +26,12 @@ export { GroupCreation } from "./components/creation";
 export { GroupNameInput } from "./components/creation";
 export { MemberNameInput } from "./components/creation";
 export { PersonalitySelector } from "./components/creation";
+export { StepCard } from "./components/creation";
 export { StepIndicator } from "./components/creation";
 
 // Landing page components
 export { HeroSection } from "./components/landing";
 
 // Shared components
+export { Modal } from "./components/Modal";
 export { ShareButton } from "./components/ShareButton";
