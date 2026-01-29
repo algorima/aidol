@@ -11,6 +11,11 @@ from typing import Literal
 
 import PIL.Image
 
+try:
+    import google.genai as genai  # pylint: disable=consider-using-from-import
+except ImportError:
+    genai = None  # type: ignore
+
 logger = logging.getLogger(__name__)
 
 
@@ -24,7 +29,7 @@ class ImageGenerationResponse:
 class ImageGenerationService:
     """Service for generating images using Google Gemini 3 (Imagen)."""
 
-    def __init__(self, api_key: str | None = None, settings=None):
+    def __init__(self, api_key: str | None = None, settings=None):  # pylint: disable=unused-argument
         """
         Initialize the Image Generation service.
         
@@ -32,26 +37,25 @@ class ImageGenerationService:
             api_key: Google API Key.
             settings: Unused, kept for compatibility.
         """
-        try:
-           from google import genai
-           
-           # Use explicitly provided api_key, otherwise fallback to settings or env
-           if api_key:
-               self.client = genai.Client(api_key=api_key)
-           elif settings and hasattr(settings, "api_key") and settings.api_key:
-               self.client = genai.Client(api_key=settings.api_key)
-           else:
-               # Try loading from GOOGLE_API_KEY environment variable (Client handles this)
-               self.client = genai.Client()
-        except ImportError:
-            logger.error("google-genai package not found. Run 'poetry add google-genai'")
-            self.client = None
+        if genai is None:
+             logger.error("google-genai package not found. Run 'poetry add google-genai'")
+             self.client = None
+             return
+
+        # Use explicitly provided api_key, otherwise fallback to settings or env
+        if api_key:
+            self.client = genai.Client(api_key=api_key)
+        elif settings and hasattr(settings, "api_key") and settings.api_key:
+            self.client = genai.Client(api_key=settings.api_key)
+        else:
+            # Try loading from GOOGLE_API_KEY environment variable (Client handles this)
+            self.client = genai.Client()
 
     def generate_and_download_image(
         self,
         prompt: str,
-        size: Literal["1024x1024"] = "1024x1024",  # Parameter kept for compatibility
-        quality: Literal["standard"] = "standard",  # Parameter kept for compatibility
+        size: Literal["1024x1024"] = "1024x1024",  # pylint: disable=unused-argument
+        quality: Literal["standard"] = "standard",  # pylint: disable=unused-argument
     ) -> PIL.Image.Image | None:
         """
         Generate an image using Gemini 3 and return as PIL Image.
@@ -87,13 +91,12 @@ class ImageGenerationService:
             logger.warning("No image data found in Gemini response.")
             return None
 
-        except Exception as e:
+        except Exception as e:  # pylint: disable=broad-exception-caught
             logger.error("Gemini API error: %s", e)
             return None
 
     # Legacy methods for compatibility if needed (can be removed or shimmed)
-    def generate_image(self, *args, **kwargs):
+    def generate_image(self, *args, **kwargs):  # pylint: disable=unused-argument
         """Deprecated: Use generate_and_download_image instead."""
         logger.warning("generate_image is deprecated for Gemini service.")
-        return None
 
