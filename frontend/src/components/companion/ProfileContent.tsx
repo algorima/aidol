@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import type { Companion } from "@/schemas/companion";
 
 import { ImagePreview } from "./ImagePreview";
@@ -7,6 +9,7 @@ interface ProfileContentProps {
 }
 
 export function ProfileContent({ companion }: ProfileContentProps) {
+  const { t } = useTranslation();
   const { name, profilePictureUrl, grade, mbti, biography } = companion;
 
   return (
@@ -18,11 +21,11 @@ export function ProfileContent({ companion }: ProfileContentProps) {
           <div className="flex gap-2">
             {grade && (
               <span className="text-label-l rounded-lg bg-black px-2 py-1 text-white">
-                {grade} 등급
+                {t("aidol:companion.grade", { grade })}
               </span>
             )}
             {mbti && (
-              <span className="bg-neutral text-label-l rounded-lg px-2 py-1 text-white">
+              <span className="text-label-l rounded-lg bg-black px-2 py-1 text-white">
                 {mbti}
               </span>
             )}
