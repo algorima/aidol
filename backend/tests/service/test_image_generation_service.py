@@ -1,6 +1,7 @@
 """
 Integration (Mock) tests for Image Generation Service.
 """
+
 import unittest
 from unittest.mock import MagicMock, patch
 
@@ -47,12 +48,12 @@ class TestImageGenerationService(unittest.TestCase):
         with patch("PIL.Image.open") as mock_pil_open:
             mock_image = MagicMock()
             mock_pil_open.return_value = mock_image
-            
+
             result = service.generate_and_download_image(prompt="test prompt")
 
             # Then: 검증
             self.assertIsNotNone(result)
-            self.assertEqual(result, mock_image) # 리턴된 객체가 Mock 이미지인지 확인
+            self.assertEqual(result, mock_image)  # 리턴된 객체가 Mock 이미지인지 확인
 
             # API 호출 검증
             mock_client.models.generate_content.assert_called_once()
@@ -94,13 +95,13 @@ class TestImageGenerationService(unittest.TestCase):
         # Given
         mock_client = MagicMock()
         mock_genai.Client.return_value = mock_client
-        
+
         # Empty parts or no inline_data
         mock_response = MagicMock()
         mock_part = MagicMock()
-        mock_part.inline_data = None # 데이터 없음
+        mock_part.inline_data = None  # 데이터 없음
         mock_response.parts = [mock_part]
-        
+
         mock_client.models.generate_content.return_value = mock_response
 
         service = ImageGenerationService(api_key="fake-key")

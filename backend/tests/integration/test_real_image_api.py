@@ -1,8 +1,10 @@
 """
 Real Integration Test for Image Generation API.
 """
+
 import os
 import unittest
+
 import PIL.Image
 
 from aidol.services.image_generation_service import ImageGenerationService
@@ -20,8 +22,10 @@ class TestRealImageGenerationAPI(unittest.TestCase):
     def setUp(self) -> None:
         self.api_key = os.getenv("GOOGLE_API_KEY")
         if not self.api_key:
-            self.skipTest("GOOGLE_API_KEY가 설정되지 않아 실제 API 테스트를 건너뜁니다.")
-        
+            self.skipTest(
+                "GOOGLE_API_KEY가 설정되지 않아 실제 API 테스트를 건너뜁니다."
+            )
+
         self.service = ImageGenerationService(api_key=self.api_key)
 
     def test_generate_image_real_call(self):
@@ -45,10 +49,12 @@ class TestRealImageGenerationAPI(unittest.TestCase):
 
         # Then: 결과 검증
         self.assertIsNotNone(image, "이미지 생성 실패 (None 반환)")
-        self.assertIsInstance(image, PIL.Image.Image, "반환값은 PIL Image 객체여야 합니다")
-        
+        self.assertIsInstance(
+            image, PIL.Image.Image, "반환값은 PIL Image 객체여야 합니다"
+        )
+
         # 메타데이터 출력 (확인용)
         print(f"[Real API] Image generated! Size: {image.size}, Format: {image.format}")
-        
+
         # (선택 사항) 로컬에 저장하여 육안 확인 가능
         # image.save("test_real_gen.png")

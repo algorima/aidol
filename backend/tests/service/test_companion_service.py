@@ -1,6 +1,7 @@
 """
 Unit tests for Companion Service business logic.
 """
+
 import unittest
 from datetime import datetime
 
