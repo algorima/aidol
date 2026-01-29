@@ -30,6 +30,8 @@ class ImageGenerationResponse:
 class ImageGenerationService:
     """Service for generating images using Google Gemini 3 (Imagen)."""
 
+    client: "genai.Client" | None = None
+
     def __init__(
         self, api_key: str | None = None, settings=None
     ):  # pylint: disable=unused-argument
@@ -82,16 +84,17 @@ class ImageGenerationService:
 
             response = self.client.models.generate_content(
                 model="gemini-3-pro-image-preview",
-                contents=[prompt],
+                contents=[prompt],  # type: ignore[arg-type]
             )
 
             # Iterate parts to find the image
-            for part in response.parts:
-                if part.inline_data is not None:
-                    logger.info("Successfully generated image via Gemini.")
-                    # Manually convert bytes to PIL Image to ensure it's a standard PIL object
-                    # compatible with main.py's save(format="PNG") call.
-                    return PIL.Image.open(BytesIO(part.inline_data.data))
+            if response.parts:
+                for part in response.parts:
+                    if part.inline_data and part.inline_data.data:
+                        logger.info("Successfully generated image via Gemini.")
+                        # Manually convert bytes to PIL Image to ensure it's a standard PIL object
+                        # compatible with main.py's save(format="PNG") call.
+                        return PIL.Image.open(BytesIO(part.inline_data.data))
 
             logger.warning("No image data found in Gemini response.")
             return None

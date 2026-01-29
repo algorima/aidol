@@ -16,12 +16,12 @@ def calculate_grade(stats: CompanionStats) -> Grade:
     - F: 0-39
     """
     avg = (
-        stats.vocal
-        + stats.dance
-        + stats.rap
-        + stats.visual
-        + stats.stamina
-        + stats.charm
+        (stats.vocal or 0)
+        + (stats.dance or 0)
+        + (stats.rap or 0)
+        + (stats.visual or 0)
+        + (stats.stamina or 0)
+        + (stats.charm or 0)
     ) / 6
     if avg >= 80:
         return Grade.A
@@ -50,6 +50,11 @@ def calculate_mbti(
     """
     if any(v is None for v in (energy, perception, judgment, lifestyle)):
         return None
+
+    assert energy is not None
+    assert perception is not None
+    assert judgment is not None
+    assert lifestyle is not None
 
     e_i = "E" if energy <= 5 else "I"
     n_s = "N" if perception <= 5 else "S"
