@@ -28,7 +28,6 @@ export { PersonalitySelector } from "./components/creation";
 export { StepIndicator } from "./components/creation";
 
 // Landing page components
-export { DemoSection } from "./components/landing";
 export { HeroSection } from "./components/landing";
 
 // Shared components

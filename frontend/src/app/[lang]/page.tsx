@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 
-import { DemoSection } from "@/components/landing/DemoSection";
 import { HeroSection } from "@/components/landing/HeroSection";
 
 interface AIdolLandingPageProps {
@@ -29,7 +28,6 @@ export default function AIdolLandingPage({
     <div className="mx-auto min-h-dvh max-w-[393px] min-w-[360px]">
       <main className="bg-base-100 flex w-full flex-col items-center justify-center">
         <HeroSection onGetStarted={handleStart} />
-        <DemoSection />
       </main>
     </div>
   );
