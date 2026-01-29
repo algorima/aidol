@@ -23,12 +23,11 @@ def calculate_grade(stats: CompanionStats) -> Grade:
     avg = (stats.vocal + stats.dance + stats.rap + stats.visual + stats.stamina + stats.charm) / 6
     if avg >= 80:
         return Grade.A
-    elif avg >= 60:
+    if avg >= 60:
         return Grade.B
-    elif avg >= 40:
+    if avg >= 40:
         return Grade.C
-    else:
-        return Grade.F
+    return Grade.F
 
 
 def calculate_mbti(
@@ -47,7 +46,7 @@ def calculate_mbti(
     
     Returns None if any dimension is missing.
     """
-    if any(v is None for v in [energy, perception, judgment, lifestyle]):
+    if any(v is None for v in (energy, perception, judgment, lifestyle)):
         return None
     
     e_i = "E" if energy <= 5 else "I"
