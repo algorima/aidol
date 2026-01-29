@@ -15,8 +15,7 @@
     },
     "newMember": {
       "prompt": "没有喜欢的练习生吗？",
-      "subPrompt": "试试选拔新成员",
-      "button": "创建新成员"
+      "subPrompt": "试试选拔新成员"
     },
     "addMember": "新成员",
     "abilities": {

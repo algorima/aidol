@@ -15,8 +15,7 @@
     },
     "newMember": {
       "prompt": "마음에 드는 연습생이 없으신가요?",
-      "subPrompt": "신규 멤버를 캐스팅해 보세요",
-      "button": "새 멤버 만들기"
+      "subPrompt": "신규 멤버를 캐스팅해 보세요"
     },
     "addMember": "신규 멤버",
     "abilities": {

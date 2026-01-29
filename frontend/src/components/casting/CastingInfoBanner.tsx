@@ -12,7 +12,7 @@ export function CastingInfoBanner() {
           {t("aidol:casting.infoBanner.title")}
         </h3>
       </div>
-      <p className="text-body-s text-neutral">
+      <p className="text-body-s text-base-content/60">
         {t("aidol:casting.infoBanner.description")}
       </p>
     </div>

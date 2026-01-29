@@ -15,8 +15,7 @@
     },
     "newMember": {
       "prompt": "Tidak ada trainee yang kamu suka?",
-      "subPrompt": "Coba casting anggota baru",
-      "button": "Buat Anggota Baru"
+      "subPrompt": "Coba casting anggota baru"
     },
     "addMember": "Anggota Baru",
     "abilities": {

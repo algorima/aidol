@@ -15,8 +15,7 @@
     },
     "newMember": {
       "prompt": "Không tìm thấy thực tập sinh yêu thích?",
-      "subPrompt": "Hãy thử casting thành viên mới",
-      "button": "Tạo Thành Viên Mới"
+      "subPrompt": "Hãy thử casting thành viên mới"
     },
     "addMember": "Thành Viên Mới",
     "abilities": {

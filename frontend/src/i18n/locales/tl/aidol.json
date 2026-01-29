@@ -15,8 +15,7 @@
     },
     "newMember": {
       "prompt": "Walang trainee na gusto mo?",
-      "subPrompt": "Subukan mag-cast ng bagong miyembro",
-      "button": "Gumawa ng Bagong Miyembro"
+      "subPrompt": "Subukan mag-cast ng bagong miyembro"
     },
     "addMember": "Bagong Miyembro",
     "abilities": {

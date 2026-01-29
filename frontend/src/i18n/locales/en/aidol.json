@@ -15,8 +15,7 @@
     },
     "newMember": {
       "prompt": "Can't find a trainee you like?",
-      "subPrompt": "Try casting a new member",
-      "button": "Create New Member"
+      "subPrompt": "Try casting a new member"
     },
     "addMember": "New Member",
     "abilities": {

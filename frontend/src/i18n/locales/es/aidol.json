@@ -15,8 +15,7 @@
     },
     "newMember": {
       "prompt": "¿No encuentras un aprendiz que te guste?",
-      "subPrompt": "Prueba a hacer casting de un nuevo miembro",
-      "button": "Crear Nuevo Miembro"
+      "subPrompt": "Prueba a hacer casting de un nuevo miembro"
     },
     "addMember": "Nuevo Miembro",
     "abilities": {
