@@ -16,9 +16,9 @@ from sqlalchemy.orm import Session
 from aidol.schemas import (
     AIdol,
     AIdolCreate,
-    AIdolUpdate,
     AIdolLead,
     AIdolLeadCreate,
+    AIdolUpdate,
     Companion,
     CompanionCreate,
     CompanionUpdate,
@@ -63,8 +63,6 @@ class CompanionRepositoryProtocol(
     the exact interface that CompanionRouter uses. Inherits CRUD operations
     from CrudRepositoryProtocol.
     """
-
-
 
 
 class CompanionRepositoryFactoryProtocol(Protocol):

@@ -31,7 +31,7 @@ class LeadRouter(
 ):
     """
     Lead router.
-    
+
     Handles email collection.
     """
 
@@ -60,7 +60,9 @@ class LeadRouter(
         async def create_lead(
             request: AIdolLeadCreate,
             claim_token: Annotated[str | None, Header(alias="ClaimToken")] = None,
-            lead_repository: AIdolLeadRepositoryProtocol = Depends(self.get_repository_dep),
+            lead_repository: AIdolLeadRepositoryProtocol = Depends(
+                self.get_repository_dep
+            ),
             # Note: We need a new session for AIdol repo or reuse the one from lead_repository (if they share session factory logic)
             # BaseCrudRouter dependency injection flow creates a session.
             # Ideally we reuse the session. But BaseCrudRouter structure makes it hard to inject AIdolRepository sharing the same session easily without overriding get_repository_dep.
@@ -70,29 +72,37 @@ class LeadRouter(
         ):
             """Collect email."""
             email_saved = False
-            
+
             # 1. Try to associate with AIdol if token is present
             if claim_token:
                 # Create AIdol repo with new session
                 with self.db_session_factory() as session:
-                    aidol_repo = self.aidol_repository_factory.create_repository(session)
-                    
+                    aidol_repo = self.aidol_repository_factory.create_repository(
+                        session
+                    )
+
                     # Find AIdol by claim_token
                     # Assuming get_all supports filters
                     items, _ = aidol_repo.get_all(
-                        filters=[{"field": "claim_token", "operator": "eq", "value": claim_token}]
+                        filters=[
+                            {
+                                "field": "claim_token",
+                                "operator": "eq",
+                                "value": claim_token,
+                            }
+                        ]
                     )
-                    
+
                     if items:
                         aidol = items[0]
                         # Update AIdol email
                         aidol_repo.update(aidol.id, AIdolUpdate(email=request.email))
                         email_saved = True
-            
+
             # 2. If not saved as AIdol email, create Lead
             if not email_saved:
                 lead_repository.create(request)
-            
+
             return LeadResponse(email=request.email)
 
 
@@ -108,7 +118,7 @@ def create_lead_router(
     router = LeadRouter(
         model_class=AIdolLead,
         create_schema=AIdolLeadCreate,
-        update_schema=None, # Update not supported
+        update_schema=None,  # Update not supported
         db_session_factory=db_session_factory,
         repository_factory=lead_repository_factory,
         aidol_repository_factory=aidol_repository_factory,

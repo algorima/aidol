@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ImageGenerationResponse:
     """Structured response for compatibility (legacy)"""
+
     url: str | None = None
     revised_prompt: str | None = None
 
@@ -29,18 +30,22 @@ class ImageGenerationResponse:
 class ImageGenerationService:
     """Service for generating images using Google Gemini 3 (Imagen)."""
 
-    def __init__(self, api_key: str | None = None, settings=None):  # pylint: disable=unused-argument
+    def __init__(
+        self, api_key: str | None = None, settings=None
+    ):  # pylint: disable=unused-argument
         """
         Initialize the Image Generation service.
-        
+
         Args:
             api_key: Google API Key.
             settings: Unused, kept for compatibility.
         """
         if genai is None:
-             logger.error("google-genai package not found. Run 'poetry add google-genai'")
-             self.client = None
-             return
+            logger.error(
+                "google-genai package not found. Run 'poetry add google-genai'"
+            )
+            self.client = None
+            return
 
         # Use explicitly provided api_key, otherwise fallback to settings or env
         if api_key:
@@ -74,7 +79,7 @@ class ImageGenerationService:
 
         try:
             logger.info("Generating image with Gemini 3 (prompt: %s)...", prompt[:50])
-            
+
             response = self.client.models.generate_content(
                 model="gemini-3-pro-image-preview",
                 contents=[prompt],
@@ -87,7 +92,7 @@ class ImageGenerationService:
                     # Manually convert bytes to PIL Image to ensure it's a standard PIL object
                     # compatible with main.py's save(format="PNG") call.
                     return PIL.Image.open(BytesIO(part.inline_data.data))
-            
+
             logger.warning("No image data found in Gemini response.")
             return None
 
@@ -99,4 +104,3 @@ class ImageGenerationService:
     def generate_image(self, *args, **kwargs):  # pylint: disable=unused-argument
         """Deprecated: Use generate_and_download_image instead."""
         logger.warning("generate_image is deprecated for Gemini service.")
-

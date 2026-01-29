@@ -4,23 +4,25 @@ Companion service
 Business logic for Companion operations including grade and MBTI calculation.
 """
 
-from aidol.schemas.companion import (
-    Companion,
-    CompanionPublic,
-    CompanionStats,
-    Grade,
-)
+from aidol.schemas.companion import Companion, CompanionPublic, CompanionStats, Grade
 
 
 def calculate_grade(stats: CompanionStats) -> Grade:
     """Calculate grade based on stats average.
-    
+
     - A: 80-100
     - B: 60-79
     - C: 40-59
     - F: 0-39
     """
-    avg = (stats.vocal + stats.dance + stats.rap + stats.visual + stats.stamina + stats.charm) / 6
+    avg = (
+        stats.vocal
+        + stats.dance
+        + stats.rap
+        + stats.visual
+        + stats.stamina
+        + stats.charm
+    ) / 6
     if avg >= 80:
         return Grade.A
     if avg >= 60:
@@ -37,23 +39,23 @@ def calculate_mbti(
     lifestyle: int | None,
 ) -> str | None:
     """Calculate MBTI string from 4 dimension scores.
-    
+
     Each score is 1-10:
     - energy: 1-5 = E, 6-10 = I
     - perception: 1-5 = N, 6-10 = S
     - judgment: 1-5 = T, 6-10 = F
     - lifestyle: 1-5 = P, 6-10 = J
-    
+
     Returns None if any dimension is missing.
     """
     if any(v is None for v in (energy, perception, judgment, lifestyle)):
         return None
-    
+
     e_i = "E" if energy <= 5 else "I"
     n_s = "N" if perception <= 5 else "S"
     t_f = "T" if judgment <= 5 else "F"
     p_j = "P" if lifestyle <= 5 else "J"
-    
+
     return f"{e_i}{n_s}{t_f}{p_j}"
 
 
@@ -61,10 +63,10 @@ def to_companion_public(companion: Companion) -> CompanionPublic:
     """Convert Companion to CompanionPublic with calculated grade and mbti."""
     # Build stats object
     stats = companion.stats if companion.stats else CompanionStats()
-    
+
     # Calculate grade from stats
     grade = calculate_grade(stats)
-    
+
     # Calculate MBTI from 4 dimensions
     mbti = calculate_mbti(
         companion.mbti_energy,
@@ -72,7 +74,7 @@ def to_companion_public(companion: Companion) -> CompanionPublic:
         companion.mbti_judgment,
         companion.mbti_lifestyle,
     )
-    
+
     return CompanionPublic(
         id=companion.id,
         aidol_id=companion.aidol_id,

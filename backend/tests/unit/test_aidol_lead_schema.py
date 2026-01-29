@@ -35,10 +35,12 @@ class TestAIdolLeadCreateSchema(unittest.TestCase):
 
     def test_camel_case_alias_support(self):
         """camelCase 필드명도 인식해야 함"""
-        lead = AIdolLeadCreate.model_validate({
-            "aidolId": "test-aidol-id",
-            "email": "test@example.com",
-        })
+        lead = AIdolLeadCreate.model_validate(
+            {
+                "aidolId": "test-aidol-id",
+                "email": "test@example.com",
+            }
+        )
 
         self.assertEqual(lead.aidol_id, "test-aidol-id")
 

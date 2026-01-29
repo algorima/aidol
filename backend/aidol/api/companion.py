@@ -33,17 +33,11 @@ from aidol.services import ImageGenerationService
 from aidol.services.companion_service import to_companion_public
 
 
-
-
-
 class CompanionPaginatedResponse(BaseModel):
     """Paginated response for Companion (public)."""
 
     data: list[CompanionPublic]
     total: int
-
-
-
 
 
 class CompanionRouter(
@@ -96,18 +90,24 @@ class CompanionRouter(
         ):
             """List Companions with optional gender and isCast filters."""
             filter_list: list[dict] = []
-            
+
             # Add filters only if provided
             if gender is not None:
-                filter_list.append({"field": "gender", "operator": "eq", "value": gender.value})
-            
+                filter_list.append(
+                    {"field": "gender", "operator": "eq", "value": gender.value}
+                )
+
             # isCast is derived from aidol_id presence
             # isCast=true → aidol_id is not null (belongs to a group)
             # isCast=false → aidol_id is null (not in a group)
             if is_cast is True:
-                filter_list.append({"field": "aidol_id", "operator": "ne", "value": None})
+                filter_list.append(
+                    {"field": "aidol_id", "operator": "ne", "value": None}
+                )
             elif is_cast is False:
-                filter_list.append({"field": "aidol_id", "operator": "eq", "value": None})
+                filter_list.append(
+                    {"field": "aidol_id", "operator": "eq", "value": None}
+                )
 
             items, total = repository.get_all(
                 filters=filter_list if filter_list else None,
@@ -134,7 +134,7 @@ class CompanionRouter(
             # Exclude system_prompt from request - should not be set via API
             sanitized_data = request.model_dump(exclude={"system_prompt"})
             sanitized_request = CompanionCreate(**sanitized_data)
-            
+
             created = repository.create(sanitized_request)
             # Return created companion as public schema
             return to_companion_public(created)
@@ -161,7 +161,6 @@ class CompanionRouter(
             # Return companion as public schema
             return to_companion_public(companion)
 
-
     def _register_public_update_route(self) -> None:
         """PATCH /{resource_name}/{id} - Update Companion (public)"""
 
@@ -182,16 +181,18 @@ class CompanionRouter(
         ):
             """Update Companion."""
             # Exclude system_prompt from request - should not be set via API
-            sanitized_data = data.model_dump(exclude={"system_prompt"}, exclude_unset=True)
+            sanitized_data = data.model_dump(
+                exclude={"system_prompt"}, exclude_unset=True
+            )
             sanitized_request = CompanionUpdate(**sanitized_data)
-            
+
             updated = repository.update(item_id, sanitized_request)
             if not updated:
                 raise HTTPException(
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="Companion not found",
                 )
-            
+
             # Return updated companion as public schema
             return to_companion_public(updated)
 
@@ -215,18 +216,18 @@ class CompanionRouter(
             """Remove Companion from Group (Unassign)."""
             # Get item first
             self._get_item_or_404(repository, item_id)
-            
+
             # Update aidol_id to None (remove from group)
             update_data = CompanionUpdate(aidol_id=None)
-            
+
             updated = repository.update(item_id, update_data)
-            
+
             if not updated:
-                 raise HTTPException(
+                raise HTTPException(
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="Companion not found",
                 )
-            
+
             # Return updated companion as public schema
             return to_companion_public(updated)
 

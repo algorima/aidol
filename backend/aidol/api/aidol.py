@@ -32,9 +32,6 @@ from aidol.schemas import (
 from aidol.services import ImageGenerationService
 
 
-
-
-
 class AIdolCreateResponse(BaseModel):
     """Response for AIdol creation (only id)."""
 
@@ -90,11 +87,11 @@ class AIdolRouter(
             # TODO: Verify ClaimToken if strict ownership is required (Sprint 1)
             updated = repository.update(item_id, data)
             if not updated:
-                 raise HTTPException(
+                raise HTTPException(
                     status_code=status.HTTP_404_NOT_FOUND,
                     detail="AIdol group not found",
                 )
-            
+
             # Return updated AIdol as public schema
             return AIdolPublic(**updated.model_dump())
 
@@ -115,7 +112,7 @@ class AIdolRouter(
         ):
             """Create a new AIdol group."""
             created = repository.create(request)
-            
+
             # Set ClaimToken header
             if created.claim_token:
                 response.headers["ClaimToken"] = created.claim_token
