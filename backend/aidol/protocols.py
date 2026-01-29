@@ -11,6 +11,7 @@ from typing import Protocol
 
 import PIL.Image
 from aioia_core import CrudRepositoryProtocol
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from aidol.schemas import (
@@ -23,6 +24,10 @@ from aidol.schemas import (
     CompanionCreate,
     CompanionUpdate,
 )
+
+
+class NoUpdate(BaseModel):
+    """Placeholder for repositories without update support."""
 
 
 class AIdolRepositoryProtocol(
@@ -103,7 +108,7 @@ class ImageStorageProtocol(Protocol):
 
 
 class AIdolLeadRepositoryProtocol(
-    CrudRepositoryProtocol[AIdolLead, AIdolLeadCreate, None], Protocol
+    CrudRepositoryProtocol[AIdolLead, AIdolLeadCreate, NoUpdate], Protocol
 ):
     """Protocol defining AIdolLead repository expectations.
 

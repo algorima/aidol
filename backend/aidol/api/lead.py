@@ -16,6 +16,7 @@ from aidol.protocols import (
     AIdolLeadRepositoryFactoryProtocol,
     AIdolLeadRepositoryProtocol,
     AIdolRepositoryFactoryProtocol,
+    NoUpdate,
 )
 from aidol.schemas import AIdolLead, AIdolLeadCreate, AIdolUpdate
 
@@ -27,7 +28,7 @@ class LeadResponse(BaseModel):
 
 
 class LeadRouter(
-    BaseCrudRouter[AIdolLead, AIdolLeadCreate, None, AIdolLeadRepositoryProtocol]
+    BaseCrudRouter[AIdolLead, AIdolLeadCreate, NoUpdate, AIdolLeadRepositoryProtocol]
 ):
     """
     Lead router.
@@ -118,7 +119,7 @@ def create_lead_router(
     router = LeadRouter(
         model_class=AIdolLead,
         create_schema=AIdolLeadCreate,
-        update_schema=None,  # Update not supported
+        update_schema=NoUpdate,  # Update not supported
         db_session_factory=db_session_factory,
         repository_factory=lead_repository_factory,
         aidol_repository_factory=aidol_repository_factory,
