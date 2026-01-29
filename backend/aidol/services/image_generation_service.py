@@ -32,7 +32,7 @@ class ImageGenerationResponse:
 class ImageGenerationService:
     """Service for generating images using Google Gemini 3 (Imagen)."""
 
-    client: "genai.Client" | None = None
+    client: "genai.Client | None" = None
 
     def __init__(self, api_key: str | None = None, settings=None):
         """

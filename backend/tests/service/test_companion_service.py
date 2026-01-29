@@ -5,7 +5,7 @@ Unit tests for Companion Service business logic.
 import unittest
 from datetime import datetime
 
-from aidol.schemas.companion import Companion, CompanionStats, Grade
+from aidol.schemas.companion import Companion, CompanionStats, Grade, Gender, Position
 from aidol.services.companion_service import (
     calculate_grade,
     calculate_mbti,
@@ -99,10 +99,10 @@ class TestCompanionService(unittest.TestCase):
             id="test-id",
             aidol_id="group-id",
             name="Test Member",
-            gender="female",
+            gender=Gender.FEMALE,
             biography="Bio",
             profile_picture_url="http://url",
-            position="mainVocal",
+            position=Position.MAIN_VOCAL,
             created_at=datetime.now(),
             updated_at=datetime.now(),
             # Stats for Grade B (70)
