@@ -4,6 +4,8 @@ Image generation service for AIdol
 Generates images using OpenAI DALL-E 3 for AIdol emblems and Companion profiles.
 """
 
+from __future__ import annotations
+
 import logging
 from dataclasses import dataclass
 from io import BytesIO
