@@ -1,3 +1,4 @@
+# pylint: disable=R0801
 """
 Companion API router
 
@@ -8,9 +9,9 @@ Public access pattern: no authentication required.
 from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
-from aioia_core.settings import JWTSettings, OpenAIAPISettings
-from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
-from pydantic import BaseModel, ConfigDict, Field
+from aioia_core.settings import JWTSettings
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
 from aidol.protocols import (
@@ -22,7 +23,6 @@ from aidol.schemas import (
     Companion,
     CompanionCreate,
     CompanionPublic,
-    CompanionStats,
     CompanionUpdate,
     Gender,
     ImageGenerationData,
@@ -214,7 +214,7 @@ class CompanionRouter(
         ):
             """Remove Companion from Group (Unassign)."""
             # Get item first
-            companion = self._get_item_or_404(repository, item_id)
+            self._get_item_or_404(repository, item_id)
             
             # Update aidol_id to None (remove from group)
             update_data = CompanionUpdate(aidol_id=None)
