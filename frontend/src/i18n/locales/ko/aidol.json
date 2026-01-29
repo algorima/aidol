@@ -3,7 +3,7 @@
     "close": "닫기"
   },
   "casting": {
-    "title": "캐스팅",
+    "title": "데뷔 멤버 캐스팅",
     "infoBanner": {
       "title": "연습생을 캐스팅해보세요",
       "description": "본 콘텐츠의 아이돌 캐릭터(얼굴·음성·영상)는 AI로 제작된 오리지널 가상 인물이며, 실존 인물(아이돌/연예인 포함)을 기반으로 하지 않습니다."
@@ -18,7 +18,7 @@
       "subPrompt": "신규 멤버를 캐스팅해 보세요",
       "button": "새 멤버 만들기"
     },
-    "addMember": "새 멤버",
+    "addMember": "신규 멤버",
     "abilities": {
       "title": "능력치",
       "vocal": "보컬",
