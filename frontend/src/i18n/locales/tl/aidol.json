@@ -14,7 +14,20 @@
       "prompt": "Walang trainee na gusto mo?",
       "button": "Gumawa ng Bagong Miyembro"
     },
-    "addMember": "Bagong Miyembro"
+    "addMember": "Bagong Miyembro",
+    "abilities": {
+      "title": "Kakayahan",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "visual": "Visual",
+      "acting": "Acting",
+      "rap": "Rap"
+    },
+    "castButton": "I-cast",
+    "castComplete": {
+      "title": "Tapos na ang Casting!",
+      "description": "Sumali na ang trainee sa grupo"
+    }
   },
   "share": "I-share",
   "urlCopied": "Nakopya ang URL!",

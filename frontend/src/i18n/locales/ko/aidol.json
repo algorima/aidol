@@ -14,7 +14,20 @@
       "prompt": "마음에 드는 연습생이 없으신가요?",
       "button": "새 멤버 만들기"
     },
-    "addMember": "새 멤버"
+    "addMember": "새 멤버",
+    "abilities": {
+      "title": "능력치",
+      "vocal": "보컬",
+      "dance": "댄스",
+      "visual": "비주얼",
+      "acting": "연기",
+      "rap": "랩"
+    },
+    "castButton": "캐스팅하기",
+    "castComplete": {
+      "title": "캐스팅 완료!",
+      "description": "연습생이 그룹에 합류했습니다"
+    }
   },
   "share": "공유",
   "urlCopied": "URL이 복사되었습니다!",

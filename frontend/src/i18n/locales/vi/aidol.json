@@ -14,7 +14,20 @@
       "prompt": "Không tìm thấy thực tập sinh yêu thích?",
       "button": "Tạo Thành Viên Mới"
     },
-    "addMember": "Thành Viên Mới"
+    "addMember": "Thành Viên Mới",
+    "abilities": {
+      "title": "Năng lực",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "visual": "Visual",
+      "acting": "Diễn xuất",
+      "rap": "Rap"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "Casting Hoàn Tất!",
+      "description": "Thực tập sinh đã gia nhập nhóm"
+    }
   },
   "share": "Chia sẻ",
   "urlCopied": "Đã sao chép URL!",

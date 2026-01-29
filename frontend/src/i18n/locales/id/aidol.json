@@ -14,7 +14,20 @@
       "prompt": "Tidak ada trainee yang kamu suka?",
       "button": "Buat Anggota Baru"
     },
-    "addMember": "Anggota Baru"
+    "addMember": "Anggota Baru",
+    "abilities": {
+      "title": "Kemampuan",
+      "vocal": "Vokal",
+      "dance": "Dance",
+      "visual": "Visual",
+      "acting": "Akting",
+      "rap": "Rap"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "Casting Selesai!",
+      "description": "Trainee telah bergabung dengan grup"
+    }
   },
   "share": "Bagikan",
   "urlCopied": "URL disalin!",

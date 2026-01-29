@@ -1,3 +1,4 @@
+export { AbilityChart } from "./AbilityChart";
 export { AddMemberButton } from "./AddMemberButton";
 export { Card } from "./Card";
 export { ProfileContent } from "./ProfileContent";

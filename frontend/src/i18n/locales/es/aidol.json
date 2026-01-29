@@ -14,7 +14,20 @@
       "prompt": "¿No encuentras un aprendiz que te guste?",
       "button": "Crear Nuevo Miembro"
     },
-    "addMember": "Nuevo Miembro"
+    "addMember": "Nuevo Miembro",
+    "abilities": {
+      "title": "Habilidades",
+      "vocal": "Vocal",
+      "dance": "Baile",
+      "visual": "Visual",
+      "acting": "Actuación",
+      "rap": "Rap"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "¡Casting Completo!",
+      "description": "El aprendiz se ha unido al grupo"
+    }
   },
   "share": "Compartir",
   "urlCopied": "¡URL copiada!",

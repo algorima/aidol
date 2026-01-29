@@ -14,7 +14,20 @@
       "prompt": "ไม่มีเทรนนี่ที่ถูกใจเหรอ?",
       "button": "สร้างสมาชิกใหม่"
     },
-    "addMember": "สมาชิกใหม่"
+    "addMember": "สมาชิกใหม่",
+    "abilities": {
+      "title": "ความสามารถ",
+      "vocal": "ร้อง",
+      "dance": "เต้น",
+      "visual": "วิชวล",
+      "acting": "การแสดง",
+      "rap": "แร็พ"
+    },
+    "castButton": "แคสติ้ง",
+    "castComplete": {
+      "title": "แคสติ้งสำเร็จ!",
+      "description": "เทรนนี่ได้เข้าร่วมกลุ่มแล้ว"
+    }
   },
   "share": "แชร์",
   "urlCopied": "คัดลอก URL แล้ว!",

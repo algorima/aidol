@@ -14,7 +14,20 @@
       "prompt": "没有喜欢的练习生吗？",
       "button": "创建新成员"
     },
-    "addMember": "新成员"
+    "addMember": "新成员",
+    "abilities": {
+      "title": "能力值",
+      "vocal": "声乐",
+      "dance": "舞蹈",
+      "visual": "颜值",
+      "acting": "演技",
+      "rap": "说唱"
+    },
+    "castButton": "选秀",
+    "castComplete": {
+      "title": "选秀完成！",
+      "description": "练习生已加入组合"
+    }
   },
   "share": "分享",
   "urlCopied": "URL已复制！",

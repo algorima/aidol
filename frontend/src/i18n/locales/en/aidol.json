@@ -14,7 +14,20 @@
       "prompt": "Can't find a trainee you like?",
       "button": "Create New Member"
     },
-    "addMember": "New Member"
+    "addMember": "New Member",
+    "abilities": {
+      "title": "Abilities",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "visual": "Visual",
+      "acting": "Acting",
+      "rap": "Rap"
+    },
+    "castButton": "Cast",
+    "castComplete": {
+      "title": "Casting Complete!",
+      "description": "The trainee has joined the group"
+    }
   },
   "share": "Share",
   "urlCopied": "URL copied!",

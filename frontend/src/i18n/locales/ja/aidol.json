@@ -14,7 +14,20 @@
       "prompt": "お気に入りの練習生がいませんか？",
       "button": "新しいメンバーを作る"
     },
-    "addMember": "新メンバー"
+    "addMember": "新メンバー",
+    "abilities": {
+      "title": "能力値",
+      "vocal": "ボーカル",
+      "dance": "ダンス",
+      "visual": "ビジュアル",
+      "acting": "演技",
+      "rap": "ラップ"
+    },
+    "castButton": "キャスティング",
+    "castComplete": {
+      "title": "キャスティング完了！",
+      "description": "練習生がグループに合流しました"
+    }
   },
   "share": "共有",
   "urlCopied": "URLがコピーされました！",
