@@ -16,7 +16,6 @@ from aidol.protocols import (
     AIdolLeadRepositoryFactoryProtocol,
     AIdolLeadRepositoryProtocol,
     AIdolRepositoryFactoryProtocol,
-    AIdolRepositoryProtocol,
 )
 from aidol.schemas import AIdolLead, AIdolLeadCreate, AIdolUpdate
 
