@@ -9,7 +9,7 @@ interface ProfileProps {
 }
 
 const SIZE_CLASSES = {
-  default: "size-image-lg",
+  default: "size-profile",
   profile: "size-full",
 };
 
