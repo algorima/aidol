@@ -26,6 +26,18 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
         isClickable && "cursor-pointer",
       )}
       onClick={isClickable ? onClick : undefined}
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onKeyDown={
+        isClickable
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
     >
       {/* 1. 배경 이미지 */}
       <div className="absolute inset-0">
