@@ -54,12 +54,22 @@ def _convert_db_companion_to_model(db_companion: DBCompanion) -> Companion:
     )
 
 
-def _convert_companion_create_to_db(schema: CompanionCreate) -> dict:
-    """Convert CompanionCreate schema to DB model data dict.
+def _convert_companion_schema_to_db(
+    schema: CompanionCreate | CompanionUpdate,
+) -> dict:
+    """Convert CompanionCreate/Update schema to DB model data dict.
 
+    Decomposes nested stats object into individual DB columns.
     Includes system_prompt for AI configuration.
     """
-    return schema.model_dump(exclude_unset=True)
+    data = schema.model_dump(exclude_unset=True, exclude={"stats"})
+
+    # Decompose stats into individual columns
+    if schema.stats is not None:
+        stats_dict = schema.stats.model_dump()
+        data.update(stats_dict)
+
+    return data
 
 
 class CompanionRepository(
@@ -76,5 +86,5 @@ class CompanionRepository(
             db_session=db_session,
             db_model=DBCompanion,
             convert_to_model=_convert_db_companion_to_model,
-            convert_to_db_model=_convert_companion_create_to_db,
+            convert_to_db_model=_convert_companion_schema_to_db,
         )
