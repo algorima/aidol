@@ -116,6 +116,52 @@
     "completeDescription": "Mag-chat na sa iyong dream idol ngayon",
     "viewProfile": "Tingnan ang Profile"
   },
+  "common": {
+    "close": "Isara"
+  },
+  "companionCreate": {
+    "title": "Casting ng Debut Member",
+    "next": "Susunod",
+    "gender": {
+      "stepTitle": "Pumili ng kasarian",
+      "female": "Babae",
+      "male": "Lalaki"
+    },
+    "personality": {
+      "stepTitle": "Sabihin ang personalidad",
+      "energy": "Direksyon ng Enerhiya",
+      "energyLeft": "Extrovert (E)",
+      "energyRight": "Introvert (I)",
+      "perception": "Estilo ng Persepsyon",
+      "perceptionLeft": "Sensing (S)",
+      "perceptionRight": "Intuisyon (N)",
+      "judgment": "Batayan ng Paghatol",
+      "judgmentLeft": "Pag-iisip (T)",
+      "judgmentRight": "Damdamin (F)",
+      "lifestyle": "Estilo ng Buhay",
+      "lifestyleLeft": "Paghusga (J)",
+      "lifestyleRight": "Pang-unawa (P)"
+    },
+    "image": {
+      "stepTitle": "Gumawa tayo ng profile photo!",
+      "promptPlaceholder": "hal) Batang babae na may itim na buhok at malaking mata",
+      "generate": "Gumawa ng Larawan",
+      "regenerate": "Gumawa Ulit ng Larawan",
+      "placeholder": "Ang ginawang\nprofile na larawan\nay lalabas dito"
+    },
+    "complete": {
+      "nameStepTitle": "Ano ang pangalan?",
+      "bioStepTitle": "Sabihin ang kwento ng idol na ito",
+      "namePlaceholder": "Maglagay ng pangalan",
+      "bioPlaceholder": "Anong paglalakbay ang naranasan?",
+      "button": "Kumpletuhin ang Casting"
+    },
+    "castingComplete": {
+      "title": "Casting Kumpleto!",
+      "description": "Sumali ang bagong miyembro",
+      "viewCasting": "Tingnan ang Casting Board"
+    }
+  },
   "landing": {
     "hero": {
       "title": {

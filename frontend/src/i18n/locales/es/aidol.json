@@ -116,6 +116,52 @@
     "completeDescription": "Empieza a chatear con tu idol soñado ahora",
     "viewProfile": "Ver Perfil"
   },
+  "common": {
+    "close": "Cerrar"
+  },
+  "companionCreate": {
+    "title": "Casting de Miembro Debut",
+    "next": "Siguiente",
+    "gender": {
+      "stepTitle": "Elige un género",
+      "female": "Femenino",
+      "male": "Masculino"
+    },
+    "personality": {
+      "stepTitle": "Cuéntanos sobre la personalidad",
+      "energy": "Dirección de Energía",
+      "energyLeft": "Extrovertido (E)",
+      "energyRight": "Introvertido (I)",
+      "perception": "Estilo de Percepción",
+      "perceptionLeft": "Sensorial (S)",
+      "perceptionRight": "Intuitivo (N)",
+      "judgment": "Base de Juicio",
+      "judgmentLeft": "Pensamiento (T)",
+      "judgmentRight": "Sentimiento (F)",
+      "lifestyle": "Estilo de Vida",
+      "lifestyleLeft": "Juicio (J)",
+      "lifestyleRight": "Percepción (P)"
+    },
+    "image": {
+      "stepTitle": "¡Vamos a crear una foto de perfil!",
+      "promptPlaceholder": "ej.) Una chica con pelo negro y ojos grandes",
+      "generate": "Generar Imagen",
+      "regenerate": "Regenerar Imagen",
+      "placeholder": "La imagen de perfil\ngenerada aparecerá\naquí"
+    },
+    "complete": {
+      "nameStepTitle": "¿Cuál es el nombre?",
+      "bioStepTitle": "Cuéntanos la historia de este idol",
+      "namePlaceholder": "Ingresa un nombre",
+      "bioPlaceholder": "¿Qué camino ha recorrido?",
+      "button": "Completar Casting"
+    },
+    "castingComplete": {
+      "title": "¡Casting Completo!",
+      "description": "Un nuevo miembro se ha unido",
+      "viewCasting": "Ver Tablero de Casting"
+    }
+  },
   "landing": {
     "hero": {
       "title": {
