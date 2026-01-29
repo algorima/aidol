@@ -11,7 +11,6 @@ interface MockCompanion extends Companion {
 }
 
 export const mockCompanions: MockCompanion[] = [
-  // ── Male companions (15) ──
   {
     id: "m-01",
     name: "민준",
@@ -240,7 +239,6 @@ export const mockCompanions: MockCompanion[] = [
     updatedAt: now,
   },
 
-  // ── Female companions (15) ──
   {
     id: "f-01",
     name: "서연",

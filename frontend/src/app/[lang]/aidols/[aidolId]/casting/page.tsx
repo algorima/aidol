@@ -51,7 +51,6 @@ export default function CastingPage() {
   };
 
   const handleCast = () => {
-    // TODO: API 연동 - PATCH /companions/{companionId} { aidolId }
     setIsProfileOpen(false);
     setIsCastCompleteOpen(true);
   };
@@ -62,8 +61,7 @@ export default function CastingPage() {
   };
 
   const handleNewMember = () => {
-    // TODO: POST /companions 후 응답의 companionId로 이동
-    // router.push(`/aidols/${aidolId}/companions/${companionId}/gender`);
+    // noop: API 연동 후 구현
   };
 
   return (
@@ -91,7 +89,6 @@ export default function CastingPage() {
         />
       </div>
 
-      {/* 프로필 모달 (능력치 차트 + 캐스팅 버튼) */}
       {selectedCompanion && (
         <Modal
           isOpen={isProfileOpen}
@@ -107,7 +104,6 @@ export default function CastingPage() {
         </Modal>
       )}
 
-      {/* 캐스팅 완료 모달 */}
       <Modal
         isOpen={isCastCompleteOpen}
         onClose={() => setIsCastCompleteOpen(false)}
