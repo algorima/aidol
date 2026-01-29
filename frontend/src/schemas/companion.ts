@@ -8,6 +8,14 @@ import { z } from "zod";
 
 export type Gender = "male" | "female";
 
+export interface CompanionAbilities {
+  vocal: number;
+  dance: number;
+  visual: number;
+  acting: number;
+  rap: number;
+}
+
 /**
  * Companion schema (public fields only, excludes system_prompt)
  */

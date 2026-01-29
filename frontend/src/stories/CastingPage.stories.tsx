@@ -28,7 +28,7 @@ function CastingPageFull() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const gender = TAB_TO_GENDER[activeTab];
-  const companions = getMockCompanions(gender);
+  const companions = getMockCompanions({ gender });
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">

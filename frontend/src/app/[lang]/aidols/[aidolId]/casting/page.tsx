@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -23,6 +24,7 @@ const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
 
 export default function CastingPage() {
   const { t } = useTranslation();
+  const { aidolId: _aidolId } = useParams<{ aidolId: string }>();
   const [activeTab, setActiveTab] = useState<GenderTab>("boy");
   const [selectedCompanion, setSelectedCompanion] = useState<Companion | null>(
     null,
@@ -30,7 +32,7 @@ export default function CastingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const gender = TAB_TO_GENDER[activeTab];
-  const companions = getMockCompanions(gender);
+  const companions = getMockCompanions({ gender });
 
   const handleCompanionClick = (companion: Companion) => {
     setSelectedCompanion(companion);
@@ -38,7 +40,7 @@ export default function CastingPage() {
   };
 
   const handleNewMember = () => {
-    // Sprint 2: navigate to create page
+    // TODO: POST /companions → /aidols/{aidolId}/companions/{companionId}/gender
   };
 
   return (
