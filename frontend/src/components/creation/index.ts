@@ -1,4 +1,7 @@
+export { BiographyInput } from "./BiographyInput";
+export { CastingCompleteModal } from "./CastingCompleteModal";
 export { CompanionCreateLayout } from "./CompanionCreateLayout";
+export { CompanionNameInput } from "./CompanionNameInput";
 export { ConceptSelector } from "./ConceptSelector";
 export { GenderSelector } from "./GenderSelector";
 export { EmblemGenerator } from "./EmblemGenerator";
