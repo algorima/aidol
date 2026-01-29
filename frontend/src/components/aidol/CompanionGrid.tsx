@@ -22,7 +22,7 @@ export function CompanionGrid({
 
   return (
     <div className="mt-8">
-      <h2 className="mb-4 text-title-l font-semibold">
+      <h2 className="text-title-l mb-4 font-semibold">
         {t("aidol:aidol.members")}
       </h2>
       {companions && companions.length > 0 ? (
@@ -36,7 +36,7 @@ export function CompanionGrid({
           ))}
         </div>
       ) : (
-        <p className="text-center text-base-content/50">
+        <p className="text-base-content/50 text-center">
           {t("aidol:aidol.noMembers")}
         </p>
       )}

@@ -34,23 +34,23 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="hero min-h-screen bg-gradient-to-b from-base-200 to-primary pt-20">
+    <div className="hero from-base-200 to-primary min-h-screen bg-gradient-to-b pt-20">
       <motion.div
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="hero-content flex-col gap-12 text-center text-base-content"
+        className="hero-content text-base-content flex-col gap-12 text-center"
       >
         <div className="max-w-3xl">
           <motion.h1
             variants={fadeInUp}
-            className="mb-4 text-display-m md:text-display-l"
+            className="text-display-m md:text-display-l mb-4"
           >
             {t("aidol:landing.hero.title")}
           </motion.h1>
           <motion.p
             variants={fadeInUp}
-            className="mx-auto mt-6 max-w-xl text-body-l text-neutral-content"
+            className="text-body-l text-neutral-content mx-auto mt-6 max-w-xl"
           >
             {t("aidol:landing.hero.description")}
           </motion.p>

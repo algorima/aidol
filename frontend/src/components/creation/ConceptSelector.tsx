@@ -23,15 +23,11 @@ export const ConceptSelector = forwardRef<
   const { t } = useTranslation();
 
   return (
-    <div className="form-control w-full">
-      <label className="label">
-        <span className="label-text text-base-content">
-          {t("aidol:creation.concept")}
-        </span>
-      </label>
+    <fieldset className="fieldset w-full">
+      <label className="label">{t("aidol:creation.concept")}</label>
       <select
         ref={ref}
-        className="select select-bordered w-full bg-base-100 text-base-content"
+        className="select bg-base-100 text-base-content w-full"
         {...props}
       >
         <option value="">{t("aidol:creation.selectConcept")}</option>
@@ -41,7 +37,7 @@ export const ConceptSelector = forwardRef<
           </option>
         ))}
       </select>
-    </div>
+    </fieldset>
   );
 });
 

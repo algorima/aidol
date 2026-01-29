@@ -14,7 +14,7 @@ export function Card({ companion, onClick }: CardProps) {
   return (
     <div
       onClick={onClick}
-      className="card cursor-pointer bg-base-200 p-4 transition-shadow hover:shadow-lg"
+      className="card bg-base-200 cursor-pointer p-4 transition-shadow hover:shadow-lg"
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={
@@ -35,11 +35,11 @@ export function Card({ companion, onClick }: CardProps) {
           size="md"
         />
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-title-m font-semibold text-base-content">
+          <h3 className="text-title-m text-base-content truncate font-semibold">
             {companion.name}
           </h3>
           {companion.biography && (
-            <p className="mt-1 line-clamp-2 text-body-s text-base-content/70">
+            <p className="text-body-s text-base-content/70 mt-1 line-clamp-2">
               {companion.biography}
             </p>
           )}

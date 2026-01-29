@@ -16,7 +16,7 @@ interface GroupHeaderProps {
 export function GroupHeader({ aidol }: GroupHeaderProps) {
   return (
     <div className="flex flex-col items-center gap-4 py-8 text-center">
-      <div className="relative size-32 overflow-hidden rounded-full bg-base-200">
+      <div className="bg-base-200 relative size-32 overflow-hidden rounded-full">
         {aidol.profileImageUrl ? (
           <Image
             src={aidol.profileImageUrl}
@@ -25,17 +25,17 @@ export function GroupHeader({ aidol }: GroupHeaderProps) {
             className="object-cover"
           />
         ) : (
-          <div className="flex size-full items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-            <UserGroupIcon className="size-16 text-base-content/50" />
+          <div className="from-primary/20 to-secondary/20 flex size-full items-center justify-center bg-gradient-to-br">
+            <UserGroupIcon className="text-base-content/50 size-16" />
           </div>
         )}
       </div>
       <div>
-        <h1 className="text-display-s font-bold text-base-content">
+        <h1 className="text-display-s text-base-content font-bold">
           {aidol.name}
         </h1>
         {aidol.concept && (
-          <p className="mt-2 text-body-l text-base-content/70">
+          <p className="text-body-l text-base-content/70 mt-2">
             {aidol.concept}
           </p>
         )}
