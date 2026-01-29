@@ -24,22 +24,18 @@ const staggerContainer: Variants = {
   },
 };
 
-// 수정 필요
-const DEFAULT_HERO_IMAGE = "/images/hero.png";
-
 interface HeroSectionProps {
   onGetStarted: () => void;
-  heroImageUrl?: string;
 }
 
 /**
  * Hero section for AIdol landing page.
  */
-export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
+export function HeroSection({ onGetStarted }: HeroSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <section className="flex min-h-screen w-full flex-col items-center bg-base-100 px-6 pb-8 pt-12">
+    <section className="bg-base-100 flex min-h-screen w-full flex-col items-center px-6 pt-12 pb-8">
       <motion.div
         variants={staggerContainer}
         initial="initial"
@@ -56,7 +52,7 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
           />
         </motion.div>
 
-        <motion.h1 variants={fadeInUp} className="mb-3 text-display-s">
+        <motion.h1 variants={fadeInUp} className="text-display-s mb-3">
           {t("aidol:landing.hero.title.line1")}
           <br />
           {t("aidol:landing.hero.title.line2")}
@@ -64,31 +60,27 @@ export function HeroSection({ onGetStarted, heroImageUrl }: HeroSectionProps) {
 
         <motion.div
           variants={fadeInUp}
-          className="mb-8 flex flex-col text-headline-s text-base-content"
+          className="text-headline-s text-base-content mb-8 flex flex-col"
         >
-          <p className="font-normal">{t("aidol:landing.hero.line1")}</p>
-          <p className="font-normal">{t("aidol:landing.hero.line2")}</p>
+          <p className="text-neutral font-normal">
+            {t("aidol:landing.hero.line1")}
+          </p>
+          <p className="text-neutral font-normal">
+            {t("aidol:landing.hero.line2")}
+          </p>
           <p>{t("aidol:landing.hero.line3")}</p>
           <p>{t("aidol:landing.hero.line4")}</p>
         </motion.div>
 
         <motion.div
           variants={fadeInUp}
-          className="relative mb-6 aspect-[345/368] w-full overflow-hidden rounded-lg"
-        >
-          <Image
-            src={heroImageUrl ?? DEFAULT_HERO_IMAGE}
-            alt="AI Idol"
-            fill
-            className="object-cover"
-            priority
-          />
-        </motion.div>
+          className="bg-base-200 relative mb-6 aspect-[345/368] w-full overflow-hidden rounded-lg"
+        />
 
         <motion.div variants={fadeInUp} className="w-full">
           <button
             onClick={onGetStarted}
-            className="btn btn-primary min-h-[52px] w-full rounded-lg text-title-s"
+            className="btn btn-primary btn-lg text-label-l w-full rounded-lg p-4"
           >
             {t("aidol:landing.hero.cta")}
           </button>
