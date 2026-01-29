@@ -9,7 +9,7 @@ from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings, OpenAIAPISettings
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
@@ -30,10 +30,13 @@ from aidol.schemas import (
 from aidol.services import ImageGenerationService
 
 
-class AIdolSingleItemResponse(BaseModel):
-    """Single item response for AIdol (public)."""
 
-    data: AIdolPublic
+
+
+class AIdolCreateResponse(BaseModel):
+    """Response for AIdol creation (only id)."""
+
+    id: str
 
 
 class AIdolRouter(
@@ -48,12 +51,12 @@ class AIdolRouter(
 
     def __init__(
         self,
-        openai_settings: OpenAIAPISettings,
+        google_api_key: str | None,
         image_storage: ImageStorageProtocol,
         **kwargs,
     ):
         super().__init__(**kwargs)
-        self.openai_settings = openai_settings
+        self.google_api_key = google_api_key
         self.image_storage = image_storage
 
     def _register_routes(self) -> None:
@@ -61,36 +64,72 @@ class AIdolRouter(
         self._register_image_generation_route()
         self._register_public_create_route()
         self._register_public_get_route()
+        self._register_public_update_route()
+
+    def _register_public_update_route(self) -> None:
+        """PATCH /{resource_name}/{id} - Update AIdol group (public)"""
+
+        @self.router.patch(
+            f"/{self.resource_name}/{{item_id}}",
+            response_model=AIdolPublic,
+            status_code=status.HTTP_200_OK,
+            summary="Update AIdol group",
+            description="Update AIdol group by ID (public endpoint). Returns updated AIdol data directly.",
+            responses={
+                404: {"model": ErrorResponse, "description": "AIdol group not found"},
+            },
+        )
+        async def update_aidol(
+            item_id: str,
+            data: AIdolUpdate,
+            repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
+        ):
+            """Update AIdol group."""
+            # TODO: Verify ClaimToken if strict ownership is required (Sprint 1)
+            updated = repository.update(item_id, data)
+            if not updated:
+                 raise HTTPException(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    detail="AIdol group not found",
+                )
+            
+            # Return updated AIdol as public schema
+            return AIdolPublic(**updated.model_dump())
 
     def _register_public_create_route(self) -> None:
         """POST /{resource_name} - Create an AIdol group (public)"""
 
         @self.router.post(
             f"/{self.resource_name}",
-            response_model=AIdolSingleItemResponse,
+            response_model=AIdolCreateResponse,
             status_code=status.HTTP_201_CREATED,
             summary="Create AIdol group",
-            description="Create a new AIdol group (public endpoint)",
+            description="Create a new AIdol group (public endpoint). Returns only the created id.",
         )
         async def create_aidol(
             request: AIdolCreate,
+            response: Response,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
             created = repository.create(request)
-            # Convert to Public schema (exclude claim_token)
-            public_aidol = AIdolPublic(**created.model_dump())
-            return AIdolSingleItemResponse(data=public_aidol)
+            
+            # Set ClaimToken header
+            if created.claim_token:
+                response.headers["ClaimToken"] = created.claim_token
+
+            # Return only id
+            return AIdolCreateResponse(id=created.id)
 
     def _register_public_get_route(self) -> None:
         """GET /{resource_name}/{id} - Get an AIdol group (public)"""
 
         @self.router.get(
             f"/{self.resource_name}/{{item_id}}",
-            response_model=AIdolSingleItemResponse,
+            response_model=AIdolPublic,
             status_code=status.HTTP_200_OK,
             summary="Get AIdol group",
-            description="Get AIdol group by ID (public endpoint)",
+            description="Get AIdol group by ID (public endpoint). Returns AIdol data directly.",
             responses={
                 404: {"model": ErrorResponse, "description": "AIdol group not found"},
             },
@@ -101,9 +140,8 @@ class AIdolRouter(
         ):
             """Get AIdol group by ID."""
             aidol = self._get_item_or_404(repository, item_id)
-            # Convert to Public schema (exclude claim_token)
-            public_aidol = AIdolPublic(**aidol.model_dump())
-            return AIdolSingleItemResponse(data=public_aidol)
+            # Return AIdol as public schema
+            return AIdolPublic(**aidol.model_dump())
 
     def _register_image_generation_route(self) -> None:
         """POST /{resource_name}/images - Generate image for AIdol or Companion"""
@@ -121,7 +159,7 @@ class AIdolRouter(
         async def generate_image(request: ImageGenerationRequest):
             """Generate image from prompt."""
             # Generate and download image (TTS pattern: service returns data)
-            service = ImageGenerationService(self.openai_settings)
+            service = ImageGenerationService(api_key=self.google_api_key)
             image = service.generate_and_download_image(
                 prompt=request.prompt,
                 size="1024x1024",
@@ -148,7 +186,7 @@ class AIdolRouter(
 
 
 def create_aidol_router(
-    openai_settings: OpenAIAPISettings,
+    google_api_key: str | None,
     db_session_factory: sessionmaker,
     repository_factory: AIdolRepositoryFactoryProtocol,
     image_storage: ImageStorageProtocol,
@@ -161,7 +199,7 @@ def create_aidol_router(
     Create AIdol router with dependency injection.
 
     Args:
-        openai_settings: OpenAI API settings for image generation
+        google_api_key: Google API Key for image generation
         db_session_factory: Database session factory
         repository_factory: Factory implementing AIdolRepositoryFactoryProtocol
         image_storage: Image storage for permanent URLs
@@ -174,7 +212,7 @@ def create_aidol_router(
         FastAPI APIRouter instance
     """
     router = AIdolRouter(
-        openai_settings=openai_settings,
+        google_api_key=google_api_key,
         image_storage=image_storage,
         model_class=AIdol,
         create_schema=AIdolCreate,
