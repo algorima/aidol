@@ -3,6 +3,18 @@
 @plugin "@tailwindcss/typography";
 @plugin "daisyui";
 
+@layer utilities {
+  /* 스크롤바 숨기기 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;

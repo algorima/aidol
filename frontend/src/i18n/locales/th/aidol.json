@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "ปิด"
+  },
   "share": "แชร์",
   "urlCopied": "คัดลอก URL แล้ว!",
   "companion": {

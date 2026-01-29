@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "关闭"
+  },
   "share": "分享",
   "urlCopied": "URL已复制！",
   "companion": {

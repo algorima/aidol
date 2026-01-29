@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "Isara"
+  },
   "share": "I-share",
   "urlCopied": "Nakopya ang URL!",
   "companion": {

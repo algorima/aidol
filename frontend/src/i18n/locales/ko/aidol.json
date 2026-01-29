@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "닫기"
+  },
   "share": "공유",
   "urlCopied": "URL이 복사되었습니다!",
   "companion": {

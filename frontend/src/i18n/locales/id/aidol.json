@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "Tutup"
+  },
   "share": "Bagikan",
   "urlCopied": "URL disalin!",
   "companion": {

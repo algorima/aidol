@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "Close"
+  },
   "share": "Share",
   "urlCopied": "URL copied!",
   "companion": {
