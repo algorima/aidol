@@ -1,6 +1,5 @@
-import clsx from "clsx";
-
 import type { Meta, StoryObj } from "@storybook/react";
+import clsx from "clsx";
 import { useState } from "react";
 
 import { StepCard } from "@/components/creation/StepCard";
