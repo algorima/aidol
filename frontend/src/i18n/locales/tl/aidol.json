@@ -4,7 +4,10 @@
   },
   "casting": {
     "title": "Casting",
-    "infoBanner": "Pumili ng trainee na gusto mo",
+    "infoBanner": {
+      "title": "I-cast ang iyong mga trainee",
+      "description": "Ang mga idol character (mukha, boses, video) sa content na ito ay orihinal na virtual character na ginawa ng AI at hindi batay sa totoong tao, kabilang ang mga idol at celebrity."
+    },
     "tabs": {
       "boy": "Boy Group",
       "girl": "Girl Group",
@@ -12,6 +15,7 @@
     },
     "newMember": {
       "prompt": "Walang trainee na gusto mo?",
+      "subPrompt": "Subukan mag-cast ng bagong miyembro",
       "button": "Gumawa ng Bagong Miyembro"
     },
     "addMember": "Bagong Miyembro",

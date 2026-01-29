@@ -4,7 +4,10 @@
   },
   "casting": {
     "title": "Casting",
-    "infoBanner": "Elige al aprendiz que te guste",
+    "infoBanner": {
+      "title": "Haz casting a tus aprendices",
+      "description": "Los personajes idol (rostro, voz, video) de este contenido son personajes virtuales originales creados por IA y no están basados en personas reales, incluidos idols y celebridades."
+    },
     "tabs": {
       "boy": "Grupo de Chicos",
       "girl": "Grupo de Chicas",
@@ -12,6 +15,7 @@
     },
     "newMember": {
       "prompt": "¿No encuentras un aprendiz que te guste?",
+      "subPrompt": "Prueba a hacer casting de un nuevo miembro",
       "button": "Crear Nuevo Miembro"
     },
     "addMember": "Nuevo Miembro",

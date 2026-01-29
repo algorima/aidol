@@ -4,7 +4,10 @@
   },
   "casting": {
     "title": "Casting",
-    "infoBanner": "Pilih trainee yang kamu suka",
+    "infoBanner": {
+      "title": "Casting trainee pilihanmu",
+      "description": "Karakter idol (wajah, suara, video) dalam konten ini adalah karakter virtual asli yang dibuat oleh AI dan tidak berdasarkan orang nyata, termasuk idol dan selebriti."
+    },
     "tabs": {
       "boy": "Boy Group",
       "girl": "Girl Group",
@@ -12,6 +15,7 @@
     },
     "newMember": {
       "prompt": "Tidak ada trainee yang kamu suka?",
+      "subPrompt": "Coba casting anggota baru",
       "button": "Buat Anggota Baru"
     },
     "addMember": "Anggota Baru",

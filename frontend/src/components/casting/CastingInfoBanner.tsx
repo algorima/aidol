@@ -5,10 +5,15 @@ export function CastingInfoBanner() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-base-200 flex items-center gap-3 rounded-lg p-4">
-      <CheckCircleIcon className="text-primary size-6 shrink-0" />
-      <p className="text-body-s text-base-content">
-        {t("aidol:casting.infoBanner")}
+    <div className="flex flex-col gap-1">
+      <div className="flex flex-col items-start gap-1">
+        <CheckCircleIcon className="text-primary size-6 shrink-0" />
+        <h3 className="text-title-s text-base-content">
+          {t("aidol:casting.infoBanner.title")}
+        </h3>
+      </div>
+      <p className="text-body-s text-neutral">
+        {t("aidol:casting.infoBanner.description")}
       </p>
     </div>
   );

@@ -4,7 +4,10 @@
   },
   "casting": {
     "title": "Casting",
-    "infoBanner": "Choose the trainee you like",
+    "infoBanner": {
+      "title": "Cast your trainees",
+      "description": "The idol characters (face, voice, video) in this content are original virtual characters created by AI and are not based on any real person, including idols and celebrities."
+    },
     "tabs": {
       "boy": "Boy Group",
       "girl": "Girl Group",
@@ -12,6 +15,7 @@
     },
     "newMember": {
       "prompt": "Can't find a trainee you like?",
+      "subPrompt": "Try casting a new member",
       "button": "Create New Member"
     },
     "addMember": "New Member",
