@@ -9,9 +9,12 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from io import BytesIO
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
 import PIL.Image
+
+if TYPE_CHECKING:
+    import google.genai as genai
 
 try:
     import google.genai as genai  # pylint: disable=consider-using-from-import
