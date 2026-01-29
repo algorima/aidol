@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Literal
 import PIL.Image
 
 if TYPE_CHECKING:
-    import google.genai as genai
+    import google.genai as genai  # pylint: disable=consider-using-from-import
 
 try:
     import google.genai as genai  # pylint: disable=consider-using-from-import
