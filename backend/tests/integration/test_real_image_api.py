@@ -49,6 +49,7 @@ class TestRealImageGenerationAPI(unittest.TestCase):
 
         # Then: 결과 검증
         self.assertIsNotNone(image, "이미지 생성 실패 (None 반환)")
+        assert image is not None
         self.assertIsInstance(
             image, PIL.Image.Image, "반환값은 PIL Image 객체여야 합니다"
         )

@@ -21,7 +21,7 @@ class TestAIdolCreateSchema(unittest.TestCase):
         """claimToken 없이 생성하면 ValidationError 발생해야 함"""
 
         with self.assertRaises(ValidationError):
-            AIdolCreate()
+            AIdolCreate()  # type: ignore
 
     def test_request_with_claim_token(self):
         """claimToken을 포함한 요청이 유효해야 함"""

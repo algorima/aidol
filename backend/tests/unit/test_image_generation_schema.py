@@ -24,7 +24,7 @@ class TestImageGenerationRequestSchema(unittest.TestCase):
     def test_prompt_required(self):
         """prompt 없이 생성하면 ValidationError 발생"""
         with self.assertRaises(ValidationError):
-            ImageGenerationRequest()
+            ImageGenerationRequest()  # type: ignore
 
     def test_valid_request(self):
         """유효한 prompt로 생성"""
@@ -52,7 +52,7 @@ class TestImageGenerationDataSchema(unittest.TestCase):
     def test_required_fields(self):
         """모든 필드가 필수"""
         with self.assertRaises(ValidationError):
-            ImageGenerationData()
+            ImageGenerationData()  # type: ignore
 
     def test_valid_data(self):
         """유효한 이미지 데이터"""
@@ -74,7 +74,7 @@ class TestImageGenerationResponseSchema(unittest.TestCase):
     def test_data_field_required(self):
         """data 필드가 필수"""
         with self.assertRaises(ValidationError):
-            ImageGenerationResponse()
+            ImageGenerationResponse()  # type: ignore
 
     def test_valid_response(self):
         """유효한 응답 구조"""

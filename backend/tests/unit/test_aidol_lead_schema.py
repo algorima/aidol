@@ -19,12 +19,12 @@ class TestAIdolLeadCreateSchema(unittest.TestCase):
     def test_error_on_missing_required_fields(self):
         """aidol_id, email 없이 생성하면 ValidationError 발생"""
         with self.assertRaises(ValidationError):
-            AIdolLeadCreate()
+            AIdolLeadCreate()  # type: ignore[call-arg]
 
     def test_error_on_missing_email(self):
         """email 없이 생성하면 ValidationError 발생"""
         with self.assertRaises(ValidationError):
-            AIdolLeadCreate(aidol_id="test-aidol-id")
+            AIdolLeadCreate(aidol_id="test-aidol-id")  # type: ignore
 
     def test_valid_request(self):
         """필수 필드가 모두 있으면 유효"""
