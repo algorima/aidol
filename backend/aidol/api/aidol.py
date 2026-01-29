@@ -1,4 +1,6 @@
+# pylint: disable=R0801
 """
+
 AIdol API router
 
 Public endpoints for AIdol group creation and retrieval.
@@ -8,7 +10,7 @@ Public access pattern: no authentication required.
 from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
-from aioia_core.settings import JWTSettings, OpenAIAPISettings
+from aioia_core.settings import JWTSettings
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
