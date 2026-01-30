@@ -4,6 +4,24 @@
   },
   "share": "Compartir",
   "urlCopied": "¡URL copiada!",
+  "castingBoard": {
+    "header": "Alineación Final de Debut",
+    "title": "¡Mis Trainees Elegidos!",
+    "subtitle": "Toca para eliminar",
+    "browse": "Ver Trainees",
+    "confirm": "¡Confirmar Debut!",
+    "needMore": "¡Elige {{count}} más para crear un grupo!",
+    "delete": "Eliminar",
+    "deleted": "Eliminado correctamente.",
+    "empty": {
+      "title": "La Alineación Final\nestá Vacía",
+      "description": "¡Elige a tus trainees!"
+    },
+    "error": {
+      "load": "Error al cargar los miembros.",
+      "delete": "Error al eliminar."
+    }
+  },
   "companion": {
     "promptPlaceholder": "¿Cómo habla tu idol? Describe su personalidad...",
     "addMember": "Añadir Miembro",

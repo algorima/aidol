@@ -4,6 +4,24 @@
   },
   "share": "分享",
   "urlCopied": "URL已复制！",
+  "castingBoard": {
+    "header": "最终出道阵容",
+    "title": "我选中的练习生！",
+    "subtitle": "点击可删除",
+    "browse": "浏览练习生",
+    "confirm": "确认出道！",
+    "needMore": "再选{{count}}人就可以创建组合了！",
+    "delete": "删除",
+    "deleted": "已删除。",
+    "empty": {
+      "title": "最终出道阵容\n为空",
+      "description": "去选一些练习生吧！"
+    },
+    "error": {
+      "load": "加载成员信息失败。",
+      "delete": "删除失败。"
+    }
+  },
   "companion": {
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
     "addMember": "添加成员",
