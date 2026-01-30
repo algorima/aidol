@@ -6,6 +6,17 @@
 import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
+export const POSITIONS = [
+  "mainVocal",
+  "subVocal",
+  "mainDancer",
+  "subDancer",
+  "mainRapper",
+  "subRapper",
+] as const;
+
+export type Position = (typeof POSITIONS)[number];
+
 /**
  * Companion schema (public fields only, excludes system_prompt)
  */
@@ -56,4 +67,5 @@ export interface CompanionUpdate {
   biography?: string | null;
   profilePictureUrl?: string | null;
   systemPrompt?: string | null;
+  position?: string | null;
 }

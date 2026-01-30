@@ -10,5 +10,10 @@ export type {
 } from "./aidol";
 
 // Companion schemas
-export { companionSchema } from "./companion";
-export type { Companion, CompanionCreate, CompanionUpdate } from "./companion";
+export { companionSchema, POSITIONS } from "./companion";
+export type {
+  Companion,
+  CompanionCreate,
+  CompanionUpdate,
+  Position,
+} from "./companion";
