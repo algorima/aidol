@@ -24,7 +24,9 @@ export function CompanionCreateLayout({
   return (
     <div className="flex min-h-dvh flex-col">
       <Header title={t("aidol:companionCreate.title")} />
-      <ProgressBar progress={progress} />
+      <div className="px-6 py-4">
+        <ProgressBar progress={progress} />
+      </div>
       <div className="flex flex-1 flex-col gap-6 p-6">{children}</div>
       <div className="sticky bottom-0 p-6">{bottomButton}</div>
     </div>

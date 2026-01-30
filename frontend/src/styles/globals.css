@@ -13,6 +13,7 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
 }
 
 @plugin "daisyui/theme" {

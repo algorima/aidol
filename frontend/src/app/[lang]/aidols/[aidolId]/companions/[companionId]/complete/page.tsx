@@ -48,8 +48,8 @@ export default function CompletePage() {
             onClick={handleComplete}
             className="btn btn-neutral w-full"
           >
-            <SparklesIcon className="size-5" />
             {t("aidol:companionCreate.complete.button")}
+            <SparklesIcon className="size-5" />
           </button>
         }
       >

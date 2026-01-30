@@ -14,23 +14,18 @@ export function CompanionNameInput({
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col gap-2">
-      <input
-        type="text"
-        value={value}
-        onChange={(e) =>
-          onChange(
-            e.target.value
-              .replace(/[!@#$%^&*()+=[\]{}|\\;:'",.<>?/`~_]/g, "")
-              .slice(0, maxLength),
-          )
-        }
-        placeholder={t("aidol:companionCreate.complete.namePlaceholder")}
-        className="input w-full"
-      />
-      <span className="text-label-m text-base-content/50 text-right">
-        {value.length}/{maxLength}
-      </span>
-    </div>
+    <input
+      type="text"
+      value={value}
+      onChange={(e) =>
+        onChange(
+          e.target.value
+            .replace(/[!@#$%^&*()+=[\]{}|\\;:'",.<>?/`~_]/g, "")
+            .slice(0, maxLength),
+        )
+      }
+      placeholder={t("aidol:companionCreate.complete.namePlaceholder")}
+      className="input w-full"
+    />
   );
 }
