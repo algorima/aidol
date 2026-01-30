@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import checkAnimation from "@/assets/lottie/check.json";
 import { Card } from "@/components/companion/Card";
+import { Loading } from "@/components/Loading";
 import type { Companion } from "@/schemas";
 
 import { EmptyState } from "./EmptyState";
@@ -31,11 +32,7 @@ export function CastingBoard({
   const isEmpty = companions.length === 0;
 
   if (isLoading) {
-    return (
-      <div className="flex flex-1 items-center justify-center">
-        <span className="loading loading-spinner loading-lg" />
-      </div>
-    );
+    return <Loading />;
   }
 
   if (isEmpty) {

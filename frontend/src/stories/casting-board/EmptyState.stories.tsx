@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { EmptyState } from "@/components/casting-board/EmptyState";
 
 const meta: Meta<typeof EmptyState> = {
-  title: "CastingBoard/EmptyState",
+  title: "Components/CastingBoard/EmptyState",
   component: EmptyState,
   tags: ["autodocs"],
   parameters: {

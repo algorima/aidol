@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import type { Companion } from "@/schemas/companion";
 
 const meta: Meta<typeof CastingBoard> = {
-  title: "CastingBoard/CastingBoard",
+  title: "Components/CastingBoard/CastingBoard",
   component: CastingBoard,
   parameters: {
     layout: "fullscreen",
