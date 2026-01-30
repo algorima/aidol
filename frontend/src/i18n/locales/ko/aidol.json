@@ -4,6 +4,24 @@
   },
   "share": "공유",
   "urlCopied": "URL이 복사되었습니다!",
+  "castingBoard": {
+    "header": "최종 데뷔조 라인업",
+    "title": "내가 캐스팅한 연습생이에요!",
+    "subtitle": "탭하여 삭제할 수 있어요",
+    "browse": "연습생 둘러보기",
+    "confirm": "데뷔조 확정!",
+    "needMore": "{{count}}명만 더 캐스팅하면 그룹 만들기가 가능해요!",
+    "delete": "삭제",
+    "deleted": "삭제되었습니다.",
+    "empty": {
+      "title": "최종 데뷔조 라인업이\n비어있어요",
+      "description": "아이돌을 캐스팅해보세요!"
+    },
+    "error": {
+      "load": "멤버 정보를 불러오는데 실패했습니다.",
+      "delete": "삭제에 실패했습니다."
+    }
+  },
   "companion": {
     "promptPlaceholder": "어떤 말투로 대화할까요? 성격을 설명해 주세요...",
     "addMember": "멤버 추가",

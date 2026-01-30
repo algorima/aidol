@@ -4,6 +4,24 @@
   },
   "share": "Bagikan",
   "urlCopied": "URL disalin!",
+  "castingBoard": {
+    "header": "Line-up Debut Final",
+    "title": "Trainee yang Sudah Aku Pilih!",
+    "subtitle": "Ketuk untuk hapus",
+    "browse": "Lihat Trainee",
+    "confirm": "Konfirmasi Debut!",
+    "needMore": "Pilih {{count}} lagi untuk buat grup!",
+    "delete": "Hapus",
+    "deleted": "Berhasil dihapus.",
+    "empty": {
+      "title": "Line-up Debut Final\nMasih Kosong",
+      "description": "Yuk pilih trainee!"
+    },
+    "error": {
+      "load": "Gagal memuat info anggota.",
+      "delete": "Gagal menghapus."
+    }
+  },
   "companion": {
     "promptPlaceholder": "Gimana idol kamu ngobrol? Ceritain kepribadiannya...",
     "addMember": "Tambah Anggota",

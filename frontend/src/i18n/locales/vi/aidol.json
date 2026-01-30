@@ -4,6 +4,24 @@
   },
   "share": "Chia sẻ",
   "urlCopied": "Đã sao chép URL!",
+  "castingBoard": {
+    "header": "Đội Hình Ra Mắt",
+    "title": "Thực Tập Sinh Tôi Đã Chọn!",
+    "subtitle": "Nhấn để xóa",
+    "browse": "Xem Thực Tập Sinh",
+    "confirm": "Xác Nhận Ra Mắt!",
+    "needMore": "Chọn thêm {{count}} để tạo nhóm!",
+    "delete": "Xóa",
+    "deleted": "Đã xóa thành công.",
+    "empty": {
+      "title": "Đội Hình Ra Mắt\nĐang Trống",
+      "description": "Hãy chọn thực tập sinh!"
+    },
+    "error": {
+      "load": "Không thể tải thông tin thành viên.",
+      "delete": "Xóa thất bại."
+    }
+  },
   "companion": {
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
     "addMember": "Thêm Thành Viên",

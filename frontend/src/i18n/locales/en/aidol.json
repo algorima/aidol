@@ -4,6 +4,24 @@
   },
   "share": "Share",
   "urlCopied": "URL copied!",
+  "castingBoard": {
+    "header": "Final Debut Lineup",
+    "title": "My Casted Trainees!",
+    "subtitle": "Tap to remove",
+    "browse": "Browse Trainees",
+    "confirm": "Confirm Debut!",
+    "needMore": "Cast {{count}} more to create a group!",
+    "delete": "Remove",
+    "deleted": "Removed successfully.",
+    "empty": {
+      "title": "Final Debut Lineup\nis Empty",
+      "description": "Cast your trainees!"
+    },
+    "error": {
+      "load": "Failed to load members.",
+      "delete": "Failed to remove."
+    }
+  },
   "companion": {
     "promptPlaceholder": "How does your idol talk? Describe their vibe...",
     "addMember": "Add Member",

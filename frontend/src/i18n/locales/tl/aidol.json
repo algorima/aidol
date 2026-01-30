@@ -4,6 +4,24 @@
   },
   "share": "I-share",
   "urlCopied": "Nakopya ang URL!",
+  "castingBoard": {
+    "header": "Pinal na Debut Lineup",
+    "title": "Mga Trainee na Napili Ko!",
+    "subtitle": "I-tap para tanggalin",
+    "browse": "Tingnan ang Trainees",
+    "confirm": "Kumpirmahin ang Debut!",
+    "needMore": "Pumili pa ng {{count}} para makagawa ng grupo!",
+    "delete": "Tanggalin",
+    "deleted": "Matagumpay na natanggal.",
+    "empty": {
+      "title": "Walang Laman ang\nPinal na Lineup",
+      "description": "Pumili ka ng trainees!"
+    },
+    "error": {
+      "load": "Hindi ma-load ang mga miyembro.",
+      "delete": "Hindi matanggal."
+    }
+  },
   "companion": {
     "promptPlaceholder": "Paano nagsasalita ang idol mo? Ilarawan ang personality...",
     "addMember": "Magdagdag ng Miyembro",

@@ -4,6 +4,24 @@
   },
   "share": "共有",
   "urlCopied": "URLがコピーされました！",
+  "castingBoard": {
+    "header": "最終デビュー組ラインナップ",
+    "title": "私がキャスティングした練習生！",
+    "subtitle": "タップして削除できます",
+    "browse": "練習生を見る",
+    "confirm": "デビュー組確定！",
+    "needMore": "あと{{count}}人キャスティングするとグループが作れます！",
+    "delete": "削除",
+    "deleted": "削除されました。",
+    "empty": {
+      "title": "最終デビュー組ラインナップが\n空です",
+      "description": "アイドルをキャスティングしてみよう！"
+    },
+    "error": {
+      "load": "メンバー情報の読み込みに失敗しました。",
+      "delete": "削除に失敗しました。"
+    }
+  },
   "companion": {
     "promptPlaceholder": "どんな話し方をする？性格を教えてね...",
     "addMember": "メンバー追加",
