@@ -10,7 +10,10 @@ import logging
 from dataclasses import dataclass
 from io import BytesIO
 
-import google.genai as genai
+from typing import Literal
+
+import PIL.Image
+from google import genai
 from google.genai import errors as genai_errors
 
 logger = logging.getLogger(__name__)

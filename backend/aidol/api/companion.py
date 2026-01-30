@@ -1,3 +1,4 @@
+# pylint: disable=duplicate-code
 """
 Companion API router
 
@@ -26,7 +27,6 @@ from aidol.schemas import (
     CompanionUpdate,
     Gender,
 )
-from aidol.services import ImageGenerationService
 from aidol.services.companion_service import to_companion_public
 
 
