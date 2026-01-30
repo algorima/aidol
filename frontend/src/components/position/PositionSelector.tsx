@@ -24,7 +24,7 @@ export function PositionSelector({
       <div
         tabIndex={0}
         role="button"
-        className="border-base-300 text-body-m flex w-full items-center justify-between rounded-lg border bg-white px-4 py-3"
+        className="border-base-300 text-body-m flex w-full items-center justify-between rounded-lg border bg-white px-4 py-3 text-black"
       >
         {selectedPosition
           ? t(`aidol:position.${selectedPosition}`)
@@ -33,7 +33,7 @@ export function PositionSelector({
       </div>
       <ul
         tabIndex={-1}
-        className="dropdown-content menu rounded-box mt-1 w-full bg-white shadow-sm"
+        className="dropdown-content menu rounded-box mt-1 w-full bg-white text-black shadow-sm"
       >
         {POSITIONS.map((position) => {
           const assignedTo = companions.find(
@@ -50,7 +50,7 @@ export function PositionSelector({
               <button
                 type="button"
                 disabled={!!assignedTo}
-                className="text-body-m py-4"
+                className="text-body-m hover:bg-base-300/30 py-4"
                 onClick={() => {
                   onPositionChange(position);
                   (document.activeElement as HTMLElement)?.blur();
