@@ -1,3 +1,4 @@
+import { PlusIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
@@ -35,8 +36,9 @@ function CastingPageFull() {
       <Header
         title="캐스팅"
         rightContent={
-          <button type="button" className="btn btn-primary btn-sm">
-            새 멤버
+          <button type="button" className="btn btn-primary gap-2.5">
+            신규 멤버
+            <PlusIcon className="size-4" />
           </button>
         }
       />

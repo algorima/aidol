@@ -59,7 +59,7 @@ const positionCompanion: Companion = {
   name: "홍길동",
   profilePictureUrl: sampleImage,
   biography: "아이돌입니다",
-  position: null,
+  position: "mainVocal",
   grade: "A",
   aidolId: null,
   createdAt: new Date().toISOString(),
