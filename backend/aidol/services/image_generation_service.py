@@ -18,8 +18,10 @@ if TYPE_CHECKING:
 
 try:
     import google.genai as genai  # pylint: disable=consider-using-from-import
+    from google.genai import errors as genai_errors
 except ImportError:
     genai = None  # type: ignore
+    genai_errors = None
 
 logger = logging.getLogger(__name__)
 
@@ -100,10 +102,10 @@ class ImageGenerationService:
                         return PIL.Image.open(BytesIO(part.inline_data.data))
 
             logger.warning("No image data found in Gemini response.")
-            return None
 
-        except Exception as e:  # pylint: disable=broad-exception-caught
-            logger.error("Gemini API error: %s", e)
+
+        except genai_errors.APIError as e:
+            logger.error("Gemini API error: code=%s, message=%s", e.code, e.message)
             return None
 
     # Legacy methods for compatibility if needed (can be removed or shimmed)
