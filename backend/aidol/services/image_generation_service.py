@@ -9,19 +9,8 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from io import BytesIO
-from typing import TYPE_CHECKING, Literal
-
-import PIL.Image
-
-if TYPE_CHECKING:
-    import google.genai as _GenAI  # pylint: disable=consider-using-from-import
-
-try:
-    import google.genai as genai  # pylint: disable=consider-using-from-import
-    from google.genai import errors as genai_errors
-except ImportError:
-    genai = None  # type: ignore
-    genai_errors = None
+import google.genai as genai
+from google.genai import errors as genai_errors
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +26,7 @@ class ImageGenerationResponse:
 class ImageGenerationService:
     """Service for generating images using Google Gemini 3 (Imagen)."""
 
-    client: "_GenAI.Client | None" = None
+    client: "genai.Client | None" = None
 
     def __init__(self, api_key: str | None = None, settings=None):
         """
@@ -47,12 +36,6 @@ class ImageGenerationService:
             api_key: Google API Key.
             settings: Unused, kept for compatibility.
         """
-        if genai is None:
-            logger.error(
-                "google-genai package not found. Run 'poetry add google-genai'"
-            )
-            self.client = None
-            return
 
         # Use explicitly provided api_key, otherwise fallback to settings or env
         if api_key:
