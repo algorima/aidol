@@ -5,6 +5,8 @@ Integration (Mock) tests for Image Generation Service.
 import unittest
 from unittest.mock import MagicMock, patch
 
+from google.genai import errors as genai_errors
+
 from aidol.services.image_generation_service import ImageGenerationService
 
 
@@ -61,8 +63,9 @@ class TestImageGenerationService(unittest.TestCase):
             self.assertEqual(kwargs["model"], "gemini-3-pro-image-preview")
             self.assertEqual(kwargs["contents"], ["test prompt"])
 
+    @patch("aidol.services.image_generation_service.genai_errors")
     @patch("aidol.services.image_generation_service.genai")
-    def test_generate_image_api_failure(self, mock_genai):
+    def test_generate_image_api_failure(self, mock_genai, mock_genai_errors):
         """
         API 에러 발생 시 처리 검증
 
@@ -70,10 +73,22 @@ class TestImageGenerationService(unittest.TestCase):
         - 환경: API 호출 시 예외 발생
         - 기대 결과: None 반환 (서비스가 에러를 로깅하고 None 반환 처리)
         """
-        # Given: Mock 설정 (Exception 발생)
+        # Mock APIError class that the service catches
+        class MockAPIError(Exception):
+            def __init__(self, message, code):
+                self.message = message
+                self.code = code
+        
+        # Service가 참조하는 genai_errors.APIError를 우리가 만든 Mock 예외 클래스로 교체
+        mock_genai_errors.APIError = MockAPIError
+
+        # Given: Mock 설정 (MockAPIError 발생)
         mock_client = MagicMock()
         mock_genai.Client.return_value = mock_client
-        mock_client.models.generate_content.side_effect = Exception("API Error")
+        
+        # MockAPIError 발생시키기
+        mock_error = MockAPIError(message="API Error", code=500)
+        mock_client.models.generate_content.side_effect = mock_error
 
         service = ImageGenerationService(api_key="fake-key")
 
