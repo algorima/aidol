@@ -18,7 +18,7 @@ export default function CastingCompletePage({
   const router = useRouter();
 
   const handleFindNext = useCallback(() => {
-    router.push(`/${lang}/${aidolId}/casting`);
+    router.push(`/${lang}/aidols/${aidolId}/casting`);
   }, [lang, aidolId, router]);
 
   const handleViewBoard = useCallback(() => {
