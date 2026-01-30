@@ -4,14 +4,10 @@ import { useTranslation } from "react-i18next";
 
 import { Card } from "@/components/companion/Card";
 import { Loading } from "@/components/Loading";
+import { CHECK_LOTTIE } from "@/constants/assets";
 import type { Companion } from "@/schemas";
 
 import { EmptyState } from "./EmptyState";
-
-const CHECK_LOTTIE_LIGHT =
-  "https://lottie.host/1b238c65-7fae-4ada-9c14-03dafb8b6ceb/aydslhs1Rc.json";
-const CHECK_LOTTIE_DARK =
-  "https://lottie.host/c17bf6ff-679c-4a33-9ab1-777ab6730030/U3Sk4VWATX.json";
 
 interface CastingBoardProps {
   companions: Companion[];
@@ -48,16 +44,16 @@ export function CastingBoard({
       <div className="flex-1 overflow-y-auto px-6 pb-24">
         <div className="flex flex-col gap-1">
           <div className="flex flex-col items-start">
-            <div className="-mb-2 -ml-2">
+            <div className="-mb-1 -ml-2">
               <LottiePlayer
-                src={CHECK_LOTTIE_LIGHT}
+                src={CHECK_LOTTIE.light}
                 autoplay
                 loop={false}
                 className="block size-9 dark:hidden"
                 {...({ keepLastFrame: true } as object)}
               />
               <LottiePlayer
-                src={CHECK_LOTTIE_DARK}
+                src={CHECK_LOTTIE.dark}
                 autoplay
                 loop={false}
                 className="hidden size-9 dark:block"
