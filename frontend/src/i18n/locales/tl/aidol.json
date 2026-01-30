@@ -84,6 +84,22 @@
     "completeDescription": "Mag-chat na sa iyong dream idol ngayon",
     "viewProfile": "Tingnan ang Profile"
   },
+  "groupPlanning": {
+    "header": "Pagpaplano ng Grupo",
+    "step1Title": "Pangalanan ang iyong grupo",
+    "step2Title": "Gumawa ng emblem ng grupo",
+    "namePlaceholder": "hal.) Dreamers, Starlight",
+    "promptPlaceholder": "hal.)",
+    "generate": "Gumawa ng Larawan",
+    "regenerate": "Gumawa Ulit ng Larawan",
+    "emptyImage": "Ang nabuong profile\nna larawan ay\nmakikita dito",
+    "next": "Susunod",
+    "error": {
+      "load": "Hindi ma-load ang info ng grupo",
+      "generate": "Hindi makagawa ng larawan",
+      "update": "Hindi mai-save ang plano ng grupo"
+    }
+  },
   "landing": {
     "hero": {
       "title": {

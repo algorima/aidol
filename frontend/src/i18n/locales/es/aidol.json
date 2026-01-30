@@ -84,6 +84,22 @@
     "completeDescription": "Empieza a chatear con tu idol soñado ahora",
     "viewProfile": "Ver Perfil"
   },
+  "groupPlanning": {
+    "header": "Planificación del Grupo",
+    "step1Title": "Nombra tu grupo",
+    "step2Title": "Crea el emblema del grupo",
+    "namePlaceholder": "ej.) Dreamers, Starlight",
+    "promptPlaceholder": "ej.)",
+    "generate": "Generar Imagen",
+    "regenerate": "Regenerar Imagen",
+    "emptyImage": "La imagen del perfil\ngenerada aparecerá\naquí",
+    "next": "Siguiente",
+    "error": {
+      "load": "Error al cargar la información del grupo",
+      "generate": "Error al generar la imagen",
+      "update": "Error al guardar la planificación"
+    }
+  },
   "landing": {
     "hero": {
       "title": {
