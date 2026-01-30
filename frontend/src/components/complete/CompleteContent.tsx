@@ -66,11 +66,13 @@ export function CompleteContent({
   // 초기 로드 시 중앙 카드로 스크롤
   useEffect(() => {
     if (scrollRef.current && companions.length > 1) {
-      const cardWidth = 254; // w-card
-      const gap = 16; // gap-4
-      const centerIndex = Math.floor(companions.length / 2);
-      const scrollPosition = centerIndex * (cardWidth + gap);
-      scrollRef.current.scrollLeft = scrollPosition;
+      const firstCard = scrollRef.current.querySelector("[data-card]");
+      if (firstCard instanceof HTMLElement) {
+        const cardWidth = firstCard.offsetWidth;
+        const gap = parseFloat(getComputedStyle(scrollRef.current).gap) || 16;
+        const centerIndex = Math.floor(companions.length / 2);
+        scrollRef.current.scrollLeft = centerIndex * (cardWidth + gap);
+      }
     }
   }, [companions.length]);
 
@@ -123,7 +125,7 @@ export function CompleteContent({
         >
           <div className="bg-base-100 flex gap-4 px-[calc(50%-127px)]">
             {companions.map((companion) => (
-              <div key={companion.id} className="w-card shrink-0">
+              <div key={companion.id} data-card className="w-card shrink-0">
                 <Card
                   companion={companion}
                   variant="position"
