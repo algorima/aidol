@@ -86,6 +86,9 @@ class CompanionRouter(
             is_cast: bool | None = Query(
                 None, alias="isCast", description="Filter by cast status"
             ),
+            aidol_id: str | None = Query(
+                None, description="Filter by AIdol Group ID"
+            ),
             repository: CompanionRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """List Companions with optional gender and isCast filters."""
@@ -95,6 +98,12 @@ class CompanionRouter(
             if gender is not None:
                 filter_list.append(
                     {"field": "gender", "operator": "eq", "value": gender.value}
+                )
+
+            # Filter by aidol_id if provided
+            if aidol_id is not None:
+                filter_list.append(
+                    {"field": "aidol_id", "operator": "eq", "value": aidol_id}
                 )
 
             # isCast is derived from aidol_id presence
