@@ -24,20 +24,22 @@ class AIdolBase(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
 
-    name: str = Field(..., description="AIdol group name")
+    name: str | None = Field(default=None, description="AIdol group name")
+    email: str | None = Field(default=None, description="Creator email")
+    greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
-    profile_image_url: str = Field(..., description="Profile image URL")
+    profile_image_url: str | None = Field(default=None, description="Profile image URL")
 
 
 class AIdolCreate(AIdolBase):
     """Schema for creating an AIdol group (no id).
 
-    claim_token is optional for anonymous ownership verification.
+    claim_token is required for ownership verification.
     """
 
-    claim_token: str | None = Field(
-        default=None,
-        description="Optional client-generated UUID for ownership verification",
+    claim_token: str = Field(
+        ...,
+        description="Client-generated UUID for ownership verification",
     )
 
 
@@ -47,6 +49,8 @@ class AIdolUpdate(BaseModel):
     model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
 
     name: str | None = Field(default=None, description="AIdol group name")
+    email: str | None = Field(default=None, description="Creator email")
+    greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
     profile_image_url: str | None = Field(default=None, description="Profile image URL")
 
