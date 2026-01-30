@@ -45,7 +45,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
         <motion.div variants={fadeInUp} className="mb-6">
           <Image
             src="/images/logo.svg"
-            alt="alola"
+            alt="AIdol"
             width={92}
             height={28}
             priority
