@@ -11,9 +11,10 @@ export type Gender = "male" | "female";
 export interface CompanionAbilities {
   vocal: number;
   dance: number;
-  visual: number;
-  acting: number;
   rap: number;
+  visual: number;
+  stamina: number;
+  charm: number;
 }
 
 /**

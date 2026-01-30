@@ -22,9 +22,10 @@
       "title": "能力値",
       "vocal": "ボーカル",
       "dance": "ダンス",
+      "rap": "ラップ",
       "visual": "ビジュアル",
-      "acting": "演技",
-      "rap": "ラップ"
+      "stamina": "スタミナ",
+      "charm": "魅力"
     },
     "castButton": "キャスティング",
     "castComplete": {

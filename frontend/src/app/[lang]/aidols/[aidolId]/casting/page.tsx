@@ -12,14 +12,10 @@ import {
   GenderFilterTabs,
 } from "@/components/casting";
 import type { GenderTab } from "@/components/casting";
-import { AbilityChart } from "@/components/companion/AbilityChart";
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
-import {
-  getMockCompanionAbilities,
-  getMockCompanions,
-} from "@/mocks/companions";
+import { getMockCompanions } from "@/mocks/companions";
 import type { Companion, Gender } from "@/schemas/companion";
 
 const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
@@ -41,10 +37,6 @@ export default function CastingPage() {
 
   const gender = TAB_TO_GENDER[activeTab];
   const companions = getMockCompanions({ gender, presetOnly: false });
-
-  const selectedAbilities = selectedCompanion
-    ? getMockCompanionAbilities(selectedCompanion.id)
-    : null;
 
   const handleCompanionClick = (companion: Companion) => {
     setSelectedCompanion(companion);
@@ -102,7 +94,6 @@ export default function CastingPage() {
           }}
         >
           <ProfileContent companion={selectedCompanion} />
-          {selectedAbilities && <AbilityChart abilities={selectedAbilities} />}
         </Modal>
       )}
 

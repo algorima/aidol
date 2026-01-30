@@ -22,9 +22,10 @@
       "title": "능력치",
       "vocal": "보컬",
       "dance": "댄스",
+      "rap": "랩",
       "visual": "비주얼",
-      "acting": "연기",
-      "rap": "랩"
+      "stamina": "체력",
+      "charm": "매력"
     },
     "castButton": "캐스팅하기",
     "castComplete": {

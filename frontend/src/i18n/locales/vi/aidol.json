@@ -22,9 +22,10 @@
       "title": "Năng lực",
       "vocal": "Vocal",
       "dance": "Dance",
+      "rap": "Rap",
       "visual": "Visual",
-      "acting": "Diễn xuất",
-      "rap": "Rap"
+      "stamina": "Thể lực",
+      "charm": "Sức hút"
     },
     "castButton": "Casting",
     "castComplete": {

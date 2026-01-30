@@ -22,9 +22,10 @@
       "title": "Kemampuan",
       "vocal": "Vokal",
       "dance": "Dance",
+      "rap": "Rap",
       "visual": "Visual",
-      "acting": "Akting",
-      "rap": "Rap"
+      "stamina": "Stamina",
+      "charm": "Pesona"
     },
     "castButton": "Casting",
     "castComplete": {

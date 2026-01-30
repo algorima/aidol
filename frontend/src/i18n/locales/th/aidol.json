@@ -22,9 +22,10 @@
       "title": "ความสามารถ",
       "vocal": "ร้อง",
       "dance": "เต้น",
+      "rap": "แร็พ",
       "visual": "วิชวล",
-      "acting": "การแสดง",
-      "rap": "แร็พ"
+      "stamina": "ความอดทน",
+      "charm": "เสน่ห์"
     },
     "castButton": "แคสติ้ง",
     "castComplete": {

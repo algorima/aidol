@@ -22,9 +22,10 @@
       "title": "能力值",
       "vocal": "声乐",
       "dance": "舞蹈",
+      "rap": "说唱",
       "visual": "颜值",
-      "acting": "演技",
-      "rap": "说唱"
+      "stamina": "体力",
+      "charm": "魅力"
     },
     "castButton": "选秀",
     "castComplete": {

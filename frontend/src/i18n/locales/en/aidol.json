@@ -22,9 +22,10 @@
       "title": "Abilities",
       "vocal": "Vocal",
       "dance": "Dance",
+      "rap": "Rap",
       "visual": "Visual",
-      "acting": "Acting",
-      "rap": "Rap"
+      "stamina": "Stamina",
+      "charm": "Charm"
     },
     "castButton": "Cast",
     "castComplete": {
