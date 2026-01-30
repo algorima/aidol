@@ -4,9 +4,6 @@ Integration (Mock) tests for Image Generation Service.
 
 import unittest
 from unittest.mock import MagicMock, patch
-
-from google.genai import errors as genai_errors
-
 from aidol.services.image_generation_service import ImageGenerationService
 
 
