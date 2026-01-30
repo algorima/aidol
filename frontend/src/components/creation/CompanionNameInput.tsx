@@ -6,6 +6,8 @@ interface CompanionNameInputProps {
   maxLength?: number;
 }
 
+const SPECIAL_CHARS_REGEX = /[!@#$%^&*()+=[\]{}|\\;:'",.<>?/`~_]/g;
+
 export function CompanionNameInput({
   value,
   onChange,
@@ -19,9 +21,7 @@ export function CompanionNameInput({
       value={value}
       onChange={(e) =>
         onChange(
-          e.target.value
-            .replace(/[!@#$%^&*()+=[\]{}|\\;:'",.<>?/`~_]/g, "")
-            .slice(0, maxLength),
+          e.target.value.replace(SPECIAL_CHARS_REGEX, "").slice(0, maxLength),
         )
       }
       placeholder={t("aidol:companionCreate.complete.namePlaceholder")}
