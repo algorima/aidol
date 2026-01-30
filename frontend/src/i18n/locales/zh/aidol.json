@@ -152,11 +152,6 @@
       "namePlaceholder": "请输入名字",
       "bioPlaceholder": "经历了怎样的时光？",
       "button": "完成选角"
-    },
-    "castingComplete": {
-      "title": "选角完成！",
-      "description": "新成员已加入",
-      "viewCasting": "查看选角板"
     }
   },
   "landing": {

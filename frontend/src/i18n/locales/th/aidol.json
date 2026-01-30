@@ -152,11 +152,6 @@
       "namePlaceholder": "กรอกชื่อ",
       "bioPlaceholder": "ผ่านช่วงเวลาอะไรมาบ้าง?",
       "button": "แคสติ้งเสร็จสิ้น"
-    },
-    "castingComplete": {
-      "title": "แคสติ้งเสร็จสิ้น!",
-      "description": "สมาชิกใหม่เข้าร่วมแล้ว",
-      "viewCasting": "ดูบอร์ดแคสติ้ง"
     }
   },
   "landing": {

@@ -152,11 +152,6 @@
       "namePlaceholder": "名前を入力してください",
       "bioPlaceholder": "どんな時間を過ごしましたか？",
       "button": "キャスティング完了"
-    },
-    "castingComplete": {
-      "title": "キャスティング完了！",
-      "description": "新しいメンバーが加わりました",
-      "viewCasting": "キャスティングボードを見る"
     }
   },
   "landing": {

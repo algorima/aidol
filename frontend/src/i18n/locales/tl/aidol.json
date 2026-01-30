@@ -152,11 +152,6 @@
       "namePlaceholder": "Maglagay ng pangalan",
       "bioPlaceholder": "Anong paglalakbay ang naranasan?",
       "button": "Kumpletuhin ang Casting"
-    },
-    "castingComplete": {
-      "title": "Casting Kumpleto!",
-      "description": "Sumali ang bagong miyembro",
-      "viewCasting": "Tingnan ang Casting Board"
     }
   },
   "landing": {

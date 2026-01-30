@@ -152,11 +152,6 @@
       "namePlaceholder": "Nhập tên",
       "bioPlaceholder": "Đã trải qua hành trình gì?",
       "button": "Hoàn Thành Tuyển Chọn"
-    },
-    "castingComplete": {
-      "title": "Tuyển Chọn Hoàn Tất!",
-      "description": "Thành viên mới đã gia nhập",
-      "viewCasting": "Xem Bảng Tuyển Chọn"
     }
   },
   "landing": {

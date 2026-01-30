@@ -152,11 +152,6 @@
       "namePlaceholder": "Enter a name",
       "bioPlaceholder": "What journey have they been on?",
       "button": "Complete Casting"
-    },
-    "castingComplete": {
-      "title": "Casting Complete!",
-      "description": "A new member has joined",
-      "viewCasting": "View Casting Board"
     }
   },
   "landing": {

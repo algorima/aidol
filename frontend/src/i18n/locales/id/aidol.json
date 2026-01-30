@@ -152,11 +152,6 @@
       "namePlaceholder": "Masukkan nama",
       "bioPlaceholder": "Perjalanan apa yang telah dilalui?",
       "button": "Selesai Casting"
-    },
-    "castingComplete": {
-      "title": "Casting Selesai!",
-      "description": "Anggota baru telah bergabung",
-      "viewCasting": "Lihat Papan Casting"
     }
   },
   "landing": {

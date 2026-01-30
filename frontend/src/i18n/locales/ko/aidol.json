@@ -143,11 +143,6 @@
       "namePlaceholder": "이름을 입력해주세요",
       "bioPlaceholder": "어떤 시간을 보냈나요?",
       "button": "캐스팅 완료"
-    },
-    "castingComplete": {
-      "title": "캐스팅 완료!",
-      "description": "새로운 멤버가 합류했습니다",
-      "viewCasting": "캐스팅 보드 보기"
     }
   },
   "landing": {

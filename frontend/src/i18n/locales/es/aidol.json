@@ -152,11 +152,6 @@
       "namePlaceholder": "Ingresa un nombre",
       "bioPlaceholder": "¿Qué camino ha recorrido?",
       "button": "Completar Casting"
-    },
-    "castingComplete": {
-      "title": "¡Casting Completo!",
-      "description": "Un nuevo miembro se ha unido",
-      "viewCasting": "Ver Tablero de Casting"
     }
   },
   "landing": {
