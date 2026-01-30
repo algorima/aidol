@@ -67,7 +67,7 @@ export default function PositionPage({ params }: PositionPageProps) {
     setSelectedPosition(null);
   };
 
-  const handlePositionChange = (position: string | null) => {
+  const handlePositionChange = (position: string) => {
     setSelectedPosition(position);
   };
 
