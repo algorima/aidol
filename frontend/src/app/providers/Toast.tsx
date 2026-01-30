@@ -143,8 +143,14 @@ export function ToastItem({ toast }: ToastItemProps): JSX.Element {
         return "bg-error text-error-content";
       case "warning":
         return "alert-warning";
+      case "primary":
+        return "bg-primary text-primary-content";
+      case "secondary":
+        return "bg-secondary text-secondary-content";
       case "accent":
         return "bg-accent text-accent-content";
+      case "neutral":
+        return "bg-neutral text-neutral-content";
       case "info":
       default:
         return "alert-info";
