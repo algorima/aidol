@@ -1,16 +1,8 @@
-import type {
-  Companion,
-  CompanionAbilities,
-  Gender,
-} from "@/schemas/companion";
+import type { Companion, Gender } from "@/schemas/companion";
 
 const now = new Date().toISOString();
 
-interface MockCompanion extends Companion {
-  abilities: CompanionAbilities;
-}
-
-export const mockCompanions: MockCompanion[] = [
+export const mockCompanions: Companion[] = [
   {
     id: "m-01",
     name: "민준",
@@ -20,7 +12,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "male",
     biography:
       "타고난 리더십으로 팀을 이끄는 센터. 무대 위에서 빛나는 카리스마의 소유자.",
-    abilities: {
+    stats: {
       vocal: 90,
       dance: 85,
       rap: 60,
@@ -41,7 +33,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISTP",
     gender: "male",
     biography: "과묵하지만 무대에서 폭발적인 에너지를 보여주는 댄서.",
-    abilities: {
+    stats: {
       vocal: 60,
       dance: 95,
       rap: 50,
@@ -50,7 +42,7 @@ export const mockCompanions: MockCompanion[] = [
       charm: 62,
     },
     aidolId: "aidol-001",
-    position: "메인댄서",
+    position: "main_dancer",
     createdAt: now,
     updatedAt: now,
   },
@@ -62,7 +54,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INFP",
     gender: "male",
     biography: "감성적인 보이스로 팬들의 마음을 사로잡는 메인보컬.",
-    abilities: {
+    stats: {
       vocal: 98,
       dance: 65,
       rap: 40,
@@ -83,7 +75,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENTP",
     gender: "male",
     biography: "다재다능한 올라운더. 작사와 작곡까지 소화하는 프로듀싱 돌.",
-    abilities: {
+    stats: {
       vocal: 75,
       dance: 70,
       rap: 80,
@@ -104,7 +96,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESFP",
     gender: "male",
     biography: "무대 위의 분위기 메이커. 어디서든 빛나는 비주얼 담당.",
-    abilities: {
+    stats: {
       vocal: 70,
       dance: 80,
       rap: 45,
@@ -125,7 +117,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INTJ",
     gender: "male",
     biography: "전략적 사고와 완벽주의로 무장한 연습생.",
-    abilities: {
+    stats: {
       vocal: 55,
       dance: 50,
       rap: 65,
@@ -146,7 +138,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENFP",
     gender: "male",
     biography: "넘치는 에너지와 밝은 성격으로 사랑받는 분위기 메이커.",
-    abilities: {
+    stats: {
       vocal: 82,
       dance: 78,
       rap: 55,
@@ -155,7 +147,7 @@ export const mockCompanions: MockCompanion[] = [
       charm: 88,
     },
     aidolId: "aidol-002",
-    position: "리드보컬",
+    position: "lead_vocal",
     createdAt: now,
     updatedAt: now,
   },
@@ -167,7 +159,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISTJ",
     gender: "male",
     biography: "묵묵히 노력하는 실력파. 안정적인 보컬이 강점.",
-    abilities: {
+    stats: {
       vocal: 78,
       dance: 60,
       rap: 50,
@@ -188,7 +180,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESTP",
     gender: "male",
     biography: "파워풀한 퍼포먼스와 래핑으로 무대를 장악하는 래퍼.",
-    abilities: {
+    stats: {
       vocal: 55,
       dance: 88,
       rap: 96,
@@ -209,7 +201,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INFJ",
     gender: "male",
     biography: "깊은 감성과 독특한 세계관을 가진 아티스트형 연습생.",
-    abilities: {
+    stats: {
       vocal: 72,
       dance: 58,
       rap: 60,
@@ -230,7 +222,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENTJ",
     gender: "male",
     biography: "카리스마 넘치는 리더형. 강렬한 눈빛이 트레이드마크.",
-    abilities: {
+    stats: {
       vocal: 80,
       dance: 82,
       rap: 68,
@@ -251,7 +243,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISFP",
     gender: "male",
     biography: "예술적 감각이 뛰어난 막내. 춤과 노래 모두 성장 중.",
-    abilities: {
+    stats: {
       vocal: 50,
       dance: 55,
       rap: 42,
@@ -272,7 +264,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESFJ",
     gender: "male",
     biography: "따뜻한 성격으로 팀의 화합을 이끄는 서브보컬.",
-    abilities: {
+    stats: {
       vocal: 74,
       dance: 65,
       rap: 48,
@@ -293,7 +285,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INTP",
     gender: "male",
     biography: "천재적인 음악적 감각. 독보적인 스타일을 추구하는 뮤지션.",
-    abilities: {
+    stats: {
       vocal: 88,
       dance: 72,
       rap: 75,
@@ -315,7 +307,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "male",
     biography:
       "체계적이고 성실한 연습벌레. 매일 첫 번째로 연습실에 오는 연습생.",
-    abilities: {
+    stats: {
       vocal: 85,
       dance: 90,
       rap: 70,
@@ -336,7 +328,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISFJ",
     gender: "male",
     biography: "따뜻한 감성의 서브보컬. 팀의 분위기를 부드럽게 만드는 힐러.",
-    abilities: {
+    stats: {
       vocal: 84,
       dance: 68,
       rap: 42,
@@ -357,7 +349,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESTP",
     gender: "male",
     biography: "즉흥적이고 자유로운 영혼. 프리스타일 댄스에 강한 퍼포머.",
-    abilities: {
+    stats: {
       vocal: 58,
       dance: 85,
       rap: 72,
@@ -378,7 +370,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INFJ",
     gender: "male",
     biography: "깊은 사색과 섬세한 감성으로 무대를 물들이는 아티스트.",
-    abilities: {
+    stats: {
       vocal: 92,
       dance: 70,
       rap: 48,
@@ -400,7 +392,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "male",
     biography:
       "호기심 가득한 실험가. 새로운 장르에 도전하는 것을 두려워하지 않는 연습생.",
-    abilities: {
+    stats: {
       vocal: 52,
       dance: 55,
       rap: 70,
@@ -421,7 +413,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESFP",
     gender: "male",
     biography: "밝은 웃음과 유쾌한 성격. 어디서든 주목받는 에너자이저.",
-    abilities: {
+    stats: {
       vocal: 76,
       dance: 82,
       rap: 55,
@@ -442,7 +434,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISTJ",
     gender: "male",
     biography: "성실함이 무기인 연습생. 기본기에 충실한 안정형 보컬.",
-    abilities: {
+    stats: {
       vocal: 74,
       dance: 62,
       rap: 45,
@@ -463,7 +455,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENFJ",
     gender: "male",
     biography: "팀원들에게 영감을 주는 리더. 무대 위에서 태양처럼 빛나는 존재.",
-    abilities: {
+    stats: {
       vocal: 80,
       dance: 78,
       rap: 62,
@@ -485,7 +477,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "male",
     biography:
       "조용하지만 창의적인 사운드 메이커. 작곡에 재능을 보이는 연습생.",
-    abilities: {
+    stats: {
       vocal: 60,
       dance: 48,
       rap: 68,
@@ -506,7 +498,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESFJ",
     gender: "male",
     biography: "사교적이고 배려심 넘치는 연습생. 팀의 화합을 중시하는 타입.",
-    abilities: {
+    stats: {
       vocal: 70,
       dance: 72,
       rap: 50,
@@ -528,7 +520,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENFP",
     gender: "female",
     biography: "밝은 에너지와 청량한 보이스의 소유자. 무대 위의 요정.",
-    abilities: {
+    stats: {
       vocal: 92,
       dance: 80,
       rap: 50,
@@ -549,7 +541,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INTJ",
     gender: "female",
     biography: "걸크러시 매력의 소유자. 강렬한 퍼포먼스가 특기.",
-    abilities: {
+    stats: {
       vocal: 68,
       dance: 94,
       rap: 72,
@@ -558,7 +550,7 @@ export const mockCompanions: MockCompanion[] = [
       charm: 60,
     },
     aidolId: "aidol-003",
-    position: "메인댄서",
+    position: "main_dancer",
     createdAt: now,
     updatedAt: now,
   },
@@ -570,7 +562,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISFJ",
     gender: "female",
     biography: "따뜻한 목소리와 다정한 성격으로 팬들의 사랑을 받는 보컬.",
-    abilities: {
+    stats: {
       vocal: 96,
       dance: 62,
       rap: 35,
@@ -591,7 +583,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESTP",
     gender: "female",
     biography: "활발하고 대담한 성격. 무대에서 자신감이 넘치는 퍼포머.",
-    abilities: {
+    stats: {
       vocal: 65,
       dance: 78,
       rap: 68,
@@ -612,7 +604,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INFP",
     gender: "female",
     biography: "몽환적인 분위기와 독보적인 음색을 가진 아티스트.",
-    abilities: {
+    stats: {
       vocal: 88,
       dance: 70,
       rap: 40,
@@ -633,7 +625,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESFJ",
     gender: "female",
     biography: "밝은 미소와 친근한 매력의 막내 연습생.",
-    abilities: {
+    stats: {
       vocal: 52,
       dance: 48,
       rap: 35,
@@ -654,7 +646,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENTJ",
     gender: "female",
     biography: "리더십과 실력을 겸비한 올라운더. 팀의 중심.",
-    abilities: {
+    stats: {
       vocal: 82,
       dance: 80,
       rap: 70,
@@ -663,7 +655,7 @@ export const mockCompanions: MockCompanion[] = [
       charm: 80,
     },
     aidolId: "aidol-004",
-    position: "리더",
+    position: "leader",
     createdAt: now,
     updatedAt: now,
   },
@@ -675,7 +667,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISTP",
     gender: "female",
     biography: "쿨한 매력과 뛰어난 댄스 실력을 가진 연습생.",
-    abilities: {
+    stats: {
       vocal: 58,
       dance: 88,
       rap: 62,
@@ -696,7 +688,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENFJ",
     gender: "female",
     biography: "타고난 센터감. 어떤 무대든 중심에서 빛나는 존재.",
-    abilities: {
+    stats: {
       vocal: 88,
       dance: 90,
       rap: 55,
@@ -717,7 +709,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INTP",
     gender: "female",
     biography: "조용하지만 무대 위에서 강렬한 반전 매력을 보여주는 연습생.",
-    abilities: {
+    stats: {
       vocal: 70,
       dance: 65,
       rap: 58,
@@ -738,7 +730,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESFP",
     gender: "female",
     biography: "끼와 매력이 넘치는 엔터테이너. 예능감이 뛰어난 연습생.",
-    abilities: {
+    stats: {
       vocal: 75,
       dance: 82,
       rap: 48,
@@ -759,7 +751,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISTJ",
     gender: "female",
     biography: "꾸준한 노력으로 성장하는 연습생. 기본기가 탄탄.",
-    abilities: {
+    stats: {
       vocal: 55,
       dance: 52,
       rap: 40,
@@ -780,7 +772,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENTP",
     gender: "female",
     biography: "창의적이고 독특한 스타일. 작사에 재능을 보이는 뮤지션.",
-    abilities: {
+    stats: {
       vocal: 72,
       dance: 60,
       rap: 82,
@@ -801,7 +793,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INFJ",
     gender: "female",
     biography: "깊은 감성과 풍부한 표현력의 메인보컬 후보.",
-    abilities: {
+    stats: {
       vocal: 90,
       dance: 68,
       rap: 42,
@@ -822,7 +814,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ESTJ",
     gender: "female",
     biography: "체계적이고 완벽한 안무 소화력. 연습실의 에이스.",
-    abilities: {
+    stats: {
       vocal: 78,
       dance: 95,
       rap: 58,
@@ -844,7 +836,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "female",
     biography:
       "천진난만한 매력의 소유자. 무대에서 관객과 소통하는 데 탁월한 연습생.",
-    abilities: {
+    stats: {
       vocal: 68,
       dance: 72,
       rap: 45,
@@ -865,7 +857,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "INTJ",
     gender: "female",
     biography: "냉철한 판단력과 뛰어난 실력을 겸비한 전략가형 연습생.",
-    abilities: {
+    stats: {
       vocal: 85,
       dance: 80,
       rap: 65,
@@ -887,7 +879,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "female",
     biography:
       "다정하고 따뜻한 성격. 팬들과의 교감에 특별한 재능을 가진 연습생.",
-    abilities: {
+    stats: {
       vocal: 88,
       dance: 75,
       rap: 40,
@@ -908,7 +900,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISTP",
     gender: "female",
     biography: "묵묵히 자기 길을 가는 독립적인 연습생. 독보적인 분위기가 매력.",
-    abilities: {
+    stats: {
       vocal: 55,
       dance: 58,
       rap: 50,
@@ -930,7 +922,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "female",
     biography:
       "긍정적인 에너지로 팀을 이끄는 리더 후보. 모두에게 힘이 되는 존재.",
-    abilities: {
+    stats: {
       vocal: 82,
       dance: 78,
       rap: 55,
@@ -952,7 +944,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "female",
     biography:
       "섬세한 감성과 독특한 세계관의 소유자. 작사에 재능이 있는 연습생.",
-    abilities: {
+    stats: {
       vocal: 75,
       dance: 60,
       rap: 62,
@@ -974,7 +966,7 @@ export const mockCompanions: MockCompanion[] = [
     gender: "female",
     biography:
       "대담하고 활기찬 퍼포먼스. 무대 위에서 누구보다 자유로운 연습생.",
-    abilities: {
+    stats: {
       vocal: 70,
       dance: 90,
       rap: 68,
@@ -995,7 +987,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ISFJ",
     gender: "female",
     biography: "조용하지만 성실한 연습생. 꾸준한 노력으로 매일 성장하는 타입.",
-    abilities: {
+    stats: {
       vocal: 58,
       dance: 52,
       rap: 38,
@@ -1016,7 +1008,7 @@ export const mockCompanions: MockCompanion[] = [
     mbti: "ENTJ",
     gender: "female",
     biography: "강한 추진력과 카리스마의 소유자. 목표를 향해 돌진하는 연습생.",
-    abilities: {
+    stats: {
       vocal: 72,
       dance: 75,
       rap: 60,
@@ -1033,17 +1025,19 @@ export const mockCompanions: MockCompanion[] = [
 
 interface GetMockCompanionsOptions {
   gender?: Gender;
-  presetOnly?: boolean;
+  isCast?: boolean;
 }
 
 export const getMockCompanions = (
   options: GetMockCompanionsOptions = {},
-): MockCompanion[] => {
-  const { gender, presetOnly = true } = options;
+): Companion[] => {
+  const { gender, isCast } = options;
   let result = mockCompanions;
 
-  if (presetOnly) {
-    result = result.filter((c) => c.aidolId === null);
+  if (isCast !== undefined) {
+    result = result.filter((c) =>
+      isCast ? c.aidolId !== null : c.aidolId === null,
+    );
   }
 
   if (gender) {
