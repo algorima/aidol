@@ -4,4 +4,5 @@ export { GroupCreation } from "./GroupCreation";
 export { GroupNameInput } from "./GroupNameInput";
 export { MemberNameInput } from "./MemberNameInput";
 export { PersonalitySelector } from "./PersonalitySelector";
+export { StepCard } from "./StepCard";
 export { StepIndicator } from "./StepIndicator";

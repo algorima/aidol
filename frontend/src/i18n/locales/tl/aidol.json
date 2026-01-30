@@ -1,9 +1,14 @@
 {
+  "common": {
+    "close": "Isara"
+  },
   "share": "I-share",
   "urlCopied": "Nakopya ang URL!",
   "companion": {
     "promptPlaceholder": "Paano nagsasalita ang idol mo? Ilarawan ang personality...",
-    "addMember": "Magdagdag ng Miyembro"
+    "addMember": "Magdagdag ng Miyembro",
+    "signed": "Naka-kontrata na 🥺",
+    "grade": "Grade {{grade}}"
   },
   "aidol": {
     "notFound": "Hindi nahanap ang grupo",

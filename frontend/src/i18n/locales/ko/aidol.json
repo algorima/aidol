@@ -1,9 +1,14 @@
 {
+  "common": {
+    "close": "닫기"
+  },
   "share": "공유",
   "urlCopied": "URL이 복사되었습니다!",
   "companion": {
     "promptPlaceholder": "어떤 말투로 대화할까요? 성격을 설명해 주세요...",
-    "addMember": "멤버 추가"
+    "addMember": "멤버 추가",
+    "signed": "계약 완료 🥺",
+    "grade": "{{grade}} 등급"
   },
   "aidol": {
     "notFound": "그룹을 찾을 수 없습니다",

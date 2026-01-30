@@ -1,9 +1,14 @@
 {
+  "common": {
+    "close": "Cerrar"
+  },
   "share": "Compartir",
   "urlCopied": "¡URL copiada!",
   "companion": {
     "promptPlaceholder": "¿Cómo habla tu idol? Describe su personalidad...",
-    "addMember": "Añadir Miembro"
+    "addMember": "Añadir Miembro",
+    "signed": "Firmado 🥺",
+    "grade": "Grado {{grade}}"
   },
   "aidol": {
     "notFound": "Grupo no encontrado",

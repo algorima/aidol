@@ -1,9 +1,14 @@
 {
+  "common": {
+    "close": "关闭"
+  },
   "share": "分享",
   "urlCopied": "URL已复制！",
   "companion": {
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
-    "addMember": "添加成员"
+    "addMember": "添加成员",
+    "signed": "已签约 🥺",
+    "grade": "{{grade}} 级"
   },
   "aidol": {
     "notFound": "找不到该组合",

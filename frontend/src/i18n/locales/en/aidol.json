@@ -1,9 +1,14 @@
 {
+  "common": {
+    "close": "Close"
+  },
   "share": "Share",
   "urlCopied": "URL copied!",
   "companion": {
     "promptPlaceholder": "How does your idol talk? Describe their vibe...",
-    "addMember": "Add Member"
+    "addMember": "Add Member",
+    "signed": "Signed 🥺",
+    "grade": "Grade {{grade}}"
   },
   "aidol": {
     "notFound": "Group not found",

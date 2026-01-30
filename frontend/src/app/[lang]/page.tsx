@@ -26,9 +26,11 @@ export default function AIdolLandingPage({
   };
 
   return (
-    <main className="bg-base-100 flex min-h-dvh w-full flex-col items-center justify-center">
-      <HeroSection onGetStarted={handleStart} />
-      <DemoSection />
-    </main>
+    <div className="mx-auto min-h-dvh max-w-[393px] min-w-[360px]">
+      <main className="bg-base-100 flex w-full flex-col items-center justify-center">
+        <HeroSection onGetStarted={handleStart} />
+        <DemoSection />
+      </main>
+    </div>
   );
 }

@@ -7,11 +7,15 @@ Implements BaseRepository pattern for BaseCrudRouter compatibility.
 from datetime import timezone
 
 from aioia_core.repositories import BaseRepository
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from aidol.models import DBAIdolLead
-from aidol.protocols import NoUpdate
 from aidol.schemas import AIdolLead, AIdolLeadCreate
+
+
+class _AIdolLeadUpdate(BaseModel):
+    """Placeholder for update schema (not used)."""
 
 
 def _convert_db_aidol_lead_to_model(db_lead: DBAIdolLead) -> AIdolLead:
@@ -31,7 +35,7 @@ def _convert_aidol_lead_create_to_db(schema: AIdolLeadCreate) -> dict:
 
 
 class AIdolLeadRepository(
-    BaseRepository[AIdolLead, DBAIdolLead, AIdolLeadCreate, NoUpdate]
+    BaseRepository[AIdolLead, DBAIdolLead, AIdolLeadCreate, _AIdolLeadUpdate]
 ):
     """
     Database-backed AIdolLead repository.

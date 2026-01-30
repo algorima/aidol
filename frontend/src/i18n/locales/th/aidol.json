@@ -1,9 +1,14 @@
 {
+  "common": {
+    "close": "ปิด"
+  },
   "share": "แชร์",
   "urlCopied": "คัดลอก URL แล้ว!",
   "companion": {
     "promptPlaceholder": "ไอดอลของคุณพูดยังไง? บรรยายบุคลิกสักนิด...",
-    "addMember": "เพิ่มสมาชิก"
+    "addMember": "เพิ่มสมาชิก",
+    "signed": "เซ็นสัญญาแล้ว 🥺",
+    "grade": "เกรด {{grade}}"
   },
   "aidol": {
     "notFound": "ไม่พบกลุ่ม",
