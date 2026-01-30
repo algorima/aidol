@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useTranslation } from "react-i18next";
 
@@ -41,9 +42,9 @@ function PageWrapper({
           initialStep={initialStep}
           initialName={initialName}
           initialEmblemUrl={initialEmblemUrl}
-          onSubmit={(data) => alert(`제출: ${JSON.stringify(data)}`)}
+          onSubmit={action("onSubmit")}
           onGenerateImage={(prompt) => {
-            alert(`이미지 생성: ${prompt}`);
+            action("onGenerateImage")(prompt);
             return Promise.resolve(sampleEmblemUrl);
           }}
           isLoading={isLoading}
