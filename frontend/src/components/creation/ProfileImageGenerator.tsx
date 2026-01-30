@@ -28,7 +28,7 @@ export function ProfileImageGenerator({
         value={prompt}
         onChange={(e) => onPromptChange(e.target.value)}
         placeholder={t("aidol:companionCreate.image.promptPlaceholder")}
-        className="input w-full"
+        className="input bg-base-100 w-full"
       />
       <button
         type="button"
