@@ -2,6 +2,25 @@
   "common": {
     "close": "Close"
   },
+  "position": {
+    "header": "Position Assignment",
+    "title": "Assign positions to each member!",
+    "subtitle": "Tap to assign a position",
+    "unassigned": "Unassigned",
+    "mainVocal": "Main Vocal",
+    "subVocal": "Sub Vocal",
+    "mainDancer": "Main Dancer",
+    "subDancer": "Sub Dancer",
+    "mainRapper": "Main Rapper",
+    "subRapper": "Sub Rapper",
+    "assign": "Assign",
+    "confirm": "Plan Group",
+    "needMore": "Assign positions to {{count}} more members",
+    "error": {
+      "load": "Failed to load members",
+      "update": "Failed to assign position"
+    }
+  },
   "share": "Share",
   "urlCopied": "URL copied!",
   "castingBoard": {

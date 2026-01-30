@@ -2,6 +2,25 @@
   "common": {
     "close": "閉じる"
   },
+  "position": {
+    "header": "ポジション配置",
+    "title": "メンバーにポジションを配置しよう！",
+    "subtitle": "タップしてポジションを配置できます",
+    "unassigned": "未配置",
+    "mainVocal": "メインボーカル",
+    "subVocal": "サブボーカル",
+    "mainDancer": "メインダンサー",
+    "subDancer": "サブダンサー",
+    "mainRapper": "メインラッパー",
+    "subRapper": "サブラッパー",
+    "assign": "配置する",
+    "confirm": "グループを企画する",
+    "needMore": "あと{{count}}人のポジションを配置してください",
+    "error": {
+      "load": "メンバー一覧の読み込みに失敗しました",
+      "update": "ポジションの配置に失敗しました"
+    }
+  },
   "share": "共有",
   "urlCopied": "URLがコピーされました！",
   "castingBoard": {

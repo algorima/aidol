@@ -2,6 +2,25 @@
   "common": {
     "close": "Cerrar"
   },
+  "position": {
+    "header": "Asignación de Posición",
+    "title": "¡Asigna una posición a cada miembro!",
+    "subtitle": "Toca para asignar una posición",
+    "unassigned": "Sin asignar",
+    "mainVocal": "Vocal Principal",
+    "subVocal": "Vocal Secundario",
+    "mainDancer": "Bailarín Principal",
+    "subDancer": "Bailarín Secundario",
+    "mainRapper": "Rapero Principal",
+    "subRapper": "Rapero Secundario",
+    "assign": "Asignar",
+    "confirm": "Planificar Grupo",
+    "needMore": "Asigna posición a {{count}} miembros más",
+    "error": {
+      "load": "Error al cargar los miembros",
+      "update": "Error al asignar posición"
+    }
+  },
   "share": "Compartir",
   "urlCopied": "¡URL copiada!",
   "castingBoard": {

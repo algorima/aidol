@@ -2,6 +2,25 @@
   "common": {
     "close": "Đóng"
   },
+  "position": {
+    "header": "Phân Công Vị Trí",
+    "title": "Phân công vị trí cho từng thành viên!",
+    "subtitle": "Nhấn để phân công vị trí",
+    "unassigned": "Chưa phân công",
+    "mainVocal": "Main Vocal",
+    "subVocal": "Sub Vocal",
+    "mainDancer": "Main Dancer",
+    "subDancer": "Sub Dancer",
+    "mainRapper": "Main Rapper",
+    "subRapper": "Sub Rapper",
+    "assign": "Phân công",
+    "confirm": "Lên kế hoạch nhóm",
+    "needMore": "Phân công vị trí cho {{count}} thành viên nữa",
+    "error": {
+      "load": "Không thể tải danh sách thành viên",
+      "update": "Không thể phân công vị trí"
+    }
+  },
   "share": "Chia sẻ",
   "urlCopied": "Đã sao chép URL!",
   "castingBoard": {
