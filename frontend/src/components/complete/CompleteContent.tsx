@@ -159,7 +159,7 @@ export function CompleteContent({
       <button
         type="button"
         onClick={onNewsletter}
-        className="flex w-full cursor-pointer items-center justify-center rounded-lg bg-linear-to-r from-[#e70051] to-[#9e54ff] p-4"
+        className="from-primary to-secondary flex w-full cursor-pointer items-center justify-center rounded-lg bg-linear-to-r p-4"
       >
         <p className="text-label-l text-white">{t("aidol:complete.banner")}</p>
       </button>
