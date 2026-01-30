@@ -6,9 +6,13 @@ import { ImagePreview } from "./ImagePreview";
 
 interface ProfileContentProps {
   companion: Companion;
+  showBiography?: boolean;
 }
 
-export function ProfileContent({ companion }: ProfileContentProps) {
+export function ProfileContent({
+  companion,
+  showBiography = true,
+}: ProfileContentProps) {
   const { t } = useTranslation();
   const { name, profilePictureUrl, grade, mbti, biography } = companion;
 
@@ -32,7 +36,7 @@ export function ProfileContent({ companion }: ProfileContentProps) {
           </div>
         )}
       </div>
-      {biography && (
+      {showBiography && biography && (
         <p className="text-body-s text-base-content">{biography}</p>
       )}
     </div>
