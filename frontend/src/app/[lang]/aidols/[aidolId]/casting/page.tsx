@@ -40,7 +40,7 @@ export default function CastingPage() {
   const [isCastCompleteOpen, setIsCastCompleteOpen] = useState(false);
 
   const gender = TAB_TO_GENDER[activeTab];
-  const companions = getMockCompanions({ gender });
+  const companions = getMockCompanions({ gender, presetOnly: false });
 
   const selectedAbilities = selectedCompanion
     ? getMockCompanionAbilities(selectedCompanion.id)
