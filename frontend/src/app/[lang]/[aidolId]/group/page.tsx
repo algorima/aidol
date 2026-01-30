@@ -98,7 +98,7 @@ export default function GroupPage({ params }: GroupPageProps) {
       <Header title={t("aidol:groupPlanning.header")} />
       <GroupPlanningForm
         initialName={aidol?.name}
-        initialEmblemUrl={aidol?.profileImageUrl ?? undefined}
+        initialEmblemUrl={aidol?.profileImageUrl}
         onSubmit={handleSubmit}
         onGenerateImage={handleGenerateImage}
         isLoading={isSubmitting}
