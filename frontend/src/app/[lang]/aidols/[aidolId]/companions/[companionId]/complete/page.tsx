@@ -46,7 +46,7 @@ export default function CompletePage() {
             type="button"
             disabled={!name.trim()}
             onClick={handleComplete}
-            className="btn btn-primary w-full"
+            className="btn btn-neutral w-full"
           >
             <SparklesIcon className="size-5" />
             {t("aidol:companionCreate.complete.button")}

@@ -52,9 +52,9 @@ export function ProfileImageGenerator({
           />
         </div>
       ) : (
-        <div className="bg-base-200 flex aspect-square w-full flex-col items-center justify-center gap-4 rounded-lg">
-          <SparklesIcon className="text-base-content/30 size-12" />
-          <p className="text-body-s text-base-content/50 text-center whitespace-pre-line">
+        <div className="border-base-300 bg-base-100 flex aspect-square w-full flex-col items-center justify-center gap-4 rounded-lg border">
+          <SparklesIcon className="text-neutral size-6" />
+          <p className="text-body-m text-neutral text-center whitespace-pre-line">
             {t("aidol:companionCreate.image.placeholder")}
           </p>
         </div>

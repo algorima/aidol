@@ -24,7 +24,7 @@ export function GenderSelector({ value, onChange }: GenderSelectorProps) {
           type="button"
           onClick={() => onChange(gender)}
           className={clsx(
-            "text-label-l flex-1 rounded-full border-2 px-6 py-3 transition-colors",
+            "text-label-l flex-1 rounded-lg border px-6 py-3 transition-colors",
             value === gender
               ? "border-primary bg-primary/10 text-primary"
               : "border-base-300 text-base-content",
