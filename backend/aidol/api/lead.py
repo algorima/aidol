@@ -10,7 +10,7 @@ from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings
 from fastapi import APIRouter, Depends, Header, status
 from pydantic import BaseModel
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import Session, sessionmaker
 
 from aidol.protocols import (
     AIdolLeadRepositoryFactoryProtocol,
@@ -61,44 +61,36 @@ class LeadRouter(
         async def create_lead(
             request: AIdolLeadCreate,
             claim_token: Annotated[str | None, Header(alias="ClaimToken")] = None,
+            db_session: Session = Depends(self.get_db_dep),
             lead_repository: AIdolLeadRepositoryProtocol = Depends(
                 self.get_repository_dep
             ),
-            # Note: We need a new session for AIdol repo or reuse the one from lead_repository (if they share session factory logic)
-            # BaseCrudRouter dependency injection flow creates a session.
-            # Ideally we reuse the session. But BaseCrudRouter structure makes it hard to inject AIdolRepository sharing the same session easily without overriding get_repository_dep.
-            # For simplicity, we create a new AIdolRepository using the factory and a fresh session (or try to reuse if possible).
-            # But creating a new session inside endpoint is risky for transaction atomicity if we want both to succeed.
-            # However, here we do EITHER update OR create. So separate transactions are acceptable.
         ):
             """Collect email."""
             email_saved = False
 
             # 1. Try to associate with AIdol if token is present
             if claim_token:
-                # Create AIdol repo with new session
-                with self.db_session_factory() as session:
-                    aidol_repo = self.aidol_repository_factory.create_repository(
-                        session
-                    )
+                # Reuse session from dependency
+                aidol_repo = self.aidol_repository_factory.create_repository(db_session)
 
-                    # Find AIdol by claim_token
-                    # Assuming get_all supports filters
-                    items, _ = aidol_repo.get_all(
-                        filters=[
-                            {
-                                "field": "claim_token",
-                                "operator": "eq",
-                                "value": claim_token,
-                            }
-                        ]
-                    )
+                # Find AIdol by claim_token
+                # Assuming get_all supports filters
+                items, _ = aidol_repo.get_all(
+                    filters=[
+                        {
+                            "field": "claim_token",
+                            "operator": "eq",
+                            "value": claim_token,
+                        }
+                    ]
+                )
 
-                    if items:
-                        aidol = items[0]
-                        # Update AIdol email
-                        aidol_repo.update(aidol.id, AIdolUpdate(email=request.email))
-                        email_saved = True
+                if items:
+                    aidol = items[0]
+                    # Update AIdol email
+                    aidol_repo.update(aidol.id, AIdolUpdate(email=request.email))
+                    email_saved = True
 
             # 2. If not saved as AIdol email, create Lead
             if not email_saved:
