@@ -47,7 +47,8 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
           filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
         });
         setCompanions(response.data);
-      } catch {
+      } catch (error) {
+        console.error("Failed to fetch companions:", error);
         showToast(t("aidol:castingBoard.error.load"));
       } finally {
         setIsLoading(false);
@@ -81,7 +82,8 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
       );
       handleCloseModal();
       showToast(t("aidol:castingBoard.deleted"));
-    } catch {
+    } catch (error) {
+      console.error("Failed to delete companion:", error);
       showToast(t("aidol:castingBoard.error.delete"));
     }
   }, [selectedCompanion, companionRepository, handleCloseModal, showToast, t]);
