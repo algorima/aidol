@@ -22,6 +22,13 @@
       "delete": "删除失败。"
     }
   },
+  "castingComplete": {
+    "title": "练习生选秀完成",
+    "subtitle": "已添加到候选名单",
+    "remainingSlots": "剩余选秀名额",
+    "findNext": "寻找下一位练习生",
+    "viewBoard": "查看选秀板"
+  },
   "companion": {
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
     "addMember": "添加成员",
