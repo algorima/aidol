@@ -124,11 +124,11 @@ export const PersonalitySliders: Story = {
                 className="range range-primary"
                 step="1"
               />
-              <div className="text-primary mb-1 flex justify-between px-2.5 text-xs">
+              <div className="text-primary text-label-s mb-1 flex justify-between px-2.5">
                 <span>|</span>
                 <span>|</span>
               </div>
-              <div className="text-primary flex justify-between text-xs">
+              <div className="text-primary text-label-s flex justify-between">
                 <span>{item.left}</span>
                 <span>{item.right}</span>
               </div>
