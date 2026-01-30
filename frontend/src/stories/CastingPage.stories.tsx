@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
+import type { GenderTab } from "@/components/casting";
 import {
   CastingCardGrid,
   CastingInfoBanner,
   GenderFilterTabs,
 } from "@/components/casting";
-import type { GenderTab } from "@/components/casting";
 import { NewMemberSection } from "@/components/casting/NewMemberSection";
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
@@ -74,12 +74,10 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-/** 전체 캐스팅 페이지 */
 export const Default: Story = {
   render: () => <CastingPageFull />,
 };
 
-/** 안내 배너 */
 export const InfoBanner: Story = {
   render: () => (
     <div className="max-w-mobile p-6">
@@ -88,7 +86,6 @@ export const InfoBanner: Story = {
   ),
 };
 
-/** 성별 필터 탭 */
 export const FilterTabs: Story = {
   render: () => {
     const [tab, setTab] = useState<GenderTab>("boy");
@@ -100,7 +97,6 @@ export const FilterTabs: Story = {
   },
 };
 
-/** 새 멤버 섹션 */
 export const NewMember: Story = {
   render: () => (
     <div className="max-w-mobile p-6">

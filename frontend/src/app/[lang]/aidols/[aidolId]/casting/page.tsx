@@ -6,12 +6,12 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import type { GenderTab } from "@/components/casting";
 import {
   CastingCardGrid,
   CastingInfoBanner,
   GenderFilterTabs,
 } from "@/components/casting";
-import type { GenderTab } from "@/components/casting";
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
@@ -54,7 +54,7 @@ export default function CastingPage() {
   };
 
   const handleNewMember = () => {
-    // noop: API 연동 후 구현
+    // 추후 수정 필요
   };
 
   return (
