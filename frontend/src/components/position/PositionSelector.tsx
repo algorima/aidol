@@ -40,7 +40,10 @@ export function PositionSelector({
             (c) => c.id !== currentCompanionId && c.position === position,
           );
           const label = assignedTo
-            ? `${t(`aidol:position.${position}`)}(${assignedTo.name})`
+            ? t("aidol:position.assignedTo", {
+                position: t(`aidol:position.${position}`),
+                name: assignedTo.name,
+              })
             : t(`aidol:position.${position}`);
           return (
             <li key={position}>

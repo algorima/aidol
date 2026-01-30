@@ -13,6 +13,7 @@
     "subDancer": "Penari Pendukung",
     "mainRapper": "Rapper Utama",
     "subRapper": "Rapper Pendukung",
+    "assignedTo": "{{position}}({{name}})",
     "assign": "Tetapkan",
     "confirm": "Rencanakan Grup",
     "needMore": "Tetapkan posisi untuk {{count}} anggota lagi",

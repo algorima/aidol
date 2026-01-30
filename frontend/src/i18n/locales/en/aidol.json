@@ -13,6 +13,7 @@
     "subDancer": "Sub Dancer",
     "mainRapper": "Main Rapper",
     "subRapper": "Sub Rapper",
+    "assignedTo": "{{position}}({{name}})",
     "assign": "Assign",
     "confirm": "Plan Group",
     "needMore": "Assign positions to {{count}} more members",

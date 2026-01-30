@@ -13,6 +13,7 @@
     "subDancer": "Bailarín Secundario",
     "mainRapper": "Rapero Principal",
     "subRapper": "Rapero Secundario",
+    "assignedTo": "{{position}}({{name}})",
     "assign": "Asignar",
     "confirm": "Planificar Grupo",
     "needMore": "Asigna posición a {{count}} miembros más",

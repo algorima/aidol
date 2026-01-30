@@ -13,6 +13,7 @@
     "subDancer": "副舞",
     "mainRapper": "主说唱",
     "subRapper": "副说唱",
+    "assignedTo": "{{position}}({{name}})",
     "assign": "分配",
     "confirm": "规划组合",
     "needMore": "还需分配{{count}}人的位置",

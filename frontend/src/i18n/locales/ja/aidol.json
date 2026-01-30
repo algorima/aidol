@@ -13,6 +13,7 @@
     "subDancer": "サブダンサー",
     "mainRapper": "メインラッパー",
     "subRapper": "サブラッパー",
+    "assignedTo": "{{position}}({{name}})",
     "assign": "配置する",
     "confirm": "グループを企画する",
     "needMore": "あと{{count}}人のポジションを配置してください",

@@ -13,6 +13,7 @@
     "subDancer": "서브 댄서",
     "mainRapper": "메인 래퍼",
     "subRapper": "서브 래퍼",
+    "assignedTo": "{{position}}({{name}})",
     "assign": "배정하기",
     "confirm": "그룹 기획하기",
     "needMore": "{{count}}명의 포지션을 더 배정해주세요",

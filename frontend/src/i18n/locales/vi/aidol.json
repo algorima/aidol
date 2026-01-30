@@ -13,6 +13,7 @@
     "subDancer": "Sub Dancer",
     "mainRapper": "Main Rapper",
     "subRapper": "Sub Rapper",
+    "assignedTo": "{{position}}({{name}})",
     "assign": "Phân công",
     "confirm": "Lên kế hoạch nhóm",
     "needMore": "Phân công vị trí cho {{count}} thành viên nữa",
