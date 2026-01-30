@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "閉じる"
+  },
   "share": "共有",
   "urlCopied": "URLがコピーされました！",
   "companion": {

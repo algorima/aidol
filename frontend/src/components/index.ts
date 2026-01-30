@@ -11,4 +11,6 @@ export * from "./creation";
 export * from "./landing";
 
 // Shared components
+export { Header } from "./Header";
+export { Modal } from "./Modal";
 export { ShareButton } from "./ShareButton";
