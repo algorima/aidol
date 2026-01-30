@@ -116,6 +116,30 @@
     "completeDescription": "Start chatting with your dream idol now",
     "viewProfile": "View Profile"
   },
+  "complete": {
+    "greeting1": "Hello!",
+    "greeting2": "We are {{name}}!",
+    "greeting3": "Nice to meet you",
+    "createAnother": "Create Another Group",
+    "share": "Share Profile",
+    "banner": "Curious about this group's next move?",
+    "error": {
+      "load": "Failed to load group info"
+    }
+  },
+  "newsletter": {
+    "header": "Enter Email",
+    "previewTitle": "Dorm stories, practice tales\nWe'll send you real reviews from members!",
+    "previewMessage": "Shouldn't you talk to your hyung more respectfully?",
+    "title": "Stay Updated",
+    "description": "Get the latest news and updates about this group via email.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@email.com",
+    "submit": "Get Updates",
+    "submitting": "Subscribing...",
+    "success": "Successfully subscribed!",
+    "error": "Failed to subscribe. Please try again."
+  },
   "landing": {
     "hero": {
       "title": {

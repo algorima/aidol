@@ -116,6 +116,30 @@
     "completeDescription": "Langsung ngobrol sama idol impianmu sekarang",
     "viewProfile": "Lihat Profil"
   },
+  "complete": {
+    "greeting1": "Halo!",
+    "greeting2": "Kami {{name}}!",
+    "greeting3": "Senang berkenalan",
+    "createAnother": "Buat Grup Lain",
+    "share": "Bagikan Profil",
+    "banner": "Penasaran dengan langkah selanjutnya grup ini?",
+    "error": {
+      "load": "Gagal memuat info grup"
+    }
+  },
+  "newsletter": {
+    "header": "Masukkan Email",
+    "previewTitle": "Cerita asrama debut, cerita latihan\nKami akan kirimkan ulasan nyata dari para anggota!",
+    "previewMessage": "Bukankah kamu harus bicara lebih sopan ke kakak?",
+    "title": "Dapatkan Info Terbaru",
+    "description": "Terima berita dan update terbaru tentang grup ini via email.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "contoh@email.com",
+    "submit": "Terima Kabar",
+    "submitting": "Mendaftar...",
+    "success": "Berhasil berlangganan!",
+    "error": "Gagal berlangganan. Coba lagi."
+  },
   "landing": {
     "hero": {
       "title": {

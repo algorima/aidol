@@ -116,6 +116,30 @@
     "completeDescription": "Bắt đầu trò chuyện với idol mơ ước ngay",
     "viewProfile": "Xem Hồ Sơ"
   },
+  "complete": {
+    "greeting1": "Xin chào!",
+    "greeting2": "Chúng tôi là {{name}}!",
+    "greeting3": "Rất vui được gặp bạn",
+    "createAnother": "Tạo Nhóm Khác",
+    "share": "Chia Sẻ Hồ Sơ",
+    "banner": "Tò mò về bước tiếp theo của nhóm?",
+    "error": {
+      "load": "Không thể tải thông tin nhóm"
+    }
+  },
+  "newsletter": {
+    "header": "Nhập Email",
+    "previewTitle": "Chuyện ký túc xá debut, chuyện tập luyện\nChúng tôi sẽ gửi bạn những câu chuyện thật từ các thành viên!",
+    "previewMessage": "Em nói chuyện với anh như vậy có được không?",
+    "title": "Nhận Tin Tức",
+    "description": "Nhận tin tức và cập nhật mới nhất về nhóm này qua email.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "vidu@email.com",
+    "submit": "Nhận Tin",
+    "submitting": "Đang đăng ký...",
+    "success": "Đăng ký thành công!",
+    "error": "Đăng ký thất bại. Vui lòng thử lại."
+  },
   "landing": {
     "hero": {
       "title": {

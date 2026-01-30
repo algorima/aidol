@@ -116,6 +116,30 @@
     "completeDescription": "Mag-chat na sa iyong dream idol ngayon",
     "viewProfile": "Tingnan ang Profile"
   },
+  "complete": {
+    "greeting1": "Kumusta!",
+    "greeting2": "Kami ang {{name}}!",
+    "greeting3": "Masaya kaming makilala ka",
+    "createAnother": "Gumawa ng Ibang Grupo",
+    "share": "I-share ang Profile",
+    "banner": "Curious sa susunod na gagawin ng grupo?",
+    "error": {
+      "load": "Hindi ma-load ang info ng grupo"
+    }
+  },
+  "newsletter": {
+    "header": "Ilagay ang Email",
+    "previewTitle": "Mga kwento sa dorm ng debut, mga kwento sa practice\nIpapadala namin ang mga tunay na review mula sa mga miyembro!",
+    "previewMessage": "Hindi ba dapat mas magalang kang makipag-usap sa kuya mo?",
+    "title": "Manatiling Updated",
+    "description": "Tumanggap ng pinakabagong balita at updates tungkol sa grupong ito sa email.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "halimbawa@email.com",
+    "submit": "Kumuha ng Updates",
+    "submitting": "Nagsu-subscribe...",
+    "success": "Matagumpay na naka-subscribe!",
+    "error": "Hindi makapag-subscribe. Subukan muli."
+  },
   "landing": {
     "hero": {
       "title": {

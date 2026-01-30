@@ -116,6 +116,30 @@
     "completeDescription": "现在就和你的梦想偶像聊天吧",
     "viewProfile": "查看资料"
   },
+  "complete": {
+    "greeting1": "你好！",
+    "greeting2": "我们是{{name}}！",
+    "greeting3": "请多多关照",
+    "createAnother": "创建其他组合",
+    "share": "分享资料",
+    "banner": "想知道这个组合的下一步吗？",
+    "error": {
+      "load": "无法加载组合信息"
+    }
+  },
+  "newsletter": {
+    "header": "输入邮箱",
+    "previewTitle": "出道组宿舍趣事、练习趣事\n成员们的真实后记发送给你！",
+    "previewMessage": "你这样跟哥哥说话不好吧？",
+    "title": "获取最新消息",
+    "description": "通过邮件接收该组合的最新消息和更新。",
+    "emailLabel": "邮箱",
+    "emailPlaceholder": "example@email.com",
+    "submit": "接收消息",
+    "submitting": "订阅中...",
+    "success": "订阅成功！",
+    "error": "订阅失败，请重试。"
+  },
   "landing": {
     "hero": {
       "title": {
