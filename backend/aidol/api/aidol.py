@@ -1,4 +1,3 @@
-
 """
 AIdol API router
 
@@ -20,12 +19,7 @@ from aidol.protocols import (
     AIdolRepositoryProtocol,
     ImageStorageProtocol,
 )
-from aidol.schemas import (
-    AIdol,
-    AIdolCreate,
-    AIdolPublic,
-    AIdolUpdate,
-)
+from aidol.schemas import AIdol, AIdolCreate, AIdolPublic, AIdolUpdate
 
 
 class AIdolCreateResponse(BaseModel):
@@ -63,7 +57,7 @@ class AIdolRouter(
             google_api_key=self.google_api_key,
             image_storage=self.image_storage,
         )
-        
+
         self._register_public_create_route()
         self._register_public_get_route()
         self._register_public_update_route()

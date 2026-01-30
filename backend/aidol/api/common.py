@@ -4,6 +4,7 @@ Common API utilities.
 Shared functions for registering common routes across different routers.
 """
 
+from aioia_core.errors import ErrorResponse
 from fastapi import APIRouter, HTTPException, status
 
 from aidol.protocols import ImageStorageProtocol
@@ -13,7 +14,6 @@ from aidol.schemas import (
     ImageGenerationResponse,
 )
 from aidol.services import ImageGenerationService
-from aioia_core.errors import ErrorResponse
 
 
 def register_image_generation_route(

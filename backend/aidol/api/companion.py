@@ -1,4 +1,3 @@
-
 """
 Companion API router
 
@@ -69,7 +68,7 @@ class CompanionRouter(
             google_api_key=self.google_api_key,
             image_storage=self.image_storage,
         )
-        
+
         self._register_public_list_route()
         self._register_public_create_route()
         self._register_public_get_route()
@@ -91,9 +90,7 @@ class CompanionRouter(
             is_cast: bool | None = Query(
                 None, alias="isCast", description="Filter by cast status"
             ),
-            aidol_id: str | None = Query(
-                None, description="Filter by AIdol Group ID"
-            ),
+            aidol_id: str | None = Query(None, description="Filter by AIdol Group ID"),
             repository: CompanionRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """List Companions with optional gender and isCast filters."""
