@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 import type { ApiService } from "@/services/ApiService";
 
 export interface LeadRequest {
@@ -5,10 +7,11 @@ export interface LeadRequest {
   email: string;
 }
 
-export interface LeadResponse {
-  aidolId: string;
-  email: string;
-}
+export const leadResponseSchema = z.object({
+  email: z.string(),
+});
+
+export type LeadResponse = z.infer<typeof leadResponseSchema>;
 
 /**
  * Repository for Leads (newsletter subscription)
@@ -28,6 +31,6 @@ export class LeadsRepository {
       body: JSON.stringify(request),
     });
 
-    return response as LeadResponse;
+    return leadResponseSchema.parse(response);
   }
 }
