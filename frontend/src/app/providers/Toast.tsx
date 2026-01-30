@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  CheckCircleIcon,
-  ExclamationCircleIcon,
-  ExclamationTriangleIcon,
-  InformationCircleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -78,7 +71,7 @@ export function ToastProvider({ children }: ToastProviderProps): JSX.Element {
     (
       message: string,
       type: ToastMessage["type"] = "info",
-      duration: number = 4000,
+      duration: number = 2000,
     ) => {
       const id = `toast_${Date.now()}_${Math.random().toString(36).slice(2)}`;
       const newToast: ToastMessage = { id, message, type, duration };
@@ -126,7 +119,7 @@ interface ToastContainerProps {
 
 function ToastContainer({ toasts, onHide }: ToastContainerProps): JSX.Element {
   return (
-    <div className="toast toast-end toast-top">
+    <div className="toast toast-bottom toast-center z-50">
       <AnimatePresence>
         {toasts.map((toast) => (
           <ToastItem key={toast.id} toast={toast} onHide={onHide} />
@@ -141,72 +134,17 @@ export interface ToastItemProps {
   onHide: (id: string) => void;
 }
 
-export function ToastItem({ toast, onHide }: ToastItemProps): JSX.Element {
-  const getIcon = () => {
-    switch (toast.type) {
-      case "success":
-        return (
-          <CheckCircleIcon
-            className="size-6 shrink-0"
-            role="img"
-            aria-label="Success"
-          />
-        );
-      case "error":
-        return (
-          <ExclamationCircleIcon
-            className="size-6 shrink-0"
-            role="img"
-            aria-label="Error"
-          />
-        );
-      case "warning":
-        return (
-          <ExclamationTriangleIcon
-            className="size-6 shrink-0"
-            role="img"
-            aria-label="Warning"
-          />
-        );
-      case "primary":
-      case "secondary":
-      case "accent":
-      case "neutral":
-        return (
-          <InformationCircleIcon
-            className="size-6 shrink-0"
-            role="img"
-            aria-label={toast.type}
-          />
-        );
-      case "info":
-      default:
-        return (
-          <InformationCircleIcon
-            className="size-6 shrink-0"
-            role="img"
-            aria-label="Info"
-          />
-        );
-    }
-  };
-
+export function ToastItem({ toast }: ToastItemProps): JSX.Element {
   const getAlertClass = () => {
     switch (toast.type) {
       case "success":
         return "alert-success";
       case "error":
-        return "alert-error";
+        return "bg-error text-error-content";
       case "warning":
         return "alert-warning";
-      case "primary":
-        return "bg-primary text-primary-content";
-      case "secondary":
-        return "bg-secondary text-secondary-content";
       case "accent":
         return "bg-accent text-accent-content";
-      case "neutral":
-        return "bg-neutral text-neutral-content";
       case "info":
       default:
         return "alert-info";
@@ -216,25 +154,17 @@ export function ToastItem({ toast, onHide }: ToastItemProps): JSX.Element {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, x: 300, scale: 0.3 }}
-      animate={{ opacity: 1, x: 0, scale: 1 }}
-      exit={{ opacity: 0, x: 300, scale: 0.5, transition: { duration: 0.2 } }}
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 50, scale: 0.9, transition: { duration: 0.2 } }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={clsx(
-        "alert max-w-[400px] min-w-[300px] shadow-lg",
+        "alert max-w-100 min-w-87 justify-center rounded-lg border-0 p-4 shadow-lg",
         getAlertClass(),
       )}
       role="alert"
     >
-      {getIcon()}
-      <span className="flex-1">{toast.message}</span>
-      <button
-        onClick={() => onHide(toast.id)}
-        className="btn btn-circle btn-ghost btn-sm"
-        aria-label="Close toast"
-      >
-        <XMarkIcon className="size-4" />
-      </button>
+      <span>{toast.message}</span>
     </motion.div>
   );
 }

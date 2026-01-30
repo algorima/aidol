@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { CastingBoard } from "@/components/casting-board";
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
@@ -19,6 +20,7 @@ interface CastingBoardProps {
 export default function CastingBoardPage({ params }: CastingBoardProps) {
   const { t } = useTranslation();
   const router = useRouter();
+  const { showToast } = useToast();
   const { lang, aidolId } = params;
 
   const [companions, setCompanions] = useState<Companion[]>([]);
@@ -27,12 +29,6 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
     null,
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const showToast = useCallback((message: string) => {
-    setToastMessage(message);
-    setTimeout(() => setToastMessage(null), 2000);
-  }, []);
 
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
@@ -49,7 +45,7 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
         setCompanions(response.data);
       } catch (error) {
         console.error("Failed to fetch companions:", error);
-        showToast(t("aidol:castingBoard.error.load"));
+        showToast(t("aidol:castingBoard.error.load"), "error");
       } finally {
         setIsLoading(false);
       }
@@ -81,10 +77,10 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
         prev.filter((c) => c.id !== selectedCompanion.id),
       );
       handleCloseModal();
-      showToast(t("aidol:castingBoard.deleted"));
+      showToast(t("aidol:castingBoard.deleted"), "accent");
     } catch (error) {
       console.error("Failed to delete companion:", error);
-      showToast(t("aidol:castingBoard.error.delete"));
+      showToast(t("aidol:castingBoard.error.delete"), "error");
     }
   }, [selectedCompanion, companionRepository, handleCloseModal, showToast, t]);
 
@@ -114,13 +110,6 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
         >
           <ProfileContent companion={selectedCompanion} />
         </Modal>
-      )}
-      {toastMessage && (
-        <div className="max-w-mobile fixed inset-x-0 bottom-0 z-40 mx-auto px-6 pb-6">
-          <div className="alert bg-accent text-accent-content text-label-l w-full justify-center rounded-lg py-4">
-            <span>{toastMessage}</span>
-          </div>
-        </div>
       )}
     </div>
   );
