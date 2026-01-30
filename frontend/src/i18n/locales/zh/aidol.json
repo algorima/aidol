@@ -36,6 +36,24 @@
   },
   "share": "分享",
   "urlCopied": "URL已复制！",
+  "castingBoard": {
+    "header": "最终出道阵容",
+    "title": "我选中的练习生！",
+    "subtitle": "点击可删除",
+    "browse": "浏览练习生",
+    "confirm": "确认出道！",
+    "needMore": "再选{{count}}人就可以创建组合了！",
+    "delete": "删除",
+    "deleted": "已删除。",
+    "empty": {
+      "title": "最终出道阵容\n为空",
+      "description": "去选一些练习生吧！"
+    },
+    "error": {
+      "load": "加载成员信息失败。",
+      "delete": "删除失败。"
+    }
+  },
   "companion": {
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
     "addMember": "添加成员",
@@ -62,10 +80,22 @@
       "powerful": "有力"
     },
     "personalities": {
-      "cheerful": { "label": "开朗", "description": "总是阳光积极" },
-      "cool": { "label": "冷酷", "description": "冷静沉着" },
-      "tsundere": { "label": "傲娇", "description": "外冷内热" },
-      "gentle": { "label": "温柔", "description": "善良体贴" }
+      "cheerful": {
+        "label": "开朗",
+        "description": "总是阳光积极"
+      },
+      "cool": {
+        "label": "冷酷",
+        "description": "冷静沉着"
+      },
+      "tsundere": {
+        "label": "傲娇",
+        "description": "外冷内热"
+      },
+      "gentle": {
+        "label": "温柔",
+        "description": "善良体贴"
+      }
     },
     "step1": "组合",
     "step2": "成员",
@@ -88,13 +118,15 @@
   },
   "landing": {
     "hero": {
-      "title": "创造你的梦想偶像",
-      "description": "设计你的理想偶像，像真正的粉丝一样聊天",
-      "cta": "开始创作"
-    },
-    "demo": {
-      "title": "让想象变成偶像",
-      "description": "创建独特的偶像，建立特别的羁绊"
+      "title": {
+        "line1": "无限可能性的",
+        "line2": "偶像团体诞生"
+      },
+      "line1": "全球粉丝",
+      "line2": "亲自选角并出道",
+      "line3": "新人AI偶像团体",
+      "line4": "下一代项目",
+      "cta": "选拔练习生"
     }
   }
 }

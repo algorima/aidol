@@ -5,7 +5,7 @@ import { Companion } from "@/schemas";
 
 import { ImagePreview } from "./ImagePreview";
 
-type CardVariant = "grade" | "position";
+type CardVariant = "grade" | "position" | "castingBoard";
 
 interface CardProps {
   companion: Companion;
@@ -17,12 +17,13 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
   const { t } = useTranslation();
   const isSigned = companion.aidolId !== null;
   const isPosition = variant === "position";
-  const isClickable = onClick && !isSigned;
+  const isCastingBoard = variant === "castingBoard";
+  const isClickable = onClick && (!isSigned || isCastingBoard);
 
   return (
     <div
       className={clsx(
-        "h-card max-w-card border-base-300 relative w-full overflow-hidden rounded-lg border",
+        "h-card max-w-card border-base-300 relative isolate w-full overflow-hidden rounded-lg border",
         isClickable && "cursor-pointer",
       )}
       onClick={isClickable ? onClick : undefined}
@@ -48,13 +49,13 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
         />
       </div>
 
-      {/* 2. 계약 완료 시 블러 */}
-      {isSigned && (
+      {/* 2. 계약 완료 시 블러 (castingBoard에서는 표시 안 함) */}
+      {isSigned && !isCastingBoard && (
         <div className="absolute inset-0 z-20 bg-black/40 backdrop-blur-sm" />
       )}
 
-      {/* 3. 블러 위 계약 완료 레이어 */}
-      {isSigned && (
+      {/* 3. 블러 위 계약 완료 레이어 (castingBoard에서는 표시 안 함) */}
+      {isSigned && !isCastingBoard && (
         <div className="absolute top-4 left-4 z-20">
           <span className="bg-base-100 text-body-s text-base-content w-fit rounded-lg px-2 py-1">
             {t("companion.signed")}
@@ -66,9 +67,9 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
       <div
         className={clsx(
           "absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black to-transparent",
-          isSigned && "opacity-20",
+          isSigned && !isCastingBoard && "opacity-20",
           isPosition && "opacity-30",
-          !isSigned && !isPosition && "opacity-60",
+          (!isSigned || isCastingBoard) && !isPosition && "opacity-60",
         )}
       />
 

@@ -36,6 +36,24 @@
   },
   "share": "Chia sẻ",
   "urlCopied": "Đã sao chép URL!",
+  "castingBoard": {
+    "header": "Đội Hình Ra Mắt",
+    "title": "Thực Tập Sinh Tôi Đã Chọn!",
+    "subtitle": "Nhấn để xóa",
+    "browse": "Xem Thực Tập Sinh",
+    "confirm": "Xác Nhận Ra Mắt!",
+    "needMore": "Chọn thêm {{count}} để tạo nhóm!",
+    "delete": "Xóa",
+    "deleted": "Đã xóa thành công.",
+    "empty": {
+      "title": "Đội Hình Ra Mắt\nĐang Trống",
+      "description": "Hãy chọn thực tập sinh!"
+    },
+    "error": {
+      "load": "Không thể tải thông tin thành viên.",
+      "delete": "Xóa thất bại."
+    }
+  },
   "companion": {
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
     "addMember": "Thêm Thành Viên",
@@ -66,12 +84,18 @@
         "label": "Vui vẻ",
         "description": "Luôn tươi sáng và tích cực"
       },
-      "cool": { "label": "Ngầu", "description": "Bình tĩnh và điềm đạm" },
+      "cool": {
+        "label": "Ngầu",
+        "description": "Bình tĩnh và điềm đạm"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Lạnh lùng bên ngoài, ấm áp bên trong"
       },
-      "gentle": { "label": "Dịu dàng", "description": "Tốt bụng và quan tâm" }
+      "gentle": {
+        "label": "Dịu dàng",
+        "description": "Tốt bụng và quan tâm"
+      }
     },
     "step1": "Nhóm",
     "step2": "Thành Viên",
@@ -94,13 +118,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Tạo Idol Mơ Ước",
-      "description": "Thiết kế idol hoàn hảo và trò chuyện như fan thật sự",
-      "cta": "Bắt Đầu Tạo"
-    },
-    "demo": {
-      "title": "Trí Tưởng Tượng Thành Idol",
-      "description": "Tạo idol độc đáo và xây dựng mối liên kết đặc biệt"
+      "title": {
+        "line1": "Khả Năng Vô Hạn",
+        "line2": "Sự Ra Đời Của Nhóm Idol"
+      },
+      "line1": "Fandom toàn cầu",
+      "line2": "tuyển chọn và ra mắt",
+      "line3": "Nhóm Idol AI Mới",
+      "line4": "Dự Án Thế Hệ Tiếp Theo",
+      "cta": "Tuyển Thực Tập Sinh"
     }
   }
 }

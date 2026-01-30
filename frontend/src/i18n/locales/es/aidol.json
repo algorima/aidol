@@ -36,6 +36,24 @@
   },
   "share": "Compartir",
   "urlCopied": "¡URL copiada!",
+  "castingBoard": {
+    "header": "Alineación Final de Debut",
+    "title": "¡Mis Trainees Elegidos!",
+    "subtitle": "Toca para eliminar",
+    "browse": "Ver Trainees",
+    "confirm": "¡Confirmar Debut!",
+    "needMore": "¡Elige {{count}} más para crear un grupo!",
+    "delete": "Eliminar",
+    "deleted": "Eliminado correctamente.",
+    "empty": {
+      "title": "La Alineación Final\nestá Vacía",
+      "description": "¡Elige a tus trainees!"
+    },
+    "error": {
+      "load": "Error al cargar los miembros.",
+      "delete": "Error al eliminar."
+    }
+  },
   "companion": {
     "promptPlaceholder": "¿Cómo habla tu idol? Describe su personalidad...",
     "addMember": "Añadir Miembro",
@@ -66,12 +84,18 @@
         "label": "Alegre",
         "description": "Siempre brillante y positivo"
       },
-      "cool": { "label": "Genial", "description": "Tranquilo y sereno" },
+      "cool": {
+        "label": "Genial",
+        "description": "Tranquilo y sereno"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Frío por fuera, cálido por dentro"
       },
-      "gentle": { "label": "Amable", "description": "Bondadoso y cariñoso" }
+      "gentle": {
+        "label": "Amable",
+        "description": "Bondadoso y cariñoso"
+      }
     },
     "step1": "Grupo",
     "step2": "Miembros",
@@ -94,13 +118,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Crea Tu Idol Soñado",
-      "description": "Diseña tu idol perfecto y chatea como un verdadero fan",
-      "cta": "Empezar a Crear"
-    },
-    "demo": {
-      "title": "Tu Imaginación, Tu Idol",
-      "description": "Crea idols únicos y construye una conexión especial"
+      "title": {
+        "line1": "Posibilidades Infinitas",
+        "line2": "El Nacimiento del Grupo Idol"
+      },
+      "line1": "El fandom global",
+      "line2": "selecciona y debuta",
+      "line3": "Nuevo Grupo de Idol AI",
+      "line4": "Proyecto Próxima Generación",
+      "cta": "Seleccionar Aprendices"
     }
   }
 }

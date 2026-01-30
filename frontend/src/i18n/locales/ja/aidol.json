@@ -36,6 +36,24 @@
   },
   "share": "共有",
   "urlCopied": "URLがコピーされました！",
+  "castingBoard": {
+    "header": "最終デビュー組ラインナップ",
+    "title": "私がキャスティングした練習生！",
+    "subtitle": "タップして削除できます",
+    "browse": "練習生を見る",
+    "confirm": "デビュー組確定！",
+    "needMore": "あと{{count}}人キャスティングするとグループが作れます！",
+    "delete": "削除",
+    "deleted": "削除されました。",
+    "empty": {
+      "title": "最終デビュー組ラインナップが\n空です",
+      "description": "アイドルをキャスティングしてみよう！"
+    },
+    "error": {
+      "load": "メンバー情報の読み込みに失敗しました。",
+      "delete": "削除に失敗しました。"
+    }
+  },
   "companion": {
     "promptPlaceholder": "どんな話し方をする？性格を教えてね...",
     "addMember": "メンバー追加",
@@ -66,12 +84,18 @@
         "label": "明るい",
         "description": "いつも元気でポジティブ"
       },
-      "cool": { "label": "クール", "description": "冷静で落ち着いている" },
+      "cool": {
+        "label": "クール",
+        "description": "冷静で落ち着いている"
+      },
       "tsundere": {
         "label": "ツンデレ",
         "description": "外は冷たく中は温かい"
       },
-      "gentle": { "label": "優しい", "description": "親切で思いやりがある" }
+      "gentle": {
+        "label": "優しい",
+        "description": "親切で思いやりがある"
+      }
     },
     "step1": "グループ",
     "step2": "メンバー",
@@ -94,13 +118,15 @@
   },
   "landing": {
     "hero": {
-      "title": "夢のアイドルを作ろう",
-      "description": "理想のアイドルを作って、本物のファンみたいに会話しよう",
-      "cta": "作り始める"
-    },
-    "demo": {
-      "title": "想像がアイドルになる",
-      "description": "あなただけのアイドルを作り、特別な絆を築こう"
+      "title": {
+        "line1": "無限の可能性の",
+        "line2": "アイドルグループの誕生"
+      },
+      "line1": "グローバルファンダムが",
+      "line2": "直接キャスティングしてデビューさせる",
+      "line3": "新人AIアイドルグループ",
+      "line4": "ネクストジェネレーションプロジェクト",
+      "cta": "練習生をキャスティング"
     }
   }
 }

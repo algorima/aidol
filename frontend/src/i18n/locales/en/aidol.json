@@ -36,6 +36,24 @@
   },
   "share": "Share",
   "urlCopied": "URL copied!",
+  "castingBoard": {
+    "header": "Final Debut Lineup",
+    "title": "My Casted Trainees!",
+    "subtitle": "Tap to remove",
+    "browse": "Browse Trainees",
+    "confirm": "Confirm Debut!",
+    "needMore": "Cast {{count}} more to create a group!",
+    "delete": "Remove",
+    "deleted": "Removed successfully.",
+    "empty": {
+      "title": "Final Debut Lineup\nis Empty",
+      "description": "Cast your trainees!"
+    },
+    "error": {
+      "load": "Failed to load members.",
+      "delete": "Failed to remove."
+    }
+  },
   "companion": {
     "promptPlaceholder": "How does your idol talk? Describe their vibe...",
     "addMember": "Add Member",
@@ -66,12 +84,18 @@
         "label": "Cheerful",
         "description": "Always bright and positive"
       },
-      "cool": { "label": "Cool", "description": "Calm and collected" },
+      "cool": {
+        "label": "Cool",
+        "description": "Calm and collected"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Cold outside, warm inside"
       },
-      "gentle": { "label": "Gentle", "description": "Kind and caring" }
+      "gentle": {
+        "label": "Gentle",
+        "description": "Kind and caring"
+      }
     },
     "step1": "Group",
     "step2": "Members",
@@ -94,13 +118,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Create Your Dream Idol",
-      "description": "Design your perfect idol and chat like a real fan",
-      "cta": "Start Creating"
-    },
-    "demo": {
-      "title": "Your Imagination, Your Idol",
-      "description": "Create idols with unique personalities and build your connection"
+      "title": {
+        "line1": "Infinite Possibilities",
+        "line2": "The Birth of Idol Group"
+      },
+      "line1": "Global fandom",
+      "line2": "casting and debuting",
+      "line3": "New AI Idol Group",
+      "line4": "Next Generation Project",
+      "cta": "Cast Trainees"
     }
   }
 }
