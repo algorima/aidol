@@ -9,7 +9,6 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from io import BytesIO
-
 from typing import Literal
 
 import PIL.Image
