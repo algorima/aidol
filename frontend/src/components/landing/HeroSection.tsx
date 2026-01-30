@@ -62,18 +62,10 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           variants={fadeInUp}
           className="text-headline-s text-base-content mb-8 flex flex-col"
         >
-          <p className="text-neutral font-normal">
-            {t("aidol:landing.hero.line1")}
-          </p>
-          <p className="text-neutral font-normal">
-            {t("aidol:landing.hero.line2")}
-          </p>
-          <p className="text-neutral font-normal">
-            {t("aidol:landing.hero.line3")}
-          </p>
-          <p className="text-neutral font-normal">
-            {t("aidol:landing.hero.line4")}
-          </p>
+          <p className="text-neutral">{t("aidol:landing.hero.line1")}</p>
+          <p className="text-neutral">{t("aidol:landing.hero.line2")}</p>
+          <p>{t("aidol:landing.hero.line3")}</p>
+          <p>{t("aidol:landing.hero.line4")}</p>
         </motion.div>
 
         <motion.div
