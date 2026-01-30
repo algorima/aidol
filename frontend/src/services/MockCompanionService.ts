@@ -3,6 +3,8 @@ import type { Companion, CompanionUpdate } from "@/schemas/companion";
 
 type PartialCompanion = Partial<Companion>;
 
+const IMAGE_GENERATION_DELAY_MS = 1500;
+
 class MockCompanionService {
   private storage = new Map<string, PartialCompanion>();
 
@@ -20,7 +22,9 @@ class MockCompanionService {
   }
 
   async generateImage(_prompt: string): Promise<ImageGenerationResponse> {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) =>
+      setTimeout(resolve, IMAGE_GENERATION_DELAY_MS),
+    );
     return {
       data: {
         imageUrl: "https://placehold.co/400x400/2a2a2a/white?text=AI+Generated",
