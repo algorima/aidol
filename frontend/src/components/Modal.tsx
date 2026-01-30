@@ -34,10 +34,12 @@ export function Modal({ isOpen, onClose, children, action }: ModalProps) {
           className="bg-base-200 relative flex max-h-170 min-h-90 w-full flex-col gap-6 overflow-hidden rounded-lg p-6"
           onClick={(e) => e.stopPropagation()}
         >
+          {/* 모달 내용 */}
           <div className="scrollbar-hide flex-1 overflow-y-auto pb-20">
             {children}
           </div>
 
+          {/* 모달 하단 버튼 */}
           <div className="absolute inset-x-6 bottom-6 flex shrink-0 gap-4">
             <button
               type="button"
