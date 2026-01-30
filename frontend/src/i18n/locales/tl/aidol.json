@@ -59,7 +59,10 @@
         "label": "Masayahin",
         "description": "Palaging masaya at positibo"
       },
-      "cool": { "label": "Cool", "description": "Kalmado at mahinahon" },
+      "cool": {
+        "label": "Cool",
+        "description": "Kalmado at mahinahon"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Malamig sa labas, mainit sa loob"
@@ -90,13 +93,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Likhain ang Idol ng Iyong Pangarap",
-      "description": "I-design ang perpektong idol at mag-chat na parang tunay na fan",
-      "cta": "Magsimulang Lumikha"
-    },
-    "demo": {
-      "title": "Ang Imahinasyon Mo, Ang Idol Mo",
-      "description": "Lumikha ng mga natatanging idol at magtayo ng koneksyon"
+      "title": {
+        "line1": "Walang Hanggang Posibilidad",
+        "line2": "Ang Kapanganakan ng Idol Group"
+      },
+      "line1": "Ang global fandom",
+      "line2": "nagca-casting at nagde-debut",
+      "line3": "Bagong AI Idol Group",
+      "line4": "Next Generation Project",
+      "cta": "Mag-cast ng Trainee"
     }
   }
 }

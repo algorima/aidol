@@ -59,12 +59,18 @@
         "label": "Ceria",
         "description": "Selalu cerah dan positif"
       },
-      "cool": { "label": "Keren", "description": "Tenang dan kalem" },
+      "cool": {
+        "label": "Keren",
+        "description": "Tenang dan kalem"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Dingin di luar, hangat di dalam"
       },
-      "gentle": { "label": "Lembut", "description": "Baik hati dan perhatian" }
+      "gentle": {
+        "label": "Lembut",
+        "description": "Baik hati dan perhatian"
+      }
     },
     "step1": "Grup",
     "step2": "Anggota",
@@ -87,13 +93,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Buat Idol Impianmu",
-      "description": "Desain idol sempurnamu dan ngobrol kayak fans beneran",
-      "cta": "Mulai Buat"
-    },
-    "demo": {
-      "title": "Imajinasimu Jadi Idol",
-      "description": "Buat idol unik dan bangun koneksi spesial"
+      "title": {
+        "line1": "Kemungkinan Tak Terbatas",
+        "line2": "Kelahiran Grup Idol"
+      },
+      "line1": "Fandom global",
+      "line2": "casting dan mendebut",
+      "line3": "Grup Idol AI Baru",
+      "line4": "Proyek Generasi Berikutnya",
+      "cta": "Casting Trainee"
     }
   }
 }

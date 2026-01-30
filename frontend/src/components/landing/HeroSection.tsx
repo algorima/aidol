@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 const fadeInUp: Variants = {
@@ -18,7 +19,7 @@ const fadeInUp: Variants = {
 const staggerContainer: Variants = {
   animate: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -34,36 +35,53 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="hero from-base-200 to-primary min-h-screen bg-gradient-to-b pt-20">
+    <section className="bg-base-100 flex min-h-screen w-full flex-col items-center px-6 pt-12 pb-8">
       <motion.div
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="hero-content text-base-content flex-col gap-12 text-center"
+        className="flex w-full flex-col items-center text-center"
       >
-        <div className="max-w-3xl">
-          <motion.h1
-            variants={fadeInUp}
-            className="text-display-m md:text-display-l mb-4"
-          >
-            {t("aidol:landing.hero.title")}
-          </motion.h1>
-          <motion.p
-            variants={fadeInUp}
-            className="text-body-l text-neutral-content mx-auto mt-6 max-w-xl"
-          >
-            {t("aidol:landing.hero.description")}
-          </motion.p>
-        </div>
-        <motion.div variants={fadeInUp}>
+        <motion.div variants={fadeInUp} className="mb-6">
+          <Image
+            src="/images/logo.svg"
+            alt="AIdol"
+            width={92}
+            height={28}
+            priority
+          />
+        </motion.div>
+
+        <motion.h1 variants={fadeInUp} className="text-display-s mb-3">
+          {t("aidol:landing.hero.title.line1")}
+          <br />
+          {t("aidol:landing.hero.title.line2")}
+        </motion.h1>
+
+        <motion.div
+          variants={fadeInUp}
+          className="text-headline-s text-base-content mb-8 flex flex-col"
+        >
+          <p className="text-neutral">{t("aidol:landing.hero.line1")}</p>
+          <p className="text-neutral">{t("aidol:landing.hero.line2")}</p>
+          <p>{t("aidol:landing.hero.line3")}</p>
+          <p>{t("aidol:landing.hero.line4")}</p>
+        </motion.div>
+
+        <motion.div
+          variants={fadeInUp}
+          className="bg-base-200 relative mb-6 aspect-[345/368] w-full overflow-hidden rounded-lg"
+        />
+
+        <motion.div variants={fadeInUp} className="w-full">
           <button
             onClick={onGetStarted}
-            className="btn btn-primary font-semibold"
+            className="btn btn-primary btn-lg text-label-l w-full rounded-lg"
           >
             {t("aidol:landing.hero.cta")}
           </button>
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
 }
