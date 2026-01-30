@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // 커스텀 시맨틱 색상 (Figma semantic/white → 라이트/다크 모두 흰색)
+      colors: {
+        surface: "var(--color-surface)",
+      },
       // 레이아웃 토큰
       maxWidth: {
         mobile: "393px",
