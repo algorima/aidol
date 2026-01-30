@@ -11,11 +11,8 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from aidol.models import DBAIdolLead
+from aidol.protocols import AIdolLeadRepositoryProtocol, NoUpdate
 from aidol.schemas import AIdolLead, AIdolLeadCreate
-
-
-class _AIdolLeadUpdate(BaseModel):
-    """Placeholder for update schema (not used)."""
 
 
 def _convert_db_aidol_lead_to_model(db_lead: DBAIdolLead) -> AIdolLead:
@@ -35,7 +32,8 @@ def _convert_aidol_lead_create_to_db(schema: AIdolLeadCreate) -> dict:
 
 
 class AIdolLeadRepository(
-    BaseRepository[AIdolLead, DBAIdolLead, AIdolLeadCreate, _AIdolLeadUpdate]
+    BaseRepository[AIdolLead, DBAIdolLead, AIdolLeadCreate, NoUpdate],
+    AIdolLeadRepositoryProtocol,
 ):
     """
     Database-backed AIdolLead repository.
