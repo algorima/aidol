@@ -35,7 +35,7 @@
     "better-tailwindcss/no-unknown-classes": [
       "error",
       {
-        "ignore": ["scrollbar-hide", "step", "step-primary"]
+        "ignore": ["step", "step-primary", "scrollbar-hide"]
       }
     ],
     "@typescript-eslint/no-unsafe-assignment": "off",
