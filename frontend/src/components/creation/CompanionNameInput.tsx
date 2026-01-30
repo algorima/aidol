@@ -18,7 +18,13 @@ export function CompanionNameInput({
       <input
         type="text"
         value={value}
-        onChange={(e) => onChange(e.target.value.slice(0, maxLength))}
+        onChange={(e) =>
+          onChange(
+            e.target.value
+              .replace(/[!@#$%^&*()+=[\]{}|\\;:'",.<>?/`~_]/g, "")
+              .slice(0, maxLength),
+          )
+        }
         placeholder={t("aidol:companionCreate.complete.namePlaceholder")}
         className="input w-full"
       />

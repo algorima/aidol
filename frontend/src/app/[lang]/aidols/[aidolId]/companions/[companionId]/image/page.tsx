@@ -27,8 +27,8 @@ export default function ImagePage() {
     if (!prompt.trim()) return;
     setIsGenerating(true);
     const service = getMockCompanionService();
-    const url = await service.generateImage(prompt);
-    setImageUrl(url);
+    const response = await service.generateImage(prompt);
+    setImageUrl(response.data.imageUrl);
     setHasGenerated(true);
     setIsGenerating(false);
   };

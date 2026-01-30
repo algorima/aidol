@@ -1,3 +1,4 @@
+import type { ImageGenerationResponse } from "@/schemas/aidol";
 import type { Companion, CompanionUpdate } from "@/schemas/companion";
 
 type PartialCompanion = Partial<Companion>;
@@ -18,9 +19,16 @@ class MockCompanionService {
     return updated;
   }
 
-  async generateImage(_prompt: string): Promise<string> {
+  async generateImage(_prompt: string): Promise<ImageGenerationResponse> {
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    return "https://placehold.co/400x400/2a2a2a/white?text=AI+Generated";
+    return {
+      data: {
+        imageUrl: "https://placehold.co/400x400/2a2a2a/white?text=AI+Generated",
+        width: 1024,
+        height: 1024,
+        format: "png",
+      },
+    };
   }
 
   getCompanion(id: string): PartialCompanion | undefined {
