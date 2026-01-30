@@ -1,8 +1,7 @@
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
-import Lottie from "lottie-react";
 import { useTranslation } from "react-i18next";
 
-import checkAnimation from "@/assets/lottie/check.json";
 import { Card } from "@/components/companion/Card";
 import { Loading } from "@/components/Loading";
 import type { Companion } from "@/schemas";
@@ -43,12 +42,8 @@ export function CastingBoard({
     <div className="flex flex-1 flex-col">
       <div className="flex-1 overflow-y-auto px-6 pb-24">
         <div className="flex flex-col gap-1">
-          <div className="flex flex-col">
-            <Lottie
-              animationData={checkAnimation}
-              loop={false}
-              className="-mb-1 -ml-1.5 size-8"
-            />
+          <div className="flex flex-col gap-1">
+            <CheckCircleIcon className="text-primary size-6" />
             <span className="text-title-s text-base-content">
               {t("aidol:castingBoard.title")}
             </span>
