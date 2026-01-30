@@ -29,6 +29,8 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
   const badgeText =
     variant === "position"
       ? companion.position
+        ? t(`aidol:position.${companion.position}`)
+        : t("aidol:position.unassigned")
       : t("companion.grade", { grade: companion.grade });
 
   return (

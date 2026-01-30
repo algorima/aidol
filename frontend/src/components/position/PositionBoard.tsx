@@ -63,12 +63,7 @@ export function PositionBoard({
           {companions.map((companion) => (
             <Card
               key={companion.id}
-              companion={{
-                ...companion,
-                position: companion.position
-                  ? t(`aidol:position.${companion.position}`)
-                  : t("aidol:position.unassigned"),
-              }}
+              companion={companion}
               variant="position"
               onClick={() => onCardClick(companion)}
             />
