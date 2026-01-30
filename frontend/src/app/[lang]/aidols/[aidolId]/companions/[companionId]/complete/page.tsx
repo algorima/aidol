@@ -30,8 +30,8 @@ export default function CompletePage() {
 
   return (
     <CompanionCreateLayout
-      step={4}
-      totalSteps={4}
+      step={5}
+      totalSteps={5}
       bottomButton={
         <button
           type="button"

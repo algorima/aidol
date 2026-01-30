@@ -41,7 +41,7 @@ export default function PersonalityPage() {
   return (
     <CompanionCreateLayout
       step={2}
-      totalSteps={4}
+      totalSteps={5}
       bottomButton={
         <button
           type="button"

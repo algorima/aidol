@@ -47,7 +47,7 @@ export default function ImagePage() {
   return (
     <CompanionCreateLayout
       step={3}
-      totalSteps={4}
+      totalSteps={5}
       bottomButton={
         <button
           type="button"
