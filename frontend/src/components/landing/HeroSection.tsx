@@ -68,8 +68,12 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           <p className="text-neutral font-normal">
             {t("aidol:landing.hero.line2")}
           </p>
-          <p className="text-neutral font-normal">{t("aidol:landing.hero.line3")}</p>
-          <p className="text-neutral font-normal">{t("aidol:landing.hero.line4")}</p>
+          <p className="text-neutral font-normal">
+            {t("aidol:landing.hero.line3")}
+          </p>
+          <p className="text-neutral font-normal">
+            {t("aidol:landing.hero.line4")}
+          </p>
         </motion.div>
 
         <motion.div
@@ -80,7 +84,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
         <motion.div variants={fadeInUp} className="w-full">
           <button
             onClick={onGetStarted}
-            className="btn btn-primary btn-lg text-label-l w-full rounded-lg p-4"
+            className="btn btn-primary btn-lg text-label-l w-full rounded-lg"
           >
             {t("aidol:landing.hero.cta")}
           </button>
