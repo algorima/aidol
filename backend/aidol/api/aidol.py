@@ -1,6 +1,5 @@
-# pylint: disable=duplicate-code
-"""
 
+"""
 AIdol API router
 
 Public endpoints for AIdol group creation and retrieval.
@@ -15,6 +14,7 @@ from fastapi import APIRouter, Depends, HTTPException, Response, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
+from aidol.api.common import register_image_generation_route
 from aidol.protocols import (
     AIdolRepositoryFactoryProtocol,
     AIdolRepositoryProtocol,
@@ -25,11 +25,7 @@ from aidol.schemas import (
     AIdolCreate,
     AIdolPublic,
     AIdolUpdate,
-    ImageGenerationData,
-    ImageGenerationRequest,
-    ImageGenerationResponse,
 )
-from aidol.services import ImageGenerationService
 
 
 class AIdolCreateResponse(BaseModel):
@@ -54,13 +50,20 @@ class AIdolRouter(
         image_storage: ImageStorageProtocol,
         **kwargs,
     ):
-        super().__init__(**kwargs)
         self.google_api_key = google_api_key
         self.image_storage = image_storage
+        super().__init__(**kwargs)
 
     def _register_routes(self) -> None:
         """Register routes (public CRUD + image generation)"""
-        self._register_image_generation_route()
+        # Register shared image generation route
+        register_image_generation_route(
+            router=self.router,
+            resource_name=self.resource_name,
+            google_api_key=self.google_api_key,
+            image_storage=self.image_storage,
+        )
+        
         self._register_public_create_route()
         self._register_public_get_route()
         self._register_public_update_route()
@@ -141,47 +144,6 @@ class AIdolRouter(
             aidol = self._get_item_or_404(repository, item_id)
             # Return AIdol as public schema
             return AIdolPublic(**aidol.model_dump())
-
-    def _register_image_generation_route(self) -> None:
-        """POST /{resource_name}/images - Generate image for AIdol or Companion"""
-
-        @self.router.post(
-            f"/{self.resource_name}/images",
-            response_model=ImageGenerationResponse,
-            status_code=status.HTTP_201_CREATED,
-            summary="Generate image",
-            description="Generate image for AIdol emblem or Companion profile",
-            responses={
-                500: {"model": ErrorResponse, "description": "Image generation failed"},
-            },
-        )
-        async def generate_image(request: ImageGenerationRequest):
-            """Generate image from prompt."""
-            # Generate and download image (TTS pattern: service returns data)
-            service = ImageGenerationService(api_key=self.google_api_key)
-            image = service.generate_and_download_image(
-                prompt=request.prompt,
-                size="1024x1024",
-                quality="standard",
-            )
-
-            if image is None:
-                raise HTTPException(
-                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                    detail="Image generation failed",
-                )
-
-            # Upload to permanent storage (TTS pattern: API layer orchestrates)
-            image_url = self.image_storage.upload_image(image)
-
-            return ImageGenerationResponse(
-                data=ImageGenerationData(
-                    image_url=image_url,
-                    width=1024,
-                    height=1024,
-                    format="png",
-                )
-            )
 
 
 def create_aidol_router(

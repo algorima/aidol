@@ -1,4 +1,4 @@
-# pylint: disable=duplicate-code
+
 """
 Companion API router
 
@@ -14,6 +14,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
+from aidol.api.common import register_image_generation_route
 from aidol.protocols import (
     CompanionRepositoryFactoryProtocol,
     CompanionRepositoryProtocol,
@@ -25,9 +26,6 @@ from aidol.schemas import (
     CompanionPublic,
     CompanionUpdate,
     Gender,
-    ImageGenerationData,
-    ImageGenerationRequest,
-    ImageGenerationResponse,
 )
 from aidol.services import ImageGenerationService
 from aidol.services.companion_service import to_companion_public
@@ -58,13 +56,20 @@ class CompanionRouter(
         image_storage: ImageStorageProtocol,
         **kwargs,
     ):
-        super().__init__(**kwargs)
         self.google_api_key = google_api_key
         self.image_storage = image_storage
+        super().__init__(**kwargs)
 
     def _register_routes(self) -> None:
         """Register routes (public CRUD + image generation)"""
-        self._register_image_generation_route()
+        # Register shared image generation route
+        register_image_generation_route(
+            router=self.router,
+            resource_name=self.resource_name,
+            google_api_key=self.google_api_key,
+            image_storage=self.image_storage,
+        )
+        
         self._register_public_list_route()
         self._register_public_create_route()
         self._register_public_get_route()
@@ -239,47 +244,6 @@ class CompanionRouter(
 
             # Return updated companion as public schema
             return to_companion_public(updated)
-
-    def _register_image_generation_route(self) -> None:
-        """POST /{resource_name}/images - Generate image for Companion profile"""
-
-        @self.router.post(
-            f"/{self.resource_name}/images",
-            response_model=ImageGenerationResponse,
-            status_code=status.HTTP_201_CREATED,
-            summary="Generate image",
-            description="Generate image for Companion profile",
-            responses={
-                500: {"model": ErrorResponse, "description": "Image generation failed"},
-            },
-        )
-        async def generate_image(request: ImageGenerationRequest):
-            """Generate image from prompt."""
-            # Generate and download image
-            service = ImageGenerationService(api_key=self.google_api_key)
-            image = service.generate_and_download_image(
-                prompt=request.prompt,
-                size="1024x1024",
-                quality="standard",
-            )
-
-            if image is None:
-                raise HTTPException(
-                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                    detail="Image generation failed",
-                )
-
-            # Upload to permanent storage
-            image_url = self.image_storage.upload_image(image)
-
-            return ImageGenerationResponse(
-                data=ImageGenerationData(
-                    image_url=image_url,
-                    width=1024,
-                    height=1024,
-                    format="png",
-                )
-            )
 
 
 def create_companion_router(
