@@ -20,7 +20,7 @@ export function NewMemberSection({ onNewMember }: NewMemberSectionProps) {
         onClick={onNewMember}
       >
         {t("aidol:casting.addMember")}
-        <PlusIcon className="size-6" />
+        <PlusIcon className="size-4" />
       </button>
     </div>
   );

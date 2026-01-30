@@ -17,4 +17,6 @@ export type {
   CompanionCreate,
   CompanionUpdate,
   Gender,
+  Grade,
+  Position,
 } from "./companion";

@@ -1,9 +1,10 @@
 "use client";
 
+import type { GetListParams } from "@aioia/core";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import type { GenderTab } from "@/components/casting";
@@ -16,7 +17,9 @@ import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
 import { getMockCompanions } from "@/mocks/companions";
+import { CompanionRepository } from "@/repositories";
 import type { Companion, Gender } from "@/schemas/companion";
+import { getApiService } from "@/services/ApiService";
 
 const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
   boy: "male",
@@ -24,19 +27,49 @@ const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
   mixed: undefined,
 };
 
+const buildFilters = (gender: Gender | undefined): GetListParams["filters"] => {
+  if (!gender) return undefined;
+  return [{ field: "gender", operator: "eq", value: gender }];
+};
+
 export default function CastingPage() {
   const { t } = useTranslation();
   const router = useRouter();
   const { aidolId } = useParams<{ aidolId: string }>();
   const [activeTab, setActiveTab] = useState<GenderTab>("boy");
+  const [companions, setCompanions] = useState<Companion[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedCompanion, setSelectedCompanion] = useState<Companion | null>(
     null,
   );
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isCastCompleteOpen, setIsCastCompleteOpen] = useState(false);
 
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+
   const gender = TAB_TO_GENDER[activeTab];
-  const companions = getMockCompanions({ gender });
+
+  const fetchCompanions = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const response = await companionRepository.getList({
+        filters: buildFilters(gender),
+        pagination: { current: 1, pageSize: 100 },
+      });
+      setCompanions(response.data);
+    } catch {
+      setCompanions(getMockCompanions({ gender }));
+    } finally {
+      setIsLoading(false);
+    }
+  }, [companionRepository, gender]);
+
+  useEffect(() => {
+    void fetchCompanions();
+  }, [fetchCompanions]);
 
   const handleCompanionClick = (companion: Companion) => {
     setSelectedCompanion(companion);
@@ -68,7 +101,7 @@ export default function CastingPage() {
             onClick={handleNewMember}
           >
             {t("aidol:casting.addMember")}
-            <PlusIcon className="size-6" />
+            <PlusIcon className="size-4" />
           </button>
         }
       />
@@ -76,11 +109,17 @@ export default function CastingPage() {
       <div className="flex flex-col gap-6 px-6 py-4">
         <CastingInfoBanner />
         <GenderFilterTabs activeTab={activeTab} onTabChange={setActiveTab} />
-        <CastingCardGrid
-          companions={companions}
-          onCompanionClick={handleCompanionClick}
-          onNewMember={handleNewMember}
-        />
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <span className="loading loading-spinner loading-lg" />
+          </div>
+        ) : (
+          <CastingCardGrid
+            companions={companions}
+            onCompanionClick={handleCompanionClick}
+            onNewMember={handleNewMember}
+          />
+        )}
       </div>
 
       {selectedCompanion && (
