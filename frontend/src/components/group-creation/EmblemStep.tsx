@@ -50,7 +50,7 @@ export function EmblemStep({
           ? t("aidol:groupPlanning.regenerate")
           : t("aidol:groupPlanning.generate")}
       </button>
-      <div className="border-base-300 flex h-72 items-center justify-center overflow-hidden rounded-lg border bg-white">
+      <div className="border-base-300 bg-base-100 flex h-72 items-center justify-center overflow-hidden rounded-lg border">
         {isGeneratingImage ? (
           <span className="loading loading-spinner loading-lg text-primary" />
         ) : emblemUrl ? (
