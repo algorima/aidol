@@ -75,6 +75,30 @@
     "completeDescription": "지금 바로 나만의 아이돌과 대화해 보세요",
     "viewProfile": "프로필 보기"
   },
+  "complete": {
+    "greeting1": "안녕하세요!",
+    "greeting2": "{{name}}입니다!",
+    "greeting3": "잘부탁드립니다",
+    "createAnother": "또 다른 그룹 만들기",
+    "share": "프로필 공유",
+    "banner": "이 그룹의 다음 행보가 궁금하시다면?",
+    "error": {
+      "load": "그룹 정보를 불러오지 못했습니다"
+    }
+  },
+  "newsletter": {
+    "header": "이메일 입력",
+    "previewTitle": "데뷔조 숙소썰, 연습썰\n멤버들의 리얼한 후기를 보내드려요!",
+    "previewMessage": "형한테 그런식으로 말하면 안되지 않을까?",
+    "title": "소식을 받아보세요",
+    "description": "이 그룹의 새로운 소식과 업데이트를 이메일로 받아보세요.",
+    "emailLabel": "이메일",
+    "emailPlaceholder": "example@email.com",
+    "submit": "소식 받기",
+    "submitting": "구독 중...",
+    "success": "구독이 완료되었습니다!",
+    "error": "구독에 실패했습니다. 다시 시도해주세요."
+  },
   "landing": {
     "hero": {
       "title": {

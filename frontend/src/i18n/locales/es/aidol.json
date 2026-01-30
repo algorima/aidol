@@ -84,6 +84,30 @@
     "completeDescription": "Empieza a chatear con tu idol soñado ahora",
     "viewProfile": "Ver Perfil"
   },
+  "complete": {
+    "greeting1": "¡Hola!",
+    "greeting2": "¡Somos {{name}}!",
+    "greeting3": "Encantados de conocerte",
+    "createAnother": "Crear Otro Grupo",
+    "share": "Compartir Perfil",
+    "banner": "¿Curioso sobre el próximo paso del grupo?",
+    "error": {
+      "load": "Error al cargar la información del grupo"
+    }
+  },
+  "newsletter": {
+    "header": "Ingresa tu Correo",
+    "previewTitle": "Historias del dormitorio debut, historias de práctica\n¡Te enviaremos reseñas reales de los miembros!",
+    "previewMessage": "¿No deberías hablarle con más respeto a tu hyung?",
+    "title": "Mantente Informado",
+    "description": "Recibe las últimas noticias y actualizaciones de este grupo por correo.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "ejemplo@email.com",
+    "submit": "Recibir Noticias",
+    "submitting": "Suscribiendo...",
+    "success": "¡Suscripción exitosa!",
+    "error": "Error al suscribirse. Inténtalo de nuevo."
+  },
   "landing": {
     "hero": {
       "title": {
