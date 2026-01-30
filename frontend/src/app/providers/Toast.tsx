@@ -107,22 +107,21 @@ export function ToastProvider({ children }: ToastProviderProps): JSX.Element {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <ToastContainer toasts={toasts} onHide={hideToast} />
+      <ToastContainer toasts={toasts} />
     </ToastContext.Provider>
   );
 }
 
 interface ToastContainerProps {
   toasts: ToastMessage[];
-  onHide: (id: string) => void;
 }
 
-function ToastContainer({ toasts, onHide }: ToastContainerProps): JSX.Element {
+function ToastContainer({ toasts }: ToastContainerProps): JSX.Element {
   return (
     <div className="toast toast-bottom toast-center z-50">
       <AnimatePresence>
         {toasts.map((toast) => (
-          <ToastItem key={toast.id} toast={toast} onHide={onHide} />
+          <ToastItem key={toast.id} toast={toast} />
         ))}
       </AnimatePresence>
     </div>
@@ -131,18 +130,17 @@ function ToastContainer({ toasts, onHide }: ToastContainerProps): JSX.Element {
 
 export interface ToastItemProps {
   toast: ToastMessage;
-  onHide: (id: string) => void;
 }
 
 export function ToastItem({ toast }: ToastItemProps): JSX.Element {
   const getAlertClass = () => {
     switch (toast.type) {
       case "success":
-        return "alert-success";
+        return "bg-success text-success-content";
       case "error":
         return "bg-error text-error-content";
       case "warning":
-        return "alert-warning";
+        return "bg-warning text-warning-content";
       case "primary":
         return "bg-primary text-primary-content";
       case "secondary":
@@ -153,7 +151,7 @@ export function ToastItem({ toast }: ToastItemProps): JSX.Element {
         return "bg-neutral text-neutral-content";
       case "info":
       default:
-        return "alert-info";
+        return "bg-info text-info-content";
     }
   };
 
