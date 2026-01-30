@@ -4,18 +4,19 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Header } from "@/components/Header";
-import { Companion } from "@/schemas/companion";
 
 interface NewsletterFormProps {
-  companion?: Companion;
   onSubmit: (email: string) => Promise<void>;
   isLoading: boolean;
+  bubbleProfileUrl?: string;
+  previewImageUrl?: string;
 }
 
 export function NewsletterForm({
-  companion,
   onSubmit,
   isLoading,
+  bubbleProfileUrl,
+  previewImageUrl,
 }: NewsletterFormProps) {
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
@@ -48,11 +49,11 @@ export function NewsletterForm({
           <div className="flex flex-col gap-2">
             {/* 채팅 버블 */}
             <div className="bg-base-300 flex items-center gap-2.5 overflow-hidden rounded-lg px-4 py-2">
-              {companion?.profilePictureUrl ? (
+              {bubbleProfileUrl ? (
                 <div className="relative size-7 shrink-0 overflow-hidden rounded-full">
                   <Image
-                    src={companion.profilePictureUrl}
-                    alt={companion.name ?? ""}
+                    src={bubbleProfileUrl}
+                    alt=""
                     fill
                     className="object-cover"
                   />
@@ -66,15 +67,17 @@ export function NewsletterForm({
             </div>
 
             {/* 프리뷰 이미지 */}
-            {companion?.profilePictureUrl && (
+            {previewImageUrl ? (
               <div className="relative h-70 w-full overflow-hidden rounded-lg">
                 <Image
-                  src={companion.profilePictureUrl}
-                  alt={companion.name ?? ""}
+                  src={previewImageUrl}
+                  alt=""
                   fill
                   className="object-cover"
                 />
               </div>
+            ) : (
+              <div className="bg-base-300 h-70 w-full rounded-lg" />
             )}
           </div>
 
