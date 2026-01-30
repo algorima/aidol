@@ -68,8 +68,8 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
           <p className="text-neutral font-normal">
             {t("aidol:landing.hero.line2")}
           </p>
-          <p>{t("aidol:landing.hero.line3")}</p>
-          <p>{t("aidol:landing.hero.line4")}</p>
+          <p className="text-neutral font-normal">{t("aidol:landing.hero.line3")}</p>
+          <p className="text-neutral font-normal">{t("aidol:landing.hero.line4")}</p>
         </motion.div>
 
         <motion.div
