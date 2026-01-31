@@ -52,6 +52,37 @@ router = CompanionRouter(
     tags=["Companion"],
 )`;
 
+// Appendix: PR #25 참조 구현 패턴
+const SERVICE_CODE = `from aidol.providers.llm import LLMProvider
+from aidol.context import MessageContextBuilder
+
+class ResponseGenerationService:
+    """AI 응답 생성 서비스"""
+
+    def __init__(self, llm_provider: LLMProvider):
+        self.llm_provider = llm_provider
+
+    async def generate(self, chatroom, message):
+        context = MessageContextBuilder(chatroom).build()
+        return await self.llm_provider.generate(context, message)`;
+
+const PROVIDER_CODE = `from typing import Protocol
+
+class LLMProvider(Protocol):
+    """LLM Provider 인터페이스"""
+
+    async def generate(self, context: str, message: str) -> str:
+        ...
+
+# OpenAI 구현
+class OpenAILLMProvider:
+    def __init__(self, model: str = "gpt-4o"):
+        self.model = model
+
+    async def generate(self, context: str, message: str) -> str:
+        # langchain-openai 사용
+        ...`;
+
 const FACTORY_CODE = `from aioia_core.factories import BaseRepositoryFactory
 from aidol.repositories import CompanionRepository
 
@@ -96,7 +127,7 @@ filters: str | None  # JSON: [{"field": "...", "operator": "...", "value": "..."
 export default function OnboardingPage({
   params: _params,
 }: OnboardingPageProps): JSX.Element {
-  const TOTAL_SLIDES = 7;
+  const TOTAL_SLIDES = 8;
 
   const renderSlide = (index: number) => {
     switch (index) {
@@ -405,6 +436,40 @@ export default function OnboardingPage({
                 </span>
               </label>
             </div>
+          </Slide>
+        );
+      // Appendix: 고급 패턴 (PR #25 참조 구현)
+      case 7:
+        return (
+          <Slide slideNumber={8} title="Appendix: 고급 패턴">
+            <p className="text-body-m text-base-content mb-4">
+              aioia-core 외 도메인 로직 패턴 (채팅 참조 구현)
+            </p>
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-title-s text-primary mb-2">
+                  providers/ - 외부 서비스 추상화
+                </h3>
+                <CodeBlock
+                  code={PROVIDER_CODE}
+                  language="Python"
+                  title="providers/llm/base.py"
+                />
+              </div>
+              <div>
+                <h3 className="text-title-s text-primary mb-2">
+                  services/ - 비즈니스 로직
+                </h3>
+                <CodeBlock
+                  code={SERVICE_CODE}
+                  language="Python"
+                  title="services/response_generation_service.py"
+                />
+              </div>
+            </div>
+            <p className="text-body-s text-base-content/60 mt-4">
+              참조: PR #25 (chatroom 도메인 참조 구현)
+            </p>
           </Slide>
         );
       default:
