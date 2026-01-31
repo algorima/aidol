@@ -17,18 +17,58 @@ export const POSITIONS = [
 
 export type Position = (typeof POSITIONS)[number];
 
+export type Gender = "male" | "female";
+
+export type Grade = "A" | "B" | "C" | "F";
+
+export interface CompanionStats {
+  vocal: number;
+  dance: number;
+  rap: number;
+  visual: number;
+  stamina: number;
+  charm: number;
+}
+
+/**
+ * Companion schema (public fields only, excludes system_prompt)
+ */
+const companionStatsSchema = z.object({
+  vocal: z.number(),
+  dance: z.number(),
+  rap: z.number(),
+  visual: z.number(),
+  stamina: z.number(),
+  charm: z.number(),
+});
+
 /**
  * Companion schema (public fields only, excludes system_prompt)
  */
 export const companionSchema = z.object({
   id: z.string(),
   aidolId: z.string().nullable().optional(),
-  name: z.string(),
+  name: z.string().nullable().optional(),
   biography: z.string().nullable().optional(),
   profilePictureUrl: z.string().nullable().optional(),
-  grade: z.string().nullable().optional(),
-  position: z.string().nullable().optional(),
+  grade: z.enum(["A", "B", "C", "F"]).nullable().optional(),
+  position: z
+    .enum([
+      "leader",
+      "mainVocal",
+      "subVocal",
+      "mainDancer",
+      "subDancer",
+      "mainRapper",
+      "subRapper",
+      "visual",
+      "maknae",
+    ])
+    .nullable()
+    .optional(),
   mbti: z.string().nullable().optional(),
+  gender: z.enum(["male", "female"]).nullable().optional(),
+  stats: companionStatsSchema.optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -36,12 +76,14 @@ export const companionSchema = z.object({
 export interface Companion extends BaseRecord {
   id: string;
   aidolId?: string | null;
-  name: string;
+  name?: string | null;
   biography?: string | null;
   profilePictureUrl?: string | null;
-  grade?: string | null;
-  position?: string | null;
+  grade?: Grade | null;
+  position?: Position | null;
   mbti?: string | null;
+  gender?: Gender | null;
+  stats?: CompanionStats;
   createdAt: string;
   updatedAt: string;
 }

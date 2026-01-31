@@ -20,6 +20,36 @@
     "error": {
       "load": "Không thể tải danh sách thành viên",
       "update": "Không thể phân công vị trí"
+  "casting": {
+    "title": "Casting Thành Viên Debut",
+    "infoBanner": {
+      "title": "Hãy casting thực tập sinh",
+      "description": "Các nhân vật idol (khuôn mặt, giọng nói, video) trong nội dung này là nhân vật ảo nguyên bản được tạo bởi AI và không dựa trên người thật, bao gồm idol và người nổi tiếng."
+    },
+    "tabs": {
+      "boy": "Nhóm Nam",
+      "girl": "Nhóm Nữ",
+      "mixed": "Nhóm Hỗn hợp"
+    },
+    "newMember": {
+      "prompt": "Không tìm thấy thực tập sinh yêu thích?",
+      "subPrompt": "Hãy thử casting thành viên mới"
+    },
+    "addMember": "Thành Viên Mới",
+    "abilities": {
+      "title": "Năng lực",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Thể lực",
+      "charm": "Sức hút"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "Casting Hoàn Tất!",
+      "description": "Thực tập sinh đã gia nhập nhóm",
+      "viewBoard": "Xem Bảng Casting"
     }
   },
   "share": "Chia sẻ",
@@ -72,12 +102,18 @@
         "label": "Vui vẻ",
         "description": "Luôn tươi sáng và tích cực"
       },
-      "cool": { "label": "Ngầu", "description": "Bình tĩnh và điềm đạm" },
+      "cool": {
+        "label": "Ngầu",
+        "description": "Bình tĩnh và điềm đạm"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Lạnh lùng bên ngoài, ấm áp bên trong"
       },
-      "gentle": { "label": "Dịu dàng", "description": "Tốt bụng và quan tâm" }
+      "gentle": {
+        "label": "Dịu dàng",
+        "description": "Tốt bụng và quan tâm"
+      }
     },
     "step1": "Nhóm",
     "step2": "Thành Viên",
@@ -100,13 +136,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Tạo Idol Mơ Ước",
-      "description": "Thiết kế idol hoàn hảo và trò chuyện như fan thật sự",
-      "cta": "Bắt Đầu Tạo"
-    },
-    "demo": {
-      "title": "Trí Tưởng Tượng Thành Idol",
-      "description": "Tạo idol độc đáo và xây dựng mối liên kết đặc biệt"
+      "title": {
+        "line1": "Khả Năng Vô Hạn",
+        "line2": "Sự Ra Đời Của Nhóm Idol"
+      },
+      "line1": "Fandom toàn cầu",
+      "line2": "tuyển chọn và ra mắt",
+      "line3": "Nhóm Idol AI Mới",
+      "line4": "Dự Án Thế Hệ Tiếp Theo",
+      "cta": "Tuyển Thực Tập Sinh"
     }
   }
 }

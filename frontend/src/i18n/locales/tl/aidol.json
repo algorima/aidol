@@ -20,6 +20,36 @@
     "error": {
       "load": "Hindi ma-load ang listahan ng miyembro",
       "update": "Hindi maitalaga ang posisyon"
+  "casting": {
+    "title": "Debut Member Casting",
+    "infoBanner": {
+      "title": "I-cast ang iyong mga trainee",
+      "description": "Ang mga idol character (mukha, boses, video) sa content na ito ay orihinal na virtual character na ginawa ng AI at hindi batay sa totoong tao, kabilang ang mga idol at celebrity."
+    },
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Mixed Group"
+    },
+    "newMember": {
+      "prompt": "Walang trainee na gusto mo?",
+      "subPrompt": "Subukan mag-cast ng bagong miyembro"
+    },
+    "addMember": "Bagong Miyembro",
+    "abilities": {
+      "title": "Kakayahan",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Stamina",
+      "charm": "Charm"
+    },
+    "castButton": "I-cast",
+    "castComplete": {
+      "title": "Tapos na ang Casting!",
+      "description": "Sumali na ang trainee sa grupo",
+      "viewBoard": "Tingnan ang Casting Board"
     }
   },
   "share": "I-share",
@@ -72,7 +102,10 @@
         "label": "Masayahin",
         "description": "Palaging masaya at positibo"
       },
-      "cool": { "label": "Cool", "description": "Kalmado at mahinahon" },
+      "cool": {
+        "label": "Cool",
+        "description": "Kalmado at mahinahon"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Malamig sa labas, mainit sa loob"
@@ -103,13 +136,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Likhain ang Idol ng Iyong Pangarap",
-      "description": "I-design ang perpektong idol at mag-chat na parang tunay na fan",
-      "cta": "Magsimulang Lumikha"
-    },
-    "demo": {
-      "title": "Ang Imahinasyon Mo, Ang Idol Mo",
-      "description": "Lumikha ng mga natatanging idol at magtayo ng koneksyon"
+      "title": {
+        "line1": "Walang Hanggang Posibilidad",
+        "line2": "Ang Kapanganakan ng Idol Group"
+      },
+      "line1": "Ang global fandom",
+      "line2": "nagca-casting at nagde-debut",
+      "line3": "Bagong AI Idol Group",
+      "line4": "Next Generation Project",
+      "cta": "Mag-cast ng Trainee"
     }
   }
 }

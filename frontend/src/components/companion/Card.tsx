@@ -56,7 +56,7 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
       <div className="absolute inset-0">
         <ImagePreview
           url={companion.profilePictureUrl}
-          alt={companion.name}
+          alt={companion.name ?? ""}
           variant="profile"
         />
       </div>

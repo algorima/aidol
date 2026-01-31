@@ -20,6 +20,36 @@
     "error": {
       "load": "Error al cargar los miembros",
       "update": "Error al asignar posición"
+  "casting": {
+    "title": "Casting de Debut",
+    "infoBanner": {
+      "title": "Haz casting a tus aprendices",
+      "description": "Los personajes idol (rostro, voz, video) de este contenido son personajes virtuales originales creados por IA y no están basados en personas reales, incluidos idols y celebridades."
+    },
+    "tabs": {
+      "boy": "Grupo de Chicos",
+      "girl": "Grupo de Chicas",
+      "mixed": "Grupo Mixto"
+    },
+    "newMember": {
+      "prompt": "¿No encuentras un aprendiz que te guste?",
+      "subPrompt": "Prueba a hacer casting de un nuevo miembro"
+    },
+    "addMember": "Nuevo Miembro",
+    "abilities": {
+      "title": "Habilidades",
+      "vocal": "Vocal",
+      "dance": "Baile",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Resistencia",
+      "charm": "Carisma"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "¡Casting Completo!",
+      "description": "El aprendiz se ha unido al grupo",
+      "viewBoard": "Ver Panel de Casting"
     }
   },
   "share": "Compartir",
@@ -72,12 +102,18 @@
         "label": "Alegre",
         "description": "Siempre brillante y positivo"
       },
-      "cool": { "label": "Genial", "description": "Tranquilo y sereno" },
+      "cool": {
+        "label": "Genial",
+        "description": "Tranquilo y sereno"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Frío por fuera, cálido por dentro"
       },
-      "gentle": { "label": "Amable", "description": "Bondadoso y cariñoso" }
+      "gentle": {
+        "label": "Amable",
+        "description": "Bondadoso y cariñoso"
+      }
     },
     "step1": "Grupo",
     "step2": "Miembros",
@@ -100,13 +136,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Crea Tu Idol Soñado",
-      "description": "Diseña tu idol perfecto y chatea como un verdadero fan",
-      "cta": "Empezar a Crear"
-    },
-    "demo": {
-      "title": "Tu Imaginación, Tu Idol",
-      "description": "Crea idols únicos y construye una conexión especial"
+      "title": {
+        "line1": "Posibilidades Infinitas",
+        "line2": "El Nacimiento del Grupo Idol"
+      },
+      "line1": "El fandom global",
+      "line2": "selecciona y debuta",
+      "line3": "Nuevo Grupo de Idol AI",
+      "line4": "Proyecto Próxima Generación",
+      "cta": "Seleccionar Aprendices"
     }
   }
 }

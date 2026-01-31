@@ -20,6 +20,36 @@
     "error": {
       "load": "Gagal memuat daftar anggota",
       "update": "Gagal menetapkan posisi"
+  "casting": {
+    "title": "Casting Anggota Debut",
+    "infoBanner": {
+      "title": "Casting trainee pilihanmu",
+      "description": "Karakter idol (wajah, suara, video) dalam konten ini adalah karakter virtual asli yang dibuat oleh AI dan tidak berdasarkan orang nyata, termasuk idol dan selebriti."
+    },
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Grup Campuran"
+    },
+    "newMember": {
+      "prompt": "Tidak ada trainee yang kamu suka?",
+      "subPrompt": "Coba casting anggota baru"
+    },
+    "addMember": "Anggota Baru",
+    "abilities": {
+      "title": "Kemampuan",
+      "vocal": "Vokal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Stamina",
+      "charm": "Pesona"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "Casting Selesai!",
+      "description": "Trainee telah bergabung dengan grup",
+      "viewBoard": "Lihat Casting Board"
     }
   },
   "share": "Bagikan",
@@ -72,12 +102,18 @@
         "label": "Ceria",
         "description": "Selalu cerah dan positif"
       },
-      "cool": { "label": "Keren", "description": "Tenang dan kalem" },
+      "cool": {
+        "label": "Keren",
+        "description": "Tenang dan kalem"
+      },
       "tsundere": {
         "label": "Tsundere",
         "description": "Dingin di luar, hangat di dalam"
       },
-      "gentle": { "label": "Lembut", "description": "Baik hati dan perhatian" }
+      "gentle": {
+        "label": "Lembut",
+        "description": "Baik hati dan perhatian"
+      }
     },
     "step1": "Grup",
     "step2": "Anggota",
@@ -100,13 +136,15 @@
   },
   "landing": {
     "hero": {
-      "title": "Buat Idol Impianmu",
-      "description": "Desain idol sempurnamu dan ngobrol kayak fans beneran",
-      "cta": "Mulai Buat"
-    },
-    "demo": {
-      "title": "Imajinasimu Jadi Idol",
-      "description": "Buat idol unik dan bangun koneksi spesial"
+      "title": {
+        "line1": "Kemungkinan Tak Terbatas",
+        "line2": "Kelahiran Grup Idol"
+      },
+      "line1": "Fandom global",
+      "line2": "casting dan mendebut",
+      "line3": "Grup Idol AI Baru",
+      "line4": "Proyek Generasi Berikutnya",
+      "cta": "Casting Trainee"
     }
   }
 }

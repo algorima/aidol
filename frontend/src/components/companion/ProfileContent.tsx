@@ -17,10 +17,12 @@ export function ProfileContent({
   const { name, profilePictureUrl, grade, mbti, biography } = companion;
 
   return (
-    <div className="flex flex-col gap-6">
-      <ImagePreview url={profilePictureUrl ?? null} alt={name} />
+    <div className="flex flex-col items-center gap-6">
+      <ImagePreview url={profilePictureUrl ?? null} alt={name ?? ""} />
       <div className="flex flex-col gap-2 self-start">
-        <h2 className="text-title-s text-base-content font-semibold">{name}</h2>
+        <h2 className="text-title-s text-base-content font-semibold">
+          {name ?? ""}
+        </h2>
         {(grade || mbti) && (
           <div className="flex gap-2">
             {grade && (
