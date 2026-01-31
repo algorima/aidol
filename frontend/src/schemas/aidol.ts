@@ -32,13 +32,13 @@ export interface AIdol extends BaseRecord {
 
 /**
  * Schema for creating an AIdol group
- * claimToken is optional for anonymous ownership verification
+ * claimToken identifies the browser that created this group
  */
 export interface AIdolCreate {
   name: string;
   concept?: string | null;
   profileImageUrl: string;
-  claimToken?: string | null;
+  claimToken: string;
 }
 
 /**

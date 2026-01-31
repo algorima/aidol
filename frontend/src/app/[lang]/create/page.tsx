@@ -2,12 +2,12 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 import {
   GroupCreation,
   type GroupCreationFormData,
 } from "@/components/creation/GroupCreation";
+import { getOrCreateClaimToken } from "@/lib/claimToken";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
 import type { AIdolCreate, ImageGenerationRequest } from "@/schemas/aidol";
 import type { CompanionCreate } from "@/schemas/companion";
@@ -70,7 +70,7 @@ export default function AIdolCreatePage({
       setError(null);
       try {
         // 1. Create AIdol group (profileImageUrl is now required)
-        const claimToken = uuidv4();
+        const claimToken = getOrCreateClaimToken();
         const aidolData: AIdolCreate = {
           name: data.groupName,
           concept: data.concept || null,
@@ -81,16 +81,6 @@ export default function AIdolCreatePage({
         const { data: aidol } = await aidolRepository.create({
           variables: aidolData,
         });
-
-        // Store claimToken in localStorage for ownership
-        const storedTokens = JSON.parse(
-          localStorage.getItem("aidol_claim_tokens") || "{}",
-        ) as Record<string, string>;
-        storedTokens[aidol.id] = claimToken;
-        localStorage.setItem(
-          "aidol_claim_tokens",
-          JSON.stringify(storedTokens),
-        );
 
         // 2. Create companions
         for (const member of data.members) {
