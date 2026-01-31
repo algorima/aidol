@@ -42,16 +42,17 @@ class CompanionRouter(BaseCrudRouter[Companion, CompanionCreate, CompanionUpdate
     tags = ["companions"]`;
 
 const FACTORY_CODE = `from aioia_core.factories import BaseRepositoryFactory
-from aidol.repositories import CompanionRepository, AIdolRepository
+from aidol.repositories import CompanionRepository
 
-class RepositoryFactory(BaseRepositoryFactory):
-    @property
-    def companion(self) -> CompanionRepository:
-        return CompanionRepository(self.db_session)
+class CompanionRepositoryFactory(BaseRepositoryFactory[CompanionRepository]):
+    """Factory for creating Companion repositories."""
 
-    @property
-    def aidol(self) -> AIdolRepository:
-        return AIdolRepository(self.db_session)`;
+    def __init__(self):
+        super().__init__(repository_class=CompanionRepository)
+
+# 사용 예시
+factory = CompanionRepositoryFactory()
+repo = factory.create_repository(db_session)`;
 
 const RESPONSE_CODE = `// 단일 항목 응답
 interface SingleItemResponse<T> {
@@ -64,6 +65,19 @@ interface PaginatedResponse<T> {
   total: number;
 }`;
 
+const QUERY_PARAMS_TS_CODE = `// @aioia/core - GetListParams
+interface GetListParams {
+  pagination?: { current?: number; pageSize?: number; };
+  sorters?: Array<{ field: string; order: "asc" | "desc"; }>;
+  filters?: Array<{ field: string; operator: string; value: any; }>;
+}`;
+
+const QUERY_PARAMS_PY_CODE = `# aioia-core - BaseCrudRouter
+current: int = Query(1, ge=1)
+page_size: int = Query(10, ge=1, le=100)
+sort: str | None  # JSON: [["field", "asc|desc"], ...]
+filters: str | None  # JSON: [{"field": "...", "operator": "...", "value": "..."}]`;
+
 /**
  * 온보딩 자가학습 페이지
  * 프로젝트 아키텍처 패턴을 설명하는 슬라이드 형식
@@ -71,7 +85,7 @@ interface PaginatedResponse<T> {
 export default function OnboardingPage({
   params: _params,
 }: OnboardingPageProps): JSX.Element {
-  const TOTAL_SLIDES = 6;
+  const TOTAL_SLIDES = 7;
 
   const renderSlide = (index: number) => {
     switch (index) {
@@ -233,10 +247,12 @@ export default function OnboardingPage({
             />
             <div className="text-body-s text-base-content/80 space-y-1">
               <p>
-                <strong>db_session:</strong> SQLAlchemy 세션 (자동 주입)
+                <strong>BaseRepositoryFactory[T]:</strong> Repository 타입별
+                개별 Factory 클래스
               </p>
               <p>
-                <strong>@property:</strong> 지연 초기화로 필요할 때만 생성
+                <strong>create_repository():</strong> db_session을 받아
+                Repository 인스턴스 생성
               </p>
             </div>
           </Slide>
@@ -270,12 +286,42 @@ export default function OnboardingPage({
                 를 사용합니다. aioia-core가 Refine Data Provider 구조와 호환되어
                 여러 프로젝트를 통합 관리할 수 있습니다.
               </p>
+              <p className="text-body-s text-base-content/60 mt-2">
+                참고: 이는 Refine 프레임워크 고유 요구사항이며, 범용 REST API
+                표준이 아닙니다.
+              </p>
             </div>
           </Slide>
         );
       case 5:
         return (
-          <Slide slideNumber={6} title="체크리스트">
+          <Slide slideNumber={6} title="쿼리 파라미터">
+            <p className="text-body-m text-base-content mb-4">
+              aioia-core 기반 목록 조회 파라미터
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <h3 className="text-title-s text-primary mb-2">Frontend</h3>
+                <CodeBlock
+                  code={QUERY_PARAMS_TS_CODE}
+                  language="TypeScript"
+                  title="GetListParams"
+                />
+              </div>
+              <div>
+                <h3 className="text-title-s text-primary mb-2">Backend</h3>
+                <CodeBlock
+                  code={QUERY_PARAMS_PY_CODE}
+                  language="Python"
+                  title="BaseCrudRouter"
+                />
+              </div>
+            </div>
+          </Slide>
+        );
+      case 6:
+        return (
+          <Slide slideNumber={7} title="체크리스트">
             <p className="text-body-m text-base-content mb-4">
               새 파일 생성 전 확인사항
             </p>
