@@ -8,6 +8,17 @@ interface OnboardingPageProps {
   };
 }
 
+// 외부 링크
+const LINKS = {
+  refineDataProvider: "https://refine.dev/docs/data/data-provider/",
+  martinFowlerRepository: "https://martinfowler.com/eaaCatalog/repository.html",
+  aioiaCoreNpm: "https://www.npmjs.com/package/@aioia/core",
+  baseCrudRepositorySource:
+    "https://github.com/algorima/aioia-core/blob/main/typescript/src/repositories/BaseCrudRepository.ts",
+  baseCrudRouterSource:
+    "https://github.com/algorima/aioia-core/blob/main/python/aioia_core/fastapi/base_crud_router.py",
+};
+
 const REPOSITORY_CODE = `import { BaseCrudRepository } from "@aioia/core";
 import type { Companion } from "../schemas";
 import { companionSchema } from "../schemas";
@@ -51,7 +62,15 @@ export default function OnboardingPage({
         return (
           <Slide slideNumber={1} title="왜 이 구조인가">
             <p className="text-body-m text-base-content">
-              이 프로젝트는 <strong>Refine</strong> 프레임워크의 Data Provider
+              이 프로젝트는{" "}
+              <a
+                href={LINKS.refineDataProvider}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link link-primary"
+              >
+                Refine Data Provider
+              </a>{" "}
               패턴을 사용합니다.
             </p>
             <p className="text-body-m text-base-content">
@@ -63,43 +82,79 @@ export default function OnboardingPage({
             </p>
             <div className="bg-warning/10 border-warning rounded-lg border-l-4 p-4">
               <p className="text-body-s text-warning-content">
-                <strong>참고:</strong> 이 응답 래퍼 형식은 업계 표준이 아닌
-                Refine 프레임워크의 요구사항입니다.
+                <strong>참고:</strong> 이 응답 래퍼 형식은 범용 REST API 표준이
+                아닌{" "}
+                <a
+                  href={LINKS.refineDataProvider}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link"
+                >
+                  Refine 프레임워크 고유 요구사항
+                </a>
+                입니다.
               </p>
             </div>
             <p className="text-body-s text-base-content/60 mt-4">
-              출처: Repository 패턴 - Martin Fowler, Patterns of Enterprise
-              Application Architecture
+              출처:{" "}
+              <a
+                href={LINKS.martinFowlerRepository}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                Repository 패턴 - Martin Fowler, PoEAA
+              </a>
             </p>
           </Slide>
         );
       case 1:
         return (
-          <Slide slideNumber={2} title="프로젝트 계층 구조">
+          <Slide slideNumber={2} title="프론트엔드 계층 구조">
             <div className="text-body-m text-base-content space-y-3">
               <div>
                 <strong className="text-primary">repositories/</strong>
+                <span className="badge badge-outline badge-sm ml-2">
+                  Frontend
+                </span>
                 <p className="text-body-s text-base-content/80 ml-4">
-                  데이터 접근 추상화 계층. API 호출을 캡슐화하고 타입 안전성
-                  보장.
+                  데이터 접근 추상화 계층.{" "}
+                  <a
+                    href={LINKS.baseCrudRepositorySource}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link link-primary"
+                  >
+                    BaseCrudRepository
+                  </a>{" "}
+                  상속.
                 </p>
               </div>
               <div>
                 <strong className="text-primary">services/</strong>
+                <span className="badge badge-outline badge-sm ml-2">
+                  Frontend
+                </span>
                 <p className="text-body-s text-base-content/80 ml-4">
                   비즈니스 로직. Repository를 조합하여 복잡한 작업 수행.
                 </p>
               </div>
               <div>
                 <strong className="text-primary">schemas/</strong>
+                <span className="badge badge-outline badge-sm ml-2">
+                  Frontend
+                </span>
                 <p className="text-body-s text-base-content/80 ml-4">
                   Zod 스키마 정의. API 응답 유효성 검증 및 TypeScript 타입 추론.
                 </p>
               </div>
               <div>
                 <strong className="text-primary">mocks/</strong>
+                <span className="badge badge-outline badge-sm ml-2">
+                  Frontend
+                </span>
                 <p className="text-body-s text-base-content/80 ml-4">
-                  테스트용 Mock 데이터. Repository 인터페이스를 구현.
+                  Storybook/테스트용 Mock 데이터. 타입별 fixture 제공.
                 </p>
               </div>
             </div>
@@ -107,13 +162,25 @@ export default function OnboardingPage({
         );
       case 2:
         return (
-          <Slide slideNumber={3} title="aioia-core 패턴">
+          <Slide slideNumber={3} title="aioia-core 패턴 (프론트엔드)">
             <p className="text-body-m text-base-content">
-              <code className="bg-base-300 rounded-sm px-1">@aioia/core</code>
+              <a
+                href={LINKS.aioiaCoreNpm}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link link-primary"
+              >
+                @aioia/core
+              </a>
               에서 제공하는{" "}
-              <code className="bg-base-300 rounded-sm px-1">
+              <a
+                href={LINKS.baseCrudRepositorySource}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link link-primary"
+              >
                 BaseCrudRepository
-              </code>
+              </a>
               를 상속합니다.
             </p>
             <CodeBlock
@@ -136,9 +203,14 @@ export default function OnboardingPage({
           <Slide slideNumber={4} title="백엔드 응답 형식">
             <p className="text-body-m text-base-content">
               백엔드는{" "}
-              <code className="bg-base-300 rounded-sm px-1">
+              <a
+                href={LINKS.baseCrudRouterSource}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link link-primary"
+              >
                 BaseCrudRouter
-              </code>
+              </a>
               를 사용하여 자동으로{" "}
               <code className="bg-base-300 rounded-sm px-1">
                 {"{ data: ... }"}
@@ -221,7 +293,7 @@ export default function OnboardingPage({
   };
 
   return (
-    <div className="mx-auto min-h-dvh max-w-[600px] min-w-[360px] p-4">
+    <div className="mx-auto min-h-dvh max-w-3xl min-w-[360px] p-4">
       <main className="bg-base-100 flex w-full flex-col gap-6">
         <header className="text-center">
           <h1 className="text-headline-s text-base-content">
