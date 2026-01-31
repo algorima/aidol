@@ -10,6 +10,9 @@ export * from "./creation";
 // Landing page components
 export * from "./landing";
 
+// Onboarding components
+export * from "./onboarding";
+
 // Shared components
 export { Header } from "./Header";
 export { Loading } from "./Loading";
