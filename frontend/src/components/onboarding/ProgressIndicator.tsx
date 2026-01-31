@@ -1,5 +1,7 @@
 "use client";
 
+import clsx from "clsx";
+
 interface ProgressIndicatorProps {
   /** Current slide index (0-based) */
   currentIndex: number;
@@ -37,11 +39,12 @@ export function ProgressIndicator({
             key={index}
             type="button"
             onClick={() => onNavigate?.(index)}
-            className={`size-2 rounded-full transition-colors ${
+            className={clsx(
+              "size-2 rounded-full transition-colors",
               index === currentIndex
                 ? "bg-primary"
-                : "bg-base-300 hover:bg-base-content/30"
-            }`}
+                : "bg-base-300 hover:bg-base-content/30",
+            )}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={index === currentIndex ? "step" : undefined}
           />

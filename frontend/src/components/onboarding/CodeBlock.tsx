@@ -18,7 +18,7 @@ export function CodeBlock({ code, language, title }: CodeBlockProps) {
         <div className="bg-base-300 text-body-s text-base-content/70 px-4 py-2">
           {title}
           {language && (
-            <span className="text-primary ml-2 text-xs">{language}</span>
+            <span className="text-label-m text-primary ml-2">{language}</span>
           )}
         </div>
       )}
