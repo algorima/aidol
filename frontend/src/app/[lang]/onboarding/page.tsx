@@ -293,7 +293,7 @@ export default function OnboardingPage({
   };
 
   return (
-    <div className="mx-auto min-h-dvh max-w-3xl min-w-[360px] p-4">
+    <div className="mx-auto min-h-dvh w-full max-w-3xl p-4">
       <main className="bg-base-100 flex w-full flex-col gap-6">
         <header className="text-center">
           <h1 className="text-headline-s text-base-content">
