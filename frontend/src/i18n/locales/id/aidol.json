@@ -96,5 +96,13 @@
       "line4": "Proyek Generasi Berikutnya",
       "cta": "Casting Trainee"
     }
+  },
+  "onboarding": {
+    "title": "Panduan Arsitektur Proyek",
+    "subtitle": "Slide Onboarding Mandiri",
+    "previous": "Sebelumnya",
+    "next": "Selanjutnya",
+    "done": "Selesai",
+    "keyboardHint": "Gunakan tombol ← → untuk navigasi"
   }
 }

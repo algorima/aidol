@@ -96,5 +96,13 @@
       "line4": "Next Generation Project",
       "cta": "Cast Trainees"
     }
+  },
+  "onboarding": {
+    "title": "Project Architecture Guide",
+    "subtitle": "Self-Learning Onboarding Slides",
+    "previous": "Previous",
+    "next": "Next",
+    "done": "Done",
+    "keyboardHint": "Use ← → arrow keys to navigate"
   }
 }

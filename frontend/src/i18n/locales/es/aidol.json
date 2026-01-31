@@ -96,5 +96,13 @@
       "line4": "Proyecto Próxima Generación",
       "cta": "Seleccionar Aprendices"
     }
+  },
+  "onboarding": {
+    "title": "Guía de Arquitectura del Proyecto",
+    "subtitle": "Diapositivas de Incorporación Autoguiadas",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "done": "Listo",
+    "keyboardHint": "Usa las teclas ← → para navegar"
   }
 }

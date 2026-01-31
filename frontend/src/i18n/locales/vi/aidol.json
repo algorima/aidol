@@ -96,5 +96,13 @@
       "line4": "Dự Án Thế Hệ Tiếp Theo",
       "cta": "Tuyển Thực Tập Sinh"
     }
+  },
+  "onboarding": {
+    "title": "Hướng Dẫn Kiến Trúc Dự Án",
+    "subtitle": "Slide Tự Học",
+    "previous": "Trước",
+    "next": "Tiếp",
+    "done": "Xong",
+    "keyboardHint": "Sử dụng phím ← → để điều hướng"
   }
 }

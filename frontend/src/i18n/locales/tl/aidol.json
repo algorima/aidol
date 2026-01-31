@@ -96,5 +96,13 @@
       "line4": "Next Generation Project",
       "cta": "Mag-cast ng Trainee"
     }
+  },
+  "onboarding": {
+    "title": "Gabay sa Arkitektura ng Proyekto",
+    "subtitle": "Self-Learning Onboarding Slides",
+    "previous": "Nakaraan",
+    "next": "Susunod",
+    "done": "Tapos",
+    "keyboardHint": "Gamitin ang ← → para mag-navigate"
   }
 }
