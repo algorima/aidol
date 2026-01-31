@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { ProfileImageGenerator } from "@/components/creation/ProfileImageGenerator";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionService } from "@/services/MockCompanionService";
+import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
 
 export default function ImagePage() {
   const { t } = useTranslation();
@@ -26,8 +26,8 @@ export default function ImagePage() {
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
     setIsGenerating(true);
-    const service = getMockCompanionService();
-    const response = await service.generateImage(prompt);
+    const repository = getMockCompanionRepository();
+    const response = await repository.generateImage(prompt);
     setImageUrl(response.data.imageUrl);
     setHasGenerated(true);
     setIsGenerating(false);
@@ -35,8 +35,8 @@ export default function ImagePage() {
 
   const handleNext = () => {
     if (!imageUrl) return;
-    const service = getMockCompanionService();
-    service.updateCompanion(params.companionId, {
+    const repository = getMockCompanionRepository();
+    repository.updateCompanion(params.companionId, {
       profilePictureUrl: imageUrl,
     });
     router.push(

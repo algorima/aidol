@@ -3,15 +3,15 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import { getMockCompanionService } from "@/services/MockCompanionService";
+import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
 
 export default function CompanionCreatePage() {
   const params = useParams<{ lang: string; aidolId: string }>();
   const router = useRouter();
 
   useEffect(() => {
-    const service = getMockCompanionService();
-    const { id } = service.createCompanion(params.aidolId);
+    const repository = getMockCompanionRepository();
+    const { id } = repository.createCompanion(params.aidolId);
     router.replace(
       `/${params.lang}/aidols/${params.aidolId}/companions/${id}/gender`,
     );

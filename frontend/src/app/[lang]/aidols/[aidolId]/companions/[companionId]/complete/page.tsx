@@ -9,7 +9,7 @@ import { BiographyInput } from "@/components/creation/BiographyInput";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { CompanionNameInput } from "@/components/creation/CompanionNameInput";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionService } from "@/services/MockCompanionService";
+import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
 
 export default function CompletePage() {
   const { t } = useTranslation();
@@ -24,8 +24,8 @@ export default function CompletePage() {
 
   const handleComplete = () => {
     if (!name.trim()) return;
-    const service = getMockCompanionService();
-    service.updateCompanion(params.companionId, { name, biography });
+    const repository = getMockCompanionRepository();
+    repository.updateCompanion(params.companionId, { name, biography });
   };
 
   return (

@@ -8,7 +8,7 @@ import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayo
 import { MbtiForm } from "@/components/creation/MbtiForm";
 import type { MbtiValues } from "@/components/creation/MbtiForm";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionService } from "@/services/MockCompanionService";
+import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
 
 export default function PersonalityPage() {
   const { t } = useTranslation();
@@ -26,8 +26,8 @@ export default function PersonalityPage() {
   });
 
   const handleNext = () => {
-    const service = getMockCompanionService();
-    service.updateCompanion(params.companionId, {
+    const repository = getMockCompanionRepository();
+    repository.updateCompanion(params.companionId, {
       mbtiEnergy: mbtiValues.energy,
       mbtiPerception: mbtiValues.perception,
       mbtiJudgment: mbtiValues.judgment,

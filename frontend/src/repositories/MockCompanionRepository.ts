@@ -5,7 +5,7 @@ type PartialCompanion = Partial<Companion>;
 
 const IMAGE_GENERATION_DELAY_MS = 1500;
 
-class MockCompanionService {
+class MockCompanionRepository {
   private storage = new Map<string, PartialCompanion>();
 
   createCompanion(aidolId: string): { id: string; aidolId: string } {
@@ -40,11 +40,11 @@ class MockCompanionService {
   }
 }
 
-let instance: MockCompanionService | null = null;
+let instance: MockCompanionRepository | null = null;
 
-export const getMockCompanionService = (): MockCompanionService => {
+export const getMockCompanionRepository = (): MockCompanionRepository => {
   if (!instance) {
-    instance = new MockCompanionService();
+    instance = new MockCompanionRepository();
   }
   return instance;
 };

@@ -14,7 +14,7 @@ export function BiographyInput({ value, onChange }: BiographyInputProps) {
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={t("aidol:companionCreate.complete.bioPlaceholder")}
-      className="input bg-white text-black w-full"
+      className="input w-full bg-white text-black"
     />
   );
 }

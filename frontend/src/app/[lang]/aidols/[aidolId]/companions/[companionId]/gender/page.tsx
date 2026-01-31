@@ -7,8 +7,8 @@ import { useTranslation } from "react-i18next";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { GenderSelector } from "@/components/creation/GenderSelector";
 import { StepCard } from "@/components/creation/StepCard";
+import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
 import type { Gender } from "@/schemas/companion";
-import { getMockCompanionService } from "@/services/MockCompanionService";
 
 export default function GenderPage() {
   const { t } = useTranslation();
@@ -22,8 +22,8 @@ export default function GenderPage() {
 
   const handleNext = () => {
     if (!gender) return;
-    const service = getMockCompanionService();
-    service.updateCompanion(params.companionId, { gender });
+    const repository = getMockCompanionRepository();
+    repository.updateCompanion(params.companionId, { gender });
     router.push(
       `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/personality`,
     );
