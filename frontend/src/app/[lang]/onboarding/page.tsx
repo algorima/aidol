@@ -224,6 +224,10 @@ export default function OnboardingPage({
                 />
               </div>
             </div>
+            <p className="text-body-s text-base-content/60 mt-4">
+              참고: 이 형식은 Refine Data Provider 호환을 위한 aioia-core 자체
+              정의이며, 범용 REST API 표준이 아닙니다.
+            </p>
           </Slide>
         );
       // 4. 구현: 프론트엔드 Repository
@@ -261,6 +265,13 @@ export default function OnboardingPage({
               </p>
               <p>
                 <strong>getDataSchema():</strong> Zod 스키마로 응답 유효성 검증
+              </p>
+            </div>
+            <div className="bg-warning/10 border-warning mt-4 rounded-lg border-l-4 p-4">
+              <p className="text-body-s text-warning-content">
+                <strong>런타임 검증 목적:</strong> TypeScript 타입은 컴파일
+                타임에만 존재합니다. Zod 스키마는 런타임에 API 응답을 검증하여,
+                백엔드 스키마가 변경되면 즉시 감지하고 Sentry에 보고합니다.
               </p>
             </div>
           </Slide>
