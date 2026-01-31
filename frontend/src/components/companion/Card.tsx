@@ -44,7 +44,7 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
       <div className="absolute inset-0">
         <ImagePreview
           url={companion.profilePictureUrl}
-          alt={companion.name}
+          alt={companion.name ?? ""}
           variant="profile"
         />
       </div>
@@ -75,7 +75,7 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
 
       {/* 5. 이름 + 등급 */}
       <div className="absolute inset-x-4 bottom-4 z-10 flex flex-col gap-2">
-        <span className="text-title-s text-white">{companion.name}</span>
+        <span className="text-title-s text-white">{companion.name ?? ""}</span>
 
         {!isPosition && (
           <span className="text-body-s w-fit rounded-lg bg-black px-2 py-1 text-white">

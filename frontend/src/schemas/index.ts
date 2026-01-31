@@ -11,4 +11,12 @@ export type {
 
 // Companion schemas
 export { companionSchema } from "./companion";
-export type { Companion, CompanionCreate, CompanionUpdate } from "./companion";
+export type {
+  Companion,
+  CompanionStats,
+  CompanionCreate,
+  CompanionUpdate,
+  Gender,
+  Grade,
+  Position,
+} from "./companion";

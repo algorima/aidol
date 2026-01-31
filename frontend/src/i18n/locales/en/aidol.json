@@ -2,6 +2,38 @@
   "common": {
     "close": "Close"
   },
+  "casting": {
+    "title": "Debut Member Casting",
+    "infoBanner": {
+      "title": "Cast your trainees",
+      "description": "The idol characters (face, voice, video) in this content are original virtual characters created by AI and are not based on any real person, including idols and celebrities."
+    },
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Mixed Group"
+    },
+    "newMember": {
+      "prompt": "Can't find a trainee you like?",
+      "subPrompt": "Try casting a new member"
+    },
+    "addMember": "New Member",
+    "abilities": {
+      "title": "Abilities",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Stamina",
+      "charm": "Charm"
+    },
+    "castButton": "Cast",
+    "castComplete": {
+      "title": "Casting Complete!",
+      "description": "The trainee has joined the group",
+      "viewBoard": "View Casting Board"
+    }
+  },
   "share": "Share",
   "urlCopied": "URL copied!",
   "castingBoard": {

@@ -2,6 +2,38 @@
   "common": {
     "close": "閉じる"
   },
+  "casting": {
+    "title": "デビューメンバーキャスティング",
+    "infoBanner": {
+      "title": "練習生をキャスティングしましょう",
+      "description": "本コンテンツのアイドルキャラクター（顔・声・映像）はAIで制作されたオリジナルの仮想人物であり、実在の人物（アイドル/芸能人を含む）に基づいていません。"
+    },
+    "tabs": {
+      "boy": "ボーイグループ",
+      "girl": "ガールグループ",
+      "mixed": "混合グループ"
+    },
+    "newMember": {
+      "prompt": "お気に入りの練習生がいませんか？",
+      "subPrompt": "新しいメンバーをキャスティングしてみましょう"
+    },
+    "addMember": "新メンバー",
+    "abilities": {
+      "title": "能力値",
+      "vocal": "ボーカル",
+      "dance": "ダンス",
+      "rap": "ラップ",
+      "visual": "ビジュアル",
+      "stamina": "スタミナ",
+      "charm": "魅力"
+    },
+    "castButton": "キャスティング",
+    "castComplete": {
+      "title": "キャスティング完了！",
+      "description": "練習生がグループに合流しました",
+      "viewBoard": "キャスティングボードを見る"
+    }
+  },
   "share": "共有",
   "urlCopied": "URLがコピーされました！",
   "castingBoard": {

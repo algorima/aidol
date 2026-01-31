@@ -2,6 +2,38 @@
   "common": {
     "close": "关闭"
   },
+  "casting": {
+    "title": "出道成员选拔",
+    "infoBanner": {
+      "title": "选拔你的练习生",
+      "description": "本内容中的偶像角色（面部、声音、视频）是由AI制作的原创虚拟人物，不基于任何真实人物，包括偶像和艺人。"
+    },
+    "tabs": {
+      "boy": "男团",
+      "girl": "女团",
+      "mixed": "混合团"
+    },
+    "newMember": {
+      "prompt": "没有喜欢的练习生吗？",
+      "subPrompt": "试试选拔新成员"
+    },
+    "addMember": "新成员",
+    "abilities": {
+      "title": "能力值",
+      "vocal": "声乐",
+      "dance": "舞蹈",
+      "rap": "说唱",
+      "visual": "颜值",
+      "stamina": "体力",
+      "charm": "魅力"
+    },
+    "castButton": "选秀",
+    "castComplete": {
+      "title": "选秀完成！",
+      "description": "练习生已加入组合",
+      "viewBoard": "查看选秀面板"
+    }
+  },
   "share": "分享",
   "urlCopied": "URL已复制！",
   "castingBoard": {

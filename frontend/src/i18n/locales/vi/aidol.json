@@ -2,6 +2,38 @@
   "common": {
     "close": "Đóng"
   },
+  "casting": {
+    "title": "Casting Thành Viên Debut",
+    "infoBanner": {
+      "title": "Hãy casting thực tập sinh",
+      "description": "Các nhân vật idol (khuôn mặt, giọng nói, video) trong nội dung này là nhân vật ảo nguyên bản được tạo bởi AI và không dựa trên người thật, bao gồm idol và người nổi tiếng."
+    },
+    "tabs": {
+      "boy": "Nhóm Nam",
+      "girl": "Nhóm Nữ",
+      "mixed": "Nhóm Hỗn hợp"
+    },
+    "newMember": {
+      "prompt": "Không tìm thấy thực tập sinh yêu thích?",
+      "subPrompt": "Hãy thử casting thành viên mới"
+    },
+    "addMember": "Thành Viên Mới",
+    "abilities": {
+      "title": "Năng lực",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Thể lực",
+      "charm": "Sức hút"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "Casting Hoàn Tất!",
+      "description": "Thực tập sinh đã gia nhập nhóm",
+      "viewBoard": "Xem Bảng Casting"
+    }
+  },
   "share": "Chia sẻ",
   "urlCopied": "Đã sao chép URL!",
   "castingBoard": {

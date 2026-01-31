@@ -2,6 +2,38 @@
   "common": {
     "close": "닫기"
   },
+  "casting": {
+    "title": "데뷔 멤버 캐스팅",
+    "infoBanner": {
+      "title": "연습생을 캐스팅해보세요",
+      "description": "본 콘텐츠의 아이돌 캐릭터(얼굴·음성·영상)는 AI로 제작된 오리지널 가상 인물이며, 실존 인물(아이돌/연예인 포함)을 기반으로 하지 않습니다."
+    },
+    "tabs": {
+      "boy": "보이그룹",
+      "girl": "걸그룹",
+      "mixed": "혼성그룹"
+    },
+    "newMember": {
+      "prompt": "마음에 드는 연습생이 없으신가요?",
+      "subPrompt": "신규 멤버를 캐스팅해 보세요"
+    },
+    "addMember": "신규 멤버",
+    "abilities": {
+      "title": "능력치",
+      "vocal": "보컬",
+      "dance": "댄스",
+      "rap": "랩",
+      "visual": "비주얼",
+      "stamina": "체력",
+      "charm": "매력"
+    },
+    "castButton": "캐스팅하기",
+    "castComplete": {
+      "title": "캐스팅 완료!",
+      "description": "연습생이 그룹에 합류했습니다",
+      "viewBoard": "캐스팅 보드 보기"
+    }
+  },
   "share": "공유",
   "urlCopied": "URL이 복사되었습니다!",
   "castingBoard": {

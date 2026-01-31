@@ -2,6 +2,38 @@
   "common": {
     "close": "Tutup"
   },
+  "casting": {
+    "title": "Casting Anggota Debut",
+    "infoBanner": {
+      "title": "Casting trainee pilihanmu",
+      "description": "Karakter idol (wajah, suara, video) dalam konten ini adalah karakter virtual asli yang dibuat oleh AI dan tidak berdasarkan orang nyata, termasuk idol dan selebriti."
+    },
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Grup Campuran"
+    },
+    "newMember": {
+      "prompt": "Tidak ada trainee yang kamu suka?",
+      "subPrompt": "Coba casting anggota baru"
+    },
+    "addMember": "Anggota Baru",
+    "abilities": {
+      "title": "Kemampuan",
+      "vocal": "Vokal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Stamina",
+      "charm": "Pesona"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "Casting Selesai!",
+      "description": "Trainee telah bergabung dengan grup",
+      "viewBoard": "Lihat Casting Board"
+    }
+  },
   "share": "Bagikan",
   "urlCopied": "URL disalin!",
   "castingBoard": {
