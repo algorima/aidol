@@ -25,7 +25,7 @@ export function CompanionNameInput({
         )
       }
       placeholder={t("aidol:companionCreate.complete.namePlaceholder")}
-      className="input bg-surface text-surface-content w-full"
+      className="input bg-white text-black w-full"
     />
   );
 }

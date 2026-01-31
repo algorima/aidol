@@ -32,8 +32,6 @@
   --color-base-200: #f7f7f7;
   --color-base-300: #e4e4e4;
   --color-base-content: #000;
-  --color-surface: #fff;
-  --color-surface-content: #000;
   --color-info: #06b6d4;
   --color-info-content: #164e63;
   --color-success: #4ade80;
@@ -61,8 +59,6 @@
   --color-base-200: #1a1a1a;
   --color-base-300: #2d2d2d;
   --color-base-content: #fff;
-  --color-surface: #fff;
-  --color-surface-content: #000;
   --color-info: #06b6d4;
   --color-info-content: #164e63;
   --color-success: #4ade80;

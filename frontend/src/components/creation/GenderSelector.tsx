@@ -26,8 +26,8 @@ export function GenderSelector({ value, onChange }: GenderSelectorProps) {
           className={clsx(
             "text-label-l flex-1 rounded-lg border px-6 py-3 transition-colors",
             value === gender
-              ? "border-primary bg-surface text-primary"
-              : "border-base-300 bg-surface text-base-content",
+              ? "border-primary bg-white text-primary"
+              : "border-base-300 bg-white text-base-content",
           )}
         >
           {label}
