@@ -31,7 +31,7 @@ from aioia_core.errors import (
     get_error_detail_from_exception,
 )
 from aioia_core.models import Base
-from aioia_core.settings import DatabaseSettings, JWTSettings, OpenAIAPISettings
+from aioia_core.settings import DatabaseSettings, OpenAIAPISettings
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -84,8 +84,6 @@ class Base64ImageStorage(ImageStorageProtocol):
 db_settings = DatabaseSettings()  # DATABASE_URL
 openai_settings = OpenAIAPISettings()  # OPENAI_API_KEY
 google_settings = GoogleGenAISettings()  # GOOGLE_API_KEY or Vertex AI with ADC
-# Standalone mode: no JWT authentication (ignore JWT_SECRET_KEY from environment)
-jwt_settings = JWTSettings(secret_key=None)
 model_settings = Settings()  # AIDOL_* settings
 
 if google_settings.api_key:
@@ -247,7 +245,6 @@ chatroom_router = create_chatroom_router(
     openai_settings=openai_settings,
     model_settings=model_settings,
     companion_repository_factory=CompanionRepositoryFactory(),
-    jwt_settings=jwt_settings,
     db_session_factory=db_session_factory,
     repository_factory=ChatroomRepositoryFactory(),
 )
