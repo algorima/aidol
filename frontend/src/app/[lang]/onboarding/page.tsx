@@ -56,7 +56,9 @@ export default function OnboardingPage({
             </p>
             <p className="text-body-m text-base-content">
               Refine은 모든 CRUD 응답이{" "}
-              <code className="bg-base-300 rounded px-1">{"{ data: ... }"}</code>{" "}
+              <code className="bg-base-300 rounded-sm px-1">
+                {"{ data: ... }"}
+              </code>{" "}
               형식으로 래핑되어야 합니다.
             </p>
             <div className="bg-warning/10 border-warning rounded-lg border-l-4 p-4">
@@ -107,9 +109,9 @@ export default function OnboardingPage({
         return (
           <Slide slideNumber={3} title="aioia-core 패턴">
             <p className="text-body-m text-base-content">
-              <code className="bg-base-300 rounded px-1">@aioia/core</code>
+              <code className="bg-base-300 rounded-sm px-1">@aioia/core</code>
               에서 제공하는{" "}
-              <code className="bg-base-300 rounded px-1">
+              <code className="bg-base-300 rounded-sm px-1">
                 BaseCrudRepository
               </code>
               를 상속합니다.
@@ -134,9 +136,13 @@ export default function OnboardingPage({
           <Slide slideNumber={4} title="백엔드 응답 형식">
             <p className="text-body-m text-base-content">
               백엔드는{" "}
-              <code className="bg-base-300 rounded px-1">BaseCrudRouter</code>를
-              사용하여 자동으로{" "}
-              <code className="bg-base-300 rounded px-1">{"{ data: ... }"}</code>{" "}
+              <code className="bg-base-300 rounded-sm px-1">
+                BaseCrudRouter
+              </code>
+              를 사용하여 자동으로{" "}
+              <code className="bg-base-300 rounded-sm px-1">
+                {"{ data: ... }"}
+              </code>{" "}
               형식으로 응답합니다.
             </p>
             <CodeBlock
@@ -162,7 +168,9 @@ export default function OnboardingPage({
                   readOnly
                 />
                 <span>
-                  <code className="bg-base-300 rounded px-1">repositories/</code>
+                  <code className="bg-base-300 rounded-sm px-1">
+                    repositories/
+                  </code>
                   에 기존 Repository가 있는지 확인
                 </span>
               </label>
@@ -173,8 +181,8 @@ export default function OnboardingPage({
                   readOnly
                 />
                 <span>
-                  <code className="bg-base-300 rounded px-1">schemas/</code>에
-                  관련 스키마가 있는지 확인
+                  <code className="bg-base-300 rounded-sm px-1">schemas/</code>
+                  에 관련 스키마가 있는지 확인
                 </span>
               </label>
               <label className="flex items-start gap-3">
@@ -184,7 +192,7 @@ export default function OnboardingPage({
                   readOnly
                 />
                 <span>
-                  <code className="bg-base-300 rounded px-1">
+                  <code className="bg-base-300 rounded-sm px-1">
                     BaseCrudRepository
                   </code>
                   를 상속하고 있는지 확인
@@ -198,7 +206,7 @@ export default function OnboardingPage({
                 />
                 <span>
                   API 응답이{" "}
-                  <code className="bg-base-300 rounded px-1">
+                  <code className="bg-base-300 rounded-sm px-1">
                     {"{ data: ... }"}
                   </code>{" "}
                   형식인지 확인

@@ -37,7 +37,7 @@ export function ProgressIndicator({
             key={index}
             type="button"
             onClick={() => onNavigate?.(index)}
-            className={`h-2 w-2 rounded-full transition-colors ${
+            className={`size-2 rounded-full transition-colors ${
               index === currentIndex
                 ? "bg-primary"
                 : "bg-base-300 hover:bg-base-content/30"
