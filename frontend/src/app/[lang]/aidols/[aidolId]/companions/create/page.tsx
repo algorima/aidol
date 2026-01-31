@@ -10,11 +10,16 @@ export default function CompanionCreatePage() {
   const router = useRouter();
 
   useEffect(() => {
-    const repository = getMockCompanionRepository();
-    const { id } = repository.createCompanion(params.aidolId);
-    router.replace(
-      `/${params.lang}/aidols/${params.aidolId}/companions/${id}/gender`,
-    );
+    const run = async () => {
+      const repository = getMockCompanionRepository();
+      const { data } = await repository.create({
+        variables: { name: "", aidolId: params.aidolId },
+      });
+      router.replace(
+        `/${params.lang}/aidols/${params.aidolId}/companions/${data.id}/gender`,
+      );
+    };
+    void run();
   }, [params.lang, params.aidolId, router]);
 
   return (

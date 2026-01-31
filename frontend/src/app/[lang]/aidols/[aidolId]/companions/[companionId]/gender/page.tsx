@@ -20,10 +20,13 @@ export default function GenderPage() {
   const router = useRouter();
   const [gender, setGender] = useState<Gender | null>(null);
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!gender) return;
     const repository = getMockCompanionRepository();
-    repository.updateCompanion(params.companionId, { gender });
+    await repository.update({
+      id: params.companionId,
+      variables: { gender },
+    });
     router.push(
       `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/personality`,
     );

@@ -25,13 +25,16 @@ export default function PersonalityPage() {
     lifestyle: 5,
   });
 
-  const handleNext = () => {
+  const handleNext = async () => {
     const repository = getMockCompanionRepository();
-    repository.updateCompanion(params.companionId, {
-      mbtiEnergy: mbtiValues.energy,
-      mbtiPerception: mbtiValues.perception,
-      mbtiJudgment: mbtiValues.judgment,
-      mbtiLifestyle: mbtiValues.lifestyle,
+    await repository.update({
+      id: params.companionId,
+      variables: {
+        mbtiEnergy: mbtiValues.energy,
+        mbtiPerception: mbtiValues.perception,
+        mbtiJudgment: mbtiValues.judgment,
+        mbtiLifestyle: mbtiValues.lifestyle,
+      },
     });
     router.push(
       `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/image`,

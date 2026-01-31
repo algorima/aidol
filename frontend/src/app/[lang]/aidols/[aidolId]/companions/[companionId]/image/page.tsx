@@ -27,17 +27,18 @@ export default function ImagePage() {
     if (!prompt.trim()) return;
     setIsGenerating(true);
     const repository = getMockCompanionRepository();
-    const response = await repository.generateImage(prompt);
+    const response = await repository.generateImage({ prompt });
     setImageUrl(response.data.imageUrl);
     setHasGenerated(true);
     setIsGenerating(false);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!imageUrl) return;
     const repository = getMockCompanionRepository();
-    repository.updateCompanion(params.companionId, {
-      profilePictureUrl: imageUrl,
+    await repository.update({
+      id: params.companionId,
+      variables: { profilePictureUrl: imageUrl },
     });
     router.push(
       `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/complete`,

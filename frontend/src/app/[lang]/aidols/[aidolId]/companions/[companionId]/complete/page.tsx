@@ -22,10 +22,13 @@ export default function CompletePage() {
   const [name, setName] = useState("");
   const [biography, setBiography] = useState("");
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     if (!name.trim()) return;
     const repository = getMockCompanionRepository();
-    repository.updateCompanion(params.companionId, { name, biography });
+    await repository.update({
+      id: params.companionId,
+      variables: { name, biography },
+    });
   };
 
   return (

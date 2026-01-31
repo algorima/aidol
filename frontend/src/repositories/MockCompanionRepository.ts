@@ -1,27 +1,77 @@
-import type { ImageGenerationResponse } from "@/schemas/aidol";
-import type { Companion, CompanionUpdate } from "@/schemas/companion";
+import type {
+  CreateParams,
+  CreateResponse,
+  GetOneParams,
+  GetOneResponse,
+  UpdateParams,
+  UpdateResponse,
+} from "@aioia/core";
 
-type PartialCompanion = Partial<Companion>;
+import type {
+  ImageGenerationRequest,
+  ImageGenerationResponse,
+} from "@/schemas/aidol";
+import type {
+  Companion,
+  CompanionCreate,
+  CompanionUpdate,
+} from "@/schemas/companion";
 
 const IMAGE_GENERATION_DELAY_MS = 1500;
 
 class MockCompanionRepository {
-  private storage = new Map<string, PartialCompanion>();
+  private storage = new Map<string, Companion>();
 
-  createCompanion(aidolId: string): { id: string; aidolId: string } {
+  create(
+    params: CreateParams<CompanionCreate>,
+  ): Promise<CreateResponse<Companion>> {
     const id = crypto.randomUUID();
-    this.storage.set(id, { id, aidolId });
-    return { id, aidolId };
+    const now = new Date().toISOString();
+    const companion: Companion = {
+      id,
+      name: params.variables.name,
+      aidolId: params.variables.aidolId,
+      biography: params.variables.biography ?? null,
+      profilePictureUrl: params.variables.profilePictureUrl ?? null,
+      createdAt: now,
+      updatedAt: now,
+    };
+    this.storage.set(id, companion);
+    return Promise.resolve({ data: companion });
   }
 
-  updateCompanion(id: string, data: CompanionUpdate): PartialCompanion {
-    const existing = this.storage.get(id) ?? { id };
-    const updated = { ...existing, ...data };
+  update(
+    params: UpdateParams<CompanionUpdate>,
+  ): Promise<UpdateResponse<Companion>> {
+    const id = String(params.id);
+    const now = new Date().toISOString();
+    const existing = this.storage.get(id) ?? {
+      id,
+      name: "",
+      createdAt: now,
+      updatedAt: now,
+    };
+    const updated: Companion = {
+      ...existing,
+      ...params.variables,
+      updatedAt: now,
+    };
     this.storage.set(id, updated);
-    return updated;
+    return Promise.resolve({ data: updated });
   }
 
-  async generateImage(_prompt: string): Promise<ImageGenerationResponse> {
+  getOne(params: GetOneParams): Promise<GetOneResponse<Companion>> {
+    const id = String(params.id);
+    const companion = this.storage.get(id);
+    if (!companion) {
+      throw new Error(`Companion not found: ${id}`);
+    }
+    return Promise.resolve({ data: companion });
+  }
+
+  async generateImage(
+    _request: ImageGenerationRequest,
+  ): Promise<ImageGenerationResponse> {
     await new Promise((resolve) =>
       setTimeout(resolve, IMAGE_GENERATION_DELAY_MS),
     );
@@ -33,10 +83,6 @@ class MockCompanionRepository {
         format: "png",
       },
     };
-  }
-
-  getCompanion(id: string): PartialCompanion | undefined {
-    return this.storage.get(id);
   }
 }
 
