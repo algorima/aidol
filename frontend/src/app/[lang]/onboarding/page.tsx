@@ -100,6 +100,7 @@ export default function OnboardingPage({
 
   const renderSlide = (index: number) => {
     switch (index) {
+      // 1. 전체 그림
       case 0:
         return (
           <Slide slideNumber={1} title="프로젝트 계층 구조">
@@ -161,9 +162,74 @@ export default function OnboardingPage({
             </p>
           </Slide>
         );
+      // 2. 공통 규약: 응답 형식
       case 1:
         return (
-          <Slide slideNumber={2} title="aioia-core (프론트엔드)">
+          <Slide slideNumber={2} title="응답 형식">
+            <p className="text-body-m text-base-content">
+              모든 API 응답은{" "}
+              <code className="bg-base-300 rounded-sm px-1">
+                {"{ data: ... }"}
+              </code>{" "}
+              형식으로 래핑됩니다.
+            </p>
+            <CodeBlock
+              code={RESPONSE_CODE}
+              language="TypeScript"
+              title="응답 타입"
+            />
+            <div className="bg-info/10 border-info rounded-lg border-l-4 p-4">
+              <p className="text-body-s text-info-content">
+                <strong>설계 이유:</strong> Admin 도구에서{" "}
+                <a
+                  href={LINKS.refineDataProvider}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link"
+                >
+                  Refine 프레임워크
+                </a>
+                를 사용합니다. aioia-core가 Refine Data Provider 구조와 호환되어
+                여러 프로젝트를 통합 관리할 수 있습니다.
+              </p>
+              <p className="text-body-s text-base-content/60 mt-2">
+                참고: 이는 Refine 프레임워크 고유 요구사항이며, 범용 REST API
+                표준이 아닙니다.
+              </p>
+            </div>
+          </Slide>
+        );
+      // 3. 공통 규약: 쿼리 파라미터
+      case 2:
+        return (
+          <Slide slideNumber={3} title="쿼리 파라미터">
+            <p className="text-body-m text-base-content mb-4">
+              aioia-core 기반 목록 조회 파라미터
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <h3 className="text-title-s text-primary mb-2">Frontend</h3>
+                <CodeBlock
+                  code={QUERY_PARAMS_TS_CODE}
+                  language="TypeScript"
+                  title="GetListParams"
+                />
+              </div>
+              <div>
+                <h3 className="text-title-s text-primary mb-2">Backend</h3>
+                <CodeBlock
+                  code={QUERY_PARAMS_PY_CODE}
+                  language="Python"
+                  title="BaseCrudRouter"
+                />
+              </div>
+            </div>
+          </Slide>
+        );
+      // 4. 구현: 프론트엔드 Repository
+      case 3:
+        return (
+          <Slide slideNumber={4} title="aioia-core (프론트엔드)">
             <p className="text-body-m text-base-content">
               <a
                 href={LINKS.aioiaCoreNpm}
@@ -199,9 +265,10 @@ export default function OnboardingPage({
             </div>
           </Slide>
         );
-      case 2:
+      // 5. 구현: 백엔드 Router
+      case 4:
         return (
-          <Slide slideNumber={3} title="aioia-core (백엔드)">
+          <Slide slideNumber={5} title="aioia-core (백엔드)">
             <p className="text-body-m text-base-content">
               <a
                 href={LINKS.aioiaCorePyPI}
@@ -229,7 +296,7 @@ export default function OnboardingPage({
             />
             <div className="text-body-s text-base-content/80 space-y-1">
               <p>
-                <strong>prefix:</strong> URL 경로 접두사
+                <strong>resource_name:</strong> URL 경로 및 리소스 식별자
               </p>
               <p>
                 <strong>tags:</strong> OpenAPI 문서 태그
@@ -237,9 +304,10 @@ export default function OnboardingPage({
             </div>
           </Slide>
         );
-      case 3:
+      // 6. 심화: 백엔드 Factory 패턴
+      case 5:
         return (
-          <Slide slideNumber={4} title="Factory 패턴 (백엔드)">
+          <Slide slideNumber={6} title="Factory 패턴 (백엔드)">
             <p className="text-body-m text-base-content">
               <a
                 href={LINKS.baseRepositoryFactorySource}
@@ -268,68 +336,7 @@ export default function OnboardingPage({
             </div>
           </Slide>
         );
-      case 4:
-        return (
-          <Slide slideNumber={5} title="응답 형식">
-            <p className="text-body-m text-base-content">
-              모든 API 응답은{" "}
-              <code className="bg-base-300 rounded-sm px-1">
-                {"{ data: ... }"}
-              </code>{" "}
-              형식으로 래핑됩니다.
-            </p>
-            <CodeBlock
-              code={RESPONSE_CODE}
-              language="TypeScript"
-              title="응답 타입"
-            />
-            <div className="bg-info/10 border-info rounded-lg border-l-4 p-4">
-              <p className="text-body-s text-info-content">
-                <strong>설계 이유:</strong> Admin 도구에서{" "}
-                <a
-                  href={LINKS.refineDataProvider}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link"
-                >
-                  Refine 프레임워크
-                </a>
-                를 사용합니다. aioia-core가 Refine Data Provider 구조와 호환되어
-                여러 프로젝트를 통합 관리할 수 있습니다.
-              </p>
-              <p className="text-body-s text-base-content/60 mt-2">
-                참고: 이는 Refine 프레임워크 고유 요구사항이며, 범용 REST API
-                표준이 아닙니다.
-              </p>
-            </div>
-          </Slide>
-        );
-      case 5:
-        return (
-          <Slide slideNumber={6} title="쿼리 파라미터">
-            <p className="text-body-m text-base-content mb-4">
-              aioia-core 기반 목록 조회 파라미터
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h3 className="text-title-s text-primary mb-2">Frontend</h3>
-                <CodeBlock
-                  code={QUERY_PARAMS_TS_CODE}
-                  language="TypeScript"
-                  title="GetListParams"
-                />
-              </div>
-              <div>
-                <h3 className="text-title-s text-primary mb-2">Backend</h3>
-                <CodeBlock
-                  code={QUERY_PARAMS_PY_CODE}
-                  language="Python"
-                  title="BaseCrudRouter"
-                />
-              </div>
-            </div>
-          </Slide>
-        );
+      // 7. 실무 적용
       case 6:
         return (
           <Slide slideNumber={7} title="체크리스트">
