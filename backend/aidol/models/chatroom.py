@@ -37,6 +37,9 @@ class DBMessage(BaseModel):
         String, nullable=False
     )  # "user" | "companion" | "system" | "unknown"
     content: Mapped[str] = mapped_column(Text, nullable=False)
+    claim_token: Mapped[str | None] = mapped_column(
+        String(36), nullable=True, index=True
+    )  # Anonymous user identifier for DAU/MAU analytics
 
     __table_args__ = (
         Index("ix_messages_chatroom_created", "chatroom_id", "created_at"),
