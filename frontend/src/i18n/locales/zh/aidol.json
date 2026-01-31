@@ -20,6 +20,8 @@
     "error": {
       "load": "加载成员列表失败",
       "update": "位置分配失败"
+    }
+  },
   "casting": {
     "title": "出道成员选拔",
     "infoBanner": {

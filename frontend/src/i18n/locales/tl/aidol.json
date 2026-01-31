@@ -20,6 +20,8 @@
     "error": {
       "load": "Hindi ma-load ang listahan ng miyembro",
       "update": "Hindi maitalaga ang posisyon"
+    }
+  },
   "casting": {
     "title": "Debut Member Casting",
     "infoBanner": {

@@ -20,6 +20,8 @@
     "error": {
       "load": "Error al cargar los miembros",
       "update": "Error al asignar posición"
+    }
+  },
   "casting": {
     "title": "Casting de Debut",
     "infoBanner": {

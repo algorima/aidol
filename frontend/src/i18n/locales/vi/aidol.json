@@ -20,6 +20,8 @@
     "error": {
       "load": "Không thể tải danh sách thành viên",
       "update": "Không thể phân công vị trí"
+    }
+  },
   "casting": {
     "title": "Casting Thành Viên Debut",
     "infoBanner": {

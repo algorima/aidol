@@ -20,6 +20,8 @@
     "error": {
       "load": "Gagal memuat daftar anggota",
       "update": "Gagal menetapkan posisi"
+    }
+  },
   "casting": {
     "title": "Casting Anggota Debut",
     "infoBanner": {

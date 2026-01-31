@@ -20,6 +20,8 @@
     "error": {
       "load": "Failed to load members",
       "update": "Failed to assign position"
+    }
+  },
   "casting": {
     "title": "Debut Member Casting",
     "infoBanner": {

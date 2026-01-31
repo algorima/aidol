@@ -20,6 +20,8 @@
     "error": {
       "load": "멤버 목록을 불러오지 못했습니다",
       "update": "포지션 배정에 실패했습니다"
+    }
+  },
   "casting": {
     "title": "데뷔 멤버 캐스팅",
     "infoBanner": {
