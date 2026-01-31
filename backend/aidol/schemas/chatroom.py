@@ -84,12 +84,12 @@ class CompanionMessage(Message):
 class MessageCreate(MessageBase):
     """Schema for creating a message (no id, no timestamp).
 
-    user_id is optional for aidol standalone but may be required for platform integration.
-    When provided, it's used to identify the message sender in the platform's user system.
+    claim_token is used for anonymous user identification and DAU/MAU analytics.
+    It's a UUID stored in localStorage, identifying users without authentication.
     """
 
-    user_id: str | None = Field(
-        default=None, description="User ID for platform integration"
+    claim_token: str | None = Field(
+        default=None, description="Anonymous user identifier for analytics"
     )
 
 

@@ -108,6 +108,7 @@ class ChatroomRepository(
             chatroom_id=chatroom_id,
             sender_type=sender_type_value,
             content=message.content,
+            claim_token=message.claim_token,
             created_at=datetime.now(timezone.utc),
             updated_at=datetime.now(timezone.utc),
         )

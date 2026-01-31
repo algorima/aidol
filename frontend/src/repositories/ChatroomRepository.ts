@@ -64,13 +64,13 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
    *
    * @param chatroomId - The chatroom ID
    * @param content - The message content
-   * @param userId - The user ID (claimToken) for platform integration
+   * @param claimToken - Anonymous user identifier for analytics
    * @param fetchOptions - Optional fetch options
    */
   async sendMessage(
     chatroomId: string,
     content: string,
-    userId: string,
+    claimToken: string,
     fetchOptions?: RequestInit,
   ): Promise<Message> {
     const url = this.apiService.buildUrl(
@@ -81,7 +81,7 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
       ...fetchOptions,
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content, senderType: "user", userId }),
+      body: JSON.stringify({ content, senderType: "user", claimToken }),
     });
 
     return this.validateResponse(rawResponse, messageSchema);
