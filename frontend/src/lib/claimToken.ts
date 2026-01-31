@@ -8,6 +8,11 @@ export const getClaimToken = (): string | null => {
 };
 
 export const getOrCreateClaimToken = (): string => {
+  if (typeof window === "undefined") {
+    throw new Error(
+      "getOrCreateClaimToken can only be called on the client side.",
+    );
+  }
   const existing = localStorage.getItem(STORAGE_KEY);
   if (existing) return existing;
 
