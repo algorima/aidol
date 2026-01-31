@@ -35,11 +35,22 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
 }`;
 
 const BACKEND_ROUTER_CODE = `from aioia_core.fastapi import BaseCrudRouter
-from aidol.repositories import CompanionRepository
 
-class CompanionRouter(BaseCrudRouter[Companion, CompanionCreate, CompanionUpdate]):
-    prefix = "/companions"
-    tags = ["companions"]`;
+class CompanionRouter(
+    BaseCrudRouter[Companion, CompanionCreate, CompanionUpdate, CompanionRepositoryProtocol]
+):
+    pass  # 기본 CRUD 엔드포인트 자동 생성
+
+# 라우터 인스턴스 생성
+router = CompanionRouter(
+    model_class=Companion,
+    create_schema=CompanionCreate,
+    update_schema=CompanionUpdate,
+    db_session_factory=db_session_factory,
+    repository_factory=repository_factory,
+    resource_name="companions",
+    tags=["Companion"],
+)`;
 
 const FACTORY_CODE = `from aioia_core.factories import BaseRepositoryFactory
 from aidol.repositories import CompanionRepository
