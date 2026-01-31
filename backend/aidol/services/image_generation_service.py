@@ -4,142 +4,97 @@ Image generation service for AIdol
 Generates images using OpenAI DALL-E 3 for AIdol emblems and Companion profiles.
 """
 
+from __future__ import annotations
+
 import logging
 from dataclasses import dataclass
 from io import BytesIO
 from typing import Literal
 
-import httpx
-import openai
 import PIL.Image
-from aioia_core.settings import OpenAIAPISettings
+from google import genai
+from google.genai import errors as genai_errors
 
 logger = logging.getLogger(__name__)
 
 
 @dataclass
 class ImageGenerationResponse:
-    """Structured response from the Image Generation service"""
+    """Structured response for compatibility (legacy)"""
 
-    url: str
-    revised_prompt: str | None
+    url: str | None = None
+    revised_prompt: str | None = None
 
 
 class ImageGenerationService:
-    """Service for generating images using OpenAI DALL-E 3"""
+    """Service for generating images using Google Gemini 3 (Imagen)."""
 
-    def __init__(self, openai_settings: OpenAIAPISettings):
+    client: "genai.Client | None" = None
+
+    def __init__(self, api_key: str | None = None, settings=None):
         """
-        Initialize the Image Generation service with OpenAI settings.
+        Initialize the Image Generation service.
 
         Args:
-            openai_settings: OpenAI settings containing required API key
+            api_key: Google API Key.
+            settings: Unused, kept for compatibility.
         """
-        self.settings = openai_settings
-        self.client = openai.OpenAI(api_key=self.settings.api_key)
 
-    def generate_image(
-        self,
-        prompt: str,
-        size: Literal[
-            "1024x1024",
-            "1792x1024",
-            "1024x1792",
-        ] = "1024x1024",
-        quality: Literal["standard", "hd"] = "standard",
-    ) -> ImageGenerationResponse | None:
-        """
-        Generate an image from a text prompt using OpenAI DALL-E 3.
-
-        Args:
-            prompt: Text description of the image to generate
-            size: Image size (default: "1024x1024")
-            quality: Image quality "standard" or "hd" (default: "standard")
-
-        Returns:
-            An ImageGenerationResponse object containing the image URL and revised prompt,
-            or None if generation fails.
-
-        Raises:
-            openai.OpenAIError: If OpenAI API call fails.
-        """
-        try:
-            logger.info("Generating image with OpenAI DALL-E 3...")
-            response = self.client.images.generate(
-                model="dall-e-3",
-                prompt=prompt,
-                size=size,
-                quality=quality,
-                n=1,
-            )
-
-            if not response.data or len(response.data) == 0:
-                logger.error("No image data returned from OpenAI")
-                return None
-
-            image_data = response.data[0]
-            url = image_data.url
-
-            if not url:
-                logger.error("No URL found in image response")
-                return None
-
-            revised_prompt = image_data.revised_prompt
-
-            logger.info("Successfully generated image: %s", url[:100])
-            return ImageGenerationResponse(
-                url=url,
-                revised_prompt=revised_prompt,
-            )
-
-        except openai.OpenAIError as e:
-            logger.error("OpenAI API error: %s", e)
-            raise
-
-    def _download_image(self, url: str) -> PIL.Image.Image:
-        """Download image from URL and return as PIL Image.
-
-        Args:
-            url: URL of the image to download.
-
-        Raises:
-            httpx.HTTPError: If download fails.
-        """
-        with httpx.Client(timeout=30.0) as client:
-            response = client.get(url)
-            response.raise_for_status()
-            return PIL.Image.open(BytesIO(response.content))
+        # Use explicitly provided api_key, otherwise fallback to settings or env
+        if api_key:
+            self.client = genai.Client(api_key=api_key)
+        elif settings and hasattr(settings, "api_key") and settings.api_key:
+            self.client = genai.Client(api_key=settings.api_key)
+        else:
+            # Try loading from GOOGLE_API_KEY environment variable (Client handles this)
+            self.client = genai.Client()
 
     def generate_and_download_image(
         self,
         prompt: str,
-        size: Literal[
-            "1024x1024",
-            "1792x1024",
-            "1024x1792",
-        ] = "1024x1024",
-        quality: Literal["standard", "hd"] = "standard",
+        size: Literal["1024x1024"] = "1024x1024",  # pylint: disable=unused-argument
+        quality: Literal["standard"] = "standard",  # pylint: disable=unused-argument
     ) -> PIL.Image.Image | None:
-        """Generate an image and download as PIL Image.
-
-        DALL-E returns temporary URLs that expire in 1-2 hours.
-        Use this method to download the image immediately after generation.
+        """
+        Generate an image using Gemini 3 and return as PIL Image.
 
         Args:
-            prompt: Text description of the image to generate.
-            size: Image size (default: "1024x1024").
-            quality: Image quality "standard" or "hd" (default: "standard").
+            prompt: Text description.
+            size: Ignored (Gemini specific).
+            quality: Ignored (Gemini specific).
 
         Returns:
             PIL Image object, or None if generation fails.
-
-        Raises:
-            openai.OpenAIError: If OpenAI API call fails.
-            httpx.HTTPError: If image download fails.
         """
-        result = self.generate_image(prompt, size, quality)
-        if result is None:
+        if not self.client:
+            logger.error("Gemini client not initialized")
             return None
 
-        logger.info("Downloading image from DALL-E temporary URL...")
-        return self._download_image(result.url)
+        try:
+            logger.info("Generating image with Gemini 3 (prompt: %s)...", prompt[:50])
+
+            response = self.client.models.generate_content(
+                model="gemini-3-pro-image-preview",
+                contents=[prompt],  # type: ignore[arg-type]
+            )
+
+            # Iterate parts to find the image
+            if response.parts:
+                for part in response.parts:
+                    if part.inline_data and part.inline_data.data:
+                        logger.info("Successfully generated image via Gemini.")
+                        # Manually convert bytes to PIL Image to ensure it's a standard PIL object
+                        # compatible with main.py's save(format="PNG") call.
+                        return PIL.Image.open(BytesIO(part.inline_data.data))
+
+            logger.warning("No image data found in Gemini response.")
+            return None
+
+        except genai_errors.APIError as e:
+            logger.error("Gemini API error: code=%s, message=%s", e.code, e.message)
+            return None
+
+    # Legacy methods for compatibility if needed (can be removed or shimmed)
+    def generate_image(self, *args, **kwargs):  # pylint: disable=unused-argument
+        """Deprecated: Use generate_and_download_image instead."""
+        logger.warning("generate_image is deprecated for Gemini service.")
