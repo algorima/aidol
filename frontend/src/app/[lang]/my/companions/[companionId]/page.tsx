@@ -11,7 +11,7 @@ import {
   CompanionRepository,
   LocalChatroomIdsRepository,
 } from "@/repositories";
-import type { Chatroom } from "@/schemas/chatroom";
+import type { ChatroomCreate } from "@/schemas/chatroom";
 import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
@@ -81,17 +81,15 @@ export default function CompanionProfilePage({
       setIsCreatingChatroom(true);
       setCreateError(null);
 
-      const response = await chatroomRepository.create({
-        name: companion?.name ?? "Chat",
-        language: lang,
+      const response = await chatroomRepository.create<ChatroomCreate>({
+        variables: { name: companion?.name ?? "Chat", language: lang },
       });
-      const chatroom = response.data as Chatroom;
 
       // Save to localStorage
-      LocalChatroomIdsRepository.setChatroomId(companionId, chatroom.id);
+      LocalChatroomIdsRepository.setChatroomId(companionId, response.data.id);
 
       // Navigate to new chatroom
-      router.push(`/${lang}/chatrooms/${chatroom.id}/${companionId}`);
+      router.push(`/${lang}/chatrooms/${response.data.id}/${companionId}`);
     } catch (err) {
       setCreateError(err as Error);
     } finally {
@@ -129,19 +127,19 @@ export default function CompanionProfilePage({
               {companion.profilePictureUrl ? (
                 <Image
                   src={companion.profilePictureUrl}
-                  alt={companion.name}
+                  alt={companion.name ?? companion.id}
                   width={96}
                   height={96}
                   className="rounded-full"
                 />
               ) : (
                 <div className="flex h-full items-center justify-center text-4xl">
-                  {companion.name.charAt(0)}
+                  {(companion.name ?? companion.id).charAt(0)}
                 </div>
               )}
             </div>
           </div>
-          <h1 className="text-2xl font-bold">{companion.name}</h1>
+          <h1 className="text-2xl font-bold">{companion.name ?? companion.id}</h1>
         </div>
 
         {/* Error Message */}

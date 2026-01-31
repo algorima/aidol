@@ -222,19 +222,19 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
               {companion.profilePictureUrl ? (
                 <Image
                   src={companion.profilePictureUrl}
-                  alt={companion.name}
+                  alt={companion.name ?? companion.id}
                   width={40}
                   height={40}
                   className="rounded-full"
                 />
               ) : (
                 <div className="flex h-full items-center justify-center text-lg">
-                  {companion.name.charAt(0)}
+                  {(companion.name ?? companion.id).charAt(0)}
                 </div>
               )}
             </div>
           </div>
-          <h1 className="font-semibold">{companion.name}</h1>
+          <h1 className="font-semibold">{companion.name ?? companion.id}</h1>
         </div>
       </header>
 
