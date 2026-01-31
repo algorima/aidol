@@ -14,6 +14,16 @@ export type {
   ImageGenerationResponse,
 } from "./aidol";
 
+// Chatroom schemas
+export {
+  chatroomSchema,
+  isCompanion,
+  isUser,
+  messageSchema,
+  SenderType,
+} from "./chatroom";
+export type { Chatroom, ChatroomCreate, Message } from "./chatroom";
+
 // Companion schemas
 export { companionSchema, POSITIONS } from "./companion";
 export type {
