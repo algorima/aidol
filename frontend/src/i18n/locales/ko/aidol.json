@@ -48,13 +48,22 @@
       "powerful": "파워풀"
     },
     "personalities": {
-      "cheerful": { "label": "활발한", "description": "항상 밝고 긍정적인" },
-      "cool": { "label": "쿨한", "description": "차분하고 침착한" },
+      "cheerful": {
+        "label": "활발한",
+        "description": "항상 밝고 긍정적인"
+      },
+      "cool": {
+        "label": "쿨한",
+        "description": "차분하고 침착한"
+      },
       "tsundere": {
         "label": "츤데레",
         "description": "겉은 차갑지만 속은 따뜻한"
       },
-      "gentle": { "label": "다정한", "description": "친절하고 배려심 깊은" }
+      "gentle": {
+        "label": "다정한",
+        "description": "친절하고 배려심 깊은"
+      }
     },
     "step1": "그룹",
     "step2": "멤버",
@@ -87,13 +96,5 @@
       "line4": "넥스트 제너레이션 프로젝트",
       "cta": "연습생 캐스팅하기"
     }
-  },
-  "onboarding": {
-    "title": "프로젝트 아키텍처 가이드",
-    "subtitle": "자가학습 온보딩 슬라이드",
-    "previous": "이전",
-    "next": "다음",
-    "done": "완료",
-    "keyboardHint": "← → 화살표 키로 이동"
   }
 }
