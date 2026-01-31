@@ -7,7 +7,7 @@ import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
 import { PositionBoard } from "@/components/position/PositionBoard";
 import { PositionSelector } from "@/components/position/PositionSelector";
-import type { Companion } from "@/schemas/companion";
+import type { Companion, Grade, Position } from "@/schemas/companion";
 
 const meta: Meta<typeof PositionBoard> = {
   title: "Components/Position/PositionBoard",
@@ -26,8 +26,8 @@ const sampleImage =
 const createCompanion = (
   id: string,
   name: string,
-  grade: string,
-  position: string | null = null,
+  grade: Grade,
+  position: Position | null = null,
 ): Companion => ({
   id,
   name,
@@ -42,21 +42,21 @@ const createCompanion = (
 });
 
 const allUnassigned = [
-  createCompanion("1", "김민지", "S"),
+  createCompanion("1", "김민지", "A"),
   createCompanion("2", "이수진", "A"),
   createCompanion("3", "박서연", "A"),
   createCompanion("4", "최유나", "B"),
 ];
 
 const partialAssigned = [
-  createCompanion("1", "김민지", "S", "mainVocal"),
+  createCompanion("1", "김민지", "A", "mainVocal"),
   createCompanion("2", "이수진", "A", "mainDancer"),
   createCompanion("3", "박서연", "A"),
   createCompanion("4", "최유나", "B"),
 ];
 
 const allAssigned = [
-  createCompanion("1", "김민지", "S", "mainVocal"),
+  createCompanion("1", "김민지", "A", "mainVocal"),
   createCompanion("2", "이수진", "A", "mainDancer"),
   createCompanion("3", "박서연", "A", "subVocal"),
   createCompanion("4", "최유나", "B", "mainRapper"),
@@ -106,7 +106,7 @@ function PageWrapperWithModal({ companions }: { companions: Companion[] }) {
   const [selectedCompanion, setSelectedCompanion] = useState<Companion | null>(
     companions[1],
   );
-  const [selectedPosition, setSelectedPosition] = useState<string | null>(
+  const [selectedPosition, setSelectedPosition] = useState<Position | null>(
     companions[1]?.position ?? null,
   );
   const [isModalOpen, setIsModalOpen] = useState(true);

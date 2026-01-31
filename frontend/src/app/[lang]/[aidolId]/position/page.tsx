@@ -10,7 +10,7 @@ import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
 import { PositionBoard, PositionSelector } from "@/components/position";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
-import type { Companion } from "@/schemas";
+import type { Companion, Position } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
 
 interface PositionPageProps {
@@ -28,7 +28,9 @@ export default function PositionPage({ params }: PositionPageProps) {
   const [selectedCompanion, setSelectedCompanion] = useState<Companion | null>(
     null,
   );
-  const [selectedPosition, setSelectedPosition] = useState<string | null>(null);
+  const [selectedPosition, setSelectedPosition] = useState<Position | null>(
+    null,
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const companionRepository = useMemo(
@@ -67,7 +69,7 @@ export default function PositionPage({ params }: PositionPageProps) {
     setSelectedPosition(null);
   };
 
-  const handlePositionChange = (position: string) => {
+  const handlePositionChange = (position: Position | null) => {
     setSelectedPosition(position);
   };
 

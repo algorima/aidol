@@ -1,14 +1,14 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 
-import type { Companion } from "@/schemas";
+import type { Companion, Position } from "@/schemas";
 import { POSITIONS } from "@/schemas";
 
 interface PositionSelectorProps {
-  selectedPosition: string | null;
+  selectedPosition: Position | null;
   companions: Companion[];
   currentCompanionId: string;
-  onPositionChange: (position: string) => void;
+  onPositionChange: (position: Position) => void;
 }
 
 export function PositionSelector({
