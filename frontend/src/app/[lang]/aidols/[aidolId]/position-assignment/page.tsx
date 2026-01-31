@@ -99,7 +99,7 @@ export default function PositionPage({ params }: PositionPageProps) {
   };
 
   const handleConfirm = () => {
-    router.push(`/${lang}/${aidolId}/group`);
+    router.push(`/${lang}/aidols/${aidolId}/group`);
   };
 
   return (

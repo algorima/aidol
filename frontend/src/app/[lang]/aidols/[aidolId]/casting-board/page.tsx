@@ -55,8 +55,8 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
   }, [aidolId, companionRepository, showToast, t]);
 
   const handleBrowse = useCallback(() => {
-    router.push(`/${lang}/companions`);
-  }, [lang, router]);
+    router.push(`/${lang}/aidols/${aidolId}/casting`);
+  }, [lang, aidolId, router]);
 
   const handleCardClick = useCallback((companion: Companion) => {
     setSelectedCompanion(companion);
@@ -85,7 +85,7 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
   }, [selectedCompanion, companionRepository, handleCloseModal, showToast, t]);
 
   const handleConfirm = useCallback(() => {
-    router.push(`/${lang}/${aidolId}/position-assignment`);
+    router.push(`/${lang}/aidols/${aidolId}/position-assignment`);
   }, [lang, aidolId, router]);
 
   return (
