@@ -85,7 +85,7 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
   }, [selectedCompanion, companionRepository, handleCloseModal, showToast, t]);
 
   const handleConfirm = useCallback(() => {
-    router.push(`/${lang}/${aidolId}/position`);
+    router.push(`/${lang}/${aidolId}/position-assignment`);
   }, [lang, aidolId, router]);
 
   return (
