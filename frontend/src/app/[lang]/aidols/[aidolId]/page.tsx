@@ -63,13 +63,13 @@ export default function CompletePage({ params }: CompletePageProps) {
   };
 
   const handleShare = async () => {
-    const url = `${window.location.origin}/${lang}/${aidolId}`;
+    const url = `${window.location.origin}/${lang}/aidols/${aidolId}`;
     await navigator.clipboard.writeText(url);
     showToast(t("aidol:urlCopied"), "accent");
   };
 
   const handleNewsletter = () => {
-    router.push(`/${lang}/${aidolId}/newsletter`);
+    router.push(`/${lang}/aidols/${aidolId}/newsletter`);
   };
 
   if (isLoading) {
