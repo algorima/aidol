@@ -8,6 +8,7 @@ import unittest
 import PIL.Image
 
 from aidol.services.image_generation_service import ImageGenerationService
+from aidol.settings import GoogleGenAISettings
 
 
 class TestRealImageGenerationAPI(unittest.TestCase):
@@ -20,13 +21,13 @@ class TestRealImageGenerationAPI(unittest.TestCase):
     """
 
     def setUp(self) -> None:
-        self.api_key = os.getenv("GOOGLE_API_KEY")
-        if not self.api_key:
+        api_key = os.getenv("GOOGLE_API_KEY")
+        if not api_key:
             self.skipTest(
                 "GOOGLE_API_KEY가 설정되지 않아 실제 API 테스트를 건너뜁니다."
             )
 
-        self.service = ImageGenerationService(api_key=self.api_key)
+        self.service = ImageGenerationService(settings=GoogleGenAISettings(api_key=api_key))
 
     def test_generate_image_real_call(self):
         """
