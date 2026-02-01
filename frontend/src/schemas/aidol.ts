@@ -13,18 +13,18 @@ import type { Companion } from "./companion";
  */
 export const aidolSchema = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.string().nullable(),
   concept: z.string().nullable().optional(),
-  profileImageUrl: z.string(),
+  profileImageUrl: z.string().nullable(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
 
 export interface AIdol extends BaseRecord {
   id: string;
-  name: string;
+  name: string | null;
   concept?: string | null;
-  profileImageUrl: string;
+  profileImageUrl: string | null;
   createdAt: string;
   updatedAt: string;
   companions?: Companion[];
