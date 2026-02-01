@@ -4,6 +4,8 @@ Common API utilities.
 Shared functions for registering common routes across different routers.
 """
 
+from __future__ import annotations
+
 from aioia_core.errors import ErrorResponse
 from fastapi import APIRouter, HTTPException, status
 
@@ -14,12 +16,13 @@ from aidol.schemas import (
     ImageGenerationResponse,
 )
 from aidol.services import ImageGenerationService
+from aidol.settings import GoogleAPISettings
 
 
 def register_image_generation_route(
     router: APIRouter,
     resource_name: str,
-    google_api_key: str | None,
+    google_settings: GoogleAPISettings | None,
     image_storage: ImageStorageProtocol,
 ) -> None:
     """
@@ -28,9 +31,10 @@ def register_image_generation_route(
     Args:
         router: FastAPI APIRouter instance
         resource_name: Resource name for the route path
-        google_api_key: Google API Key
+        google_settings: Google API settings (uses ADC if api_key is None)
         image_storage: Image Storage instance
     """
+    api_key = google_settings.api_key if google_settings else None
 
     @router.post(
         f"/{resource_name}/images",
@@ -44,8 +48,8 @@ def register_image_generation_route(
     )
     async def generate_image(request: ImageGenerationRequest):
         """Generate image from prompt."""
-        # Generate and download image
-        service = ImageGenerationService(api_key=google_api_key)
+        # Generate and download image (uses ADC if api_key is None)
+        service = ImageGenerationService(api_key=api_key)
         image = service.generate_and_download_image(
             prompt=request.prompt,
             size="1024x1024",
