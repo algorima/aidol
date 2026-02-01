@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Image from "next/image";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
@@ -8,21 +7,26 @@ import preview from "@/assets/newsletter/preview.png";
 import { Header } from "@/components/Header";
 
 interface NewsletterFormProps {
-  onSubmit: (email: string) => Promise<void>;
+  email: string;
+  onEmailChange: (email: string) => void;
+  onSubmit: () => void;
   isLoading: boolean;
+  isValidEmail: boolean;
 }
 
-export function NewsletterForm({ onSubmit, isLoading }: NewsletterFormProps) {
+export function NewsletterForm({
+  email,
+  onEmailChange,
+  onSubmit,
+  isLoading,
+  isValidEmail,
+}: NewsletterFormProps) {
   const { t } = useTranslation();
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    await onSubmit(email);
+    onSubmit();
   };
-
-  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   return (
     <div className="bg-base-100 flex min-h-screen flex-col">
@@ -74,7 +78,7 @@ export function NewsletterForm({ onSubmit, isLoading }: NewsletterFormProps) {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => onEmailChange(e.target.value)}
             placeholder={t("aidol:newsletter.emailPlaceholder")}
             className="border-base-300 text-body-m placeholder:text-base-300 w-full rounded-lg border bg-white px-4 py-3 text-black focus:outline-none"
             disabled={isLoading}

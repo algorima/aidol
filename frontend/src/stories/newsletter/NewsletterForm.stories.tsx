@@ -1,5 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 
@@ -14,15 +15,23 @@ const meta: Meta<typeof NewsletterForm> = {
 export default meta;
 type Story = StoryObj<typeof NewsletterForm>;
 
-const handleSubmit = async (email: string) => {
-  action("onSubmit")(email);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-};
-
 function PageWrapper({ isLoading = false }: { isLoading?: boolean }) {
+  const [email, setEmail] = useState("");
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubmit = () => {
+    action("onSubmit")(email);
+  };
+
   return (
     <div className="max-w-mobile mx-auto">
-      <NewsletterForm onSubmit={handleSubmit} isLoading={isLoading} />
+      <NewsletterForm
+        email={email}
+        onEmailChange={setEmail}
+        onSubmit={handleSubmit}
+        isLoading={isLoading}
+        isValidEmail={isValidEmail}
+      />
     </div>
   );
 }

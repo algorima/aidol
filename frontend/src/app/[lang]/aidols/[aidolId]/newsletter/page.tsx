@@ -20,13 +20,18 @@ export default function NewsletterPage({ params }: NewsletterPageProps) {
   const { lang, aidolId } = params;
 
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const leadsRepository = useMemo(
     () => new LeadsRepository(getApiService()),
     [],
   );
 
-  const handleSubmit = async (email: string) => {
+  const handleSubmit = async () => {
+    if (!email.trim() || !isValidEmail) return;
+
     setIsLoading(true);
     try {
       await leadsRepository.create({ aidolId, email });
@@ -40,5 +45,13 @@ export default function NewsletterPage({ params }: NewsletterPageProps) {
     }
   };
 
-  return <NewsletterForm onSubmit={handleSubmit} isLoading={isLoading} />;
+  return (
+    <NewsletterForm
+      email={email}
+      onEmailChange={setEmail}
+      onSubmit={() => void handleSubmit()}
+      isLoading={isLoading}
+      isValidEmail={isValidEmail}
+    />
+  );
 }
