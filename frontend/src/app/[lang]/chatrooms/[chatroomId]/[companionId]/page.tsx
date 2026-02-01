@@ -8,11 +8,8 @@ import { useTranslation } from "react-i18next";
 
 import { ChatRoom } from "@/components/chatroom";
 import { AIDOL_NS } from "@/i18n";
-import {
-  ChatroomRepository,
-  CompanionRepository,
-  LocalClaimTokenRepository,
-} from "@/repositories";
+import { getOrCreateClaimToken } from "@/lib/claimToken";
+import { ChatroomRepository, CompanionRepository } from "@/repositories";
 import { SenderType, type Message } from "@/schemas/chatroom";
 import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
@@ -92,11 +89,7 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
       if (!content.trim() || isSending) return;
 
       // Get claimToken for user identification (auto-generate if missing)
-      let claimToken = LocalClaimTokenRepository.getClaimToken();
-      if (!claimToken) {
-        claimToken = crypto.randomUUID();
-        LocalClaimTokenRepository.setClaimToken(claimToken);
-      }
+      const claimToken = getOrCreateClaimToken();
 
       setIsSending(true);
       setError(null);

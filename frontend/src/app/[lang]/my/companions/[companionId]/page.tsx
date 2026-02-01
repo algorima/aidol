@@ -139,7 +139,9 @@ export default function CompanionProfilePage({
               )}
             </div>
           </div>
-          <h1 className="text-2xl font-bold">{companion.name ?? companion.id}</h1>
+          <h1 className="text-2xl font-bold">
+            {companion.name ?? companion.id}
+          </h1>
         </div>
 
         {/* Error Message */}

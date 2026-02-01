@@ -18,7 +18,6 @@ export type { GenerateResponse } from "./repositories/ChatroomRepository";
 export { CompanionRepository } from "./repositories/CompanionRepository";
 export { LeadsRepository } from "./repositories/LeadsRepository";
 export { LocalChatroomIdsRepository } from "./repositories/LocalChatroomIdsRepository";
-export { LocalClaimTokenRepository } from "./repositories/LocalClaimTokenRepository";
 
 // Types & Schemas (server-safe)
 export type {
