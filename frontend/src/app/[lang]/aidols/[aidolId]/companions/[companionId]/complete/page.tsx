@@ -1,7 +1,7 @@
 "use client";
 
 import { SparklesIcon } from "@heroicons/react/24/solid";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -19,6 +19,7 @@ export default function CompletePage() {
     companionId: string;
   }>();
 
+  const router = useRouter();
   const [name, setName] = useState("");
   const [biography, setBiography] = useState("");
 
@@ -29,6 +30,7 @@ export default function CompletePage() {
       id: params.companionId,
       variables: { name, biography },
     });
+    router.push(`/${params.lang}/${params.aidolId}/casting-complete`);
   };
 
   return (

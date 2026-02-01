@@ -80,7 +80,7 @@ export default function CastingPage() {
   };
 
   const handleNewMember = () => {
-    // 추후 수정 필요
+    router.push(`/${lang}/aidols/${aidolId}/companions/create`);
   };
 
   return (
