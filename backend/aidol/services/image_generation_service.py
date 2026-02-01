@@ -1,7 +1,7 @@
 """
-Image generation service for AIdol
+Image generation service for AIdol.
 
-Generates images using OpenAI DALL-E 3 for AIdol emblems and Companion profiles.
+Generates images using Google Gemini for AIdol emblems and Companion profiles.
 """
 
 from __future__ import annotations
@@ -36,39 +36,30 @@ class ImageGenerationService:
         Initialize the Image Generation service.
 
         Supports two authentication methods:
-        1. Google AI API: api_key parameter
-        2. Vertex AI API (ADC): settings with use_vertexai=True, cloud_project, cloud_location
+        1. Google AI API: api_key parameter or settings.api_key
+        2. Vertex AI API (ADC): settings.cloud_project + settings.cloud_location
 
         Args:
             api_key: Google API Key (for Google AI API).
-            settings: GoogleAPISettings with Vertex AI configuration (for ADC).
+            settings: GoogleGenAISettings for configuration.
         """
-        # Priority 1: Explicit api_key
+        # Priority 1: Explicit api_key parameter
         if api_key:
             self.client = genai.Client(api_key=api_key)
-        # Priority 2: Settings with api_key
-        elif settings and getattr(settings, "api_key", None):
+        # Priority 2: Settings with api_key (Google AI API)
+        elif settings and settings.api_key:
             self.client = genai.Client(api_key=settings.api_key)
-        # Priority 3: Vertex AI mode with ADC
-        elif settings and getattr(settings, "use_vertexai", False):
-            project = getattr(settings, "cloud_project", None)
-            location = getattr(settings, "cloud_location", None)
-            if project and location:
-                self.client = genai.Client(
-                    vertexai=True,
-                    project=project,
-                    location=location,
-                )
-            else:
-                logger.error(
-                    "Vertex AI mode requires GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION"
-                )
-                self.client = None
+        # Priority 3: Settings with cloud_project + cloud_location (Vertex AI)
+        elif settings and settings.cloud_project and settings.cloud_location:
+            self.client = genai.Client(
+                vertexai=True,
+                project=settings.cloud_project,
+                location=settings.cloud_location,
+            )
         else:
             logger.error(
                 "No authentication configured. "
-                "Set GOOGLE_API_KEY or enable Vertex AI mode with "
-                "GOOGLE_GENAI_USE_VERTEXAI, GOOGLE_CLOUD_PROJECT, GOOGLE_CLOUD_LOCATION"
+                "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT + GOOGLE_CLOUD_LOCATION"
             )
             self.client = None
 
