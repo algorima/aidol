@@ -13,7 +13,7 @@ export class LeadsRepository {
     const claimToken = getClaimToken();
     const headers = {
       "Content-Type": "application/json",
-      ...(claimToken && { "claim-Token": claimToken }),
+      ...(claimToken && { ClaimToken: claimToken }),
     };
     const response = await this.apiService.request(url, {
       method: "POST",
