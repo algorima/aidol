@@ -27,7 +27,9 @@ class TestRealImageGenerationAPI(unittest.TestCase):
                 "GOOGLE_API_KEY가 설정되지 않아 실제 API 테스트를 건너뜁니다."
             )
 
-        self.service = ImageGenerationService(settings=GoogleGenAISettings(api_key=api_key))
+        self.service = ImageGenerationService(
+            settings=GoogleGenAISettings(api_key=api_key)
+        )
 
     def test_generate_image_real_call(self):
         """

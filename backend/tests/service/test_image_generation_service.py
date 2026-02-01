@@ -41,7 +41,9 @@ class TestImageGenerationService(unittest.TestCase):
         mock_client.models.generate_content.return_value = mock_response
 
         # Service 초기화
-        service = ImageGenerationService(settings=GoogleGenAISettings(api_key="fake-key"))
+        service = ImageGenerationService(
+            settings=GoogleGenAISettings(api_key="fake-key")
+        )
 
         # When: Mocking된 PIL.Image.open이 필요함 (bytes -> Image)
         # 하지만 실제 bytes가 유효한 이미지가 아니면 PIL.Image.open에서 에러 발생 가능.
@@ -90,7 +92,9 @@ class TestImageGenerationService(unittest.TestCase):
         mock_error = MockAPIError(message="API Error", code=500)
         mock_client.models.generate_content.side_effect = mock_error
 
-        service = ImageGenerationService(settings=GoogleGenAISettings(api_key="fake-key"))
+        service = ImageGenerationService(
+            settings=GoogleGenAISettings(api_key="fake-key")
+        )
 
         # When: 생성 요청
         result = service.generate_and_download_image(prompt="test")
@@ -119,7 +123,9 @@ class TestImageGenerationService(unittest.TestCase):
 
         mock_client.models.generate_content.return_value = mock_response
 
-        service = ImageGenerationService(settings=GoogleGenAISettings(api_key="fake-key"))
+        service = ImageGenerationService(
+            settings=GoogleGenAISettings(api_key="fake-key")
+        )
 
         # When
         result = service.generate_and_download_image(prompt="test")
