@@ -103,12 +103,16 @@ class ChatroomRepository(
             else message.sender_type
         )
 
+        # Get companion_id if available (CompanionMessageCreate has it)
+        companion_id = getattr(message, "companion_id", None)
+
         db_message = DBMessage(
             id=str(uuid.uuid4()),
             chatroom_id=chatroom_id,
             sender_type=sender_type_value,
             content=message.content,
             claim_token=message.claim_token,
+            companion_id=companion_id,
             created_at=datetime.now(timezone.utc),
             updated_at=datetime.now(timezone.utc),
         )
