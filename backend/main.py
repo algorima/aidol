@@ -80,12 +80,21 @@ class Base64ImageStorage(ImageStorageProtocol):
 
 # BaseSettings automatically reads from environment variables
 db_settings = DatabaseSettings()  # DATABASE_URL
-google_settings = GoogleAPISettings()  # GOOGLE_API_KEY (optional, ADC supported)
+google_settings = GoogleAPISettings()  # GOOGLE_API_KEY or Vertex AI with ADC
 
 if google_settings.api_key:
-    logger.info("Google API Key loaded from environment variable.")
+    logger.info("Image generation: Google AI API (GOOGLE_API_KEY)")
+elif google_settings.use_vertexai:
+    logger.info(
+        "Image generation: Vertex AI with ADC (project=%s, location=%s)",
+        google_settings.cloud_project,
+        google_settings.cloud_location,
+    )
 else:
-    logger.info("Google API Key not set. Using Application Default Credentials (ADC).")
+    logger.warning(
+        "Image generation: Not configured. "
+        "Set GOOGLE_API_KEY or enable Vertex AI mode."
+    )
 
 logger.info("Loaded settings from environment variables")
 logger.info(
