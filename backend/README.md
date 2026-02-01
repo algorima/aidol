@@ -26,31 +26,24 @@ API 문서:
 ### FastAPI 통합
 
 ```python
-from aidol.api.aidol import create_aidol_router
-from aidol.api.companion import create_companion_router
+from aidol.api.aidol import AIdolRouter
+from aidol.api.companion import CompanionRouter
 from aidol.factories import AIdolRepositoryFactory, CompanionRepositoryFactory
-from aidol.settings import GoogleAPISettings
-
-google_settings = GoogleAPISettings()  # GOOGLE_API_KEY 환경변수 또는 ADC 사용
 
 # AIdol 라우터
-aidol_router = create_aidol_router(
-    google_settings=google_settings,
-    db_session_factory=db_session_factory,
+aidol_router = AIdolRouter(
     repository_factory=AIdolRepositoryFactory(),
+    google_settings=google_settings,
     image_storage=image_storage,
 )
 
 # Companion 라우터
-companion_router = create_companion_router(
-    google_settings=google_settings,
-    db_session_factory=db_session_factory,
+companion_router = CompanionRouter(
     repository_factory=CompanionRepositoryFactory(),
-    image_storage=image_storage,
 )
 
-app.include_router(aidol_router, prefix="/api/aidol")
-app.include_router(companion_router, prefix="/api/aidol")
+app.include_router(aidol_router.router, prefix="/api/aidol")
+app.include_router(companion_router.router, prefix="/api/aidol")
 ```
 
 ## 개발

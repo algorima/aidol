@@ -4,8 +4,6 @@ Common API utilities.
 Shared functions for registering common routes across different routers.
 """
 
-from __future__ import annotations
-
 from aioia_core.errors import ErrorResponse
 from fastapi import APIRouter, HTTPException, status
 
