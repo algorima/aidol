@@ -1,21 +1,8 @@
-import { z } from "zod";
-
+import { getClaimToken } from "@/lib/claimToken";
+import type { LeadRequest, LeadResponse } from "@/schemas";
+import { leadResponseSchema } from "@/schemas";
 import type { ApiService } from "@/services/ApiService";
 
-export interface LeadRequest {
-  aidolId: string;
-  email: string;
-}
-
-export const leadResponseSchema = z.object({
-  email: z.string(),
-});
-
-export type LeadResponse = z.infer<typeof leadResponseSchema>;
-
-/**
- * Repository for Leads (newsletter subscription)
- */
 export class LeadsRepository {
   private readonly resource = "leads";
 
@@ -23,11 +10,14 @@ export class LeadsRepository {
 
   async create(request: LeadRequest): Promise<LeadResponse> {
     const url = this.apiService.buildUrl(this.resource);
+    const claimToken = getClaimToken();
+    const headers = {
+      "Content-Type": "application/json",
+      ...(claimToken && { "claim-Token": claimToken }),
+    };
     const response = await this.apiService.request(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify(request),
     });
 
