@@ -40,6 +40,5 @@ export default function NewsletterPage({ params }: NewsletterPageProps) {
     }
   };
 
-  // bubbleProfileUrl, previewImageUrl 추가 예정
   return <NewsletterForm onSubmit={handleSubmit} isLoading={isLoading} />;
 }

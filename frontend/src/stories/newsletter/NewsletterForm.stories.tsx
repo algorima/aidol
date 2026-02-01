@@ -14,9 +14,6 @@ const meta: Meta<typeof NewsletterForm> = {
 export default meta;
 type Story = StoryObj<typeof NewsletterForm>;
 
-const sampleImageUrl =
-  "https://images.unsplash.com/photo-1740252117070-7aa2955b25f8?fm=jpg&q=60&w=3000&auto=format&fit=crop";
-
 const handleSubmit = async (email: string) => {
   action("onSubmit")(email);
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -25,12 +22,7 @@ const handleSubmit = async (email: string) => {
 function PageWrapper({ isLoading = false }: { isLoading?: boolean }) {
   return (
     <div className="max-w-mobile mx-auto">
-      <NewsletterForm
-        onSubmit={handleSubmit}
-        isLoading={isLoading}
-        bubbleProfileUrl={sampleImageUrl}
-        previewImageUrl={sampleImageUrl}
-      />
+      <NewsletterForm onSubmit={handleSubmit} isLoading={isLoading} />
     </div>
   );
 }

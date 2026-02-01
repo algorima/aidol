@@ -3,21 +3,16 @@ import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
+import preview from "@/assets/newsletter/preview.png";
 import { Header } from "@/components/Header";
 
 interface NewsletterFormProps {
   onSubmit: (email: string) => Promise<void>;
   isLoading: boolean;
-  bubbleProfileUrl?: string;
-  previewImageUrl?: string;
 }
 
-export function NewsletterForm({
-  onSubmit,
-  isLoading,
-  bubbleProfileUrl,
-  previewImageUrl,
-}: NewsletterFormProps) {
+export function NewsletterForm({ onSubmit, isLoading }: NewsletterFormProps) {
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
@@ -49,36 +44,30 @@ export function NewsletterForm({
           <div className="flex flex-col gap-2">
             {/* 채팅 버블 */}
             <div className="bg-base-300 flex items-center gap-2.5 overflow-hidden rounded-lg px-4 py-2">
-              {bubbleProfileUrl ? (
-                <div className="relative size-7 shrink-0 overflow-hidden rounded-full">
-                  <Image
-                    src={bubbleProfileUrl}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="bg-base-100 size-7 shrink-0 rounded-full" />
-              )}
+              <div className="relative size-7 shrink-0 overflow-hidden rounded-full">
+                <Image
+                  src={bubbleProfile}
+                  alt=""
+                  fill
+                  sizes="28px"
+                  className="object-cover"
+                />
+              </div>
               <p className="text-body-s text-base-content flex-1">
                 {t("aidol:newsletter.previewMessage")}
               </p>
             </div>
 
             {/* 프리뷰 이미지 */}
-            {previewImageUrl ? (
-              <div className="relative h-70 w-full overflow-hidden rounded-lg">
-                <Image
-                  src={previewImageUrl}
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ) : (
-              <div className="bg-base-300 h-70 w-full rounded-lg" />
-            )}
+            <div className="relative h-70 w-full overflow-hidden rounded-lg">
+              <Image
+                src={preview}
+                alt=""
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
 
           {/* 이메일 입력 */}
