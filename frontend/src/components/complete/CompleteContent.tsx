@@ -142,14 +142,14 @@ export function CompleteContent({
         <button
           type="button"
           onClick={onCreateAnother}
-          className="text-label-l bg-neutral text-neutral-content flex-1 cursor-pointer rounded-lg border-0 p-4 shadow-none"
+          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none"
         >
           {t("aidol:complete.createAnother")}
         </button>
         <button
           type="button"
           onClick={onShare}
-          className="text-label-l bg-primary text-primary-content flex-1 cursor-pointer rounded-lg border-0 p-4 shadow-none"
+          className="text-label-l bg-primary text-primary-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none"
         >
           {t("aidol:complete.share")}
         </button>
