@@ -64,7 +64,6 @@ make format
 |------|------|
 | `GOOGLE_API_KEY` | Google API 키 (Google AI API) |
 | `GOOGLE_CLOUD_PROJECT` | GCP 프로젝트 ID (Vertex AI) |
-| `GOOGLE_CLOUD_LOCATION` | GCP 리전 (Vertex AI, 기본: global) |
 
 **인증 방법:**
 
@@ -76,11 +75,10 @@ export GOOGLE_API_KEY=your-api-key
 **Option 2: Vertex AI (ADC)**
 ```bash
 export GOOGLE_CLOUD_PROJECT=your-project-id
-export GOOGLE_CLOUD_LOCATION=global
 gcloud auth application-default login  # 로컬 개발
 ```
 
-> **참고**: `gemini-3-pro-image-preview` 모델은 `location=global` 필수입니다.
+> **참고**: Vertex AI 사용 시 `location=global`이 하드코딩되어 있습니다 (Gemini 이미지 생성 모델 요구사항).
 
 ### 선택
 
