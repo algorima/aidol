@@ -35,19 +35,42 @@ class ImageGenerationService:
         """
         Initialize the Image Generation service.
 
-        Args:
-            api_key: Google API Key.
-            settings: Unused, kept for compatibility.
-        """
+        Supports two authentication methods:
+        1. Google AI API: api_key parameter
+        2. Vertex AI API (ADC): settings with use_vertexai=True, cloud_project, cloud_location
 
-        # Use explicitly provided api_key, otherwise fallback to settings or env
+        Args:
+            api_key: Google API Key (for Google AI API).
+            settings: GoogleAPISettings with Vertex AI configuration (for ADC).
+        """
+        # Priority 1: Explicit api_key
         if api_key:
             self.client = genai.Client(api_key=api_key)
-        elif settings and hasattr(settings, "api_key") and settings.api_key:
+        # Priority 2: Settings with api_key
+        elif settings and getattr(settings, "api_key", None):
             self.client = genai.Client(api_key=settings.api_key)
+        # Priority 3: Vertex AI mode with ADC
+        elif settings and getattr(settings, "use_vertexai", False):
+            project = getattr(settings, "cloud_project", None)
+            location = getattr(settings, "cloud_location", None)
+            if project and location:
+                self.client = genai.Client(
+                    vertexai=True,
+                    project=project,
+                    location=location,
+                )
+            else:
+                logger.error(
+                    "Vertex AI mode requires GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION"
+                )
+                self.client = None
         else:
-            # Try loading from GOOGLE_API_KEY environment variable (Client handles this)
-            self.client = genai.Client()
+            logger.error(
+                "No authentication configured. "
+                "Set GOOGLE_API_KEY or enable Vertex AI mode with "
+                "GOOGLE_GENAI_USE_VERTEXAI, GOOGLE_CLOUD_PROJECT, GOOGLE_CLOUD_LOCATION"
+            )
+            self.client = None
 
     def generate_and_download_image(
         self,
