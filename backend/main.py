@@ -48,7 +48,7 @@ from aidol.factories import (
     CompanionRepositoryFactory,
 )
 from aidol.protocols import ImageStorageProtocol
-from aidol.settings import GoogleAPISettings
+from aidol.settings import GoogleGenAISettings
 
 # Configure logging
 logging.basicConfig(
@@ -80,11 +80,11 @@ class Base64ImageStorage(ImageStorageProtocol):
 
 # BaseSettings automatically reads from environment variables
 db_settings = DatabaseSettings()  # DATABASE_URL
-google_settings = GoogleAPISettings()  # GOOGLE_API_KEY or Vertex AI with ADC
+google_settings = GoogleGenAISettings()  # GOOGLE_API_KEY or Vertex AI with ADC
 
 if google_settings.api_key:
     logger.info("Image generation: Google AI API (GOOGLE_API_KEY)")
-elif google_settings.use_vertexai:
+elif google_settings.cloud_project and google_settings.cloud_location:
     logger.info(
         "Image generation: Vertex AI with ADC (project=%s, location=%s)",
         google_settings.cloud_project,
@@ -93,7 +93,7 @@ elif google_settings.use_vertexai:
 else:
     logger.warning(
         "Image generation: Not configured. "
-        "Set GOOGLE_API_KEY or enable Vertex AI mode."
+        "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT + GOOGLE_CLOUD_LOCATION"
     )
 
 logger.info("Loaded settings from environment variables")
