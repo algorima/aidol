@@ -84,16 +84,15 @@ google_settings = GoogleGenAISettings()  # GOOGLE_API_KEY or Vertex AI with ADC
 
 if google_settings.api_key:
     logger.info("Image generation: Google AI API (GOOGLE_API_KEY)")
-elif google_settings.cloud_project and google_settings.cloud_location:
+elif google_settings.cloud_project:
     logger.info(
-        "Image generation: Vertex AI with ADC (project=%s, location=%s)",
+        "Image generation: Vertex AI with ADC (project=%s)",
         google_settings.cloud_project,
-        google_settings.cloud_location,
     )
 else:
     logger.warning(
         "Image generation: Not configured. "
-        "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT + GOOGLE_CLOUD_LOCATION"
+        "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT"
     )
 
 logger.info("Loaded settings from environment variables")
