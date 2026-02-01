@@ -65,11 +65,21 @@ make format
 | `GOOGLE_API_KEY` | Google API 키 (선택) |
 
 **인증 방법:**
-- **API Key**: `export GOOGLE_API_KEY=your-api-key`
-- **ADC (로컬)**: `gcloud auth application-default login`
-- **ADC (GCP)**: 서비스 계정 자동 인증
 
-> API Key가 없으면 Application Default Credentials(ADC)를 사용합니다.
+**Option 1: Google AI API (API Key)**
+```bash
+export GOOGLE_API_KEY=your-api-key
+```
+
+**Option 2: Vertex AI (ADC)**
+```bash
+export GOOGLE_GENAI_USE_VERTEXAI=true
+export GOOGLE_CLOUD_PROJECT=your-project-id
+export GOOGLE_CLOUD_LOCATION=global  # gemini-3-pro-image-preview requires global
+gcloud auth application-default login  # 로컬 개발
+```
+
+> **중요**: `gemini-3-pro-image-preview` 모델은 `location=global` 필수입니다.
 
 ### 선택
 
