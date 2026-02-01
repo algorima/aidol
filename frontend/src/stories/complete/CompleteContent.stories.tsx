@@ -48,7 +48,7 @@ const mockCompanions: Companion[] = [
     aidolId: "aidol-1",
     name: "카이",
     profilePictureUrl: sampleProfileUrl,
-    grade: "S",
+    grade: "A",
     position: "mainDancer",
     mbti: "ISTP",
     biography:
