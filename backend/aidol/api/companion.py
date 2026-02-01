@@ -28,7 +28,7 @@ from aidol.schemas import (
     Gender,
 )
 from aidol.services.companion_service import to_companion_public
-from aidol.settings import GoogleAPISettings
+from aidol.settings import GoogleGenAISettings
 
 
 class CompanionPaginatedResponse(BaseModel):
@@ -52,7 +52,7 @@ class CompanionRouter(
 
     def __init__(
         self,
-        google_settings: GoogleAPISettings | None,
+        google_settings: GoogleGenAISettings | None,
         image_storage: ImageStorageProtocol,
         **kwargs,
     ):
@@ -245,7 +245,7 @@ class CompanionRouter(
 
 
 def create_companion_router(
-    google_settings: GoogleAPISettings | None,
+    google_settings: GoogleGenAISettings | None,
     db_session_factory: sessionmaker,
     repository_factory: CompanionRepositoryFactoryProtocol,
     image_storage: ImageStorageProtocol,

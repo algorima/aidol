@@ -14,13 +14,13 @@ from aidol.schemas import (
     ImageGenerationResponse,
 )
 from aidol.services import ImageGenerationService
-from aidol.settings import GoogleAPISettings
+from aidol.settings import GoogleGenAISettings
 
 
 def register_image_generation_route(
     router: APIRouter,
     resource_name: str,
-    google_settings: GoogleAPISettings | None,
+    google_settings: GoogleGenAISettings | None,
     image_storage: ImageStorageProtocol,
 ) -> None:
     """

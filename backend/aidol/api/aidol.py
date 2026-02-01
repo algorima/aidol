@@ -21,7 +21,7 @@ from aidol.protocols import (
     ImageStorageProtocol,
 )
 from aidol.schemas import AIdol, AIdolCreate, AIdolPublic, AIdolUpdate
-from aidol.settings import GoogleAPISettings
+from aidol.settings import GoogleGenAISettings
 
 
 class AIdolCreateResponse(BaseModel):
@@ -42,7 +42,7 @@ class AIdolRouter(
 
     def __init__(
         self,
-        google_settings: GoogleAPISettings | None,
+        google_settings: GoogleGenAISettings | None,
         image_storage: ImageStorageProtocol,
         **kwargs,
     ):
@@ -143,7 +143,7 @@ class AIdolRouter(
 
 
 def create_aidol_router(
-    google_settings: GoogleAPISettings | None,
+    google_settings: GoogleGenAISettings | None,
     db_session_factory: sessionmaker,
     repository_factory: AIdolRepositoryFactoryProtocol,
     image_storage: ImageStorageProtocol,
