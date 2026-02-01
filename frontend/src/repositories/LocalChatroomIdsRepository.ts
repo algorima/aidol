@@ -27,7 +27,11 @@ const readStorage = (): Record<string, string> => {
 };
 
 const writeStorage = (data: Record<string, string>): void => {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") {
+    throw new Error(
+      "LocalChatroomIdsRepository write operations can only be called on the client side.",
+    );
+  }
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 };
 
