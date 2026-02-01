@@ -31,35 +31,31 @@ class ImageGenerationService:
 
     client: "genai.Client | None" = None
 
-    def __init__(self, api_key: str | None = None, settings=None):
+    def __init__(self, settings=None):
         """
         Initialize the Image Generation service.
 
         Supports two authentication methods:
-        1. Google AI API: api_key parameter or settings.api_key
-        2. Vertex AI API (ADC): settings.cloud_project + settings.cloud_location
+        1. Google AI API: settings.api_key
+        2. Vertex AI API (ADC): settings.cloud_project (location=global hardcoded)
 
         Args:
-            api_key: Google API Key (for Google AI API).
             settings: GoogleGenAISettings for configuration.
         """
-        # Priority 1: Explicit api_key parameter
-        if api_key:
-            self.client = genai.Client(api_key=api_key)
-        # Priority 2: Settings with api_key (Google AI API)
-        elif settings and settings.api_key:
+        # Priority 1: Settings with api_key (Google AI API)
+        if settings and settings.api_key:
             self.client = genai.Client(api_key=settings.api_key)
-        # Priority 3: Settings with cloud_project + cloud_location (Vertex AI)
-        elif settings and settings.cloud_project and settings.cloud_location:
+        # Priority 2: Settings with cloud_project (Vertex AI, location=global)
+        elif settings and settings.cloud_project:
             self.client = genai.Client(
                 vertexai=True,
                 project=settings.cloud_project,
-                location=settings.cloud_location,
+                location="global",
             )
         else:
             logger.error(
                 "No authentication configured. "
-                "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT + GOOGLE_CLOUD_LOCATION"
+                "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT"
             )
             self.client = None
 
