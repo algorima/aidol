@@ -1,30 +1,61 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { CompanionRepository } from "@/repositories";
 import { getApiService } from "@/services/ApiService";
 
 export default function CompanionCreatePage() {
+  const { t } = useTranslation();
   const params = useParams<{ lang: string; aidolId: string }>();
   const router = useRouter();
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
     [],
   );
+  const [error, setError] = useState<Error | null>(null);
+  const isCreatingRef = useRef(false);
 
   useEffect(() => {
+    if (isCreatingRef.current) return;
+    isCreatingRef.current = true;
+
+    let cancelled = false;
+
     const run = async () => {
-      const { data } = await companionRepository.create({
-        variables: { name: "", aidolId: params.aidolId },
-      });
-      router.replace(
-        `/${params.lang}/aidols/${params.aidolId}/companions/${data.id}/gender`,
-      );
+      try {
+        const { data } = await companionRepository.create({
+          variables: { name: "", aidolId: params.aidolId },
+        });
+        if (!cancelled) {
+          router.replace(
+            `/${params.lang}/aidols/${params.aidolId}/companions/${data.id}/gender`,
+          );
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(err as Error);
+        }
+      }
     };
     void run();
+
+    return () => {
+      cancelled = true;
+    };
   }, [params.lang, params.aidolId, router, companionRepository]);
+
+  if (error) {
+    return (
+      <div className="flex min-h-dvh items-center justify-center">
+        <div className="alert alert-error max-w-md">
+          <span>{t("aidol:companionCreate.error.create")}</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-dvh items-center justify-center">
