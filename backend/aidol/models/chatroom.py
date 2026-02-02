@@ -35,7 +35,7 @@ class DBMessage(BaseModel):
     )
     sender_type: Mapped[str] = mapped_column(
         String, nullable=False
-    )  # "user" | "companion" | "system" | "unknown"
+    )  # "user" | "companion"
     content: Mapped[str] = mapped_column(Text, nullable=False)
     claim_token: Mapped[str | None] = mapped_column(
         String(36), nullable=True, index=True
