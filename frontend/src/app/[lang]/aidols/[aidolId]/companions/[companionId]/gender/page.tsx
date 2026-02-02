@@ -21,6 +21,7 @@ interface GenderPageProps {
 }
 
 export default function GenderPage({ params }: GenderPageProps) {
+  const { lang, aidolId, companionId } = params;
   const { t } = useTranslation();
   const { showToast } = useToast();
   const router = useRouter();
@@ -34,16 +35,25 @@ export default function GenderPage({ params }: GenderPageProps) {
     if (!gender) return;
     try {
       await companionRepository.update({
-        id: params.companionId,
+        id: companionId,
         variables: { gender },
       });
       router.push(
-        `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/personality`,
+        `/${lang}/aidols/${aidolId}/companions/${companionId}/personality`,
       );
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
     }
-  }, [companionRepository, gender, params, router, showToast, t]);
+  }, [
+    aidolId,
+    companionId,
+    companionRepository,
+    gender,
+    lang,
+    router,
+    showToast,
+    t,
+  ]);
 
   return (
     <CompanionCreateLayout

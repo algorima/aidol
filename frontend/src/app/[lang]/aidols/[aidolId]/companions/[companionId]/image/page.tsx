@@ -20,6 +20,7 @@ interface ImagePageProps {
 }
 
 export default function ImagePage({ params }: ImagePageProps) {
+  const { lang, aidolId, companionId } = params;
   const { t } = useTranslation();
   const { showToast } = useToast();
   const router = useRouter();
@@ -51,16 +52,25 @@ export default function ImagePage({ params }: ImagePageProps) {
     if (!imageUrl) return;
     try {
       await companionRepository.update({
-        id: params.companionId,
+        id: companionId,
         variables: { profilePictureUrl: imageUrl },
       });
       router.push(
-        `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/complete`,
+        `/${lang}/aidols/${aidolId}/companions/${companionId}/complete`,
       );
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
     }
-  }, [companionRepository, imageUrl, params, router, showToast, t]);
+  }, [
+    aidolId,
+    companionId,
+    companionRepository,
+    imageUrl,
+    lang,
+    router,
+    showToast,
+    t,
+  ]);
 
   return (
     <CompanionCreateLayout

@@ -22,6 +22,7 @@ interface CompletePageProps {
 }
 
 export default function CompletePage({ params }: CompletePageProps) {
+  const { lang, aidolId, companionId } = params;
   const { t } = useTranslation();
   const { showToast } = useToast();
   const router = useRouter();
@@ -36,14 +37,24 @@ export default function CompletePage({ params }: CompletePageProps) {
     if (!name.trim()) return;
     try {
       await companionRepository.update({
-        id: params.companionId,
+        id: companionId,
         variables: { name, biography },
       });
-      router.push(`/${params.lang}/${params.aidolId}/casting-complete`);
+      router.push(`/${lang}/${aidolId}/casting-complete`);
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
     }
-  }, [biography, companionRepository, name, params, router, showToast, t]);
+  }, [
+    aidolId,
+    biography,
+    companionId,
+    companionRepository,
+    lang,
+    name,
+    router,
+    showToast,
+    t,
+  ]);
 
   return (
     <CompanionCreateLayout

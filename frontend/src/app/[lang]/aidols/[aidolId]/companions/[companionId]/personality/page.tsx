@@ -21,6 +21,7 @@ interface PersonalityPageProps {
 }
 
 export default function PersonalityPage({ params }: PersonalityPageProps) {
+  const { lang, aidolId, companionId } = params;
   const { t } = useTranslation();
   const { showToast } = useToast();
   const router = useRouter();
@@ -38,7 +39,7 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
   const handleNext = useCallback(async () => {
     try {
       await companionRepository.update({
-        id: params.companionId,
+        id: companionId,
         variables: {
           mbtiEnergy: mbtiValues.energy,
           mbtiPerception: mbtiValues.perception,
@@ -46,13 +47,20 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
           mbtiLifestyle: mbtiValues.lifestyle,
         },
       });
-      router.push(
-        `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/image`,
-      );
+      router.push(`/${lang}/aidols/${aidolId}/companions/${companionId}/image`);
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
     }
-  }, [companionRepository, mbtiValues, params, router, showToast, t]);
+  }, [
+    aidolId,
+    companionId,
+    companionRepository,
+    lang,
+    mbtiValues,
+    router,
+    showToast,
+    t,
+  ]);
 
   return (
     <CompanionCreateLayout
