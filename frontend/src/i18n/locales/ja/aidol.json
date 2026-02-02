@@ -85,7 +85,11 @@
     "promptPlaceholder": "どんな話し方をする？性格を教えてね...",
     "addMember": "メンバー追加",
     "signed": "契約完了 🥺",
-    "grade": "{{grade}} ランク"
+    "grade": "{{grade}} ランク",
+    "tab": {
+      "profile": "プロフィール",
+      "stats": "能力値"
+    }
   },
   "aidol": {
     "notFound": "グループが見つかりません",
@@ -142,6 +146,30 @@
     "completeTitle": "アイドル完成！",
     "completeDescription": "さっそく推しと会話しよう",
     "viewProfile": "プロフィールを見る"
+  },
+  "complete": {
+    "greeting1": "こんにちは！",
+    "greeting2": "{{name}}です！",
+    "greeting3": "よろしくお願いします",
+    "createAnother": "別のグループを作成",
+    "share": "プロフィールを共有",
+    "banner": "このグループの次の動きが気になりますか？",
+    "error": {
+      "load": "グループ情報の読み込みに失敗しました"
+    }
+  },
+  "newsletter": {
+    "header": "メールアドレス入力",
+    "previewTitle": "デビュー組の寮話、練習話\nメンバーのリアルな声を\nお届けします！",
+    "previewMessage": "先輩にそんな言い方しちゃダメじゃない？",
+    "title": "最新情報を受け取る",
+    "description": "このグループの最新ニュースやアップデートをメールで受け取りましょう。",
+    "emailLabel": "メールアドレス",
+    "emailPlaceholder": "example@email.com",
+    "submit": "ニュースを受け取る",
+    "submitting": "購読中...",
+    "success": "購読が完了しました！",
+    "error": "購読に失敗しました。もう一度お試しください。"
   },
   "groupPlanning": {
     "header": "グループ企画",

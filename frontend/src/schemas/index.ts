@@ -25,3 +25,7 @@ export type {
   Grade,
   Position,
 } from "./companion";
+
+// Lead schemas
+export { leadResponseSchema } from "./lead";
+export type { LeadRequest, LeadResponse } from "./lead";
