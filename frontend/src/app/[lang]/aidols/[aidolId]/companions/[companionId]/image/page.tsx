@@ -1,13 +1,14 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { ProfileImageGenerator } from "@/components/creation/ProfileImageGenerator";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
+import { getApiService } from "@/services/ApiService";
 
 export default function ImagePage() {
   const { t } = useTranslation();
@@ -17,6 +18,10 @@ export default function ImagePage() {
     companionId: string;
   }>();
   const router = useRouter();
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   const [prompt, setPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -26,8 +31,7 @@ export default function ImagePage() {
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
     setIsGenerating(true);
-    const repository = getMockCompanionRepository();
-    const response = await repository.generateImage({ prompt });
+    const response = await companionRepository.generateImage({ prompt });
     setImageUrl(response.data.imageUrl);
     setHasGenerated(true);
     setIsGenerating(false);
@@ -35,8 +39,7 @@ export default function ImagePage() {
 
   const handleNext = async () => {
     if (!imageUrl) return;
-    const repository = getMockCompanionRepository();
-    await repository.update({
+    await companionRepository.update({
       id: params.companionId,
       variables: { profilePictureUrl: imageUrl },
     });
