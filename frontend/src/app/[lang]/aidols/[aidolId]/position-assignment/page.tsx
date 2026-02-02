@@ -125,6 +125,7 @@ export default function PositionPage({ params }: PositionPageProps) {
             <ProfileContent
               companion={selectedCompanion}
               showBiography={false}
+              showStats={false}
             />
             <PositionSelector
               selectedPosition={selectedPosition}
