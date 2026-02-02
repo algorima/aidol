@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Modal } from "@/components/Modal";
-import type { Companion } from "@/schemas/companion";
+import type { Companion, CompanionStats } from "@/schemas/companion";
 
 const meta: Meta<typeof Modal> = {
   title: "Components/Modal",
@@ -16,6 +16,15 @@ const meta: Meta<typeof Modal> = {
 
 export default meta;
 type Story = StoryObj<typeof Modal>;
+
+const SAMPLE_STATS: CompanionStats = {
+  vocal: 85,
+  dance: 78,
+  rap: 65,
+  visual: 90,
+  stamina: 72,
+  charm: 88,
+};
 
 const SAMPLE_COMPANION: Companion = {
   id: "1",
@@ -88,6 +97,20 @@ export const WithNeutralAction: Story = {
         label: "삭제",
         onClick: () => alert("삭제됨!"),
         variant: "neutral",
+      }}
+    />
+  ),
+};
+
+/** 능력치 차트가 포함된 팝업 */
+export const WithStats: Story = {
+  render: () => (
+    <ModalWrapper
+      companion={{ ...SAMPLE_COMPANION, stats: SAMPLE_STATS }}
+      action={{
+        label: "캐스팅후보로 추가",
+        onClick: () => alert("캐스팅후보로 추가됨!"),
+        variant: "primary",
       }}
     />
   ),
