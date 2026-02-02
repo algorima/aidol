@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { BiographyInput } from "@/components/creation/BiographyInput";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { CompanionNameInput } from "@/components/creation/CompanionNameInput";
@@ -14,6 +15,7 @@ import { getApiService } from "@/services/ApiService";
 
 export default function CompletePage() {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const params = useParams<{
     lang: string;
     aidolId: string;
@@ -30,11 +32,15 @@ export default function CompletePage() {
 
   const handleComplete = async () => {
     if (!name.trim()) return;
-    await companionRepository.update({
-      id: params.companionId,
-      variables: { name, biography },
-    });
-    router.push(`/${params.lang}/${params.aidolId}/casting-complete`);
+    try {
+      await companionRepository.update({
+        id: params.companionId,
+        variables: { name, biography },
+      });
+      router.push(`/${params.lang}/${params.aidolId}/casting-complete`);
+    } catch {
+      showToast(t("aidol:companionCreate.error.update"), "error");
+    }
   };
 
   return (

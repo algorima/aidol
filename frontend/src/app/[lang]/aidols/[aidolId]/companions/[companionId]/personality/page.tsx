@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { MbtiForm } from "@/components/creation/MbtiForm";
 import type { MbtiValues } from "@/components/creation/MbtiForm";
@@ -13,6 +14,7 @@ import { getApiService } from "@/services/ApiService";
 
 export default function PersonalityPage() {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const params = useParams<{
     lang: string;
     aidolId: string;
@@ -31,18 +33,22 @@ export default function PersonalityPage() {
   );
 
   const handleNext = async () => {
-    await companionRepository.update({
-      id: params.companionId,
-      variables: {
-        mbtiEnergy: mbtiValues.energy,
-        mbtiPerception: mbtiValues.perception,
-        mbtiJudgment: mbtiValues.judgment,
-        mbtiLifestyle: mbtiValues.lifestyle,
-      },
-    });
-    router.push(
-      `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/image`,
-    );
+    try {
+      await companionRepository.update({
+        id: params.companionId,
+        variables: {
+          mbtiEnergy: mbtiValues.energy,
+          mbtiPerception: mbtiValues.perception,
+          mbtiJudgment: mbtiValues.judgment,
+          mbtiLifestyle: mbtiValues.lifestyle,
+        },
+      });
+      router.push(
+        `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/image`,
+      );
+    } catch {
+      showToast(t("aidol:companionCreate.error.update"), "error");
+    }
   };
 
   return (
