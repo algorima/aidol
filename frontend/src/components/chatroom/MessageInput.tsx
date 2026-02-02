@@ -29,11 +29,11 @@ export function MessageInput({ onSubmit }: MessageInputProps) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Enter your message..."
-          className="input bg-neutral/30 text-base-content placeholder:text-base-content focus:border-primary w-full pr-12 focus:outline-hidden"
+          className="input bg-neutral/30 text-base-content placeholder:text-base-content focus:border-primary w-full pr-12"
         />
         <button
           type="submit"
-          className="btn btn-circle btn-ghost text-primary hover:bg-primary hover:text-primary-content absolute top-1/2 right-2 -translate-y-1/2 focus:outline-hidden"
+          className="btn btn-circle btn-ghost text-primary hover:bg-primary hover:text-primary-content absolute top-1/2 right-2 -translate-y-1/2"
         >
           <PaperAirplaneIcon className="size-6" />
         </button>
