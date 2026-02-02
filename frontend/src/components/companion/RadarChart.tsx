@@ -18,7 +18,7 @@ const STAT_KEYS: (keyof CompanionStats)[] = [
 export function RadarChart({ stats }: RadarChartProps) {
   const { t } = useTranslation();
 
-  const size = 280;
+  const size = 260;
   const center = size / 2;
   const maxRadius = 70;
   const labelRadius = 100;
@@ -47,7 +47,7 @@ export function RadarChart({ stats }: RadarChartProps) {
   const gridLevels = [20, 40, 60, 80, 100];
 
   return (
-    <div className="flex items-center justify-center py-4">
+    <div className="flex items-center justify-center">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         {gridLevels.map((level) => {
           const gridPoints = STAT_KEYS.map((_, i) => getPoint(i, level));
