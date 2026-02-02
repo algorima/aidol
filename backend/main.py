@@ -248,7 +248,7 @@ chatroom_router = create_chatroom_router(
     db_session_factory=db_session_factory,
     repository_factory=ChatroomRepositoryFactory(),
 )
-app.include_router(chatroom_router, prefix="/aidol")
+app.include_router(chatroom_router)
 
 logger.info("AIdol, Companion, Lead, and Chatroom routers registered")
 
