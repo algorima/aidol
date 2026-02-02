@@ -15,7 +15,6 @@ import {
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
-import { getMockCompanions } from "@/mocks/companions";
 import { CompanionRepository } from "@/repositories";
 import type { Companion, Gender } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
@@ -59,7 +58,7 @@ export default function CastingPage() {
       });
       setCompanions(response.data);
     } catch {
-      setCompanions(getMockCompanions({ gender }));
+      setCompanions([]);
     } finally {
       setIsLoading(false);
     }
