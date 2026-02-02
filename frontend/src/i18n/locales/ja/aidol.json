@@ -126,6 +126,12 @@
   "companionCreate": {
     "title": "デビューメンバーキャスティング",
     "next": "次へ",
+    "error": {
+      "create": "練習生の作成に失敗しました。",
+      "update": "保存に失敗しました。",
+      "generateImage": "画像の生成に失敗しました。",
+      "load": "練習生の読み込みに失敗しました。"
+    },
     "gender": {
       "stepTitle": "性別を選んでください",
       "female": "女性",

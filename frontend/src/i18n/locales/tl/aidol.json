@@ -126,6 +126,12 @@
   "companionCreate": {
     "title": "Casting ng Debut Member",
     "next": "Susunod",
+    "error": {
+      "create": "Hindi nagawa ang trainee.",
+      "update": "Hindi na-save.",
+      "generateImage": "Hindi nagawa ang larawan.",
+      "load": "Hindi ma-load ang listahan ng trainee."
+    },
     "gender": {
       "stepTitle": "Pumili ng kasarian",
       "female": "Babae",

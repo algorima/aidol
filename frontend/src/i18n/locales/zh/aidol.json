@@ -126,6 +126,12 @@
   "companionCreate": {
     "title": "出道成员选角",
     "next": "下一步",
+    "error": {
+      "create": "创建练习生失败。",
+      "update": "保存失败。",
+      "generateImage": "生成图片失败。",
+      "load": "加载练习生列表失败。"
+    },
     "gender": {
       "stepTitle": "请选择性别",
       "female": "女性",

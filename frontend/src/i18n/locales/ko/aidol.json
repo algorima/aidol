@@ -117,6 +117,12 @@
   "companionCreate": {
     "title": "데뷔 멤버 캐스팅",
     "next": "다음",
+    "error": {
+      "create": "연습생 생성에 실패했습니다.",
+      "update": "저장에 실패했습니다.",
+      "generateImage": "이미지 생성에 실패했습니다.",
+      "load": "연습생 목록을 불러오는데 실패했습니다."
+    },
     "gender": {
       "stepTitle": "성별을 정해주세요",
       "female": "여성",

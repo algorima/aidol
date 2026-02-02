@@ -126,6 +126,12 @@
   "companionCreate": {
     "title": "Debut Member Casting",
     "next": "Next",
+    "error": {
+      "create": "Failed to create trainee.",
+      "update": "Failed to save.",
+      "generateImage": "Failed to generate image.",
+      "load": "Failed to load trainees."
+    },
     "gender": {
       "stepTitle": "Choose a gender",
       "female": "Female",
