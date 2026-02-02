@@ -2,7 +2,6 @@
 
 import type { GetListParams } from "@aioia/core";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -35,7 +34,7 @@ const buildFilters = (gender: Gender | undefined): GetListParams["filters"] => {
 export default function CastingPage() {
   const { t } = useTranslation();
   const router = useRouter();
-  const { aidolId } = useParams<{ aidolId: string }>();
+  const { lang, aidolId } = useParams<{ lang: string; aidolId: string }>();
   const [activeTab, setActiveTab] = useState<GenderTab>("boy");
   const [companions, setCompanions] = useState<Companion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +42,6 @@ export default function CastingPage() {
     null,
   );
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isCastCompleteOpen, setIsCastCompleteOpen] = useState(false);
 
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
@@ -78,16 +76,11 @@ export default function CastingPage() {
 
   const handleCast = () => {
     setIsProfileOpen(false);
-    setIsCastCompleteOpen(true);
-  };
-
-  const handleCastComplete = () => {
-    setIsCastCompleteOpen(false);
-    router.push(`/aidols/${aidolId}/casting-board`);
+    router.push(`/${lang}/${aidolId}/casting-complete`);
   };
 
   const handleNewMember = () => {
-    // 추후 수정 필요
+    router.push(`/${lang}/aidols/${aidolId}/companions/create`);
   };
 
   return (
@@ -135,26 +128,6 @@ export default function CastingPage() {
           <ProfileContent companion={selectedCompanion} />
         </Modal>
       )}
-
-      <Modal
-        isOpen={isCastCompleteOpen}
-        onClose={() => setIsCastCompleteOpen(false)}
-        action={{
-          label: t("aidol:casting.castComplete.viewBoard"),
-          onClick: handleCastComplete,
-          variant: "primary",
-        }}
-      >
-        <div className="flex flex-col items-center gap-4 py-8">
-          <CheckCircleIcon className="text-success size-16" />
-          <h2 className="text-headline-s text-base-content">
-            {t("aidol:casting.castComplete.title")}
-          </h2>
-          <p className="text-body-s text-base-content/60">
-            {t("aidol:casting.castComplete.description")}
-          </p>
-        </div>
-      </Modal>
     </div>
   );
 }

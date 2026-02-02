@@ -107,6 +107,44 @@
     "completeDescription": "지금 바로 나만의 아이돌과 대화해 보세요",
     "viewProfile": "프로필 보기"
   },
+  "companionCreate": {
+    "title": "데뷔 멤버 캐스팅",
+    "next": "다음",
+    "gender": {
+      "stepTitle": "성별을 정해주세요",
+      "female": "여성",
+      "male": "남성"
+    },
+    "personality": {
+      "stepTitle": "성격을 알려주세요",
+      "energy": "에너지 방향",
+      "energyLeft": "외향 (E)",
+      "energyRight": "내향 (I)",
+      "perception": "정보 인식 방식",
+      "perceptionLeft": "직관 (S)",
+      "perceptionRight": "감각 (N)",
+      "judgment": "판단 기준",
+      "judgmentLeft": "사고 (T)",
+      "judgmentRight": "감정 (F)",
+      "lifestyle": "생활 방식",
+      "lifestyleLeft": "인식형 (J)",
+      "lifestyleRight": "판단형 (P)"
+    },
+    "image": {
+      "stepTitle": "프로필 사진을 만들어볼까요?",
+      "promptPlaceholder": "예) 검은 머리에 큰 눈을 가진 소녀",
+      "generate": "이미지 생성",
+      "regenerate": "이미지 재생성",
+      "placeholder": "생성된 프로필\n이미지가\n표시돼요"
+    },
+    "complete": {
+      "nameStepTitle": "이름은 무엇인가요?",
+      "bioStepTitle": "이 아이돌의 서사를 알려주세요",
+      "namePlaceholder": "이름을 입력해주세요",
+      "bioPlaceholder": "어떤 시간을 보냈나요?",
+      "button": "캐스팅 완료"
+    }
+  },
   "landing": {
     "hero": {
       "title": {
