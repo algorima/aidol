@@ -177,6 +177,9 @@
       "line3": "Nuevo Grupo de Idol AI",
       "line4": "Proyecto Próxima Generación",
       "cta": "Seleccionar Aprendices"
+    },
+    "error": {
+      "create": "No se pudo iniciar."
     }
   }
 }

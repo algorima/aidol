@@ -28,6 +28,7 @@ export default function CompletePage({ params }: CompletePageProps) {
   const router = useRouter();
   const [name, setName] = useState("");
   const [biography, setBiography] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
     [],
@@ -35,6 +36,7 @@ export default function CompletePage({ params }: CompletePageProps) {
 
   const handleComplete = useCallback(async () => {
     if (!name.trim()) return;
+    setIsSubmitting(true);
     try {
       await companionRepository.update({
         id: companionId,
@@ -43,6 +45,7 @@ export default function CompletePage({ params }: CompletePageProps) {
       router.push(`/${lang}/${aidolId}/casting-complete`);
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
+      setIsSubmitting(false);
     }
   }, [
     aidolId,
@@ -63,7 +66,7 @@ export default function CompletePage({ params }: CompletePageProps) {
       bottomButton={
         <button
           type="button"
-          disabled={!name.trim()}
+          disabled={!name.trim() || isSubmitting}
           onClick={handleComplete}
           className="btn btn-neutral w-full"
         >

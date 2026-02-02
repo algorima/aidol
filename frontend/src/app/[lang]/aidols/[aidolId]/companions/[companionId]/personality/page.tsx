@@ -31,12 +31,14 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
     judgment: 5,
     lifestyle: 5,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
     [],
   );
 
   const handleNext = useCallback(async () => {
+    setIsSubmitting(true);
     try {
       await companionRepository.update({
         id: companionId,
@@ -50,6 +52,7 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
       router.push(`/${lang}/aidols/${aidolId}/companions/${companionId}/image`);
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
+      setIsSubmitting(false);
     }
   }, [
     aidolId,
@@ -69,6 +72,7 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
       bottomButton={
         <button
           type="button"
+          disabled={isSubmitting}
           onClick={handleNext}
           className="btn btn-neutral w-full"
         >

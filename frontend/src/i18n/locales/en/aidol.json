@@ -177,6 +177,9 @@
       "line3": "New AI Idol Group",
       "line4": "Next Generation Project",
       "cta": "Cast Trainees"
+    },
+    "error": {
+      "create": "Failed to start."
     }
   }
 }

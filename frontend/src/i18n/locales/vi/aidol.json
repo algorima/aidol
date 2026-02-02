@@ -177,6 +177,9 @@
       "line3": "Nhóm Idol AI Mới",
       "line4": "Dự Án Thế Hệ Tiếp Theo",
       "cta": "Tuyển Thực Tập Sinh"
+    },
+    "error": {
+      "create": "Không thể bắt đầu."
     }
   }
 }

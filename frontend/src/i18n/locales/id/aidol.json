@@ -177,6 +177,9 @@
       "line3": "Grup Idol AI Baru",
       "line4": "Proyek Generasi Berikutnya",
       "cta": "Casting Trainee"
+    },
+    "error": {
+      "create": "Gagal memulai."
     }
   }
 }

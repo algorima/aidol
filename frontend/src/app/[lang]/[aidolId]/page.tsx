@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { CompanionGrid } from "@/components/aidol/CompanionGrid";
@@ -57,14 +57,13 @@ export default function AIdolProfilePage({
       try {
         setIsLoading(true);
 
-        // Fetch AIdol
-        const aidolResponse = await aidolRepository.getOne({ id: aidolId });
+        const [aidolResponse, companionsResponse] = await Promise.all([
+          aidolRepository.getOne({ id: aidolId }),
+          companionRepository.getList({
+            filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+          }),
+        ]);
         setAidol(aidolResponse.data);
-
-        // Fetch Companions
-        const companionsResponse = await companionRepository.getList({
-          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
-        });
         setCompanions(companionsResponse.data);
       } catch (err) {
         setError(err as Error);
@@ -74,9 +73,12 @@ export default function AIdolProfilePage({
     })();
   }, [aidolId, aidolRepository, companionRepository]);
 
-  const handleCompanionClick = (companionId: string) => {
-    router.push(`/${lang}/companions/${companionId}`);
-  };
+  const handleCompanionClick = useCallback(
+    (companionId: string) => {
+      router.push(`/${lang}/companions/${companionId}`);
+    },
+    [lang, router],
+  );
 
   const shareUrl =
     typeof window !== "undefined"

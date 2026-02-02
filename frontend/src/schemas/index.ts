@@ -1,8 +1,13 @@
 // AIdol schemas (includes image generation)
-export { aidolSchema, imageGenerationResponseSchema } from "./aidol";
+export {
+  aidolCreateResponseSchema,
+  aidolSchema,
+  imageGenerationResponseSchema,
+} from "./aidol";
 export type {
   AIdol,
   AIdolCreate,
+  AIdolCreateResponse,
   AIdolUpdate,
   ImageGenerationData,
   ImageGenerationRequest,

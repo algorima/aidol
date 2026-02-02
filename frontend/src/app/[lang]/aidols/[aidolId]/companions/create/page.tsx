@@ -28,29 +28,20 @@ export default function CompanionCreatePage({
     if (isCreatingRef.current) return;
     isCreatingRef.current = true;
 
-    let cancelled = false;
-
     const run = async () => {
       try {
         const { data } = await companionRepository.create({
           variables: { name: "", aidolId: params.aidolId },
         });
-        if (!cancelled) {
-          router.replace(
-            `/${params.lang}/aidols/${params.aidolId}/companions/${data.id}/gender`,
-          );
-        }
+        router.replace(
+          `/${params.lang}/aidols/${params.aidolId}/companions/${data.id}/gender`,
+        );
       } catch (err) {
-        if (!cancelled) {
-          setError(err as Error);
-        }
+        setError(err as Error);
+        isCreatingRef.current = false;
       }
     };
     void run();
-
-    return () => {
-      cancelled = true;
-    };
   }, [params.lang, params.aidolId, router, companionRepository]);
 
   if (error) {

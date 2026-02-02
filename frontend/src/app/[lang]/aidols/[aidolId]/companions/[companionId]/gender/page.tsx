@@ -26,6 +26,7 @@ export default function GenderPage({ params }: GenderPageProps) {
   const { showToast } = useToast();
   const router = useRouter();
   const [gender, setGender] = useState<Gender | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
     [],
@@ -33,6 +34,7 @@ export default function GenderPage({ params }: GenderPageProps) {
 
   const handleNext = useCallback(async () => {
     if (!gender) return;
+    setIsSubmitting(true);
     try {
       await companionRepository.update({
         id: companionId,
@@ -43,6 +45,7 @@ export default function GenderPage({ params }: GenderPageProps) {
       );
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
+      setIsSubmitting(false);
     }
   }, [
     aidolId,
@@ -62,7 +65,7 @@ export default function GenderPage({ params }: GenderPageProps) {
       bottomButton={
         <button
           type="button"
-          disabled={!gender}
+          disabled={!gender || isSubmitting}
           onClick={handleNext}
           className="btn btn-neutral w-full"
         >

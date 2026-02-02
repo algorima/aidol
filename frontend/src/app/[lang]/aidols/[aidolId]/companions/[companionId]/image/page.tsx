@@ -33,6 +33,7 @@ export default function ImagePage({ params }: ImagePageProps) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [hasGenerated, setHasGenerated] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleGenerate = useCallback(async () => {
     if (!prompt.trim()) return;
@@ -50,6 +51,7 @@ export default function ImagePage({ params }: ImagePageProps) {
 
   const handleNext = useCallback(async () => {
     if (!imageUrl) return;
+    setIsSubmitting(true);
     try {
       await companionRepository.update({
         id: companionId,
@@ -60,6 +62,7 @@ export default function ImagePage({ params }: ImagePageProps) {
       );
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
+      setIsSubmitting(false);
     }
   }, [
     aidolId,
@@ -79,7 +82,7 @@ export default function ImagePage({ params }: ImagePageProps) {
       bottomButton={
         <button
           type="button"
-          disabled={!hasGenerated}
+          disabled={!hasGenerated || isSubmitting}
           onClick={handleNext}
           className="btn btn-neutral w-full"
         >

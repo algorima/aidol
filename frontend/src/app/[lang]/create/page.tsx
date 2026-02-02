@@ -78,9 +78,7 @@ export default function AIdolCreatePage({
           claimToken,
         };
 
-        const { data: aidol } = await aidolRepository.create({
-          variables: aidolData,
-        });
+        const aidol = await aidolRepository.createAIdol(aidolData);
 
         // 2. Create companions
         for (const member of data.members) {
