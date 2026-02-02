@@ -78,5 +78,5 @@ export { Loading } from "./components/Loading";
 export { Modal } from "./components/Modal";
 export { ShareButton } from "./components/ShareButton";
 
-// Utilities
+// Utilities (client-only)
 export { getClaimToken, getOrCreateClaimToken } from "./lib/claimToken";
