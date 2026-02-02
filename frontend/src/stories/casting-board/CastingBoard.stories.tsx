@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { CastingBoard } from "@/components/casting-board/CastingBoard";
 import { Header } from "@/components/Header";
+import type { Grade } from "@/schemas";
 import type { Companion } from "@/schemas/companion";
 
 const meta: Meta<typeof CastingBoard> = {
@@ -22,7 +23,7 @@ const sampleImage =
 const createCompanion = (
   id: string,
   name: string,
-  grade: string,
+  grade: Grade,
 ): Companion => ({
   id,
   name,
@@ -40,15 +41,15 @@ const oneCompanion = [createCompanion("1", "홍길동", "A")];
 
 const twoCompanions = [
   createCompanion("1", "홍길동", "A"),
-  createCompanion("2", "이수진", "S"),
+  createCompanion("2", "이수진", "A"),
 ];
 
 const sixCompanions = [
   createCompanion("1", "홍길동", "A"),
-  createCompanion("2", "이수진", "S"),
+  createCompanion("2", "이수진", "A"),
   createCompanion("3", "박지민", "B"),
   createCompanion("4", "김태형", "A"),
-  createCompanion("5", "정호석", "S"),
+  createCompanion("5", "정호석", "A"),
   createCompanion("6", "전정국", "A"),
 ];
 

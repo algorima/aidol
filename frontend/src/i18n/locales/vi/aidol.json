@@ -2,6 +2,38 @@
   "common": {
     "close": "Đóng"
   },
+  "casting": {
+    "title": "Casting Thành Viên Debut",
+    "infoBanner": {
+      "title": "Hãy casting thực tập sinh",
+      "description": "Các nhân vật idol (khuôn mặt, giọng nói, video) trong nội dung này là nhân vật ảo nguyên bản được tạo bởi AI và không dựa trên người thật, bao gồm idol và người nổi tiếng."
+    },
+    "tabs": {
+      "boy": "Nhóm Nam",
+      "girl": "Nhóm Nữ",
+      "mixed": "Nhóm Hỗn hợp"
+    },
+    "newMember": {
+      "prompt": "Không tìm thấy thực tập sinh yêu thích?",
+      "subPrompt": "Hãy thử casting thành viên mới"
+    },
+    "addMember": "Thành Viên Mới",
+    "abilities": {
+      "title": "Năng lực",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Thể lực",
+      "charm": "Sức hút"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "Casting Hoàn Tất!",
+      "description": "Thực tập sinh đã gia nhập nhóm",
+      "viewBoard": "Xem Bảng Casting"
+    }
+  },
   "share": "Chia sẻ",
   "urlCopied": "Đã sao chép URL!",
   "castingBoard": {
@@ -98,6 +130,44 @@
       "load": "Không thể tải thông tin nhóm",
       "generate": "Không thể tạo hình ảnh",
       "update": "Không thể lưu kế hoạch nhóm"
+    }
+  },
+  "companionCreate": {
+    "title": "Tuyển Chọn Thành Viên Ra Mắt",
+    "next": "Tiếp",
+    "gender": {
+      "stepTitle": "Chọn giới tính",
+      "female": "Nữ",
+      "male": "Nam"
+    },
+    "personality": {
+      "stepTitle": "Cho chúng tôi biết về tính cách",
+      "energy": "Hướng Năng Lượng",
+      "energyLeft": "Hướng ngoại (E)",
+      "energyRight": "Hướng nội (I)",
+      "perception": "Phong Cách Nhận Thức",
+      "perceptionLeft": "Cảm giác (S)",
+      "perceptionRight": "Trực giác (N)",
+      "judgment": "Cơ Sở Đánh Giá",
+      "judgmentLeft": "Lý trí (T)",
+      "judgmentRight": "Cảm xúc (F)",
+      "lifestyle": "Lối Sống",
+      "lifestyleLeft": "Phán đoán (J)",
+      "lifestyleRight": "Linh hoạt (P)"
+    },
+    "image": {
+      "stepTitle": "Hãy tạo ảnh đại diện!",
+      "promptPlaceholder": "vd) Cô gái tóc đen mắt to",
+      "generate": "Tạo Ảnh",
+      "regenerate": "Tạo Lại Ảnh",
+      "placeholder": "Ảnh đại diện\nđược tạo sẽ\nhiển thị ở đây"
+    },
+    "complete": {
+      "nameStepTitle": "Tên là gì?",
+      "bioStepTitle": "Kể cho chúng tôi câu chuyện của idol này",
+      "namePlaceholder": "Nhập tên",
+      "bioPlaceholder": "Đã trải qua hành trình gì?",
+      "button": "Hoàn Thành Tuyển Chọn"
     }
   },
   "landing": {

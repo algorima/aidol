@@ -2,6 +2,38 @@
   "common": {
     "close": "Cerrar"
   },
+  "casting": {
+    "title": "Casting de Debut",
+    "infoBanner": {
+      "title": "Haz casting a tus aprendices",
+      "description": "Los personajes idol (rostro, voz, video) de este contenido son personajes virtuales originales creados por IA y no están basados en personas reales, incluidos idols y celebridades."
+    },
+    "tabs": {
+      "boy": "Grupo de Chicos",
+      "girl": "Grupo de Chicas",
+      "mixed": "Grupo Mixto"
+    },
+    "newMember": {
+      "prompt": "¿No encuentras un aprendiz que te guste?",
+      "subPrompt": "Prueba a hacer casting de un nuevo miembro"
+    },
+    "addMember": "Nuevo Miembro",
+    "abilities": {
+      "title": "Habilidades",
+      "vocal": "Vocal",
+      "dance": "Baile",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Resistencia",
+      "charm": "Carisma"
+    },
+    "castButton": "Casting",
+    "castComplete": {
+      "title": "¡Casting Completo!",
+      "description": "El aprendiz se ha unido al grupo",
+      "viewBoard": "Ver Panel de Casting"
+    }
+  },
   "share": "Compartir",
   "urlCopied": "¡URL copiada!",
   "castingBoard": {
@@ -98,6 +130,44 @@
       "load": "Error al cargar la información del grupo",
       "generate": "Error al generar la imagen",
       "update": "Error al guardar la planificación"
+    }
+  },
+  "companionCreate": {
+    "title": "Casting de Miembro Debut",
+    "next": "Siguiente",
+    "gender": {
+      "stepTitle": "Elige un género",
+      "female": "Femenino",
+      "male": "Masculino"
+    },
+    "personality": {
+      "stepTitle": "Cuéntanos sobre la personalidad",
+      "energy": "Dirección de Energía",
+      "energyLeft": "Extrovertido (E)",
+      "energyRight": "Introvertido (I)",
+      "perception": "Estilo de Percepción",
+      "perceptionLeft": "Sensorial (S)",
+      "perceptionRight": "Intuitivo (N)",
+      "judgment": "Base de Juicio",
+      "judgmentLeft": "Pensamiento (T)",
+      "judgmentRight": "Sentimiento (F)",
+      "lifestyle": "Estilo de Vida",
+      "lifestyleLeft": "Juicio (J)",
+      "lifestyleRight": "Percepción (P)"
+    },
+    "image": {
+      "stepTitle": "¡Vamos a crear una foto de perfil!",
+      "promptPlaceholder": "ej.) Una chica con pelo negro y ojos grandes",
+      "generate": "Generar Imagen",
+      "regenerate": "Regenerar Imagen",
+      "placeholder": "La imagen de perfil\ngenerada aparecerá\naquí"
+    },
+    "complete": {
+      "nameStepTitle": "¿Cuál es el nombre?",
+      "bioStepTitle": "Cuéntanos la historia de este idol",
+      "namePlaceholder": "Ingresa un nombre",
+      "bioPlaceholder": "¿Qué camino ha recorrido?",
+      "button": "Completar Casting"
     }
   },
   "landing": {

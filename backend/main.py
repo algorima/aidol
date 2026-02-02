@@ -27,7 +27,7 @@ from aioia_core.errors import (
     get_error_detail_from_exception,
 )
 from aioia_core.models import Base
-from aioia_core.settings import DatabaseSettings, OpenAIAPISettings
+from aioia_core.settings import DatabaseSettings
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -37,7 +37,12 @@ from sqlalchemy.orm import sessionmaker
 
 from aidol.api.aidol import create_aidol_router
 from aidol.api.companion import create_companion_router
-from aidol.factories import AIdolRepositoryFactory, CompanionRepositoryFactory
+from aidol.api.lead import create_lead_router
+from aidol.factories import (
+    AIdolLeadRepositoryFactory,
+    AIdolRepositoryFactory,
+    CompanionRepositoryFactory,
+)
 from aidol.protocols import ImageStorageProtocol
 
 # Configure logging
@@ -70,7 +75,15 @@ class Base64ImageStorage(ImageStorageProtocol):
 
 # BaseSettings automatically reads from environment variables
 db_settings = DatabaseSettings()  # DATABASE_URL
-openai_settings = OpenAIAPISettings()  # OPENAI_API_KEY
+
+# Helper to load GOOGLE_API_KEY from environment
+google_api_key = os.getenv("GOOGLE_API_KEY")
+
+if not google_api_key:
+    logger.error("GOOGLE_API_KEY not found in environment variables.")
+    raise ValueError("GOOGLE_API_KEY is required for image generation.")
+
+logger.info("Google API Key loaded.")
 
 logger.info("Loaded settings from environment variables")
 logger.info(
@@ -189,21 +202,31 @@ async def internal_exception_handler(request: Request, exc: Exception):
 
 # Create and include AIdol router
 aidol_router = create_aidol_router(
-    openai_settings=openai_settings,
+    google_api_key=google_api_key,
     db_session_factory=db_session_factory,
     repository_factory=AIdolRepositoryFactory(),
     image_storage=image_storage,
 )
-app.include_router(aidol_router, prefix="/aidol")
+app.include_router(aidol_router)
 
 # Create and include Companion router
 companion_router = create_companion_router(
+    google_api_key=google_api_key,
     db_session_factory=db_session_factory,
     repository_factory=CompanionRepositoryFactory(),
+    image_storage=image_storage,
 )
-app.include_router(companion_router, prefix="/aidol")
+app.include_router(companion_router)
 
-logger.info("AIdol and Companion routers registered")
+# Create and include Lead router
+lead_router = create_lead_router(
+    db_session_factory=db_session_factory,
+    aidol_repository_factory=AIdolRepositoryFactory(),
+    lead_repository_factory=AIdolLeadRepositoryFactory(),
+)
+app.include_router(lead_router)
+
+logger.info("AIdol, Companion, and Lead routers registered")
 
 
 @app.get("/healthz", tags=["management"])

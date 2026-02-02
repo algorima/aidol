@@ -30,7 +30,9 @@ export { aidolSchema, imageGenerationResponseSchema } from "./schemas/aidol";
 export type {
   Companion,
   CompanionCreate,
+  CompanionStats,
   CompanionUpdate,
+  Gender,
 } from "./schemas/companion";
 export { companionSchema } from "./schemas/companion";
 

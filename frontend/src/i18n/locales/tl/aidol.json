@@ -2,6 +2,38 @@
   "common": {
     "close": "Isara"
   },
+  "casting": {
+    "title": "Debut Member Casting",
+    "infoBanner": {
+      "title": "I-cast ang iyong mga trainee",
+      "description": "Ang mga idol character (mukha, boses, video) sa content na ito ay orihinal na virtual character na ginawa ng AI at hindi batay sa totoong tao, kabilang ang mga idol at celebrity."
+    },
+    "tabs": {
+      "boy": "Boy Group",
+      "girl": "Girl Group",
+      "mixed": "Mixed Group"
+    },
+    "newMember": {
+      "prompt": "Walang trainee na gusto mo?",
+      "subPrompt": "Subukan mag-cast ng bagong miyembro"
+    },
+    "addMember": "Bagong Miyembro",
+    "abilities": {
+      "title": "Kakayahan",
+      "vocal": "Vocal",
+      "dance": "Dance",
+      "rap": "Rap",
+      "visual": "Visual",
+      "stamina": "Stamina",
+      "charm": "Charm"
+    },
+    "castButton": "I-cast",
+    "castComplete": {
+      "title": "Tapos na ang Casting!",
+      "description": "Sumali na ang trainee sa grupo",
+      "viewBoard": "Tingnan ang Casting Board"
+    }
+  },
   "share": "I-share",
   "urlCopied": "Nakopya ang URL!",
   "castingBoard": {
@@ -98,6 +130,44 @@
       "load": "Hindi ma-load ang info ng grupo",
       "generate": "Hindi makagawa ng larawan",
       "update": "Hindi mai-save ang plano ng grupo"
+    }
+  },
+  "companionCreate": {
+    "title": "Casting ng Debut Member",
+    "next": "Susunod",
+    "gender": {
+      "stepTitle": "Pumili ng kasarian",
+      "female": "Babae",
+      "male": "Lalaki"
+    },
+    "personality": {
+      "stepTitle": "Sabihin ang personalidad",
+      "energy": "Direksyon ng Enerhiya",
+      "energyLeft": "Extrovert (E)",
+      "energyRight": "Introvert (I)",
+      "perception": "Estilo ng Persepsyon",
+      "perceptionLeft": "Sensing (S)",
+      "perceptionRight": "Intuisyon (N)",
+      "judgment": "Batayan ng Paghatol",
+      "judgmentLeft": "Pag-iisip (T)",
+      "judgmentRight": "Damdamin (F)",
+      "lifestyle": "Estilo ng Buhay",
+      "lifestyleLeft": "Paghusga (J)",
+      "lifestyleRight": "Pang-unawa (P)"
+    },
+    "image": {
+      "stepTitle": "Gumawa tayo ng profile photo!",
+      "promptPlaceholder": "hal) Batang babae na may itim na buhok at malaking mata",
+      "generate": "Gumawa ng Larawan",
+      "regenerate": "Gumawa Ulit ng Larawan",
+      "placeholder": "Ang ginawang\nprofile na larawan\nay lalabas dito"
+    },
+    "complete": {
+      "nameStepTitle": "Ano ang pangalan?",
+      "bioStepTitle": "Sabihin ang kwento ng idol na ito",
+      "namePlaceholder": "Maglagay ng pangalan",
+      "bioPlaceholder": "Anong paglalakbay ang naranasan?",
+      "button": "Kumpletuhin ang Casting"
     }
   },
   "landing": {

@@ -2,6 +2,38 @@
   "common": {
     "close": "ปิด"
   },
+  "casting": {
+    "title": "แคสติ้งสมาชิกเดบิวต์",
+    "infoBanner": {
+      "title": "แคสต์เทรนนี่ของคุณ",
+      "description": "ตัวละครไอดอล (ใบหน้า เสียง วิดีโอ) ในเนื้อหานี้เป็นตัวละครเสมือนจริงต้นฉบับที่สร้างด้วย AI และไม่ได้อิงจากบุคคลจริง รวมถึงไอดอลและคนดัง"
+    },
+    "tabs": {
+      "boy": "บอยกรุ๊ป",
+      "girl": "เกิร์ลกรุ๊ป",
+      "mixed": "กรุ๊ปผสม"
+    },
+    "newMember": {
+      "prompt": "ไม่มีเทรนนี่ที่ถูกใจเหรอ?",
+      "subPrompt": "ลองแคสต์สมาชิกใหม่สิ"
+    },
+    "addMember": "สมาชิกใหม่",
+    "abilities": {
+      "title": "ความสามารถ",
+      "vocal": "ร้อง",
+      "dance": "เต้น",
+      "rap": "แร็พ",
+      "visual": "วิชวล",
+      "stamina": "ความอดทน",
+      "charm": "เสน่ห์"
+    },
+    "castButton": "แคสติ้ง",
+    "castComplete": {
+      "title": "แคสติ้งสำเร็จ!",
+      "description": "เทรนนี่ได้เข้าร่วมกลุ่มแล้ว",
+      "viewBoard": "ดูบอร์ดแคสติ้ง"
+    }
+  },
   "share": "แชร์",
   "urlCopied": "คัดลอก URL แล้ว!",
   "castingBoard": {
@@ -98,6 +130,44 @@
       "load": "ไม่สามารถโหลดข้อมูลกลุ่ม",
       "generate": "ไม่สามารถสร้างภาพ",
       "update": "ไม่สามารถบันทึกแผนกลุ่ม"
+    }
+  },
+  "companionCreate": {
+    "title": "แคสติ้งสมาชิกเดบิวต์",
+    "next": "ถัดไป",
+    "gender": {
+      "stepTitle": "เลือกเพศ",
+      "female": "หญิง",
+      "male": "ชาย"
+    },
+    "personality": {
+      "stepTitle": "บอกเราเกี่ยวกับบุคลิกภาพ",
+      "energy": "ทิศทางพลังงาน",
+      "energyLeft": "เปิดเผย (E)",
+      "energyRight": "เก็บตัว (I)",
+      "perception": "รูปแบบการรับรู้",
+      "perceptionLeft": "ประสาทสัมผัส (S)",
+      "perceptionRight": "สัญชาตญาณ (N)",
+      "judgment": "เกณฑ์การตัดสิน",
+      "judgmentLeft": "ความคิด (T)",
+      "judgmentRight": "ความรู้สึก (F)",
+      "lifestyle": "ไลฟ์สไตล์",
+      "lifestyleLeft": "ตัดสิน (J)",
+      "lifestyleRight": "รับรู้ (P)"
+    },
+    "image": {
+      "stepTitle": "มาสร้างรูปโปรไฟล์กัน!",
+      "promptPlaceholder": "เช่น) สาวผมดำตาโต",
+      "generate": "สร้างรูป",
+      "regenerate": "สร้างรูปใหม่",
+      "placeholder": "รูปโปรไฟล์\nที่สร้าง\nจะแสดงที่นี่"
+    },
+    "complete": {
+      "nameStepTitle": "ชื่ออะไร?",
+      "bioStepTitle": "เล่าเรื่องราวของไอดอลคนนี้",
+      "namePlaceholder": "กรอกชื่อ",
+      "bioPlaceholder": "ผ่านช่วงเวลาอะไรมาบ้าง?",
+      "button": "แคสติ้งเสร็จสิ้น"
     }
   },
   "landing": {

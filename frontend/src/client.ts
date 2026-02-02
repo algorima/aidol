@@ -16,19 +16,31 @@ export { GroupHeader } from "./components/aidol";
 export { AddMemberButton } from "./components/companion";
 export { Card } from "./components/companion";
 export { ImagePreview } from "./components/companion";
+export { ProfileContent } from "./components/companion";
 export { PromptInput } from "./components/companion";
 
 // Creation flow components
+export { BiographyInput } from "./components/creation";
+export { CompanionCreateLayout } from "./components/creation";
+export { CompanionNameInput } from "./components/creation";
 export { ConceptSelector } from "./components/creation";
+export { GenderSelector } from "./components/creation";
 export { EmblemGenerator } from "./components/creation";
 export { GroupCreation } from "./components/creation";
 export { GroupNameInput } from "./components/creation";
+export { MbtiForm } from "./components/creation";
+export type { MbtiValues } from "./components/creation";
+export { MbtiSlider } from "./components/creation";
 export { MemberNameInput } from "./components/creation";
 export { PersonalitySelector } from "./components/creation";
+export { ProfileImageGenerator } from "./components/creation";
+export { ProgressBar } from "./components/creation";
+export { StepCard } from "./components/creation";
 export { StepIndicator } from "./components/creation";
 
 // Landing page components
 export { HeroSection } from "./components/landing";
 
 // Shared components
+export { Modal } from "./components/Modal";
 export { ShareButton } from "./components/ShareButton";
