@@ -143,6 +143,22 @@
     "completeDescription": "Start chatting with your dream idol now",
     "viewProfile": "View Profile"
   },
+  "groupPlanning": {
+    "header": "Group Planning",
+    "step1Title": "Name your group",
+    "step2Title": "Create your group emblem",
+    "namePlaceholder": "e.g.) Dreamers, Starlight",
+    "promptPlaceholder": "e.g.)",
+    "generate": "Generate Image",
+    "regenerate": "Regenerate Image",
+    "emptyImage": "Generated profile\nimage will\nappear here",
+    "next": "Next",
+    "error": {
+      "load": "Failed to load group info",
+      "generate": "Failed to generate image",
+      "update": "Failed to save group planning"
+    }
+  },
   "companionCreate": {
     "title": "Debut Member Casting",
     "next": "Next",
