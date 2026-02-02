@@ -127,7 +127,6 @@
     "title": "Casting Member Debut",
     "next": "Lanjut",
     "error": {
-      "create": "Gagal membuat trainee.",
       "update": "Gagal menyimpan.",
       "generateImage": "Gagal membuat gambar.",
       "load": "Gagal memuat daftar trainee."

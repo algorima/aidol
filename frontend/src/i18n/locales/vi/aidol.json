@@ -127,7 +127,6 @@
     "title": "Tuyển Chọn Thành Viên Ra Mắt",
     "next": "Tiếp",
     "error": {
-      "create": "Không thể tạo thực tập sinh.",
       "update": "Lưu thất bại.",
       "generateImage": "Tạo ảnh thất bại.",
       "load": "Không thể tải danh sách thực tập sinh."

@@ -127,7 +127,6 @@
     "title": "Casting de Miembro Debut",
     "next": "Siguiente",
     "error": {
-      "create": "Error al crear aprendiz.",
       "update": "Error al guardar.",
       "generateImage": "Error al generar imagen.",
       "load": "Error al cargar aprendices."
