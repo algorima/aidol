@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import type { GenderTab } from "@/components/casting";
 import {
   CastingCardGrid,
@@ -32,6 +33,7 @@ const buildFilters = (gender: Gender | undefined): GetListParams["filters"] => {
 
 export default function CastingPage() {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
   const { lang, aidolId } = useParams<{ lang: string; aidolId: string }>();
   const [activeTab, setActiveTab] = useState<GenderTab>("boy");
@@ -59,10 +61,11 @@ export default function CastingPage() {
       setCompanions(response.data);
     } catch {
       setCompanions([]);
+      showToast(t("aidol:companionCreate.error.load"), "error");
     } finally {
       setIsLoading(false);
     }
-  }, [companionRepository, gender]);
+  }, [companionRepository, gender, showToast, t]);
 
   useEffect(() => {
     void fetchCompanions();
