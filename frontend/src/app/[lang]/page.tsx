@@ -53,8 +53,9 @@ export default function AIdolLandingPage({
           router.push(`/${lang}/aidols/${response.data[0].id}/casting`);
           return;
         }
-      } catch {
+      } catch (err) {
         // API 실패 시 랜딩 페이지 그대로 표시
+        console.error("Failed to check existing AIdol:", err);
       }
       setIsLoading(false);
     };
@@ -72,7 +73,8 @@ export default function AIdolLandingPage({
         claimToken,
       });
       router.push(`/${lang}/aidols/${aidol.id}/casting`);
-    } catch {
+    } catch (err) {
+      console.error("Failed to create AIdol on start:", err);
       showToast(t("aidol:landing.error.create"), "error");
       setIsStarting(false);
     }
