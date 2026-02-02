@@ -2,13 +2,11 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { CompanionRepository } from "@/repositories";
 import { getApiService } from "@/services/ApiService";
 
 export default function CompanionCreatePage() {
-  const { t } = useTranslation();
   const params = useParams<{ lang: string; aidolId: string }>();
   const router = useRouter();
   const companionRepository = useMemo(
@@ -51,7 +49,7 @@ export default function CompanionCreatePage() {
     return (
       <div className="flex min-h-dvh items-center justify-center">
         <div className="alert alert-error max-w-md">
-          <span>{t("aidol:companionCreate.error.create")}</span>
+          <span>{error.message}</span>
         </div>
       </div>
     );
