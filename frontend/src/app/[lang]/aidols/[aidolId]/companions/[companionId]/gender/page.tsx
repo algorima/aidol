@@ -1,7 +1,7 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -12,14 +12,17 @@ import { CompanionRepository } from "@/repositories";
 import type { Gender } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
-export default function GenderPage() {
-  const { t } = useTranslation();
-  const { showToast } = useToast();
-  const params = useParams<{
+interface GenderPageProps {
+  params: {
     lang: string;
     aidolId: string;
     companionId: string;
-  }>();
+  };
+}
+
+export default function GenderPage({ params }: GenderPageProps) {
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
   const [gender, setGender] = useState<Gender | null>(null);
   const companionRepository = useMemo(
@@ -27,7 +30,7 @@ export default function GenderPage() {
     [],
   );
 
-  const handleNext = async () => {
+  const handleNext = useCallback(async () => {
     if (!gender) return;
     try {
       await companionRepository.update({
@@ -40,7 +43,7 @@ export default function GenderPage() {
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
     }
-  };
+  }, [companionRepository, gender, params, router, showToast, t]);
 
   return (
     <CompanionCreateLayout

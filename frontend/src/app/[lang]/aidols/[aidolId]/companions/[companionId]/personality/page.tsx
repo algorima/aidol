@@ -1,7 +1,7 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -12,14 +12,17 @@ import { StepCard } from "@/components/creation/StepCard";
 import { CompanionRepository } from "@/repositories";
 import { getApiService } from "@/services/ApiService";
 
-export default function PersonalityPage() {
-  const { t } = useTranslation();
-  const { showToast } = useToast();
-  const params = useParams<{
+interface PersonalityPageProps {
+  params: {
     lang: string;
     aidolId: string;
     companionId: string;
-  }>();
+  };
+}
+
+export default function PersonalityPage({ params }: PersonalityPageProps) {
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
   const [mbtiValues, setMbtiValues] = useState<MbtiValues>({
     energy: 5,
@@ -32,7 +35,7 @@ export default function PersonalityPage() {
     [],
   );
 
-  const handleNext = async () => {
+  const handleNext = useCallback(async () => {
     try {
       await companionRepository.update({
         id: params.companionId,
@@ -49,7 +52,7 @@ export default function PersonalityPage() {
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
     }
-  };
+  }, [companionRepository, mbtiValues, params, router, showToast, t]);
 
   return (
     <CompanionCreateLayout

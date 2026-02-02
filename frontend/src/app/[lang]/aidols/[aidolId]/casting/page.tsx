@@ -2,7 +2,7 @@
 
 import type { GetListParams } from "@aioia/core";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -31,11 +31,18 @@ const buildFilters = (gender: Gender | undefined): GetListParams["filters"] => {
   return [{ field: "gender", operator: "eq", value: gender }];
 };
 
-export default function CastingPage() {
+interface CastingPageProps {
+  params: {
+    lang: string;
+    aidolId: string;
+  };
+}
+
+export default function CastingPage({ params }: CastingPageProps) {
+  const { lang, aidolId } = params;
   const { t } = useTranslation();
   const { showToast } = useToast();
   const router = useRouter();
-  const { lang, aidolId } = useParams<{ lang: string; aidolId: string }>();
   const [activeTab, setActiveTab] = useState<GenderTab>("boy");
   const [companions, setCompanions] = useState<Companion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -71,19 +78,19 @@ export default function CastingPage() {
     void fetchCompanions();
   }, [fetchCompanions]);
 
-  const handleCompanionClick = (companion: Companion) => {
+  const handleCompanionClick = useCallback((companion: Companion) => {
     setSelectedCompanion(companion);
     setIsProfileOpen(true);
-  };
+  }, []);
 
-  const handleCast = () => {
+  const handleCast = useCallback(() => {
     setIsProfileOpen(false);
     router.push(`/${lang}/${aidolId}/casting-complete`);
-  };
+  }, [lang, aidolId, router]);
 
-  const handleNewMember = () => {
+  const handleNewMember = useCallback(() => {
     router.push(`/${lang}/aidols/${aidolId}/companions/create`);
-  };
+  }, [lang, aidolId, router]);
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">

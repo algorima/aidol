@@ -1,7 +1,7 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -11,14 +11,17 @@ import { StepCard } from "@/components/creation/StepCard";
 import { CompanionRepository } from "@/repositories";
 import { getApiService } from "@/services/ApiService";
 
-export default function ImagePage() {
-  const { t } = useTranslation();
-  const { showToast } = useToast();
-  const params = useParams<{
+interface ImagePageProps {
+  params: {
     lang: string;
     aidolId: string;
     companionId: string;
-  }>();
+  };
+}
+
+export default function ImagePage({ params }: ImagePageProps) {
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
@@ -30,7 +33,7 @@ export default function ImagePage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [hasGenerated, setHasGenerated] = useState(false);
 
-  const handleGenerate = async () => {
+  const handleGenerate = useCallback(async () => {
     if (!prompt.trim()) return;
     setIsGenerating(true);
     try {
@@ -42,9 +45,9 @@ export default function ImagePage() {
     } finally {
       setIsGenerating(false);
     }
-  };
+  }, [companionRepository, prompt, showToast, t]);
 
-  const handleNext = async () => {
+  const handleNext = useCallback(async () => {
     if (!imageUrl) return;
     try {
       await companionRepository.update({
@@ -57,7 +60,7 @@ export default function ImagePage() {
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
     }
-  };
+  }, [companionRepository, imageUrl, params, router, showToast, t]);
 
   return (
     <CompanionCreateLayout

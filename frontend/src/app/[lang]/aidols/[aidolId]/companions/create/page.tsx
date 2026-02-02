@@ -1,13 +1,21 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { CompanionRepository } from "@/repositories";
 import { getApiService } from "@/services/ApiService";
 
-export default function CompanionCreatePage() {
-  const params = useParams<{ lang: string; aidolId: string }>();
+interface CompanionCreatePageProps {
+  params: {
+    lang: string;
+    aidolId: string;
+  };
+}
+
+export default function CompanionCreatePage({
+  params,
+}: CompanionCreatePageProps) {
   const router = useRouter();
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
