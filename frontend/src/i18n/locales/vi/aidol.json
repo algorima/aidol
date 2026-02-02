@@ -136,6 +136,44 @@
     "completeDescription": "Bắt đầu trò chuyện với idol mơ ước ngay",
     "viewProfile": "Xem Hồ Sơ"
   },
+  "companionCreate": {
+    "title": "Tuyển Chọn Thành Viên Ra Mắt",
+    "next": "Tiếp",
+    "gender": {
+      "stepTitle": "Chọn giới tính",
+      "female": "Nữ",
+      "male": "Nam"
+    },
+    "personality": {
+      "stepTitle": "Cho chúng tôi biết về tính cách",
+      "energy": "Hướng Năng Lượng",
+      "energyLeft": "Hướng ngoại (E)",
+      "energyRight": "Hướng nội (I)",
+      "perception": "Phong Cách Nhận Thức",
+      "perceptionLeft": "Cảm giác (S)",
+      "perceptionRight": "Trực giác (N)",
+      "judgment": "Cơ Sở Đánh Giá",
+      "judgmentLeft": "Lý trí (T)",
+      "judgmentRight": "Cảm xúc (F)",
+      "lifestyle": "Lối Sống",
+      "lifestyleLeft": "Phán đoán (J)",
+      "lifestyleRight": "Linh hoạt (P)"
+    },
+    "image": {
+      "stepTitle": "Hãy tạo ảnh đại diện!",
+      "promptPlaceholder": "vd) Cô gái tóc đen mắt to",
+      "generate": "Tạo Ảnh",
+      "regenerate": "Tạo Lại Ảnh",
+      "placeholder": "Ảnh đại diện\nđược tạo sẽ\nhiển thị ở đây"
+    },
+    "complete": {
+      "nameStepTitle": "Tên là gì?",
+      "bioStepTitle": "Kể cho chúng tôi câu chuyện của idol này",
+      "namePlaceholder": "Nhập tên",
+      "bioPlaceholder": "Đã trải qua hành trình gì?",
+      "button": "Hoàn Thành Tuyển Chọn"
+    }
+  },
   "landing": {
     "hero": {
       "title": {

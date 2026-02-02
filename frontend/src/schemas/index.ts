@@ -13,8 +13,8 @@ export type {
 export { companionSchema, POSITIONS } from "./companion";
 export type {
   Companion,
-  CompanionStats,
   CompanionCreate,
+  CompanionStats,
   CompanionUpdate,
   Gender,
   Grade,

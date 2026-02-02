@@ -30,9 +30,6 @@ export interface CompanionStats {
   charm: number;
 }
 
-/**
- * Companion schema (public fields only, excludes system_prompt)
- */
 const companionStatsSchema = z.object({
   vocal: z.number(),
   dance: z.number(),
@@ -107,4 +104,9 @@ export interface CompanionUpdate {
   profilePictureUrl?: string | null;
   systemPrompt?: string | null;
   position?: string | null;
+  gender?: Gender | null;
+  mbtiEnergy?: number;
+  mbtiPerception?: number;
+  mbtiJudgment?: number;
+  mbtiLifestyle?: number;
 }

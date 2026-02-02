@@ -136,6 +136,44 @@
     "completeDescription": "Langsung ngobrol sama idol impianmu sekarang",
     "viewProfile": "Lihat Profil"
   },
+  "companionCreate": {
+    "title": "Casting Member Debut",
+    "next": "Lanjut",
+    "gender": {
+      "stepTitle": "Pilih jenis kelamin",
+      "female": "Perempuan",
+      "male": "Laki-laki"
+    },
+    "personality": {
+      "stepTitle": "Ceritakan kepribadiannya",
+      "energy": "Arah Energi",
+      "energyLeft": "Ekstrovert (E)",
+      "energyRight": "Introvert (I)",
+      "perception": "Gaya Persepsi",
+      "perceptionLeft": "Sensing (S)",
+      "perceptionRight": "Intuisi (N)",
+      "judgment": "Dasar Penilaian",
+      "judgmentLeft": "Pemikiran (T)",
+      "judgmentRight": "Perasaan (F)",
+      "lifestyle": "Gaya Hidup",
+      "lifestyleLeft": "Penilaian (J)",
+      "lifestyleRight": "Persepsi (P)"
+    },
+    "image": {
+      "stepTitle": "Yuk buat foto profil!",
+      "promptPlaceholder": "cth) Gadis berambut hitam dengan mata besar",
+      "generate": "Buat Gambar",
+      "regenerate": "Buat Ulang Gambar",
+      "placeholder": "Gambar profil\nyang dibuat\nakan muncul di sini"
+    },
+    "complete": {
+      "nameStepTitle": "Siapa namanya?",
+      "bioStepTitle": "Ceritakan kisah idol ini",
+      "namePlaceholder": "Masukkan nama",
+      "bioPlaceholder": "Perjalanan apa yang telah dilalui?",
+      "button": "Selesai Casting"
+    }
+  },
   "landing": {
     "hero": {
       "title": {

@@ -136,6 +136,44 @@
     "completeDescription": "Start chatting with your dream idol now",
     "viewProfile": "View Profile"
   },
+  "companionCreate": {
+    "title": "Debut Member Casting",
+    "next": "Next",
+    "gender": {
+      "stepTitle": "Choose a gender",
+      "female": "Female",
+      "male": "Male"
+    },
+    "personality": {
+      "stepTitle": "Tell us about the personality",
+      "energy": "Energy Direction",
+      "energyLeft": "Extrovert (E)",
+      "energyRight": "Introvert (I)",
+      "perception": "Perception Style",
+      "perceptionLeft": "Sensing (S)",
+      "perceptionRight": "Intuition (N)",
+      "judgment": "Judgment Basis",
+      "judgmentLeft": "Thinking (T)",
+      "judgmentRight": "Feeling (F)",
+      "lifestyle": "Lifestyle",
+      "lifestyleLeft": "Judging (J)",
+      "lifestyleRight": "Perceiving (P)"
+    },
+    "image": {
+      "stepTitle": "Let's create a profile photo!",
+      "promptPlaceholder": "e.g.) A girl with black hair and big eyes",
+      "generate": "Generate Image",
+      "regenerate": "Regenerate Image",
+      "placeholder": "Generated profile\nimage will\nappear here"
+    },
+    "complete": {
+      "nameStepTitle": "What is the name?",
+      "bioStepTitle": "Tell us this idol's story",
+      "namePlaceholder": "Enter a name",
+      "bioPlaceholder": "What journey have they been on?",
+      "button": "Complete Casting"
+    }
+  },
   "landing": {
     "hero": {
       "title": {

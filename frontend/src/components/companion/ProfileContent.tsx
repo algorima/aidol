@@ -26,12 +26,12 @@ export function ProfileContent({
         {(grade || mbti) && (
           <div className="flex gap-2">
             {grade && (
-              <span className="text-label-l rounded-lg bg-black px-2 py-1 text-white">
+              <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
                 {t("aidol:companion.grade", { grade })}
               </span>
             )}
             {mbti && (
-              <span className="text-label-l rounded-lg bg-black px-2 py-1 text-white">
+              <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
                 {mbti}
               </span>
             )}
