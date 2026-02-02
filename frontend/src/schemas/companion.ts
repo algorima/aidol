@@ -103,7 +103,7 @@ export interface CompanionUpdate {
   biography?: string | null;
   profilePictureUrl?: string | null;
   systemPrompt?: string | null;
-  position?: string | null;
+  position?: Position | null;
   gender?: Gender | null;
   mbtiEnergy?: number;
   mbtiPerception?: number;
