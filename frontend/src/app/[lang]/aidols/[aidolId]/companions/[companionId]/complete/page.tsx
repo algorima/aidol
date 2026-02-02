@@ -2,14 +2,15 @@
 
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { BiographyInput } from "@/components/creation/BiographyInput";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { CompanionNameInput } from "@/components/creation/CompanionNameInput";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
+import { getApiService } from "@/services/ApiService";
 
 export default function CompletePage() {
   const { t } = useTranslation();
@@ -22,11 +23,14 @@ export default function CompletePage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [biography, setBiography] = useState("");
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   const handleComplete = async () => {
     if (!name.trim()) return;
-    const repository = getMockCompanionRepository();
-    await repository.update({
+    await companionRepository.update({
       id: params.companionId,
       variables: { name, biography },
     });
