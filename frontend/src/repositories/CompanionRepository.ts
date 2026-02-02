@@ -8,13 +8,7 @@ import type {
 } from "../schemas";
 import { companionSchema, imageGenerationResponseSchema } from "../schemas";
 
-/**
- * Repository for Companion (member) entities
- *
- * Backend currently returns unwrapped responses (no { data } wrapper).
- * Override CRUD methods to parse raw responses and wrap for callers.
- * TODO: Remove overrides when backend applies { data } wrapper (Sprint 2)
- */
+/** Backend returns unwrapped responses — overrides wrap raw JSON in { data } */
 export class CompanionRepository extends BaseCrudRepository<Companion> {
   readonly resource = "companions";
 
@@ -22,9 +16,6 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     return companionSchema;
   }
 
-  /**
-   * POST /companions — backend returns CompanionPublic directly
-   */
   async create<TVariables = Record<string, unknown>>(params: {
     variables: TVariables;
   }): Promise<{ data: Companion }> {
@@ -37,9 +28,6 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     return { data: companionSchema.parse(raw) };
   }
 
-  /**
-   * GET /companions/{id} — backend returns CompanionPublic directly
-   */
   async getOne(
     params: { id: string | number },
     fetchOptions?: RequestInit,
@@ -50,9 +38,6 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     return { data: companionSchema.parse(raw) };
   }
 
-  /**
-   * PATCH /companions/{id} — backend returns CompanionPublic directly
-   */
   async update<TVariables = Record<string, unknown>>(params: {
     id: string | number;
     variables: TVariables;
@@ -67,9 +52,6 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     return { data: companionSchema.parse(raw) };
   }
 
-  /**
-   * DELETE /companions/{id} — backend returns CompanionPublic directly
-   */
   async deleteOne(params: {
     id: string | number;
   }): Promise<{ data: Companion }> {

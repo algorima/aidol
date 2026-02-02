@@ -14,13 +14,7 @@ import {
   imageGenerationResponseSchema,
 } from "../schemas";
 
-/**
- * Repository for AIdol (group) entities
- *
- * Backend currently returns unwrapped responses (no { data } wrapper).
- * Override CRUD methods to parse raw responses and wrap for callers.
- * TODO: Remove overrides when backend applies { data } wrapper (Sprint 2)
- */
+/** Backend returns unwrapped responses — overrides wrap raw JSON in { data } */
 export class AIdolRepository extends BaseCrudRepository<AIdol> {
   readonly resource = "aidols";
 
@@ -28,9 +22,6 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
     return aidolSchema;
   }
 
-  /**
-   * POST /aidols — backend returns { id } only
-   */
   async createAIdol(variables: AIdolCreate): Promise<AIdolCreateResponse> {
     const url = this.apiService.buildUrl(this.resource);
     const raw = await this.apiService.request(url, {
@@ -41,9 +32,6 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
     return aidolCreateResponseSchema.parse(raw);
   }
 
-  /**
-   * GET /aidols/{id} — backend returns AIdolPublic directly
-   */
   async getOne(
     params: { id: string | number },
     fetchOptions?: RequestInit,
@@ -54,9 +42,6 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
     return { data: aidolSchema.parse(raw) };
   }
 
-  /**
-   * PATCH /aidols/{id} — backend returns AIdolPublic directly
-   */
   async update<TVariables = Record<string, unknown>>(params: {
     id: string | number;
     variables: TVariables;
@@ -71,9 +56,6 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
     return { data: aidolSchema.parse(raw) };
   }
 
-  /**
-   * Generate image for AIdol emblem
-   */
   async generateImage(
     request: ImageGenerationRequest,
     fetchOptions?: RequestInit,
