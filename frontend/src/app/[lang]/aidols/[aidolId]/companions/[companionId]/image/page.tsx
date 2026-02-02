@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { ProfileImageGenerator } from "@/components/creation/ProfileImageGenerator";
 import { StepCard } from "@/components/creation/StepCard";
@@ -12,6 +13,7 @@ import { getApiService } from "@/services/ApiService";
 
 export default function ImagePage() {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const params = useParams<{
     lang: string;
     aidolId: string;
@@ -31,21 +33,30 @@ export default function ImagePage() {
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
     setIsGenerating(true);
-    const response = await companionRepository.generateImage({ prompt });
-    setImageUrl(response.data.imageUrl);
-    setHasGenerated(true);
-    setIsGenerating(false);
+    try {
+      const response = await companionRepository.generateImage({ prompt });
+      setImageUrl(response.data.imageUrl);
+      setHasGenerated(true);
+    } catch {
+      showToast(t("aidol:companionCreate.error.generateImage"), "error");
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handleNext = async () => {
     if (!imageUrl) return;
-    await companionRepository.update({
-      id: params.companionId,
-      variables: { profilePictureUrl: imageUrl },
-    });
-    router.push(
-      `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/complete`,
-    );
+    try {
+      await companionRepository.update({
+        id: params.companionId,
+        variables: { profilePictureUrl: imageUrl },
+      });
+      router.push(
+        `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/complete`,
+      );
+    } catch {
+      showToast(t("aidol:companionCreate.error.update"), "error");
+    }
   };
 
   return (
