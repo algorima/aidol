@@ -1,14 +1,15 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { MbtiForm } from "@/components/creation/MbtiForm";
 import type { MbtiValues } from "@/components/creation/MbtiForm";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
+import { getApiService } from "@/services/ApiService";
 
 export default function PersonalityPage() {
   const { t } = useTranslation();
@@ -24,10 +25,13 @@ export default function PersonalityPage() {
     judgment: 5,
     lifestyle: 5,
   });
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   const handleNext = async () => {
-    const repository = getMockCompanionRepository();
-    await repository.update({
+    await companionRepository.update({
       id: params.companionId,
       variables: {
         mbtiEnergy: mbtiValues.energy,
