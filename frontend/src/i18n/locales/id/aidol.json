@@ -2,6 +2,26 @@
   "common": {
     "close": "Tutup"
   },
+  "position": {
+    "header": "Penetapan Posisi",
+    "title": "Tetapkan posisi untuk setiap anggota!",
+    "subtitle": "Ketuk untuk menetapkan posisi",
+    "unassigned": "Belum ditetapkan",
+    "mainVocal": "Vokal Utama",
+    "subVocal": "Vokal Pendukung",
+    "mainDancer": "Penari Utama",
+    "subDancer": "Penari Pendukung",
+    "mainRapper": "Rapper Utama",
+    "subRapper": "Rapper Pendukung",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "Tetapkan",
+    "confirm": "Rencanakan Grup",
+    "needMore": "Tetapkan posisi untuk {{count}} anggota lagi",
+    "error": {
+      "load": "Gagal memuat daftar anggota",
+      "update": "Gagal menetapkan posisi"
+    }
+  },
   "casting": {
     "title": "Casting Anggota Debut",
     "infoBanner": {

@@ -2,6 +2,26 @@
   "common": {
     "close": "닫기"
   },
+  "position": {
+    "header": "포지션 배정",
+    "title": "멤버별 포지션을 배정하세요!",
+    "subtitle": "탭하여 포지션을 배정할 수 있어요",
+    "unassigned": "미배정",
+    "mainVocal": "메인 보컬",
+    "subVocal": "서브 보컬",
+    "mainDancer": "메인 댄서",
+    "subDancer": "서브 댄서",
+    "mainRapper": "메인 래퍼",
+    "subRapper": "서브 래퍼",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "배정하기",
+    "confirm": "그룹 기획하기",
+    "needMore": "{{count}}명의 포지션을 더 배정해주세요",
+    "error": {
+      "load": "멤버 목록을 불러오지 못했습니다",
+      "update": "포지션 배정에 실패했습니다"
+    }
+  },
   "casting": {
     "title": "데뷔 멤버 캐스팅",
     "infoBanner": {

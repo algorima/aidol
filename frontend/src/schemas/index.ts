@@ -10,7 +10,7 @@ export type {
 } from "./aidol";
 
 // Companion schemas
-export { companionSchema } from "./companion";
+export { companionSchema, POSITIONS } from "./companion";
 export type {
   Companion,
   CompanionCreate,
