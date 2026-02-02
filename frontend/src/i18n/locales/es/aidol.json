@@ -58,7 +58,11 @@
     "promptPlaceholder": "¿Cómo habla tu idol? Describe su personalidad...",
     "addMember": "Añadir Miembro",
     "signed": "Firmado 🥺",
-    "grade": "Grado {{grade}}"
+    "grade": "Grado {{grade}}",
+    "tab": {
+      "profile": "Perfil",
+      "stats": "Estadísticas"
+    }
   },
   "aidol": {
     "notFound": "Grupo no encontrado",

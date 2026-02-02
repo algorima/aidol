@@ -58,7 +58,11 @@
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
     "addMember": "添加成员",
     "signed": "已签约 🥺",
-    "grade": "{{grade}} 级"
+    "grade": "{{grade}} 级",
+    "tab": {
+      "profile": "简介",
+      "stats": "能力值"
+    }
   },
   "aidol": {
     "notFound": "找不到该组合",

@@ -58,7 +58,11 @@
     "promptPlaceholder": "ไอดอลของคุณพูดยังไง? บรรยายบุคลิกสักนิด...",
     "addMember": "เพิ่มสมาชิก",
     "signed": "เซ็นสัญญาแล้ว 🥺",
-    "grade": "เกรด {{grade}}"
+    "grade": "เกรด {{grade}}",
+    "tab": {
+      "profile": "โปรไฟล์",
+      "stats": "สถิติ"
+    }
   },
   "aidol": {
     "notFound": "ไม่พบกลุ่ม",

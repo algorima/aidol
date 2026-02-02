@@ -58,7 +58,11 @@
     "promptPlaceholder": "どんな話し方をする？性格を教えてね...",
     "addMember": "メンバー追加",
     "signed": "契約完了 🥺",
-    "grade": "{{grade}} ランク"
+    "grade": "{{grade}} ランク",
+    "tab": {
+      "profile": "プロフィール",
+      "stats": "能力値"
+    }
   },
   "aidol": {
     "notFound": "グループが見つかりません",

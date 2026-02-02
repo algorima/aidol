@@ -58,7 +58,11 @@
     "promptPlaceholder": "Gimana idol kamu ngobrol? Ceritain kepribadiannya...",
     "addMember": "Tambah Anggota",
     "signed": "Sudah Dikontrak 🥺",
-    "grade": "Grade {{grade}}"
+    "grade": "Grade {{grade}}",
+    "tab": {
+      "profile": "Profil",
+      "stats": "Statistik"
+    }
   },
   "aidol": {
     "notFound": "Grup tidak ditemukan",

@@ -58,7 +58,11 @@
     "promptPlaceholder": "어떤 말투로 대화할까요? 성격을 설명해 주세요...",
     "addMember": "멤버 추가",
     "signed": "계약 완료 🥺",
-    "grade": "{{grade}} 등급"
+    "grade": "{{grade}} 등급",
+    "tab": {
+      "profile": "프로필",
+      "stats": "능력치"
+    }
   },
   "aidol": {
     "notFound": "그룹을 찾을 수 없습니다",

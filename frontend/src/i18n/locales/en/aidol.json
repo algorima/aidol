@@ -58,7 +58,11 @@
     "promptPlaceholder": "How does your idol talk? Describe their vibe...",
     "addMember": "Add Member",
     "signed": "Signed 🥺",
-    "grade": "Grade {{grade}}"
+    "grade": "Grade {{grade}}",
+    "tab": {
+      "profile": "Profile",
+      "stats": "Stats"
+    }
   },
   "aidol": {
     "notFound": "Group not found",

@@ -58,7 +58,11 @@
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
     "addMember": "Thêm Thành Viên",
     "signed": "Đã ký hợp đồng 🥺",
-    "grade": "Hạng {{grade}}"
+    "grade": "Hạng {{grade}}",
+    "tab": {
+      "profile": "Hồ sơ",
+      "stats": "Chỉ số"
+    }
   },
   "aidol": {
     "notFound": "Không tìm thấy nhóm",
