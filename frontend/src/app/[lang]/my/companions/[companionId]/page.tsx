@@ -157,7 +157,7 @@ export default function CompanionProfilePage({
           {isCreatingChatroom ? (
             <span className="loading loading-spinner loading-sm" />
           ) : (
-Start Chat
+            "Start Chat"
           )}
         </button>
       </div>
