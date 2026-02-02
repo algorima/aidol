@@ -106,9 +106,7 @@ export default function CompanionProfilePage({
     return (
       <div className="flex min-h-dvh items-center justify-center">
         <div className="alert alert-error max-w-md">
-          <span>
-            {error?.message || "Companion not found"}
-          </span>
+          <span>{error?.message || "Companion not found"}</span>
         </div>
       </div>
     );

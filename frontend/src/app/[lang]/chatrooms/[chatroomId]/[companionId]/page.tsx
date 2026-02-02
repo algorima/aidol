@@ -172,9 +172,7 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
     return (
       <div className="flex min-h-dvh items-center justify-center">
         <div className="alert alert-error max-w-md">
-          <span>
-            {companionError?.message || "Companion not found"}
-          </span>
+          <span>{companionError?.message || "Companion not found"}</span>
         </div>
       </div>
     );

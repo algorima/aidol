@@ -30,9 +30,7 @@ class DBMessage(BaseModel):
     __tablename__ = "messages"
 
     # id, created_at, updated_at inherited from BaseModel
-    chatroom_id: Mapped[str] = mapped_column(
-        ForeignKey("chatrooms.id"), nullable=False
-    )
+    chatroom_id: Mapped[str] = mapped_column(ForeignKey("chatrooms.id"), nullable=False)
     sender_type: Mapped[str] = mapped_column(
         String, nullable=False
     )  # "user" | "companion"

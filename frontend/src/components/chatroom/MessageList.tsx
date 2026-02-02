@@ -53,7 +53,7 @@ export function MessageList({ messages }: MessageListProps) {
               },
             )}
           >
-            <div className="max-w-[60%] text-body-m break-words">
+            <div className="text-body-m max-w-[60%] break-words">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm, remarkBreaks]}
                 className={clsx("prose max-w-none flex-1", {
