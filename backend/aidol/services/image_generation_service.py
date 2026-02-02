@@ -15,6 +15,8 @@ import PIL.Image
 from google import genai
 from google.genai import errors as genai_errors
 
+from aidol.settings import GoogleGenAISettings
+
 logger = logging.getLogger(__name__)
 
 
@@ -31,7 +33,7 @@ class ImageGenerationService:
 
     client: "genai.Client | None" = None
 
-    def __init__(self, settings=None):
+    def __init__(self, settings: GoogleGenAISettings | None = None):
         """
         Initialize the Image Generation service.
 
