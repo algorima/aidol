@@ -1,14 +1,15 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { GenderSelector } from "@/components/creation/GenderSelector";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
 import type { Gender } from "@/schemas/companion";
+import { getApiService } from "@/services/ApiService";
 
 export default function GenderPage() {
   const { t } = useTranslation();
@@ -19,11 +20,14 @@ export default function GenderPage() {
   }>();
   const router = useRouter();
   const [gender, setGender] = useState<Gender | null>(null);
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   const handleNext = async () => {
     if (!gender) return;
-    const repository = getMockCompanionRepository();
-    await repository.update({
+    await companionRepository.update({
       id: params.companionId,
       variables: { gender },
     });
