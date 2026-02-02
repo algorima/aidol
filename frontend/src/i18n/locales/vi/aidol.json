@@ -2,6 +2,26 @@
   "common": {
     "close": "Đóng"
   },
+  "position": {
+    "header": "Phân Công Vị Trí",
+    "title": "Phân công vị trí cho từng thành viên!",
+    "subtitle": "Nhấn để phân công vị trí",
+    "unassigned": "Chưa phân công",
+    "mainVocal": "Main Vocal",
+    "subVocal": "Sub Vocal",
+    "mainDancer": "Main Dancer",
+    "subDancer": "Sub Dancer",
+    "mainRapper": "Main Rapper",
+    "subRapper": "Sub Rapper",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "Phân công",
+    "confirm": "Lên kế hoạch nhóm",
+    "needMore": "Phân công vị trí cho {{count}} thành viên nữa",
+    "error": {
+      "load": "Không thể tải danh sách thành viên",
+      "update": "Không thể phân công vị trí"
+    }
+  },
   "casting": {
     "title": "Casting Thành Viên Debut",
     "infoBanner": {
@@ -53,6 +73,13 @@
       "load": "Không thể tải thông tin thành viên.",
       "delete": "Xóa thất bại."
     }
+  },
+  "castingComplete": {
+    "title": "Casting Thực Tập Sinh Hoàn Tất",
+    "subtitle": "Đã thêm vào danh sách ứng viên casting",
+    "remainingSlots": "Slot Casting Còn Lại",
+    "findNext": "Tìm Thực Tập Sinh Tiếp",
+    "viewBoard": "Xem Bảng Casting"
   },
   "companion": {
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
@@ -143,6 +170,22 @@
     "submitting": "Đang đăng ký...",
     "success": "Đăng ký thành công!",
     "error": "Đăng ký thất bại. Vui lòng thử lại."
+  },
+  "groupPlanning": {
+    "header": "Lập Kế Hoạch Nhóm",
+    "step1Title": "Đặt tên cho nhóm của bạn",
+    "step2Title": "Tạo biểu tượng nhóm",
+    "namePlaceholder": "vd.) Dreamers, Starlight",
+    "promptPlaceholder": "vd.)",
+    "generate": "Tạo Hình Ảnh",
+    "regenerate": "Tạo Lại Hình Ảnh",
+    "emptyImage": "Hình ảnh profile\nđược tạo sẽ\nhiển thị ở đây",
+    "next": "Tiếp Theo",
+    "error": {
+      "load": "Không thể tải thông tin nhóm",
+      "generate": "Không thể tạo hình ảnh",
+      "update": "Không thể lưu kế hoạch nhóm"
+    }
   },
   "companionCreate": {
     "title": "Tuyển Chọn Thành Viên Ra Mắt",

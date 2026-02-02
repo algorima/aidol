@@ -95,7 +95,7 @@ export function CompleteContent({
           {aidol.profileImageUrl && (
             <Image
               src={aidol.profileImageUrl}
-              alt={aidol.name}
+              alt={aidol.name ?? ""}
               fill
               className="object-contain"
             />

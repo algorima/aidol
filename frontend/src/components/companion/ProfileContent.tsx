@@ -7,12 +7,15 @@ import { RadarChart } from "./RadarChart";
 
 interface ProfileContentProps {
   companion: Companion;
+  /** 바이오그래피 표시 여부 (기본: true) */
+  showBiography?: boolean;
   /** 능력치 표시 여부 (기본: true) */
   showStats?: boolean;
 }
 
 export function ProfileContent({
   companion,
+  showBiography = true,
   showStats = true,
 }: ProfileContentProps) {
   const { t } = useTranslation();
@@ -41,7 +44,7 @@ export function ProfileContent({
         )}
       </div>
 
-      {biography && (
+      {showBiography && biography && (
         <p className="text-body-s text-base-content">{biography}</p>
       )}
 

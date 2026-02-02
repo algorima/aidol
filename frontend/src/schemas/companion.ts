@@ -6,20 +6,20 @@
 import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
+export const POSITIONS = [
+  "mainVocal",
+  "subVocal",
+  "mainDancer",
+  "subDancer",
+  "mainRapper",
+  "subRapper",
+] as const;
+
+export type Position = (typeof POSITIONS)[number];
+
 export type Gender = "male" | "female";
 
 export type Grade = "A" | "B" | "C" | "F";
-
-export type Position =
-  | "leader"
-  | "mainVocal"
-  | "subVocal"
-  | "mainDancer"
-  | "subDancer"
-  | "mainRapper"
-  | "subRapper"
-  | "visual"
-  | "maknae";
 
 export interface CompanionStats {
   vocal: number;
@@ -51,15 +51,12 @@ export const companionSchema = z.object({
   grade: z.enum(["A", "B", "C", "F"]).nullable().optional(),
   position: z
     .enum([
-      "leader",
       "mainVocal",
       "subVocal",
       "mainDancer",
       "subDancer",
       "mainRapper",
       "subRapper",
-      "visual",
-      "maknae",
     ])
     .nullable()
     .optional(),
@@ -106,6 +103,7 @@ export interface CompanionUpdate {
   biography?: string | null;
   profilePictureUrl?: string | null;
   systemPrompt?: string | null;
+  position?: Position | null;
   gender?: Gender | null;
   mbtiEnergy?: number;
   mbtiPerception?: number;
