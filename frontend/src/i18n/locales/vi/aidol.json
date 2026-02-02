@@ -2,6 +2,26 @@
   "common": {
     "close": "Đóng"
   },
+  "position": {
+    "header": "Phân Công Vị Trí",
+    "title": "Phân công vị trí cho từng thành viên!",
+    "subtitle": "Nhấn để phân công vị trí",
+    "unassigned": "Chưa phân công",
+    "mainVocal": "Main Vocal",
+    "subVocal": "Sub Vocal",
+    "mainDancer": "Main Dancer",
+    "subDancer": "Sub Dancer",
+    "mainRapper": "Main Rapper",
+    "subRapper": "Sub Rapper",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "Phân công",
+    "confirm": "Lên kế hoạch nhóm",
+    "needMore": "Phân công vị trí cho {{count}} thành viên nữa",
+    "error": {
+      "load": "Không thể tải danh sách thành viên",
+      "update": "Không thể phân công vị trí"
+    }
+  },
   "casting": {
     "title": "Casting Thành Viên Debut",
     "infoBanner": {
@@ -122,6 +142,22 @@
     "completeTitle": "Idol Đã Sẵn Sàng!",
     "completeDescription": "Bắt đầu trò chuyện với idol mơ ước ngay",
     "viewProfile": "Xem Hồ Sơ"
+  },
+  "groupPlanning": {
+    "header": "Lập Kế Hoạch Nhóm",
+    "step1Title": "Đặt tên cho nhóm của bạn",
+    "step2Title": "Tạo biểu tượng nhóm",
+    "namePlaceholder": "vd.) Dreamers, Starlight",
+    "promptPlaceholder": "vd.)",
+    "generate": "Tạo Hình Ảnh",
+    "regenerate": "Tạo Lại Hình Ảnh",
+    "emptyImage": "Hình ảnh profile\nđược tạo sẽ\nhiển thị ở đây",
+    "next": "Tiếp Theo",
+    "error": {
+      "load": "Không thể tải thông tin nhóm",
+      "generate": "Không thể tạo hình ảnh",
+      "update": "Không thể lưu kế hoạch nhóm"
+    }
   },
   "companionCreate": {
     "title": "Tuyển Chọn Thành Viên Ra Mắt",

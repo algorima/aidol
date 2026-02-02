@@ -2,6 +2,26 @@
   "common": {
     "close": "Close"
   },
+  "position": {
+    "header": "Position Assignment",
+    "title": "Assign positions to each member!",
+    "subtitle": "Tap to assign a position",
+    "unassigned": "Unassigned",
+    "mainVocal": "Main Vocal",
+    "subVocal": "Sub Vocal",
+    "mainDancer": "Main Dancer",
+    "subDancer": "Sub Dancer",
+    "mainRapper": "Main Rapper",
+    "subRapper": "Sub Rapper",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "Assign",
+    "confirm": "Plan Group",
+    "needMore": "Assign positions to {{count}} more members",
+    "error": {
+      "load": "Failed to load members",
+      "update": "Failed to assign position"
+    }
+  },
   "casting": {
     "title": "Debut Member Casting",
     "infoBanner": {
@@ -122,6 +142,22 @@
     "completeTitle": "Your Idol is Ready!",
     "completeDescription": "Start chatting with your dream idol now",
     "viewProfile": "View Profile"
+  },
+  "groupPlanning": {
+    "header": "Group Planning",
+    "step1Title": "Name your group",
+    "step2Title": "Create your group emblem",
+    "namePlaceholder": "e.g.) Dreamers, Starlight",
+    "promptPlaceholder": "e.g.)",
+    "generate": "Generate Image",
+    "regenerate": "Regenerate Image",
+    "emptyImage": "Generated profile\nimage will\nappear here",
+    "next": "Next",
+    "error": {
+      "load": "Failed to load group info",
+      "generate": "Failed to generate image",
+      "update": "Failed to save group planning"
+    }
   },
   "companionCreate": {
     "title": "Debut Member Casting",

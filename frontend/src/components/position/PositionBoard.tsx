@@ -7,36 +7,26 @@ import { Loading } from "@/components/Loading";
 import { CHECK_LOTTIE } from "@/constants/assets";
 import type { Companion } from "@/schemas";
 
-import { EmptyState } from "./EmptyState";
-
-interface CastingBoardProps {
+interface PositionBoardProps {
   companions: Companion[];
   isLoading: boolean;
-  onBrowse: () => void;
   onCardClick: (companion: Companion) => void;
   onConfirm: () => void;
 }
 
-const MIN_MEMBERS = 2;
-
-export function CastingBoard({
+export function PositionBoard({
   companions,
   isLoading,
-  onBrowse,
   onCardClick,
   onConfirm,
-}: CastingBoardProps) {
+}: PositionBoardProps) {
   const { t } = useTranslation();
 
-  const canConfirm = companions.length >= MIN_MEMBERS;
-  const isEmpty = companions.length === 0;
+  const unassignedCount = companions.filter((c) => !c.position).length;
+  const canConfirm = unassignedCount === 0 && companions.length > 0;
 
   if (isLoading) {
     return <Loading />;
-  }
-
-  if (isEmpty) {
-    return <EmptyState onBrowse={onBrowse} />;
   }
 
   return (
@@ -61,11 +51,11 @@ export function CastingBoard({
               />
             </div>
             <span className="text-title-s text-base-content">
-              {t("aidol:castingBoard.title")}
+              {t("aidol:position.title")}
             </span>
           </div>
           <p className="text-body-s text-neutral">
-            {t("aidol:castingBoard.subtitle")}
+            {t("aidol:position.subtitle")}
           </p>
         </div>
 
@@ -74,14 +64,14 @@ export function CastingBoard({
             <Card
               key={companion.id}
               companion={companion}
-              variant="castingBoard"
+              variant="position"
               onClick={() => onCardClick(companion)}
             />
           ))}
         </div>
       </div>
 
-      <div className="max-w-mobile fixed inset-x-0 bottom-0 mx-auto px-6 pb-6">
+      <div className="max-w-mobile fixed inset-x-0 bottom-0 z-10 mx-auto px-6 pb-6">
         <button
           type="button"
           onClick={canConfirm ? onConfirm : undefined}
@@ -92,10 +82,8 @@ export function CastingBoard({
           )}
         >
           {canConfirm
-            ? t("aidol:castingBoard.confirm")
-            : t("aidol:castingBoard.needMore", {
-                count: MIN_MEMBERS - companions.length,
-              })}
+            ? t("aidol:position.confirm")
+            : t("aidol:position.needMore", { count: unassignedCount })}
         </button>
       </div>
     </div>

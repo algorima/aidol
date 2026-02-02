@@ -2,6 +2,26 @@
   "common": {
     "close": "关闭"
   },
+  "position": {
+    "header": "位置分配",
+    "title": "给每位成员分配位置！",
+    "subtitle": "点击分配位置",
+    "unassigned": "未分配",
+    "mainVocal": "主唱",
+    "subVocal": "副唱",
+    "mainDancer": "主舞",
+    "subDancer": "副舞",
+    "mainRapper": "主说唱",
+    "subRapper": "副说唱",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "分配",
+    "confirm": "规划组合",
+    "needMore": "还需分配{{count}}人的位置",
+    "error": {
+      "load": "加载成员列表失败",
+      "update": "位置分配失败"
+    }
+  },
   "casting": {
     "title": "出道成员选拔",
     "infoBanner": {
@@ -122,6 +142,22 @@
     "completeTitle": "偶像创建完成！",
     "completeDescription": "现在就和你的梦想偶像聊天吧",
     "viewProfile": "查看资料"
+  },
+  "groupPlanning": {
+    "header": "组合规划",
+    "step1Title": "为你的组合起名",
+    "step2Title": "创建组合徽章",
+    "namePlaceholder": "例）Dreamers、Starlight",
+    "promptPlaceholder": "例）",
+    "generate": "生成图片",
+    "regenerate": "重新生成图片",
+    "emptyImage": "生成的头像\n将显示\n在这里",
+    "next": "下一步",
+    "error": {
+      "load": "无法加载组合信息",
+      "generate": "图片生成失败",
+      "update": "保存组合规划失败"
+    }
   },
   "companionCreate": {
     "title": "出道成员选角",

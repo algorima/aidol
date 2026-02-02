@@ -2,6 +2,26 @@
   "common": {
     "close": "닫기"
   },
+  "position": {
+    "header": "포지션 배정",
+    "title": "멤버별 포지션을 배정하세요!",
+    "subtitle": "탭하여 포지션을 배정할 수 있어요",
+    "unassigned": "미배정",
+    "mainVocal": "메인 보컬",
+    "subVocal": "서브 보컬",
+    "mainDancer": "메인 댄서",
+    "subDancer": "서브 댄서",
+    "mainRapper": "메인 래퍼",
+    "subRapper": "서브 래퍼",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "배정하기",
+    "confirm": "그룹 기획하기",
+    "needMore": "{{count}}명의 포지션을 더 배정해주세요",
+    "error": {
+      "load": "멤버 목록을 불러오지 못했습니다",
+      "update": "포지션 배정에 실패했습니다"
+    }
+  },
   "casting": {
     "title": "데뷔 멤버 캐스팅",
     "infoBanner": {
@@ -113,6 +133,22 @@
     "completeTitle": "아이돌 완성!",
     "completeDescription": "지금 바로 나만의 아이돌과 대화해 보세요",
     "viewProfile": "프로필 보기"
+  },
+  "groupPlanning": {
+    "header": "그룹 기획",
+    "step1Title": "그룹의 이름을 지어주세요",
+    "step2Title": "그룹 엠블럼을 만들어주세요",
+    "namePlaceholder": "예) 드리머즈, 스타라이트",
+    "promptPlaceholder": "예)",
+    "generate": "이미지 생성",
+    "regenerate": "이미지 재생성",
+    "emptyImage": "생성된 프로필\n이미지가\n표시돼요",
+    "next": "다음",
+    "error": {
+      "load": "그룹 정보를 불러오지 못했습니다",
+      "generate": "이미지 생성에 실패했습니다",
+      "update": "그룹 기획 저장에 실패했습니다"
+    }
   },
   "companionCreate": {
     "title": "데뷔 멤버 캐스팅",

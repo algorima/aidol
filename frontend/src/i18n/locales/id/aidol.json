@@ -2,6 +2,26 @@
   "common": {
     "close": "Tutup"
   },
+  "position": {
+    "header": "Penetapan Posisi",
+    "title": "Tetapkan posisi untuk setiap anggota!",
+    "subtitle": "Ketuk untuk menetapkan posisi",
+    "unassigned": "Belum ditetapkan",
+    "mainVocal": "Vokal Utama",
+    "subVocal": "Vokal Pendukung",
+    "mainDancer": "Penari Utama",
+    "subDancer": "Penari Pendukung",
+    "mainRapper": "Rapper Utama",
+    "subRapper": "Rapper Pendukung",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "Tetapkan",
+    "confirm": "Rencanakan Grup",
+    "needMore": "Tetapkan posisi untuk {{count}} anggota lagi",
+    "error": {
+      "load": "Gagal memuat daftar anggota",
+      "update": "Gagal menetapkan posisi"
+    }
+  },
   "casting": {
     "title": "Casting Anggota Debut",
     "infoBanner": {
@@ -122,6 +142,22 @@
     "completeTitle": "Idol Kamu Siap!",
     "completeDescription": "Langsung ngobrol sama idol impianmu sekarang",
     "viewProfile": "Lihat Profil"
+  },
+  "groupPlanning": {
+    "header": "Perencanaan Grup",
+    "step1Title": "Beri nama grupmu",
+    "step2Title": "Buat emblem grup",
+    "namePlaceholder": "cth.) Dreamers, Starlight",
+    "promptPlaceholder": "cth.)",
+    "generate": "Buat Gambar",
+    "regenerate": "Buat Ulang Gambar",
+    "emptyImage": "Gambar profil\nyang dibuat akan\nmuncul di sini",
+    "next": "Selanjutnya",
+    "error": {
+      "load": "Gagal memuat info grup",
+      "generate": "Gagal membuat gambar",
+      "update": "Gagal menyimpan perencanaan grup"
+    }
   },
   "companionCreate": {
     "title": "Casting Member Debut",

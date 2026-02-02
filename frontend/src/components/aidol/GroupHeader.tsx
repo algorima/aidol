@@ -20,7 +20,7 @@ export function GroupHeader({ aidol }: GroupHeaderProps) {
         {aidol.profileImageUrl ? (
           <Image
             src={aidol.profileImageUrl}
-            alt={aidol.name ?? ""}
+            alt={aidol.name ?? "Group"}
             fill
             className="object-cover"
           />

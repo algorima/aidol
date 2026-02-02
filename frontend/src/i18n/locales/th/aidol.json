@@ -2,6 +2,26 @@
   "common": {
     "close": "ปิด"
   },
+  "position": {
+    "header": "กำหนดตำแหน่ง",
+    "title": "กำหนดตำแหน่งให้สมาชิกแต่ละคน!",
+    "subtitle": "แตะเพื่อกำหนดตำแหน่ง",
+    "unassigned": "ยังไม่กำหนด",
+    "mainVocal": "เมนโวคอล",
+    "subVocal": "ซับโวคอล",
+    "mainDancer": "เมนแดนเซอร์",
+    "subDancer": "ซับแดนเซอร์",
+    "mainRapper": "เมนแร็ปเปอร์",
+    "subRapper": "ซับแร็ปเปอร์",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "กำหนด",
+    "confirm": "วางแผนกลุ่ม",
+    "needMore": "กำหนดตำแหน่งอีก {{count}} คน",
+    "error": {
+      "load": "ไม่สามารถโหลดรายชื่อสมาชิก",
+      "update": "ไม่สามารถกำหนดตำแหน่ง"
+    }
+  },
   "casting": {
     "title": "แคสติ้งสมาชิกเดบิวต์",
     "infoBanner": {
@@ -122,6 +142,22 @@
     "completeTitle": "ไอดอลพร้อมแล้ว!",
     "completeDescription": "เริ่มแชทกับไอดอลในฝันของคุณได้เลย",
     "viewProfile": "ดูโปรไฟล์"
+  },
+  "groupPlanning": {
+    "header": "วางแผนกลุ่ม",
+    "step1Title": "ตั้งชื่อกลุ่มของคุณ",
+    "step2Title": "สร้างสัญลักษณ์กลุ่ม",
+    "namePlaceholder": "เช่น) Dreamers, Starlight",
+    "promptPlaceholder": "เช่น)",
+    "generate": "สร้างภาพ",
+    "regenerate": "สร้างภาพใหม่",
+    "emptyImage": "ภาพโปรไฟล์\nที่สร้างขึ้นจะ\nแสดงที่นี่",
+    "next": "ถัดไป",
+    "error": {
+      "load": "ไม่สามารถโหลดข้อมูลกลุ่ม",
+      "generate": "ไม่สามารถสร้างภาพ",
+      "update": "ไม่สามารถบันทึกแผนกลุ่ม"
+    }
   },
   "companionCreate": {
     "title": "แคสติ้งสมาชิกเดบิวต์",

@@ -14,22 +14,22 @@ import type { Companion } from "./companion";
  */
 export const aidolSchema = z.object({
   id: z.string(),
-  name: z.string().nullable().optional(),
+  name: z.string().nullable(),
   email: z.string().nullable().optional(),
   greeting: z.string().nullable().optional(),
   concept: z.string().nullable().optional(),
-  profileImageUrl: z.string().nullable().optional(),
+  profileImageUrl: z.string().nullable(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
 
 export interface AIdol extends BaseRecord {
   id: string;
-  name?: string | null;
+  name: string | null;
   email?: string | null;
   greeting?: string | null;
   concept?: string | null;
-  profileImageUrl?: string | null;
+  profileImageUrl: string | null;
   createdAt: string;
   updatedAt: string;
   companions?: Companion[];

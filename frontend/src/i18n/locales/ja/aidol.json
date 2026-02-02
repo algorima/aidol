@@ -2,6 +2,26 @@
   "common": {
     "close": "閉じる"
   },
+  "position": {
+    "header": "ポジション配置",
+    "title": "メンバーにポジションを配置しよう！",
+    "subtitle": "タップしてポジションを配置できます",
+    "unassigned": "未配置",
+    "mainVocal": "メインボーカル",
+    "subVocal": "サブボーカル",
+    "mainDancer": "メインダンサー",
+    "subDancer": "サブダンサー",
+    "mainRapper": "メインラッパー",
+    "subRapper": "サブラッパー",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "配置する",
+    "confirm": "グループを企画する",
+    "needMore": "あと{{count}}人のポジションを配置してください",
+    "error": {
+      "load": "メンバー一覧の読み込みに失敗しました",
+      "update": "ポジションの配置に失敗しました"
+    }
+  },
   "casting": {
     "title": "デビューメンバーキャスティング",
     "infoBanner": {
@@ -122,6 +142,22 @@
     "completeTitle": "アイドル完成！",
     "completeDescription": "さっそく推しと会話しよう",
     "viewProfile": "プロフィールを見る"
+  },
+  "groupPlanning": {
+    "header": "グループ企画",
+    "step1Title": "グループの名前を決めてください",
+    "step2Title": "グループのエンブレムを作成してください",
+    "namePlaceholder": "例）ドリーマーズ、スターライト",
+    "promptPlaceholder": "例）",
+    "generate": "画像生成",
+    "regenerate": "画像再生成",
+    "emptyImage": "生成されたプロフィール\n画像が\n表示されます",
+    "next": "次へ",
+    "error": {
+      "load": "グループ情報の読み込みに失敗しました",
+      "generate": "画像生成に失敗しました",
+      "update": "グループ企画の保存に失敗しました"
+    }
   },
   "companionCreate": {
     "title": "デビューメンバーキャスティング",

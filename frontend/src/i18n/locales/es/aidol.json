@@ -2,6 +2,26 @@
   "common": {
     "close": "Cerrar"
   },
+  "position": {
+    "header": "Asignación de Posición",
+    "title": "¡Asigna una posición a cada miembro!",
+    "subtitle": "Toca para asignar una posición",
+    "unassigned": "Sin asignar",
+    "mainVocal": "Vocal Principal",
+    "subVocal": "Vocal Secundario",
+    "mainDancer": "Bailarín Principal",
+    "subDancer": "Bailarín Secundario",
+    "mainRapper": "Rapero Principal",
+    "subRapper": "Rapero Secundario",
+    "assignedTo": "{{position}}({{name}})",
+    "assign": "Asignar",
+    "confirm": "Planificar Grupo",
+    "needMore": "Asigna posición a {{count}} miembros más",
+    "error": {
+      "load": "Error al cargar los miembros",
+      "update": "Error al asignar posición"
+    }
+  },
   "casting": {
     "title": "Casting de Debut",
     "infoBanner": {
@@ -122,6 +142,22 @@
     "completeTitle": "¡Tu Idol Está Listo!",
     "completeDescription": "Empieza a chatear con tu idol soñado ahora",
     "viewProfile": "Ver Perfil"
+  },
+  "groupPlanning": {
+    "header": "Planificación del Grupo",
+    "step1Title": "Nombra tu grupo",
+    "step2Title": "Crea el emblema del grupo",
+    "namePlaceholder": "ej.) Dreamers, Starlight",
+    "promptPlaceholder": "ej.)",
+    "generate": "Generar Imagen",
+    "regenerate": "Regenerar Imagen",
+    "emptyImage": "La imagen del perfil\ngenerada aparecerá\naquí",
+    "next": "Siguiente",
+    "error": {
+      "load": "Error al cargar la información del grupo",
+      "generate": "Error al generar la imagen",
+      "update": "Error al guardar la planificación"
+    }
   },
   "companionCreate": {
     "title": "Casting de Miembro Debut",
