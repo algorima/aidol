@@ -42,7 +42,7 @@ export default function CompletePage({ params }: CompletePageProps) {
         id: companionId,
         variables: { name, biography },
       });
-      router.push(`/${lang}/${aidolId}/casting-complete`);
+      router.push(`/${lang}/aidols/${aidolId}/casting-complete`);
     } catch {
       showToast(t("aidol:companionCreate.error.update"), "error");
       setIsSubmitting(false);

@@ -85,7 +85,7 @@ export default function CastingPage({ params }: CastingPageProps) {
 
   const handleCast = useCallback(() => {
     setIsProfileOpen(false);
-    router.push(`/${lang}/${aidolId}/casting-complete`);
+    router.push(`/${lang}/aidols/${aidolId}/casting-complete`);
   }, [lang, aidolId, router]);
 
   const handleNewMember = useCallback(() => {
