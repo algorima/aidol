@@ -1,18 +1,22 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
+import { getApiService } from "@/services/ApiService";
 
 export default function CompanionCreatePage() {
   const params = useParams<{ lang: string; aidolId: string }>();
   const router = useRouter();
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   useEffect(() => {
     const run = async () => {
-      const repository = getMockCompanionRepository();
-      const { data } = await repository.create({
+      const { data } = await companionRepository.create({
         variables: { name: "", aidolId: params.aidolId },
       });
       router.replace(
@@ -20,7 +24,7 @@ export default function CompanionCreatePage() {
       );
     };
     void run();
-  }, [params.lang, params.aidolId, router]);
+  }, [params.lang, params.aidolId, router, companionRepository]);
 
   return (
     <div className="flex min-h-dvh items-center justify-center">
