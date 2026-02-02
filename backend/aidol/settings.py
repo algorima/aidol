@@ -4,8 +4,6 @@ Environment settings for aidol module.
 Provides GoogleGenAISettings for image generation with Google Gemini.
 """
 
-from typing import ClassVar
-
 from pydantic_settings import BaseSettings
 
 
@@ -31,8 +29,6 @@ class GoogleGenAISettings(BaseSettings):
         GOOGLE_API_KEY: Google API key (optional)
         GOOGLE_CLOUD_PROJECT: GCP project ID for Vertex AI (optional)
     """
-
-    INI_SECTION: ClassVar[str] = "google"
 
     api_key: str | None = None
     cloud_project: str | None = None

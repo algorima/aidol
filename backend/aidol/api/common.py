@@ -45,6 +45,7 @@ def register_image_generation_route(
     )
     async def generate_image(request: ImageGenerationRequest):
         """Generate image from prompt."""
+        # Generate and download image
         service = ImageGenerationService(settings=google_settings)
         image = service.generate_and_download_image(
             prompt=request.prompt,
