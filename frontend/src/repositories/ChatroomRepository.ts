@@ -26,7 +26,7 @@ export interface GenerateResponse {
  * Handles chatroom CRUD and message operations
  */
 export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
-  readonly resource = "aidol/chatrooms";
+  readonly resource = "chatrooms";
 
   protected getDataSchema() {
     return chatroomSchema;
@@ -34,7 +34,7 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
 
   /**
    * Get messages from a chatroom
-   * GET /aidol/chatrooms/{id}/messages
+   * GET /chatrooms/{id}/messages
    */
   async getMessages(
     chatroomId: string,
@@ -60,7 +60,7 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
 
   /**
    * Send a message to a chatroom
-   * POST /aidol/chatrooms/{id}/messages
+   * POST /chatrooms/{id}/messages
    *
    * @param chatroomId - The chatroom ID
    * @param content - The message content
@@ -89,7 +89,7 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
 
   /**
    * Generate AI response for a chatroom with a specific companion
-   * POST /aidol/chatrooms/{id}/companions/{companionId}/response
+   * POST /chatrooms/{id}/companions/{companionId}/response
    */
   async generateResponse(
     chatroomId: string,
