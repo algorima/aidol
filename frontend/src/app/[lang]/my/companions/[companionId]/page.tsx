@@ -3,9 +3,6 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
-
-import { AIDOL_NS } from "@/i18n";
 import {
   ChatroomRepository,
   CompanionRepository,
@@ -32,7 +29,6 @@ export default function CompanionProfilePage({
 }: CompanionProfilePageProps): JSX.Element {
   const { lang, companionId } = params;
   const router = useRouter();
-  const { t } = useTranslation();
 
   const [companion, setCompanion] = useState<Companion | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -110,7 +106,7 @@ export default function CompanionProfilePage({
       <div className="flex min-h-dvh items-center justify-center">
         <div className="alert alert-error max-w-md">
           <span>
-            {error?.message || t("companion.notFound", { ns: AIDOL_NS })}
+            {error?.message || "Companion not found"}
           </span>
         </div>
       </div>
@@ -161,7 +157,7 @@ export default function CompanionProfilePage({
           {isCreatingChatroom ? (
             <span className="loading loading-spinner loading-sm" />
           ) : (
-            t("chatroom.startChat", { ns: AIDOL_NS })
+Start Chat
           )}
         </button>
       </div>

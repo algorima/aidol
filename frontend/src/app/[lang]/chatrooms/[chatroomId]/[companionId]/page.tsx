@@ -4,10 +4,8 @@ import * as Sentry from "@sentry/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { ChatRoom } from "@/components/chatroom";
-import { AIDOL_NS } from "@/i18n";
 import { getOrCreateClaimToken } from "@/lib/claimToken";
 import { ChatroomRepository, CompanionRepository } from "@/repositories";
 import { SenderType, type Message } from "@/schemas/chatroom";
@@ -31,7 +29,6 @@ interface ChatPageProps {
 export default function ChatPage({ params }: ChatPageProps): JSX.Element {
   const { lang, chatroomId, companionId } = params;
   const router = useRouter();
-  const { t } = useTranslation();
 
   const [companion, setCompanion] = useState<Companion | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -176,8 +173,7 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
       <div className="flex min-h-dvh items-center justify-center">
         <div className="alert alert-error max-w-md">
           <span>
-            {companionError?.message ||
-              t("companion.notFound", { ns: AIDOL_NS })}
+            {companionError?.message || "Companion not found"}
           </span>
         </div>
       </div>
