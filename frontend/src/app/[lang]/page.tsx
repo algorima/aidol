@@ -21,7 +21,8 @@ export default function AIdolLandingPage({
   const router = useRouter();
 
   const handleStart = () => {
-    router.push(`/${lang}/create`);
+    // TODO: aidolId를 실제 값으로 교체 필요
+    router.push(`/${lang}/aidols/default/casting`);
   };
 
   return (

@@ -144,6 +144,44 @@
     "success": "購読が完了しました！",
     "error": "購読に失敗しました。もう一度お試しください。"
   },
+  "companionCreate": {
+    "title": "デビューメンバーキャスティング",
+    "next": "次へ",
+    "gender": {
+      "stepTitle": "性別を選んでください",
+      "female": "女性",
+      "male": "男性"
+    },
+    "personality": {
+      "stepTitle": "性格を教えてください",
+      "energy": "エネルギーの方向",
+      "energyLeft": "外向型 (E)",
+      "energyRight": "内向型 (I)",
+      "perception": "情報の認識方法",
+      "perceptionLeft": "感覚型 (S)",
+      "perceptionRight": "直観型 (N)",
+      "judgment": "判断の基準",
+      "judgmentLeft": "思考型 (T)",
+      "judgmentRight": "感情型 (F)",
+      "lifestyle": "ライフスタイル",
+      "lifestyleLeft": "判断型 (J)",
+      "lifestyleRight": "認知型 (P)"
+    },
+    "image": {
+      "stepTitle": "プロフィール写真を作ってみましょう！",
+      "promptPlaceholder": "例）黒髪で大きな目の女の子",
+      "generate": "画像生成",
+      "regenerate": "画像再生成",
+      "placeholder": "生成されたプロフィール\n画像が\n表示されます"
+    },
+    "complete": {
+      "nameStepTitle": "名前は何ですか？",
+      "bioStepTitle": "このアイドルの物語を教えてください",
+      "namePlaceholder": "名前を入力してください",
+      "bioPlaceholder": "どんな時間を過ごしましたか？",
+      "button": "キャスティング完了"
+    }
+  },
   "landing": {
     "hero": {
       "title": {

@@ -144,6 +144,44 @@
     "success": "订阅成功！",
     "error": "订阅失败，请重试。"
   },
+  "companionCreate": {
+    "title": "出道成员选角",
+    "next": "下一步",
+    "gender": {
+      "stepTitle": "请选择性别",
+      "female": "女性",
+      "male": "男性"
+    },
+    "personality": {
+      "stepTitle": "告诉我们性格",
+      "energy": "能量方向",
+      "energyLeft": "外向 (E)",
+      "energyRight": "内向 (I)",
+      "perception": "信息感知方式",
+      "perceptionLeft": "感觉 (S)",
+      "perceptionRight": "直觉 (N)",
+      "judgment": "判断标准",
+      "judgmentLeft": "思维 (T)",
+      "judgmentRight": "情感 (F)",
+      "lifestyle": "生活方式",
+      "lifestyleLeft": "判断 (J)",
+      "lifestyleRight": "感知 (P)"
+    },
+    "image": {
+      "stepTitle": "来创建一张头像吧！",
+      "promptPlaceholder": "例）黑发大眼睛的女孩",
+      "generate": "生成图片",
+      "regenerate": "重新生成图片",
+      "placeholder": "生成的头像\n将在此\n显示"
+    },
+    "complete": {
+      "nameStepTitle": "叫什么名字？",
+      "bioStepTitle": "告诉我们这位偶像的故事",
+      "namePlaceholder": "请输入名字",
+      "bioPlaceholder": "经历了怎样的时光？",
+      "button": "完成选角"
+    }
+  },
   "landing": {
     "hero": {
       "title": {
