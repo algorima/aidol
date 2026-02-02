@@ -54,6 +54,13 @@
       "delete": "Xóa thất bại."
     }
   },
+  "castingComplete": {
+    "title": "Casting Thực Tập Sinh Hoàn Tất",
+    "subtitle": "Đã thêm vào danh sách ứng viên casting",
+    "remainingSlots": "Slot Casting Còn Lại",
+    "findNext": "Tìm Thực Tập Sinh Tiếp",
+    "viewBoard": "Xem Bảng Casting"
+  },
   "companion": {
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
     "addMember": "Thêm Thành Viên",

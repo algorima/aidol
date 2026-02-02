@@ -54,6 +54,13 @@
       "delete": "삭제에 실패했습니다."
     }
   },
+  "castingComplete": {
+    "title": "연습생 캐스팅 완료",
+    "subtitle": "연습생 후보 목록에 추가되었습니다",
+    "remainingSlots": "남은 캐스팅 슬롯",
+    "findNext": "다음 연습생 찾기",
+    "viewBoard": "캐스팅 보드 보기"
+  },
   "companion": {
     "promptPlaceholder": "어떤 말투로 대화할까요? 성격을 설명해 주세요...",
     "addMember": "멤버 추가",

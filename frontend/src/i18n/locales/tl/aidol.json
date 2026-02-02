@@ -54,6 +54,13 @@
       "delete": "Hindi matanggal."
     }
   },
+  "castingComplete": {
+    "title": "Kumpleto na ang Casting ng Trainee",
+    "subtitle": "Naidagdag sa listahan ng kandidato",
+    "remainingSlots": "Natitirang Casting Slot",
+    "findNext": "Hanapin ang Susunod na Trainee",
+    "viewBoard": "Tingnan ang Casting Board"
+  },
   "companion": {
     "promptPlaceholder": "Paano nagsasalita ang idol mo? Ilarawan ang personality...",
     "addMember": "Magdagdag ng Miyembro",

@@ -54,6 +54,13 @@
       "delete": "Failed to remove."
     }
   },
+  "castingComplete": {
+    "title": "Trainee Casting Complete",
+    "subtitle": "Added to the casting candidate list",
+    "remainingSlots": "Remaining Casting Slots",
+    "findNext": "Find Next Trainee",
+    "viewBoard": "View Casting Board"
+  },
   "companion": {
     "promptPlaceholder": "How does your idol talk? Describe their vibe...",
     "addMember": "Add Member",
