@@ -41,14 +41,14 @@ const baseCompanion: Companion = {
   updatedAt: "2024-01-01T00:00:00Z",
 };
 
-/** 모든 정보가 있는 프로필 */
+/** 기본 프로필 (능력치 없음) */
 export const Default: Story = {
   args: {
     companion: baseCompanion,
   },
 };
 
-/** 능력치가 있는 프로필 */
+/** 프로필 + 바이오그래피 + 능력치 차트 */
 export const WithStats: Story = {
   args: {
     companion: {
@@ -58,18 +58,7 @@ export const WithStats: Story = {
   },
 };
 
-/** 능력치만 있고 바이오가 없는 프로필 */
-export const StatsOnly: Story = {
-  args: {
-    companion: {
-      ...baseCompanion,
-      biography: undefined,
-      stats: sampleStats,
-    },
-  },
-};
-
-/** 능력치 탭 숨김 */
+/** showStats=false로 능력치 차트 숨김 */
 export const HideStats: Story = {
   args: {
     companion: {
