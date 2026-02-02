@@ -35,6 +35,9 @@ from aidol.schemas import (
 from aidol.services import ResponseGenerationService
 from aidol.settings import Settings
 
+# Maximum number of messages to fetch for conversation history
+DEFAULT_HISTORY_LIMIT = 200
+
 
 class ChatroomSingleItemResponse(BaseModel):
     """Single item response for chatroom."""
@@ -223,7 +226,7 @@ class ChatroomRouter(
             # Get conversation history
             messages = repository.get_messages_by_chatroom_id(
                 chatroom_id=item_id,
-                limit=200,
+                limit=DEFAULT_HISTORY_LIMIT,
                 offset=0,
             )
 
