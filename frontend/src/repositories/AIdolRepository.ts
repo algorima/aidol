@@ -1,5 +1,6 @@
 import { BaseCrudRepository } from "@aioia/core";
 
+import { assertResourceId } from "../lib/assertResourceId";
 import type {
   AIdol,
   AIdolCreate,
@@ -47,6 +48,7 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
     params: { id: string | number },
     fetchOptions?: RequestInit,
   ): Promise<{ data: AIdol }> {
+    assertResourceId(params.id);
     const url = `${this.apiService.buildUrl(this.resource)}/${params.id}`;
     const raw = await this.apiService.request(url, fetchOptions);
     return { data: aidolSchema.parse(raw) };
@@ -59,6 +61,7 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
     id: string | number;
     variables: TVariables;
   }): Promise<{ data: AIdol }> {
+    assertResourceId(params.id);
     const url = `${this.apiService.buildUrl(this.resource)}/${params.id}`;
     const raw = await this.apiService.request(url, {
       method: "PATCH",
