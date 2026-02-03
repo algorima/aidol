@@ -7,11 +7,12 @@ from __future__ import annotations
 
 import unittest
 
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+
 from aidol.context import (
     deduplicate_consecutive_same_role_messages,
     ensure_first_user_message,
 )
-from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 
 class TestEnsureFirstUserMessage(unittest.TestCase):
