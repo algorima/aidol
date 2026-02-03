@@ -192,7 +192,15 @@ class TestFormatCurrentTime(unittest.TestCase):
         self.assertIn("UTC", result)  # UTC offset label
 
         # Check for Korean weekday
-        korean_weekdays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
+        korean_weekdays = [
+            "월요일",
+            "화요일",
+            "수요일",
+            "목요일",
+            "금요일",
+            "토요일",
+            "일요일",
+        ]
         self.assertTrue(any(day in result for day in korean_weekdays))
 
 
