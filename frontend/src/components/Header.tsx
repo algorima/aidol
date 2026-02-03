@@ -29,7 +29,7 @@ export function Header({
   const renderLeft = () => {
     if (logo) {
       return (
-        <Image src="/images/logo.svg" alt="alola" width={60} height={24} />
+        <Image src="/images/logo.svg" alt="alola" width={91} height={27} />
       );
     }
 
@@ -38,10 +38,10 @@ export function Header({
         <button
           type="button"
           onClick={onDropdownClick}
-          className="text-headline-s text-base-content flex items-center gap-1"
+          className="text-headline-s text-base-content flex items-center gap-2"
         >
           <span>{title}</span>
-          <ChevronUpDownIcon className="size-5" />
+          <ChevronUpDownIcon className="size-6" />
         </button>
       );
     }
@@ -52,7 +52,7 @@ export function Header({
           <button
             type="button"
             onClick={onBackClick}
-            className="text-base-content -ml-2 flex size-10 items-center justify-center"
+            className="text-base-content flex items-center justify-center"
             aria-label="뒤로 가기"
           >
             <ArrowLeftIcon className="size-6" />
@@ -62,7 +62,7 @@ export function Header({
           <button
             type="button"
             onClick={onCloseClick}
-            className="text-base-content -ml-2 flex size-10 items-center justify-center"
+            className="text-base-content flex items-center justify-center"
             aria-label="닫기"
           >
             <XMarkIcon className="size-6" />
@@ -74,7 +74,7 @@ export function Header({
   };
 
   return (
-    <header className="h-header bg-base-100 flex shrink-0 items-center justify-between px-6 py-4">
+    <header className="h-header bg-base-100 flex shrink-0 items-center justify-between px-6 py-7">
       {renderLeft()}
       {children && (
         <div className="flex shrink-0 items-center gap-2">{children}</div>
