@@ -41,6 +41,34 @@ export { StepIndicator } from "./components/creation";
 // Landing page components
 export { HeroSection } from "./components/landing";
 
+// Casting components
+export { CastingCardGrid } from "./components/casting";
+export { CastingInfoBanner } from "./components/casting";
+export { GenderFilterTabs } from "./components/casting";
+export type { GenderTab } from "./components/casting";
+
+// Casting board components
+export { CastingBoard } from "./components/casting-board";
+export { CastingComplete } from "./components/casting-board";
+
+// Complete components
+export { CompleteContent } from "./components/complete/CompleteContent";
+
+// Group planning components
+export { Button } from "./components/group-creation";
+export { EmblemStep } from "./components/group-creation";
+export { GroupPlanningLayout } from "./components/group-creation";
+export { TextInput } from "./components/group-creation";
+
+// Position components
+export { PositionBoard } from "./components/position";
+export { PositionSelector } from "./components/position";
+
+// Newsletter components
+export { NewsletterForm } from "./components/newsletter/NewsletterForm";
+
 // Shared components
+export { Header } from "./components/Header";
+export { Loading } from "./components/Loading";
 export { Modal } from "./components/Modal";
 export { ShareButton } from "./components/ShareButton";

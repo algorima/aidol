@@ -14,6 +14,7 @@
 // Repository (server-safe, no React hooks)
 export { AIdolRepository } from "./repositories/AIdolRepository";
 export { CompanionRepository } from "./repositories/CompanionRepository";
+export { LeadsRepository } from "./repositories/LeadsRepository";
 
 // Types & Schemas (server-safe)
 export type {
@@ -33,6 +34,7 @@ export type {
   CompanionStats,
   CompanionUpdate,
   Gender,
+  Position,
 } from "./schemas/companion";
 export { companionSchema } from "./schemas/companion";
 
