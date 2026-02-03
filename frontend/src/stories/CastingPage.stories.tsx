@@ -33,15 +33,12 @@ function CastingPageFull() {
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">
-      <Header
-        title="캐스팅"
-        rightContent={
-          <button type="button" className="btn btn-primary gap-2.5">
-            신규 멤버
-            <PlusIcon className="size-4" />
-          </button>
-        }
-      />
+      <Header title="캐스팅">
+        <button type="button" className="btn btn-primary gap-2.5">
+          신규 멤버
+          <PlusIcon className="size-4" />
+        </button>
+      </Header>
 
       <div className="flex flex-col gap-6 px-6 py-4">
         <CastingInfoBanner />
