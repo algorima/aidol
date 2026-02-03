@@ -25,9 +25,9 @@
   color-scheme: light;
 
   --color-primary: #e70051;
-  --color-primary-content: #fff;
+  --color-primary-content: #fff2f2;
   --color-secondary: #9e54ff;
-  --color-secondary-content: #fff;
+  --color-secondary-content: #f5f3ff;
   --color-accent: #2dd4bf;
   --color-accent-content: #134e4a;
   --color-neutral: #374151;
@@ -52,10 +52,10 @@
   prefersdark: true;
   color-scheme: dark;
 
-  --color-primary: #ff506d;
-  --color-primary-content: #fff;
+  --color-primary: #ff326f;
+  --color-primary-content: #fff2f2;
   --color-secondary: #9e54ff;
-  --color-secondary-content: #fff;
+  --color-secondary-content: #f5f3ff;
   --color-accent: #2dd4bf;
   --color-accent-content: #134e4a;
   --color-neutral: #4b5462;
