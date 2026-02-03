@@ -76,7 +76,7 @@ export const WithActionButton: Story = {
     <Header title="Label">
       <button
         type="button"
-        className="btn btn-primary btn-sm gap-1"
+        className="btn btn-primary btn-lg text-label-l gap-1 rounded-lg"
         onClick={() => alert("액션 클릭")}
       >
         label
