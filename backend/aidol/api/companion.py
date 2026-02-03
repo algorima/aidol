@@ -8,7 +8,7 @@ Public access pattern: no authentication required.
 
 from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
-from aioia_core.fastapi import BaseCrudRouter
+from aioia_core.fastapi import BaseCrudRouter, SingleItemResponse
 from aioia_core.settings import JWTSettings
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
@@ -133,7 +133,7 @@ class CompanionRouter(
 
         @self.router.post(
             f"/{self.resource_name}",
-            response_model=CompanionPublic,
+            response_model=SingleItemResponse[CompanionPublic],
             status_code=status.HTTP_201_CREATED,
             summary="Create Companion",
             description="Create a new Companion. Returns the created companion data.",
@@ -149,14 +149,14 @@ class CompanionRouter(
 
             created = repository.create(sanitized_request)
             # Return created companion as public schema
-            return to_companion_public(created)
+            return SingleItemResponse(data=to_companion_public(created))
 
     def _register_public_get_route(self) -> None:
         """GET /{resource_name}/{id} - Get a Companion (public)"""
 
         @self.router.get(
             f"/{self.resource_name}/{{item_id}}",
-            response_model=CompanionPublic,
+            response_model=SingleItemResponse[CompanionPublic],
             status_code=status.HTTP_200_OK,
             summary="Get Companion",
             description="Get Companion by ID (public endpoint). Returns companion data directly.",
@@ -171,14 +171,14 @@ class CompanionRouter(
             """Get Companion by ID."""
             companion = self._get_item_or_404(repository, item_id)
             # Return companion as public schema
-            return to_companion_public(companion)
+            return SingleItemResponse(data=to_companion_public(companion))
 
     def _register_public_update_route(self) -> None:
         """PATCH /{resource_name}/{id} - Update Companion (public)"""
 
         @self.router.patch(
             f"/{self.resource_name}/{{item_id}}",
-            response_model=CompanionPublic,
+            response_model=SingleItemResponse[CompanionPublic],
             status_code=status.HTTP_200_OK,
             summary="Update Companion",
             description="Update Companion by ID (public endpoint). Returns updated companion data directly.",
@@ -213,7 +213,7 @@ class CompanionRouter(
 
         @self.router.delete(
             f"/{self.resource_name}/{{item_id}}",
-            response_model=CompanionPublic,
+            response_model=SingleItemResponse[CompanionPublic],
             status_code=status.HTTP_200_OK,
             summary="Remove Companion from Group",
             description="Remove Companion from AIdol group (unassign aidol_id). Does not delete the record.",
