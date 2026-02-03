@@ -187,6 +187,9 @@ class ChatroomRouter(
             # Verify chatroom exists
             self._get_item_or_404(repository, item_id)
 
+            # Enforce sender_type as USER to prevent spoofing
+            request.sender_type = SenderType.USER
+
             # Pass MessageCreate directly (aioia-core pattern)
             return repository.add_message_to_chatroom(
                 chatroom_id=item_id,
