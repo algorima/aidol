@@ -81,7 +81,7 @@ export function GroupProfile({
           onClick={handleShare}
         >
           {copied ? t("urlCopied") : t("share")}
-          <ShareIcon className="size-6" />
+          <ShareIcon className="size-5" />
         </button>
       </div>
     </div>
