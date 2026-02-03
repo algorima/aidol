@@ -15,6 +15,10 @@
   }
 }
 
+:root {
+  --color-backdrop: #212121;
+}
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
@@ -41,7 +45,6 @@
   --color-warning-content: #713f12;
   --color-error: #f87171;
   --color-error-content: #7f1d1d;
-  --color-backdrop: #212121;
 }
 
 @plugin "daisyui/theme" {
@@ -70,5 +73,4 @@
   --color-warning-content: #713f12;
   --color-error: #f87171;
   --color-error-content: #7f1d1d;
-  --color-backdrop: #212121;
 }
