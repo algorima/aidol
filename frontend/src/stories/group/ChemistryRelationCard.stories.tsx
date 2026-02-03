@@ -29,6 +29,7 @@ export const Expanded: Story = {
     toName: "서윤",
     relationshipType: "동갑즈",
     description: "아직 어색해요",
+    onClick: () => alert("카드 클릭"),
     onClose: () => alert("닫기"),
   },
 };
