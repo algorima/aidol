@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "base-400": "var(--color-base-400)",
+        backdrop: "var(--color-backdrop)",
+      },
       // 레이아웃 토큰
       maxWidth: {
         mobile: "393px",
