@@ -96,12 +96,8 @@ class ChatroomRepository(
         Returns:
             Message or CompanionMessage with id guaranteed to be set
         """
-        # sender_type is str (or str-based enum value)
-        sender_type_value = (
-            message.sender_type.value
-            if hasattr(message.sender_type, "value")
-            else message.sender_type
-        )
+        # sender_type.value is guaranteed by Pydantic validation
+        sender_type_value = message.sender_type.value
 
         # Get companion_id if available (CompanionMessageCreate has it)
         companion_id = getattr(message, "companion_id", None)
