@@ -237,5 +237,8 @@
       "line4": "Proyecto Próxima Generación",
       "cta": "Seleccionar Aprendices"
     }
+  },
+  "group": {
+    "chemistryButton": "Química entre Miembros"
   }
 }

@@ -237,5 +237,8 @@
       "line4": "Next Generation Project",
       "cta": "Cast Trainees"
     }
+  },
+  "group": {
+    "chemistryButton": "Member Chemistry"
   }
 }

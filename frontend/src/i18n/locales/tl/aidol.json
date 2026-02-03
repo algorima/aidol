@@ -237,5 +237,8 @@
       "line4": "Next Generation Project",
       "cta": "Mag-cast ng Trainee"
     }
+  },
+  "group": {
+    "chemistryButton": "Chemistry ng mga Miyembro"
   }
 }
