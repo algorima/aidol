@@ -20,9 +20,8 @@ const sampleImage =
 export const Default: Story = {
   args: {
     profileImageUrl: sampleImage,
-    name: "스타라이트",
-    season: "시즌 1",
-    date: "2025.01.15",
+    name: "시즌1 데뷔조",
+    createdAt: "2026-01-29T00:00:00Z",
     onChemistryClick: () => alert("멤버 간 케미"),
     shareUrl: "https://example.com/group/1",
   },
@@ -32,28 +31,18 @@ export const WithoutImage: Story = {
   args: {
     profileImageUrl: null,
     name: "드리머즈",
-    season: "시즌 2",
-    date: "2025.03.20",
+    createdAt: "2026-01-20T00:00:00Z",
     onChemistryClick: () => alert("멤버 간 케미"),
     shareUrl: "https://example.com/group/2",
   },
 };
 
-export const SeasonOnly: Story = {
+export const RecentlyCreated: Story = {
   args: {
     profileImageUrl: sampleImage,
     name: "루미너스",
-    season: "시즌 1",
+    createdAt: new Date().toISOString(),
     onChemistryClick: () => alert("멤버 간 케미"),
     shareUrl: "https://example.com/group/3",
-  },
-};
-
-export const NoMetadata: Story = {
-  args: {
-    profileImageUrl: sampleImage,
-    name: "노바",
-    onChemistryClick: () => alert("멤버 간 케미"),
-    shareUrl: "https://example.com/group/4",
   },
 };
