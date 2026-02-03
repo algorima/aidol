@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 interface ModalAction {
@@ -17,6 +17,15 @@ interface ModalProps {
 
 export function Modal({ isOpen, onClose, children, action }: ModalProps) {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -53,7 +62,7 @@ export function Modal({ isOpen, onClose, children, action }: ModalProps) {
                 type="button"
                 onClick={action.onClick}
                 className={clsx(
-                  "btn btn-lg text-label-l flex-1",
+                  "btn btn-lg text-label-l flex-1 rounded-lg",
                   action.variant === "neutral" ? "btn-neutral" : "btn-primary",
                 )}
               >
