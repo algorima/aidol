@@ -84,7 +84,7 @@ const config: Config = {
         // Label - 보조 텍스트
         "label-l": [
           "0.875rem",
-          { lineHeight: "1.429", fontWeight: "500", letterSpacing: "0" },
+          { lineHeight: "1.429", fontWeight: "700", letterSpacing: "0" },
         ],
         "label-m": [
           "0.75rem",
