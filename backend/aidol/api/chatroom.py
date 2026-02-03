@@ -184,6 +184,9 @@ class ChatroomRouter(
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""
+            # Verify chatroom exists
+            self._get_item_or_404(repository, item_id)
+
             # Pass MessageCreate directly (aioia-core pattern)
             return repository.add_message_to_chatroom(
                 chatroom_id=item_id,
