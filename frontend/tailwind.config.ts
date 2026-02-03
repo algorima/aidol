@@ -66,7 +66,7 @@ const config: Config = {
         ],
         "title-s": [
           "1.125rem",
-          { lineHeight: "1.556", fontWeight: "600", letterSpacing: "0" },
+          { lineHeight: "1.556", fontWeight: "700", letterSpacing: "0" },
         ],
         // Body - 본문 텍스트
         "body-l": [
