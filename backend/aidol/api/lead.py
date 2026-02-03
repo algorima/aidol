@@ -6,7 +6,7 @@ Public endpoints for collecting leads (emails).
 
 from typing import Annotated
 
-from aioia_core.fastapi import BaseCrudRouter
+from aioia_core.fastapi import BaseCrudRouter, SingleItemResponse
 from aioia_core.settings import JWTSettings
 from fastapi import APIRouter, Depends, Header, status
 from pydantic import BaseModel
@@ -53,7 +53,7 @@ class LeadRouter(
 
         @self.router.post(
             f"/{self.resource_name}",
-            response_model=LeadResponse,
+            response_model=SingleItemResponse[LeadResponse],
             status_code=status.HTTP_201_CREATED,
             summary="Collect Lead",
             description="Collect email. Associates with AIdol if ClaimToken is valid.",
@@ -96,7 +96,7 @@ class LeadRouter(
             if not email_saved:
                 lead_repository.create(request)
 
-            return LeadResponse(email=request.email)
+            return SingleItemResponse(data=LeadResponse(email=request.email))
 
 
 def create_lead_router(
