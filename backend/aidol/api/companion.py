@@ -206,7 +206,7 @@ class CompanionRouter(
                 )
 
             # Return updated companion as public schema
-            return to_companion_public(updated)
+            return SingleItemResponse(data=to_companion_public(updated))
 
     def _register_public_delete_route(self) -> None:
         """DELETE /{resource_name}/{id} - Remove Companion from Group (public)"""
@@ -241,7 +241,7 @@ class CompanionRouter(
                 )
 
             # Return updated companion as public schema
-            return to_companion_public(updated)
+            return SingleItemResponse(data=to_companion_public(updated))
 
 
 def create_companion_router(
