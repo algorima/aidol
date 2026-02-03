@@ -77,7 +77,7 @@ export function GroupProfile({
           {t("group.chemistryButton")}
         </button>
         <button
-          className="bg-base-300 text-base-content/60 text-label-l flex w-full items-center justify-center gap-2 rounded-lg p-4 font-bold"
+          className="btn bg-base-300 text-base-content/60 text-label-l w-full rounded-lg"
           onClick={handleShare}
         >
           {copied ? t("urlCopied") : t("share")}
