@@ -53,6 +53,7 @@ export default defineConfig({
     dts({
       include: [
         "src/components/**/*",
+        "src/lib/**/*",
         "src/repositories/**/*",
         "src/schemas/**/*",
         "src/index.ts",
