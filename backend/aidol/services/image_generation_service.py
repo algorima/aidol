@@ -1,7 +1,7 @@
 """
-Image generation service for AIdol
+Image generation service for AIdol.
 
-Generates images using OpenAI DALL-E 3 for AIdol emblems and Companion profiles.
+Generates images using Google Gemini for AIdol emblems and Companion profiles.
 """
 
 from __future__ import annotations
@@ -14,6 +14,8 @@ from typing import Literal
 import PIL.Image
 from google import genai
 from google.genai import errors as genai_errors
+
+from aidol.settings import GoogleGenAISettings
 
 logger = logging.getLogger(__name__)
 
@@ -31,23 +33,33 @@ class ImageGenerationService:
 
     client: "genai.Client | None" = None
 
-    def __init__(self, api_key: str | None = None, settings=None):
+    def __init__(self, settings: GoogleGenAISettings | None = None):
         """
         Initialize the Image Generation service.
 
-        Args:
-            api_key: Google API Key.
-            settings: Unused, kept for compatibility.
-        """
+        Supports two authentication methods:
+        1. Google AI API: settings.api_key
+        2. Vertex AI API (ADC): settings.cloud_project (location=global hardcoded)
 
-        # Use explicitly provided api_key, otherwise fallback to settings or env
-        if api_key:
-            self.client = genai.Client(api_key=api_key)
-        elif settings and hasattr(settings, "api_key") and settings.api_key:
+        Args:
+            settings: GoogleGenAISettings for configuration.
+        """
+        # Priority 1: Settings with api_key (Google AI API)
+        if settings and settings.api_key:
             self.client = genai.Client(api_key=settings.api_key)
+        # Priority 2: Settings with cloud_project (Vertex AI, location=global)
+        elif settings and settings.cloud_project:
+            self.client = genai.Client(
+                vertexai=True,
+                project=settings.cloud_project,
+                location="global",
+            )
         else:
-            # Try loading from GOOGLE_API_KEY environment variable (Client handles this)
-            self.client = genai.Client()
+            logger.error(
+                "No authentication configured. "
+                "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT"
+            )
+            self.client = None
 
     def generate_and_download_image(
         self,

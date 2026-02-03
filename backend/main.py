@@ -7,10 +7,14 @@ Usage:
     uvicorn main:app --reload
 
 Environment Variables:
-    DATABASE_URL: PostgreSQL database URL
-    OPENAI_API_KEY: OpenAI API key for image generation
-    JWT_SECRET_KEY: JWT secret key (default: dev-secret for development)
+    DATABASE_URL: PostgreSQL database URL (default: sqlite:///./local_database.db)
+    GOOGLE_API_KEY: Google API key for image generation (optional, ADC supported)
     LOG_LEVEL: Logging level (default: INFO)
+
+Authentication:
+    For image generation, one of the following is required:
+    - GOOGLE_API_KEY environment variable
+    - Application Default Credentials (gcloud auth application-default login)
 """
 
 import base64
@@ -44,6 +48,7 @@ from aidol.factories import (
     CompanionRepositoryFactory,
 )
 from aidol.protocols import ImageStorageProtocol
+from aidol.settings import GoogleGenAISettings
 
 # Configure logging
 logging.basicConfig(
@@ -75,15 +80,20 @@ class Base64ImageStorage(ImageStorageProtocol):
 
 # BaseSettings automatically reads from environment variables
 db_settings = DatabaseSettings()  # DATABASE_URL
+google_settings = GoogleGenAISettings()  # GOOGLE_API_KEY or Vertex AI with ADC
 
-# Helper to load GOOGLE_API_KEY from environment
-google_api_key = os.getenv("GOOGLE_API_KEY")
-
-if not google_api_key:
-    logger.error("GOOGLE_API_KEY not found in environment variables.")
-    raise ValueError("GOOGLE_API_KEY is required for image generation.")
-
-logger.info("Google API Key loaded.")
+if google_settings.api_key:
+    logger.info("Image generation: Google AI API (GOOGLE_API_KEY)")
+elif google_settings.cloud_project:
+    logger.info(
+        "Image generation: Vertex AI with ADC (project=%s)",
+        google_settings.cloud_project,
+    )
+else:
+    logger.warning(
+        "Image generation: Not configured. "
+        "Set GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT"
+    )
 
 logger.info("Loaded settings from environment variables")
 logger.info(
@@ -202,7 +212,7 @@ async def internal_exception_handler(request: Request, exc: Exception):
 
 # Create and include AIdol router
 aidol_router = create_aidol_router(
-    google_api_key=google_api_key,
+    google_settings=google_settings,
     db_session_factory=db_session_factory,
     repository_factory=AIdolRepositoryFactory(),
     image_storage=image_storage,
@@ -211,7 +221,7 @@ app.include_router(aidol_router)
 
 # Create and include Companion router
 companion_router = create_companion_router(
-    google_api_key=google_api_key,
+    google_settings=google_settings,
     db_session_factory=db_session_factory,
     repository_factory=CompanionRepositoryFactory(),
     image_storage=image_storage,

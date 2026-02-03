@@ -5,7 +5,7 @@ AI 아이돌 그룹 생성 및 채팅 Python 패키지
 ## 주요 기능
 
 - AI 아이돌 그룹/멤버 CRUD
-- DALL-E 3 이미지 생성 (엠블럼, 프로필)
+- Google Gemini 이미지 생성 (엠블럼, 프로필)
 - 텍스트 채팅 (페르소나 기반 응답)
 - Buppy 통합 Adapter 패턴
 
@@ -33,7 +33,7 @@ from aidol.factories import AIdolRepositoryFactory, CompanionRepositoryFactory
 # AIdol 라우터
 aidol_router = AIdolRouter(
     repository_factory=AIdolRepositoryFactory(),
-    openai_settings=openai_settings,
+    google_settings=google_settings,
     image_storage=image_storage,
 )
 
@@ -58,11 +58,27 @@ make format
 
 ## 환경 변수
 
-### 필수 (이미지 생성 시)
+### 이미지 생성 인증 (선택, ADC 지원)
 
 | 변수 | 설명 |
 |------|------|
-| `OPENAI_API_KEY` | OpenAI API 키 |
+| `GOOGLE_API_KEY` | Google API 키 (Google AI API) |
+| `GOOGLE_CLOUD_PROJECT` | GCP 프로젝트 ID (Vertex AI) |
+
+**인증 방법:**
+
+**Option 1: Google AI API (API Key)**
+```bash
+export GOOGLE_API_KEY=your-api-key
+```
+
+**Option 2: Vertex AI (ADC)**
+```bash
+export GOOGLE_CLOUD_PROJECT=your-project-id
+gcloud auth application-default login  # 로컬 개발
+```
+
+> **참고**: Vertex AI 사용 시 `location=global`이 하드코딩되어 있습니다 (Gemini 이미지 생성 모델 요구사항).
 
 ### 선택
 
@@ -77,7 +93,8 @@ make format
 
 - aioia-core (공통 인프라)
 - FastAPI, SQLAlchemy, Pydantic
-- OpenAI (이미지 생성, 채팅)
+- Google Generative AI (이미지 생성)
+- OpenAI (채팅)
 - Pillow (이미지 처리)
 
 ## 라이선스

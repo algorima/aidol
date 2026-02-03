@@ -14,12 +14,13 @@ from aidol.schemas import (
     ImageGenerationResponse,
 )
 from aidol.services import ImageGenerationService
+from aidol.settings import GoogleGenAISettings
 
 
 def register_image_generation_route(
     router: APIRouter,
     resource_name: str,
-    google_api_key: str | None,
+    google_settings: GoogleGenAISettings | None,
     image_storage: ImageStorageProtocol,
 ) -> None:
     """
@@ -28,7 +29,7 @@ def register_image_generation_route(
     Args:
         router: FastAPI APIRouter instance
         resource_name: Resource name for the route path
-        google_api_key: Google API Key
+        google_settings: Google API settings (API Key or Vertex AI with ADC)
         image_storage: Image Storage instance
     """
 
@@ -45,7 +46,7 @@ def register_image_generation_route(
     async def generate_image(request: ImageGenerationRequest):
         """Generate image from prompt."""
         # Generate and download image
-        service = ImageGenerationService(api_key=google_api_key)
+        service = ImageGenerationService(settings=google_settings)
         image = service.generate_and_download_image(
             prompt=request.prompt,
             size="1024x1024",

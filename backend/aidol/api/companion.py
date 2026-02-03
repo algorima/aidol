@@ -28,6 +28,7 @@ from aidol.schemas import (
     Gender,
 )
 from aidol.services.companion_service import to_companion_public
+from aidol.settings import GoogleGenAISettings
 
 
 class CompanionPaginatedResponse(BaseModel):
@@ -51,11 +52,11 @@ class CompanionRouter(
 
     def __init__(
         self,
-        google_api_key: str | None,
+        google_settings: GoogleGenAISettings | None,
         image_storage: ImageStorageProtocol,
         **kwargs,
     ):
-        self.google_api_key = google_api_key
+        self.google_settings = google_settings
         self.image_storage = image_storage
         super().__init__(**kwargs)
 
@@ -65,7 +66,7 @@ class CompanionRouter(
         register_image_generation_route(
             router=self.router,
             resource_name=self.resource_name,
-            google_api_key=self.google_api_key,
+            google_settings=self.google_settings,
             image_storage=self.image_storage,
         )
 
@@ -244,7 +245,7 @@ class CompanionRouter(
 
 
 def create_companion_router(
-    google_api_key: str | None,
+    google_settings: GoogleGenAISettings | None,
     db_session_factory: sessionmaker,
     repository_factory: CompanionRepositoryFactoryProtocol,
     image_storage: ImageStorageProtocol,
@@ -257,7 +258,7 @@ def create_companion_router(
     Create Companion router with dependency injection.
 
     Args:
-        google_api_key: Google API Key for image generation
+        google_settings: Google API settings (uses ADC if api_key is None)
         db_session_factory: Database session factory
         repository_factory: Factory implementing CompanionRepositoryFactoryProtocol
         image_storage: Image storage for permanent URLs
@@ -270,7 +271,7 @@ def create_companion_router(
         FastAPI APIRouter instance
     """
     router = CompanionRouter(
-        google_api_key=google_api_key,
+        google_settings=google_settings,
         image_storage=image_storage,
         model_class=Companion,
         create_schema=CompanionCreate,
