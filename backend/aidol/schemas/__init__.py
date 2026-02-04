@@ -25,6 +25,7 @@ from aidol.schemas.chatroom import (
     Message,
     MessageBase,
     MessageCreate,
+    MessageCreateWithClaim,
     SenderType,
 )
 from aidol.schemas.companion import (
@@ -67,6 +68,7 @@ __all__ = [
     "Message",
     "MessageBase",
     "MessageCreate",
+    "MessageCreateWithClaim",
     "SenderType",
     # Companion
     "Companion",
