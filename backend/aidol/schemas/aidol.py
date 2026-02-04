@@ -37,8 +37,6 @@ class AIdolCreate(AIdolBase):
     claim_token is read from the ClaimToken cookie (set by Next.js middleware).
     """
 
-    pass
-
 
 class AIdolUpdate(BaseModel):
     """Schema for updating an AIdol group (all fields optional)."""
