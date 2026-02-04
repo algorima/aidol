@@ -25,7 +25,6 @@ from aidol.schemas import (
     CompanionCreate,
     CompanionPublic,
     CompanionUpdate,
-    Gender,
 )
 from aidol.services.companion_service import to_companion_public
 from aidol.settings import GoogleGenAISettings
