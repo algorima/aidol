@@ -16,7 +16,7 @@ from sqlalchemy.orm import Session
 
 from aidol.schemas import (
     AIdol,
-    AIdolCreate,
+    AIdolCreateWithClaim,
     AIdolLead,
     AIdolLeadCreate,
     AIdolUpdate,
@@ -95,7 +95,7 @@ class ChatroomRepositoryFactoryProtocol(Protocol):
 
 
 class AIdolRepositoryProtocol(
-    CrudRepositoryProtocol[AIdol, AIdolCreate, AIdolUpdate], Protocol
+    CrudRepositoryProtocol[AIdol, AIdolCreateWithClaim, AIdolUpdate], Protocol
 ):
     """Protocol defining AIdol repository expectations.
 
@@ -103,12 +103,6 @@ class AIdolRepositoryProtocol(
     the exact interface that AIdolRouter uses. Inherits CRUD operations
     from CrudRepositoryProtocol.
     """
-
-    def create_with_claim_token(
-        self, schema: AIdolCreate, claim_token: str | None = None
-    ) -> AIdol:
-        """Create AIdol with claim_token from Cookie."""
-        ...
 
 
 class AIdolRepositoryFactoryProtocol(Protocol):

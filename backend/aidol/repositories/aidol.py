@@ -7,14 +7,13 @@ AIdol repository
 Implements BaseRepository pattern for BaseCrudRouter compatibility.
 """
 
-from datetime import datetime, timezone
-from uuid import uuid4
+from datetime import timezone
 
 from aioia_core.repositories import BaseRepository
 from sqlalchemy.orm import Session
 
 from aidol.models import DBAIdol
-from aidol.schemas import AIdol, AIdolCreate, AIdolUpdate
+from aidol.schemas import AIdol, AIdolCreateWithClaim, AIdolUpdate
 
 
 def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
@@ -36,12 +35,14 @@ def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
     )
 
 
-def _convert_aidol_create_to_db(schema: AIdolCreate) -> dict:
-    """Convert AIdolCreate schema to DB model data dict."""
+def _convert_aidol_create_to_db(schema: AIdolCreateWithClaim) -> dict:
+    """Convert AIdolCreateWithClaim schema to DB model data dict."""
     return schema.model_dump(exclude_unset=True)
 
 
-class AIdolRepository(BaseRepository[AIdol, DBAIdol, AIdolCreate, AIdolUpdate]):
+class AIdolRepository(
+    BaseRepository[AIdol, DBAIdol, AIdolCreateWithClaim, AIdolUpdate]
+):
     """
     Database-backed AIdol repository.
 
@@ -55,28 +56,3 @@ class AIdolRepository(BaseRepository[AIdol, DBAIdol, AIdolCreate, AIdolUpdate]):
             convert_to_model=_convert_db_aidol_to_model,
             convert_to_db_model=_convert_aidol_create_to_db,
         )
-
-    def create_with_claim_token(
-        self, schema: AIdolCreate, claim_token: str | None = None
-    ) -> AIdol:
-        """Create AIdol with claim_token from Cookie.
-
-        claim_token is read from Cookie (not body), so it's passed separately.
-        """
-        create_data = self.convert_to_db_model(schema)
-        if claim_token:
-            create_data["claim_token"] = claim_token
-
-        # BaseRepository.create() logic
-        if "id" not in create_data or create_data.get("id") is None:
-            create_data["id"] = str(uuid4())
-        if "created_at" not in create_data or create_data.get("created_at") is None:
-            create_data["created_at"] = datetime.now(timezone.utc)
-        if "updated_at" not in create_data or create_data.get("updated_at") is None:
-            create_data["updated_at"] = datetime.now(timezone.utc)
-
-        db_item = self.db_model(**create_data)
-        self.db_session.add(db_item)
-        self.db_session.commit()
-        self.db_session.refresh(db_item)
-        return self.convert_to_model(db_item)

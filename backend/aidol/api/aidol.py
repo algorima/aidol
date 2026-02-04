@@ -22,7 +22,13 @@ from aidol.protocols import (
     AIdolRepositoryProtocol,
     ImageStorageProtocol,
 )
-from aidol.schemas import AIdol, AIdolCreate, AIdolPublic, AIdolUpdate
+from aidol.schemas import (
+    AIdol,
+    AIdolCreate,
+    AIdolCreateWithClaim,
+    AIdolPublic,
+    AIdolUpdate,
+)
 from aidol.settings import GoogleGenAISettings
 
 
@@ -33,7 +39,7 @@ class AIdolCreateResponse(BaseModel):
 
 
 class AIdolRouter(
-    BaseCrudRouter[AIdol, AIdolCreate, AIdolUpdate, AIdolRepositoryProtocol]
+    BaseCrudRouter[AIdol, AIdolCreateWithClaim, AIdolUpdate, AIdolRepositoryProtocol]
 ):
     """
     AIdol router with public endpoints.
@@ -113,7 +119,11 @@ class AIdolRouter(
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
-            created = repository.create_with_claim_token(request, claim_token)
+            # Convert body schema to internal schema with claim_token from Cookie
+            create_data = AIdolCreateWithClaim(
+                **request.model_dump(), claim_token=claim_token
+            )
+            created = repository.create(create_data)
 
             # Set ClaimToken cookie for ownership verification
             if created.claim_token:
