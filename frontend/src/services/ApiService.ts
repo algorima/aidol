@@ -13,6 +13,13 @@ export class ApiService extends BaseApiService {
   }
 
   /**
+   * No custom auth headers needed - ClaimToken is sent via httpOnly cookie.
+   */
+  protected getAuthHeaders(): Record<string, string> {
+    return {};
+  }
+
+  /**
    * Handle API errors
    */
   protected async handleError(response: Response): Promise<never> {
