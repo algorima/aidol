@@ -27,7 +27,7 @@ from aidol.schemas import (
     CompanionCreate,
     CompanionUpdate,
     Message,
-    MessageCreate,
+    MessageCreateWithClaim,
 )
 
 
@@ -64,13 +64,13 @@ class ChatroomRepositoryProtocol(
         ...
 
     def add_message_to_chatroom(
-        self, chatroom_id: str, message: MessageCreate
+        self, chatroom_id: str, message: MessageCreateWithClaim
     ) -> Message:
         """Add a message to a chatroom.
 
         Args:
             chatroom_id: Chatroom ID.
-            message: MessageCreate or CompanionMessageCreate schema.
+            message: MessageCreateWithClaim or CompanionMessageCreate schema (with claim_token).
         """
         ...
 
