@@ -118,6 +118,12 @@ class AIdolRouter(
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
+            if not claim_token:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="ClaimToken cookie is required",
+                )
+
             # Convert body schema to internal schema with claim_token from Cookie
             create_data = AIdolCreateWithClaim(
                 **request.model_dump(), claim_token=claim_token
