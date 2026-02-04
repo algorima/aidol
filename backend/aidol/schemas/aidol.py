@@ -3,7 +3,7 @@ AIdol (group) schemas
 
 Schema hierarchy:
 - AIdolBase: Mutable fields (used in Create/Update)
-- AIdolCreate: Base + optional claim_token
+- AIdolCreate: Base fields only (claim_token via Cookie)
 - AIdolUpdate: Base fields only
 - AIdol: Response with all fields including claim_token (internal use)
 - AIdolPublic: Response without sensitive fields (API use)
@@ -34,14 +34,10 @@ class AIdolBase(BaseModel):
 class AIdolCreate(AIdolBase):
     """Schema for creating an AIdol group (no id).
 
-    claim_token is optional in the request body.
-    If not provided, it will be read from the ClaimToken cookie (set by middleware).
+    claim_token is read from the ClaimToken cookie (set by Next.js middleware).
     """
 
-    claim_token: str | None = Field(
-        default=None,
-        description="Client-generated UUID for ownership verification (optional, uses cookie if not provided)",
-    )
+    pass
 
 
 class AIdolUpdate(BaseModel):
