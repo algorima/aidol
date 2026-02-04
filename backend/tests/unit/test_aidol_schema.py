@@ -17,11 +17,10 @@ from aidol.schemas import AIdolCreate, AIdolPublic
 class TestAIdolCreateSchema(unittest.TestCase):
     """AIdolCreate 스키마 유닛 테스트"""
 
-    def test_claim_token_required(self):
-        """claimToken 없이 생성하면 ValidationError 발생해야 함"""
-
-        with self.assertRaises(ValidationError):
-            AIdolCreate()  # type: ignore
+    def test_claim_token_optional(self):
+        """claimToken 없이도 생성 가능해야 함 (쿠키에서 읽음)"""
+        schema = AIdolCreate()
+        self.assertIsNone(schema.claim_token)
 
     def test_request_with_claim_token(self):
         """claimToken을 포함한 요청이 유효해야 함"""

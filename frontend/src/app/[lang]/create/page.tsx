@@ -7,7 +7,7 @@ import {
   GroupCreation,
   type GroupCreationFormData,
 } from "@/components/creation/GroupCreation";
-import { getOrCreateClaimToken } from "@/lib/claimToken";
+import { getClaimToken } from "@/lib/claimToken";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
 import type { AIdolCreate, ImageGenerationRequest } from "@/schemas/aidol";
 import type { CompanionCreate } from "@/schemas/companion";
@@ -70,12 +70,13 @@ export default function AIdolCreatePage({
       setError(null);
       try {
         // 1. Create AIdol group (profileImageUrl is now required)
-        const claimToken = getOrCreateClaimToken();
+        // Migration: send localStorage token if exists, otherwise cookie/backend handles it
+        const claimToken = getClaimToken();
         const aidolData: AIdolCreate = {
           name: data.groupName,
           concept: data.concept || null,
           profileImageUrl: data.profileImageUrl,
-          claimToken,
+          ...(claimToken && { claimToken }),
         };
 
         const aidol = await aidolRepository.createAIdol(aidolData);

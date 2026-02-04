@@ -6,11 +6,14 @@ Public endpoints for AIdol group creation and retrieval.
 Public access pattern: no authentication required.
 """
 
+import uuid
+from typing import Annotated
+
 from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
@@ -107,14 +110,36 @@ class AIdolRouter(
         async def create_aidol(
             request: AIdolCreate,
             response: Response,
+            claim_token_cookie: Annotated[
+                str | None, Cookie(alias="ClaimToken")
+            ] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
-            created = repository.create(request)
+            # Determine claim_token: body > cookie > generate new
+            claim_token = request.claim_token or claim_token_cookie or str(uuid.uuid4())
 
-            # Set ClaimToken header
+            # Create with resolved claim_token
+            create_data = AIdolCreate(
+                name=request.name,
+                email=request.email,
+                greeting=request.greeting,
+                concept=request.concept,
+                profile_image_url=request.profile_image_url,
+                claim_token=claim_token,
+            )
+            created = repository.create(create_data)
+
+            # Set ClaimToken cookie for ownership verification
             if created.claim_token:
-                response.headers["ClaimToken"] = created.claim_token
+                response.set_cookie(
+                    key="ClaimToken",
+                    value=created.claim_token,
+                    httponly=True,
+                    secure=False,  # MVP http environment
+                    samesite="lax",
+                    max_age=60 * 60 * 24 * 365,  # 1 year
+                )
 
             # Return only id
             return AIdolCreateResponse(id=created.id)

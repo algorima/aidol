@@ -138,13 +138,48 @@ app = FastAPI(
 )
 
 # CORS middleware
+# Note: allow_origins=["*"] + allow_credentials=True is forbidden by browser spec
+# Use allow_origin_regex for development environments with varying ports
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# ==============================================================================
+# ClaimToken Cookie Migration Middleware
+# ==============================================================================
+
+
+@app.middleware("http")
+async def claim_token_cookie_migration(request: Request, call_next):
+    """
+    Middleware to migrate ClaimToken from header to cookie.
+
+    If the request has a ClaimToken header but no cookie, set the cookie
+    in the response to enable automatic migration from localStorage.
+    """
+    response = await call_next(request)
+
+    # Check if cookie migration is needed
+    claim_token_cookie = request.cookies.get("ClaimToken")
+    claim_token_header = request.headers.get("ClaimToken")
+
+    if claim_token_header and not claim_token_cookie:
+        # Migrate: set cookie from header value
+        response.set_cookie(
+            key="ClaimToken",
+            value=claim_token_header,
+            httponly=True,
+            secure=False,  # MVP http environment
+            samesite="lax",
+            max_age=60 * 60 * 24 * 365,  # 1 year
+        )
+
+    return response
 
 
 # ==============================================================================

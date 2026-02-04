@@ -34,12 +34,13 @@ class AIdolBase(BaseModel):
 class AIdolCreate(AIdolBase):
     """Schema for creating an AIdol group (no id).
 
-    claim_token is required for ownership verification.
+    claim_token is optional in the request body.
+    If not provided, it will be read from the ClaimToken cookie (set by middleware).
     """
 
-    claim_token: str = Field(
-        ...,
-        description="Client-generated UUID for ownership verification",
+    claim_token: str | None = Field(
+        default=None,
+        description="Client-generated UUID for ownership verification (optional, uses cookie if not provided)",
     )
 
 
