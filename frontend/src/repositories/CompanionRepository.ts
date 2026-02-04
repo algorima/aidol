@@ -8,7 +8,7 @@ import type {
 } from "../schemas";
 import { companionSchema, imageGenerationResponseSchema } from "../schemas";
 
-/** Backend returns unwrapped responses — overrides wrap raw JSON in { data } */
+/** Backend returns wrapped responses { data: T } — parse raw.data */
 export class CompanionRepository extends BaseCrudRepository<Companion> {
   readonly resource = "companions";
 
@@ -25,7 +25,7 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(params.variables),
     });
-    return { data: companionSchema.parse(raw) };
+    return { data: companionSchema.parse((raw as { data: unknown }).data) };
   }
 
   async getOne(
@@ -35,7 +35,7 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     assertResourceId(params.id);
     const url = `${this.apiService.buildUrl(this.resource)}/${params.id}`;
     const raw = await this.apiService.request(url, fetchOptions);
-    return { data: companionSchema.parse(raw) };
+    return { data: companionSchema.parse((raw as { data: unknown }).data) };
   }
 
   async update<TVariables = Record<string, unknown>>(params: {
@@ -49,7 +49,7 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(params.variables),
     });
-    return { data: companionSchema.parse(raw) };
+    return { data: companionSchema.parse((raw as { data: unknown }).data) };
   }
 
   async deleteOne(params: {
@@ -61,7 +61,7 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
-    return { data: companionSchema.parse(raw) };
+    return { data: companionSchema.parse((raw as { data: unknown }).data) };
   }
 
   async generateImage(
