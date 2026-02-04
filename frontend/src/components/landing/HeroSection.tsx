@@ -26,12 +26,13 @@ const staggerContainer: Variants = {
 
 interface HeroSectionProps {
   onGetStarted: () => void;
+  isLoading?: boolean;
 }
 
 /**
  * Hero section for AIdol landing page.
  */
-export function HeroSection({ onGetStarted }: HeroSectionProps) {
+export function HeroSection({ onGetStarted, isLoading }: HeroSectionProps) {
   const { t } = useTranslation();
 
   return (
@@ -76,9 +77,14 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
         <motion.div variants={fadeInUp} className="w-full">
           <button
             onClick={onGetStarted}
+            disabled={isLoading}
             className="btn btn-primary btn-lg text-label-l w-full rounded-lg"
           >
-            {t("aidol:landing.hero.cta")}
+            {isLoading ? (
+              <span className="loading loading-spinner loading-sm" />
+            ) : (
+              t("aidol:landing.hero.cta")
+            )}
           </button>
         </motion.div>
       </motion.div>

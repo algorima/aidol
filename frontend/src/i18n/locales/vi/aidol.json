@@ -190,6 +190,11 @@
   "companionCreate": {
     "title": "Tuyển Chọn Thành Viên Ra Mắt",
     "next": "Tiếp",
+    "error": {
+      "update": "Lưu thất bại.",
+      "generateImage": "Tạo ảnh thất bại.",
+      "load": "Không thể tải danh sách thực tập sinh."
+    },
     "gender": {
       "stepTitle": "Chọn giới tính",
       "female": "Nữ",
@@ -236,6 +241,9 @@
       "line3": "Nhóm Idol AI Mới",
       "line4": "Dự Án Thế Hệ Tiếp Theo",
       "cta": "Tuyển Thực Tập Sinh"
+    },
+    "error": {
+      "create": "Không thể bắt đầu."
     }
   }
 }

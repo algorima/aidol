@@ -1,5 +1,7 @@
 import { BaseApiService } from "@aioia/core";
 
+import { getClaimToken } from "@/lib/claimToken";
+
 /**
  * API Service for AIdol standalone app
  * No authentication required for public API access
@@ -9,13 +11,15 @@ export class ApiService extends BaseApiService {
     super(process.env.NEXT_PUBLIC_API_BASE_URL, "");
   }
 
-  /**
-   * No authentication headers for public API
-   */
   protected getAuthHeaders(): Record<string, string> {
-    return {
+    const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };
+    const claimToken = getClaimToken();
+    if (claimToken) {
+      headers["ClaimToken"] = claimToken;
+    }
+    return headers;
   }
 
   /**
