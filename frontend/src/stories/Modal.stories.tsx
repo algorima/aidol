@@ -44,6 +44,7 @@ const SAMPLE_COMPANION: Companion = {
 function ModalWrapper({
   action,
   companion = SAMPLE_COMPANION,
+  defaultOpen = false,
 }: {
   action?: {
     label: string;
@@ -51,8 +52,9 @@ function ModalWrapper({
     variant?: "primary" | "neutral";
   };
   companion?: Companion;
+  defaultOpen?: boolean;
 }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
     <div className="bg-base-100 flex h-screen items-center justify-center">
