@@ -20,12 +20,7 @@ from aidol.protocols import (
     CompanionRepositoryProtocol,
     ImageStorageProtocol,
 )
-from aidol.schemas import (
-    Companion,
-    CompanionCreate,
-    CompanionPublic,
-    CompanionUpdate,
-)
+from aidol.schemas import Companion, CompanionCreate, CompanionPublic, CompanionUpdate
 from aidol.services.companion_service import to_companion_public
 from aidol.settings import GoogleGenAISettings
 
