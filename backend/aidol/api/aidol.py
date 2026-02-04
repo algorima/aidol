@@ -12,7 +12,7 @@ from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings
-from fastapi import APIRouter, Cookie, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
@@ -114,7 +114,6 @@ class AIdolRouter(
         )
         async def create_aidol(
             request: AIdolCreate,
-            response: Response,
             claim_token: Annotated[str | None, Cookie(alias="ClaimToken")] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
@@ -124,17 +123,6 @@ class AIdolRouter(
                 **request.model_dump(), claim_token=claim_token
             )
             created = repository.create(create_data)
-
-            # Set ClaimToken cookie for ownership verification
-            if created.claim_token:
-                response.set_cookie(
-                    key="ClaimToken",
-                    value=created.claim_token,
-                    httponly=True,
-                    secure=False,  # MVP http environment
-                    samesite="lax",
-                    max_age=60 * 60 * 24 * 365,  # 1 year
-                )
 
             # Return only id
             return AIdolCreateResponse(id=created.id)
