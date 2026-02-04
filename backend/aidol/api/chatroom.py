@@ -4,11 +4,13 @@ Chatroom API router
 Implements BaseCrudRouter pattern for consistency with aioia-core patterns.
 """
 
+from typing import Annotated
+
 from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings, OpenAIAPISettings
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from humps import camelize
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from pydantic import BaseModel, ConfigDict, Field
@@ -28,6 +30,7 @@ from aidol.schemas import (
     CompanionMessageCreate,
     Message,
     MessageCreate,
+    MessageCreateWithClaim,
     ModelSettings,
     Persona,
     SenderType,
@@ -181,19 +184,32 @@ class ChatroomRouter(
         async def send_message(
             item_id: str,
             request: MessageCreate,
+            claim_token: Annotated[str | None, Cookie(alias="ClaimToken")] = None,
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""
+            # Guard Clause: ClaimToken cookie is required
+            if not claim_token:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="ClaimToken cookie is required",
+                )
+
             # Verify chatroom exists
             self._get_item_or_404(repository, item_id)
 
             # Enforce sender_type as USER to prevent spoofing
             request.sender_type = SenderType.USER
 
-            # Pass MessageCreate directly (aioia-core pattern)
+            # Convert to internal schema with claim_token from Cookie
+            message_data = MessageCreateWithClaim(
+                **request.model_dump(), claim_token=claim_token
+            )
+
+            # Pass MessageCreateWithClaim to repository
             return repository.add_message_to_chatroom(
                 chatroom_id=item_id,
-                message=request,
+                message=message_data,
             )
 
     def _register_generate_response_route(self) -> None:
