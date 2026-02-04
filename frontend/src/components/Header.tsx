@@ -68,7 +68,9 @@ export function Header({
             <XMarkIcon className="size-6" />
           </button>
         )}
-        <h1 className="text-headline-s text-base-content">{title}</h1>
+        {title && (
+          <h1 className="text-headline-s text-base-content">{title}</h1>
+        )}
       </div>
     );
   };
