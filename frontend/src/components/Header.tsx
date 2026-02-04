@@ -38,7 +38,7 @@ export function Header({
         <button
           type="button"
           onClick={onDropdownClick}
-          className="text-headline-s text-base-content flex items-center gap-2"
+          className="text-headline-s text-base-content flex cursor-pointer items-center gap-2"
         >
           <span>{title}</span>
           <ChevronUpDownIcon className="size-6" />
@@ -52,7 +52,7 @@ export function Header({
           <button
             type="button"
             onClick={onBackClick}
-            className="text-base-content flex items-center justify-center"
+            className="text-base-content flex cursor-pointer items-center justify-center"
             aria-label="뒤로 가기"
           >
             <ArrowLeftIcon className="size-6" />
@@ -62,7 +62,7 @@ export function Header({
           <button
             type="button"
             onClick={onCloseClick}
-            className="text-base-content flex items-center justify-center"
+            className="text-base-content flex cursor-pointer items-center justify-center"
             aria-label="닫기"
           >
             <XMarkIcon className="size-6" />
