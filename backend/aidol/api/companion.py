@@ -20,13 +20,7 @@ from aidol.protocols import (
     CompanionRepositoryProtocol,
     ImageStorageProtocol,
 )
-from aidol.schemas import (
-    Companion,
-    CompanionCreate,
-    CompanionPublic,
-    CompanionUpdate,
-    Gender,
-)
+from aidol.schemas import Companion, CompanionCreate, CompanionPublic, CompanionUpdate
 from aidol.services.companion_service import to_companion_public
 from aidol.settings import GoogleGenAISettings
 
@@ -90,45 +84,32 @@ class CompanionRouter(
             response_model=CompanionPaginatedResponse,
             status_code=status.HTTP_200_OK,
             summary="List Companions",
-            description="List all Companions with optional filtering by gender and cast status",
+            description="List all Companions with pagination, sorting, and filtering",
         )
         async def list_companions(
-            gender: Gender | None = Query(None, description="Filter by gender"),
-            is_cast: bool | None = Query(
-                None, alias="isCast", description="Filter by cast status"
+            current: int = Query(1, ge=1, description="Current page number"),
+            page_size: int = Query(
+                10, alias="pageSize", ge=1, le=100, description="Items per page"
             ),
-            aidol_id: str | None = Query(None, description="Filter by AIdol Group ID"),
+            sort_param: str | None = Query(
+                None,
+                alias="sort",
+                description='Sorting criteria in JSON format. Example: [["createdAt","desc"]]',
+            ),
+            filters_param: str | None = Query(
+                None,
+                alias="filters",
+                description="Filter conditions (JSON format)",
+            ),
             repository: CompanionRepositoryProtocol = Depends(self.get_repository_dep),
         ):
-            """List Companions with optional gender and isCast filters."""
-            filter_list: list[dict] = []
-
-            # Add filters only if provided
-            if gender is not None:
-                filter_list.append(
-                    {"field": "gender", "operator": "eq", "value": gender.value}
-                )
-
-            # Filter by aidol_id if provided
-            if aidol_id is not None:
-                filter_list.append(
-                    {"field": "aidol_id", "operator": "eq", "value": aidol_id}
-                )
-
-            # isCast is derived from aidol_id presence
-            # isCast=true → aidol_id is not null (belongs to a group)
-            # isCast=false → aidol_id is null (not in a group)
-            if is_cast is True:
-                filter_list.append(
-                    {"field": "aidol_id", "operator": "ne", "value": None}
-                )
-            elif is_cast is False:
-                filter_list.append(
-                    {"field": "aidol_id", "operator": "eq", "value": None}
-                )
-
+            """List Companions with pagination, sorting, and filtering."""
+            sort_list, filter_list = self._parse_query_params(sort_param, filters_param)
             items, total = repository.get_all(
-                filters=filter_list if filter_list else None,
+                current=current,
+                page_size=page_size,
+                sort=sort_list,
+                filters=filter_list,
             )
             # Convert to Public schema (exclude system_prompt)
             public_items = [to_companion_public(c) for c in items]
