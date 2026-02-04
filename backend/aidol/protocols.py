@@ -20,14 +20,78 @@ from aidol.schemas import (
     AIdolLead,
     AIdolLeadCreate,
     AIdolUpdate,
+    Chatroom,
+    ChatroomCreate,
+    ChatroomUpdate,
     Companion,
     CompanionCreate,
     CompanionUpdate,
+    Message,
+    MessageCreate,
 )
 
 
 class NoUpdate(BaseModel):
     """Placeholder for repositories without update support."""
+
+
+class ChatroomRepositoryProtocol(
+    CrudRepositoryProtocol[Chatroom, ChatroomCreate, ChatroomUpdate], Protocol
+):
+    """Protocol defining chatroom repository expectations.
+
+    This protocol enables type-safe dependency injection by defining
+    the exact interface that ChatroomRouter uses. Platform-specific
+    adapters implement this protocol to convert their repository
+    responses to aidol schemas.
+
+    Inherits CRUD operations from CrudRepositoryProtocol.
+    Additional domain-specific methods:
+        get_messages_by_chatroom_id: Get messages with pagination.
+        add_message_to_chatroom: Add a message to a chatroom.
+    """
+
+    def get_messages_by_chatroom_id(
+        self, chatroom_id: str, limit: int, offset: int
+    ) -> list[Message]:
+        """Get messages from a chatroom with pagination.
+
+        Args:
+            chatroom_id: Chatroom ID.
+            limit: Maximum number of messages.
+            offset: Number of messages to skip.
+        """
+        ...
+
+    def add_message_to_chatroom(
+        self, chatroom_id: str, message: MessageCreate
+    ) -> Message:
+        """Add a message to a chatroom.
+
+        Args:
+            chatroom_id: Chatroom ID.
+            message: MessageCreate or CompanionMessageCreate schema.
+        """
+        ...
+
+
+class ChatroomRepositoryFactoryProtocol(Protocol):
+    """Protocol for factory that creates ChatroomRepositoryProtocol instances.
+
+    Implementations:
+        - aidol.factories.ChatroomRepositoryFactory (standalone)
+        - ChatroomRepositoryFactoryAdapter (platform integration)
+    """
+
+    def create_repository(
+        self, db_session: Session | None = None
+    ) -> ChatroomRepositoryProtocol:
+        """Create a repository instance.
+
+        Args:
+            db_session: Optional database session.
+        """
+        ...
 
 
 class AIdolRepositoryProtocol(

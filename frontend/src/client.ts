@@ -12,6 +12,11 @@
 export { CompanionGrid } from "./components/aidol";
 export { GroupHeader } from "./components/aidol";
 
+// Chatroom components
+export { ChatRoom } from "./components/chatroom";
+export { MessageInput } from "./components/chatroom";
+export { MessageList } from "./components/chatroom";
+
 // Companion components
 export { AddMemberButton } from "./components/companion";
 export { Card } from "./components/companion";
@@ -73,5 +78,5 @@ export { Loading } from "./components/Loading";
 export { Modal } from "./components/Modal";
 export { ShareButton } from "./components/ShareButton";
 
-// Utilities
+// Utilities (client-only)
 export { getClaimToken, getOrCreateClaimToken } from "./lib/claimToken";

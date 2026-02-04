@@ -31,7 +31,7 @@ from aioia_core.errors import (
     get_error_detail_from_exception,
 )
 from aioia_core.models import Base
-from aioia_core.settings import DatabaseSettings
+from aioia_core.settings import DatabaseSettings, OpenAIAPISettings
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -40,15 +40,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from aidol.api.aidol import create_aidol_router
+from aidol.api.chatroom import create_chatroom_router
 from aidol.api.companion import create_companion_router
 from aidol.api.lead import create_lead_router
 from aidol.factories import (
     AIdolLeadRepositoryFactory,
     AIdolRepositoryFactory,
+    ChatroomRepositoryFactory,
     CompanionRepositoryFactory,
 )
 from aidol.protocols import ImageStorageProtocol
-from aidol.settings import GoogleGenAISettings
+from aidol.settings import GoogleGenAISettings, Settings
 
 # Configure logging
 logging.basicConfig(
@@ -80,7 +82,9 @@ class Base64ImageStorage(ImageStorageProtocol):
 
 # BaseSettings automatically reads from environment variables
 db_settings = DatabaseSettings()  # DATABASE_URL
+openai_settings = OpenAIAPISettings()  # OPENAI_API_KEY
 google_settings = GoogleGenAISettings()  # GOOGLE_API_KEY or Vertex AI with ADC
+model_settings = Settings()  # AIDOL_* settings
 
 if google_settings.api_key:
     logger.info("Image generation: Google AI API (GOOGLE_API_KEY)")
@@ -236,7 +240,17 @@ lead_router = create_lead_router(
 )
 app.include_router(lead_router)
 
-logger.info("AIdol, Companion, and Lead routers registered")
+# Create and include Chatroom router
+chatroom_router = create_chatroom_router(
+    openai_settings=openai_settings,
+    model_settings=model_settings,
+    companion_repository_factory=CompanionRepositoryFactory(),
+    db_session_factory=db_session_factory,
+    repository_factory=ChatroomRepositoryFactory(),
+)
+app.include_router(chatroom_router)
+
+logger.info("AIdol, Companion, Lead, and Chatroom routers registered")
 
 
 @app.get("/healthz", tags=["management"])
