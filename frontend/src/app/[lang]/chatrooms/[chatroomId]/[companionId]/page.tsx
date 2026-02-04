@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ChatRoom } from "@/components/chatroom";
-import { getOrCreateClaimToken } from "@/lib/claimToken";
 import { ChatroomRepository, CompanionRepository } from "@/repositories";
 import { SenderType, type Message } from "@/schemas/chatroom";
 import type { Companion } from "@/schemas/companion";
@@ -85,9 +84,6 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
     async (content: string) => {
       if (!content.trim() || isSending) return;
 
-      // Get claimToken for user identification (auto-generate if missing)
-      const claimToken = getOrCreateClaimToken();
-
       setIsSending(true);
       setError(null);
 
@@ -106,11 +102,10 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
       let createdMessage: Message;
 
       try {
-        // Core task: Send user message
+        // Core task: Send user message (ClaimToken sent via httpOnly cookie)
         createdMessage = await chatroomRepository.sendMessage(
           chatroomId,
           content,
-          claimToken,
         );
 
         // Replace temporary message with actual message
