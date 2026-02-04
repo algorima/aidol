@@ -104,6 +104,12 @@ class AIdolRepositoryProtocol(
     from CrudRepositoryProtocol.
     """
 
+    def create_with_claim_token(
+        self, schema: AIdolCreate, claim_token: str | None = None
+    ) -> AIdol:
+        """Create AIdol with claim_token from Cookie."""
+        ...
+
 
 class AIdolRepositoryFactoryProtocol(Protocol):
     """Protocol for factory that creates AIdolRepositoryProtocol instances.

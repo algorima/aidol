@@ -6,7 +6,6 @@ Public endpoints for AIdol group creation and retrieval.
 Public access pattern: no authentication required.
 """
 
-import uuid
 from typing import Annotated
 
 from aioia_core.auth import UserInfoProvider
@@ -114,19 +113,7 @@ class AIdolRouter(
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
-            # Use cookie token or generate new
-            resolved_token = claim_token or str(uuid.uuid4())
-
-            # Create with resolved claim_token
-            create_data = AIdolCreate(
-                name=request.name,
-                email=request.email,
-                greeting=request.greeting,
-                concept=request.concept,
-                profile_image_url=request.profile_image_url,
-                claim_token=resolved_token,
-            )
-            created = repository.create(create_data)
+            created = repository.create_with_claim_token(request, claim_token)
 
             # Set ClaimToken cookie for ownership verification
             if created.claim_token:
