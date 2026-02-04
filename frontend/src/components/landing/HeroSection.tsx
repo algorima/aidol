@@ -27,12 +27,19 @@ const staggerContainer: Variants = {
 interface HeroSectionProps {
   onGetStarted: () => void;
   isLoading?: boolean;
+  logoUrl?: string;
+  videoUrl?: string;
 }
 
 /**
  * Hero section for AIdol landing page.
  */
-export function HeroSection({ onGetStarted, isLoading }: HeroSectionProps) {
+export function HeroSection({
+  onGetStarted,
+  isLoading,
+  logoUrl = "/images/logo.svg",
+  videoUrl,
+}: HeroSectionProps) {
   const { t } = useTranslation();
 
   return (
@@ -45,7 +52,7 @@ export function HeroSection({ onGetStarted, isLoading }: HeroSectionProps) {
       >
         <motion.div variants={fadeInUp} className="mb-6">
           <Image
-            src="/images/logo.svg"
+            src={logoUrl}
             alt="AIdol"
             width={92}
             height={28}
@@ -72,7 +79,18 @@ export function HeroSection({ onGetStarted, isLoading }: HeroSectionProps) {
         <motion.div
           variants={fadeInUp}
           className="bg-base-200 relative mb-6 aspect-[345/368] w-full overflow-hidden rounded-lg"
-        />
+        >
+          {videoUrl && (
+            <video
+              src={videoUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover"
+            />
+          )}
+        </motion.div>
 
         <motion.div variants={fadeInUp} className="w-full">
           <button
