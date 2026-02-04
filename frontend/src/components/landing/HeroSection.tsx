@@ -51,13 +51,7 @@ export function HeroSection({
         className="flex w-full flex-col items-center text-center"
       >
         <motion.div variants={fadeInUp} className="mb-6">
-          <Image
-            src={logoUrl}
-            alt="AIdol"
-            width={92}
-            height={28}
-            priority
-          />
+          <Image src={logoUrl} alt="AIdol" width={92} height={28} priority />
         </motion.div>
 
         <motion.h1 variants={fadeInUp} className="text-display-s mb-3">
@@ -87,7 +81,7 @@ export function HeroSection({
               loop
               muted
               playsInline
-              className="h-full w-full object-cover"
+              className="size-full object-cover"
             />
           )}
         </motion.div>
