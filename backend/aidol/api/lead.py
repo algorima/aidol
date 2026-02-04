@@ -8,7 +8,7 @@ from typing import Annotated
 
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings
-from fastapi import APIRouter, Cookie, Depends, Header, status
+from fastapi import APIRouter, Cookie, Depends, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -60,20 +60,13 @@ class LeadRouter(
         )
         async def create_lead(
             request: AIdolLeadCreate,
-            claim_token_cookie: Annotated[
-                str | None, Cookie(alias="ClaimToken")
-            ] = None,
-            claim_token_header: Annotated[
-                str | None, Header(alias="ClaimToken")
-            ] = None,
+            claim_token: Annotated[str | None, Cookie(alias="ClaimToken")] = None,
             db_session: Session = Depends(self.get_db_dep),
             lead_repository: AIdolLeadRepositoryProtocol = Depends(
                 self.get_repository_dep
             ),
         ):
             """Collect email."""
-            # Cookie takes precedence over header (migration support)
-            claim_token = claim_token_cookie or claim_token_header
             email_saved = False
 
             # 1. Try to associate with AIdol if token is present

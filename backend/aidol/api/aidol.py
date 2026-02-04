@@ -110,14 +110,12 @@ class AIdolRouter(
         async def create_aidol(
             request: AIdolCreate,
             response: Response,
-            claim_token_cookie: Annotated[
-                str | None, Cookie(alias="ClaimToken")
-            ] = None,
+            claim_token: Annotated[str | None, Cookie(alias="ClaimToken")] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
-            # Determine claim_token: body > cookie > generate new
-            claim_token = request.claim_token or claim_token_cookie or str(uuid.uuid4())
+            # Use cookie token or generate new
+            resolved_token = claim_token or str(uuid.uuid4())
 
             # Create with resolved claim_token
             create_data = AIdolCreate(
@@ -126,7 +124,7 @@ class AIdolRouter(
                 greeting=request.greeting,
                 concept=request.concept,
                 profile_image_url=request.profile_image_url,
-                claim_token=claim_token,
+                claim_token=resolved_token,
             )
             created = repository.create(create_data)
 
