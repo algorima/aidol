@@ -184,7 +184,9 @@ class ChatroomRouter(
         async def send_message(
             item_id: str,
             request: MessageCreate,
-            claim_token: Annotated[str | None, Cookie(alias="aioia_anonymous_id")] = None,
+            claim_token: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""

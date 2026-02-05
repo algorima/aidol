@@ -39,13 +39,15 @@ class AIdolCreateResponse(BaseModel):
 
 
 class AIdolRouter(
-    BaseCrudRouter[AIdol, AIdolCreateWithClaim, AIdolUpdate, AIdolRepositoryProtocol]
+    BaseCrudRouter[
+        AIdol, AIdolCreateWithAnonymousId, AIdolUpdate, AIdolRepositoryProtocol
+    ]
 ):
     """
     AIdol router with public endpoints.
 
     Public CRUD pattern: no authentication required.
-    Returns AIdolPublic (excludes claim_token) for all responses.
+    Returns AIdolPublic (excludes anonymous_id) for all responses.
     """
 
     def __init__(
@@ -114,7 +116,9 @@ class AIdolRouter(
         )
         async def create_aidol(
             request: AIdolCreate,
-            claim_token: Annotated[str | None, Cookie(alias="aioia_anonymous_id")] = None,
+            claim_token: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""

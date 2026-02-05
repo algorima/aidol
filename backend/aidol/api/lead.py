@@ -60,7 +60,9 @@ class LeadRouter(
         )
         async def create_lead(
             request: AIdolLeadCreate,
-            claim_token: Annotated[str | None, Cookie(alias="aioia_anonymous_id")] = None,
+            claim_token: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             db_session: Session = Depends(self.get_db_dep),
             lead_repository: AIdolLeadRepositoryProtocol = Depends(
                 self.get_repository_dep
