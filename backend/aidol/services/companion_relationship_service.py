@@ -10,13 +10,13 @@ from enum import Enum
 class IntimacyType(str, Enum):
     """친밀도 레벨 (threshold 기반)"""
 
-    AWKWARD = "아직 어색해요"  # 15
-    POLITE = "예의를 차려요"  # 30
-    FRIENDLY = "조금 친해요"  # 45
-    BANTER = "티키타카"  # 60
-    TRUST = "서로 신뢰해요"  # 70
-    EMOTIONAL = "정서적으로 의지해요"  # 80
-    BESTIE = "찐친"  # 90
+    AWKWARD = "아직 어색해요"  # 0-29 (기본값)
+    POLITE = "예의를 차려요"  # 30+
+    FRIENDLY = "조금 친해요"  # 45+
+    BANTER = "티키타카"  # 60+
+    TRUST = "서로 신뢰해요"  # 70+
+    EMOTIONAL = "정서적으로 의지해요"  # 80+
+    BESTIE = "찐친"  # 90+
     SOULMATE = "항상 함께해요"  # 100
 
 

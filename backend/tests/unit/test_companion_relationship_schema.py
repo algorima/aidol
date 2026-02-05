@@ -43,12 +43,8 @@ class TestGetIntimacyType(unittest.TestCase):
 
     def test_threshold_boundaries(self):
         """각 threshold 경계값 테스트"""
-        # 최저: 15 미만
+        # 0-29: AWKWARD (기본값)
         self.assertEqual(get_intimacy_type(0), IntimacyType.AWKWARD)
-        self.assertEqual(get_intimacy_type(14), IntimacyType.AWKWARD)
-
-        # 15-29
-        self.assertEqual(get_intimacy_type(15), IntimacyType.AWKWARD)
         self.assertEqual(get_intimacy_type(29), IntimacyType.AWKWARD)
 
         # 30-44
