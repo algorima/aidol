@@ -81,8 +81,6 @@ class CompanionRelationshipBase(BaseModel):
 class CompanionRelationshipCreate(CompanionRelationshipBase):
     """Schema for creating a companion relationship."""
 
-    pass
-
 
 class CompanionRelationshipUpdate(BaseModel):
     """Schema for updating a companion relationship (all fields optional)."""

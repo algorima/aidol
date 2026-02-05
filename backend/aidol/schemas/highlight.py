@@ -37,8 +37,6 @@ class AIdolHighlightBase(BaseModel):
 class AIdolHighlightCreate(AIdolHighlightBase):
     """Schema for creating a highlight."""
 
-    pass
-
 
 class AIdolHighlightUpdate(BaseModel):
     """Schema for updating a highlight (all fields optional)."""
@@ -81,8 +79,6 @@ class HighlightMessageBase(BaseModel):
 
 class HighlightMessageCreate(HighlightMessageBase):
     """Schema for creating a highlight message."""
-
-    pass
 
 
 class HighlightMessageUpdate(BaseModel):
