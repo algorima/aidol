@@ -17,9 +17,9 @@ class DBAIdolHighlight(BaseModel):
 
     # id, created_at, updated_at inherited from BaseModel
     aidol_id: Mapped[str | None] = mapped_column(ForeignKey("aidols.id"), nullable=True)
-    title: Mapped[str | None] = mapped_column(String, nullable=True)
-    thumbnail_url: Mapped[str | None] = mapped_column(String, nullable=True)
-    subtitle: Mapped[str | None] = mapped_column(String, nullable=True)
+    title: Mapped[str] = mapped_column(String, nullable=False)
+    thumbnail_url: Mapped[str] = mapped_column(String, nullable=False)
+    subtitle: Mapped[str] = mapped_column(String, nullable=False)
 
     __table_args__ = (Index("ix_aidol_highlights_aidol_id", "aidol_id"),)
 
@@ -36,8 +36,8 @@ class DBHighlightMessage(BaseModel):
     companion_id: Mapped[str | None] = mapped_column(
         ForeignKey("companions.id"), nullable=True
     )
-    sequence: Mapped[int | None] = mapped_column(Integer, nullable=True)
-    content: Mapped[str | None] = mapped_column(Text, nullable=True)
+    sequence: Mapped[int] = mapped_column(Integer, nullable=False)
+    content: Mapped[str] = mapped_column(Text, nullable=False)
 
     __table_args__ = (
         Index("ix_highlight_messages_highlight_id", "highlight_id"),
