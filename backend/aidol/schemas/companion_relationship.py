@@ -42,21 +42,8 @@ class CompanionRelationshipCreate(CompanionRelationshipBase):
     """Schema for creating a companion relationship."""
 
 
-class CompanionRelationshipUpdate(BaseModel):
+class CompanionRelationshipUpdate(CompanionRelationshipBase):
     """Schema for updating a companion relationship (all fields optional)."""
-
-    model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
-
-    from_companion_id: str | None = Field(
-        default=None, description="관계 출발 Companion ID"
-    )
-    to_companion_id: str | None = Field(
-        default=None, description="관계 대상 Companion ID"
-    )
-    intimacy: int | None = Field(
-        default=None, ge=0, le=100, description="친밀도 (0-100)"
-    )
-    nickname: str | None = Field(default=None, description="관계 별명")
 
 
 class CompanionRelationship(CompanionRelationshipBase):
