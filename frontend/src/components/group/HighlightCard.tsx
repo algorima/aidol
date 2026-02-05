@@ -6,26 +6,18 @@ import { handleClickKeyDown } from "@/lib/handleClickKeyDown";
 interface HighlightCardProps {
   imageUrl: string;
   title: string;
-  size?: "full" | "compact";
   onClick?: () => void;
 }
-
-const sizeStyles = {
-  full: "h-[230px] w-full max-w-[345px]",
-  compact: "h-[326px] w-full max-w-[280px]",
-} as const;
 
 export function HighlightCard({
   imageUrl,
   title,
-  size = "full",
   onClick,
 }: HighlightCardProps) {
   return (
     <div
       className={clsx(
-        "relative isolate overflow-hidden rounded-lg",
-        sizeStyles[size],
+        "relative isolate h-[230px] w-full max-w-[345px] overflow-hidden rounded-lg",
         onClick && "cursor-pointer",
       )}
       onClick={onClick}
