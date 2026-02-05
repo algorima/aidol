@@ -8,19 +8,13 @@ Schema hierarchy:
 - CompanionRelationship: 응답 스키마
 
 친밀도(intimacy)만 DB에 저장하고, 레벨명은 서비스에서 계산해서 반환
+IntimacyType, get_intimacy_type은 aidol.services에서 import
 """
 
 from datetime import datetime
 
 from humps import camelize
 from pydantic import BaseModel, ConfigDict, Field
-
-# IntimacyType, get_intimacy_type은 services에서 정의됨
-# 하위 호환성을 위해 re-export
-from aidol.services.companion_relationship_service import (  # noqa: F401
-    IntimacyType,
-    get_intimacy_type,
-)
 
 # ---------------------------------------------------------------------------
 # CompanionRelationship Schemas

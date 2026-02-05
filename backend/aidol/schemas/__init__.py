@@ -44,6 +44,8 @@ from aidol.schemas.companion_relationship import (
     CompanionRelationshipBase,
     CompanionRelationshipCreate,
     CompanionRelationshipUpdate,
+)
+from aidol.services.companion_relationship_service import (
     IntimacyType,
     get_intimacy_type,
 )
