@@ -21,7 +21,6 @@ class DBCompanionRelationship(BaseModel):
     to_companion_id: Mapped[str | None] = mapped_column(
         ForeignKey("companions.id"), nullable=True
     )
-    type: Mapped[str | None] = mapped_column(String, nullable=True)
     intimacy: Mapped[int | None] = mapped_column(Integer, nullable=True)
     nickname: Mapped[str | None] = mapped_column(String, nullable=True)
 
