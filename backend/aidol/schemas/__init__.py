@@ -39,6 +39,24 @@ from aidol.schemas.companion import (
     Grade,
     Position,
 )
+from aidol.schemas.companion_relationship import (
+    CompanionRelationship,
+    CompanionRelationshipBase,
+    CompanionRelationshipCreate,
+    CompanionRelationshipUpdate,
+    IntimacyType,
+    get_intimacy_type,
+)
+from aidol.schemas.highlight import (
+    AIdolHighlight,
+    AIdolHighlightBase,
+    AIdolHighlightCreate,
+    AIdolHighlightUpdate,
+    HighlightMessage,
+    HighlightMessageBase,
+    HighlightMessageCreate,
+    HighlightMessageUpdate,
+)
 from aidol.schemas.model_settings import ModelSettings, ModelSettingsBase
 from aidol.schemas.persona import Persona
 
@@ -80,6 +98,22 @@ __all__ = [
     "Gender",
     "Grade",
     "Position",
+    # CompanionRelationship
+    "CompanionRelationship",
+    "CompanionRelationshipBase",
+    "CompanionRelationshipCreate",
+    "CompanionRelationshipUpdate",
+    "IntimacyType",
+    "get_intimacy_type",
+    # Highlight
+    "AIdolHighlight",
+    "AIdolHighlightBase",
+    "AIdolHighlightCreate",
+    "AIdolHighlightUpdate",
+    "HighlightMessage",
+    "HighlightMessageBase",
+    "HighlightMessageCreate",
+    "HighlightMessageUpdate",
     # Model Settings
     "ModelSettings",
     "ModelSettingsBase",
