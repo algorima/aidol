@@ -74,12 +74,12 @@ class LeadRouter(
                 # Reuse session from dependency
                 aidol_repo = self.aidol_repository_factory.create_repository(db_session)
 
-                # Find AIdol by claim_token
+                # Find AIdol by anonymous_id
                 # Assuming get_all supports filters
                 items, _ = aidol_repo.get_all(
                     filters=[
                         {
-                            "field": "claim_token",
+                            "field": "anonymous_id",
                             "operator": "eq",
                             "value": claim_token,
                         }

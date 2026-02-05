@@ -17,7 +17,7 @@ from aidol.schemas import (
     ChatroomUpdate,
     CompanionMessage,
     Message,
-    MessageCreateWithClaim,
+    MessageCreateWithAnonymousId,
     SenderType,
 )
 
@@ -81,7 +81,7 @@ class ChatroomRepository(
     # ========================================
 
     def add_message_to_chatroom(
-        self, chatroom_id: str, message: MessageCreateWithClaim
+        self, chatroom_id: str, message: MessageCreateWithAnonymousId
     ) -> Message:
         """
         Add message to chatroom.
@@ -91,7 +91,7 @@ class ChatroomRepository(
 
         Args:
             chatroom_id: Chatroom ID
-            message: MessageCreateWithClaim or CompanionMessageCreate schema (with claim_token)
+            message: MessageCreateWithAnonymousId or CompanionMessageCreate schema (with anonymous_id)
 
         Returns:
             Message or CompanionMessage with id guaranteed to be set
@@ -107,7 +107,7 @@ class ChatroomRepository(
             chatroom_id=chatroom_id,
             sender_type=sender_type_value,
             content=message.content,
-            claim_token=message.claim_token,
+            anonymous_id=message.anonymous_id,
             companion_id=companion_id,
             created_at=datetime.now(timezone.utc),
             updated_at=datetime.now(timezone.utc),

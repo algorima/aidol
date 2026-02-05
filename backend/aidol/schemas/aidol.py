@@ -3,10 +3,10 @@ AIdol (group) schemas
 
 Schema hierarchy:
 - AIdolBase: Mutable fields (used in Create/Update)
-- AIdolCreate: API body (claim_token excluded, read from Cookie)
-- AIdolCreateWithClaim: Internal (claim_token included, for repository)
+- AIdolCreate: API body (anonymous_id excluded, read from Cookie)
+- AIdolCreateWithAnonymousId: Internal (anonymous_id included, for repository)
 - AIdolUpdate: Base fields only
-- AIdol: Response with all fields including claim_token (internal use)
+- AIdol: Response with all fields including anonymous_id (internal use)
 - AIdolPublic: Response without sensitive fields (API use)
 """
 
@@ -20,7 +20,7 @@ class AIdolBase(BaseModel):
     """Base AIdol model with mutable fields.
 
     Contains only fields that can be modified after creation.
-    Excludes claim_token (immutable, set at creation only).
+    Excludes anonymous_id (immutable, set at creation only).
     """
 
     model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
@@ -35,18 +35,18 @@ class AIdolBase(BaseModel):
 class AIdolCreate(AIdolBase):
     """API body schema for creating an AIdol group.
 
-    claim_token is excluded (read from Cookie by router).
+    anonymous_id is excluded (read from Cookie by router).
     """
 
 
-class AIdolCreateWithClaim(AIdolBase):
-    """Internal schema for repository with claim_token.
+class AIdolCreateWithAnonymousId(AIdolBase):
+    """Internal schema for repository with anonymous_id.
 
-    Used by router to pass Cookie-based claim_token to repository.
+    Used by router to pass Cookie-based anonymous_id to repository.
     """
 
-    claim_token: str | None = Field(
-        default=None, description="Ownership token from Cookie"
+    anonymous_id: str | None = Field(
+        default=None, description="Anonymous user identifier from Cookie"
     )
 
 
@@ -65,7 +65,7 @@ class AIdolUpdate(BaseModel):
 class AIdol(AIdolBase):
     """AIdol response schema with id and timestamps.
 
-    Includes optional claim_token for ownership verification.
+    Includes optional anonymous_id for ownership verification.
     Use AIdolPublic for API responses to exclude sensitive fields.
     """
 
@@ -74,8 +74,8 @@ class AIdol(AIdolBase):
     )
 
     id: str = Field(..., description="AIdol group ID")
-    claim_token: str | None = Field(
-        default=None, description="Optional ownership token (sensitive, internal use)"
+    anonymous_id: str | None = Field(
+        default=None, description="Anonymous user identifier (sensitive, internal use)"
     )
     created_at: datetime = Field(..., description="Creation timestamp")
     updated_at: datetime = Field(..., description="Last update timestamp")
@@ -84,7 +84,7 @@ class AIdol(AIdolBase):
 class AIdolPublic(AIdolBase):
     """Public AIdol response schema without sensitive fields.
 
-    Excludes claim_token for API responses.
+    Excludes anonymous_id for API responses.
     """
 
     model_config = ConfigDict(

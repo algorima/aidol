@@ -25,7 +25,7 @@ from aidol.protocols import (
 from aidol.schemas import (
     AIdol,
     AIdolCreate,
-    AIdolCreateWithClaim,
+    AIdolCreateWithAnonymousId,
     AIdolPublic,
     AIdolUpdate,
 )
@@ -124,9 +124,9 @@ class AIdolRouter(
                     detail="aioia_anonymous_id cookie is required",
                 )
 
-            # Convert body schema to internal schema with claim_token from Cookie
-            create_data = AIdolCreateWithClaim(
-                **request.model_dump(), claim_token=claim_token
+            # Convert body schema to internal schema with anonymous_id from Cookie
+            create_data = AIdolCreateWithAnonymousId(
+                **request.model_dump(), anonymous_id=claim_token
             )
             created = repository.create(create_data)
 
