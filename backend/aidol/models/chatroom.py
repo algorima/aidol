@@ -35,7 +35,7 @@ class DBMessage(BaseModel):
         String, nullable=False
     )  # "user" | "companion"
     content: Mapped[str] = mapped_column(Text, nullable=False)
-    claim_token: Mapped[str | None] = mapped_column(
+    anonymous_id: Mapped[str | None] = mapped_column(
         String(36), nullable=True, index=True
     )  # Anonymous user identifier for DAU/MAU analytics
     companion_id: Mapped[str | None] = mapped_column(
