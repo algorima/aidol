@@ -1,6 +1,8 @@
 import { ArrowLongRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
+import { handleClickKeyDown } from "@/lib/handleClickKeyDown";
+
 interface ChemistryRelationCardProps {
   fromName: string;
   toName: string;
@@ -31,16 +33,7 @@ export function ChemistryRelationCard({
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
-      onKeyDown={
-        onClick
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onClick();
-              }
-            }
-          : undefined
-      }
+      onKeyDown={onClick ? handleClickKeyDown(onClick) : undefined}
     >
       {relationshipType && (
         <div className="flex items-center justify-between">

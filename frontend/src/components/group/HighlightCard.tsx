@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import Image from "next/image";
 
+import { handleClickKeyDown } from "@/lib/handleClickKeyDown";
+
 interface HighlightCardProps {
   imageUrl: string;
   title: string;
@@ -29,16 +31,7 @@ export function HighlightCard({
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
-      onKeyDown={
-        onClick
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onClick();
-              }
-            }
-          : undefined
-      }
+      onKeyDown={onClick ? handleClickKeyDown(onClick) : undefined}
     >
       <Image src={imageUrl} alt={title} fill className="object-cover" />
 

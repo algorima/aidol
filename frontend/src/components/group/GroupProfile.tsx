@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { formatDate, getDaysSince } from "@/lib/date";
+
 interface GroupProfileProps {
   profileImageUrl: string | null;
   name: string;
@@ -12,21 +14,6 @@ interface GroupProfileProps {
   onChemistryClick: () => void;
   shareUrl: string;
 }
-
-const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}.${month}.${day}`;
-};
-
-const getDaysSince = (dateStr: string) => {
-  const created = new Date(dateStr);
-  const now = new Date();
-  const diffMs = now.getTime() - created.getTime();
-  return Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24)));
-};
 
 export function GroupProfile({
   profileImageUrl,

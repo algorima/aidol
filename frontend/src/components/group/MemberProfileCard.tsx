@@ -9,7 +9,7 @@ interface MemberProfileCardProps {
 }
 
 export function MemberProfileCard({ companion }: MemberProfileCardProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("aidol");
   const { name, profilePictureUrl, grade, mbti, position, biography } =
     companion;
 
@@ -40,7 +40,7 @@ export function MemberProfileCard({ companion }: MemberProfileCardProps) {
             <div className="flex gap-1">
               {grade && (
                 <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
-                  {t("aidol:companion.grade", { grade })}
+                  {t("companion.grade", { grade })}
                 </span>
               )}
               {mbti && (
@@ -50,7 +50,7 @@ export function MemberProfileCard({ companion }: MemberProfileCardProps) {
               )}
               {position && (
                 <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
-                  {t(`aidol:position.${position}`)}
+                  {t(`position.${position}`)}
                 </span>
               )}
             </div>
