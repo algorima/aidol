@@ -22,7 +22,6 @@ from aidol.services.companion_relationship_service import (  # noqa: F401
     get_intimacy_type,
 )
 
-
 # ---------------------------------------------------------------------------
 # CompanionRelationship Schemas
 # ---------------------------------------------------------------------------
