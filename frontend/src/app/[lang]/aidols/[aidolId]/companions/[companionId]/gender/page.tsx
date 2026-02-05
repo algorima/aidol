@@ -1,36 +1,62 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { GenderSelector } from "@/components/creation/GenderSelector";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
 import type { Gender } from "@/schemas/companion";
+import { getApiService } from "@/services/ApiService";
 
-export default function GenderPage() {
-  const { t } = useTranslation();
-  const params = useParams<{
+interface GenderPageProps {
+  params: {
     lang: string;
     aidolId: string;
     companionId: string;
-  }>();
+  };
+}
+
+export default function GenderPage({ params }: GenderPageProps) {
+  const { lang, aidolId, companionId } = params;
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
   const [gender, setGender] = useState<Gender | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
-  const handleNext = async () => {
+  const handleNext = useCallback(async () => {
     if (!gender) return;
-    const repository = getMockCompanionRepository();
-    await repository.update({
-      id: params.companionId,
-      variables: { gender },
-    });
-    router.push(
-      `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/personality`,
-    );
-  };
+    setIsSubmitting(true);
+    try {
+      await companionRepository.update({
+        id: companionId,
+        variables: { gender },
+      });
+      router.push(
+        `/${lang}/aidols/${aidolId}/companions/${companionId}/personality`,
+      );
+    } catch {
+      showToast(t("aidol:companionCreate.error.update"), "error");
+      setIsSubmitting(false);
+    }
+  }, [
+    aidolId,
+    companionId,
+    companionRepository,
+    gender,
+    lang,
+    router,
+    showToast,
+    t,
+  ]);
 
   return (
     <CompanionCreateLayout
@@ -39,7 +65,7 @@ export default function GenderPage() {
       bottomButton={
         <button
           type="button"
-          disabled={!gender}
+          disabled={!gender || isSubmitting}
           onClick={handleNext}
           className="btn btn-neutral w-full"
         >

@@ -1,37 +1,63 @@
 "use client";
 
 import { SparklesIcon } from "@heroicons/react/24/solid";
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { BiographyInput } from "@/components/creation/BiographyInput";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { CompanionNameInput } from "@/components/creation/CompanionNameInput";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
+import { getApiService } from "@/services/ApiService";
 
-export default function CompletePage() {
-  const { t } = useTranslation();
-  const params = useParams<{
+interface CompletePageProps {
+  params: {
     lang: string;
     aidolId: string;
     companionId: string;
-  }>();
+  };
+}
 
+export default function CompletePage({ params }: CompletePageProps) {
+  const { lang, aidolId, companionId } = params;
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
   const [name, setName] = useState("");
   const [biography, setBiography] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
-  const handleComplete = async () => {
+  const handleComplete = useCallback(async () => {
     if (!name.trim()) return;
-    const repository = getMockCompanionRepository();
-    await repository.update({
-      id: params.companionId,
-      variables: { name, biography },
-    });
-    router.push(`/${params.lang}/${params.aidolId}/casting-complete`);
-  };
+    setIsSubmitting(true);
+    try {
+      await companionRepository.update({
+        id: companionId,
+        variables: { name, biography },
+      });
+      router.push(`/${lang}/aidols/${aidolId}/casting-complete`);
+    } catch {
+      showToast(t("aidol:companionCreate.error.update"), "error");
+      setIsSubmitting(false);
+    }
+  }, [
+    aidolId,
+    biography,
+    companionId,
+    companionRepository,
+    lang,
+    name,
+    router,
+    showToast,
+    t,
+  ]);
 
   return (
     <CompanionCreateLayout
@@ -40,7 +66,7 @@ export default function CompletePage() {
       bottomButton={
         <button
           type="button"
-          disabled={!name.trim()}
+          disabled={!name.trim() || isSubmitting}
           onClick={handleComplete}
           className="btn btn-neutral w-full"
         >

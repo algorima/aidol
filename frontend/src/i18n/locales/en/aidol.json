@@ -190,6 +190,11 @@
   "companionCreate": {
     "title": "Debut Member Casting",
     "next": "Next",
+    "error": {
+      "update": "Failed to save.",
+      "generateImage": "Failed to generate image.",
+      "load": "Failed to load trainees."
+    },
     "gender": {
       "stepTitle": "Choose a gender",
       "female": "Female",
@@ -236,6 +241,9 @@
       "line3": "New AI Idol Group",
       "line4": "Next Generation Project",
       "cta": "Cast Trainees"
+    },
+    "error": {
+      "create": "Failed to start."
     }
   },
   "group": {

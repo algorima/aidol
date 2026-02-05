@@ -13,7 +13,7 @@ from aioia_core.repositories import BaseRepository
 from sqlalchemy.orm import Session
 
 from aidol.models import DBAIdol
-from aidol.schemas import AIdol, AIdolCreate, AIdolUpdate
+from aidol.schemas import AIdol, AIdolCreateWithClaim, AIdolUpdate
 
 
 def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
@@ -35,15 +35,14 @@ def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
     )
 
 
-def _convert_aidol_create_to_db(schema: AIdolCreate) -> dict:
-    """Convert AIdolCreate schema to DB model data dict.
-
-    Includes claim_token for ownership verification.
-    """
+def _convert_aidol_create_to_db(schema: AIdolCreateWithClaim) -> dict:
+    """Convert AIdolCreateWithClaim schema to DB model data dict."""
     return schema.model_dump(exclude_unset=True)
 
 
-class AIdolRepository(BaseRepository[AIdol, DBAIdol, AIdolCreate, AIdolUpdate]):
+class AIdolRepository(
+    BaseRepository[AIdol, DBAIdol, AIdolCreateWithClaim, AIdolUpdate]
+):
     """
     Database-backed AIdol repository.
 

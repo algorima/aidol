@@ -190,6 +190,11 @@
   "companionCreate": {
     "title": "出道成员选角",
     "next": "下一步",
+    "error": {
+      "update": "保存失败。",
+      "generateImage": "生成图片失败。",
+      "load": "加载练习生列表失败。"
+    },
     "gender": {
       "stepTitle": "请选择性别",
       "female": "女性",
@@ -236,6 +241,9 @@
       "line3": "新人AI偶像团体",
       "line4": "下一代项目",
       "cta": "选拔练习生"
+    },
+    "error": {
+      "create": "启动失败。"
     }
   },
   "group": {

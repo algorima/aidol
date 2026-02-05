@@ -3,6 +3,9 @@ import { BaseApiService } from "@aioia/core";
 /**
  * API Service for AIdol standalone app
  * No authentication required for public API access
+ *
+ * ClaimToken is managed via httpOnly cookies (set by middleware).
+ * Cookies are sent automatically with requests (credentials: 'include' in BaseApiService).
  */
 export class ApiService extends BaseApiService {
   constructor() {
@@ -10,12 +13,10 @@ export class ApiService extends BaseApiService {
   }
 
   /**
-   * No authentication headers for public API
+   * No custom auth headers needed - ClaimToken is sent via httpOnly cookie.
    */
   protected getAuthHeaders(): Record<string, string> {
-    return {
-      "Content-Type": "application/json",
-    };
+    return {};
   }
 
   /**

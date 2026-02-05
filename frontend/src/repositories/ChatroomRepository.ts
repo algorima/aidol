@@ -1,0 +1,111 @@
+import { BaseCrudRepository } from "@aioia/core";
+import { z } from "zod";
+
+import {
+  chatroomSchema,
+  messageSchema,
+  type Chatroom,
+  type Message,
+} from "../schemas";
+
+/**
+ * Response schema for generate AI response endpoint
+ */
+const generateResponseSchema = z.object({
+  messageId: z.string(),
+  content: z.string(),
+});
+
+export interface GenerateResponse {
+  messageId: string;
+  content: string;
+}
+
+/**
+ * Repository for Chatroom entities
+ * Handles chatroom CRUD and message operations
+ */
+export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
+  readonly resource = "chatrooms";
+
+  protected getDataSchema() {
+    return chatroomSchema;
+  }
+
+  /**
+   * Get messages from a chatroom
+   * GET /chatrooms/{id}/messages
+   */
+  async getMessages(
+    chatroomId: string,
+    options?: { limit?: number; offset?: number },
+    fetchOptions?: RequestInit,
+  ): Promise<Message[]> {
+    const params = new URLSearchParams();
+    if (options?.limit !== undefined) {
+      params.set("limit", options.limit.toString());
+    }
+    if (options?.offset !== undefined) {
+      params.set("offset", options.offset.toString());
+    }
+
+    const queryString = params.toString();
+    const url = this.apiService.buildUrl(
+      `${this.resource}/${chatroomId}/messages${queryString ? `?${queryString}` : ""}`,
+    );
+
+    const rawResponse = await this.apiService.request(url, fetchOptions);
+    return this.validateResponse(rawResponse, z.array(messageSchema));
+  }
+
+  /**
+   * Send a message to a chatroom
+   * POST /chatrooms/{id}/messages
+   *
+   * ClaimToken is automatically sent via httpOnly cookie.
+   *
+   * @param chatroomId - The chatroom ID
+   * @param content - The message content
+   * @param fetchOptions - Optional fetch options
+   */
+  async sendMessage(
+    chatroomId: string,
+    content: string,
+    fetchOptions?: RequestInit,
+  ): Promise<Message> {
+    const url = this.apiService.buildUrl(
+      `${this.resource}/${chatroomId}/messages`,
+    );
+
+    const rawResponse = await this.apiService.request(url, {
+      ...fetchOptions,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content, senderType: "user" }),
+    });
+
+    return this.validateResponse(rawResponse, messageSchema);
+  }
+
+  /**
+   * Generate AI response for a chatroom with a specific companion
+   * POST /chatrooms/{id}/companions/{companionId}/response
+   */
+  async generateResponse(
+    chatroomId: string,
+    companionId: string,
+    fetchOptions?: RequestInit,
+  ): Promise<GenerateResponse> {
+    const url = this.apiService.buildUrl(
+      `${this.resource}/${chatroomId}/companions/${companionId}/response`,
+    );
+
+    const rawResponse = await this.apiService.request(url, {
+      ...fetchOptions,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    return this.validateResponse(rawResponse, generateResponseSchema);
+  }
+}

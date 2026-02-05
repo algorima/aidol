@@ -10,10 +10,13 @@ import type { Companion } from "./companion";
 
 /**
  * AIdol schema (public fields only, excludes claim_token)
+ * Matches backend AIdolPublic (aidol/schemas/aidol.py)
  */
 export const aidolSchema = z.object({
   id: z.string(),
   name: z.string().nullable(),
+  email: z.string().nullable().optional(),
+  greeting: z.string().nullable().optional(),
   concept: z.string().nullable().optional(),
   profileImageUrl: z.string().nullable(),
   createdAt: z.string(),
@@ -23,6 +26,8 @@ export const aidolSchema = z.object({
 export interface AIdol extends BaseRecord {
   id: string;
   name: string | null;
+  email?: string | null;
+  greeting?: string | null;
   concept?: string | null;
   profileImageUrl: string | null;
   createdAt: string;
@@ -31,14 +36,21 @@ export interface AIdol extends BaseRecord {
 }
 
 /**
+ * Schema for AIdol creation response (backend returns only id)
+ */
+export const aidolCreateResponseSchema = z.object({
+  id: z.string(),
+});
+
+export type AIdolCreateResponse = z.infer<typeof aidolCreateResponseSchema>;
+
+/**
  * Schema for creating an AIdol group
- * claimToken is optional for anonymous ownership verification
  */
 export interface AIdolCreate {
   name: string;
   concept?: string | null;
   profileImageUrl: string;
-  claimToken?: string | null;
 }
 
 /**

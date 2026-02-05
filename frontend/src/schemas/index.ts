@@ -1,13 +1,28 @@
 // AIdol schemas (includes image generation)
-export { aidolSchema, imageGenerationResponseSchema } from "./aidol";
+export {
+  aidolCreateResponseSchema,
+  aidolSchema,
+  imageGenerationResponseSchema,
+} from "./aidol";
 export type {
   AIdol,
   AIdolCreate,
+  AIdolCreateResponse,
   AIdolUpdate,
   ImageGenerationData,
   ImageGenerationRequest,
   ImageGenerationResponse,
 } from "./aidol";
+
+// Chatroom schemas
+export {
+  chatroomSchema,
+  isCompanion,
+  isUser,
+  messageSchema,
+  SenderType,
+} from "./chatroom";
+export type { Chatroom, ChatroomCreate, Message } from "./chatroom";
 
 // Companion schemas
 export { companionSchema, POSITIONS } from "./companion";

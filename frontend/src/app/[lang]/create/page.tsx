@@ -7,7 +7,6 @@ import {
   GroupCreation,
   type GroupCreationFormData,
 } from "@/components/creation/GroupCreation";
-import { getOrCreateClaimToken } from "@/lib/claimToken";
 import { AIdolRepository, CompanionRepository } from "@/repositories";
 import type { AIdolCreate, ImageGenerationRequest } from "@/schemas/aidol";
 import type { CompanionCreate } from "@/schemas/companion";
@@ -70,17 +69,13 @@ export default function AIdolCreatePage({
       setError(null);
       try {
         // 1. Create AIdol group (profileImageUrl is now required)
-        const claimToken = getOrCreateClaimToken();
         const aidolData: AIdolCreate = {
           name: data.groupName,
           concept: data.concept || null,
           profileImageUrl: data.profileImageUrl,
-          claimToken,
         };
 
-        const { data: aidol } = await aidolRepository.create({
-          variables: aidolData,
-        });
+        const aidol = await aidolRepository.createAIdol(aidolData);
 
         // 2. Create companions
         for (const member of data.members) {
