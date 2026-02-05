@@ -67,6 +67,6 @@ class CompanionRelationship(CompanionRelationshipBase):
     )
 
     id: str = Field(..., description="Relationship ID")
-    type: str = Field(default=None, description="관계 유형 (계산된 값)")
+    type: str = Field(..., description="관계 유형 (계산된 값)")
     created_at: datetime = Field(..., description="Creation timestamp")
     updated_at: datetime = Field(..., description="Last update timestamp")

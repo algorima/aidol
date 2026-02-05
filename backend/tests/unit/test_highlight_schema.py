@@ -48,10 +48,10 @@ class TestAIdolHighlightCreateSchema(unittest.TestCase):
     def test_error_on_missing_required_fields(self):
         """필수 필드 누락 시 ValidationError"""
         with self.assertRaises(ValidationError):
-            AIdolHighlightCreate()
+            AIdolHighlightCreate()  # type: ignore[call-arg]
 
         with self.assertRaises(ValidationError):
-            AIdolHighlightCreate(title="테스트")  # thumbnail_url, subtitle 누락
+            AIdolHighlightCreate(title="테스트")  # type: ignore[call-arg]
 
 
 class TestAIdolHighlightUpdateSchema(unittest.TestCase):
@@ -117,10 +117,10 @@ class TestHighlightMessageCreateSchema(unittest.TestCase):
     def test_error_on_missing_required_fields(self):
         """필수 필드 누락 시 ValidationError"""
         with self.assertRaises(ValidationError):
-            HighlightMessageCreate()
+            HighlightMessageCreate()  # type: ignore[call-arg]
 
         with self.assertRaises(ValidationError):
-            HighlightMessageCreate(sequence=1)  # content 누락
+            HighlightMessageCreate(sequence=1)  # type: ignore[call-arg]
 
 
 class TestHighlightMessageUpdateSchema(unittest.TestCase):
