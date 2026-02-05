@@ -19,7 +19,6 @@ from aidol.schemas import (
     HighlightMessageUpdate,
 )
 
-
 # ---------------------------------------------------------------------------
 # AIdolHighlight Repository
 # ---------------------------------------------------------------------------
@@ -46,7 +45,9 @@ def _convert_highlight_schema_to_db(
 
 
 class AIdolHighlightRepository(
-    BaseRepository[AIdolHighlight, DBAIdolHighlight, AIdolHighlightCreate, AIdolHighlightUpdate]
+    BaseRepository[
+        AIdolHighlight, DBAIdolHighlight, AIdolHighlightCreate, AIdolHighlightUpdate
+    ]
 ):
     """
     Database-backed AIdolHighlight repository.
@@ -89,7 +90,12 @@ def _convert_message_schema_to_db(
 
 
 class HighlightMessageRepository(
-    BaseRepository[HighlightMessage, DBHighlightMessage, HighlightMessageCreate, HighlightMessageUpdate]
+    BaseRepository[
+        HighlightMessage,
+        DBHighlightMessage,
+        HighlightMessageCreate,
+        HighlightMessageUpdate,
+    ]
 ):
     """
     Database-backed HighlightMessage repository.

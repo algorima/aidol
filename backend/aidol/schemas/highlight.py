@@ -18,7 +18,6 @@ from datetime import datetime
 from humps import camelize
 from pydantic import BaseModel, ConfigDict, Field
 
-
 # ---------------------------------------------------------------------------
 # AIdolHighlight Schemas
 # ---------------------------------------------------------------------------
