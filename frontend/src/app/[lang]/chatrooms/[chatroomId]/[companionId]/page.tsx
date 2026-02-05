@@ -102,7 +102,7 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
       let createdMessage: Message;
 
       try {
-        // Core task: Send user message (ClaimToken sent via httpOnly cookie)
+        // Core task: Send user message (anonymous ID sent via httpOnly cookie)
         createdMessage = await chatroomRepository.sendMessage(
           chatroomId,
           content,

@@ -25,7 +25,7 @@ from aidol.protocols import (
 from aidol.schemas import (
     AIdol,
     AIdolCreate,
-    AIdolCreateWithClaim,
+    AIdolCreateWithAnonymousId,
     AIdolPublic,
     AIdolUpdate,
 )
@@ -39,13 +39,15 @@ class AIdolCreateResponse(BaseModel):
 
 
 class AIdolRouter(
-    BaseCrudRouter[AIdol, AIdolCreateWithClaim, AIdolUpdate, AIdolRepositoryProtocol]
+    BaseCrudRouter[
+        AIdol, AIdolCreateWithAnonymousId, AIdolUpdate, AIdolRepositoryProtocol
+    ]
 ):
     """
     AIdol router with public endpoints.
 
     Public CRUD pattern: no authentication required.
-    Returns AIdolPublic (excludes claim_token) for all responses.
+    Returns AIdolPublic (excludes anonymous_id) for all responses.
     """
 
     def __init__(
@@ -114,19 +116,21 @@ class AIdolRouter(
         )
         async def create_aidol(
             request: AIdolCreate,
-            claim_token: Annotated[str | None, Cookie(alias="ClaimToken")] = None,
+            claim_token: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
             if not claim_token:
                 raise HTTPException(
                     status_code=status.HTTP_400_BAD_REQUEST,
-                    detail="ClaimToken cookie is required",
+                    detail="aioia_anonymous_id cookie is required",
                 )
 
-            # Convert body schema to internal schema with claim_token from Cookie
-            create_data = AIdolCreateWithClaim(
-                **request.model_dump(), claim_token=claim_token
+            # Convert body schema to internal schema with anonymous_id from Cookie
+            create_data = AIdolCreateWithAnonymousId(
+                **request.model_dump(), anonymous_id=claim_token
             )
             created = repository.create(create_data)
 

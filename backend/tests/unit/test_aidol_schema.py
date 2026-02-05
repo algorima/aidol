@@ -15,10 +15,10 @@ from aidol.schemas import AIdolCreate, AIdolPublic
 class TestAIdolCreateSchema(unittest.TestCase):
     """AIdolCreate 스키마 유닛 테스트"""
 
-    def test_claim_token_not_in_body(self):
-        """claim_token은 body에서 받지 않음 (Cookie에서 읽음)"""
+    def test_anonymous_id_not_in_body(self):
+        """anonymous_id은 body에서 받지 않음 (Cookie에서 읽음)"""
         fields = AIdolCreate.model_fields.keys()
-        self.assertNotIn("claim_token", fields)
+        self.assertNotIn("anonymous_id", fields)
 
     def test_create_without_fields(self):
         """필드 없이 생성 가능해야 함"""
@@ -29,12 +29,12 @@ class TestAIdolCreateSchema(unittest.TestCase):
 class TestAIdolPublicSchema(unittest.TestCase):
     """AIdolPublic 스키마 유닛 테스트"""
 
-    def test_claim_token_excluded(self):
-        """AIdolPublic에는 claim_token 필드가 없어야 함"""
+    def test_anonymous_id_excluded(self):
+        """AIdolPublic에는 anonymous_id 필드가 없어야 함"""
         # AIdolPublic 스키마의 필드 목록 확인
         fields = AIdolPublic.model_fields.keys()
 
-        self.assertNotIn("claim_token", fields)
+        self.assertNotIn("anonymous_id", fields)
         self.assertIn("id", fields)
         self.assertIn("name", fields)
 
@@ -50,8 +50,8 @@ class TestAIdolPublicSchema(unittest.TestCase):
         data = public.model_dump(by_alias=True)
 
         self.assertIn("id", data)
-        self.assertNotIn("claimToken", data)
-        self.assertNotIn("claim_token", data)
+        self.assertNotIn("anonymousId", data)
+        self.assertNotIn("anonymous_id", data)
 
 
 if __name__ == "__main__":
