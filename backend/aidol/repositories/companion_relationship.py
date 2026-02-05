@@ -14,8 +14,8 @@ from aidol.schemas import (
     CompanionRelationship,
     CompanionRelationshipCreate,
     CompanionRelationshipUpdate,
-    get_intimacy_type,
 )
+from aidol.services.companion_relationship_service import get_intimacy_type
 
 
 def _convert_db_relationship_to_model(
