@@ -46,13 +46,11 @@ export type AIdolCreateResponse = z.infer<typeof aidolCreateResponseSchema>;
 
 /**
  * Schema for creating an AIdol group
- * claimToken is optional for anonymous ownership verification
  */
 export interface AIdolCreate {
   name: string;
   concept?: string | null;
   profileImageUrl: string;
-  claimToken?: string | null;
 }
 
 /**

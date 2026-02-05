@@ -6,6 +6,7 @@ from aidol.schemas.aidol import (
     AIdol,
     AIdolBase,
     AIdolCreate,
+    AIdolCreateWithClaim,
     AIdolPublic,
     AIdolUpdate,
     ImageGenerationData,
@@ -24,6 +25,7 @@ from aidol.schemas.chatroom import (
     Message,
     MessageBase,
     MessageCreate,
+    MessageCreateWithClaim,
     SenderType,
 )
 from aidol.schemas.companion import (
@@ -45,6 +47,7 @@ __all__ = [
     "AIdol",
     "AIdolBase",
     "AIdolCreate",
+    "AIdolCreateWithClaim",
     "AIdolPublic",
     "AIdolUpdate",
     "ImageGenerationData",
@@ -65,6 +68,7 @@ __all__ = [
     "Message",
     "MessageBase",
     "MessageCreate",
+    "MessageCreateWithClaim",
     "SenderType",
     # Companion
     "Companion",

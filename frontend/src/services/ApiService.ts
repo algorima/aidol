@@ -1,25 +1,22 @@
 import { BaseApiService } from "@aioia/core";
 
-import { getClaimToken } from "@/lib/claimToken";
-
 /**
  * API Service for AIdol standalone app
  * No authentication required for public API access
+ *
+ * ClaimToken is managed via httpOnly cookies (set by middleware).
+ * Cookies are sent automatically with requests (credentials: 'include' in BaseApiService).
  */
 export class ApiService extends BaseApiService {
   constructor() {
     super(process.env.NEXT_PUBLIC_API_BASE_URL, "");
   }
 
+  /**
+   * No custom auth headers needed - ClaimToken is sent via httpOnly cookie.
+   */
   protected getAuthHeaders(): Record<string, string> {
-    const headers: Record<string, string> = {
-      "Content-Type": "application/json",
-    };
-    const claimToken = getClaimToken();
-    if (claimToken) {
-      headers["ClaimToken"] = claimToken;
-    }
-    return headers;
+    return {};
   }
 
   /**

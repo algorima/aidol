@@ -3,7 +3,8 @@ AIdol (group) schemas
 
 Schema hierarchy:
 - AIdolBase: Mutable fields (used in Create/Update)
-- AIdolCreate: Base + optional claim_token
+- AIdolCreate: API body (claim_token excluded, read from Cookie)
+- AIdolCreateWithClaim: Internal (claim_token included, for repository)
 - AIdolUpdate: Base fields only
 - AIdol: Response with all fields including claim_token (internal use)
 - AIdolPublic: Response without sensitive fields (API use)
@@ -32,14 +33,20 @@ class AIdolBase(BaseModel):
 
 
 class AIdolCreate(AIdolBase):
-    """Schema for creating an AIdol group (no id).
+    """API body schema for creating an AIdol group.
 
-    claim_token is required for ownership verification.
+    claim_token is excluded (read from Cookie by router).
     """
 
-    claim_token: str = Field(
-        ...,
-        description="Client-generated UUID for ownership verification",
+
+class AIdolCreateWithClaim(AIdolBase):
+    """Internal schema for repository with claim_token.
+
+    Used by router to pass Cookie-based claim_token to repository.
+    """
+
+    claim_token: str | None = Field(
+        default=None, description="Ownership token from Cookie"
     )
 
 

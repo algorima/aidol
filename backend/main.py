@@ -138,9 +138,11 @@ app = FastAPI(
 )
 
 # CORS middleware
+# Note: allow_origins=["*"] + allow_credentials=True is forbidden by browser spec
+# Use allow_origin_regex for development environments with varying ports
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

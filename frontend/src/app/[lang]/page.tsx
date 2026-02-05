@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
 import { HeroSection } from "@/components/landing/HeroSection";
-import { getOrCreateClaimToken } from "@/lib/claimToken";
 import { AIdolRepository } from "@/repositories";
 import { getApiService } from "@/services/ApiService";
 
@@ -38,11 +37,9 @@ export default function AIdolLandingPage({
   const handleStart = useCallback(async () => {
     setIsStarting(true);
     try {
-      const claimToken = getOrCreateClaimToken();
       const aidol = await aidolRepository.createAIdol({
         name: "",
         profileImageUrl: "",
-        claimToken,
       });
       router.push(`/${lang}/aidols/${aidol.id}/casting`);
     } catch (err) {

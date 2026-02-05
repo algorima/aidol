@@ -62,15 +62,15 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
    * Send a message to a chatroom
    * POST /chatrooms/{id}/messages
    *
+   * ClaimToken is automatically sent via httpOnly cookie.
+   *
    * @param chatroomId - The chatroom ID
    * @param content - The message content
-   * @param claimToken - Anonymous user identifier for analytics
    * @param fetchOptions - Optional fetch options
    */
   async sendMessage(
     chatroomId: string,
     content: string,
-    claimToken: string,
     fetchOptions?: RequestInit,
   ): Promise<Message> {
     const url = this.apiService.buildUrl(
@@ -81,7 +81,7 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
       ...fetchOptions,
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content, senderType: "user", claimToken }),
+      body: JSON.stringify({ content, senderType: "user" }),
     });
 
     return this.validateResponse(rawResponse, messageSchema);

@@ -9,33 +9,21 @@ AIdol 스키마 유닛 테스트
 import unittest
 from datetime import datetime
 
-from pydantic import ValidationError
-
 from aidol.schemas import AIdolCreate, AIdolPublic
 
 
 class TestAIdolCreateSchema(unittest.TestCase):
     """AIdolCreate 스키마 유닛 테스트"""
 
-    def test_claim_token_required(self):
-        """claimToken 없이 생성하면 ValidationError 발생해야 함"""
+    def test_claim_token_not_in_body(self):
+        """claim_token은 body에서 받지 않음 (Cookie에서 읽음)"""
+        fields = AIdolCreate.model_fields.keys()
+        self.assertNotIn("claim_token", fields)
 
-        with self.assertRaises(ValidationError):
-            AIdolCreate()  # type: ignore
-
-    def test_request_with_claim_token(self):
-        """claimToken을 포함한 요청이 유효해야 함"""
-        token = "550e8400-e29b-41d4-a716-446655440000"
-        schema = AIdolCreate(claim_token=token)
-
-        self.assertEqual(schema.claim_token, token)
-
-    def test_camel_case_alias_support(self):
-        """camelCase 필드명도 인식해야 함"""
-        token = "550e8400-e29b-41d4-a716-446655440000"
-        schema = AIdolCreate.model_validate({"claimToken": token})
-
-        self.assertEqual(schema.claim_token, token)
+    def test_create_without_fields(self):
+        """필드 없이 생성 가능해야 함"""
+        schema = AIdolCreate()
+        self.assertIsNone(schema.name)
 
 
 class TestAIdolPublicSchema(unittest.TestCase):

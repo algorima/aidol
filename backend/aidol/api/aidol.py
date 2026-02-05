@@ -6,11 +6,13 @@ Public endpoints for AIdol group creation and retrieval.
 Public access pattern: no authentication required.
 """
 
+from typing import Annotated
+
 from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
@@ -20,7 +22,13 @@ from aidol.protocols import (
     AIdolRepositoryProtocol,
     ImageStorageProtocol,
 )
-from aidol.schemas import AIdol, AIdolCreate, AIdolPublic, AIdolUpdate
+from aidol.schemas import (
+    AIdol,
+    AIdolCreate,
+    AIdolCreateWithClaim,
+    AIdolPublic,
+    AIdolUpdate,
+)
 from aidol.settings import GoogleGenAISettings
 
 
@@ -31,7 +39,7 @@ class AIdolCreateResponse(BaseModel):
 
 
 class AIdolRouter(
-    BaseCrudRouter[AIdol, AIdolCreate, AIdolUpdate, AIdolRepositoryProtocol]
+    BaseCrudRouter[AIdol, AIdolCreateWithClaim, AIdolUpdate, AIdolRepositoryProtocol]
 ):
     """
     AIdol router with public endpoints.
@@ -106,15 +114,21 @@ class AIdolRouter(
         )
         async def create_aidol(
             request: AIdolCreate,
-            response: Response,
+            claim_token: Annotated[str | None, Cookie(alias="ClaimToken")] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
-            created = repository.create(request)
+            if not claim_token:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="ClaimToken cookie is required",
+                )
 
-            # Set ClaimToken header
-            if created.claim_token:
-                response.headers["ClaimToken"] = created.claim_token
+            # Convert body schema to internal schema with claim_token from Cookie
+            create_data = AIdolCreateWithClaim(
+                **request.model_dump(), claim_token=claim_token
+            )
+            created = repository.create(create_data)
 
             # Return only id
             return AIdolCreateResponse(id=created.id)
