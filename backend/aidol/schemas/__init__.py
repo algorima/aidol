@@ -45,10 +45,6 @@ from aidol.schemas.companion_relationship import (
     CompanionRelationshipCreate,
     CompanionRelationshipUpdate,
 )
-from aidol.services.companion_relationship_service import (
-    IntimacyType,
-    get_intimacy_type,
-)
 from aidol.schemas.highlight import (
     AIdolHighlight,
     AIdolHighlightBase,
@@ -105,8 +101,6 @@ __all__ = [
     "CompanionRelationshipBase",
     "CompanionRelationshipCreate",
     "CompanionRelationshipUpdate",
-    "IntimacyType",
-    "get_intimacy_type",
     # Highlight
     "AIdolHighlight",
     "AIdolHighlightBase",
