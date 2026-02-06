@@ -16,7 +16,7 @@ from sqlalchemy.orm import Session
 
 from aidol.schemas import (
     AIdol,
-    AIdolCreateWithClaim,
+    AIdolCreateWithAnonymousId,
     AIdolLead,
     AIdolLeadCreate,
     AIdolUpdate,
@@ -27,7 +27,7 @@ from aidol.schemas import (
     CompanionCreate,
     CompanionUpdate,
     Message,
-    MessageCreateWithClaim,
+    MessageCreateWithAnonymousId,
 )
 
 
@@ -64,13 +64,13 @@ class ChatroomRepositoryProtocol(
         ...
 
     def add_message_to_chatroom(
-        self, chatroom_id: str, message: MessageCreateWithClaim
+        self, chatroom_id: str, message: MessageCreateWithAnonymousId
     ) -> Message:
         """Add a message to a chatroom.
 
         Args:
             chatroom_id: Chatroom ID.
-            message: MessageCreateWithClaim or CompanionMessageCreate schema (with claim_token).
+            message: MessageCreateWithAnonymousId or CompanionMessageCreate schema (with anonymous_id).
         """
         ...
 
@@ -95,7 +95,7 @@ class ChatroomRepositoryFactoryProtocol(Protocol):
 
 
 class AIdolRepositoryProtocol(
-    CrudRepositoryProtocol[AIdol, AIdolCreateWithClaim, AIdolUpdate], Protocol
+    CrudRepositoryProtocol[AIdol, AIdolCreateWithAnonymousId, AIdolUpdate], Protocol
 ):
     """Protocol defining AIdol repository expectations.
 

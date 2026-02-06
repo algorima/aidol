@@ -62,7 +62,7 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
    * Send a message to a chatroom
    * POST /chatrooms/{id}/messages
    *
-   * ClaimToken is automatically sent via httpOnly cookie.
+   * Anonymous ID is automatically sent via httpOnly cookie.
    *
    * @param chatroomId - The chatroom ID
    * @param content - The message content

@@ -30,7 +30,7 @@ from aidol.schemas import (
     CompanionMessageCreate,
     Message,
     MessageCreate,
-    MessageCreateWithClaim,
+    MessageCreateWithAnonymousId,
     ModelSettings,
     Persona,
     SenderType,
@@ -184,15 +184,17 @@ class ChatroomRouter(
         async def send_message(
             item_id: str,
             request: MessageCreate,
-            claim_token: Annotated[str | None, Cookie(alias="ClaimToken")] = None,
+            claim_token: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""
-            # Guard Clause: ClaimToken cookie is required
+            # Guard Clause: aioia_anonymous_id cookie is required
             if not claim_token:
                 raise HTTPException(
                     status_code=status.HTTP_400_BAD_REQUEST,
-                    detail="ClaimToken cookie is required",
+                    detail="aioia_anonymous_id cookie is required",
                 )
 
             # Verify chatroom exists
@@ -201,12 +203,12 @@ class ChatroomRouter(
             # Enforce sender_type as USER to prevent spoofing
             request.sender_type = SenderType.USER
 
-            # Convert to internal schema with claim_token from Cookie
-            message_data = MessageCreateWithClaim(
-                **request.model_dump(), claim_token=claim_token
+            # Convert to internal schema with anonymous_id from Cookie
+            message_data = MessageCreateWithAnonymousId(
+                **request.model_dump(), anonymous_id=claim_token
             )
 
-            # Pass MessageCreateWithClaim to repository
+            # Pass MessageCreateWithAnonymousId to repository
             return repository.add_message_to_chatroom(
                 chatroom_id=item_id,
                 message=message_data,

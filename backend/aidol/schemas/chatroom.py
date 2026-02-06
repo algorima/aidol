@@ -84,22 +84,22 @@ class CompanionMessage(Message):
 class MessageCreate(MessageBase):
     """API body schema for creating a message (no id, no timestamp).
 
-    claim_token is excluded (read from Cookie by router).
+    anonymous_id is excluded (read from Cookie by router).
     """
 
 
-class MessageCreateWithClaim(MessageBase):
-    """Internal schema for repository with claim_token.
+class MessageCreateWithAnonymousId(MessageBase):
+    """Internal schema for repository with anonymous_id.
 
-    Used by router to pass Cookie-based claim_token to repository.
+    Used by router to pass Cookie-based anonymous_id to repository.
     """
 
-    claim_token: str | None = Field(
+    anonymous_id: str | None = Field(
         default=None, description="Anonymous user identifier for analytics"
     )
 
 
-class CompanionMessageCreate(MessageCreateWithClaim):
+class CompanionMessageCreate(MessageCreateWithAnonymousId):
     """Schema for creating a companion message.
 
     companion_id is optional for aidol standalone but may be required for platform integration.
