@@ -250,5 +250,12 @@
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",
     "followButton": "Seguir"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "¡Encuentra un grupo que te guste!",
+      "description": "Los personajes idol (rostro, voz, video) de este contenido son personajes virtuales originales creados por IA y no están basados en personas reales, incluidos idols y celebridades."
+    },
+    "memberCount": "{{count}} miembros"
   }
 }

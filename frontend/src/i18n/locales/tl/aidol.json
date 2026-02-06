@@ -250,5 +250,12 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",
     "followButton": "Sundan"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Humanap ng grupo na gusto mo!",
+      "description": "Ang mga idol character (mukha, boses, video) sa content na ito ay orihinal na virtual character na ginawa ng AI at hindi batay sa totoong tao, kabilang ang mga idol at celebrity."
+    },
+    "memberCount": "{{count}} miyembro"
   }
 }

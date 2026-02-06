@@ -250,5 +250,12 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Member Chemistry 💭",
     "followButton": "Follow"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Find a group you like!",
+      "description": "The idol characters (face, voice, video) in this content are original virtual characters created by AI and are not based on any real person, including idols and celebrities."
+    },
+    "memberCount": "{{count}} members"
   }
 }

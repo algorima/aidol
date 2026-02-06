@@ -250,5 +250,12 @@
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
     "followButton": "Ikuti"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Temukan grup yang kamu suka!",
+      "description": "Karakter idol (wajah, suara, video) dalam konten ini adalah karakter virtual asli yang dibuat oleh AI dan tidak berdasarkan orang nyata, termasuk idol dan selebriti."
+    },
+    "memberCount": "{{count}} anggota"
   }
 }

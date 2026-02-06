@@ -250,5 +250,12 @@
     "title": "第一季出道组",
     "chemistryButton": "成员间默契 💭",
     "followButton": "关注"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "找到你喜欢的组合吧！",
+      "description": "本内容中的偶像角色（面部、声音、视频）是由AI制作的原创虚拟人物，不基于任何真实人物，包括偶像和艺人。"
+    },
+    "memberCount": "{{count}}人组"
   }
 }

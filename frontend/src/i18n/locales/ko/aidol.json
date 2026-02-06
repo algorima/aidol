@@ -241,5 +241,12 @@
     "title": "시즌1 데뷔조",
     "chemistryButton": "멤버 간 케미 💭",
     "followButton": "팔로우"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "원하는 그룹을 찾아보세요!",
+      "description": "본 콘텐츠의 아이돌 캐릭터(얼굴·음성·영상)는 AI로 제작된 오리지널 가상 인물이며, 실존 인물(아이돌/연예인 포함)을 기반으로 하지 않습니다."
+    },
+    "memberCount": "{{count}}인조"
   }
 }
