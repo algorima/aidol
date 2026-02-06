@@ -23,7 +23,6 @@ export const Default: Story = {
     name: "시즌1 데뷔조",
     createdAt: "2026-01-29T00:00:00Z",
     onChemistryClick: () => alert("멤버 간 케미"),
-    shareUrl: "https://example.com/group/1",
   },
 };
 
@@ -33,7 +32,6 @@ export const WithoutImage: Story = {
     name: "드리머즈",
     createdAt: "2026-01-20T00:00:00Z",
     onChemistryClick: () => alert("멤버 간 케미"),
-    shareUrl: "https://example.com/group/2",
   },
 };
 
@@ -43,6 +41,5 @@ export const RecentlyCreated: Story = {
     name: "루미너스",
     createdAt: new Date().toISOString(),
     onChemistryClick: () => alert("멤버 간 케미"),
-    shareUrl: "https://example.com/group/3",
   },
 };

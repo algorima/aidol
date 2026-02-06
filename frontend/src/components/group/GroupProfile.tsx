@@ -2,7 +2,6 @@
 
 import { ShareIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { formatDate, getDaysSince } from "@/lib/date";
@@ -12,7 +11,6 @@ interface GroupProfileProps {
   name: string;
   createdAt: string;
   onChemistryClick: () => void;
-  shareUrl: string;
 }
 
 export function GroupProfile({
@@ -20,16 +18,8 @@ export function GroupProfile({
   name,
   createdAt,
   onChemistryClick,
-  shareUrl,
 }: GroupProfileProps) {
   const { t } = useTranslation("aidol");
-  const [copied, setCopied] = useState(false);
-
-  const handleShare = useCallback(async () => {
-    await navigator.clipboard.writeText(shareUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [shareUrl]);
 
   return (
     <div className="flex flex-col gap-4 p-6">
@@ -65,9 +55,9 @@ export function GroupProfile({
         </button>
         <button
           className="btn bg-base-300 text-base-content/60 text-label-l w-full rounded-lg"
-          onClick={handleShare}
+          disabled
         >
-          {copied ? t("urlCopied") : t("share")}
+          {t("share")}
           <ShareIcon className="size-5" />
         </button>
       </div>
