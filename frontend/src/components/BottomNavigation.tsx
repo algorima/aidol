@@ -3,9 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
-import { BiSolidUserCircle, BiUserCircle } from "react-icons/bi";
-import { HiOutlineSparkles, HiSparkles } from "react-icons/hi";
-import { HiMiniHome, HiOutlineHome } from "react-icons/hi2";
+import {
+  HiMiniHome,
+  HiOutlineHome,
+  HiOutlineSparkles,
+  HiOutlineUserCircle,
+  HiSparkles,
+  HiUserCircle,
+} from "react-icons/hi2";
 import type { IconType } from "react-icons/lib";
 
 type TabKey = "home" | "explore" | "myGroup";
@@ -37,8 +42,8 @@ const tabs: TabConfig[] = [
     key: "myGroup",
     path: "my-group",
     labelKey: "navigation.myGroup",
-    IconOutline: BiUserCircle,
-    IconSolid: BiSolidUserCircle,
+    IconOutline: HiOutlineUserCircle,
+    IconSolid: HiUserCircle,
   },
 ];
 
