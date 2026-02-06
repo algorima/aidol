@@ -56,9 +56,9 @@ export function ChemistryRelationCard({
       )}
 
       <div className="flex items-center gap-2">
-        <span className="text-label-l text-base-content">{fromName}</span>
+        <span className="text-body-s text-base-content">{fromName}</span>
         <ArrowLongRightIcon className="text-base-content size-5" />
-        <span className="text-label-l text-base-content">{toName}</span>
+        <span className="text-body-s text-base-content">{toName}</span>
       </div>
 
       {!relationshipType && fromLabel && toLabel && (
