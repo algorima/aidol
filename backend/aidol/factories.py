@@ -10,6 +10,7 @@ from aidol.repositories.aidol import AIdolRepository
 from aidol.repositories.aidol_lead import AIdolLeadRepository
 from aidol.repositories.chatroom import ChatroomRepository
 from aidol.repositories.companion import CompanionRepository
+from aidol.repositories.companion_relationship import CompanionRelationshipRepository
 from aidol.repositories.highlight import (
     AIdolHighlightRepository,
     HighlightMessageRepository,
@@ -58,4 +59,14 @@ class HighlightMessageRepositoryFactory(
 
     def __init__(self):
         super().__init__(repository_class=HighlightMessageRepository)
+
+
+class CompanionRelationshipRepositoryFactory(
+    BaseRepositoryFactory[CompanionRelationshipRepository]
+):
+    """Factory for creating CompanionRelationship repositories."""
+
+    def __init__(self):
+        super().__init__(repository_class=CompanionRelationshipRepository)
+
 
