@@ -6,7 +6,6 @@ export const highlightSchema = z.object({
   title: z.string(),
   subtitle: z.string(),
   thumbnailUrl: z.string(),
-  thumbnailTitle: z.string(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
