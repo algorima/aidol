@@ -99,9 +99,7 @@ class CompanionBase(BaseModel):
         default=None, description="Profile picture URL"
     )
     position: Position | None = Field(default=None, description="Position in group")
-    status: Status | None = Field(
-        default=Status.DRAFT, description="Publication status"
-    )
+    status: Status = Field(default=Status.DRAFT, description="Publication status")
 
     # MBTI scores (1-10)
     mbti_energy: int | None = Field(default=None, ge=1, le=10, description="E↔I (1-10)")
