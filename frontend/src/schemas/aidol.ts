@@ -9,7 +9,7 @@ import { z } from "zod";
 import type { Companion } from "./companion";
 
 /**
- * AIdol schema (public fields only, excludes claim_token)
+ * AIdol schema (public fields only, excludes anonymous_id)
  * Matches backend AIdolPublic (aidol/schemas/aidol.py)
  */
 export const aidolSchema = z.object({
