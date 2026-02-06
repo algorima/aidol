@@ -14,10 +14,9 @@ const meta: Meta<typeof GroupCard> = {
 export default meta;
 type Story = StoryObj<typeof GroupCard>;
 
-const sampleAvatar =
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop";
+const sampleAvatar = "https://placehold.co/96x96/EEE/31343C?text=RN";
 const sampleHighlight =
-  "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=345&h=230&fit=crop";
+  "https://placehold.co/345x230/EEE/31343C?text=Highlight";
 
 export const Default: Story = {
   args: {
