@@ -44,6 +44,10 @@ export type {
   MyGroupHighlightSection,
 } from "./highlight";
 
+// Companion Relationship schemas
+export { companionRelationshipSchema } from "./companionRelationship";
+export type { CompanionRelationship } from "./companionRelationship";
+
 // Lead schemas
 export { leadResponseSchema } from "./lead";
 export type { LeadRequest, LeadResponse } from "./lead";
