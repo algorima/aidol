@@ -1,19 +1,20 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { GenderTab } from "@/components/casting";
 import { GenderFilterTabs } from "@/components/casting";
 import { GroupCard } from "@/components/group/GroupCard";
 import { GroupInfoBanner } from "@/components/group/GroupInfoBanner";
+import { Loading } from "@/components/Loading";
 
 type GenderType = "boy" | "girl" | "mixed";
 
 interface MockGroup {
   id: string;
   name: string;
-  profileImageUrl: string;
+  profileImageUrl: string | null;
   memberCount: number;
   gender: GenderType;
   highlight: {
@@ -22,6 +23,7 @@ interface MockGroup {
   };
 }
 
+// TODO: API 구현 후 Repository로 교체
 const MOCK_GROUPS: MockGroup[] = [
   {
     id: "group-1",
@@ -96,14 +98,31 @@ export default function GroupsPage({ params }: GroupsPageProps) {
   const { lang } = params;
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<GenderTab>("mixed");
+  const [groups, setGroups] = useState<MockGroup[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // TODO: API 구현 후 async + Repository 호출로 교체
+    // const res = await aidolRepository.getList();
+    setGroups(MOCK_GROUPS);
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="bg-base-100 flex h-dvh flex-col items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
 
   const gender = TAB_TO_GENDER[activeTab];
   const filteredGroups = gender
-    ? MOCK_GROUPS.filter((g) => g.gender === gender)
-    : MOCK_GROUPS;
+    ? groups.filter((g) => g.gender === gender)
+    : groups;
 
   return (
-    <div className="max-w-mobile mx-auto flex min-h-screen flex-col">
+    <div className="max-w-mobile mx-auto flex min-h-dvh flex-col">
       <div className="flex flex-col gap-6 px-6 py-4">
         <GroupInfoBanner />
         <GenderFilterTabs activeTab={activeTab} onTabChange={setActiveTab} />
@@ -116,7 +135,7 @@ export default function GroupsPage({ params }: GroupsPageProps) {
               memberCount={group.memberCount}
               highlightImageUrl={group.highlight.thumbnailUrl}
               highlightTitle={group.highlight.title}
-              onClick={() => router.push(`/${lang}/${group.id}`)}
+              onClick={() => router.push(`/${lang}/aidols/${group.id}`)}
             />
           ))}
         </div>
