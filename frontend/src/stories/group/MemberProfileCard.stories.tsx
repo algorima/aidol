@@ -25,6 +25,7 @@ const sampleCompanion: Companion = {
   grade: "A",
   mbti: "ENFJ",
   position: "mainVocal",
+  status: "published",
   createdAt: "2024-01-01T00:00:00Z",
   updatedAt: "2024-01-01T00:00:00Z",
 };
@@ -50,6 +51,7 @@ export const MinimalData: Story = {
       id: "2",
       name: "서윤",
       grade: "B",
+      status: "published",
       createdAt: "2024-01-01T00:00:00Z",
       updatedAt: "2024-01-01T00:00:00Z",
     },
