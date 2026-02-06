@@ -56,6 +56,12 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
     return { data: aidolSchema.parse(raw) };
   }
 
+  async getMy(fetchOptions?: RequestInit): Promise<{ data: AIdol[] }> {
+    const url = this.apiService.buildUrl(`${this.resource}/mine`);
+    const raw = await this.apiService.request(url, fetchOptions);
+    return { data: aidolSchema.array().parse(raw) };
+  }
+
   async generateImage(
     request: ImageGenerationRequest,
     fetchOptions?: RequestInit,
