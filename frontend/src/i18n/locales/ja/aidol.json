@@ -250,5 +250,11 @@
     "title": "シーズン1 デビュー組",
     "chemistryButton": "メンバー間ケミストリー 💭",
     "followButton": "フォロー"
+  },
+  "chemistry": {
+    "header": "メンバー間ケミストリー",
+    "relationTitle": "メンバーとのケミストリーまとめ",
+    "relationSubtitle": "関係性はチャット内容に影響します！",
+    "addRelation": "関係性を追加"
   }
 }

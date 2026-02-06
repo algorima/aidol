@@ -250,5 +250,11 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",
     "followButton": "Sundan"
+  },
+  "chemistry": {
+    "header": "Chemistry ng mga Miyembro",
+    "relationTitle": "Buod ng Chemistry",
+    "relationSubtitle": "Ang relasyon ay nakakaapekto sa nilalaman ng chat!",
+    "addRelation": "Magdagdag ng Relasyon"
   }
 }

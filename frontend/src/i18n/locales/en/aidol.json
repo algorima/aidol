@@ -250,5 +250,11 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Member Chemistry 💭",
     "followButton": "Follow"
+  },
+  "chemistry": {
+    "header": "Member Chemistry",
+    "relationTitle": "Chemistry Summary",
+    "relationSubtitle": "Relationships affect chat content!",
+    "addRelation": "Add Relationship"
   }
 }

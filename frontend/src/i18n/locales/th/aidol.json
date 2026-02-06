@@ -250,5 +250,11 @@
     "title": "เดบิวต์ซีซั่น 1",
     "chemistryButton": "เคมีระหว่างสมาชิก 💭",
     "followButton": "ติดตาม"
+  },
+  "chemistry": {
+    "header": "เคมีระหว่างสมาชิก",
+    "relationTitle": "สรุปเคมีระหว่างสมาชิก",
+    "relationSubtitle": "ความสัมพันธ์มีผลต่อเนื้อหาแชท!",
+    "addRelation": "เพิ่มความสัมพันธ์"
   }
 }

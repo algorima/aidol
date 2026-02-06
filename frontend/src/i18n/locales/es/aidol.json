@@ -250,5 +250,11 @@
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",
     "followButton": "Seguir"
+  },
+  "chemistry": {
+    "header": "Química entre Miembros",
+    "relationTitle": "Resumen de Química",
+    "relationSubtitle": "¡Las relaciones afectan el contenido del chat!",
+    "addRelation": "Agregar Relación"
   }
 }

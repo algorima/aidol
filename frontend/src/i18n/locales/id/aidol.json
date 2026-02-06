@@ -250,5 +250,11 @@
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
     "followButton": "Ikuti"
+  },
+  "chemistry": {
+    "header": "Kimia Antar Anggota",
+    "relationTitle": "Ringkasan Kimia",
+    "relationSubtitle": "Hubungan mempengaruhi konten chat!",
+    "addRelation": "Tambah Hubungan"
   }
 }
