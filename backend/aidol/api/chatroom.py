@@ -12,7 +12,6 @@ from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings, OpenAIAPISettings
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from humps import camelize
-from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -23,6 +22,7 @@ from aidol.protocols import (
     CompanionRepositoryFactoryProtocol,
 )
 from aidol.providers.llm import OpenAILLMProvider
+from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
