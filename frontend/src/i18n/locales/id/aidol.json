@@ -230,6 +230,11 @@
       "button": "Selesai Casting"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "Chat dengan member segera hadir👋",
+    "settings": "Pengaturan",
+    "highlights": "Sorotan"
+  },
   "landing": {
     "hero": {
       "title": {

@@ -230,6 +230,11 @@
       "button": "完成选角"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "与成员聊天即将上线👋",
+    "settings": "设置",
+    "highlights": "精彩集锦"
+  },
   "landing": {
     "hero": {
       "title": {
