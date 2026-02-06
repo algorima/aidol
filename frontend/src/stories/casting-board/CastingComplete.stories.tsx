@@ -13,7 +13,7 @@ const meta: Meta<typeof CastingComplete> = {
 export default meta;
 type Story = StoryObj<typeof CastingComplete>;
 
-function Wrapper({ remainingSlots }: { remainingSlots: number }) {
+function Wrapper({ remainingSlots }: { remainingSlots: number | null }) {
   return (
     <div className="max-w-mobile mx-auto">
       <CastingComplete
@@ -38,4 +38,9 @@ export const FiveSlots: Story = {
 /** 남은 슬롯 0 */
 export const ZeroSlots: Story = {
   render: () => <Wrapper remainingSlots={0} />,
+};
+
+/** 슬롯 로드 실패 */
+export const SlotLoadFailed: Story = {
+  render: () => <Wrapper remainingSlots={null} />,
 };

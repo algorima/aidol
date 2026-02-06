@@ -2,9 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { CastingComplete } from "@/components/casting-board";
-import { Loading } from "@/components/Loading";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { getApiService } from "@/services/ApiService";
 
@@ -18,8 +19,10 @@ export default function CastingCompletePage({
   params,
 }: CastingCompletePageProps) {
   const { lang, aidolId } = params;
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
-  const [memberCount, setMemberCount] = useState<number | null>(null);
+  const [remainingSlots, setRemainingSlots] = useState<number | null>(null);
 
   const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
@@ -32,14 +35,14 @@ export default function CastingCompletePage({
         const response = await companionRepository.getList({
           filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
         });
-        setMemberCount(response.data.length);
-      } catch (error) {
-        throw error;
+        setRemainingSlots(MAX_MEMBERS - response.data.length);
+      } catch {
+        showToast(t("aidol:castingComplete.error.load"), "error");
       }
     };
 
     void fetchMemberCount();
-  }, [aidolId, companionRepository]);
+  }, [aidolId, companionRepository, showToast, t]);
 
   const handleFindNext = useCallback(() => {
     router.push(`/${lang}/aidols/${aidolId}/casting`);
@@ -49,13 +52,9 @@ export default function CastingCompletePage({
     router.push(`/${lang}/aidols/${aidolId}/casting-board`);
   }, [lang, aidolId, router]);
 
-  if (memberCount === null) {
-    return <Loading />;
-  }
-
   return (
     <CastingComplete
-      remainingSlots={MAX_MEMBERS - memberCount}
+      remainingSlots={remainingSlots}
       onFindNext={handleFindNext}
       onViewBoard={handleViewBoard}
     />

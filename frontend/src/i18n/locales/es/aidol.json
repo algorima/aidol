@@ -79,7 +79,10 @@
     "subtitle": "Agregado a la lista de candidatos",
     "remainingSlots": "Slots de Casting Restantes",
     "findNext": "Buscar Siguiente Trainee",
-    "viewBoard": "Ver Tablero de Casting"
+    "viewBoard": "Ver Tablero de Casting",
+    "error": {
+      "load": "Error al cargar la información de slots"
+    }
   },
   "companion": {
     "promptPlaceholder": "¿Cómo habla tu idol? Describe su personalidad...",
