@@ -246,6 +246,9 @@
     "header": "멤버 간 케미",
     "relationTitle": "멤버와의 케미 정리",
     "relationSubtitle": "관계성은 채팅 내용에 영향을 줘요!",
-    "addRelation": "관계성 추가"
+    "addRelation": "관계성 추가",
+    "error": {
+      "load": "멤버 정보를 불러오지 못했습니다"
+    }
   }
 }

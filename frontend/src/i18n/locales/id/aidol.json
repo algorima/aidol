@@ -255,6 +255,9 @@
     "header": "Kimia Antar Anggota",
     "relationTitle": "Ringkasan Kimia",
     "relationSubtitle": "Hubungan mempengaruhi konten chat!",
-    "addRelation": "Tambah Hubungan"
+    "addRelation": "Tambah Hubungan",
+    "error": {
+      "load": "Gagal memuat informasi anggota"
+    }
   }
 }

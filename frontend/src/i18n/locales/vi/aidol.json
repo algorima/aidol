@@ -255,6 +255,9 @@
     "header": "Phản Ứng Hóa Học Giữa Thành Viên",
     "relationTitle": "Tổng Hợp Phản Ứng Hóa Học",
     "relationSubtitle": "Mối quan hệ ảnh hưởng đến nội dung chat!",
-    "addRelation": "Thêm Mối Quan Hệ"
+    "addRelation": "Thêm Mối Quan Hệ",
+    "error": {
+      "load": "Không thể tải thông tin thành viên"
+    }
   }
 }

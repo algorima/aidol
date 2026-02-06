@@ -255,6 +255,9 @@
     "header": "Member Chemistry",
     "relationTitle": "Chemistry Summary",
     "relationSubtitle": "Relationships affect chat content!",
-    "addRelation": "Add Relationship"
+    "addRelation": "Add Relationship",
+    "error": {
+      "load": "Failed to load member information"
+    }
   }
 }

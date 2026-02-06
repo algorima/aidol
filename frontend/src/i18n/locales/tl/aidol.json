@@ -255,6 +255,9 @@
     "header": "Chemistry ng mga Miyembro",
     "relationTitle": "Buod ng Chemistry",
     "relationSubtitle": "Ang relasyon ay nakakaapekto sa nilalaman ng chat!",
-    "addRelation": "Magdagdag ng Relasyon"
+    "addRelation": "Magdagdag ng Relasyon",
+    "error": {
+      "load": "Hindi na-load ang impormasyon ng miyembro"
+    }
   }
 }

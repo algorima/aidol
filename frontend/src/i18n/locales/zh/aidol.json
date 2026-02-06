@@ -255,6 +255,9 @@
     "header": "成员间默契",
     "relationTitle": "成员默契总结",
     "relationSubtitle": "关系会影响聊天内容！",
-    "addRelation": "添加关系"
+    "addRelation": "添加关系",
+    "error": {
+      "load": "无法加载成员信息"
+    }
   }
 }

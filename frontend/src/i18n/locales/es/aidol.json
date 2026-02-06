@@ -255,6 +255,9 @@
     "header": "Química entre Miembros",
     "relationTitle": "Resumen de Química",
     "relationSubtitle": "¡Las relaciones afectan el contenido del chat!",
-    "addRelation": "Agregar Relación"
+    "addRelation": "Agregar Relación",
+    "error": {
+      "load": "No se pudo cargar la información del miembro"
+    }
   }
 }

@@ -255,6 +255,9 @@
     "header": "メンバー間ケミストリー",
     "relationTitle": "メンバーとのケミストリーまとめ",
     "relationSubtitle": "関係性はチャット内容に影響します！",
-    "addRelation": "関係性を追加"
+    "addRelation": "関係性を追加",
+    "error": {
+      "load": "メンバー情報の読み込みに失敗しました"
+    }
   }
 }
