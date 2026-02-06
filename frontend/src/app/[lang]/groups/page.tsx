@@ -9,14 +9,12 @@ import { GroupCard } from "@/components/group/GroupCard";
 import { GroupInfoBanner } from "@/components/group/GroupInfoBanner";
 import { Loading } from "@/components/Loading";
 
-type GenderType = "boy" | "girl" | "mixed";
-
 interface MockGroup {
   id: string;
   name: string;
   profileImageUrl: string | null;
   memberCount: number;
-  gender: GenderType;
+  gender: GenderTab;
   highlight: {
     thumbnailUrl: string;
     title: string;
@@ -82,7 +80,7 @@ const MOCK_GROUPS: MockGroup[] = [
   },
 ];
 
-const TAB_TO_GENDER: Record<GenderTab, GenderType | undefined> = {
+const TAB_TO_GENDER: Record<GenderTab, GenderTab | undefined> = {
   boy: "boy",
   girl: "girl",
   mixed: undefined,

@@ -12,7 +12,7 @@ export function GroupInfoBanner() {
           {t("aidol:groupList.infoBanner.title")}
         </h3>
       </div>
-      <p className="text-body-s text-base-content/60">
+      <p className="text-body-s text-neutral">
         {t("aidol:groupList.infoBanner.description")}
       </p>
     </div>
