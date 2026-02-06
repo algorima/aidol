@@ -147,13 +147,13 @@ class AIdolRouter(
                 alias="filters",
                 description="Filter conditions (JSON format)",
             ),
-            claim_token: Annotated[
+            anonymous_id: Annotated[
                 str | None, Cookie(alias="aioia_anonymous_id")
             ] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """List my AIdols filtered by anonymous_id from cookie."""
-            if not claim_token:
+            if not anonymous_id:
                 raise HTTPException(
                     status_code=status.HTTP_400_BAD_REQUEST,
                     detail="aioia_anonymous_id cookie is required",
@@ -169,7 +169,7 @@ class AIdolRouter(
             anonymous_id_filter = {
                 "field": "anonymous_id",
                 "operator": "eq",
-                "value": claim_token,
+                "value": anonymous_id,
             }
             filter_list.append(anonymous_id_filter)
 
