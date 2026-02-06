@@ -21,6 +21,8 @@ export type Gender = "male" | "female";
 
 export type Grade = "A" | "B" | "C" | "F";
 
+export type Status = "draft" | "published";
+
 export interface CompanionStats {
   vocal: number;
   dance: number;
@@ -62,6 +64,7 @@ export const companionSchema = z.object({
     .optional(),
   mbti: z.string().nullable().optional(),
   gender: z.enum(["male", "female"]).nullable().optional(),
+  status: z.enum(["draft", "published"]).nullable().optional(),
   stats: companionStatsSchema.optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
@@ -77,6 +80,7 @@ export interface Companion extends BaseRecord {
   position?: Position | null;
   mbti?: string | null;
   gender?: Gender | null;
+  status?: Status | null;
   stats?: CompanionStats;
   createdAt: string;
   updatedAt: string;
@@ -105,6 +109,7 @@ export interface CompanionUpdate {
   systemPrompt?: string | null;
   position?: Position | null;
   gender?: Gender | null;
+  status?: Status;
   mbtiEnergy?: number;
   mbtiPerception?: number;
   mbtiJudgment?: number;
