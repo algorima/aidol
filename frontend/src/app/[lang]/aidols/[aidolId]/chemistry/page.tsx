@@ -1,15 +1,12 @@
 "use client";
 
-import { ArrowLeftIcon, UserIcon } from "@heroicons/react/24/outline";
-import clsx from "clsx";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 
-import { ChemistryRelationCard } from "@/components/group/ChemistryRelationCard";
-import { MemberProfileCard } from "@/components/group/MemberProfileCard";
-import { handleClickKeyDown } from "@/lib/handleClickKeyDown";
+import {
+  ChemistryContent,
+  type ChemistryRelation,
+} from "@/components/group/ChemistryContent";
 import type { Companion } from "@/schemas/companion";
 
 const MOCK_COMPANIONS: Companion[] = [
@@ -51,20 +48,12 @@ const MOCK_COMPANIONS: Companion[] = [
   },
 ];
 
-interface MockRelation {
-  fromId: string;
-  toId: string;
-  fromLabel: string;
-  toLabel: string;
-}
-
-const MOCK_RELATIONS: MockRelation[] = [
+const MOCK_RELATIONS: ChemistryRelation[] = [
   { fromId: "c1", toId: "c2", fromLabel: "메인보컬", toLabel: "메인댄서" },
   { fromId: "c1", toId: "c3", fromLabel: "리더", toLabel: "래퍼" },
 ];
 
 export default function ChemistryPage() {
-  const { t } = useTranslation("aidol");
   const router = useRouter();
   const [selectedMemberId, setSelectedMemberId] = useState(
     MOCK_COMPANIONS[0].id,
@@ -79,88 +68,12 @@ export default function ChemistryPage() {
   );
 
   return (
-    <div className="bg-base-100 max-w-mobile min-w-mobile mx-auto flex min-h-dvh flex-col">
-      <header className="h-header bg-base-100 flex shrink-0 items-center gap-2 px-6 py-4">
-        <button type="button" onClick={() => router.back()} aria-label="Back">
-          <ArrowLeftIcon className="text-base-content size-6" />
-        </button>
-        <h1 className="text-headline-s text-base-content">
-          {t("chemistry.header")}
-        </h1>
-      </header>
-
-      <div className="flex flex-col px-4">
-        {/* Member thumbnail list */}
-        <div className="mt-6 flex gap-3 overflow-x-auto">
-          {MOCK_COMPANIONS.map((companion) => (
-            <div
-              key={companion.id}
-              role="button"
-              tabIndex={0}
-              aria-label={companion.name ?? ""}
-              className={clsx(
-                "relative size-[70px] shrink-0 overflow-hidden rounded-lg border-2",
-                companion.id === selectedMemberId
-                  ? "border-primary"
-                  : "border-base-300",
-              )}
-              onClick={() => setSelectedMemberId(companion.id)}
-              onKeyDown={handleClickKeyDown(() =>
-                setSelectedMemberId(companion.id),
-              )}
-            >
-              {companion.profilePictureUrl ? (
-                <Image
-                  src={companion.profilePictureUrl}
-                  alt={companion.name ?? ""}
-                  fill
-                  draggable={false}
-                  className="object-cover"
-                />
-              ) : (
-                <div className="bg-base-200 flex size-full items-center justify-center">
-                  <UserIcon className="text-neutral size-8" />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Selected member profile */}
-        <div className="mt-14">
-          <MemberProfileCard companion={selectedMember} />
-        </div>
-
-        {/* Chemistry relations section */}
-        <div className="mt-8 flex flex-col gap-3">
-          <div className="flex flex-col gap-1">
-            <span className="text-title-s text-base-content font-bold">
-              {t("chemistry.relationTitle")}
-            </span>
-            <span className="text-body-s text-neutral">
-              {t("chemistry.relationSubtitle")}
-            </span>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            {filteredRelations.map((relation) => {
-              const toMember = MOCK_COMPANIONS.find(
-                (c) => c.id === relation.toId,
-              );
-              if (!toMember) return null;
-              return (
-                <ChemistryRelationCard
-                  key={`${relation.fromId}-${relation.toId}`}
-                  fromName={selectedMember.name ?? ""}
-                  toName={toMember.name ?? ""}
-                  fromLabel={relation.fromLabel}
-                  toLabel={relation.toLabel}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </div>
+    <ChemistryContent
+      companions={MOCK_COMPANIONS}
+      relations={filteredRelations}
+      selectedMember={selectedMember}
+      onSelectMember={setSelectedMemberId}
+      onBack={() => router.back()}
+    />
   );
 }

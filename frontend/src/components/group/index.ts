@@ -1,3 +1,4 @@
+export { ChemistryContent, type ChemistryRelation } from "./ChemistryContent";
 export { ChemistryRelationCard } from "./ChemistryRelationCard";
 export { GroupProfile } from "./GroupProfile";
 export { HighlightCard } from "./HighlightCard";
