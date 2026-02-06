@@ -28,7 +28,7 @@ export function GenderFilterTabs({
             "text-label-l rounded-lg border p-2",
             activeTab === tab
               ? "border-base-content text-base-content"
-              : "border-base-300 text-base-300",
+              : "border-base-400 text-base-400",
           )}
           onClick={() => onTabChange(tab)}
         >

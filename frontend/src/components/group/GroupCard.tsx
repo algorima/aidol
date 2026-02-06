@@ -28,7 +28,7 @@ export function GroupCard({
 
   return (
     <div
-      className={clsx("flex flex-col gap-3", onClick && "cursor-pointer")}
+      className={clsx("flex flex-col gap-4", onClick && "cursor-pointer")}
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
