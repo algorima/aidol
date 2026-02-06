@@ -38,6 +38,7 @@ from aidol.schemas.companion import (
     Gender,
     Grade,
     Position,
+    Status,
 )
 from aidol.schemas.model_settings import ModelSettings, ModelSettingsBase
 from aidol.schemas.persona import Persona
@@ -80,6 +81,7 @@ __all__ = [
     "Gender",
     "Grade",
     "Position",
+    "Status",
     # Model Settings
     "ModelSettings",
     "ModelSettingsBase",

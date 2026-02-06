@@ -20,6 +20,7 @@ from aidol.schemas import (
     Gender,
     Grade,
     Position,
+    Status,
 )
 
 
@@ -130,6 +131,7 @@ class TestCompanionPublicSchema(unittest.TestCase):
         public = CompanionPublic(
             id="test-id",
             name="테스트 컴패니언",
+            status=Status.DRAFT,
             created_at=now,
             updated_at=now,
         )

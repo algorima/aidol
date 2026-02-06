@@ -27,8 +27,15 @@ const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
 };
 
 const buildFilters = (gender: Gender | undefined): GetListParams["filters"] => {
-  if (!gender) return undefined;
-  return [{ field: "gender", operator: "eq", value: gender }];
+  const filters: GetListParams["filters"] = [
+    { field: "status", operator: "eq", value: "published" },
+  ];
+
+  if (gender) {
+    filters.push({ field: "gender", operator: "eq", value: gender });
+  }
+
+  return filters;
 };
 
 interface CastingPageProps {

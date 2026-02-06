@@ -40,6 +40,7 @@ const mockCompanions: Companion[] = [
     mbti: "ENFP",
     biography:
       "맑고 청량한 목소리의 소유자. 무대 위에서는 카리스마 넘치지만 평소에는 장난기 가득한 분위기 메이커!",
+    status: "published",
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
@@ -53,6 +54,7 @@ const mockCompanions: Companion[] = [
     mbti: "ISTP",
     biography:
       "타고난 춤 실력과 무대 장악력의 소유자. 과묵하지만 멤버들을 묵묵히 챙기는 따뜻한 마음의 소유자.",
+    status: "published",
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
@@ -66,6 +68,7 @@ const mockCompanions: Companion[] = [
     mbti: "INFJ",
     biography:
       "감성적인 가사와 파워풀한 랩이 특기. 팀의 막내지만 누구보다 성숙한 사고방식을 가진 멤버.",
+    status: "published",
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
