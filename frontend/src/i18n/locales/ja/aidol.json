@@ -2,6 +2,11 @@
   "common": {
     "close": "閉じる"
   },
+  "navigation": {
+    "home": "ホーム",
+    "explore": "発見",
+    "myGroup": "マイグループ"
+  },
   "position": {
     "header": "ポジション配置",
     "title": "メンバーにポジションを配置しよう！",

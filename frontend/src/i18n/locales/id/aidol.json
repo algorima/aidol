@@ -2,6 +2,11 @@
   "common": {
     "close": "Tutup"
   },
+  "navigation": {
+    "home": "Beranda",
+    "explore": "Jelajahi",
+    "myGroup": "Grup Saya"
+  },
   "position": {
     "header": "Penetapan Posisi",
     "title": "Tetapkan posisi untuk setiap anggota!",

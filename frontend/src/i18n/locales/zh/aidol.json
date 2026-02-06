@@ -2,6 +2,11 @@
   "common": {
     "close": "关闭"
   },
+  "navigation": {
+    "home": "首页",
+    "explore": "发现",
+    "myGroup": "我的组合"
+  },
   "position": {
     "header": "位置分配",
     "title": "给每位成员分配位置！",

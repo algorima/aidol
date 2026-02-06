@@ -2,6 +2,11 @@
   "common": {
     "close": "Cerrar"
   },
+  "navigation": {
+    "home": "Inicio",
+    "explore": "Explorar",
+    "myGroup": "Mi Grupo"
+  },
   "position": {
     "header": "Asignación de Posición",
     "title": "¡Asigna una posición a cada miembro!",

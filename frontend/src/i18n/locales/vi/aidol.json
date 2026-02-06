@@ -2,6 +2,11 @@
   "common": {
     "close": "Đóng"
   },
+  "navigation": {
+    "home": "Trang chủ",
+    "explore": "Khám phá",
+    "myGroup": "Nhóm của tôi"
+  },
   "position": {
     "header": "Phân Công Vị Trí",
     "title": "Phân công vị trí cho từng thành viên!",

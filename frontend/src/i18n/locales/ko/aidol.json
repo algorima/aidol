@@ -2,6 +2,11 @@
   "common": {
     "close": "닫기"
   },
+  "navigation": {
+    "home": "홈",
+    "explore": "발견",
+    "myGroup": "내그룹"
+  },
   "position": {
     "header": "포지션 배정",
     "title": "멤버별 포지션을 배정하세요!",
