@@ -38,6 +38,7 @@ export function CastingComplete({
         <button
           type="button"
           onClick={onFindNext}
+          disabled={remainingSlots <= 0}
           className="btn btn-lg btn-neutral text-label-l flex-1 rounded-lg"
         >
           {t("aidol:castingComplete.findNext")}
