@@ -104,7 +104,10 @@ export default function GroupChemistryPage({
 
   return (
     <div className="bg-base-100 flex min-h-screen flex-col">
-      <Header title={t("aidol:chemistry.header")} onBackClick={() => router.back()} />
+      <Header
+        title={t("aidol:chemistry.header")}
+        onBackClick={() => router.back()}
+      />
 
       <div className="flex-1 p-6">
         {isLoading ? (
@@ -181,7 +184,8 @@ export default function GroupChemistryPage({
                   )}
                   aria-disabled={isAllRelationshipsCreated}
                 >
-                  {t("aidol:chemistry.addRelationship")} <PlusIcon className="size-5" />
+                  {t("aidol:chemistry.addRelationship")}{" "}
+                  <PlusIcon className="size-5" />
                 </Link>
               </HighlightSectionHeader>
             </div>
