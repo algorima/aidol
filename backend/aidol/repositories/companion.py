@@ -63,8 +63,13 @@ def _convert_companion_schema_to_db(
 
     Decomposes nested stats object into individual DB columns.
     Includes system_prompt for AI configuration.
+    For CompanionCreate, status is always set to DRAFT (server-enforced).
     """
     data = schema.model_dump(exclude_unset=True, exclude={"stats"})
+
+    # Enforce DRAFT status on creation (Draft pattern)
+    if isinstance(schema, CompanionCreate):
+        data["status"] = Status.DRAFT.value
 
     # Decompose stats into individual columns
     if schema.stats is not None:
