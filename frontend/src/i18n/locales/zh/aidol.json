@@ -303,5 +303,11 @@
     "error": {
       "load": "无法加载群组列表。"
     }
+  },
+  "chemistry": {
+    "header": "成员间默契",
+    "sectionTitle": "成员关系整理",
+    "sectionSubtitle": "关系会影响聊天内容！",
+    "addRelationship": "添加关系"
   }
 }

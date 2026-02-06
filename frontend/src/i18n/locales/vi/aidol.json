@@ -303,5 +303,11 @@
     "error": {
       "load": "Không thể tải danh sách nhóm."
     }
+  },
+  "chemistry": {
+    "header": "Phản Ứng Hóa Học Giữa Thành Viên",
+    "sectionTitle": "Tóm Tắt Mối Quan Hệ",
+    "sectionSubtitle": "Mối quan hệ ảnh hưởng đến nội dung trò chuyện!",
+    "addRelationship": "Thêm Mối Quan Hệ"
   }
 }

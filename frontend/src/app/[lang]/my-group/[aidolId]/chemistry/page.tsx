@@ -104,7 +104,7 @@ export default function GroupChemistryPage({
 
   return (
     <div className="bg-base-100 flex min-h-screen flex-col">
-      <Header title="멤버 간 케미" onBackClick={() => router.back()} />
+      <Header title={t("aidol:chemistry.header")} onBackClick={() => router.back()} />
 
       <div className="flex-1 p-6">
         {isLoading ? (
@@ -168,8 +168,8 @@ export default function GroupChemistryPage({
             {/* 멤버와의 케미 정리 */}
             <div className="mb-4">
               <HighlightSectionHeader
-                title="멤버와의 케미 정리"
-                subtitle="관계성은 채팅 내용에 영향을 줘요!"
+                title={t("aidol:chemistry.sectionTitle")}
+                subtitle={t("aidol:chemistry.sectionSubtitle")}
               >
                 <Link
                   href={`/${lang}/my-group/${aidolId}/chemistry/add?from=${selectedCompanionId}`}
@@ -181,7 +181,7 @@ export default function GroupChemistryPage({
                   )}
                   aria-disabled={isAllRelationshipsCreated}
                 >
-                  관계성 추가 <PlusIcon className="size-5" />
+                  {t("aidol:chemistry.addRelationship")} <PlusIcon className="size-5" />
                 </Link>
               </HighlightSectionHeader>
             </div>
@@ -203,8 +203,8 @@ export default function GroupChemistryPage({
                   return (
                     <ChemistryRelationCard
                       key={`custom-${target.id}`}
-                      fromName={from?.name ?? "알 수 없음"}
-                      toName={target.name ?? "알 수 없음"}
+                      fromName={from?.name ?? ""}
+                      toName={target.name ?? ""}
                       nickname={customRel.nickname ?? undefined}
                       relationshipType={relationshipType}
                     />
@@ -220,8 +220,8 @@ export default function GroupChemistryPage({
                 return (
                   <ChemistryRelationCard
                     key={`position-${target.id}`}
-                    fromName={from?.name ?? "알 수 없음"}
-                    toName={target.name ?? "알 수 없음"}
+                    fromName={from?.name ?? ""}
+                    toName={target.name ?? ""}
                     fromLabel={getPositionLabel(from?.position)}
                     toLabel={getPositionLabel(target.position)}
                   />

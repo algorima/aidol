@@ -303,5 +303,11 @@
     "error": {
       "load": "Gagal memuat daftar grup."
     }
+  },
+  "chemistry": {
+    "header": "Kimia Antar Anggota",
+    "sectionTitle": "Ringkasan Kimia Anggota",
+    "sectionSubtitle": "Hubungan memengaruhi konten obrolan!",
+    "addRelationship": "Tambah Hubungan"
   }
 }

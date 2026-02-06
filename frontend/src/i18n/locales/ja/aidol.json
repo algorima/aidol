@@ -303,5 +303,11 @@
     "error": {
       "load": "グループリストの読み込みに失敗しました。"
     }
+  },
+  "chemistry": {
+    "header": "メンバー間ケミストリー",
+    "sectionTitle": "メンバーとのケミまとめ",
+    "sectionSubtitle": "関係性はチャット内容に影響します！",
+    "addRelationship": "関係性を追加"
   }
 }

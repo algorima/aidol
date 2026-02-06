@@ -303,5 +303,11 @@
     "error": {
       "load": "Failed to load group list."
     }
+  },
+  "chemistry": {
+    "header": "Member Chemistry",
+    "sectionTitle": "Member Chemistry Summary",
+    "sectionSubtitle": "Relationships affect chat content!",
+    "addRelationship": "Add Relationship"
   }
 }

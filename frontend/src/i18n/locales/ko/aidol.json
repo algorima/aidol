@@ -294,5 +294,11 @@
     "error": {
       "load": "그룹 목록을 불러오지 못했습니다."
     }
+  },
+  "chemistry": {
+    "header": "멤버 간 케미",
+    "sectionTitle": "멤버와의 케미 정리",
+    "sectionSubtitle": "관계성은 채팅 내용에 영향을 줘요!",
+    "addRelationship": "관계성 추가"
   }
 }

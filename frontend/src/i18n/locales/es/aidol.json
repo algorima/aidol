@@ -303,5 +303,11 @@
     "error": {
       "load": "No se pudo cargar la lista de grupos."
     }
+  },
+  "chemistry": {
+    "header": "Química entre Miembros",
+    "sectionTitle": "Resumen de Química",
+    "sectionSubtitle": "¡Las relaciones afectan el contenido del chat!",
+    "addRelationship": "Agregar Relación"
   }
 }
