@@ -97,6 +97,7 @@ export default function ChemistryPage() {
               key={companion.id}
               role="button"
               tabIndex={0}
+              aria-label={companion.name ?? ""}
               className={clsx(
                 "relative size-[70px] shrink-0 overflow-hidden rounded-lg border-2",
                 companion.id === selectedMemberId
