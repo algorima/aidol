@@ -79,7 +79,7 @@ export default function ChemistryPage() {
   );
 
   return (
-    <div className="bg-base-100 flex min-h-screen flex-col">
+    <div className="bg-base-100 max-w-mobile min-w-mobile mx-auto flex min-h-dvh flex-col">
       <header className="h-header bg-base-100 flex shrink-0 items-center gap-2 px-6 py-4">
         <button type="button" onClick={() => router.back()} aria-label="Back">
           <ArrowLeftIcon className="text-base-content size-6" />
