@@ -249,6 +249,16 @@
   "group": {
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",
-    "followButton": "Sundan"
+    "followButton": "Sundan",
+    "follow": {
+      "header": "Sundan",
+      "title": "Magpapadala kami ng mga totoong kwento\nmula sa mga miyembro ng {{name}}!",
+      "previewMessage": "Hindi ba dapat mas magalang kang makipag-usap sa hyung mo?",
+      "emailPlaceholder": "Ilagay ang iyong email",
+      "submit": "Sundan at Makatanggap ng Balita ✨",
+      "submitting": "Nagsu-subscribe...",
+      "success": "Sinusundan mo na!",
+      "error": "Hindi ma-follow. Subukan muli."
+    }
   }
 }

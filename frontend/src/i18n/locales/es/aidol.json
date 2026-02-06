@@ -249,6 +249,16 @@
   "group": {
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",
-    "followButton": "Seguir"
+    "followButton": "Seguir",
+    "follow": {
+      "header": "Seguir",
+      "title": "¡Te enviaremos historias reales\nde los miembros de {{name}}!",
+      "previewMessage": "¿No deberías hablarle a tu hyung con más respeto?",
+      "emailPlaceholder": "Ingresa tu correo electrónico",
+      "submit": "Seguir y recibir novedades ✨",
+      "submitting": "Suscribiendo...",
+      "success": "¡Ahora estás siguiendo!",
+      "error": "No se pudo seguir. Inténtalo de nuevo."
+    }
   }
 }

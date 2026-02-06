@@ -249,6 +249,16 @@
   "group": {
     "title": "Ra Mắt Mùa 1",
     "chemistryButton": "Phản Ứng Hóa Học Giữa Thành Viên 💭",
-    "followButton": "Theo dõi"
+    "followButton": "Theo dõi",
+    "follow": {
+      "header": "Theo dõi",
+      "title": "Chúng tôi sẽ gửi cho bạn những câu chuyện thật\ntừ các thành viên {{name}}!",
+      "previewMessage": "Không nên nói chuyện với anh như vậy chứ?",
+      "emailPlaceholder": "Nhập email của bạn",
+      "submit": "Theo dõi & Nhận tin tức ✨",
+      "submitting": "Đang đăng ký...",
+      "success": "Bạn đã theo dõi thành công!",
+      "error": "Theo dõi thất bại. Vui lòng thử lại."
+    }
   }
 }

@@ -249,6 +249,16 @@
   "group": {
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
-    "followButton": "Ikuti"
+    "followButton": "Ikuti",
+    "follow": {
+      "header": "Ikuti",
+      "title": "Kami akan mengirimkan cerita nyata\ndari anggota {{name}}!",
+      "previewMessage": "Bukankah seharusnya kamu bicara lebih sopan pada hyung?",
+      "emailPlaceholder": "Masukkan email Anda",
+      "submit": "Ikuti & Dapatkan Info ✨",
+      "submitting": "Berlangganan...",
+      "success": "Anda sekarang mengikuti!",
+      "error": "Gagal mengikuti. Silakan coba lagi."
+    }
   }
 }
