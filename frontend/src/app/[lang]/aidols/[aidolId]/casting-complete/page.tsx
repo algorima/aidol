@@ -34,8 +34,7 @@ export default function CastingCompletePage({
         });
         setMemberCount(response.data.length);
       } catch (error) {
-        console.error("Failed to fetch companions:", error);
-        setMemberCount(0);
+        throw error;
       }
     };
 
