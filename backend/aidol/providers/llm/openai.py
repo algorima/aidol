@@ -10,6 +10,7 @@ from collections.abc import Sequence
 
 import litellm
 from aioia_core.settings import OpenAIAPISettings
+from litellm.types.utils import Choices, ModelResponse
 
 from aidol.providers.llm.base import lookup_context_window
 from aidol.providers.llm.messages import (
@@ -119,10 +120,12 @@ class OpenAILLMProvider:
         # Call LiteLLM (stream=False for non-streaming response)
         response = litellm.completion(**kwargs, stream=False)
 
-        # Extract content from LiteLLM response
-        # Type assertion: stream=False returns ModelResponse with .choices attribute
-        content = response.choices[0].message.content  # type: ignore[union-attr]
-        assert content is not None, "LiteLLM returned empty content"
+        # Invariant: stream=False returns ModelResponse with Choices (LiteLLM contract)
+        assert isinstance(response, ModelResponse)
+        choice = response.choices[0]
+        assert isinstance(choice, Choices)
+        content = choice.message.content
+        assert content is not None
         return content
 
     def get_context_size(self, model_name: str) -> int:
