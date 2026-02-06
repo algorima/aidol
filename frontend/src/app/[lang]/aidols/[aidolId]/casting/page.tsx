@@ -96,7 +96,15 @@ export default function CastingPage({ params }: CastingPageProps) {
     } catch {
       showToast(t("aidol:casting.error.cast"), "error");
     }
-  }, [selectedCompanion, companionRepository, aidolId, lang, router, showToast, t]);
+  }, [
+    selectedCompanion,
+    companionRepository,
+    aidolId,
+    lang,
+    router,
+    showToast,
+    t,
+  ]);
 
   const handleNewMember = useCallback(() => {
     router.push(`/${lang}/aidols/${aidolId}/companions/create`);
