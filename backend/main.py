@@ -42,6 +42,7 @@ from sqlalchemy.orm import sessionmaker
 from aidol.api.aidol import create_aidol_router
 from aidol.api.chatroom import create_chatroom_router
 from aidol.api.companion import create_companion_router
+from aidol.api.companion_relationship import create_companion_relationship_router
 from aidol.api.highlight import create_highlight_router
 from aidol.api.lead import create_lead_router
 from aidol.factories import (
@@ -49,6 +50,7 @@ from aidol.factories import (
     AIdolLeadRepositoryFactory,
     AIdolRepositoryFactory,
     ChatroomRepositoryFactory,
+    CompanionRelationshipRepositoryFactory,
     CompanionRepositoryFactory,
     HighlightMessageRepositoryFactory,
 )
@@ -263,7 +265,16 @@ highlight_router = create_highlight_router(
 )
 app.include_router(highlight_router)
 
-logger.info("AIdol, Companion, Lead, Chatroom, and Highlight routers registered")
+# Create and include CompanionRelationship router
+companion_relationship_router = create_companion_relationship_router(
+    db_session_factory=db_session_factory,
+    repository_factory=CompanionRelationshipRepositoryFactory(),
+)
+app.include_router(companion_relationship_router)
+
+logger.info(
+    "AIdol, Companion, Lead, Chatroom, Highlight, and CompanionRelationship routers registered"
+)
 
 
 @app.get("/healthz", tags=["management"])
