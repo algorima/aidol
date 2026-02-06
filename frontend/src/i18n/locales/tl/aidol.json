@@ -250,5 +250,13 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",
     "followButton": "Sundan"
+  },
+  "marketing": {
+    "headlinePrefix": "Isang linggo pagkatapos lumipat...",
+    "headlineSuffix": "Ano ang nangyari?😳",
+    "memberName": "Ian",
+    "memberPosition": "Pangunahing Bokalista",
+    "message": "Hindi ba dapat mas magalang kang makipag-usap sa hyung mo?",
+    "cta": "Tingnan ang mga review ng buhay sa dorm"
   }
 }

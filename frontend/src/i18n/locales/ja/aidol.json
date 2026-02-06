@@ -250,5 +250,13 @@
     "title": "シーズン1 デビュー組",
     "chemistryButton": "メンバー間ケミストリー 💭",
     "followButton": "フォロー"
+  },
+  "marketing": {
+    "headlinePrefix": "共同生活1週間後...",
+    "headlineSuffix": "に何があった？😳",
+    "memberName": "イアン",
+    "memberPosition": "メインボーカル",
+    "message": "ヒョンにそんな言い方したらダメじゃない？",
+    "cta": "寮生活レビューを見る"
   }
 }

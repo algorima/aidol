@@ -250,5 +250,13 @@
     "title": "Ra Mắt Mùa 1",
     "chemistryButton": "Phản Ứng Hóa Học Giữa Thành Viên 💭",
     "followButton": "Theo dõi"
+  },
+  "marketing": {
+    "headlinePrefix": "Một tuần sau khi chuyển vào...",
+    "headlineSuffix": "Chuyện gì đã xảy ra?😳",
+    "memberName": "Ian",
+    "memberPosition": "Giọng ca chính",
+    "message": "Không nên nói chuyện với anh như vậy chứ?",
+    "cta": "Xem đánh giá cuộc sống ký túc xá"
   }
 }

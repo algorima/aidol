@@ -250,5 +250,13 @@
     "title": "เดบิวต์ซีซั่น 1",
     "chemistryButton": "เคมีระหว่างสมาชิก 💭",
     "followButton": "ติดตาม"
+  },
+  "marketing": {
+    "headlinePrefix": "หนึ่งสัปดาห์หลังย้ายเข้า...",
+    "headlineSuffix": "เกิดอะไรขึ้น?😳",
+    "memberName": "เอียน",
+    "memberPosition": "นักร้องหลัก",
+    "message": "ไม่ควรพูดกับพี่แบบนั้นเหรอ?",
+    "cta": "ดูรีวิวชีวิตในหอพัก"
   }
 }

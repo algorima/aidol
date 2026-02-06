@@ -250,5 +250,13 @@
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
     "followButton": "Ikuti"
+  },
+  "marketing": {
+    "headlinePrefix": "Satu minggu setelah pindah...",
+    "headlineSuffix": "Apa yang terjadi?😳",
+    "memberName": "Ian",
+    "memberPosition": "Vokal Utama",
+    "message": "Bukankah seharusnya kamu bicara lebih sopan pada hyung?",
+    "cta": "Lihat ulasan kehidupan asrama"
   }
 }

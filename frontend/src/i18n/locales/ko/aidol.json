@@ -241,5 +241,13 @@
     "title": "시즌1 데뷔조",
     "chemistryButton": "멤버 간 케미 💭",
     "followButton": "팔로우"
+  },
+  "marketing": {
+    "headlinePrefix": "숙소생활 1주일 후...",
+    "headlineSuffix": "에겐 무슨일이?😳",
+    "memberName": "이안",
+    "memberPosition": "메인보컬",
+    "message": "형한테 그런식으로 말하면 안되지 않을까?",
+    "cta": "숙소 생활 후기 보러가기"
   }
 }

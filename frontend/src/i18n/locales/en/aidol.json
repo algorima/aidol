@@ -250,5 +250,13 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Member Chemistry 💭",
     "followButton": "Follow"
+  },
+  "marketing": {
+    "headlinePrefix": "One week after moving in...",
+    "headlineSuffix": "What happened?😳",
+    "memberName": "Ian",
+    "memberPosition": "Main Vocal",
+    "message": "Shouldn't you talk to your hyung more respectfully?",
+    "cta": "See dorm life reviews"
   }
 }

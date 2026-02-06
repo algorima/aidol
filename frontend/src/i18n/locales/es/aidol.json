@@ -250,5 +250,13 @@
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",
     "followButton": "Seguir"
+  },
+  "marketing": {
+    "headlinePrefix": "Una semana después de mudarse...",
+    "headlineSuffix": "¿Qué pasó?😳",
+    "memberName": "Ian",
+    "memberPosition": "Vocal Principal",
+    "message": "¿No deberías hablarle a tu hyung con más respeto?",
+    "cta": "Ver reseñas de la vida en el dormitorio"
   }
 }

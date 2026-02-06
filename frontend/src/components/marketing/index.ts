@@ -1,0 +1,1 @@
+export { MarketingEmail } from "./MarketingEmail";

@@ -250,5 +250,13 @@
     "title": "第一季出道组",
     "chemistryButton": "成员间默契 💭",
     "followButton": "关注"
+  },
+  "marketing": {
+    "headlinePrefix": "入住一周后...",
+    "headlineSuffix": "发生了什么？😳",
+    "memberName": "伊安",
+    "memberPosition": "主唱",
+    "message": "你不应该那样跟哥哥说话吧？",
+    "cta": "查看宿舍生活评论"
   }
 }
