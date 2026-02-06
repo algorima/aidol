@@ -42,7 +42,7 @@ export const HomeActive: Story = {
   parameters: {
     nextjs: {
       navigation: {
-        pathname: "/ko/aidols/test-aidol-id/home",
+        pathname: "/ko/aidols",
       },
     },
   },

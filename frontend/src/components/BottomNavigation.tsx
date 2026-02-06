@@ -17,7 +17,7 @@ type TabKey = "home" | "explore" | "myGroup";
 
 interface TabConfig {
   key: TabKey;
-  path: string;
+  path: string | null;
   labelKey: string;
   IconOutline: IconType;
   IconSolid: IconType;
@@ -26,7 +26,7 @@ interface TabConfig {
 const tabs: TabConfig[] = [
   {
     key: "home",
-    path: "home",
+    path: null,
     labelKey: "navigation.home",
     IconOutline: HiOutlineHome,
     IconSolid: HiMiniHome,
@@ -56,10 +56,18 @@ export function BottomNavigation({ aidolId, lang }: BottomNavigationProps) {
   const { t } = useTranslation("aidol");
   const pathname = usePathname();
 
+  const getHref = (tab: TabConfig): string => {
+    if (tab.path === null) return `/${lang}/aidols`;
+    return `/${lang}/aidols/${aidolId}/${tab.path}`;
+  };
+
   const getActiveTab = (): TabKey => {
     const DEFAULT_TAB: TabKey = "explore";
-    const activeTab = tabs.find((tab) =>
-      pathname.startsWith(`/${lang}/aidols/${aidolId}/${tab.path}`),
+    if (pathname === `/${lang}/aidols`) return "home";
+    const activeTab = tabs.find(
+      (tab) =>
+        tab.path !== null &&
+        pathname.startsWith(`/${lang}/aidols/${aidolId}/${tab.path}`),
     );
     return activeTab?.key ?? DEFAULT_TAB;
   };
@@ -75,7 +83,7 @@ export function BottomNavigation({ aidolId, lang }: BottomNavigationProps) {
         return (
           <Link
             key={tab.key}
-            href={`/${lang}/aidols/${aidolId}/${tab.path}`}
+            href={getHref(tab)}
             className="flex flex-col items-center justify-center gap-1"
           >
             <Icon className="text-base-content size-6" />
