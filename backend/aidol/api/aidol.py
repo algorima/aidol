@@ -12,7 +12,7 @@ from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings
-from fastapi import APIRouter, Cookie, Depends, HTTPException, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.orm import sessionmaker
 
@@ -36,6 +36,13 @@ class AIdolCreateResponse(BaseModel):
     """Response for AIdol creation (only id)."""
 
     id: str
+
+
+class AIdolPaginatedResponse(BaseModel):
+    """Paginated response for AIdol (public)."""
+
+    data: list[AIdolPublic]
+    total: int
 
 
 class AIdolRouter(
@@ -70,9 +77,107 @@ class AIdolRouter(
             image_storage=self.image_storage,
         )
 
+        self._register_public_list_route()
+        self._register_public_my_route()
         self._register_public_create_route()
         self._register_public_get_route()
         self._register_public_update_route()
+
+    def _register_public_list_route(self) -> None:
+        """GET /{resource_name} - List AIdols (public)"""
+
+        @self.router.get(
+            f"/{self.resource_name}",
+            response_model=AIdolPaginatedResponse,
+            status_code=status.HTTP_200_OK,
+            summary="List AIdols",
+            description="List all AIdol groups with pagination, sorting, and filtering",
+        )
+        async def list_aidols(
+            current: int = Query(1, ge=1, description="Current page number"),
+            page_size: int = Query(
+                10, alias="pageSize", ge=1, le=100, description="Items per page"
+            ),
+            sort_param: str | None = Query(
+                None,
+                alias="sort",
+                description='Sorting criteria in JSON format. Example: [["createdAt","desc"]]',
+            ),
+            filters_param: str | None = Query(
+                None,
+                alias="filters",
+                description="Filter conditions (JSON format)",
+            ),
+            repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
+        ):
+            """List AIdols with pagination, sorting, and filtering."""
+            sort_list, filter_list = self._parse_query_params(sort_param, filters_param)
+            items, total = repository.get_all(
+                current=current,
+                page_size=page_size,
+                sort=sort_list,
+                filters=filter_list,
+            )
+            # Convert to Public schema (exclude anonymous_id)
+            public_items = [AIdolPublic(**item.model_dump()) for item in items]
+            return AIdolPaginatedResponse(data=public_items, total=total)
+
+    def _register_public_my_route(self) -> None:
+        """GET /{resource_name}/my - List my AIdols (filtered by cookie)"""
+
+        @self.router.get(
+            f"/{self.resource_name}/my",
+            response_model=AIdolPaginatedResponse,
+            status_code=status.HTTP_200_OK,
+            summary="List my AIdols",
+            description="List AIdol groups owned by the current user (based on cookie)",
+        )
+        async def list_my_aidols(
+            current: int = Query(1, ge=1, description="Current page number"),
+            page_size: int = Query(
+                10, alias="pageSize", ge=1, le=100, description="Items per page"
+            ),
+            sort_param: str | None = Query(
+                None,
+                alias="sort",
+                description='Sorting criteria in JSON format. Example: [["createdAt","desc"]]',
+            ),
+            filters_param: str | None = Query(
+                None,
+                alias="filters",
+                description="Filter conditions (JSON format)",
+            ),
+            claim_token: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
+            repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
+        ):
+            """List my AIdols filtered by anonymous_id from cookie."""
+            if not claim_token:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="aioia_anonymous_id cookie is required",
+                )
+
+            sort_list, filter_list = self._parse_query_params(sort_param, filters_param)
+
+            # Add anonymous_id filter to existing filters
+            anonymous_id_filter = {
+                "field": "anonymous_id",
+                "operator": "eq",
+                "value": claim_token,
+            }
+            filter_list.append(anonymous_id_filter)
+
+            items, total = repository.get_all(
+                current=current,
+                page_size=page_size,
+                sort=sort_list,
+                filters=filter_list,
+            )
+            # Convert to Public schema (exclude anonymous_id)
+            public_items = [AIdolPublic(**item.model_dump()) for item in items]
+            return AIdolPaginatedResponse(data=public_items, total=total)
 
     def _register_public_update_route(self) -> None:
         """PATCH /{resource_name}/{id} - Update AIdol group (public)"""
