@@ -57,15 +57,11 @@ export function BottomNavigation({ aidolId, lang }: BottomNavigationProps) {
   const pathname = usePathname();
 
   const getActiveTab = (): TabKey => {
-    const segments = pathname.split("/");
-    const currentPath = segments[4];
-
-    for (const tab of tabs) {
-      if (currentPath === tab.path) {
-        return tab.key;
-      }
-    }
-    return "explore";
+    const DEFAULT_TAB: TabKey = "explore";
+    const activeTab = tabs.find((tab) =>
+      pathname.startsWith(`/${lang}/aidols/${aidolId}/${tab.path}`),
+    );
+    return activeTab?.key ?? DEFAULT_TAB;
   };
 
   const activeTab = getActiveTab();
