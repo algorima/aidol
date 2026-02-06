@@ -70,6 +70,7 @@ export default function CompletePage({ params }: CompletePageProps) {
     } catch (err) {
       console.error("Failed to create AIdol:", err);
       showToast(t("aidol:landing.error.create"), "error");
+    } finally {
       setIsCreating(false);
     }
   }, [aidolRepository, lang, router, showToast, t]);
