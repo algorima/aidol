@@ -221,13 +221,13 @@ class AIdolRouter(
         )
         async def create_aidol(
             request: AIdolCreate,
-            claim_token: Annotated[
+            anonymous_id: Annotated[
                 str | None, Cookie(alias="aioia_anonymous_id")
             ] = None,
             repository: AIdolRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new AIdol group."""
-            if not claim_token:
+            if not anonymous_id:
                 raise HTTPException(
                     status_code=status.HTTP_400_BAD_REQUEST,
                     detail="aioia_anonymous_id cookie is required",
@@ -235,7 +235,7 @@ class AIdolRouter(
 
             # Convert body schema to internal schema with anonymous_id from Cookie
             create_data = AIdolCreateWithAnonymousId(
-                **request.model_dump(), anonymous_id=claim_token
+                **request.model_dump(), anonymous_id=anonymous_id
             )
             created = repository.create(create_data)
 

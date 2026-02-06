@@ -60,7 +60,7 @@ class LeadRouter(
         )
         async def create_lead(
             request: AIdolLeadCreate,
-            claim_token: Annotated[
+            anonymous_id: Annotated[
                 str | None, Cookie(alias="aioia_anonymous_id")
             ] = None,
             db_session: Session = Depends(self.get_db_dep),
@@ -72,7 +72,7 @@ class LeadRouter(
             email_saved = False
 
             # 1. Try to associate with AIdol if token is present
-            if claim_token:
+            if anonymous_id:
                 # Reuse session from dependency
                 aidol_repo = self.aidol_repository_factory.create_repository(db_session)
 
@@ -83,7 +83,7 @@ class LeadRouter(
                         {
                             "field": "anonymous_id",
                             "operator": "eq",
-                            "value": claim_token,
+                            "value": anonymous_id,
                         }
                     ]
                 )

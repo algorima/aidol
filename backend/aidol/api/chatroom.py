@@ -184,14 +184,14 @@ class ChatroomRouter(
         async def send_message(
             item_id: str,
             request: MessageCreate,
-            claim_token: Annotated[
+            anonymous_id: Annotated[
                 str | None, Cookie(alias="aioia_anonymous_id")
             ] = None,
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""
             # Guard Clause: aioia_anonymous_id cookie is required
-            if not claim_token:
+            if not anonymous_id:
                 raise HTTPException(
                     status_code=status.HTTP_400_BAD_REQUEST,
                     detail="aioia_anonymous_id cookie is required",
@@ -205,7 +205,7 @@ class ChatroomRouter(
 
             # Convert to internal schema with anonymous_id from Cookie
             message_data = MessageCreateWithAnonymousId(
-                **request.model_dump(), anonymous_id=claim_token
+                **request.model_dump(), anonymous_id=anonymous_id
             )
 
             # Pass MessageCreateWithAnonymousId to repository
