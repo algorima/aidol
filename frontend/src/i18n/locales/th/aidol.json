@@ -248,6 +248,7 @@
   },
   "group": {
     "title": "เดบิวต์ซีซั่น 1",
-    "chemistryButton": "เคมีระหว่างสมาชิก 💭"
+    "chemistryButton": "เคมีระหว่างสมาชิก 💭",
+    "followButton": "ติดตาม"
   }
 }

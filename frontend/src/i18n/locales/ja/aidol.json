@@ -248,6 +248,7 @@
   },
   "group": {
     "title": "シーズン1 デビュー組",
-    "chemistryButton": "メンバー間ケミストリー 💭"
+    "chemistryButton": "メンバー間ケミストリー 💭",
+    "followButton": "フォロー"
   }
 }

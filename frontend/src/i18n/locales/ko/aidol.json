@@ -239,6 +239,7 @@
   },
   "group": {
     "title": "시즌1 데뷔조",
-    "chemistryButton": "멤버 간 케미 💭"
+    "chemistryButton": "멤버 간 케미 💭",
+    "followButton": "팔로우"
   }
 }

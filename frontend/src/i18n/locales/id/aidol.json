@@ -248,6 +248,7 @@
   },
   "group": {
     "title": "Debut Musim 1",
-    "chemistryButton": "Kimia Antar Anggota 💭"
+    "chemistryButton": "Kimia Antar Anggota 💭",
+    "followButton": "Ikuti"
   }
 }

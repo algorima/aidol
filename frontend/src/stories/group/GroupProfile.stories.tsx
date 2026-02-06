@@ -40,3 +40,12 @@ export const RecentlyCreated: Story = {
     onChemistryClick: () => alert("멤버 간 케미"),
   },
 };
+
+export const WithFollowButton: Story = {
+  args: {
+    profileImageUrl: sampleImage,
+    createdAt: "2026-01-29T00:00:00Z",
+    onChemistryClick: () => alert("멤버 간 케미"),
+    onFollowClick: () => alert("팔로우"),
+  },
+};

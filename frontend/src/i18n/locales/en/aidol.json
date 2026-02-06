@@ -248,6 +248,7 @@
   },
   "group": {
     "title": "Season 1 Debut",
-    "chemistryButton": "Member Chemistry 💭"
+    "chemistryButton": "Member Chemistry 💭",
+    "followButton": "Follow"
   }
 }

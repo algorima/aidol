@@ -10,12 +10,14 @@ interface GroupProfileProps {
   profileImageUrl: string | null;
   createdAt: string;
   onChemistryClick: () => void;
+  onFollowClick?: () => void;
 }
 
 export function GroupProfile({
   profileImageUrl,
   createdAt,
   onChemistryClick,
+  onFollowClick,
 }: GroupProfileProps) {
   const { t } = useTranslation("aidol");
 
@@ -53,13 +55,31 @@ export function GroupProfile({
         >
           {t("group.chemistryButton")}
         </button>
-        <button
-          className="btn bg-base-300 text-base-400 text-label-l w-full rounded-lg"
-          disabled
-        >
-          {t("share")}
-          <ShareIcon className="size-5" />
-        </button>
+        {onFollowClick ? (
+          <div className="flex gap-2">
+            <button
+              className="btn bg-base-300 text-base-content text-label-l flex-1 rounded-lg"
+              onClick={onFollowClick}
+            >
+              {t("group.followButton")}
+            </button>
+            <button
+              className="btn bg-base-300 text-base-content text-label-l flex-1 rounded-lg"
+              disabled
+            >
+              {t("share")}
+              <ShareIcon className="size-5" />
+            </button>
+          </div>
+        ) : (
+          <button
+            className="btn bg-base-300 text-base-content text-label-l w-full rounded-lg"
+            disabled
+          >
+            {t("share")}
+            <ShareIcon className="size-5" />
+          </button>
+        )}
       </div>
     </div>
   );
