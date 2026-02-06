@@ -3,6 +3,7 @@
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Header } from "@/components/Header";
 import { useDragScroll } from "@/hooks/useDragScroll";
@@ -34,6 +35,7 @@ const groupMyGroupHighlights = (
 };
 
 export default function GroupPage() {
+  const { t } = useTranslation();
   const {
     scrollRef,
     isDragging,
@@ -51,6 +53,15 @@ export default function GroupPage() {
   const [highlightSections, setHighlightSections] = useState<
     MyGroupHighlightSection[]
   >([]);
+
+  // 채팅 툴팁 상태
+  const [showChatTooltip, setShowChatTooltip] = useState(true);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+
+  const handleTooltipDismiss = () => {
+    setShowChatTooltip(false);
+    setIsFirstVisit(false);
+  };
 
   // TODO: API 연동 시 AIdolRepository.getMy() 사용
   useEffect(() => {
@@ -77,25 +88,40 @@ export default function GroupPage() {
   return (
     <div className="relative">
       <Header
-        title={selectedGroup?.name ?? "그룹 선택"}
+        title={selectedGroup?.name ?? ""}
         onDropdownClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        <div className="relative">
+        <div
+          className="relative"
+          onMouseEnter={() => !isFirstVisit && setShowChatTooltip(true)}
+          onMouseLeave={() => !isFirstVisit && setShowChatTooltip(false)}
+        >
           <button
             type="button"
-            className="flex size-10 items-center justify-center"
+            className="relative z-50 flex size-10 items-center justify-center"
+            onClick={() => !isFirstVisit && setShowChatTooltip((prev) => !prev)}
           >
             <ChatBubbleLeftEllipsisIcon className="text-base-content size-6" />
           </button>
-          <div className="absolute top-full right-0 mt-2 w-fit">
-            <div className="border-b-neutral absolute -top-2 right-3 size-0 border-x-8 border-b-8 border-x-transparent" />
-            <div className="bg-neutral text-neutral-content text-label-m rounded-lg px-4 py-3 whitespace-nowrap">
-              멤버들과 채팅 준비중👋
-            </div>
-          </div>
+          {showChatTooltip && (
+            <>
+              {isFirstVisit && (
+                <div
+                  className="fixed inset-0 z-40"
+                  onClick={handleTooltipDismiss}
+                />
+              )}
+              <div className="absolute top-full right-0 z-50 mt-2 w-fit">
+                <div className="border-b-neutral absolute -top-2 right-3 size-0 border-x-8 border-b-8 border-x-transparent" />
+                <div className="bg-neutral text-neutral-content text-label-m rounded-lg px-4 py-3 whitespace-nowrap">
+                  {t("aidol:myGroup.chatComingSoon")}
+                </div>
+              </div>
+            </>
+          )}
         </div>
         <button type="button" className="text-label-l text-base-content px-2">
-          설정
+          {t("aidol:myGroup.settings")}
         </button>
       </Header>
 
@@ -148,7 +174,7 @@ export default function GroupPage() {
 
         {/* 탭 */}
         <p className="border-base-content text-label-l w-fit border-b-2 py-2">
-          하이라이트
+          {t("aidol:myGroup.highlights")}
         </p>
 
         {/* 하이라이트 섹션들 */}
