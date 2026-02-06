@@ -31,7 +31,7 @@ export default function CompanionCreatePage({
     const run = async () => {
       try {
         const { data } = await companionRepository.create({
-          variables: { name: "", aidolId: params.aidolId },
+          variables: { name: "", aidolId: params.aidolId, status: "draft" },
         });
         router.replace(
           `/${params.lang}/aidols/${params.aidolId}/companions/${data.id}/gender`,
