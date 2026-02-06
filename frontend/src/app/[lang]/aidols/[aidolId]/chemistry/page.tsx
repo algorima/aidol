@@ -70,9 +70,9 @@ export default function ChemistryPage() {
     MOCK_COMPANIONS[0].id,
   );
 
-  const selectedMember = MOCK_COMPANIONS.find(
-    (c) => c.id === selectedMemberId,
-  )!;
+  const selectedMember = MOCK_COMPANIONS.find((c) => c.id === selectedMemberId);
+
+  if (!selectedMember) return null;
 
   const filteredRelations = MOCK_RELATIONS.filter(
     (r) => r.fromId === selectedMemberId,
@@ -146,11 +146,12 @@ export default function ChemistryPage() {
               const toMember = MOCK_COMPANIONS.find(
                 (c) => c.id === relation.toId,
               );
+              if (!toMember) return null;
               return (
                 <ChemistryRelationCard
                   key={`${relation.fromId}-${relation.toId}`}
                   fromName={selectedMember.name ?? ""}
-                  toName={toMember?.name ?? ""}
+                  toName={toMember.name ?? ""}
                   fromLabel={relation.fromLabel}
                   toLabel={relation.toLabel}
                 />
