@@ -28,6 +28,9 @@ from aidol.schemas import (
     ChatroomUpdate,
     Companion,
     CompanionCreate,
+    CompanionRelationship,
+    CompanionRelationshipCreate,
+    CompanionRelationshipUpdate,
     CompanionUpdate,
     HighlightMessage,
     HighlightMessageCreate,
@@ -244,5 +247,32 @@ class HighlightMessageRepositoryFactoryProtocol(Protocol):
     def create_repository(
         self, db_session: Session | None = None
     ) -> HighlightMessageRepositoryProtocol:
+        """Create a repository instance."""
+        ...
+
+
+# ---------------------------------------------------------------------------
+# CompanionRelationship Protocols
+# ---------------------------------------------------------------------------
+
+
+class CompanionRelationshipRepositoryProtocol(
+    CrudRepositoryProtocol[
+        CompanionRelationship, CompanionRelationshipCreate, CompanionRelationshipUpdate
+    ],
+    Protocol,
+):
+    """Protocol defining CompanionRelationship repository expectations.
+
+    Inherits CRUD operations from CrudRepositoryProtocol.
+    """
+
+
+class CompanionRelationshipRepositoryFactoryProtocol(Protocol):
+    """Protocol for factory that creates CompanionRelationshipRepositoryProtocol instances."""
+
+    def create_repository(
+        self, db_session: Session | None = None
+    ) -> CompanionRelationshipRepositoryProtocol:
         """Create a repository instance."""
         ...
