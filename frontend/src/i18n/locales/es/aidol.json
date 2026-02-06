@@ -230,6 +230,11 @@
       "button": "Completar Casting"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "Chat con miembros próximamente👋",
+    "settings": "Configuración",
+    "highlights": "Destacados"
+  },
   "landing": {
     "hero": {
       "title": {

@@ -230,6 +230,11 @@
       "button": "Complete Casting"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "Chat with members coming soon👋",
+    "settings": "Settings",
+    "highlights": "Highlights"
+  },
   "landing": {
     "hero": {
       "title": {

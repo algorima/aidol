@@ -221,6 +221,11 @@
       "button": "캐스팅 완료"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "멤버들과 채팅 준비중👋",
+    "settings": "설정",
+    "highlights": "하이라이트"
+  },
   "landing": {
     "hero": {
       "title": {

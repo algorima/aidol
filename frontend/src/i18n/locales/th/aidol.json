@@ -230,6 +230,11 @@
       "button": "แคสติ้งเสร็จสิ้น"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "แชทกับสมาชิกเร็วๆ นี้👋",
+    "settings": "ตั้งค่า",
+    "highlights": "ไฮไลท์"
+  },
   "landing": {
     "hero": {
       "title": {
