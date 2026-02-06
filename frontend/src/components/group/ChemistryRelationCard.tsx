@@ -1,5 +1,6 @@
 import { ArrowLongRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 import { handleClickKeyDown } from "@/lib/handleClickKeyDown";
 
@@ -24,6 +25,8 @@ export function ChemistryRelationCard({
   onClose,
   onClick,
 }: ChemistryRelationCardProps) {
+  const { t } = useTranslation("aidol");
+
   return (
     <div
       className={clsx(
@@ -47,7 +50,7 @@ export function ChemistryRelationCard({
                 e.stopPropagation();
                 onClose();
               }}
-              aria-label="Close"
+              aria-label={t("common.close")}
             >
               <XMarkIcon className="text-base-content size-5" />
             </button>
