@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -121,6 +122,9 @@ export default function GroupsPage({ params }: GroupsPageProps) {
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-dvh flex-col">
+      <header className="h-header bg-base-100 flex shrink-0 items-center px-6 py-4">
+        <Image src="/images/logo.svg" alt="AIdol" width={92} height={28} />
+      </header>
       <div className="flex flex-col gap-6 px-6 py-4">
         <GroupInfoBanner />
         <GenderFilterTabs activeTab={activeTab} onTabChange={setActiveTab} />
