@@ -116,11 +116,14 @@ class OpenAILLMProvider:
         if self._settings.organization:
             kwargs["organization"] = self._settings.organization
 
-        # Call LiteLLM
-        response = litellm.completion(**kwargs)
+        # Call LiteLLM (stream=False for non-streaming response)
+        response = litellm.completion(**kwargs, stream=False)
 
         # Extract content from LiteLLM response
-        return response.choices[0].message.content
+        # Type assertion: stream=False returns ModelResponse with .choices attribute
+        content = response.choices[0].message.content  # type: ignore[union-attr]
+        assert content is not None, "LiteLLM returned empty content"
+        return content
 
     def get_context_size(self, model_name: str) -> int:
         """Get maximum context window size for OpenAI model.
