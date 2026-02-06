@@ -10,76 +10,7 @@ import { GroupCard } from "@/components/group/GroupCard";
 import { GroupInfoBanner } from "@/components/group/GroupInfoBanner";
 import { Loading } from "@/components/Loading";
 
-interface MockGroup {
-  id: string;
-  name: string;
-  profileImageUrl: string | null;
-  memberCount: number;
-  gender: GenderTab;
-  highlight: {
-    thumbnailUrl: string;
-    title: string;
-  };
-}
-
-// TODO: API 구현 후 Repository로 교체
-const MOCK_GROUPS: MockGroup[] = [
-  {
-    id: "group-1",
-    name: "르누아르",
-    profileImageUrl: "https://placehold.co/96x96/EEE/31343C?text=RN",
-    memberCount: 4,
-    gender: "boy",
-    highlight: {
-      thumbnailUrl: "https://placehold.co/345x230/EEE/31343C?text=Highlight+1",
-      title: "숙소생활 이야기 1",
-    },
-  },
-  {
-    id: "group-2",
-    name: "스타라이트",
-    profileImageUrl: "https://placehold.co/96x96/EEE/31343C?text=SL",
-    memberCount: 5,
-    gender: "girl",
-    highlight: {
-      thumbnailUrl: "https://placehold.co/345x230/EEE/31343C?text=Highlight+2",
-      title: "첫 무대 비하인드",
-    },
-  },
-  {
-    id: "group-3",
-    name: "드리머즈",
-    profileImageUrl: "https://placehold.co/96x96/EEE/31343C?text=DR",
-    memberCount: 6,
-    gender: "mixed",
-    highlight: {
-      thumbnailUrl: "https://placehold.co/345x230/EEE/31343C?text=Highlight+3",
-      title: "연습실 브이로그",
-    },
-  },
-  {
-    id: "group-4",
-    name: "네온",
-    profileImageUrl: "https://placehold.co/96x96/EEE/31343C?text=NE",
-    memberCount: 4,
-    gender: "boy",
-    highlight: {
-      thumbnailUrl: "https://placehold.co/345x230/EEE/31343C?text=Highlight+4",
-      title: "데뷔 준비 과정",
-    },
-  },
-  {
-    id: "group-5",
-    name: "루미너스",
-    profileImageUrl: "https://placehold.co/96x96/EEE/31343C?text=LM",
-    memberCount: 3,
-    gender: "girl",
-    highlight: {
-      thumbnailUrl: "https://placehold.co/345x230/EEE/31343C?text=Highlight+5",
-      title: "멤버 소개 영상",
-    },
-  },
-];
+import { type MockGroup, MOCK_GROUPS } from "./__mocks__/groups";
 
 const TAB_TO_GENDER: Record<GenderTab, GenderTab | undefined> = {
   boy: "boy",
