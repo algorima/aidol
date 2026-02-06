@@ -5,6 +5,7 @@ import { SparklesIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
 import { Card, Header } from "@/components";
@@ -35,6 +36,7 @@ export default function AddRelationshipPage({
   const { lang, aidolId } = params;
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { t } = useTranslation();
   const { showToast } = useToast();
   const fromCompanionId = searchParams.get("from");
 
@@ -109,14 +111,17 @@ export default function AddRelationshipPage({
       nickname: nickname || null,
     });
 
-    showToast("저장되었습니다.", "success");
+    showToast(t("aidol:common.saved"), "success");
     router.push(`/${lang}/my-group/${aidolId}/chemistry`);
   };
 
   if (isLoading) {
     return (
       <div className="bg-base-100 flex min-h-screen flex-col">
-        <Header title="관계성 추가" onCloseClick={() => router.back()} />
+        <Header
+          title={t("aidol:chemistry.add.header")}
+          onCloseClick={() => router.back()}
+        />
         <div className="flex flex-1 items-center justify-center">
           <span className="loading loading-spinner loading-lg" />
         </div>
@@ -127,9 +132,14 @@ export default function AddRelationshipPage({
   if (!fromCompanion) {
     return (
       <div className="bg-base-100 flex min-h-screen flex-col">
-        <Header title="관계성 추가" onCloseClick={() => router.back()} />
+        <Header
+          title={t("aidol:chemistry.add.header")}
+          onCloseClick={() => router.back()}
+        />
         <div className="flex flex-1 items-center justify-center">
-          <p className="text-base-content/60">멤버를 찾을 수 없습니다.</p>
+          <p className="text-base-content/60">
+            {t("aidol:chemistry.add.memberNotFound")}
+          </p>
         </div>
       </div>
     );
@@ -137,14 +147,19 @@ export default function AddRelationshipPage({
 
   return (
     <div className="bg-base-100 flex min-h-screen flex-col">
-      <Header title="관계성 추가" onCloseClick={() => router.back()} />
+      <Header
+        title={t("aidol:chemistry.add.header")}
+        onCloseClick={() => router.back()}
+      />
 
       <div className="flex-1 overflow-y-auto p-6">
         {/* 안내 메시지 (공통) */}
         <p className="text-headline-s mb-6">
-          ✨{fromCompanion.name}
-          {getParticle(fromCompanion.name ?? "", "과", "와")}의 관계를
-          만들어주세요
+          ✨
+          {t("aidol:chemistry.add.createRelationshipWith", {
+            name: fromCompanion.name,
+            particle: getParticle(fromCompanion.name ?? "", "과", "와"),
+          })}
         </p>
 
         {/* 선택된 멤버 표시 영역 (공통) */}
@@ -166,10 +181,8 @@ export default function AddRelationshipPage({
           ) : (
             <div className="bg-base-300 text-base-400 border-base-400 flex h-46 w-33.5 flex-col items-center justify-center gap-2 rounded-lg border">
               <SparklesIcon className="size-6" />
-              <span className="text-body-s text-center">
-                선택된
-                <br />
-                멤버 표시
+              <span className="text-body-s text-center whitespace-pre-line">
+                {t("aidol:chemistry.add.selectedMemberPlaceholder")}
               </span>
             </div>
           )}
@@ -178,7 +191,9 @@ export default function AddRelationshipPage({
         {/* Step 1: 멤버 선택 */}
         {step === 1 && (
           <>
-            <p className="text-title-s mb-4">멤버 선택</p>
+            <p className="text-title-s mb-4">
+              {t("aidol:chemistry.add.selectMember")}
+            </p>
             <div className="grid grid-cols-2 gap-4">
               {otherCompanions.map((member) => {
                 const relationship = getRelationshipFrom(
@@ -220,7 +235,9 @@ export default function AddRelationshipPage({
         {step === 2 && (
           <>
             {/* 관계 유형 */}
-            <p className="text-title-s mb-4">관계 유형</p>
+            <p className="text-title-s mb-4">
+              {t("aidol:chemistry.add.relationshipType")}
+            </p>
             <div className="text-label-l mb-6 grid grid-flow-col grid-cols-2 grid-rows-4 gap-2">
               {RELATIONSHIP_TYPES.map((type) => (
                 <button
@@ -234,17 +251,18 @@ export default function AddRelationshipPage({
                       : "btn-outline border-base-300 text-base-content",
                   )}
                 >
-                  {type}
+                  {t(`aidol:chemistry.add.types.${type}`)}
                 </button>
               ))}
             </div>
 
             {/* 친밀도 */}
-            <p className="text-title-s mb-2">친밀도</p>
-            <div className="text-label-l mb-4 flex items-center gap-1">
-              <p className="text-primary">{intimacy}%</p>
-              <p className="text-base-content">에서 시작</p>
-            </div>
+            <p className="text-title-s mb-2">
+              {t("aidol:chemistry.add.intimacy")}
+            </p>
+            <p className="text-label-l mb-4">
+              {t("aidol:chemistry.add.startsAt", { intimacy })}
+            </p>
             <div className="bg-base-300 mb-6 h-2 w-full overflow-hidden rounded-full">
               <div
                 className="to-secondary from-primary h-full rounded-full bg-linear-to-r transition-all"
@@ -253,10 +271,12 @@ export default function AddRelationshipPage({
             </div>
 
             {/* 관계 별칭 */}
-            <p className="text-title-s mb-4">관계 별칭</p>
+            <p className="text-title-s mb-4">
+              {t("aidol:chemistry.add.relationshipNickname")}
+            </p>
             <input
               type="text"
-              placeholder="예)동갑즈, 멍멍즈"
+              placeholder={t("aidol:chemistry.add.nicknamePlaceholder")}
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
               className="input border-base-400 bg-base-200 text-body-s placeholder:text-base-400 w-full rounded-lg border px-4 py-3"
@@ -274,7 +294,7 @@ export default function AddRelationshipPage({
             disabled={!targetCompanionId}
             className="btn btn-primary text-label-l btn-lg w-full rounded-lg"
           >
-            다음
+            {t("aidol:creation.next")}
           </button>
         ) : (
           <div className="flex gap-2">
@@ -283,14 +303,14 @@ export default function AddRelationshipPage({
               onClick={handleBack}
               className="btn bg-base-300 text-label-l btn-lg rounded-lg px-10"
             >
-              이전
+              {t("aidol:creation.back")}
             </button>
             <button
               type="button"
               onClick={handleSave}
               className="btn btn-primary text-label-l btn-lg flex-1 rounded-lg"
             >
-              저장
+              {t("aidol:common.save")}
             </button>
           </div>
         )}

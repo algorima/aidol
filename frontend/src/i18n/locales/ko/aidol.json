@@ -5,7 +5,9 @@
     }
   },
   "common": {
-    "close": "닫기"
+    "close": "닫기",
+    "save": "저장",
+    "saved": "저장되었습니다."
   },
   "position": {
     "header": "포지션 배정",
@@ -299,6 +301,28 @@
     "header": "멤버 간 케미",
     "sectionTitle": "멤버와의 케미 정리",
     "sectionSubtitle": "관계성은 채팅 내용에 영향을 줘요!",
-    "addRelationship": "관계성 추가"
+    "addRelationship": "관계성 추가",
+    "add": {
+      "header": "관계성 추가",
+      "memberNotFound": "멤버를 찾을 수 없습니다.",
+      "createRelationshipWith": "{{name}}{{particle}}의 관계를 만들어주세요",
+      "selectedMemberPlaceholder": "선택된\n멤버 표시",
+      "selectMember": "멤버 선택",
+      "relationshipType": "관계 유형",
+      "types": {
+        "awkward": "아직 어색해요",
+        "polite": "예의 바르게",
+        "friendly": "친근하게",
+        "tikitaka": "티키타카",
+        "trust": "믿음직해요",
+        "emotional": "감성적이에요",
+        "bestFriend": "베스트프렌드",
+        "inseparable": "떼려야 뗄 수 없는"
+      },
+      "intimacy": "친밀도",
+      "startsAt": "{{intimacy}}%에서 시작",
+      "relationshipNickname": "관계 별칭",
+      "nicknamePlaceholder": "예)동갑즈, 멍멍즈"
+    }
   }
 }

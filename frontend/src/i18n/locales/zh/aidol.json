@@ -5,7 +5,9 @@
     }
   },
   "common": {
-    "close": "关闭"
+    "close": "关闭",
+    "save": "保存",
+    "saved": "保存成功。"
   },
   "position": {
     "header": "位置分配",
@@ -308,6 +310,28 @@
     "header": "成员间默契",
     "sectionTitle": "成员关系整理",
     "sectionSubtitle": "关系会影响聊天内容！",
-    "addRelationship": "添加关系"
+    "addRelationship": "添加关系",
+    "add": {
+      "header": "添加关系",
+      "memberNotFound": "找不到成员。",
+      "createRelationshipWith": "创建与{{name}}的关系",
+      "selectedMemberPlaceholder": "已选择的\n成员显示",
+      "selectMember": "选择成员",
+      "relationshipType": "关系类型",
+      "types": {
+        "awkward": "还很尴尬",
+        "polite": "有礼貌",
+        "friendly": "友好",
+        "tikitaka": "默契十足",
+        "trust": "值得信赖",
+        "emotional": "感性",
+        "bestFriend": "最好的朋友",
+        "inseparable": "形影不离"
+      },
+      "intimacy": "亲密度",
+      "startsAt": "从{{intimacy}}%开始",
+      "relationshipNickname": "关系别名",
+      "nicknamePlaceholder": "例）同龄组、闺蜜组"
+    }
   }
 }

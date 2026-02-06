@@ -5,7 +5,9 @@
     }
   },
   "common": {
-    "close": "Close"
+    "close": "Close",
+    "save": "Save",
+    "saved": "Saved successfully."
   },
   "position": {
     "header": "Position Assignment",
@@ -308,6 +310,28 @@
     "header": "Member Chemistry",
     "sectionTitle": "Member Chemistry Summary",
     "sectionSubtitle": "Relationships affect chat content!",
-    "addRelationship": "Add Relationship"
+    "addRelationship": "Add Relationship",
+    "add": {
+      "header": "Add Relationship",
+      "memberNotFound": "Member not found.",
+      "createRelationshipWith": "Create a relationship with {{name}}",
+      "selectedMemberPlaceholder": "Selected\nmember here",
+      "selectMember": "Select Member",
+      "relationshipType": "Relationship Type",
+      "types": {
+        "awkward": "Still Awkward",
+        "polite": "Polite",
+        "friendly": "Friendly",
+        "tikitaka": "Tiki-Taka",
+        "trust": "Trustworthy",
+        "emotional": "Emotional",
+        "bestFriend": "Best Friend",
+        "inseparable": "Inseparable"
+      },
+      "intimacy": "Intimacy",
+      "startsAt": "Starts at {{intimacy}}%",
+      "relationshipNickname": "Relationship Nickname",
+      "nicknamePlaceholder": "e.g.) Squad, Besties"
+    }
   }
 }

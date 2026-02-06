@@ -5,7 +5,9 @@
     }
   },
   "common": {
-    "close": "Đóng"
+    "close": "Đóng",
+    "save": "Lưu",
+    "saved": "Đã lưu thành công."
   },
   "position": {
     "header": "Phân Công Vị Trí",
@@ -308,6 +310,28 @@
     "header": "Phản Ứng Hóa Học Giữa Thành Viên",
     "sectionTitle": "Tóm Tắt Mối Quan Hệ",
     "sectionSubtitle": "Mối quan hệ ảnh hưởng đến nội dung trò chuyện!",
-    "addRelationship": "Thêm Mối Quan Hệ"
+    "addRelationship": "Thêm Mối Quan Hệ",
+    "add": {
+      "header": "Thêm Mối Quan Hệ",
+      "memberNotFound": "Không tìm thấy thành viên.",
+      "createRelationshipWith": "Tạo mối quan hệ với {{name}}",
+      "selectedMemberPlaceholder": "Thành viên\nđã chọn",
+      "selectMember": "Chọn Thành Viên",
+      "relationshipType": "Loại Quan Hệ",
+      "types": {
+        "awkward": "Còn Ngại",
+        "polite": "Lịch Sự",
+        "friendly": "Thân Thiện",
+        "tikitaka": "Ăn Ý",
+        "trust": "Đáng Tin Cậy",
+        "emotional": "Tình Cảm",
+        "bestFriend": "Bạn Thân Nhất",
+        "inseparable": "Không Thể Tách Rời"
+      },
+      "intimacy": "Độ Thân Mật",
+      "startsAt": "Bắt đầu từ {{intimacy}}%",
+      "relationshipNickname": "Biệt Danh Quan Hệ",
+      "nicknamePlaceholder": "vd) Đồng trang lứa, Cặp đôi"
+    }
   }
 }

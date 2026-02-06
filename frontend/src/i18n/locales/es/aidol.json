@@ -5,7 +5,9 @@
     }
   },
   "common": {
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "save": "Guardar",
+    "saved": "Guardado correctamente."
   },
   "position": {
     "header": "Asignación de Posición",
@@ -308,6 +310,28 @@
     "header": "Química entre Miembros",
     "sectionTitle": "Resumen de Química",
     "sectionSubtitle": "¡Las relaciones afectan el contenido del chat!",
-    "addRelationship": "Agregar Relación"
+    "addRelationship": "Agregar Relación",
+    "add": {
+      "header": "Agregar Relación",
+      "memberNotFound": "No se encontró el miembro.",
+      "createRelationshipWith": "Crea una relación con {{name}}",
+      "selectedMemberPlaceholder": "Miembro\nseleccionado",
+      "selectMember": "Seleccionar Miembro",
+      "relationshipType": "Tipo de Relación",
+      "types": {
+        "awkward": "Todavía Incómodo",
+        "polite": "Cortés",
+        "friendly": "Amigable",
+        "tikitaka": "Tiki-Taka",
+        "trust": "Confiable",
+        "emotional": "Emocional",
+        "bestFriend": "Mejor Amigo",
+        "inseparable": "Inseparable"
+      },
+      "intimacy": "Intimidad",
+      "startsAt": "Comienza en {{intimacy}}%",
+      "relationshipNickname": "Apodo de Relación",
+      "nicknamePlaceholder": "ej.) Squad, Mejores"
+    }
   }
 }
