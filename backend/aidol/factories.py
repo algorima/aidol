@@ -68,5 +68,3 @@ class CompanionRelationshipRepositoryFactory(
 
     def __init__(self):
         super().__init__(repository_class=CompanionRelationshipRepository)
-
-

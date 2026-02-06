@@ -23,5 +23,3 @@ __all__ = [
     "create_companion_router",
     "create_highlight_router",
 ]
-
-
