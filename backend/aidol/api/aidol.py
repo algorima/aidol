@@ -161,6 +161,10 @@ class AIdolRouter(
 
             sort_list, filter_list = self._parse_query_params(sort_param, filters_param)
 
+            # Ensure filter_list is a list
+            if filter_list is None:
+                filter_list = []
+
             # Add anonymous_id filter to existing filters
             anonymous_id_filter = {
                 "field": "anonymous_id",
