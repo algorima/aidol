@@ -245,5 +245,10 @@
     "error": {
       "create": "No se pudo iniciar."
     }
+  },
+  "group": {
+    "title": "Debut Temporada 1",
+    "chemistryButton": "Química entre Miembros 💭",
+    "followButton": "Seguir"
   }
 }
