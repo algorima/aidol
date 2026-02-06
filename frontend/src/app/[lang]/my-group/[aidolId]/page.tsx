@@ -2,6 +2,7 @@
 
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -36,6 +37,8 @@ const groupMyGroupHighlights = (
 
 export default function GroupPage() {
   const { t } = useTranslation();
+  const router = useRouter();
+  const params = useParams<{ lang: string; aidolId: string }>();
   const {
     scrollRef,
     isDragging,
@@ -66,10 +69,11 @@ export default function GroupPage() {
   // TODO: API 연동 시 AIdolRepository.getMy() 사용
   useEffect(() => {
     setGroups(mockAIdols);
-    if (mockAIdols.length > 0) {
-      setSelectedGroup(mockAIdols[0]);
+    const currentGroup = mockAIdols.find((g) => g.id === params.aidolId);
+    if (currentGroup) {
+      setSelectedGroup(currentGroup);
     }
-  }, []);
+  }, [params.aidolId]);
 
   // TODO: API 연동 시 HighlightRepository 사용
   useEffect(() => {
@@ -81,8 +85,8 @@ export default function GroupPage() {
   }, [selectedGroup]);
 
   const handleSelectGroup = (group: AIdol) => {
-    setSelectedGroup(group);
     setIsDropdownOpen(false);
+    router.push(`/${params.lang}/my-group/${group.id}`);
   };
 
   return (
