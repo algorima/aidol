@@ -6,9 +6,6 @@ Schema hierarchy:
 - CompanionRelationshipCreate: 생성 요청
 - CompanionRelationshipUpdate: 수정 요청
 - CompanionRelationship: 응답 스키마
-
-친밀도(intimacy)만 DB에 저장하고, 레벨명은 서비스에서 계산해서 반환
-IntimacyType, get_intimacy_type은 aidol.services에서 import
 """
 
 from datetime import datetime
@@ -54,6 +51,5 @@ class CompanionRelationship(CompanionRelationshipBase):
     )
 
     id: str = Field(..., description="Relationship ID")
-    type: str = Field(..., description="관계 유형 (계산된 값)")
     created_at: datetime = Field(..., description="Creation timestamp")
     updated_at: datetime = Field(..., description="Last update timestamp")
