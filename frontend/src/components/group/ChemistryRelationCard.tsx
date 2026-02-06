@@ -8,8 +8,8 @@ interface ChemistryRelationCardProps {
   toName: string;
   fromLabel?: string;
   toLabel?: string;
+  nickname?: string;
   relationshipType?: string;
-  description?: string;
   onClose?: () => void;
   onClick?: () => void;
 }
@@ -19,8 +19,8 @@ export function ChemistryRelationCard({
   toName,
   fromLabel,
   toLabel,
+  nickname,
   relationshipType,
-  description,
   onClose,
   onClick,
 }: ChemistryRelationCardProps) {
@@ -35,10 +35,10 @@ export function ChemistryRelationCard({
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={onClick ? handleClickKeyDown(onClick) : undefined}
     >
-      {relationshipType && (
+      {nickname && (
         <div className="flex items-center justify-between">
           <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
-            {relationshipType}
+            {nickname}
           </span>
           {onClose && (
             <button
@@ -67,8 +67,8 @@ export function ChemistryRelationCard({
         </span>
       )}
 
-      {relationshipType && description && (
-        <span className="text-label-m text-neutral">{description}</span>
+      {relationshipType && (
+        <span className="text-label-m text-neutral">{relationshipType}</span>
       )}
     </div>
   );
