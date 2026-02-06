@@ -230,6 +230,11 @@
       "button": "Kumpletuhin ang Casting"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "Chat sa mga miyembro, malapit na👋",
+    "settings": "Mga Setting",
+    "highlights": "Mga Highlight"
+  },
   "landing": {
     "hero": {
       "title": {

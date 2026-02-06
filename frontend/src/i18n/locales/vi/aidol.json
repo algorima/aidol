@@ -230,6 +230,11 @@
       "button": "Hoàn Thành Tuyển Chọn"
     }
   },
+  "myGroup": {
+    "chatComingSoon": "Chat với thành viên sắp ra mắt👋",
+    "settings": "Cài đặt",
+    "highlights": "Điểm nổi bật"
+  },
   "landing": {
     "hero": {
       "title": {
