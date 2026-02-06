@@ -27,7 +27,7 @@ export function MemberProfileCard({ companion }: MemberProfileCardProps) {
             />
           ) : (
             <div className="flex size-full items-center justify-center">
-              <UserIcon className="text-base-content/50 size-1/2" />
+              <UserIcon className="text-neutral size-1/2" />
             </div>
           )}
         </div>

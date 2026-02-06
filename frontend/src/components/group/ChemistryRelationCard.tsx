@@ -49,7 +49,7 @@ export function ChemistryRelationCard({
               }}
               aria-label="Close"
             >
-              <XMarkIcon className="text-base-content/50 size-5" />
+              <XMarkIcon className="text-base-content size-5" />
             </button>
           )}
         </div>
@@ -62,13 +62,13 @@ export function ChemistryRelationCard({
       </div>
 
       {!relationshipType && fromLabel && toLabel && (
-        <span className="text-label-m text-base-content/50">
+        <span className="text-label-m text-neutral">
           {fromLabel} — {toLabel}
         </span>
       )}
 
       {relationshipType && description && (
-        <span className="text-label-m text-base-content/50">{description}</span>
+        <span className="text-label-m text-neutral">{description}</span>
       )}
     </div>
   );

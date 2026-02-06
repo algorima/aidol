@@ -14,10 +14,8 @@ export function HighlightSectionHeader({
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h3 className="text-headline-s text-base-content">{title}</h3>
-        {subtitle && (
-          <p className="text-body-s text-base-content/70">{subtitle}</p>
-        )}
+        <h3 className="text-title-s text-base-content">{title}</h3>
+        {subtitle && <p className="text-body-s text-neutral">{subtitle}</p>}
       </div>
       {children}
     </div>

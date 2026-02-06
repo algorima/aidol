@@ -34,7 +34,7 @@ export function GroupProfile({
             />
           ) : (
             <div className="from-primary/20 to-secondary/20 flex size-full items-center justify-center bg-gradient-to-br">
-              <UserGroupIcon className="text-base-content/50 size-10" />
+              <UserGroupIcon className="text-neutral size-10" />
             </div>
           )}
         </div>
@@ -54,7 +54,7 @@ export function GroupProfile({
           {t("group.chemistryButton")}
         </button>
         <button
-          className="btn bg-base-300 text-base-content/60 text-label-l w-full rounded-lg"
+          className="btn bg-base-300 text-base-400 text-label-l w-full rounded-lg"
           disabled
         >
           {t("share")}
