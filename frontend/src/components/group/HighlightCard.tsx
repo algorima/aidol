@@ -30,7 +30,7 @@ export function HighlightCard({
       <div className="from-neutral absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t to-transparent opacity-60" />
 
       <div className="absolute inset-x-4 bottom-4 z-10">
-        <span className="text-title-s text-neutral-content line-clamp-2">
+        <span className="text-headline-m text-neutral-content line-clamp-2">
           {title}
         </span>
       </div>
