@@ -147,7 +147,11 @@ export function CompleteContent({
           disabled={isCreating}
           className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none disabled:opacity-50"
         >
-          {t("aidol:complete.createAnother")}
+          {isCreating ? (
+            <span className="loading loading-spinner loading-sm" />
+          ) : (
+            t("aidol:complete.createAnother")
+          )}
         </button>
         <button
           type="button"
