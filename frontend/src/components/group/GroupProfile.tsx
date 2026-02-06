@@ -8,14 +8,12 @@ import { formatDate, getDaysSince } from "@/lib/date";
 
 interface GroupProfileProps {
   profileImageUrl: string | null;
-  name: string;
   createdAt: string;
   onChemistryClick: () => void;
 }
 
 export function GroupProfile({
   profileImageUrl,
-  name,
   createdAt,
   onChemistryClick,
 }: GroupProfileProps) {
@@ -28,7 +26,7 @@ export function GroupProfile({
           {profileImageUrl ? (
             <Image
               src={profileImageUrl}
-              alt={name}
+              alt={t("group.title")}
               fill
               className="object-cover"
             />
@@ -39,7 +37,9 @@ export function GroupProfile({
           )}
         </div>
         <div>
-          <p className="text-label-l text-base-content font-bold">{name}</p>
+          <p className="text-label-l text-base-content font-bold">
+            {t("group.title")}
+          </p>
           <p className="text-label-l text-base-content font-bold">
             {formatDate(createdAt)} (D+{getDaysSince(createdAt)})
           </p>
