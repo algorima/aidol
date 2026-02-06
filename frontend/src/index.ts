@@ -13,7 +13,11 @@
 
 // Repository (server-safe, no React hooks)
 export { AIdolRepository } from "./repositories/AIdolRepository";
+export { ChatroomRepository } from "./repositories/ChatroomRepository";
+export type { GenerateResponse } from "./repositories/ChatroomRepository";
 export { CompanionRepository } from "./repositories/CompanionRepository";
+export { LeadsRepository } from "./repositories/LeadsRepository";
+export { LocalChatroomIdsRepository } from "./repositories/LocalChatroomIdsRepository";
 
 // Types & Schemas (server-safe)
 export type {
@@ -27,12 +31,22 @@ export type {
 } from "./schemas/aidol";
 export { aidolSchema, imageGenerationResponseSchema } from "./schemas/aidol";
 
+export type { Chatroom, ChatroomCreate, Message } from "./schemas/chatroom";
+export {
+  chatroomSchema,
+  isCompanion,
+  isUser,
+  messageSchema,
+  SenderType,
+} from "./schemas/chatroom";
+
 export type {
   Companion,
   CompanionCreate,
   CompanionStats,
   CompanionUpdate,
   Gender,
+  Position,
 } from "./schemas/companion";
 export { companionSchema } from "./schemas/companion";
 

@@ -13,13 +13,13 @@ from aioia_core.repositories import BaseRepository
 from sqlalchemy.orm import Session
 
 from aidol.models import DBAIdol
-from aidol.schemas import AIdol, AIdolCreate, AIdolUpdate
+from aidol.schemas import AIdol, AIdolCreateWithAnonymousId, AIdolUpdate
 
 
 def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
     """Convert DB AIdol to Pydantic model.
 
-    Includes claim_token for internal use (Service layer).
+    Includes anonymous_id for internal use (Service layer).
     Router should convert to AIdolPublic for API responses.
     """
     return AIdol(
@@ -29,21 +29,20 @@ def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
         greeting=db_aidol.greeting,
         concept=db_aidol.concept,
         profile_image_url=db_aidol.profile_image_url,
-        claim_token=db_aidol.claim_token,
+        anonymous_id=db_aidol.anonymous_id,
         created_at=db_aidol.created_at.replace(tzinfo=timezone.utc),
         updated_at=db_aidol.updated_at.replace(tzinfo=timezone.utc),
     )
 
 
-def _convert_aidol_create_to_db(schema: AIdolCreate) -> dict:
-    """Convert AIdolCreate schema to DB model data dict.
-
-    Includes claim_token for ownership verification.
-    """
+def _convert_aidol_create_to_db(schema: AIdolCreateWithAnonymousId) -> dict:
+    """Convert AIdolCreateWithAnonymousId schema to DB model data dict."""
     return schema.model_dump(exclude_unset=True)
 
 
-class AIdolRepository(BaseRepository[AIdol, DBAIdol, AIdolCreate, AIdolUpdate]):
+class AIdolRepository(
+    BaseRepository[AIdol, DBAIdol, AIdolCreateWithAnonymousId, AIdolUpdate]
+):
     """
     Database-backed AIdol repository.
 

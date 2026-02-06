@@ -12,14 +12,54 @@ import { NewMemberSection } from "@/components/casting/NewMemberSection";
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
-import { getMockCompanions } from "@/mocks/companions";
-import type { Companion, Gender } from "@/schemas/companion";
+import type { Companion } from "@/schemas/companion";
 
-const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
-  boy: "male",
-  girl: "female",
-  mixed: undefined,
-};
+const now = new Date().toISOString();
+
+const storyCompanions: Companion[] = [
+  {
+    id: "s-01",
+    name: "민준",
+    gender: "male",
+    grade: "A",
+    mbti: "ENFJ",
+    biography: "스토리용 샘플 연습생",
+    profilePictureUrl: null,
+    stats: {
+      vocal: 90,
+      dance: 85,
+      rap: 60,
+      visual: 95,
+      stamina: 70,
+      charm: 88,
+    },
+    aidolId: null,
+    position: null,
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: "s-02",
+    name: "서연",
+    gender: "female",
+    grade: "A",
+    mbti: "ENFP",
+    biography: "스토리용 샘플 연습생",
+    profilePictureUrl: null,
+    stats: {
+      vocal: 92,
+      dance: 80,
+      rap: 50,
+      visual: 95,
+      stamina: 72,
+      charm: 90,
+    },
+    aidolId: null,
+    position: null,
+    createdAt: now,
+    updatedAt: now,
+  },
+];
 
 function CastingPageFull() {
   const [activeTab, setActiveTab] = useState<GenderTab>("boy");
@@ -28,8 +68,12 @@ function CastingPageFull() {
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const gender = TAB_TO_GENDER[activeTab];
-  const companions = getMockCompanions({ gender });
+  const companions =
+    activeTab === "mixed"
+      ? storyCompanions
+      : storyCompanions.filter(
+          (c) => c.gender === (activeTab === "boy" ? "male" : "female"),
+        );
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">

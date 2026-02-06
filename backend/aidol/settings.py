@@ -7,6 +7,15 @@ Provides GoogleGenAISettings for image generation with Google Gemini.
 from pydantic_settings import BaseSettings
 
 
+class Settings(BaseSettings):
+    """Environment-based settings for aidol module."""
+
+    openai_model: str = "gpt-4o-mini"
+
+    class Config:
+        env_prefix = "AIDOL_"
+
+
 class GoogleGenAISettings(BaseSettings):
     """
     Google Gen AI SDK settings for Gemini image generation.

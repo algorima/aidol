@@ -1,49 +1,79 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { ProfileImageGenerator } from "@/components/creation/ProfileImageGenerator";
 import { StepCard } from "@/components/creation/StepCard";
-import { getMockCompanionRepository } from "@/repositories/MockCompanionRepository";
+import { CompanionRepository } from "@/repositories";
+import { getApiService } from "@/services/ApiService";
 
-export default function ImagePage() {
-  const { t } = useTranslation();
-  const params = useParams<{
+interface ImagePageProps {
+  params: {
     lang: string;
     aidolId: string;
     companionId: string;
-  }>();
+  };
+}
+
+export default function ImagePage({ params }: ImagePageProps) {
+  const { lang, aidolId, companionId } = params;
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   const [prompt, setPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [hasGenerated, setHasGenerated] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleGenerate = async () => {
+  const handleGenerate = useCallback(async () => {
     if (!prompt.trim()) return;
     setIsGenerating(true);
-    const repository = getMockCompanionRepository();
-    const response = await repository.generateImage({ prompt });
-    setImageUrl(response.data.imageUrl);
-    setHasGenerated(true);
-    setIsGenerating(false);
-  };
+    try {
+      const response = await companionRepository.generateImage({ prompt });
+      setImageUrl(response.data.imageUrl);
+      setHasGenerated(true);
+    } catch {
+      showToast(t("aidol:companionCreate.error.generateImage"), "error");
+    } finally {
+      setIsGenerating(false);
+    }
+  }, [companionRepository, prompt, showToast, t]);
 
-  const handleNext = async () => {
+  const handleNext = useCallback(async () => {
     if (!imageUrl) return;
-    const repository = getMockCompanionRepository();
-    await repository.update({
-      id: params.companionId,
-      variables: { profilePictureUrl: imageUrl },
-    });
-    router.push(
-      `/${params.lang}/aidols/${params.aidolId}/companions/${params.companionId}/complete`,
-    );
-  };
+    setIsSubmitting(true);
+    try {
+      await companionRepository.update({
+        id: companionId,
+        variables: { profilePictureUrl: imageUrl },
+      });
+      router.push(
+        `/${lang}/aidols/${aidolId}/companions/${companionId}/complete`,
+      );
+    } catch {
+      showToast(t("aidol:companionCreate.error.update"), "error");
+      setIsSubmitting(false);
+    }
+  }, [
+    aidolId,
+    companionId,
+    companionRepository,
+    imageUrl,
+    lang,
+    router,
+    showToast,
+    t,
+  ]);
 
   return (
     <CompanionCreateLayout
@@ -52,7 +82,7 @@ export default function ImagePage() {
       bottomButton={
         <button
           type="button"
-          disabled={!hasGenerated}
+          disabled={!hasGenerated || isSubmitting}
           onClick={handleNext}
           className="btn btn-neutral w-full"
         >

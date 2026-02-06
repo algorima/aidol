@@ -22,7 +22,7 @@ export default function CastingCompletePage({
   }, [lang, aidolId, router]);
 
   const handleViewBoard = useCallback(() => {
-    router.push(`/${lang}/${aidolId}/casting-board`);
+    router.push(`/${lang}/aidols/${aidolId}/casting-board`);
   }, [lang, aidolId, router]);
 
   return (

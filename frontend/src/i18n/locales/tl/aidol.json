@@ -190,6 +190,11 @@
   "companionCreate": {
     "title": "Casting ng Debut Member",
     "next": "Susunod",
+    "error": {
+      "update": "Hindi na-save.",
+      "generateImage": "Hindi nagawa ang larawan.",
+      "load": "Hindi ma-load ang listahan ng trainee."
+    },
     "gender": {
       "stepTitle": "Pumili ng kasarian",
       "female": "Babae",
@@ -236,6 +241,9 @@
       "line3": "Bagong AI Idol Group",
       "line4": "Next Generation Project",
       "cta": "Mag-cast ng Trainee"
+    },
+    "error": {
+      "create": "Hindi masimulan."
     }
   }
 }

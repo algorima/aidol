@@ -9,44 +9,32 @@ AIdol 스키마 유닛 테스트
 import unittest
 from datetime import datetime
 
-from pydantic import ValidationError
-
 from aidol.schemas import AIdolCreate, AIdolPublic
 
 
 class TestAIdolCreateSchema(unittest.TestCase):
     """AIdolCreate 스키마 유닛 테스트"""
 
-    def test_claim_token_required(self):
-        """claimToken 없이 생성하면 ValidationError 발생해야 함"""
+    def test_anonymous_id_not_in_body(self):
+        """anonymous_id은 body에서 받지 않음 (Cookie에서 읽음)"""
+        fields = AIdolCreate.model_fields.keys()
+        self.assertNotIn("anonymous_id", fields)
 
-        with self.assertRaises(ValidationError):
-            AIdolCreate()  # type: ignore
-
-    def test_request_with_claim_token(self):
-        """claimToken을 포함한 요청이 유효해야 함"""
-        token = "550e8400-e29b-41d4-a716-446655440000"
-        schema = AIdolCreate(claim_token=token)
-
-        self.assertEqual(schema.claim_token, token)
-
-    def test_camel_case_alias_support(self):
-        """camelCase 필드명도 인식해야 함"""
-        token = "550e8400-e29b-41d4-a716-446655440000"
-        schema = AIdolCreate.model_validate({"claimToken": token})
-
-        self.assertEqual(schema.claim_token, token)
+    def test_create_without_fields(self):
+        """필드 없이 생성 가능해야 함"""
+        schema = AIdolCreate()
+        self.assertIsNone(schema.name)
 
 
 class TestAIdolPublicSchema(unittest.TestCase):
     """AIdolPublic 스키마 유닛 테스트"""
 
-    def test_claim_token_excluded(self):
-        """AIdolPublic에는 claim_token 필드가 없어야 함"""
+    def test_anonymous_id_excluded(self):
+        """AIdolPublic에는 anonymous_id 필드가 없어야 함"""
         # AIdolPublic 스키마의 필드 목록 확인
         fields = AIdolPublic.model_fields.keys()
 
-        self.assertNotIn("claim_token", fields)
+        self.assertNotIn("anonymous_id", fields)
         self.assertIn("id", fields)
         self.assertIn("name", fields)
 
@@ -62,8 +50,8 @@ class TestAIdolPublicSchema(unittest.TestCase):
         data = public.model_dump(by_alias=True)
 
         self.assertIn("id", data)
-        self.assertNotIn("claimToken", data)
-        self.assertNotIn("claim_token", data)
+        self.assertNotIn("anonymousId", data)
+        self.assertNotIn("anonymous_id", data)
 
 
 if __name__ == "__main__":

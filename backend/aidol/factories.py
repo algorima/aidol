@@ -8,6 +8,7 @@ from aioia_core.factories import BaseRepositoryFactory
 
 from aidol.repositories.aidol import AIdolRepository
 from aidol.repositories.aidol_lead import AIdolLeadRepository
+from aidol.repositories.chatroom import ChatroomRepository
 from aidol.repositories.companion import CompanionRepository
 
 
@@ -16,6 +17,13 @@ class AIdolRepositoryFactory(BaseRepositoryFactory[AIdolRepository]):
 
     def __init__(self):
         super().__init__(repository_class=AIdolRepository)
+
+
+class ChatroomRepositoryFactory(BaseRepositoryFactory[ChatroomRepository]):
+    """Factory for creating Chatroom repositories."""
+
+    def __init__(self):
+        super().__init__(repository_class=ChatroomRepository)
 
 
 class CompanionRepositoryFactory(BaseRepositoryFactory[CompanionRepository]):

@@ -190,6 +190,11 @@
   "companionCreate": {
     "title": "Casting de Miembro Debut",
     "next": "Siguiente",
+    "error": {
+      "update": "Error al guardar.",
+      "generateImage": "Error al generar imagen.",
+      "load": "Error al cargar aprendices."
+    },
     "gender": {
       "stepTitle": "Elige un género",
       "female": "Femenino",
@@ -236,6 +241,9 @@
       "line3": "Nuevo Grupo de Idol AI",
       "line4": "Proyecto Próxima Generación",
       "cta": "Seleccionar Aprendices"
+    },
+    "error": {
+      "create": "No se pudo iniciar."
     }
   }
 }

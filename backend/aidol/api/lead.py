@@ -8,7 +8,7 @@ from typing import Annotated
 
 from aioia_core.fastapi import BaseCrudRouter, SingleItemResponse
 from aioia_core.settings import JWTSettings
-from fastapi import APIRouter, Depends, Header, status
+from fastapi import APIRouter, Cookie, Depends, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -56,11 +56,13 @@ class LeadRouter(
             response_model=SingleItemResponse[LeadResponse],
             status_code=status.HTTP_201_CREATED,
             summary="Collect Lead",
-            description="Collect email. Associates with AIdol if ClaimToken is valid.",
+            description="Collect email. Associates with AIdol if aioia_anonymous_id is valid.",
         )
         async def create_lead(
             request: AIdolLeadCreate,
-            claim_token: Annotated[str | None, Header(alias="ClaimToken")] = None,
+            claim_token: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             db_session: Session = Depends(self.get_db_dep),
             lead_repository: AIdolLeadRepositoryProtocol = Depends(
                 self.get_repository_dep
@@ -74,12 +76,12 @@ class LeadRouter(
                 # Reuse session from dependency
                 aidol_repo = self.aidol_repository_factory.create_repository(db_session)
 
-                # Find AIdol by claim_token
+                # Find AIdol by anonymous_id
                 # Assuming get_all supports filters
                 items, _ = aidol_repo.get_all(
                     filters=[
                         {
-                            "field": "claim_token",
+                            "field": "anonymous_id",
                             "operator": "eq",
                             "value": claim_token,
                         }
