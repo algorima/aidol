@@ -119,19 +119,16 @@ export default function CastingPage({ params }: CastingPageProps) {
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">
-      <Header
-        title={t("aidol:casting.title")}
-        rightContent={
-          <button
-            type="button"
-            className="btn btn-primary gap-2.5"
-            onClick={handleNewMember}
-          >
-            {t("aidol:casting.addMember")}
-            <PlusIcon className="size-4" />
-          </button>
-        }
-      />
+      <Header title={t("aidol:casting.title")}>
+        <button
+          type="button"
+          className="btn btn-primary gap-2.5"
+          onClick={handleNewMember}
+        >
+          {t("aidol:casting.addMember")}
+          <PlusIcon className="size-4" />
+        </button>
+      </Header>
 
       <div className="flex flex-col gap-6 px-6 py-4">
         <CastingInfoBanner />
