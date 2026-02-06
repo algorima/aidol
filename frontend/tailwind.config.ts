@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "base-400": "var(--color-base-400)",
+        backdrop: "var(--color-backdrop)",
+      },
       // 레이아웃 토큰
       maxWidth: {
         mobile: "393px",
@@ -62,7 +66,7 @@ const config: Config = {
         ],
         "title-s": [
           "1.125rem",
-          { lineHeight: "1.556", fontWeight: "600", letterSpacing: "0" },
+          { lineHeight: "1.556", fontWeight: "700", letterSpacing: "0" },
         ],
         // Body - 본문 텍스트
         "body-l": [
@@ -80,7 +84,7 @@ const config: Config = {
         // Label - 보조 텍스트
         "label-l": [
           "0.875rem",
-          { lineHeight: "1.429", fontWeight: "500", letterSpacing: "0" },
+          { lineHeight: "1.429", fontWeight: "700", letterSpacing: "0" },
         ],
         "label-m": [
           "0.75rem",
