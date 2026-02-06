@@ -21,6 +21,7 @@ const MOCK_COMPANIONS: Companion[] = [
     biography:
       "키 187, 몸무게 78. 수영을 좋아해서 바다가 보이는 곳에 가면 행복해한다. 그룹의 분위기 메이커.",
     profilePictureUrl: null,
+    status: "published",
     createdAt: "2025-01-01T00:00:00Z",
     updatedAt: "2025-01-01T00:00:00Z",
   },
@@ -33,6 +34,7 @@ const MOCK_COMPANIONS: Companion[] = [
     biography:
       "키 175, 몸무게 62. 춤에 대한 열정이 가득한 완벽주의자. 연습벌레라는 별명을 가지고 있다.",
     profilePictureUrl: null,
+    status: "published",
     createdAt: "2025-01-01T00:00:00Z",
     updatedAt: "2025-01-01T00:00:00Z",
   },
@@ -45,6 +47,7 @@ const MOCK_COMPANIONS: Companion[] = [
     biography:
       "키 180, 몸무게 70. 자유로운 영혼의 래퍼. 작사 작곡을 즐기며 그룹의 크리에이티브를 담당한다.",
     profilePictureUrl: null,
+    status: "published",
     createdAt: "2025-01-01T00:00:00Z",
     updatedAt: "2025-01-01T00:00:00Z",
   },
