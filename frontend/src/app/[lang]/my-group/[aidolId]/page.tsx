@@ -206,17 +206,11 @@ export default function GroupPage() {
                   >
                     <Image
                       src={item.thumbnailUrl}
-                      alt={item.thumbnailTitle}
+                      alt={section.title}
                       fill
                       draggable={false}
                       className="pointer-events-none object-cover"
                     />
-                    {/* 그라데이션 오버레이 */}
-                    <div className="absolute inset-x-0 bottom-0 h-40.75 bg-linear-to-t from-black/50 to-transparent" />
-                    {/* 타이틀 */}
-                    <p className="text-headline-m absolute bottom-4 left-4 text-white">
-                      {item.thumbnailTitle}
-                    </p>
                   </div>
                 ))}
               </div>
