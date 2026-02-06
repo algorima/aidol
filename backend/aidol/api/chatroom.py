@@ -338,6 +338,6 @@ def create_chatroom_router(
         user_info_provider=user_info_provider,
         jwt_secret_key=jwt_settings.secret_key if jwt_settings else None,
         resource_name=resource_name,
-        tags=tags or ["Aidol"],
+        tags=tags or ["Chatroom"],
     )
     return router.get_router()
