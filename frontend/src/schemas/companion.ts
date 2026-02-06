@@ -64,7 +64,7 @@ export const companionSchema = z.object({
     .optional(),
   mbti: z.string().nullable().optional(),
   gender: z.enum(["male", "female"]).nullable().optional(),
-  status: z.enum(["draft", "published"]).nullable().optional(),
+  status: z.enum(["draft", "published"]),
   stats: companionStatsSchema.optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
@@ -80,7 +80,7 @@ export interface Companion extends BaseRecord {
   position?: Position | null;
   mbti?: string | null;
   gender?: Gender | null;
-  status?: Status | null;
+  status: Status;
   stats?: CompanionStats;
   createdAt: string;
   updatedAt: string;

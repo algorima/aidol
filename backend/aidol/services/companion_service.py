@@ -4,7 +4,13 @@ Companion service
 Business logic for Companion operations including grade and MBTI calculation.
 """
 
-from aidol.schemas.companion import Companion, CompanionPublic, CompanionStats, Grade
+from aidol.schemas.companion import (
+    Companion,
+    CompanionPublic,
+    CompanionStats,
+    Grade,
+    Status,
+)
 
 
 def calculate_grade(stats: CompanionStats) -> Grade:
@@ -89,7 +95,7 @@ def to_companion_public(companion: Companion) -> CompanionPublic:
         biography=companion.biography,
         profile_picture_url=companion.profile_picture_url,
         position=companion.position,
-        status=companion.status,
+        status=companion.status or Status.DRAFT,
         mbti=mbti,
         stats=stats,
         created_at=companion.created_at,
