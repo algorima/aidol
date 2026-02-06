@@ -17,7 +17,6 @@ from aidol.protocols import (
     AIdolHighlightRepositoryFactoryProtocol,
     AIdolHighlightRepositoryProtocol,
     HighlightMessageRepositoryFactoryProtocol,
-    HighlightMessageRepositoryProtocol,
 )
 from aidol.schemas import (
     AIdolHighlight,
