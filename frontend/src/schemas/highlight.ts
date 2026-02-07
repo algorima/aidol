@@ -1,5 +1,25 @@
 import { z } from "zod";
 
+export interface HighlightMessage {
+  id: string;
+  highlightId: string;
+  companionId: string | null;
+  sequence: number;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export const highlightMessageSchema = z.object({
+  id: z.string(),
+  highlightId: z.string(),
+  companionId: z.string().nullable(),
+  sequence: z.number(),
+  content: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+}) satisfies z.ZodType<HighlightMessage>;
+
 export const highlightSchema = z.object({
   id: z.string(),
   aidolId: z.string(),
