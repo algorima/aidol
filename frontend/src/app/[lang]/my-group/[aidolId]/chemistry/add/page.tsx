@@ -8,10 +8,7 @@ import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
 import { Card, Header } from "@/components";
-import {
-  SelectMemberStep,
-  SetRelationshipStep,
-} from "@/components/chemistry";
+import { SelectMemberStep, SetRelationshipStep } from "@/components/chemistry";
 import {
   RELATIONSHIP_TYPE_TO_INTIMACY,
   type RelationshipType,

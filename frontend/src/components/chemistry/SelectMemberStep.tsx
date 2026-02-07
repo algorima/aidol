@@ -53,9 +53,7 @@ export function SelectMemberStep({
               overlayText={
                 hasRelationship ? relationship.nickname ?? undefined : undefined
               }
-              onClick={
-                !hasRelationship ? () => onSelect(member.id) : undefined
-              }
+              onClick={!hasRelationship ? () => onSelect(member.id) : undefined}
             />
           );
         })}
