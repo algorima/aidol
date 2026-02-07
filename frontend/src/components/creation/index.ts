@@ -4,7 +4,6 @@ export { CompanionNameInput } from "./CompanionNameInput";
 export { ConceptSelector } from "./ConceptSelector";
 export { GenderSelector } from "./GenderSelector";
 export { EmblemGenerator } from "./EmblemGenerator";
-export { GroupCreation } from "./GroupCreation";
 export { GroupNameInput } from "./GroupNameInput";
 export { MbtiForm } from "./MbtiForm";
 export type { MbtiValues } from "./MbtiForm";

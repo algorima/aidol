@@ -250,5 +250,10 @@
     "error": {
       "create": "開始に失敗しました。"
     }
+  },
+  "group": {
+    "title": "シーズン1 デビュー組",
+    "chemistryButton": "メンバー間ケミストリー 💭",
+    "followButton": "フォロー"
   }
 }

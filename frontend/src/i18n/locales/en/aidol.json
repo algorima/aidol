@@ -250,5 +250,10 @@
     "error": {
       "create": "Failed to start."
     }
+  },
+  "group": {
+    "title": "Season 1 Debut",
+    "chemistryButton": "Member Chemistry 💭",
+    "followButton": "Follow"
   }
 }

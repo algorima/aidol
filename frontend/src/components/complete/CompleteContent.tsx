@@ -16,6 +16,7 @@ interface CompleteContentProps {
   aidol: AIdol;
   companions: Companion[];
   onCreateAnother: () => void;
+  isCreating?: boolean;
   onShare: () => void;
   onNewsletter: () => void;
 }
@@ -24,6 +25,7 @@ export function CompleteContent({
   aidol,
   companions,
   onCreateAnother,
+  isCreating = false,
   onShare,
   onNewsletter,
 }: CompleteContentProps) {
@@ -125,9 +127,14 @@ export function CompleteContent({
         <button
           type="button"
           onClick={onCreateAnother}
-          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none"
+          disabled={isCreating}
+          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none disabled:opacity-50"
         >
-          {t("aidol:complete.createAnother")}
+          {isCreating ? (
+            <span className="loading loading-spinner loading-sm" />
+          ) : (
+            t("aidol:complete.createAnother")
+          )}
         </button>
         <button
           type="button"

@@ -17,7 +17,6 @@ export interface LeadRequest {
  * Lead response schema
  */
 export const leadResponseSchema = z.object({
-  aidolId: z.string(),
   email: z.string(),
 });
 

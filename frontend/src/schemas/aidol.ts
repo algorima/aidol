@@ -62,34 +62,6 @@ export interface AIdolUpdate {
   profileImageUrl?: string | null;
 }
 
-/**
- * Member draft schema for group creation form
- */
-export const memberDraftSchema = z.object({
-  name: z.string().min(1, "creation.memberNameRequired"),
-  personality: z.string().optional(),
-  systemPrompt: z.string().optional(),
-});
-
-export type MemberDraft = z.infer<typeof memberDraftSchema>;
-
-/**
- * Group creation form schema (react-hook-form + zod)
- */
-export const groupCreationSchema = z.object({
-  groupName: z.string().min(1, "creation.groupNameRequired"),
-  concept: z.string().optional(),
-  profileImageUrl: z.string().min(1, "creation.emblemRequired"),
-  members: z
-    .array(memberDraftSchema)
-    .min(1, "creation.memberRequired")
-    .refine((members) => members.some((m) => m.name.trim() !== ""), {
-      message: "creation.memberRequired",
-    }),
-});
-
-export type GroupCreationFormData = z.infer<typeof groupCreationSchema>;
-
 // ---------------------------------------------------------------------------
 // Image Generation
 // ---------------------------------------------------------------------------
