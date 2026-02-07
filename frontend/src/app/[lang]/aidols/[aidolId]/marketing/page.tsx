@@ -16,8 +16,7 @@ export default function MarketingPage({ params }: MarketingPageProps) {
   const groupName = "데이프레임";
 
   const handleCtaClick = () => {
-    // TODO: highlight/숙소 생활 후기 라우트 확정 후 교체
-    router.push(`/${lang}/aidols/${aidolId}`);
+    router.push(`/${lang}/aidols/my-group/${aidolId}`);
   };
 
   return <MarketingEmail groupName={groupName} onCtaClick={handleCtaClick} />;
