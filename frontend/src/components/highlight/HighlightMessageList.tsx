@@ -17,14 +17,12 @@ function InterviewerMessage({ content }: { content: string }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex justify-end">
-      <div className="flex min-w-0 flex-1 flex-col items-end gap-2">
-        <span className="text-body-s text-base-content">
-          {t("aidol:highlight.interviewer")}
-        </span>
-        <div className="max-w-[263px] overflow-hidden rounded-xl bg-black p-2">
-          <p className="text-body-s text-white">{content}</p>
-        </div>
+    <div className="flex flex-col items-end gap-2">
+      <span className="text-body-s text-base-content">
+        {t("aidol:highlight.interviewer")}
+      </span>
+      <div className="max-w-[263px] overflow-hidden rounded-xl bg-black p-2">
+        <p className="text-body-s text-white">{content}</p>
       </div>
     </div>
   );
