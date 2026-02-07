@@ -9,6 +9,8 @@ import { FollowForm } from "@/components/follow";
 import { LeadsRepository } from "@/repositories/LeadsRepository";
 import { getApiService } from "@/services/ApiService";
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 interface FollowPageProps {
   params: { lang: string; aidolId: string };
 }
@@ -22,7 +24,7 @@ export default function FollowPage({ params }: FollowPageProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
 
-  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidEmail = EMAIL_REGEX.test(email);
 
   // TODO: API 연동 후 동적으로 그룹명 가져오기
   const groupName = "데이프레임";
