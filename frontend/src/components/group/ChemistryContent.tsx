@@ -87,7 +87,7 @@ export function ChemistryContent({
         {/* Chemistry relations section */}
         <div className="mt-8 flex flex-col gap-3">
           <div className="flex flex-col gap-1">
-            <span className="text-title-s text-base-content font-bold">
+            <span className="text-title-s text-base-content">
               {t("chemistry.relationTitle")}
             </span>
             <span className="text-body-s text-neutral">

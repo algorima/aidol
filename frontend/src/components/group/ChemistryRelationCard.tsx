@@ -30,7 +30,7 @@ export function ChemistryRelationCard({
   return (
     <div
       className={clsx(
-        "bg-base-200 border-base-300 flex flex-col gap-2 rounded-lg border p-4",
+        "bg-base-200 border-base-400 flex flex-col gap-2 rounded-lg border p-4",
         onClick && "cursor-pointer",
       )}
       onClick={onClick}
