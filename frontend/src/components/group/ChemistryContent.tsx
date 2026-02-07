@@ -54,10 +54,10 @@ export function ChemistryContent({
               tabIndex={0}
               aria-label={companion.name ?? ""}
               className={clsx(
-                "relative size-[70px] shrink-0 overflow-hidden rounded-lg border-2",
+                "relative size-[70px] shrink-0 overflow-hidden rounded-lg",
                 companion.id === selectedMember.id
-                  ? "border-primary"
-                  : "border-base-300",
+                  ? "border-primary border-2"
+                  : "border-base-300 border",
               )}
               onClick={() => onSelectMember(companion.id)}
               onKeyDown={handleClickKeyDown(() => onSelectMember(companion.id))}
