@@ -246,6 +246,9 @@
       "create": "開始に失敗しました。"
     }
   },
+  "highlight": {
+    "interviewer": "インタビュアー"
+  },
   "group": {
     "title": "シーズン1 デビュー組",
     "chemistryButton": "メンバー間ケミストリー 💭",

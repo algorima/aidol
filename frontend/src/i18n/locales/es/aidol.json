@@ -246,6 +246,9 @@
       "create": "No se pudo iniciar."
     }
   },
+  "highlight": {
+    "interviewer": "Entrevistador"
+  },
   "group": {
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",

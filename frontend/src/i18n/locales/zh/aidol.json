@@ -246,6 +246,9 @@
       "create": "启动失败。"
     }
   },
+  "highlight": {
+    "interviewer": "采访者"
+  },
   "group": {
     "title": "第一季出道组",
     "chemistryButton": "成员间默契 💭",

@@ -246,6 +246,9 @@
       "create": "เริ่มต้นไม่สำเร็จ"
     }
   },
+  "highlight": {
+    "interviewer": "ผู้สัมภาษณ์"
+  },
   "group": {
     "title": "เดบิวต์ซีซั่น 1",
     "chemistryButton": "เคมีระหว่างสมาชิก 💭",

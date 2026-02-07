@@ -237,6 +237,9 @@
       "create": "시작에 실패했습니다."
     }
   },
+  "highlight": {
+    "interviewer": "인터뷰어"
+  },
   "group": {
     "title": "시즌1 데뷔조",
     "chemistryButton": "멤버 간 케미 💭",

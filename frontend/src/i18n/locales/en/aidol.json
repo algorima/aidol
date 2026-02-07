@@ -246,6 +246,9 @@
       "create": "Failed to start."
     }
   },
+  "highlight": {
+    "interviewer": "Interviewer"
+  },
   "group": {
     "title": "Season 1 Debut",
     "chemistryButton": "Member Chemistry 💭",

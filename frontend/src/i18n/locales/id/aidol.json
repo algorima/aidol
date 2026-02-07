@@ -246,6 +246,9 @@
       "create": "Gagal memulai."
     }
   },
+  "highlight": {
+    "interviewer": "Pewawancara"
+  },
   "group": {
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
