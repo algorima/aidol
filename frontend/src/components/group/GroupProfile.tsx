@@ -41,8 +41,8 @@ export function GroupProfile({
           )}
         </div>
         <div>
-          <p className="text-label-l text-base-content font-bold">{name}</p>
-          <p className="text-label-l text-base-content font-bold">
+          <p className="text-label-l text-base-content">{name}</p>
+          <p className="text-label-l text-base-content">
             {formatDate(createdAt)} (D+{getDaysSince(createdAt)})
           </p>
         </div>
@@ -50,7 +50,7 @@ export function GroupProfile({
 
       <div className="flex flex-col gap-2">
         <button
-          className="btn btn-primary text-label-l w-full rounded-lg"
+          className="btn btn-primary text-label-l w-full rounded-lg shadow-[0_0_4px_rgba(0,0,0,0.1)]"
           onClick={onChemistryClick}
         >
           {t("group.chemistryButton")}

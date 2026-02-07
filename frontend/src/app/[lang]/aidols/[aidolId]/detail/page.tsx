@@ -41,9 +41,7 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
   if (!group) {
     return (
       <div className="bg-base-100 flex h-screen flex-col items-center justify-center">
-        <p className="text-body-m text-neutral">
-          {t("aidol.notFound")}
-        </p>
+        <p className="text-body-m text-neutral">{t("aidol.notFound")}</p>
       </div>
     );
   }
@@ -61,11 +59,11 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
           profileImageUrl={group.profileImageUrl}
           createdAt={group.createdAt}
           onChemistryClick={() =>
-            router.push(
-              `/${params.lang}/aidols/${params.aidolId}/chemistry`,
-            )
+            router.push(`/${params.lang}/aidols/${params.aidolId}/chemistry`)
           }
-          onFollowClick={() => {}}
+          onFollowClick={() =>
+            router.push(`/${params.lang}/aidols/${params.aidolId}/follow`)
+          }
         />
 
         <div className="px-6">
