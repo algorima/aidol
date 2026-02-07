@@ -63,7 +63,7 @@ export function HighlightMessageList({
   const sorted = [...messages].sort((a, b) => a.sequence - b.sequence);
 
   return (
-    <div className="-mx-2 flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       {sorted.map((message) => {
         if (message.companionId === null) {
           return (
