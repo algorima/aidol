@@ -92,7 +92,7 @@ export default function GroupPage() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex min-h-screen flex-col">
       <Header
         title={selectedGroup?.name ?? ""}
         onDropdownClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -176,7 +176,7 @@ export default function GroupPage() {
         </>
       )}
 
-      <div className="bg-base-100 text-base-content flex flex-col">
+      <div className="bg-base-100 text-base-content flex flex-1 flex-col">
         <GroupProfile
           profileImageUrl={selectedGroup?.profileImageUrl ?? null}
           createdAt={selectedGroup?.createdAt ?? new Date().toISOString()}
