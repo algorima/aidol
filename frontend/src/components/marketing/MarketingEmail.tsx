@@ -10,12 +10,12 @@ interface MarketingEmailProps {
 }
 
 export function MarketingEmail({ groupName, onCtaClick }: MarketingEmailProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("aidol");
 
   return (
     <div className="bg-base-100 flex min-h-screen flex-col">
       {/* 로고 */}
-      <div className="flex items-center px-6 py-7">
+      <div className="flex items-center px-6 pt-7 pb-6">
         <Image src="/images/logo.svg" alt="alola" width={92} height={28} />
       </div>
 
@@ -25,12 +25,12 @@ export function MarketingEmail({ groupName, onCtaClick }: MarketingEmailProps) {
           {/* 헤드라인 */}
           <div className="flex flex-col gap-px">
             <p className="text-headline-s text-base-content">
-              {t("aidol:marketing.headlinePrefix")}
+              {t("marketing.headlinePrefix")}
             </p>
             <p className="text-headline-s">
               <span className="text-primary">{groupName}</span>
               <span className="text-base-content">
-                {t("aidol:marketing.headlineSuffix")}
+                {t("marketing.headlineSuffix")}
               </span>
             </p>
           </div>
@@ -50,18 +50,18 @@ export function MarketingEmail({ groupName, onCtaClick }: MarketingEmailProps) {
               {/* 이름·포지션 */}
               <div className="flex items-center gap-1">
                 <span className="text-body-s text-base-content">
-                  {t("aidol:marketing.memberName")}
+                  {t("marketing.memberName")}
                 </span>
                 <div className="bg-base-content size-0.5 rounded-full" />
                 <span className="text-body-s text-base-content">
-                  {t("aidol:marketing.memberPosition")}
+                  {t("marketing.memberPosition")}
                 </span>
               </div>
 
               {/* 메시지 버블 */}
               <div className="bg-secondary rounded-xl p-2">
                 <p className="text-body-s text-white">
-                  {t("aidol:marketing.message")}
+                  {t("marketing.message")}
                 </p>
               </div>
             </div>
@@ -84,7 +84,7 @@ export function MarketingEmail({ groupName, onCtaClick }: MarketingEmailProps) {
             onClick={onCtaClick}
             className="bg-primary text-primary-content text-label-l w-full cursor-pointer rounded-lg p-4 shadow-[0px_0px_4px_0px_rgba(0,0,0,0.1)]"
           >
-            {t("aidol:marketing.cta")}
+            {t("marketing.cta")}
           </button>
         </div>
       </div>
