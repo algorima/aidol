@@ -17,7 +17,8 @@ type TabKey = "home" | "explore" | "myGroup";
 
 interface TabConfig {
   key: TabKey;
-  path: string | null;
+  getHref: (lang: string, aidolId: string) => string;
+  matchPath: (pathname: string, lang: string, aidolId: string) => boolean;
   labelKey: string;
   IconOutline: IconType;
   IconSolid: IconType;
@@ -26,21 +27,26 @@ interface TabConfig {
 const tabs: TabConfig[] = [
   {
     key: "home",
-    path: null,
+    getHref: (lang) => `/${lang}/aidols`,
+    matchPath: (pathname, lang) => pathname === `/${lang}/aidols`,
     labelKey: "navigation.home",
     IconOutline: HiOutlineHome,
     IconSolid: HiMiniHome,
   },
   {
     key: "explore",
-    path: "casting",
+    getHref: (lang, aidolId) => `/${lang}/aidols/${aidolId}/casting`,
+    matchPath: (pathname, lang, aidolId) =>
+      pathname.startsWith(`/${lang}/aidols/${aidolId}/casting`),
     labelKey: "navigation.explore",
     IconOutline: HiOutlineSparkles,
     IconSolid: HiSparkles,
   },
   {
     key: "myGroup",
-    path: "my-group",
+    getHref: (lang, aidolId) => `/${lang}/aidols/my-group/${aidolId}`,
+    matchPath: (pathname, lang) =>
+      pathname.startsWith(`/${lang}/aidols/my-group`),
     labelKey: "navigation.myGroup",
     IconOutline: HiOutlineUserCircle,
     IconSolid: HiUserCircle,
@@ -56,23 +62,9 @@ export function BottomNavigation({ aidolId, lang }: BottomNavigationProps) {
   const { t } = useTranslation("aidol");
   const pathname = usePathname();
 
-  const getHref = (tab: TabConfig): string => {
-    if (tab.path === null) return `/${lang}/aidols`;
-    return `/${lang}/aidols/${aidolId}/${tab.path}`;
-  };
-
-  const getActiveTab = (): TabKey => {
-    const DEFAULT_TAB: TabKey = "explore";
-    if (pathname === `/${lang}/aidols`) return "home";
-    const activeTab = tabs.find(
-      (tab) =>
-        tab.path !== null &&
-        pathname.startsWith(`/${lang}/aidols/${aidolId}/${tab.path}`),
-    );
-    return activeTab?.key ?? DEFAULT_TAB;
-  };
-
-  const activeTab = getActiveTab();
+  const activeTab =
+    tabs.find((tab) => tab.matchPath(pathname, lang, aidolId))?.key ??
+    "explore";
 
   return (
     <nav className="bg-base-100 border-base-300 h-header flex shrink-0 items-center justify-between border-t px-10 py-5">
@@ -83,7 +75,7 @@ export function BottomNavigation({ aidolId, lang }: BottomNavigationProps) {
         return (
           <Link
             key={tab.key}
-            href={getHref(tab)}
+            href={tab.getHref(lang, aidolId)}
             className="flex flex-col items-center justify-center gap-1"
           >
             <Icon className="text-base-content size-6" />
