@@ -2,13 +2,12 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
 import preview from "@/assets/newsletter/preview.png";
 import { Header } from "@/components/Header";
 
 interface FollowFormProps {
   groupName: string;
-  companionProfileUrl?: string;
+  companionProfileUrl: string;
   email: string;
   onEmailChange: (email: string) => void;
   onSubmit: () => void;
@@ -56,7 +55,7 @@ export function FollowForm({
             <div className="bg-base-300 flex items-center gap-2.5 overflow-hidden rounded-lg p-2">
               <div className="relative size-10 shrink-0 overflow-hidden rounded-lg">
                 <Image
-                  src={companionProfileUrl ?? bubbleProfile}
+                  src={companionProfileUrl}
                   alt=""
                   fill
                   sizes="40px"
@@ -86,7 +85,7 @@ export function FollowForm({
             value={email}
             onChange={(e) => onEmailChange(e.target.value)}
             placeholder={t("aidol:group.follow.emailPlaceholder")}
-            className="border-base-400 text-body-m placeholder:text-base-400 bg-base-200 w-full rounded-lg border px-4 py-3 text-black focus:outline-none"
+            className="border-base-400 text-body-s placeholder:text-base-400 bg-base-200 text-base-content w-full rounded-lg border px-4 py-3 focus:outline-none"
             disabled={isLoading}
           />
 

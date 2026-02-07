@@ -46,7 +46,7 @@ export default function FollowPage({ params }: FollowPageProps) {
     try {
       await leadsRepository.create({ aidolId, email });
       showToast(t("aidol:group.follow.success"), "accent");
-      router.back();
+      router.push(`/${params.lang}/aidols/${aidolId}/detail`);
     } catch (error) {
       console.error("Failed to follow:", error);
       showToast(t("aidol:group.follow.error"), "error");
@@ -62,7 +62,7 @@ export default function FollowPage({ params }: FollowPageProps) {
       email={email}
       onEmailChange={setEmail}
       onSubmit={() => void handleSubmit()}
-      onClose={() => router.back()}
+      onClose={() => router.push(`/${params.lang}/aidols/${aidolId}/detail`)}
       isLoading={isSubmitting}
       isValidEmail={isValidEmail}
     />
