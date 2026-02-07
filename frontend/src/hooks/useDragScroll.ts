@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 
-export const useDragScroll = () => {
+interface UseDragScrollOptions {
+  sensitivity?: number;
+}
+
+export const useDragScroll = ({ sensitivity = 1.5 }: UseDragScrollOptions = {}) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [hasDragged, setHasDragged] = useState(false);
@@ -20,7 +24,7 @@ export const useDragScroll = () => {
     e.preventDefault();
     setHasDragged(true);
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
+    const walk = (x - startX) * sensitivity;
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
