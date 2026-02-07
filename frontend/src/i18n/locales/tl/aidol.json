@@ -235,6 +235,9 @@
     "settings": "Mga Setting",
     "highlights": "Mga Highlight"
   },
+  "highlight": {
+    "interviewer": "Tagapanayam"
+  },
   "landing": {
     "hero": {
       "title": {

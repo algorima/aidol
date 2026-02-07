@@ -235,6 +235,9 @@
     "settings": "Cài đặt",
     "highlights": "Điểm nổi bật"
   },
+  "highlight": {
+    "interviewer": "Người phỏng vấn"
+  },
   "landing": {
     "hero": {
       "title": {

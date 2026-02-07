@@ -235,6 +235,9 @@
     "settings": "設定",
     "highlights": "ハイライト"
   },
+  "highlight": {
+    "interviewer": "インタビュアー"
+  },
   "landing": {
     "hero": {
       "title": {
