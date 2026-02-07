@@ -32,7 +32,7 @@ export default function FollowPage({ params }: FollowPageProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState("");
 
-  const isValidEmail = EMAIL_REGEX.test(email);
+  const isValidEmail = EMAIL_REGEX.test(email.trim());
 
   const leadsRepository = useMemo(
     () => new LeadsRepository(getApiService()),
@@ -40,11 +40,11 @@ export default function FollowPage({ params }: FollowPageProps) {
   );
 
   const handleSubmit = async () => {
-    if (!email.trim() || !isValidEmail) return;
+    if (!isValidEmail) return;
 
     setIsSubmitting(true);
     try {
-      await leadsRepository.create({ aidolId, email });
+      await leadsRepository.create({ aidolId, email: email.trim() });
       showToast(t("aidol:group.follow.success"), "accent");
       router.push(`/${params.lang}/aidols/${aidolId}/detail`);
     } catch (error) {
