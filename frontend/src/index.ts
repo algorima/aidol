@@ -49,7 +49,5 @@ export type {
 } from "./schemas/companion";
 export { companionSchema } from "./schemas/companion";
 
-export type { HighlightMessage } from "./schemas/highlight";
-
 // i18n - Server-safe exports (JSON resources and constants)
 export { AIDOL_NS, aidolTranslations } from "./i18n/translations";

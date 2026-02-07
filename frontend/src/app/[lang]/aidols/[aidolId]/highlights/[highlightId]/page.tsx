@@ -3,9 +3,11 @@
 import { useRouter } from "next/navigation";
 
 import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
-import { HighlightMessageList } from "@/components/highlight";
+import {
+  HighlightMessageList,
+  type HighlightMessage,
+} from "@/components/highlight";
 import { Modal } from "@/components/Modal";
-import type { HighlightMessage } from "@/schemas";
 
 // TODO: HighlightRepository.getMessages(highlightId)로 교체
 const MOCK_MESSAGES: HighlightMessage[] = [

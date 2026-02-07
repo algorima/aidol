@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
-import { HighlightMessageList } from "@/components/highlight";
-import type { HighlightMessage } from "@/schemas";
+import {
+  HighlightMessageList,
+  type HighlightMessage,
+} from "@/components/highlight";
 
 const meta: Meta<typeof HighlightMessageList> = {
   title: "Components/Highlight/HighlightMessageList",

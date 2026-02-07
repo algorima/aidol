@@ -36,9 +36,6 @@ export type {
   Position,
 } from "./companion";
 
-// Highlight schemas
-export type { HighlightMessage } from "./highlight";
-
 // Lead schemas
 export { leadResponseSchema } from "./lead";
 export type { LeadRequest, LeadResponse } from "./lead";
