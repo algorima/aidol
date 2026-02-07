@@ -17,12 +17,14 @@ function InterviewerMessage({ content }: { content: string }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col items-end gap-2">
-      <span className="text-label-l text-base-content">
-        {t("aidol:highlight.interviewer")}
-      </span>
-      <div className="max-w-[263px] rounded-xl bg-black p-2">
-        <p className="text-body-s text-white">{content}</p>
+    <div className="flex justify-end px-4">
+      <div className="flex min-w-0 flex-1 flex-col items-end gap-2">
+        <span className="text-body-s text-base-content">
+          {t("aidol:highlight.interviewer")}
+        </span>
+        <div className="max-w-[263px] overflow-hidden rounded-xl bg-black p-2">
+          <p className="text-body-s text-white">{content}</p>
+        </div>
       </div>
     </div>
   );
@@ -36,17 +38,17 @@ function CompanionMessage({
   companion: CompanionInfo;
 }) {
   return (
-    <div className="flex items-start gap-2">
+    <div className="flex items-start gap-2 px-4">
       <Image
         src={companion.imageUrl ?? ""}
         alt={companion.name}
         width={40}
         height={40}
-        className="border-base-300 rounded-lg border"
+        className="border-base-300 shrink-0 rounded-lg border"
       />
-      <div className="flex flex-col gap-2">
-        <span className="text-label-l text-base-content">{companion.name}</span>
-        <div className="bg-secondary max-w-[263px] rounded-xl p-2">
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
+        <span className="text-body-s text-base-content">{companion.name}</span>
+        <div className="bg-secondary max-w-[263px] overflow-hidden rounded-xl p-2">
           <p className="text-body-s text-white">{content}</p>
         </div>
       </div>
@@ -61,7 +63,7 @@ export function HighlightMessageList({
   const sorted = [...messages].sort((a, b) => a.sequence - b.sequence);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="-mx-6 flex flex-col gap-4">
       {sorted.map((message) => {
         if (message.companionId === null) {
           return (
