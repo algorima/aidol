@@ -8,7 +8,6 @@ import { Modal } from "@/components/Modal";
 import type { HighlightMessage } from "@/schemas";
 
 // TODO: HighlightRepository.getMessages(highlightId)로 교체
-// 참고: ChatroomRepository.getMessages() 패턴 참조
 const MOCK_MESSAGES: HighlightMessage[] = [
   {
     id: "msg-1",
@@ -49,7 +48,6 @@ const MOCK_MESSAGES: HighlightMessage[] = [
   },
 ];
 
-// TODO: API 연동 시 컴패니언 정보 동적 조회로 교체
 const MOCK_COMPANIONS: Record<string, { name: string; imageUrl: string }> = {
   "companion-1": {
     name: "이안",
@@ -60,7 +58,6 @@ const MOCK_COMPANIONS: Record<string, { name: string; imageUrl: string }> = {
 export default function HighlightMessagePage() {
   const router = useRouter();
 
-  // TODO: useEffect + useState(loading/error) + HighlightRepository 패턴으로 교체
   const messages = MOCK_MESSAGES;
   const companions = MOCK_COMPANIONS;
 
