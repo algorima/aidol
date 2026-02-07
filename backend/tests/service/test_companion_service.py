@@ -5,7 +5,14 @@ Unit tests for Companion Service business logic.
 import unittest
 from datetime import datetime
 
-from aidol.schemas.companion import Companion, CompanionStats, Gender, Grade, Position
+from aidol.schemas.companion import (
+    Companion,
+    CompanionStats,
+    Gender,
+    Grade,
+    Position,
+    Status,
+)
 from aidol.services.companion_service import (
     calculate_grade,
     calculate_mbti,
@@ -66,22 +73,21 @@ class TestCompanionService(unittest.TestCase):
 
         규칙:
         - Energy: 1-5(E), 6-10(I)
-        - Perception: 1-5(N), 6-10(S)
-        - Judgment: 1-5(T), 6-10(F)  <-- 서비스 로직 확인 필요 (보통 T/F 순서 주의)
-          (서비스 코드: 1-5=T, 6-10=F)
-        - Lifestyle: 1-5(P), 6-10(J)
+        - Perception: 1-5(S), 6-10(N)
+        - Judgment: 1-5(T), 6-10(F)
+        - Lifestyle: 1-5(J), 6-10(P)
         """
-        # Case 1: E N T P (All <= 5)
-        # 1, 1, 1, 1 -> E N T P
-        self.assertEqual(calculate_mbti(1, 1, 1, 1), "ENTP")
+        # Case 1: E S T J (All <= 5)
+        # 1, 1, 1, 1 -> E S T J
+        self.assertEqual(calculate_mbti(1, 1, 1, 1), "ESTJ")
 
-        # Case 2: I S F J (All > 5)
-        # 10, 10, 10, 10 -> I S F J
-        self.assertEqual(calculate_mbti(10, 10, 10, 10), "ISFJ")
+        # Case 2: I N F P (All > 5)
+        # 10, 10, 10, 10 -> I N F P
+        self.assertEqual(calculate_mbti(10, 10, 10, 10), "INFP")
 
-        # Case 3: Mixed (E S T J)
-        # Energy=1(E), Perception=10(S), Judgment=1(T), Lifestyle=10(J)
-        self.assertEqual(calculate_mbti(1, 10, 1, 10), "ESTJ")
+        # Case 3: Mixed (E N T P)
+        # Energy=1(E), Perception=10(N), Judgment=1(T), Lifestyle=10(P)
+        self.assertEqual(calculate_mbti(1, 10, 1, 10), "ENTP")
 
         # Case 4: Missing values -> None
         self.assertIsNone(calculate_mbti(None, 1, 1, 1))
@@ -103,6 +109,7 @@ class TestCompanionService(unittest.TestCase):
             biography="Bio",
             profile_picture_url="http://url",
             position=Position.MAIN_VOCAL,
+            status=Status.PUBLISHED,
             created_at=datetime.now(),
             updated_at=datetime.now(),
             # Stats for Grade B (70)
@@ -122,5 +129,5 @@ class TestCompanionService(unittest.TestCase):
         # Then: 검증
         self.assertEqual(public_data.name, "Test Member")
         self.assertEqual(public_data.grade, Grade.B)
-        self.assertEqual(public_data.mbti, "ENTP")
+        self.assertEqual(public_data.mbti, "ESTJ")
         self.assertEqual(public_data.stats.vocal, 70)

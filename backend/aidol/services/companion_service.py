@@ -42,9 +42,9 @@ def calculate_mbti(
 
     Each score is 1-10:
     - energy: 1-5 = E, 6-10 = I
-    - perception: 1-5 = N, 6-10 = S
+    - perception: 1-5 = S, 6-10 = N
     - judgment: 1-5 = T, 6-10 = F
-    - lifestyle: 1-5 = P, 6-10 = J
+    - lifestyle: 1-5 = J, 6-10 = P
 
     Returns None if any dimension is missing.
     """
@@ -57,11 +57,11 @@ def calculate_mbti(
     assert lifestyle is not None
 
     e_i = "E" if energy <= 5 else "I"
-    n_s = "N" if perception <= 5 else "S"
+    s_n = "S" if perception <= 5 else "N"
     t_f = "T" if judgment <= 5 else "F"
-    p_j = "P" if lifestyle <= 5 else "J"
+    j_p = "J" if lifestyle <= 5 else "P"
 
-    return f"{e_i}{n_s}{t_f}{p_j}"
+    return f"{e_i}{s_n}{t_f}{j_p}"
 
 
 def to_companion_public(companion: Companion) -> CompanionPublic:
@@ -89,6 +89,7 @@ def to_companion_public(companion: Companion) -> CompanionPublic:
         biography=companion.biography,
         profile_picture_url=companion.profile_picture_url,
         position=companion.position,
+        status=companion.status,
         mbti=mbti,
         stats=stats,
         created_at=companion.created_at,

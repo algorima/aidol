@@ -33,6 +33,7 @@ const createCompanion = (
   position: null,
   mbti: "ENFP",
   aidolId: "aidol-1",
+  status: "published",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 });

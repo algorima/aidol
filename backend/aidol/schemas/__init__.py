@@ -6,7 +6,7 @@ from aidol.schemas.aidol import (
     AIdol,
     AIdolBase,
     AIdolCreate,
-    AIdolCreateWithClaim,
+    AIdolCreateWithAnonymousId,
     AIdolPublic,
     AIdolUpdate,
     ImageGenerationData,
@@ -25,7 +25,7 @@ from aidol.schemas.chatroom import (
     Message,
     MessageBase,
     MessageCreate,
-    MessageCreateWithClaim,
+    MessageCreateWithAnonymousId,
     SenderType,
 )
 from aidol.schemas.companion import (
@@ -38,6 +38,7 @@ from aidol.schemas.companion import (
     Gender,
     Grade,
     Position,
+    Status,
 )
 from aidol.schemas.companion_relationship import (
     CompanionRelationship,
@@ -63,7 +64,7 @@ __all__ = [
     "AIdol",
     "AIdolBase",
     "AIdolCreate",
-    "AIdolCreateWithClaim",
+    "AIdolCreateWithAnonymousId",
     "AIdolPublic",
     "AIdolUpdate",
     "ImageGenerationData",
@@ -84,7 +85,7 @@ __all__ = [
     "Message",
     "MessageBase",
     "MessageCreate",
-    "MessageCreateWithClaim",
+    "MessageCreateWithAnonymousId",
     "SenderType",
     # Companion
     "Companion",
@@ -110,6 +111,7 @@ __all__ = [
     "HighlightMessageBase",
     "HighlightMessageCreate",
     "HighlightMessageUpdate",
+    "Status",
     # Model Settings
     "ModelSettings",
     "ModelSettingsBase",

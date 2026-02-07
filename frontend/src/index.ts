@@ -24,7 +24,6 @@ export type {
   AIdol,
   AIdolCreate,
   AIdolUpdate,
-  GroupCreationFormData,
   ImageGenerationData,
   ImageGenerationRequest,
   ImageGenerationResponse,

@@ -37,6 +37,13 @@ class Grade(str, Enum):
     F = "F"
 
 
+class Status(str, Enum):
+    """Status for draft pattern."""
+
+    DRAFT = "draft"
+    PUBLISHED = "published"
+
+
 class Position(str, Enum):
     """Position roles in the group."""
 
@@ -136,6 +143,7 @@ class CompanionUpdate(BaseModel):
         default=None, description="Profile picture URL"
     )
     position: Position | None = Field(default=None, description="Position in group")
+    status: Status | None = Field(default=None, description="Publication status")
     system_prompt: str | None = Field(
         default=None, description="AI system prompt (not exposed in responses)"
     )
@@ -173,6 +181,7 @@ class Companion(CompanionBase):
     )
 
     id: str = Field(..., description="Companion ID")
+    status: Status = Field(..., description="Publication status")
     system_prompt: str | None = Field(
         default=None, description="AI system prompt (sensitive, internal use only)"
     )
@@ -202,6 +211,7 @@ class CompanionPublic(BaseModel):
         default=None, description="Profile picture URL"
     )
     position: Position | None = Field(default=None, description="Position in group")
+    status: Status = Field(..., description="Publication status")
     mbti: str | None = Field(default=None, description="Calculated MBTI (e.g., ENFP)")
     stats: CompanionStats = Field(
         default_factory=CompanionStats, description="Ability stats"
