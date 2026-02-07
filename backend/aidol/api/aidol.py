@@ -10,7 +10,7 @@ from typing import Annotated
 
 from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
-from aioia_core.fastapi import BaseCrudRouter
+from aioia_core.fastapi import BaseCrudRouter, SingleItemResponse
 from aioia_core.settings import JWTSettings
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from pydantic import BaseModel
@@ -79,7 +79,7 @@ class AIdolRouter(
 
         @self.router.patch(
             f"/{self.resource_name}/{{item_id}}",
-            response_model=AIdolPublic,
+            response_model=SingleItemResponse[AIdolPublic],
             status_code=status.HTTP_200_OK,
             summary="Update AIdol group",
             description="Update AIdol group by ID (public endpoint). Returns updated AIdol data directly.",
@@ -102,14 +102,14 @@ class AIdolRouter(
                 )
 
             # Return updated AIdol as public schema
-            return AIdolPublic(**updated.model_dump())
+            return SingleItemResponse(data=AIdolPublic(**updated.model_dump()))
 
     def _register_public_create_route(self) -> None:
         """POST /{resource_name} - Create an AIdol group (public)"""
 
         @self.router.post(
             f"/{self.resource_name}",
-            response_model=AIdolCreateResponse,
+            response_model=SingleItemResponse[AIdolCreateResponse],
             status_code=status.HTTP_201_CREATED,
             summary="Create AIdol group",
             description="Create a new AIdol group (public endpoint). Returns only the created id.",
@@ -135,14 +135,14 @@ class AIdolRouter(
             created = repository.create(create_data)
 
             # Return only id
-            return AIdolCreateResponse(id=created.id)
+            return SingleItemResponse(data=AIdolCreateResponse(id=created.id))
 
     def _register_public_get_route(self) -> None:
         """GET /{resource_name}/{id} - Get an AIdol group (public)"""
 
         @self.router.get(
             f"/{self.resource_name}/{{item_id}}",
-            response_model=AIdolPublic,
+            response_model=SingleItemResponse[AIdolPublic],
             status_code=status.HTTP_200_OK,
             summary="Get AIdol group",
             description="Get AIdol group by ID (public endpoint). Returns AIdol data directly.",
@@ -157,7 +157,7 @@ class AIdolRouter(
             """Get AIdol group by ID."""
             aidol = self._get_item_or_404(repository, item_id)
             # Return AIdol as public schema
-            return AIdolPublic(**aidol.model_dump())
+            return SingleItemResponse(data=AIdolPublic(**aidol.model_dump()))
 
 
 def create_aidol_router(
