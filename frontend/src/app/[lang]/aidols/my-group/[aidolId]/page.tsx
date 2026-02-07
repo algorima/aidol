@@ -1,15 +1,16 @@
 "use client";
 
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
-import clsx from "clsx";
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { GroupProfile } from "@/components/group";
+import {
+  GroupDropdown,
+  GroupProfile,
+  HighlightCarousel,
+} from "@/components/group";
 import { Header } from "@/components/Header";
-import { useDragScroll } from "@/hooks/useDragScroll";
 import { mockAIdols } from "@/mocks/aidols";
 import { getMockHighlightsByAidolId } from "@/mocks/highlights";
 import type { AIdol } from "@/schemas/aidol";
@@ -41,13 +42,6 @@ export default function GroupPage() {
   const { t } = useTranslation();
   const router = useRouter();
   const params = useParams<{ lang: string; aidolId: string }>();
-  const {
-    scrollRef,
-    isDragging,
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
-  } = useDragScroll();
 
   // 그룹 상태
   const [groups, setGroups] = useState<AIdol[]>([]);
@@ -136,44 +130,12 @@ export default function GroupPage() {
 
       {/* 그룹 선택 드롭다운 */}
       {isDropdownOpen && (
-        <>
-          {/* 바깥 클릭 감지용 오버레이 */}
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setIsDropdownOpen(false)}
-          />
-          <div className="bg-base-100 border-base-400 absolute top-15 left-6 z-50 w-49.5 overflow-hidden rounded-lg border shadow-md">
-            {groups.map((group, index) => (
-              <button
-                key={group.id}
-                type="button"
-                onClick={() => handleSelectGroup(group)}
-                className={clsx("flex w-full items-center gap-2.5 p-2", {
-                  "border-base-400 border-b": index !== groups.length - 1,
-                  "bg-base-400": selectedGroup?.id === group.id,
-                  "hover:bg-base-200": selectedGroup?.id !== group.id,
-                })}
-              >
-                {/* 그룹 이미지 */}
-                <div className="border-base-300 bg-base-200 size-10 shrink-0 overflow-hidden rounded-lg border">
-                  {group.profileImageUrl && (
-                    <Image
-                      src={group.profileImageUrl}
-                      alt={group.name ?? ""}
-                      width={40}
-                      height={40}
-                      className="size-full object-cover"
-                    />
-                  )}
-                </div>
-                {/* 그룹 이름 */}
-                <span className="text-body-s text-base-content truncate">
-                  {group.name}
-                </span>
-              </button>
-            ))}
-          </div>
-        </>
+        <GroupDropdown
+          groups={groups}
+          selectedGroupId={selectedGroup?.id ?? null}
+          onSelect={handleSelectGroup}
+          onClose={() => setIsDropdownOpen(false)}
+        />
       )}
 
       <div className="bg-base-100 text-base-content flex flex-1 flex-col">
@@ -202,36 +164,8 @@ export default function GroupPage() {
                 <p className="text-body-s text-neutral">{section.subtitle}</p>
               </div>
 
-              {/* 캐러셀 */}
-              <div
-                ref={scrollRef}
-                className={clsx(
-                  "scrollbar-hide -mx-6 overflow-x-auto select-none",
-                  isDragging ? "cursor-grabbing" : "cursor-grab",
-                )}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-              >
-                <div className="flex gap-3.5 px-6">
-                  {section.items.map((item) => (
-                    // TODO: 클릭 시 하이라이트 상세 모달 표시
-                    <div
-                      key={item.id}
-                      className="bg-base-300 relative h-81.5 w-70 shrink-0 cursor-pointer overflow-hidden rounded-lg"
-                    >
-                      <Image
-                        src={item.thumbnailUrl}
-                        alt={section.title}
-                        fill
-                        draggable={false}
-                        className="pointer-events-none object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* TODO: 클릭 시 하이라이트 상세 모달 표시 */}
+              <HighlightCarousel items={section.items} onItemClick={() => {}} />
             </div>
           ))}
         </div>
