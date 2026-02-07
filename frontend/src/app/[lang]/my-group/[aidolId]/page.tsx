@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { GroupProfile } from "@/components/group";
 import { Header } from "@/components/Header";
 import { useDragScroll } from "@/hooks/useDragScroll";
 import { mockAIdols } from "@/mocks/aidols";
@@ -105,7 +106,7 @@ export default function GroupPage() {
             className="relative z-50 flex size-10 items-center justify-center"
             onClick={() => !isFirstVisit && setShowChatTooltip((prev) => !prev)}
           >
-            <ChatBubbleLeftEllipsisIcon className="text-base-content size-6" />
+            <ChatBubbleLeftEllipsisIcon className="text-base-content/20 size-6" />
           </button>
           {showChatTooltip && (
             <>
@@ -124,7 +125,10 @@ export default function GroupPage() {
             </>
           )}
         </div>
-        <button type="button" className="text-label-l text-base-content px-2">
+        <button
+          type="button"
+          className="text-label-l text-base-content/20 px-2"
+        >
           {t("aidol:myGroup.settings")}
         </button>
       </Header>
@@ -173,54 +177,62 @@ export default function GroupPage() {
         </>
       )}
 
-      <div className="bg-base-100 text-base-content flex flex-col px-6">
-        {/* TODO: 프로필 컴포넌트 추가 예정 */}
+      <div className="bg-base-100 text-base-content flex flex-col">
+        <GroupProfile
+          profileImageUrl={selectedGroup?.profileImageUrl ?? null}
+          createdAt={selectedGroup?.createdAt ?? new Date().toISOString()}
+          onChemistryClick={() =>
+            router.push(`/${params.lang}/my-group/${params.aidolId}/chemistry`)
+          }
+        />
 
         {/* 탭 */}
-        <p className="border-base-content text-label-l w-fit border-b-2 py-2">
-          {t("aidol:myGroup.highlights")}
-        </p>
+        <div className="px-6">
+          <p className="border-base-content text-label-l w-fit border-b-2 py-2">
+            {t("aidol:myGroup.highlights")}
+          </p>
 
-        {/* 하이라이트 섹션들 */}
-        {highlightSections.map((section, sectionIndex) => (
-          <div
-            key={`${section.title}-${sectionIndex}`}
-            className="mt-6 flex flex-col gap-4"
-          >
-            <div>
-              <p className="text-title-s">{section.title}</p>
-              <p className="text-body-s text-neutral">{section.subtitle}</p>
-            </div>
-
-            {/* 캐러셀 */}
+          {/* 하이라이트 섹션들 */}
+          {highlightSections.map((section, sectionIndex) => (
             <div
-              ref={scrollRef}
-              className={`scrollbar-hide -mx-6 overflow-x-auto select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseUp}
+              key={`${section.title}-${sectionIndex}`}
+              className="mt-6 flex flex-col gap-4"
             >
-              <div className="flex gap-3.5 px-6">
-                {section.items.map((item) => (
-                  // TODO: 클릭 시 하이라이트 상세 모달 표시
-                  <div
-                    key={item.id}
-                    className="bg-base-300 relative h-81.5 w-70 shrink-0 cursor-pointer overflow-hidden rounded-lg"
-                  >
-                    <Image
-                      src={item.thumbnailUrl}
-                      alt={section.title}
-                      fill
-                      draggable={false}
-                      className="pointer-events-none object-cover"
-                    />
-                  </div>
-                ))}
+              <div>
+                <p className="text-title-s">{section.title}</p>
+                <p className="text-body-s text-neutral">{section.subtitle}</p>
+              </div>
+
+              {/* 캐러셀 */}
+              <div
+                ref={scrollRef}
+                className={`scrollbar-hide -mx-6 overflow-x-auto select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+              >
+                <div className="flex gap-3.5 px-6">
+                  {section.items.map((item) => (
+                    // TODO: 클릭 시 하이라이트 상세 모달 표시
+                    <div
+                      key={item.id}
+                      className="bg-base-300 relative h-81.5 w-70 shrink-0 cursor-pointer overflow-hidden rounded-lg"
+                    >
+                      <Image
+                        src={item.thumbnailUrl}
+                        alt={section.title}
+                        fill
+                        draggable={false}
+                        className="pointer-events-none object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
