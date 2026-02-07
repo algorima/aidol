@@ -60,7 +60,7 @@ export function HighlightMessageList({
   messages,
   companions,
 }: HighlightMessageListProps) {
-  const sorted = [...messages].sort((a, b) => a.sequence - b.sequence);
+  const sorted = messages.toSorted((a, b) => a.sequence - b.sequence);
 
   return (
     <div className="flex flex-col gap-4">
