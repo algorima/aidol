@@ -148,12 +148,7 @@ export default function GroupChemistryPage({
                         <div className="bg-base-200 size-full" />
                       )}
                     </div>
-                    <span
-                      className={clsx(
-                        "text-label-l",
-                        isSelected ? "text-base-content" : "text-base-content",
-                      )}
-                    >
+                    <span className="text-label-l text-base-content">
                       {companion.name}
                     </span>
                   </button>
