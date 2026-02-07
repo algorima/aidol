@@ -64,7 +64,7 @@ export function GroupProfile({
               {t("group.followButton")}
             </button>
             <button
-              className="btn bg-base-300 text-base-content text-label-l flex-1 rounded-lg"
+              className="btn bg-base-300 text-base-400 text-label-l flex-1 rounded-lg"
               disabled
             >
               {t("share")}
@@ -73,7 +73,7 @@ export function GroupProfile({
           </div>
         ) : (
           <button
-            className="btn bg-base-300 text-base-content text-label-l w-full rounded-lg"
+            className="btn bg-base-300 text-base-400 text-label-l w-full rounded-lg"
             disabled
           >
             {t("share")}
