@@ -1,6 +1,7 @@
 "use client";
 
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -147,13 +148,11 @@ export default function GroupPage() {
                 key={group.id}
                 type="button"
                 onClick={() => handleSelectGroup(group)}
-                className={`flex w-full items-center gap-2.5 p-2 ${
-                  index !== groups.length - 1 ? "border-base-400 border-b" : ""
-                } ${
-                  selectedGroup?.id === group.id
-                    ? "bg-base-400"
-                    : "hover:bg-base-200"
-                }`}
+                className={clsx("flex w-full items-center gap-2.5 p-2", {
+                  "border-base-400 border-b": index !== groups.length - 1,
+                  "bg-base-400": selectedGroup?.id === group.id,
+                  "hover:bg-base-200": selectedGroup?.id !== group.id,
+                })}
               >
                 {/* 그룹 이미지 */}
                 <div className="border-base-300 bg-base-200 size-10 shrink-0 overflow-hidden rounded-lg border">
@@ -206,7 +205,10 @@ export default function GroupPage() {
               {/* 캐러셀 */}
               <div
                 ref={scrollRef}
-                className={`scrollbar-hide -mx-6 overflow-x-auto select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+                className={clsx(
+                  "scrollbar-hide -mx-6 overflow-x-auto select-none",
+                  isDragging ? "cursor-grabbing" : "cursor-grab",
+                )}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
