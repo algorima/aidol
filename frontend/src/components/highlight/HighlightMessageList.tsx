@@ -17,7 +17,7 @@ function InterviewerMessage({ content }: { content: string }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex justify-end px-4">
+    <div className="flex justify-end">
       <div className="flex min-w-0 flex-1 flex-col items-end gap-2">
         <span className="text-body-s text-base-content">
           {t("aidol:highlight.interviewer")}
@@ -38,7 +38,7 @@ function CompanionMessage({
   companion: CompanionInfo;
 }) {
   return (
-    <div className="flex items-start gap-2 px-4">
+    <div className="flex items-start gap-2">
       <Image
         src={companion.imageUrl ?? ""}
         alt={companion.name}
@@ -63,7 +63,7 @@ export function HighlightMessageList({
   const sorted = [...messages].sort((a, b) => a.sequence - b.sequence);
 
   return (
-    <div className="-mx-6 flex flex-col gap-4">
+    <div className="-mx-2 flex flex-col gap-4">
       {sorted.map((message) => {
         if (message.companionId === null) {
           return (
