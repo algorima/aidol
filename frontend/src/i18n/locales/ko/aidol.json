@@ -226,6 +226,9 @@
     "settings": "설정",
     "highlights": "하이라이트"
   },
+  "highlight": {
+    "interviewer": "인터뷰어"
+  },
   "landing": {
     "hero": {
       "title": {

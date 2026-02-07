@@ -235,6 +235,9 @@
     "settings": "Configuración",
     "highlights": "Destacados"
   },
+  "highlight": {
+    "interviewer": "Entrevistador"
+  },
   "landing": {
     "hero": {
       "title": {

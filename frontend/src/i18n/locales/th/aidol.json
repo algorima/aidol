@@ -235,6 +235,9 @@
     "settings": "ตั้งค่า",
     "highlights": "ไฮไลท์"
   },
+  "highlight": {
+    "interviewer": "ผู้สัมภาษณ์"
+  },
   "landing": {
     "hero": {
       "title": {
