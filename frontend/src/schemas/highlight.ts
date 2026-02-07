@@ -3,21 +3,18 @@
  * Matches backend highlight message API definitions
  */
 
-import { z } from "zod";
+import type { BaseRecord } from "@aioia/core";
 
 /**
- * Highlight message schema
  * companionId === null → 인터뷰어 메시지
  * companionId !== null → 컴패니언 메시지
  */
-export const highlightMessageSchema = z.object({
-  id: z.string(),
-  highlightId: z.string(),
-  companionId: z.string().nullable(),
-  sequence: z.number(),
-  content: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
-
-export type HighlightMessage = z.infer<typeof highlightMessageSchema>;
+export interface HighlightMessage extends BaseRecord {
+  id: string;
+  highlightId: string;
+  companionId: string | null;
+  sequence: number;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+}

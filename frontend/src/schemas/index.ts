@@ -37,7 +37,6 @@ export type {
 } from "./companion";
 
 // Highlight schemas
-export { highlightMessageSchema } from "./highlight";
 export type { HighlightMessage } from "./highlight";
 
 // Lead schemas

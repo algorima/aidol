@@ -1,14 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useTranslation } from "react-i18next";
 
 import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
 import { HighlightMessageList } from "@/components/highlight";
 import { Modal } from "@/components/Modal";
 import type { HighlightMessage } from "@/schemas";
 
-// TODO: GET /aidol-highlights/{id}/messages API 연동 시 교체
+// TODO: HighlightRepository.getMessages(highlightId)로 교체
+// 참고: ChatroomRepository.getMessages() 패턴 참조
 const MOCK_MESSAGES: HighlightMessage[] = [
   {
     id: "msg-1",
@@ -59,16 +59,14 @@ const MOCK_COMPANIONS: Record<string, { name: string; imageUrl: string }> = {
 
 export default function HighlightMessagePage() {
   const router = useRouter();
-  const { t } = useTranslation();
 
-  void t;
+  // TODO: useEffect + useState(loading/error) + HighlightRepository 패턴으로 교체
+  const messages = MOCK_MESSAGES;
+  const companions = MOCK_COMPANIONS;
 
   return (
     <Modal isOpen onClose={() => router.back()}>
-      <HighlightMessageList
-        messages={MOCK_MESSAGES}
-        companions={MOCK_COMPANIONS}
-      />
+      <HighlightMessageList messages={messages} companions={companions} />
     </Modal>
   );
 }
