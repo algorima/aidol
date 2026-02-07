@@ -258,7 +258,8 @@
       "submit": "Seguir y recibir novedades ✨",
       "submitting": "Suscribiendo...",
       "success": "¡Ahora estás siguiendo!",
-      "error": "No se pudo seguir. Inténtalo de nuevo."
+      "error": "No se pudo seguir. Inténtalo de nuevo.",
+      "loadError": "No se pudo cargar la información del grupo"
     }
   }
 }

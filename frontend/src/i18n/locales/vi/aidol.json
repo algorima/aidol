@@ -258,7 +258,8 @@
       "submit": "Theo dõi & Nhận tin tức ✨",
       "submitting": "Đang đăng ký...",
       "success": "Bạn đã theo dõi thành công!",
-      "error": "Theo dõi thất bại. Vui lòng thử lại."
+      "error": "Theo dõi thất bại. Vui lòng thử lại.",
+      "loadError": "Không thể tải thông tin nhóm"
     }
   }
 }

@@ -258,7 +258,8 @@
       "submit": "Sundan at Makatanggap ng Balita ✨",
       "submitting": "Nagsu-subscribe...",
       "success": "Sinusundan mo na!",
-      "error": "Hindi ma-follow. Subukan muli."
+      "error": "Hindi ma-follow. Subukan muli.",
+      "loadError": "Hindi na-load ang impormasyon ng grupo"
     }
   }
 }

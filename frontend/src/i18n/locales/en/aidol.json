@@ -258,7 +258,8 @@
       "submit": "Follow & Get Updates ✨",
       "submitting": "Subscribing...",
       "success": "You're now following!",
-      "error": "Failed to follow. Please try again."
+      "error": "Failed to follow. Please try again.",
+      "loadError": "Failed to load group information"
     }
   }
 }

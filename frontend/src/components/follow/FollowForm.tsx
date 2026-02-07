@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 
 interface FollowFormProps {
   groupName: string;
+  companionProfileUrl?: string;
   email: string;
   onEmailChange: (email: string) => void;
   onSubmit: () => void;
@@ -18,6 +19,7 @@ interface FollowFormProps {
 
 export function FollowForm({
   groupName,
+  companionProfileUrl,
   email,
   onEmailChange,
   onSubmit,
@@ -54,7 +56,7 @@ export function FollowForm({
             <div className="bg-base-300 flex items-center gap-2.5 overflow-hidden rounded-lg p-2">
               <div className="relative size-10 shrink-0 overflow-hidden rounded-lg">
                 <Image
-                  src={bubbleProfile}
+                  src={companionProfileUrl ?? bubbleProfile}
                   alt=""
                   fill
                   sizes="40px"

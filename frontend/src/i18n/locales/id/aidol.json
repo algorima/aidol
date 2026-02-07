@@ -258,7 +258,8 @@
       "submit": "Ikuti & Dapatkan Info ✨",
       "submitting": "Berlangganan...",
       "success": "Anda sekarang mengikuti!",
-      "error": "Gagal mengikuti. Silakan coba lagi."
+      "error": "Gagal mengikuti. Silakan coba lagi.",
+      "loadError": "Gagal memuat informasi grup"
     }
   }
 }
