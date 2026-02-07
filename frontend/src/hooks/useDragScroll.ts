@@ -4,7 +4,9 @@ interface UseDragScrollOptions {
   sensitivity?: number;
 }
 
-export const useDragScroll = ({ sensitivity = 1.5 }: UseDragScrollOptions = {}) => {
+export const useDragScroll = ({
+  sensitivity = 1.5,
+}: UseDragScrollOptions = {}) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [hasDragged, setHasDragged] = useState(false);
