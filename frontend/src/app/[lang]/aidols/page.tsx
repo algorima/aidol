@@ -12,12 +12,6 @@ import { Loading } from "@/components/Loading";
 
 import { type MockGroup, MOCK_GROUPS } from "./__mocks__/groups";
 
-const TAB_TO_GENDER: Record<GenderTab, GenderTab | undefined> = {
-  boy: "boy",
-  girl: "girl",
-  mixed: undefined,
-};
-
 interface GroupsPageProps {
   params: {
     lang: string;
@@ -46,7 +40,7 @@ export default function GroupsPage({ params }: GroupsPageProps) {
     );
   }
 
-  const gender = TAB_TO_GENDER[activeTab];
+  const gender = activeTab === "mixed" ? undefined : activeTab;
   const filteredGroups = gender
     ? groups.filter((g) => g.gender === gender)
     : groups;

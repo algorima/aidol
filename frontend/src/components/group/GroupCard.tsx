@@ -24,7 +24,7 @@ export function GroupCard({
   highlightTitle,
   onClick,
 }: GroupCardProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("aidol");
 
   return (
     <div
@@ -50,8 +50,7 @@ export function GroupCard({
           )}
         </div>
         <p className="text-title-s text-base-content">
-          {groupName} .{" "}
-          {t("aidol:groupList.memberCount", { count: memberCount })}
+          {groupName} . {t("groupList.memberCount", { count: memberCount })}
         </p>
       </div>
       <HighlightCard imageUrl={highlightImageUrl} title={highlightTitle} />
