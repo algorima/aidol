@@ -60,11 +60,9 @@ export function HighlightMessageList({
   messages,
   companions,
 }: HighlightMessageListProps) {
-  const sorted = messages.toSorted((a, b) => a.sequence - b.sequence);
-
   return (
     <div className="flex flex-col gap-4">
-      {sorted.map((message) => {
+      {messages.map((message) => {
         if (message.companionId === null) {
           return (
             <InterviewerMessage key={message.id} content={message.content} />
