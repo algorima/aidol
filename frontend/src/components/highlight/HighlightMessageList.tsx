@@ -44,7 +44,7 @@ function CompanionMessage({
         alt={companion.name}
         width={40}
         height={40}
-        className="border-base-300 shrink-0 rounded-lg border"
+        className="border-base-300 size-10 shrink-0 rounded-lg border object-cover"
       />
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <span className="text-body-s text-base-content">{companion.name}</span>
