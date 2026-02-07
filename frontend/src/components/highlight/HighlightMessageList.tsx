@@ -54,7 +54,7 @@ function CompanionMessage({
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <span className="text-body-s text-base-content">{companion.name}</span>
         <div className="bg-secondary max-w-[263px] overflow-hidden rounded-xl p-2">
-          <p className="text-body-s text-white">{content}</p>
+          <p className="text-body-s text-secondary-content">{content}</p>
         </div>
       </div>
     </div>
