@@ -53,7 +53,7 @@ export default function GroupsPage({ params }: GroupsPageProps) {
               memberCount={group.memberCount}
               highlightImageUrl={group.highlight.thumbnailUrl}
               highlightTitle={group.highlight.title}
-              onClick={() => router.push(`/${lang}/aidols/${group.id}`)}
+              onClick={() => router.push(`/${lang}/aidols/${group.id}/detail`)}
             />
           ))}
         </div>
