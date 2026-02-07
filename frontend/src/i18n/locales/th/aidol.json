@@ -329,7 +329,7 @@
         "inseparable": "แยกกันไม่ออก"
       },
       "intimacy": "ความสนิท",
-      "startsAt": "เริ่มต้นที่ {{intimacy}}%",
+      "startsAt": "เริ่มต้นที่ <highlight>{{intimacy}}%</highlight>",
       "relationshipNickname": "ชื่อเล่นความสัมพันธ์",
       "nicknamePlaceholder": "เช่น) กลุ่มเพื่อน, คู่ซี้"
     }

@@ -329,7 +329,7 @@
         "inseparable": "Inseparable"
       },
       "intimacy": "Intimacy",
-      "startsAt": "Starts at {{intimacy}}%",
+      "startsAt": "Starts at <highlight>{{intimacy}}%</highlight>",
       "relationshipNickname": "Relationship Nickname",
       "nicknamePlaceholder": "e.g.) Squad, Besties"
     }

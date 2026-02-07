@@ -329,7 +329,7 @@
         "inseparable": "Hindi Mapaghiwalay"
       },
       "intimacy": "Intimacy",
-      "startsAt": "Nagsisimula sa {{intimacy}}%",
+      "startsAt": "Nagsisimula sa <highlight>{{intimacy}}%</highlight>",
       "relationshipNickname": "Palayaw ng Relasyon",
       "nicknamePlaceholder": "hal.) Squad, Besties"
     }

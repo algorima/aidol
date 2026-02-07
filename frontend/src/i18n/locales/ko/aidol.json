@@ -320,7 +320,7 @@
         "inseparable": "떼려야 뗄 수 없는"
       },
       "intimacy": "친밀도",
-      "startsAt": "{{intimacy}}%에서 시작",
+      "startsAt": "<highlight>{{intimacy}}%</highlight>에서 시작",
       "relationshipNickname": "관계 별칭",
       "nicknamePlaceholder": "예)동갑즈, 멍멍즈"
     }

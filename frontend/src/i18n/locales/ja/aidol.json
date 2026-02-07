@@ -329,7 +329,7 @@
         "inseparable": "離れられない"
       },
       "intimacy": "親密度",
-      "startsAt": "{{intimacy}}%からスタート",
+      "startsAt": "<highlight>{{intimacy}}%</highlight>からスタート",
       "relationshipNickname": "関係の別名",
       "nicknamePlaceholder": "例）同い年ズ、仲良しズ"
     }

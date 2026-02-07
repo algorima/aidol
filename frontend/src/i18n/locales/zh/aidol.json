@@ -329,7 +329,7 @@
         "inseparable": "形影不离"
       },
       "intimacy": "亲密度",
-      "startsAt": "从{{intimacy}}%开始",
+      "startsAt": "从<highlight>{{intimacy}}%</highlight>开始",
       "relationshipNickname": "关系别名",
       "nicknamePlaceholder": "例）同龄组、闺蜜组"
     }

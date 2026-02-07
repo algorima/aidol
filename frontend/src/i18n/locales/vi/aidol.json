@@ -329,7 +329,7 @@
         "inseparable": "Không Thể Tách Rời"
       },
       "intimacy": "Độ Thân Mật",
-      "startsAt": "Bắt đầu từ {{intimacy}}%",
+      "startsAt": "Bắt đầu từ <highlight>{{intimacy}}%</highlight>",
       "relationshipNickname": "Biệt Danh Quan Hệ",
       "nicknamePlaceholder": "vd) Đồng trang lứa, Cặp đôi"
     }

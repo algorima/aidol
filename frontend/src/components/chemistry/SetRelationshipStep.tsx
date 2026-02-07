@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import {
   RELATIONSHIP_TYPE_TO_INTIMACY,
@@ -53,7 +53,11 @@ export function SetRelationshipStep({
       {/* 친밀도 */}
       <p className="text-title-s mb-2">{t("aidol:chemistry.add.intimacy")}</p>
       <p className="text-label-l mb-4">
-        {t("aidol:chemistry.add.startsAt", { intimacy })}
+        <Trans
+          i18nKey="aidol:chemistry.add.startsAt"
+          values={{ intimacy }}
+          components={{ highlight: <span className="text-primary" /> }}
+        />
       </p>
       <div className="bg-base-300 mb-6 h-2 w-full overflow-hidden rounded-full">
         <div
