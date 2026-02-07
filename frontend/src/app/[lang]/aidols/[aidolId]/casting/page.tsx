@@ -1,7 +1,7 @@
 "use client";
 
 import type { GetListParams } from "@aioia/core";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -123,6 +123,15 @@ export default function CastingPage({ params }: CastingPageProps) {
           />
         )}
       </div>
+
+      <button
+        type="button"
+        onClick={() => router.push(`/${lang}/aidols/${aidolId}/casting-board`)}
+        className="bg-neutral fixed right-6 bottom-24 flex size-[54px] cursor-pointer items-center justify-center rounded-full shadow-[0px_4px_16px_0px_rgba(0,0,0,0.4)]"
+        aria-label={t("aidol:castingBoard.header")}
+      >
+        <SquaresPlusIcon className="text-neutral-content size-6" />
+      </button>
 
       {selectedCompanion && (
         <Modal
