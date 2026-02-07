@@ -1,24 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { GroupProfile } from "@/components/group/GroupProfile";
 import { HighlightCard } from "@/components/group/HighlightCard";
 import { HighlightSectionHeader } from "@/components/group/HighlightSectionHeader";
 import { Header } from "@/components/Header";
-import { Loading } from "@/components/Loading";
-
-import type { MockGroupDetail } from "./__mocks__/group";
-import { MOCK_GROUP_DETAIL } from "./__mocks__/group";
 
 // TODO: API 구현 후 삭제. AIdolRepository.getOne()로 교체
-const useMockGroupDetail = () => {
-  const [group] = useState<MockGroupDetail | null>(MOCK_GROUP_DETAIL);
-  const [isLoading] = useState(false);
-  return { group, isLoading };
-};
+import { MOCK_GROUP_DETAIL } from "./__mocks__/group";
 
 interface GroupDetailPageProps {
   params: { lang: string; aidolId: string };
@@ -28,23 +19,7 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
   const { t } = useTranslation("aidol");
   const router = useRouter();
   // TODO: API 구현 후 useToast() 추가하여 에러 핸들링
-  const { group, isLoading } = useMockGroupDetail();
-
-  if (isLoading) {
-    return (
-      <div className="bg-base-100 flex h-screen flex-col items-center justify-center">
-        <Loading />
-      </div>
-    );
-  }
-
-  if (!group) {
-    return (
-      <div className="bg-base-100 flex h-screen flex-col items-center justify-center">
-        <p className="text-body-m text-neutral">{t("aidol.notFound")}</p>
-      </div>
-    );
-  }
+  const group = MOCK_GROUP_DETAIL;
 
   return (
     <div className="bg-base-100 flex min-h-screen flex-col">

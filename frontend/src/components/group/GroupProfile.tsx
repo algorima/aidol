@@ -1,5 +1,3 @@
-"use client";
-
 import { ShareIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
