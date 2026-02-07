@@ -1,3 +1,4 @@
+import { UserIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
@@ -14,12 +15,12 @@ interface HighlightMessageListProps {
 }
 
 function InterviewerMessage({ content }: { content: string }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("aidol");
 
   return (
     <div className="flex flex-col items-end gap-2">
       <span className="text-body-s text-base-content">
-        {t("aidol:highlight.interviewer")}
+        {t("highlight.interviewer")}
       </span>
       <div className="max-w-[263px] overflow-hidden rounded-xl bg-black p-2">
         <p className="text-body-s text-white">{content}</p>
@@ -37,13 +38,19 @@ function CompanionMessage({
 }) {
   return (
     <div className="flex items-start gap-2">
-      <Image
-        src={companion.imageUrl ?? ""}
-        alt={companion.name}
-        width={40}
-        height={40}
-        className="border-base-300 size-10 shrink-0 rounded-lg border object-cover"
-      />
+      {companion.imageUrl ? (
+        <Image
+          src={companion.imageUrl}
+          alt={companion.name}
+          width={40}
+          height={40}
+          className="border-base-300 size-10 shrink-0 rounded-lg border object-cover"
+        />
+      ) : (
+        <div className="border-base-300 bg-base-200 flex size-10 shrink-0 items-center justify-center rounded-lg border">
+          <UserIcon className="text-neutral size-5" />
+        </div>
+      )}
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <span className="text-body-s text-base-content">{companion.name}</span>
         <div className="bg-secondary max-w-[263px] overflow-hidden rounded-xl p-2">
