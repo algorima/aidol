@@ -27,7 +27,7 @@ export function ChemistryRelationCard({
   return (
     <div
       className={clsx(
-        "bg-base-200 border-base-300 flex flex-col gap-2 rounded-lg border p-4",
+        "bg-base-200 border-base-300 relative flex flex-col gap-2 rounded-lg border p-4",
         onClick && "cursor-pointer",
       )}
       onClick={onClick}
@@ -35,24 +35,24 @@ export function ChemistryRelationCard({
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={onClick ? handleClickKeyDown(onClick) : undefined}
     >
+      {onClose && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
+          className="absolute top-4 right-4 cursor-pointer"
+          aria-label="Close"
+        >
+          <XMarkIcon className="text-base-content size-5" />
+        </button>
+      )}
+
       {nickname && (
-        <div className="flex items-center justify-between">
-          <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
-            {nickname}
-          </span>
-          {onClose && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onClose();
-              }}
-              aria-label="Close"
-            >
-              <XMarkIcon className="text-base-content size-5" />
-            </button>
-          )}
-        </div>
+        <span className="text-label-l bg-base-content text-base-100 w-fit rounded-lg px-2 py-1">
+          {nickname}
+        </span>
       )}
 
       <div className="flex items-center gap-2">

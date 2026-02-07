@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { Header } from "@/components";
 import {
   ChemistryRelationCard,
@@ -16,6 +17,7 @@ import {
 } from "@/components/group";
 import { INTIMACY_TO_RELATIONSHIP_TYPE } from "@/constants/relationship";
 import { mockCompanions } from "@/mocks/companions";
+// TODO: Mock 제거하고 실제 API 연동
 import { getMockRelationshipRepository } from "@/repositories/MockRelationshipRepository";
 import type { Companion } from "@/schemas/companion";
 import type { CompanionRelationship } from "@/schemas/companionRelationship";
@@ -33,6 +35,7 @@ export default function GroupChemistryPage({
   const { lang, aidolId } = params;
   const router = useRouter();
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const [companions, setCompanions] = useState<Companion[]>([]);
   const [relationships, setRelationships] = useState<CompanionRelationship[]>(
     [],
@@ -100,6 +103,13 @@ export default function GroupChemistryPage({
 
   const getRelationshipType = (intimacy: number) => {
     return INTIMACY_TO_RELATIONSHIP_TYPE[intimacy];
+  };
+
+  const handleDeleteRelationship = async (relationshipId: string) => {
+    const repo = getMockRelationshipRepository();
+    await repo.delete(relationshipId);
+    setRelationships((prev) => prev.filter((rel) => rel.id !== relationshipId));
+    showToast(t("aidol:common.deleted"), "accent");
   };
 
   return (
@@ -206,6 +216,7 @@ export default function GroupChemistryPage({
                       toName={target.name ?? ""}
                       nickname={customRel.nickname ?? undefined}
                       relationshipType={relationshipType}
+                      onClose={() => handleDeleteRelationship(customRel.id)}
                     />
                   );
                 })

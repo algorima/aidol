@@ -183,6 +183,12 @@ class MockRelationshipRepository {
     this.storage.set(id, relationship);
     return Promise.resolve(relationship);
   }
+
+  // 관계 삭제
+  delete(id: string): Promise<void> {
+    this.storage.delete(id);
+    return Promise.resolve();
+  }
 }
 
 let instance: MockRelationshipRepository | null = null;

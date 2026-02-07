@@ -15,6 +15,7 @@ import {
 } from "@/constants/relationship";
 import { getParticle } from "@/lib/koreanParticle";
 import { mockCompanions } from "@/mocks/companions";
+// TODO: Mock 제거하고 실제 API 연동
 import { getMockRelationshipRepository } from "@/repositories/MockRelationshipRepository";
 import type { Companion } from "@/schemas/companion";
 import type { CompanionRelationship } from "@/schemas/companionRelationship";
