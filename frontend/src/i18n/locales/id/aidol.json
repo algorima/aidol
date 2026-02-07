@@ -235,6 +235,9 @@
     "settings": "Pengaturan",
     "highlights": "Sorotan"
   },
+  "highlight": {
+    "interviewer": "Pewawancara"
+  },
   "landing": {
     "hero": {
       "title": {

@@ -235,6 +235,9 @@
     "settings": "设置",
     "highlights": "精彩集锦"
   },
+  "highlight": {
+    "interviewer": "采访者"
+  },
   "landing": {
     "hero": {
       "title": {
