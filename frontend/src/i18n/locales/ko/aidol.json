@@ -241,6 +241,9 @@
     "title": "시즌1 데뷔조",
     "chemistryButton": "멤버 간 케미 💭",
     "followButton": "팔로우",
-    "highlightTab": "하이라이트"
+    "highlightTab": "하이라이트",
+    "error": {
+      "load": "그룹 정보를 불러오지 못했습니다"
+    }
   }
 }

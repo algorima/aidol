@@ -250,6 +250,9 @@
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",
     "followButton": "Seguir",
-    "highlightTab": "Destacados"
+    "highlightTab": "Destacados",
+    "error": {
+      "load": "No se pudo cargar la información del grupo"
+    }
   }
 }

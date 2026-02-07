@@ -250,6 +250,9 @@
     "title": "シーズン1 デビュー組",
     "chemistryButton": "メンバー間ケミストリー 💭",
     "followButton": "フォロー",
-    "highlightTab": "ハイライト"
+    "highlightTab": "ハイライト",
+    "error": {
+      "load": "グループ情報の読み込みに失敗しました"
+    }
   }
 }

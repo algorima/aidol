@@ -250,6 +250,9 @@
     "title": "เดบิวต์ซีซั่น 1",
     "chemistryButton": "เคมีระหว่างสมาชิก 💭",
     "followButton": "ติดตาม",
-    "highlightTab": "ไฮไลท์"
+    "highlightTab": "ไฮไลท์",
+    "error": {
+      "load": "ไม่สามารถโหลดข้อมูลกลุ่มได้"
+    }
   }
 }

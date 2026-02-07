@@ -250,6 +250,9 @@
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
     "followButton": "Ikuti",
-    "highlightTab": "Sorotan"
+    "highlightTab": "Sorotan",
+    "error": {
+      "load": "Gagal memuat informasi grup"
+    }
   }
 }

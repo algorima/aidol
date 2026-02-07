@@ -250,6 +250,9 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Member Chemistry 💭",
     "followButton": "Follow",
-    "highlightTab": "Highlights"
+    "highlightTab": "Highlights",
+    "error": {
+      "load": "Failed to load group information"
+    }
   }
 }

@@ -250,6 +250,9 @@
     "title": "Ra Mắt Mùa 1",
     "chemistryButton": "Phản Ứng Hóa Học Giữa Thành Viên 💭",
     "followButton": "Theo dõi",
-    "highlightTab": "Nổi bật"
+    "highlightTab": "Nổi bật",
+    "error": {
+      "load": "Không thể tải thông tin nhóm"
+    }
   }
 }
