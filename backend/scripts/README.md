@@ -4,18 +4,21 @@
 
 ## 실행 방법
 
-프로젝트 루트(`backend`)에서 아래 명령어를 실행하세요.
+프로젝트 루트(`backend`)에서 실행하는 것이 아니라, **`backend` 디렉토리 내부**에서 아래 명령어를 실행해야 합니다.
 
 가상환경 설치
 ```bash
+# (backend 디렉토리에서)
 poetry install
 ```
-스크립트 실행(루트: backend)
+스크립트 실행
 ```bash
+# (backend 디렉토리에서)
 poetry run python scripts/seed_db.py
 ```
-서버 실행(루트: backend)
+서버 실행
 ```bash
+# (backend 디렉토리에서)
 poetry run uvicorn main:app --reload
 ```
 ### DB 초기화
