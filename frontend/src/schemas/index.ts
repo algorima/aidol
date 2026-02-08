@@ -39,3 +39,11 @@ export type {
 // Lead schemas
 export { leadResponseSchema } from "./lead";
 export type { LeadRequest, LeadResponse } from "./lead";
+
+// Highlight schemas
+export { highlightMessageSchema, highlightSchema } from "./highlight";
+export type {
+  Highlight,
+  HighlightMessage,
+  MyGroupHighlightSection,
+} from "./highlight";
