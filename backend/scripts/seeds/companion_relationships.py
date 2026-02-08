@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 
 from aidol.models.companion import DBCompanion
 from aidol.models.companion_relationship import DBCompanionRelationship
+from typing import Any
 
 
 def seed_companion_relationships(
@@ -19,7 +20,7 @@ def seed_companion_relationships(
     """
     print("Seeding companion relationships...")
 
-    relationships_data = []
+    relationships_data: list[dict[str, Any]] = []
 
     # NewJeans Internal (Circular Chain: Minji -> Hanni -> Danielle -> Haerin -> Hyein -> Minji)
     nj_members = ["Minji", "Hanni", "Danielle", "Haerin", "Hyein"]
@@ -48,8 +49,8 @@ def seed_companion_relationships(
     # Solo (IU) has no group members, so no relationships.
 
     for rel in relationships_data:
-        from_name = rel["from"]
-        to_name = rel["to"]
+        from_name = str(rel["from"])
+        to_name = str(rel["to"])
 
         if from_name not in companions_map or to_name not in companions_map:
             print(

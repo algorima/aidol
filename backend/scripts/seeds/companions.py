@@ -2,8 +2,10 @@ from sqlalchemy.orm import Session
 
 from aidol.models.companion import DBCompanion
 
+from typing import Any
+
 # Dummy data for companions
-COMPANIONS_DATA = [
+COMPANIONS_DATA: list[dict[str, Any]] = [
     # NewJeans
     {
         "name": "Minji",
