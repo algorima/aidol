@@ -1,0 +1,31 @@
+/**
+ * AIdol Highlight schemas
+ * Matches backend aidol/schemas/highlight.py definitions
+ */
+
+import type { BaseRecord } from "@aioia/core";
+import { z } from "zod";
+
+/**
+ * AIdolHighlight schema
+ * Matches backend AIdolHighlight (aidol/schemas/highlight.py)
+ */
+export const aidolHighlightSchema = z.object({
+  id: z.string(),
+  aidolId: z.string().nullable().optional(),
+  title: z.string(),
+  thumbnailUrl: z.string(),
+  subtitle: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+
+export interface AIdolHighlight extends BaseRecord {
+  id: string;
+  aidolId?: string | null;
+  title: string;
+  thumbnailUrl: string;
+  subtitle: string;
+  createdAt: string;
+  updatedAt: string;
+}

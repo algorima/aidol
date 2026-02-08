@@ -11,11 +11,9 @@ import { HighlightSectionHeader } from "@/components/group/HighlightSectionHeade
 import { Header } from "@/components/Header";
 import { Loading } from "@/components/Loading";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
-import type { AIdol } from "@/schemas";
+import { HighlightRepository } from "@/repositories/HighlightRepository";
+import type { AIdol, AIdolHighlight } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
-
-// TODO: HighlightRepository 구현 후 삭제
-import { MOCK_HIGHLIGHTS } from "./__mocks__/group";
 
 interface GroupDetailPageProps {
   params: { lang: string; aidolId: string };
@@ -28,10 +26,15 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
   const { lang, aidolId } = params;
 
   const [aidol, setAidol] = useState<AIdol | null>(null);
+  const [highlights, setHighlights] = useState<AIdolHighlight[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const aidolRepository = useMemo(
     () => new AIdolRepository(getApiService()),
+    [],
+  );
+  const highlightRepository = useMemo(
+    () => new HighlightRepository(getApiService()),
     [],
   );
 
@@ -39,8 +42,15 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await aidolRepository.getOne({ id: aidolId });
-        setAidol(response.data);
+        const [aidolResponse, highlightsResponse] = await Promise.all([
+          aidolRepository.getOne({ id: aidolId }),
+          highlightRepository.getList({
+            filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+            pagination: { current: 1, pageSize: 100 },
+          }),
+        ]);
+        setAidol(aidolResponse.data);
+        setHighlights(highlightsResponse.data);
       } catch (error) {
         console.error("Failed to fetch group detail:", error);
         showToast(t("group.error.load"), "error");
@@ -50,7 +60,7 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     };
 
     void fetchData();
-  }, [aidolId, aidolRepository, showToast, t]);
+  }, [aidolId, aidolRepository, highlightRepository, showToast, t]);
 
   if (isLoading) {
     return (
@@ -92,21 +102,17 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
           </span>
         </div>
 
-        {/* TODO: HighlightRepository 구현 후 교체 */}
         <div className="flex flex-col gap-6 px-6 py-4">
-          {MOCK_HIGHLIGHTS.map((section) => (
-            <div key={section.id} className="flex flex-col gap-4">
+          {highlights.map((highlight) => (
+            <div key={highlight.id} className="flex flex-col gap-4">
               <HighlightSectionHeader
-                title={section.title}
-                subtitle={section.subtitle}
+                title={highlight.title}
+                subtitle={highlight.subtitle}
               />
-              {section.contents.map((content) => (
-                <HighlightCard
-                  key={content.id}
-                  imageUrl={content.imageUrl}
-                  title={content.title}
-                />
-              ))}
+              <HighlightCard
+                imageUrl={highlight.thumbnailUrl}
+                title={highlight.title}
+              />
             </div>
           ))}
         </div>
