@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
-from aidol.models.highlight import DBAIdolHighlight
+
 from aidol.models.aidol import DBAIdol
+from aidol.models.highlight import DBAIdolHighlight
 
 HIGHLIGHTS_DATA = [
     {
@@ -29,46 +30,52 @@ HIGHLIGHTS_DATA = [
     },
 ]
 
-def seed_aidol_highlights(db: Session, aidols_map: dict[str, DBAIdol]) -> dict[str, DBAIdolHighlight]:
+
+def seed_aidol_highlights(
+    db: Session, aidols_map: dict[str, DBAIdol]
+) -> dict[str, DBAIdolHighlight]:
     """
     Seed aidol highlights.
-    
+
     Args:
         db: Database session
         aidols_map: Dictionary mapping group names to DBAIdol objects
-    
+
     Returns:
         Dictionary mapping highlight titles to DBAIdolHighlight objects
     """
     print("Seeding aidol highlights...")
     results = {}
-    
+
     for data in HIGHLIGHTS_DATA:
         group_name = data.pop("group")
-        
+
         if group_name not in aidols_map:
             print(f"Skipping highlight for {group_name} (group not found)")
             continue
-            
+
         aidol_id = aidols_map[group_name].id
         data["aidol_id"] = aidol_id
-        
+
         # Check existing
         existing = (
             db.query(DBAIdolHighlight)
-            .filter(DBAIdolHighlight.title == data["title"], DBAIdolHighlight.aidol_id == aidol_id)
+            .filter(
+                DBAIdolHighlight.title == data["title"],
+                DBAIdolHighlight.aidol_id == aidol_id,
+            )
             .first()
         )
-        
+
         if existing:
             print(f"Skipping highlight {data['title']} (already exists)")
             results[data["title"]] = existing
             continue
-            
+
         highlight = DBAIdolHighlight(**data)
         db.add(highlight)
         db.flush()
         print(f"Added highlight: {data['title']}")
         results[data["title"]] = highlight
-        
+
     return results

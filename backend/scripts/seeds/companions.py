@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from aidol.models.companion import DBCompanion
 
 # Dummy data for companions
@@ -21,7 +22,7 @@ COMPANIONS_DATA = [
         "visual": 90,
         "stamina": 88,
         "charm": 92,
-        "position": "subVocal", # Leader/Lead Vocal -> subVocal (closest fit from list)
+        "position": "subVocal",  # Leader/Lead Vocal -> subVocal (closest fit from list)
         "status": "published",
     },
     {
@@ -81,7 +82,7 @@ COMPANIONS_DATA = [
         "visual": 92,
         "stamina": 75,
         "charm": 89,
-        "position": "subDancer", # Lead Dancer -> subDancer
+        "position": "subDancer",  # Lead Dancer -> subDancer
         "status": "published",
     },
     {
@@ -142,7 +143,7 @@ COMPANIONS_DATA = [
         "visual": 90,
         "stamina": 80,
         "charm": 93,
-        "position": "subVocal", # Lead Vocal -> subVocal
+        "position": "subVocal",  # Lead Vocal -> subVocal
         "status": "published",
     },
     {
@@ -278,20 +279,22 @@ GROUP_MEMBERS_MAP = {
 }
 
 
-def seed_companions(db: Session, aidol_map: dict[str, str] | None = None) -> dict[str, DBCompanion]:
+def seed_companions(
+    db: Session, aidol_map: dict[str, str] | None = None
+) -> dict[str, DBCompanion]:
     """
     Seed the companions table.
-    
+
     Args:
         db: Database session
         aidol_map: Dictionary mapping group names to group IDs (e.g., {"NewJeans": "uuid-..."})
-    
+
     Returns:
         Dictionary mapping companion names to DBCompanion objects
     """
     print("Seeding companions...")
     results = {}
-    
+
     for companion_data in COMPANIONS_DATA:
         # Determine aidol_id based on name
         aidol_id = None
@@ -301,11 +304,11 @@ def seed_companions(db: Session, aidol_map: dict[str, str] | None = None) -> dic
                     if group_name in aidol_map:
                         aidol_id = aidol_map[group_name]
                     break
-        
+
         companion_data_copy = companion_data.copy()
         if aidol_id:
-             companion_data_copy["aidol_id"] = aidol_id
-            
+            companion_data_copy["aidol_id"] = aidol_id
+
         # Check if companion already exists
         existing = (
             db.query(DBCompanion)
@@ -322,5 +325,5 @@ def seed_companions(db: Session, aidol_map: dict[str, str] | None = None) -> dic
         db.flush()
         print(f"Added {companion_data['name']}")
         results[companion_data["name"]] = companion
-        
+
     return results

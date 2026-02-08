@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+
 from aidol.models.aidol import DBAIdol
 
 # Dummy data for Aidol groups
@@ -23,23 +24,20 @@ AIDOLS_DATA = [
         "profile_image_url": "https://api.dicebear.com/7.x/identicon/svg?seed=IVE",
         "email": "ive@example.com",
         "greeting": "Dive into IVE! Hello, we are IVE!",
-    }
+    },
 ]
+
 
 def seed_aidols(db: Session) -> dict[str, DBAIdol]:
     """Seed the aidols table and return a dict of {name: DBAIdol}."""
     print("Seeding aidols...")
     results = {}
-    
+
     for aidol_data in AIDOLS_DATA:
         name = aidol_data["name"]
-        
+
         # Check if aidol already exists
-        existing = (
-            db.query(DBAIdol)
-            .filter(DBAIdol.name == name)
-            .first()
-        )
+        existing = db.query(DBAIdol).filter(DBAIdol.name == name).first()
         if existing:
             print(f"Skipping {name} (already exists)")
             results[name] = existing
@@ -50,5 +48,5 @@ def seed_aidols(db: Session) -> dict[str, DBAIdol]:
         db.flush()  # Flush to get the ID without committing
         print(f"Added {name}")
         results[name] = aidol
-        
+
     return results
