@@ -1,23 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
-import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
 import { FollowForm } from "@/components/follow";
+import { Loading } from "@/components/Loading";
+import { AIdolRepository } from "@/repositories/AIdolRepository";
+import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { LeadsRepository } from "@/repositories/LeadsRepository";
 import { getApiService } from "@/services/ApiService";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// TODO: API 연동 후 삭제
-// AIdolRepository.getOne({ id: aidolId }) → aidol.name
-// CompanionRepository.getList({ filters: [{ field: "aidolId", ... }] }) → companions[0].profilePictureUrl
-// 참고: /aidols/[aidolId]/page.tsx 패턴 참조
-const MOCK_GROUP_NAME = "르누아르";
-const MOCK_COMPANION_PROFILE_URL = bubbleProfile.src;
 
 interface FollowPageProps {
   params: { lang: string; aidolId: string };
@@ -27,17 +22,55 @@ export default function FollowPage({ params }: FollowPageProps) {
   const { t } = useTranslation();
   const router = useRouter();
   const { showToast } = useToast();
-  const { aidolId } = params;
+  const { lang, aidolId } = params;
 
+  const [groupName, setGroupName] = useState("");
+  const [companionProfileUrl, setCompanionProfileUrl] = useState<string | null>(
+    null,
+  );
+  const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState("");
 
   const isValidEmail = EMAIL_REGEX.test(email.trim());
 
+  const aidolRepository = useMemo(
+    () => new AIdolRepository(getApiService()),
+    [],
+  );
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
   const leadsRepository = useMemo(
     () => new LeadsRepository(getApiService()),
     [],
   );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const [aidolResponse, companionsResponse] = await Promise.all([
+          aidolRepository.getOne({ id: aidolId }),
+          companionRepository.getList({
+            filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+            pagination: { current: 1, pageSize: 100 },
+          }),
+        ]);
+        setGroupName(aidolResponse.data.name ?? "");
+        const firstCompanion = companionsResponse.data[0];
+        setCompanionProfileUrl(firstCompanion?.profilePictureUrl ?? null);
+      } catch (error) {
+        console.error("Failed to fetch follow page data:", error);
+        showToast(t("aidol:group.follow.error"), "error");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    void fetchData();
+  }, [aidolId, aidolRepository, companionRepository, showToast, t]);
 
   const handleSubmit = async () => {
     if (!isValidEmail) return;
@@ -46,7 +79,7 @@ export default function FollowPage({ params }: FollowPageProps) {
     try {
       await leadsRepository.create({ aidolId, email: email.trim() });
       showToast(t("aidol:group.follow.success"), "accent");
-      router.push(`/${params.lang}/aidols/${aidolId}/detail`);
+      router.push(`/${lang}/aidols/${aidolId}/detail`);
     } catch (error) {
       console.error("Failed to follow:", error);
       showToast(t("aidol:group.follow.error"), "error");
@@ -55,14 +88,22 @@ export default function FollowPage({ params }: FollowPageProps) {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="bg-base-100 flex h-screen flex-col items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
+
   return (
     <FollowForm
-      groupName={MOCK_GROUP_NAME}
-      companionProfileUrl={MOCK_COMPANION_PROFILE_URL}
+      groupName={groupName}
+      companionProfileUrl={companionProfileUrl ?? ""}
       email={email}
       onEmailChange={setEmail}
       onSubmit={() => void handleSubmit()}
-      onClose={() => router.push(`/${params.lang}/aidols/${aidolId}/detail`)}
+      onClose={() => router.push(`/${lang}/aidols/${aidolId}/detail`)}
       isLoading={isSubmitting}
       isValidEmail={isValidEmail}
     />
