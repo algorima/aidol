@@ -242,8 +242,8 @@ export default function GroupChemistryPage({
                       key={`custom-${target.id}`}
                       fromName={from?.name ?? ""}
                       toName={target.name ?? ""}
-                      nickname={customRel.nickname ?? undefined}
-                      relationshipType={relationshipType}
+                      relationshipType={customRel.nickname ?? undefined}
+                      description={relationshipType}
                       onClose={() => handleDeleteRelationship(customRel.id)}
                     />
                   );
