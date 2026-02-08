@@ -76,7 +76,7 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
         }
       } catch (error) {
         console.error("Failed to fetch chemistry page data:", error);
-        showToast(t("chemistry.error"), "error");
+        showToast(t("chemistry.error.load"), "error");
       } finally {
         setIsLoading(false);
       }
