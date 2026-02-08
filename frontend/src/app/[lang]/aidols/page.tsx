@@ -42,8 +42,8 @@ export default function GroupsPage({ params }: GroupsPageProps) {
 
         const [aidolRes, companionRes, highlightRes] = await Promise.all([
           aidolRepo.getList(),
-          companionRepo.getList({ pagination: { current: 1, pageSize: 200 } }),
-          highlightRepo.getList({ pagination: { current: 1, pageSize: 200 } }),
+          companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
+          highlightRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
         ]);
 
         setGroups(aidolRes.data);
