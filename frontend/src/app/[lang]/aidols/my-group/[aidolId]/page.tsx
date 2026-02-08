@@ -108,38 +108,22 @@ export default function GroupPage() {
   useEffect(() => {
     if (!selectedGroup) return;
 
-    const fetchHighlights = async () => {
+    const fetchGroupData = async () => {
       try {
-        const { data: highlights } = await highlightRepository.getByAidolId(
-          selectedGroup.id,
-        );
-        const sections = groupMyGroupHighlights(highlights);
-        setHighlightSections(sections);
+        const [highlightsResult, companionsResult] = await Promise.all([
+          highlightRepository.getByAidolId(selectedGroup.id),
+          companionRepository.getByAidolId(selectedGroup.id),
+        ]);
+
+        setHighlightSections(groupMyGroupHighlights(highlightsResult.data));
+        setCompanions(companionsResult.data);
       } catch (error) {
-        console.error("Failed to fetch highlights:", error);
+        console.error("Failed to fetch group data:", error);
       }
     };
 
-    void fetchHighlights();
-  }, [highlightRepository, selectedGroup]);
-
-  // Companions fetch
-  useEffect(() => {
-    if (!selectedGroup) return;
-
-    const fetchCompanions = async () => {
-      try {
-        const { data } = await companionRepository.getByAidolId(
-          selectedGroup.id,
-        );
-        setCompanions(data);
-      } catch (error) {
-        console.error("Failed to fetch companions:", error);
-      }
-    };
-
-    void fetchCompanions();
-  }, [companionRepository, selectedGroup]);
+    void fetchGroupData();
+  }, [highlightRepository, companionRepository, selectedGroup]);
 
   const handleSelectGroup = (group: AIdol) => {
     setIsDropdownOpen(false);
