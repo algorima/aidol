@@ -79,7 +79,10 @@
     "subtitle": "已添加到候选名单",
     "remainingSlots": "剩余选秀名额",
     "findNext": "寻找下一位练习生",
-    "viewBoard": "查看选秀板"
+    "viewBoard": "查看选秀板",
+    "error": {
+      "load": "无法加载名额信息"
+    }
   },
   "companion": {
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",

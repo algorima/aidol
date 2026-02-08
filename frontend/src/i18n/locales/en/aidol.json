@@ -79,7 +79,10 @@
     "subtitle": "Added to the casting candidate list",
     "remainingSlots": "Remaining Casting Slots",
     "findNext": "Find Next Trainee",
-    "viewBoard": "View Casting Board"
+    "viewBoard": "View Casting Board",
+    "error": {
+      "load": "Failed to load slot information"
+    }
   },
   "companion": {
     "promptPlaceholder": "How does your idol talk? Describe their vibe...",
