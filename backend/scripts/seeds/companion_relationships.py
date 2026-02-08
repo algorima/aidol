@@ -1,8 +1,9 @@
+from typing import Any
+
 from sqlalchemy.orm import Session
 
 from aidol.models.companion import DBCompanion
 from aidol.models.companion_relationship import DBCompanionRelationship
-from typing import Any
 
 
 def seed_companion_relationships(

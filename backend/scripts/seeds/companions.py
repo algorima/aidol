@@ -1,8 +1,8 @@
+from typing import Any
+
 from sqlalchemy.orm import Session
 
 from aidol.models.companion import DBCompanion
-
-from typing import Any
 
 # Dummy data for companions
 COMPANIONS_DATA: list[dict[str, Any]] = [
