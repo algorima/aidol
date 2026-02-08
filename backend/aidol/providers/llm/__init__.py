@@ -7,19 +7,29 @@ from aidol.providers.llm.base import (
 )
 from aidol.providers.llm.messages import (
     AIMessage,
+    ContentBlock,
     HumanMessage,
+    ImageUrlBlock,
+    ImageUrlValue,
     LLMMessage,
+    MessageContent,
     SystemMessage,
+    TextBlock,
 )
 from aidol.providers.llm.openai import OpenAILLMProvider
 
 __all__ = [
     "AIMessage",
+    "ContentBlock",
     "HumanMessage",
+    "ImageUrlBlock",
+    "ImageUrlValue",
     "LLMMessage",
     "LLMProvider",
+    "MessageContent",
     "OpenAILLMProvider",
     "ProviderConstraints",
     "SystemMessage",
+    "TextBlock",
     "lookup_context_window",
 ]
