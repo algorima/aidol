@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 import type { LeadRequest, LeadResponse } from "@/schemas";
 import { leadResponseSchema } from "@/schemas";
 import type { ApiService } from "@/services/ApiService";
@@ -15,6 +17,7 @@ export class LeadsRepository {
       body: JSON.stringify(request),
     });
 
-    return leadResponseSchema.parse(response);
+    const wrapped = z.object({ data: leadResponseSchema }).parse(response);
+    return wrapped.data;
   }
 }
