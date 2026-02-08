@@ -9,7 +9,8 @@ import { GroupInfoBanner } from "@/components/group/GroupInfoBanner";
 import { Loading } from "@/components/Loading";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
-import type { AIdol } from "@/schemas";
+import { HighlightRepository } from "@/repositories/HighlightRepository";
+import type { AIdol, AIdolHighlight } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
 
 interface GroupsPageProps {
@@ -25,6 +26,9 @@ export default function GroupsPage({ params }: GroupsPageProps) {
   const [memberCountMap, setMemberCountMap] = useState<Record<string, number>>(
     {},
   );
+  const [highlightMap, setHighlightMap] = useState<
+    Record<string, AIdolHighlight>
+  >({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,10 +38,12 @@ export default function GroupsPage({ params }: GroupsPageProps) {
         const apiService = getApiService();
         const aidolRepo = new AIdolRepository(apiService);
         const companionRepo = new CompanionRepository(apiService);
+        const highlightRepo = new HighlightRepository(apiService);
 
-        const [aidolRes, companionRes] = await Promise.all([
+        const [aidolRes, companionRes, highlightRes] = await Promise.all([
           aidolRepo.getList(),
           companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
+          highlightRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
         ]);
 
         setGroups(aidolRes.data);
@@ -50,6 +56,15 @@ export default function GroupsPage({ params }: GroupsPageProps) {
           }
         }
         setMemberCountMap(countMap);
+
+        // 그룹별 첫 번째 하이라이트만 사용
+        const hlMap: Record<string, AIdolHighlight> = {};
+        for (const highlight of highlightRes.data) {
+          if (highlight.aidolId && !hlMap[highlight.aidolId]) {
+            hlMap[highlight.aidolId] = highlight;
+          }
+        }
+        setHighlightMap(hlMap);
       } catch (err) {
         setError(err instanceof Error ? err.message : String(err));
       } finally {
@@ -83,15 +98,22 @@ export default function GroupsPage({ params }: GroupsPageProps) {
       <div className="flex flex-col gap-6 px-6 py-4">
         <GroupInfoBanner />
         <div className="flex flex-col gap-6">
-          {groups.map((group) => (
-            <GroupCard
-              key={group.id}
-              avatarUrl={group.profileImageUrl}
-              groupName={group.name ?? ""}
-              memberCount={memberCountMap[group.id] ?? 0}
-              onClick={() => router.push(`/${lang}/aidols/${group.id}/detail`)}
-            />
-          ))}
+          {groups.map((group) => {
+            const highlight = highlightMap[group.id];
+            return (
+              <GroupCard
+                key={group.id}
+                avatarUrl={group.profileImageUrl}
+                groupName={group.name ?? ""}
+                memberCount={memberCountMap[group.id] ?? 0}
+                highlightImageUrl={highlight?.thumbnailUrl}
+                highlightTitle={highlight?.title}
+                onClick={() =>
+                  router.push(`/${lang}/aidols/${group.id}/detail`)
+                }
+              />
+            );
+          })}
         </div>
       </div>
     </div>
