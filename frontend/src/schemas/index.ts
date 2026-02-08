@@ -36,6 +36,13 @@ export type {
   Position,
 } from "./companion";
 
+// Companion Relationship schemas
+export { companionRelationshipSchema } from "./companion-relationship";
+export type {
+  CompanionRelationship,
+  CompanionRelationshipCreate,
+} from "./companion-relationship";
+
 // Lead schemas
 export { leadResponseSchema } from "./lead";
 export type { LeadRequest, LeadResponse } from "./lead";
