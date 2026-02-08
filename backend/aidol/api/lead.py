@@ -6,7 +6,7 @@ Public endpoints for collecting leads (emails).
 
 from typing import Annotated
 
-from aioia_core.fastapi import BaseCrudRouter
+from aioia_core.fastapi import BaseCrudRouter, SingleItemResponse
 from aioia_core.settings import JWTSettings
 from fastapi import APIRouter, Cookie, Depends, status
 from pydantic import BaseModel
@@ -53,14 +53,14 @@ class LeadRouter(
 
         @self.router.post(
             f"/{self.resource_name}",
-            response_model=LeadResponse,
+            response_model=SingleItemResponse[LeadResponse],
             status_code=status.HTTP_201_CREATED,
             summary="Collect Lead",
             description="Collect email. Associates with AIdol if aioia_anonymous_id is valid.",
         )
         async def create_lead(
             request: AIdolLeadCreate,
-            claim_token: Annotated[
+            anonymous_id: Annotated[
                 str | None, Cookie(alias="aioia_anonymous_id")
             ] = None,
             db_session: Session = Depends(self.get_db_dep),
@@ -72,7 +72,7 @@ class LeadRouter(
             email_saved = False
 
             # 1. Try to associate with AIdol if token is present
-            if claim_token:
+            if anonymous_id:
                 # Reuse session from dependency
                 aidol_repo = self.aidol_repository_factory.create_repository(db_session)
 
@@ -83,7 +83,7 @@ class LeadRouter(
                         {
                             "field": "anonymous_id",
                             "operator": "eq",
-                            "value": claim_token,
+                            "value": anonymous_id,
                         }
                     ]
                 )
@@ -98,7 +98,7 @@ class LeadRouter(
             if not email_saved:
                 lead_repository.create(request)
 
-            return LeadResponse(email=request.email)
+            return SingleItemResponse(data=LeadResponse(email=request.email))
 
 
 def create_lead_router(
