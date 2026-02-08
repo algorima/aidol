@@ -79,7 +79,10 @@
     "subtitle": "Ditambahkan ke daftar kandidat casting",
     "remainingSlots": "Slot Casting Tersisa",
     "findNext": "Cari Trainee Berikutnya",
-    "viewBoard": "Lihat Papan Casting"
+    "viewBoard": "Lihat Papan Casting",
+    "error": {
+      "load": "Gagal memuat informasi slot"
+    }
   },
   "companion": {
     "promptPlaceholder": "Gimana idol kamu ngobrol? Ceritain kepribadiannya...",

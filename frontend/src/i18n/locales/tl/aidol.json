@@ -79,7 +79,10 @@
     "subtitle": "Naidagdag sa listahan ng kandidato",
     "remainingSlots": "Natitirang Casting Slot",
     "findNext": "Hanapin ang Susunod na Trainee",
-    "viewBoard": "Tingnan ang Casting Board"
+    "viewBoard": "Tingnan ang Casting Board",
+    "error": {
+      "load": "Hindi ma-load ang impormasyon ng slot"
+    }
   },
   "companion": {
     "promptPlaceholder": "Paano nagsasalita ang idol mo? Ilarawan ang personality...",

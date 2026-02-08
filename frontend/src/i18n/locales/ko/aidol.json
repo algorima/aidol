@@ -79,7 +79,10 @@
     "subtitle": "연습생 후보 목록에 추가되었습니다",
     "remainingSlots": "남은 캐스팅 슬롯",
     "findNext": "다음 연습생 찾기",
-    "viewBoard": "캐스팅 보드 보기"
+    "viewBoard": "캐스팅 보드 보기",
+    "error": {
+      "load": "슬롯 정보를 불러오지 못했습니다"
+    }
   },
   "companion": {
     "promptPlaceholder": "어떤 말투로 대화할까요? 성격을 설명해 주세요...",
