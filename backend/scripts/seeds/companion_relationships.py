@@ -19,22 +19,19 @@ def seed_companion_relationships(db: Session, companions_map: dict[str, DBCompan
 
     # NewJeans Internal (Circular Chain: Minji -> Hanni -> Danielle -> Haerin -> Hyein -> Minji)
     nj_members = ["Minji", "Hanni", "Danielle", "Haerin", "Hyein"]
-    for i in range(len(nj_members)):
-        m1 = nj_members[i]
+    for i, m1 in enumerate(nj_members):
         m2 = nj_members[(i + 1) % len(nj_members)] # Next member, wraps around
         relationships_data.append({"from": m1, "to": m2, "intimacy": 50, "nickname": f"Friend {m2}"})
 
     # AESPA Internal
     aespa_members = ["Karina", "Winter", "Giselle", "Ningning"]
-    for i in range(len(aespa_members)):
-        m1 = aespa_members[i]
+    for i, m1 in enumerate(aespa_members):
         m2 = aespa_members[(i + 1) % len(aespa_members)]
         relationships_data.append({"from": m1, "to": m2, "intimacy": 50, "nickname": f"Ae-{m2}"})
             
     # IVE Internal
     ive_members = ["Wonyoung", "Liz", "Leeseo"]
-    for i in range(len(ive_members)):
-        m1 = ive_members[i]
+    for i, m1 in enumerate(ive_members):
         m2 = ive_members[(i + 1) % len(ive_members)]
         relationships_data.append({"from": m1, "to": m2, "intimacy": 50, "nickname": f"Ive-{m2}"})
 

@@ -15,12 +15,15 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(os.path.join(os.path.dirname(__file__)))
 
 
+import sys
+import traceback
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from aioia_core.settings import DatabaseSettings
 from aioia_core.models import BaseModel
 
 # Import all models to ensure they are registered with BaseModel.metadata
+# pylint: disable=unused-import
 from aidol.models import aidol
 from aidol.models import aidol_lead
 from aidol.models import chatroom
@@ -29,6 +32,7 @@ from aidol.models import companion_relationship
 from aidol.models import highlight
 
 # Import seed functions
+# pylint: disable=wrong-import-position
 from seeds.aidols import seed_aidols
 from seeds.companions import seed_companions
 from seeds.companion_relationships import seed_companion_relationships
@@ -65,7 +69,7 @@ def seed_db():
         aidols_map = seed_aidols(db)
         
         # Create a simple ID map for companions seeding
-        aidol_id_map = {name: aidol.id for name, aidol in aidols_map.items()}
+        aidol_id_map = {name: aidol_obj.id for name, aidol_obj in aidols_map.items()}
         
         # 2. Companions
         # Returns: {name: DBCompanion}
@@ -91,10 +95,9 @@ def seed_db():
         db.commit()
         print("\nDatabase seeding completed successfully!")
 
-    except Exception as e:
+    except Exception as e: # pylint: disable=broad-exception-caught
         print(f"\nError seeding database: {e}")
         db.rollback()
-        import traceback
         traceback.print_exc()
     finally:
         db.close()
