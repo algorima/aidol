@@ -10,15 +10,16 @@ import sys
 
 # Add backend directory to sys.path to allow imports from aidol package
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-
 # Add scripts directory to sys.path to allow imports from seeds package
 sys.path.append(os.path.join(os.path.dirname(__file__)))
 
+# pylint: disable=wrong-import-position
 
-import sys
 import traceback
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
 from aioia_core.settings import DatabaseSettings
 from aioia_core.models import BaseModel
 
@@ -32,7 +33,6 @@ from aidol.models import companion_relationship
 from aidol.models import highlight
 
 # Import seed functions
-# pylint: disable=wrong-import-position
 from seeds.aidols import seed_aidols
 from seeds.companions import seed_companions
 from seeds.companion_relationships import seed_companion_relationships
