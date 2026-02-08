@@ -68,8 +68,14 @@ export default function GroupPage() {
     const currentGroup = mockAIdols.find((g) => g.id === params.aidolId);
     if (currentGroup) {
       setSelectedGroup(currentGroup);
+    } else {
+      // 해당 그룹이 없으면 첫 번째 그룹으로 redirect
+      const firstGroup = mockAIdols[0];
+      if (firstGroup) {
+        router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
+      }
     }
-  }, [params.aidolId]);
+  }, [params.aidolId, params.lang, router]);
 
   // TODO: API 연동 시 HighlightRepository 사용
   useEffect(() => {
