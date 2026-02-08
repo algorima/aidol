@@ -3,7 +3,7 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -14,11 +14,13 @@ import {
   type RelationshipType,
 } from "@/constants/relationship";
 import { getParticle } from "@/lib/koreanParticle";
-import { mockCompanions } from "@/mocks/companions";
-// TODO: Mock 제거하고 실제 API 연동
-import { getMockRelationshipRepository } from "@/repositories/MockRelationshipRepository";
+import {
+  CompanionRelationshipRepository,
+  CompanionRepository,
+} from "@/repositories";
 import type { Companion } from "@/schemas/companion";
 import type { CompanionRelationship } from "@/schemas/companionRelationship";
+import { getApiService } from "@/services/ApiService";
 
 interface AddRelationshipPageProps {
   params: {
@@ -49,24 +51,36 @@ export default function AddRelationshipPage({
   const [nickname, setNickname] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+  const relationshipRepository = useMemo(
+    () => new CompanionRelationshipRepository(getApiService()),
+    [],
+  );
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
 
-      const groupCompanions = mockCompanions.filter(
-        (c) => c.aidolId === aidolId,
-      );
-      setCompanions(groupCompanions);
+      try {
+        const { data: groupCompanions } =
+          await companionRepository.getByAidolId(aidolId);
+        setCompanions(groupCompanions);
 
-      const repo = getMockRelationshipRepository();
-      const { data } = await repo.getList();
-      setRelationships(data);
+        const { data: relationshipData } =
+          await relationshipRepository.getList();
+        setRelationships(relationshipData);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
 
       setIsLoading(false);
     };
 
     void fetchData();
-  }, [aidolId]);
+  }, [aidolId, companionRepository, relationshipRepository]);
 
   const fromCompanion = companions.find((c) => c.id === fromCompanionId);
   const targetCompanion = companions.find((c) => c.id === targetCompanionId);
@@ -90,16 +104,21 @@ export default function AddRelationshipPage({
   const handleSave = async () => {
     if (!fromCompanionId || !targetCompanionId) return;
 
-    const repo = getMockRelationshipRepository();
-    await repo.create({
-      fromCompanionId,
-      toCompanionId: targetCompanionId,
-      intimacy,
-      nickname: nickname || null,
-    });
+    try {
+      await relationshipRepository.create({
+        variables: {
+          fromCompanionId,
+          toCompanionId: targetCompanionId,
+          intimacy,
+          nickname: nickname || null,
+        },
+      });
 
-    showToast(t("aidol:common.saved"), "success");
-    router.push(`/${lang}/my-group/${aidolId}/chemistry`);
+      showToast(t("aidol:common.saved"), "accent");
+      router.push(`/${lang}/aidols/my-group/${aidolId}/chemistry`);
+    } catch (error) {
+      console.error("Failed to create relationship:", error);
+    }
   };
 
   if (isLoading) {

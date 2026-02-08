@@ -7,7 +7,8 @@
   "common": {
     "close": "Isara",
     "save": "I-save",
-    "saved": "Matagumpay na na-save."
+    "saved": "Matagumpay na na-save.",
+    "deleted": "Matagumpay na na-delete."
   },
   "position": {
     "header": "Pagtatalaga ng Posisyon",

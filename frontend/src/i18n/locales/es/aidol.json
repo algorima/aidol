@@ -7,7 +7,8 @@
   "common": {
     "close": "Cerrar",
     "save": "Guardar",
-    "saved": "Guardado correctamente."
+    "saved": "Guardado correctamente.",
+    "deleted": "Eliminado correctamente."
   },
   "position": {
     "header": "Asignación de Posición",

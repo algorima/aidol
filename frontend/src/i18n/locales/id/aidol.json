@@ -7,7 +7,8 @@
   "common": {
     "close": "Tutup",
     "save": "Simpan",
-    "saved": "Berhasil disimpan."
+    "saved": "Berhasil disimpan.",
+    "deleted": "Berhasil dihapus."
   },
   "position": {
     "header": "Penetapan Posisi",

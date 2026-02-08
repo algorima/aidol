@@ -5,7 +5,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -16,11 +16,14 @@ import {
   MemberProfileCard,
 } from "@/components/group";
 import { INTIMACY_TO_RELATIONSHIP_TYPE } from "@/constants/relationship";
-import { mockCompanions } from "@/mocks/companions";
-// TODO: Mock 제거하고 실제 API 연동
-import { getMockRelationshipRepository } from "@/repositories/MockRelationshipRepository";
+import { useDragScroll } from "@/hooks/useDragScroll";
+import {
+  CompanionRelationshipRepository,
+  CompanionRepository,
+} from "@/repositories";
 import type { Companion } from "@/schemas/companion";
 import type { CompanionRelationship } from "@/schemas/companionRelationship";
+import { getApiService } from "@/services/ApiService";
 
 interface GroupChemistryPageProps {
   params: {
@@ -44,29 +47,43 @@ export default function GroupChemistryPage({
     null,
   );
   const [isLoading, setIsLoading] = useState(true);
+  const { scrollRef, handleMouseDown, handleMouseMove, handleMouseUp } =
+    useDragScroll();
+
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+  const relationshipRepository = useMemo(
+    () => new CompanionRelationshipRepository(getApiService()),
+    [],
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
 
-      const groupCompanions = mockCompanions.filter(
-        (c) => c.aidolId === aidolId,
-      );
-      setCompanions(groupCompanions);
+      try {
+        const { data: groupCompanions } =
+          await companionRepository.getByAidolId(aidolId);
+        setCompanions(groupCompanions);
 
-      if (groupCompanions.length > 0) {
-        setSelectedCompanionId(groupCompanions[0].id);
+        if (groupCompanions.length > 0) {
+          setSelectedCompanionId(groupCompanions[0].id);
+        }
+
+        const { data: relationshipData } =
+          await relationshipRepository.getList();
+        setRelationships(relationshipData);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
       }
-
-      const repo = getMockRelationshipRepository();
-      const { data } = await repo.getList();
-      setRelationships(data);
 
       setIsLoading(false);
     };
 
     void fetchData();
-  }, [aidolId]);
+  }, [aidolId, companionRepository, relationshipRepository]);
 
   // 선택된 멤버
   const selectedCompanion = companions.find(
@@ -106,10 +123,15 @@ export default function GroupChemistryPage({
   };
 
   const handleDeleteRelationship = async (relationshipId: string) => {
-    const repo = getMockRelationshipRepository();
-    await repo.delete(relationshipId);
-    setRelationships((prev) => prev.filter((rel) => rel.id !== relationshipId));
-    showToast(t("aidol:common.deleted"), "accent");
+    try {
+      await relationshipRepository.deleteOne({ id: relationshipId });
+      setRelationships((prev) =>
+        prev.filter((rel) => rel.id !== relationshipId),
+      );
+      showToast(t("aidol:common.deleted"), "accent");
+    } catch (error) {
+      console.error("Failed to delete relationship:", error);
+    }
   };
 
   return (
@@ -127,8 +149,14 @@ export default function GroupChemistryPage({
         ) : (
           <div className="flex flex-col">
             {/* 멤버 선택 */}
-            {/* TODO: useDragScroll hook 적용 */}
-            <div className="scrollbar-hide mb-6 flex gap-4 overflow-x-auto p-1">
+            <div
+              ref={scrollRef}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              className="scrollbar-hide mb-6 flex cursor-grab gap-4 overflow-x-auto p-1 active:cursor-grabbing"
+            >
               {companions.map((companion) => {
                 const isSelected = selectedCompanionId === companion.id;
                 return (
@@ -180,7 +208,7 @@ export default function GroupChemistryPage({
                 subtitle={t("aidol:chemistry.sectionSubtitle")}
               >
                 <Link
-                  href={`/${lang}/my-group/${aidolId}/chemistry/add?from=${selectedCompanionId}`}
+                  href={`/${lang}/aidols/my-group/${aidolId}/chemistry/add?from=${selectedCompanionId}`}
                   className={clsx(
                     "btn text-label-l rounded-lg",
                     isAllRelationshipsCreated

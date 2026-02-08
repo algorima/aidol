@@ -7,7 +7,8 @@
   "common": {
     "close": "Close",
     "save": "Save",
-    "saved": "Saved successfully."
+    "saved": "Saved successfully.",
+    "deleted": "Deleted successfully."
   },
   "position": {
     "header": "Position Assignment",
