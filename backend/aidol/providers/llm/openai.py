@@ -7,42 +7,15 @@ Uses aioia-core OpenAIAPISettings for configuration.
 from __future__ import annotations
 
 from collections.abc import Sequence
+from dataclasses import asdict
 
 import litellm
 from aioia_core.settings import OpenAIAPISettings
 from litellm.types.utils import Choices, ModelResponse
 
 from aidol.providers.llm.base import lookup_context_window
-from aidol.providers.llm.messages import (
-    AIMessage,
-    HumanMessage,
-    LLMMessage,
-    SystemMessage,
-)
+from aidol.providers.llm.messages import LLMMessage
 from aidol.schemas import ModelSettings
-
-
-def _to_litellm_format(messages: Sequence[LLMMessage]) -> list[dict[str, str]]:
-    """Convert LLMMessage to LiteLLM message format.
-
-    Args:
-        messages: LLMMessage list.
-
-    Returns:
-        List of dicts with 'role' and 'content' keys for LiteLLM.
-    """
-    result: list[dict[str, str]] = []
-    for msg in messages:
-        if isinstance(msg, SystemMessage):
-            role = "system"
-        elif isinstance(msg, HumanMessage):
-            role = "user"
-        elif isinstance(msg, AIMessage):
-            role = "assistant"
-        else:
-            raise ValueError(f"Unknown message type: {type(msg)}")
-        result.append({"role": role, "content": msg.content})
-    return result
 
 
 class OpenAILLMProvider:
@@ -96,8 +69,8 @@ class OpenAILLMProvider:
         Returns:
             Generated text response.
         """
-        # Convert to LiteLLM format
-        litellm_messages = _to_litellm_format(messages)
+        # Convert to LiteLLM format using dataclasses.asdict
+        litellm_messages = [asdict(msg) for msg in messages]
 
         # Build kwargs
         kwargs: dict = {
