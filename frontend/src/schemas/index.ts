@@ -37,8 +37,8 @@ export type {
 } from "./companion";
 
 // Highlight schemas
-export { aidolHighlightSchema, highlightMessageSchema } from "./highlight";
-export type { AIdolHighlight, HighlightMessage } from "./highlight";
+export { aidolHighlightSchema } from "./highlight";
+export type { AIdolHighlight } from "./highlight";
 
 // Lead schemas
 export { leadResponseSchema } from "./lead";

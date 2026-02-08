@@ -29,27 +29,3 @@ export interface AIdolHighlight extends BaseRecord {
   createdAt: string;
   updatedAt: string;
 }
-
-/**
- * HighlightMessage schema
- * Matches backend HighlightMessage (aidol/schemas/highlight.py)
- */
-export const highlightMessageSchema = z.object({
-  id: z.string(),
-  highlightId: z.string().nullable().optional(),
-  companionId: z.string().nullable().optional(),
-  sequence: z.number(),
-  content: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
-});
-
-export interface HighlightMessage extends BaseRecord {
-  id: string;
-  highlightId?: string | null;
-  companionId?: string | null;
-  sequence: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-}
