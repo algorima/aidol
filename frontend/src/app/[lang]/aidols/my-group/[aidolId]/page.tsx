@@ -10,8 +10,8 @@ import {
   GroupProfile,
   HighlightCarousel,
 } from "@/components/group";
-import { Header } from "@/components/Header";
 import { HighlightDetailModal } from "@/components/group/HighlightDetailModal";
+import { Header } from "@/components/Header";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { HighlightRepository } from "@/repositories/HighlightRepository";
