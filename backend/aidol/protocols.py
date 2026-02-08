@@ -17,6 +17,9 @@ from sqlalchemy.orm import Session
 from aidol.schemas import (
     AIdol,
     AIdolCreateWithAnonymousId,
+    AIdolHighlight,
+    AIdolHighlightCreate,
+    AIdolHighlightUpdate,
     AIdolLead,
     AIdolLeadCreate,
     AIdolUpdate,
@@ -25,7 +28,13 @@ from aidol.schemas import (
     ChatroomUpdate,
     Companion,
     CompanionCreate,
+    CompanionRelationship,
+    CompanionRelationshipCreate,
+    CompanionRelationshipUpdate,
     CompanionUpdate,
+    HighlightMessage,
+    HighlightMessageCreate,
+    HighlightMessageUpdate,
     Message,
     MessageCreateWithAnonymousId,
 )
@@ -186,5 +195,84 @@ class AIdolLeadRepositoryFactoryProtocol(Protocol):
     def create_repository(
         self, db_session: Session | None = None
     ) -> AIdolLeadRepositoryProtocol:
+        """Create a repository instance."""
+        ...
+
+
+# ---------------------------------------------------------------------------
+# AIdolHighlight Protocols
+# ---------------------------------------------------------------------------
+
+
+class AIdolHighlightRepositoryProtocol(
+    CrudRepositoryProtocol[AIdolHighlight, AIdolHighlightCreate, AIdolHighlightUpdate],
+    Protocol,
+):
+    """Protocol defining AIdolHighlight repository expectations.
+
+    Inherits CRUD operations from CrudRepositoryProtocol.
+    """
+
+
+class AIdolHighlightRepositoryFactoryProtocol(Protocol):
+    """Protocol for factory that creates AIdolHighlightRepositoryProtocol instances."""
+
+    def create_repository(
+        self, db_session: Session | None = None
+    ) -> AIdolHighlightRepositoryProtocol:
+        """Create a repository instance."""
+        ...
+
+
+# ---------------------------------------------------------------------------
+# HighlightMessage Protocols
+# ---------------------------------------------------------------------------
+
+
+class HighlightMessageRepositoryProtocol(
+    CrudRepositoryProtocol[
+        HighlightMessage, HighlightMessageCreate, HighlightMessageUpdate
+    ],
+    Protocol,
+):
+    """Protocol defining HighlightMessage repository expectations.
+
+    Inherits CRUD operations from CrudRepositoryProtocol.
+    """
+
+
+class HighlightMessageRepositoryFactoryProtocol(Protocol):
+    """Protocol for factory that creates HighlightMessageRepositoryProtocol instances."""
+
+    def create_repository(
+        self, db_session: Session | None = None
+    ) -> HighlightMessageRepositoryProtocol:
+        """Create a repository instance."""
+        ...
+
+
+# ---------------------------------------------------------------------------
+# CompanionRelationship Protocols
+# ---------------------------------------------------------------------------
+
+
+class CompanionRelationshipRepositoryProtocol(
+    CrudRepositoryProtocol[
+        CompanionRelationship, CompanionRelationshipCreate, CompanionRelationshipUpdate
+    ],
+    Protocol,
+):
+    """Protocol defining CompanionRelationship repository expectations.
+
+    Inherits CRUD operations from CrudRepositoryProtocol.
+    """
+
+
+class CompanionRelationshipRepositoryFactoryProtocol(Protocol):
+    """Protocol for factory that creates CompanionRelationshipRepositoryProtocol instances."""
+
+    def create_repository(
+        self, db_session: Session | None = None
+    ) -> CompanionRelationshipRepositoryProtocol:
         """Create a repository instance."""
         ...
