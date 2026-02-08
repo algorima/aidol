@@ -118,6 +118,7 @@ export default function AddRelationshipPage({
       router.push(`/${lang}/aidols/my-group/${aidolId}/chemistry`);
     } catch (error) {
       console.error("Failed to create relationship:", error);
+      showToast(t("aidol:common.error.save"), "error");
     }
   };
 

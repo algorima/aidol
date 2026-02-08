@@ -8,7 +8,10 @@
     "close": "닫기",
     "save": "저장",
     "saved": "저장되었습니다.",
-    "deleted": "삭제되었습니다."
+    "deleted": "삭제되었습니다.",
+    "error": {
+      "save": "저장에 실패했습니다"
+    }
   },
   "position": {
     "header": "포지션 배정",

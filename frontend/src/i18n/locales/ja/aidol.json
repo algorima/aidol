@@ -8,7 +8,10 @@
     "close": "閉じる",
     "save": "保存",
     "saved": "保存しました。",
-    "deleted": "削除しました。"
+    "deleted": "削除しました。",
+    "error": {
+      "save": "保存に失敗しました"
+    }
   },
   "position": {
     "header": "ポジション配置",

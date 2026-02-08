@@ -8,7 +8,10 @@
     "close": "Isara",
     "save": "I-save",
     "saved": "Matagumpay na na-save.",
-    "deleted": "Matagumpay na na-delete."
+    "deleted": "Matagumpay na na-delete.",
+    "error": {
+      "save": "Hindi ma-save"
+    }
   },
   "position": {
     "header": "Pagtatalaga ng Posisyon",

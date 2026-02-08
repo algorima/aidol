@@ -8,7 +8,10 @@
     "close": "关闭",
     "save": "保存",
     "saved": "保存成功。",
-    "deleted": "删除成功。"
+    "deleted": "删除成功。",
+    "error": {
+      "save": "保存失败"
+    }
   },
   "position": {
     "header": "位置分配",

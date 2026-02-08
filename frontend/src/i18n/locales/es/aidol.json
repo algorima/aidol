@@ -8,7 +8,10 @@
     "close": "Cerrar",
     "save": "Guardar",
     "saved": "Guardado correctamente.",
-    "deleted": "Eliminado correctamente."
+    "deleted": "Eliminado correctamente.",
+    "error": {
+      "save": "Error al guardar"
+    }
   },
   "position": {
     "header": "Asignación de Posición",

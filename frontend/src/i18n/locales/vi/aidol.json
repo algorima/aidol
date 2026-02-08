@@ -8,7 +8,10 @@
     "close": "Đóng",
     "save": "Lưu",
     "saved": "Đã lưu thành công.",
-    "deleted": "Đã xóa thành công."
+    "deleted": "Đã xóa thành công.",
+    "error": {
+      "save": "Không thể lưu"
+    }
   },
   "position": {
     "header": "Phân Công Vị Trí",

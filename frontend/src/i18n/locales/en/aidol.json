@@ -8,7 +8,10 @@
     "close": "Close",
     "save": "Save",
     "saved": "Saved successfully.",
-    "deleted": "Deleted successfully."
+    "deleted": "Deleted successfully.",
+    "error": {
+      "save": "Failed to save"
+    }
   },
   "position": {
     "header": "Position Assignment",

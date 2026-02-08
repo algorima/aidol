@@ -8,7 +8,10 @@
     "close": "Tutup",
     "save": "Simpan",
     "saved": "Berhasil disimpan.",
-    "deleted": "Berhasil dihapus."
+    "deleted": "Berhasil dihapus.",
+    "error": {
+      "save": "Gagal menyimpan"
+    }
   },
   "position": {
     "header": "Penetapan Posisi",
