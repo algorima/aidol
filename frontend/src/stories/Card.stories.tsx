@@ -26,6 +26,7 @@ const gradeCompanion: Companion = {
   position: null,
   grade: "A",
   aidolId: null,
+  status: "published",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 };
@@ -44,6 +45,7 @@ const signedCompanion: Companion = {
   position: null,
   grade: "A",
   aidolId: "aidol-1234",
+  status: "published",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 };
@@ -62,6 +64,7 @@ const positionCompanion: Companion = {
   position: "mainVocal",
   grade: "A",
   aidolId: null,
+  status: "published",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 };

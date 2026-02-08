@@ -39,6 +39,9 @@ export function Colors() {
         <ColorBox color="bg-accent" textColor="text-accent-content">
           Accent
         </ColorBox>
+        <ColorBox color="bg-backdrop" textColor="text-base-content">
+          Backdrop
+        </ColorBox>
       </div>
       <div className="flex flex-wrap gap-4">
         <ColorBox color="bg-base-100" textColor="text-base-content">
@@ -49,6 +52,9 @@ export function Colors() {
         </ColorBox>
         <ColorBox color="bg-base-300" textColor="text-base-content">
           Base 300
+        </ColorBox>
+        <ColorBox color="bg-base-400" textColor="text-base-content">
+          Base 400
         </ColorBox>
         <ColorBox color="bg-neutral" textColor="text-neutral-content">
           Neutral

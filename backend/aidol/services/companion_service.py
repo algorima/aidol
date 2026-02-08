@@ -89,6 +89,7 @@ def to_companion_public(companion: Companion) -> CompanionPublic:
         biography=companion.biography,
         profile_picture_url=companion.profile_picture_url,
         position=companion.position,
+        status=companion.status,
         mbti=mbti,
         stats=stats,
         created_at=companion.created_at,

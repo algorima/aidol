@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -25,6 +25,7 @@ export default function CompletePage({ params }: CompletePageProps) {
   const [aidol, setAidol] = useState<AIdol | null>(null);
   const [companions, setCompanions] = useState<Companion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isCreating, setIsCreating] = useState(false);
 
   const aidolRepository = useMemo(
     () => new AIdolRepository(getApiService()),
@@ -58,9 +59,21 @@ export default function CompletePage({ params }: CompletePageProps) {
     void fetchData();
   }, [aidolId, aidolRepository, companionRepository, showToast, t]);
 
-  const handleCreateAnother = () => {
-    router.push(`/${lang}/create`);
-  };
+  const handleCreateAnother = useCallback(async () => {
+    setIsCreating(true);
+    try {
+      const newAidol = await aidolRepository.createAIdol({
+        name: "",
+        profileImageUrl: "",
+      });
+      router.push(`/${lang}/aidols/${newAidol.id}/casting`);
+    } catch (err) {
+      console.error("Failed to create AIdol:", err);
+      showToast(t("aidol:landing.error.create"), "error");
+    } finally {
+      setIsCreating(false);
+    }
+  }, [aidolRepository, lang, router, showToast, t]);
 
   const handleShare = async () => {
     const url = `${window.location.origin}/${lang}/aidols/${aidolId}`;
@@ -92,7 +105,8 @@ export default function CompletePage({ params }: CompletePageProps) {
     <CompleteContent
       aidol={aidol}
       companions={companions}
-      onCreateAnother={handleCreateAnother}
+      onCreateAnother={() => void handleCreateAnother()}
+      isCreating={isCreating}
       onShare={() => void handleShare()}
       onNewsletter={handleNewsletter}
     />

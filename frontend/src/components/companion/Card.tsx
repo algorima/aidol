@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
+import { handleClickKeyDown } from "@/lib/handleClickKeyDown";
 import { Companion } from "@/schemas";
 
 import { ImagePreview } from "./ImagePreview";
@@ -42,16 +43,7 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
       onClick={isClickable ? onClick : undefined}
       role={isClickable ? "button" : undefined}
       tabIndex={isClickable ? 0 : undefined}
-      onKeyDown={
-        isClickable
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onClick();
-              }
-            }
-          : undefined
-      }
+      onKeyDown={isClickable ? handleClickKeyDown(onClick) : undefined}
     >
       <div className="absolute inset-0">
         <ImagePreview
