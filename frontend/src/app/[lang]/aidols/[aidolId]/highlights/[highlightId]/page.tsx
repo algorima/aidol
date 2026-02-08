@@ -1,71 +1,95 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import bubbleProfile from "@/assets/newsletter/bubble-profile.png";
-import {
-  HighlightMessageList,
-  type HighlightMessage,
-} from "@/components/highlight";
+import { useToast } from "@/app/providers/Toast";
+import { HighlightMessageList } from "@/components/highlight";
+import { Loading } from "@/components/Loading";
 import { Modal } from "@/components/Modal";
+import { CompanionRepository } from "@/repositories/CompanionRepository";
+import { HighlightRepository } from "@/repositories/HighlightRepository";
+import type { HighlightMessage } from "@/schemas";
+import { getApiService } from "@/services/ApiService";
 
-// TODO: HighlightRepository.getMessages(highlightId)로 교체
-const MOCK_MESSAGES: HighlightMessage[] = [
-  {
-    id: "msg-1",
-    highlightId: "highlight-1",
-    companionId: null,
-    sequence: 1,
-    content: "테오는 숙소생활 어때요?",
-    createdAt: "2025-01-01T00:00:00Z",
-    updatedAt: "2025-01-01T00:00:00Z",
-  },
-  {
-    id: "msg-2",
-    highlightId: "highlight-1",
-    companionId: "companion-1",
-    sequence: 2,
-    content:
-      "춤을 너무 잘춰서 기가 죽었어요... 근데 같이 연습하다 보니까 저도 실력이 느는 것 같아서 좋아요!",
-    createdAt: "2025-01-01T00:00:01Z",
-    updatedAt: "2025-01-01T00:00:01Z",
-  },
-  {
-    id: "msg-3",
-    highlightId: "highlight-1",
-    companionId: null,
-    sequence: 3,
-    content: "다른 멤버들과의 관계는 어때요?",
-    createdAt: "2025-01-01T00:00:02Z",
-    updatedAt: "2025-01-01T00:00:02Z",
-  },
-  {
-    id: "msg-4",
-    highlightId: "highlight-1",
-    companionId: "companion-1",
-    sequence: 4,
-    content: "형한테 그런식으로 말하면 안되지 않을까?",
-    createdAt: "2025-01-01T00:00:03Z",
-    updatedAt: "2025-01-01T00:00:03Z",
-  },
-];
+interface HighlightMessagePageProps {
+  params: { lang: string; aidolId: string; highlightId: string };
+}
 
-const MOCK_COMPANIONS: Record<string, { name: string; imageUrl: string }> = {
-  "companion-1": {
-    name: "이안",
-    imageUrl: bubbleProfile.src,
-  },
-};
-
-export default function HighlightMessagePage() {
+export default function HighlightMessagePage({
+  params,
+}: HighlightMessagePageProps) {
+  const { t } = useTranslation("aidol");
   const router = useRouter();
+  const { showToast } = useToast();
+  const { aidolId, highlightId } = params;
 
-  const messages = MOCK_MESSAGES;
-  const companions = MOCK_COMPANIONS;
+  const [messages, setMessages] = useState<HighlightMessage[]>([]);
+  const [companions, setCompanions] = useState<
+    Record<string, { name: string; imageUrl?: string }>
+  >({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const highlightRepository = useMemo(
+    () => new HighlightRepository(getApiService()),
+    [],
+  );
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const [messagesData, companionsResponse] = await Promise.all([
+          highlightRepository.getMessages(highlightId),
+          companionRepository.getList({
+            filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+            pagination: { current: 1, pageSize: 100 },
+          }),
+        ]);
+
+        setMessages(messagesData);
+
+        const companionMap: Record<
+          string,
+          { name: string; imageUrl?: string }
+        > = {};
+        for (const c of companionsResponse.data) {
+          companionMap[c.id] = {
+            name: c.name ?? "",
+            imageUrl: c.profilePictureUrl ?? undefined,
+          };
+        }
+        setCompanions(companionMap);
+      } catch (error) {
+        console.error("Failed to fetch highlight messages:", error);
+        showToast(t("highlight.error.load"), "error");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    void fetchData();
+  }, [
+    aidolId,
+    highlightId,
+    highlightRepository,
+    companionRepository,
+    showToast,
+    t,
+  ]);
 
   return (
     <Modal isOpen onClose={() => router.back()}>
-      <HighlightMessageList messages={messages} companions={companions} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <HighlightMessageList messages={messages} companions={companions} />
+      )}
     </Modal>
   );
 }

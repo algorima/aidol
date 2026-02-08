@@ -2,15 +2,7 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-export interface HighlightMessage {
-  id: string;
-  highlightId: string;
-  companionId: string | null;
-  sequence: number;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import type { HighlightMessage } from "@/schemas";
 
 interface CompanionInfo {
   name: string;
