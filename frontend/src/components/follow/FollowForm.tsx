@@ -94,7 +94,7 @@ export function FollowForm({
             type="submit"
             disabled={!isValidEmail || isLoading}
             className={clsx(
-              "from-primary to-secondary text-label-l flex h-[52px] w-full cursor-pointer items-center justify-center rounded-lg bg-linear-to-r text-white",
+              "from-primary to-secondary text-label-l text-neutral-content flex h-[52px] w-full cursor-pointer items-center justify-center rounded-lg bg-linear-to-r",
               !isValidEmail && !isLoading && "opacity-20",
             )}
           >
