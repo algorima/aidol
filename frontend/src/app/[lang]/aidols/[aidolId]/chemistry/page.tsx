@@ -107,7 +107,7 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
       relations={filteredRelations}
       selectedMember={selectedMember}
       onSelectMember={setSelectedMemberId}
-      onBack={() => router.back()}
+      onBack={() => router.push(`/${params.lang}/aidols/${aidolId}/detail`)}
     />
   );
 }
