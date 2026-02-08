@@ -187,9 +187,9 @@ export default function GroupPage() {
           </p>
 
           {/* 하이라이트 섹션들 */}
-          {highlightSections.map((section, sectionIndex) => (
+          {highlightSections.map((section) => (
             <div
-              key={`${section.title}-${sectionIndex}`}
+              key={`${section.title}-${section.subtitle}`}
               className="mt-6 flex flex-col gap-4"
             >
               <div>
