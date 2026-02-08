@@ -7,15 +7,12 @@ import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
 export const POSITIONS = [
-  "leader",
   "mainVocal",
   "subVocal",
   "mainDancer",
   "subDancer",
   "mainRapper",
   "subRapper",
-  "visual",
-  "maknae",
 ] as const;
 
 export type Position = (typeof POSITIONS)[number];
@@ -56,15 +53,12 @@ export const companionSchema = z.object({
   grade: z.enum(["A", "B", "C", "F"]).nullable().optional(),
   position: z
     .enum([
-      "leader",
       "mainVocal",
       "subVocal",
       "mainDancer",
       "subDancer",
       "mainRapper",
       "subRapper",
-      "visual",
-      "maknae",
     ])
     .nullable()
     .optional(),
