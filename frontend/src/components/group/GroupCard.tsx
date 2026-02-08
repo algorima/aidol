@@ -10,9 +10,9 @@ import { HighlightCard } from "./HighlightCard";
 interface GroupCardProps {
   avatarUrl: string | null;
   groupName: string;
-  memberCount: number;
-  highlightImageUrl: string;
-  highlightTitle: string;
+  memberCount?: number;
+  highlightImageUrl?: string;
+  highlightTitle?: string;
   onClick?: () => void;
 }
 
@@ -50,10 +50,14 @@ export function GroupCard({
           )}
         </div>
         <p className="text-title-s text-base-content">
-          {groupName} . {t("groupList.memberCount", { count: memberCount })}
+          {memberCount != null
+            ? `${groupName} · ${t("groupList.memberCount", { count: memberCount })}`
+            : groupName}
         </p>
       </div>
-      <HighlightCard imageUrl={highlightImageUrl} title={highlightTitle} />
+      {highlightImageUrl && highlightTitle ? (
+        <HighlightCard imageUrl={highlightImageUrl} title={highlightTitle} />
+      ) : null}
     </div>
   );
 }
