@@ -168,15 +168,17 @@ export default function GroupPage() {
       )}
 
       <div className="bg-base-100 text-base-content flex flex-1 flex-col">
-        <GroupProfile
-          profileImageUrl={selectedGroup?.profileImageUrl ?? null}
-          createdAt={selectedGroup?.createdAt ?? new Date().toISOString()}
-          onChemistryClick={() =>
-            router.push(
-              `/${params.lang}/aidols/my-group/${params.aidolId}/chemistry`,
-            )
-          }
-        />
+        {selectedGroup && (
+          <GroupProfile
+            profileImageUrl={selectedGroup.profileImageUrl}
+            createdAt={selectedGroup.createdAt}
+            onChemistryClick={() =>
+              router.push(
+                `/${params.lang}/aidols/my-group/${params.aidolId}/chemistry`,
+              )
+            }
+          />
+        )}
 
         {/* 탭 */}
         <div className="px-6 pb-12">
