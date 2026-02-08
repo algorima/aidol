@@ -113,9 +113,8 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
 }
 
 /**
- * API 관계 데이터를 양방향 ChemistryRelation으로 변환
- * 백엔드는 fromCompanionId = min(from, to) 방식으로 저장하므로
- * 양쪽 방향 모두 생성해야 UI 필터(fromId === selectedMemberId)가 정상 동작
+ * API 관계 데이터를 ChemistryRelation으로 변환
+ * A→B 관계를 설정하면 A 선택 시에만 B와의 관계가 표시됨
  */
 const buildChemistryRelations = (
   relationships: CompanionRelationship[],
@@ -143,12 +142,6 @@ const buildChemistryRelations = (
       toId: rel.toCompanionId,
       fromLabel,
       toLabel,
-    });
-    results.push({
-      fromId: rel.toCompanionId,
-      toId: rel.fromCompanionId,
-      fromLabel: toLabel,
-      toLabel: fromLabel,
     });
   }
 

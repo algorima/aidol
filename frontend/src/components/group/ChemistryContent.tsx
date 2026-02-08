@@ -53,28 +53,35 @@ export function ChemistryContent({
               role="button"
               tabIndex={0}
               aria-label={companion.name ?? ""}
-              className={clsx(
-                "relative size-[70px] shrink-0 overflow-hidden rounded-lg",
-                companion.id === selectedMember.id
-                  ? "border-primary border-2"
-                  : "border-base-300 border",
-              )}
+              className="flex shrink-0 flex-col items-center gap-3"
               onClick={() => onSelectMember(companion.id)}
               onKeyDown={handleClickKeyDown(() => onSelectMember(companion.id))}
             >
-              {companion.profilePictureUrl ? (
-                <Image
-                  src={companion.profilePictureUrl}
-                  alt={companion.name ?? ""}
-                  fill
-                  draggable={false}
-                  className="object-cover"
-                />
-              ) : (
-                <div className="bg-base-200 flex size-full items-center justify-center">
-                  <UserIcon className="text-neutral size-8" />
-                </div>
-              )}
+              <div
+                className={clsx(
+                  "relative size-[70px] overflow-hidden rounded-lg",
+                  companion.id === selectedMember.id
+                    ? "border-primary border-2"
+                    : "border-base-300 border",
+                )}
+              >
+                {companion.profilePictureUrl ? (
+                  <Image
+                    src={companion.profilePictureUrl}
+                    alt={companion.name ?? ""}
+                    fill
+                    draggable={false}
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="bg-base-200 flex size-full items-center justify-center">
+                    <UserIcon className="text-neutral size-8" />
+                  </div>
+                )}
+              </div>
+              <span className="text-label-l text-base-content text-center">
+                {companion.name ?? ""}
+              </span>
             </div>
           ))}
         </div>
