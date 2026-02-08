@@ -52,6 +52,9 @@
       "title": "Casting Complete!",
       "description": "The trainee has joined the group",
       "viewBoard": "View Casting Board"
+    },
+    "error": {
+      "cast": "Failed to cast"
     }
   },
   "share": "Share",

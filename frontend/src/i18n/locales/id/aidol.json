@@ -52,6 +52,9 @@
       "title": "Casting Selesai!",
       "description": "Trainee telah bergabung dengan grup",
       "viewBoard": "Lihat Casting Board"
+    },
+    "error": {
+      "cast": "Gagal melakukan casting"
     }
   },
   "share": "Bagikan",

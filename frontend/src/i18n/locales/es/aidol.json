@@ -52,6 +52,9 @@
       "title": "¡Casting Completo!",
       "description": "El aprendiz se ha unido al grupo",
       "viewBoard": "Ver Panel de Casting"
+    },
+    "error": {
+      "cast": "Error al realizar el casting"
     }
   },
   "share": "Compartir",

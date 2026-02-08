@@ -52,6 +52,9 @@
       "title": "Tapos na ang Casting!",
       "description": "Sumali na ang trainee sa grupo",
       "viewBoard": "Tingnan ang Casting Board"
+    },
+    "error": {
+      "cast": "Nabigong mag-cast"
     }
   },
   "share": "I-share",
