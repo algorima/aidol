@@ -60,17 +60,30 @@ export default function FollowPage({ params }: FollowPageProps) {
         ]);
         setGroupName(aidolResponse.data.name ?? "");
         const firstCompanion = companionsResponse.data[0];
-        setCompanionProfileUrl(firstCompanion?.profilePictureUrl ?? null);
+        if (!firstCompanion?.profilePictureUrl) {
+          showToast(t("aidol:group.follow.loadError"), "error");
+          router.push(`/${lang}/aidols/${aidolId}/detail`);
+          return;
+        }
+        setCompanionProfileUrl(firstCompanion.profilePictureUrl);
+        setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch follow page data:", error);
-        showToast(t("aidol:group.follow.error"), "error");
-      } finally {
-        setIsLoading(false);
+        showToast(t("aidol:group.follow.loadError"), "error");
+        router.push(`/${lang}/aidols/${aidolId}/detail`);
       }
     };
 
     void fetchData();
-  }, [aidolId, aidolRepository, companionRepository, showToast, t]);
+  }, [
+    aidolId,
+    aidolRepository,
+    companionRepository,
+    showToast,
+    t,
+    router,
+    lang,
+  ]);
 
   const handleSubmit = async () => {
     if (!isValidEmail) return;
