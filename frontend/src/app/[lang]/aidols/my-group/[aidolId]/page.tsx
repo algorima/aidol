@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import {
   ChatTooltipButton,
   GroupDropdown,
@@ -49,6 +50,7 @@ const groupMyGroupHighlights = (
 export default function GroupPage() {
   const { t } = useTranslation();
   const router = useRouter();
+  const { showToast } = useToast();
   const params = useParams<{ lang: string; aidolId: string }>();
 
   const aidolRepository = useMemo(
@@ -101,6 +103,7 @@ export default function GroupPage() {
         }
       } catch (error) {
         console.error("Failed to fetch groups:", error);
+        showToast(t("aidol:error.load.group"), "error");
       }
     };
 
@@ -121,6 +124,7 @@ export default function GroupPage() {
         setCompanions(companionsResult.data);
       } catch (error) {
         console.error("Failed to fetch group data:", error);
+        showToast(t("aidol:error.load.group"), "error");
       }
     };
 

@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Failed to load group info"
+    }
+  },
   "common": {
     "close": "Close"
   },

@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Gagal memuat info grup"
+    }
+  },
   "common": {
     "close": "Tutup"
   },

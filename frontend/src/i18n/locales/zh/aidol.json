@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "无法加载组合信息"
+    }
+  },
   "common": {
     "close": "关闭"
   },

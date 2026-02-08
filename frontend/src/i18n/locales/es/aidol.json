@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Error al cargar la información del grupo"
+    }
+  },
   "common": {
     "close": "Cerrar"
   },

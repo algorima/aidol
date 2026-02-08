@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Không thể tải thông tin nhóm"
+    }
+  },
   "common": {
     "close": "Đóng"
   },

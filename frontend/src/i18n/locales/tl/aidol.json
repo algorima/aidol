@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Hindi ma-load ang info ng grupo"
+    }
+  },
   "common": {
     "close": "Isara"
   },
