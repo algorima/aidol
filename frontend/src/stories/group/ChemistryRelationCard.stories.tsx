@@ -27,8 +27,8 @@ export const Expanded: Story = {
   args: {
     fromName: "이안",
     toName: "서윤",
-    nickname: "동갑즈",
-    relationshipType: "아직 어색해요",
+    relationshipType: "동갑즈",
+    description: "아직 어색해요",
     onClick: () => alert("카드 클릭"),
     onClose: () => alert("닫기"),
   },
