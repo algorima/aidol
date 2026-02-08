@@ -1,20 +1,28 @@
 "use client";
 
-import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
+  ChatTooltipButton,
   GroupDropdown,
   GroupProfile,
   HighlightCarousel,
 } from "@/components/group";
 import { Header } from "@/components/Header";
-import { mockAIdols } from "@/mocks/aidols";
-import { getMockHighlightsByAidolId } from "@/mocks/highlights";
+import { HighlightDetailModal } from "@/components/highlight/HighlightDetailModal";
+import { AIdolRepository } from "@/repositories/AIdolRepository";
+import { CompanionRepository } from "@/repositories/CompanionRepository";
+import { HighlightRepository } from "@/repositories/HighlightRepository";
 import type { AIdol } from "@/schemas/aidol";
-import type { Highlight, MyGroupHighlightSection } from "@/schemas/highlight";
+import type { Companion } from "@/schemas/companion";
+import type {
+  Highlight,
+  HighlightMessage,
+  MyGroupHighlightSection,
+} from "@/schemas/highlight";
+import { getApiService } from "@/services/ApiService";
 
 const groupMyGroupHighlights = (
   highlights: Highlight[],
@@ -43,6 +51,19 @@ export default function GroupPage() {
   const router = useRouter();
   const params = useParams<{ lang: string; aidolId: string }>();
 
+  const aidolRepository = useMemo(
+    () => new AIdolRepository(getApiService()),
+    [],
+  );
+  const highlightRepository = useMemo(
+    () => new HighlightRepository(getApiService()),
+    [],
+  );
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+
   // 그룹 상태
   const [groups, setGroups] = useState<AIdol[]>([]);
   const [selectedGroup, setSelectedGroup] = useState<AIdol | null>(null);
@@ -53,42 +74,88 @@ export default function GroupPage() {
     MyGroupHighlightSection[]
   >([]);
 
-  // 채팅 툴팁 상태
-  const [showChatTooltip, setShowChatTooltip] = useState(true);
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  // 하이라이트 모달 상태
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [highlightMessages, setHighlightMessages] = useState<
+    HighlightMessage[]
+  >([]);
+  const [companions, setCompanions] = useState<Companion[]>([]);
 
-  const handleTooltipDismiss = () => {
-    setShowChatTooltip(false);
-    setIsFirstVisit(false);
-  };
-
-  // TODO: API 연동 시 AIdolRepository.getMy() 사용
   useEffect(() => {
-    setGroups(mockAIdols);
-    const currentGroup = mockAIdols.find((g) => g.id === params.aidolId);
-    if (currentGroup) {
-      setSelectedGroup(currentGroup);
-    } else {
-      // 해당 그룹이 없으면 첫 번째 그룹으로 redirect
-      const firstGroup = mockAIdols[0];
-      if (firstGroup) {
-        router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
-      }
-    }
-  }, [params.aidolId, params.lang, router]);
+    const fetchGroups = async () => {
+      try {
+        const { data: myGroups } = await aidolRepository.getMy();
+        setGroups(myGroups);
 
-  // TODO: API 연동 시 HighlightRepository 사용
+        const currentGroup = myGroups.find((g) => g.id === params.aidolId);
+        if (currentGroup) {
+          setSelectedGroup(currentGroup);
+        } else {
+          // 해당 그룹이 없으면 첫 번째 그룹으로 redirect
+          const firstGroup = myGroups[0];
+          if (firstGroup) {
+            router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch groups:", error);
+      }
+    };
+
+    void fetchGroups();
+  }, [aidolRepository, params.aidolId, params.lang, router]);
+
   useEffect(() => {
     if (!selectedGroup) return;
 
-    const highlights = getMockHighlightsByAidolId(selectedGroup.id);
-    const sections = groupMyGroupHighlights(highlights);
-    setHighlightSections(sections);
-  }, [selectedGroup]);
+    const fetchHighlights = async () => {
+      try {
+        const { data: highlights } = await highlightRepository.getByAidolId(
+          selectedGroup.id,
+        );
+        const sections = groupMyGroupHighlights(highlights);
+        setHighlightSections(sections);
+      } catch (error) {
+        console.error("Failed to fetch highlights:", error);
+      }
+    };
+
+    void fetchHighlights();
+  }, [highlightRepository, selectedGroup]);
+
+  // Companions fetch
+  useEffect(() => {
+    if (!selectedGroup) return;
+
+    const fetchCompanions = async () => {
+      try {
+        const { data } = await companionRepository.getByAidolId(
+          selectedGroup.id,
+        );
+        setCompanions(data);
+      } catch (error) {
+        console.error("Failed to fetch companions:", error);
+      }
+    };
+
+    void fetchCompanions();
+  }, [companionRepository, selectedGroup]);
 
   const handleSelectGroup = (group: AIdol) => {
     setIsDropdownOpen(false);
-    router.push(`/${params.lang}/my-group/${group.id}`);
+    router.push(`/${params.lang}/aidols/my-group/${group.id}`);
+  };
+
+  const handleHighlightClick = async (highlight: Highlight) => {
+    try {
+      const { data: messages } = await highlightRepository.getMessages(
+        highlight.id,
+      );
+      setHighlightMessages(messages);
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Failed to fetch highlight messages:", error);
+    }
   };
 
   return (
@@ -97,35 +164,7 @@ export default function GroupPage() {
         title={selectedGroup?.name ?? ""}
         onDropdownClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        <div
-          className="relative"
-          onMouseEnter={() => !isFirstVisit && setShowChatTooltip(true)}
-          onMouseLeave={() => !isFirstVisit && setShowChatTooltip(false)}
-        >
-          <button
-            type="button"
-            className="relative z-50 flex size-10 items-center justify-center"
-            onClick={() => !isFirstVisit && setShowChatTooltip((prev) => !prev)}
-          >
-            <ChatBubbleLeftEllipsisIcon className="text-base-content/20 size-6" />
-          </button>
-          {showChatTooltip && (
-            <>
-              {isFirstVisit && (
-                <div
-                  className="fixed inset-0 z-40"
-                  onClick={handleTooltipDismiss}
-                />
-              )}
-              <div className="absolute top-full right-0 z-50 mt-2 w-fit">
-                <div className="border-b-neutral absolute -top-2 right-3 size-0 border-x-8 border-b-8 border-x-transparent" />
-                <div className="bg-neutral text-neutral-content text-label-m rounded-lg px-4 py-3 whitespace-nowrap">
-                  {t("aidol:myGroup.chatComingSoon")}
-                </div>
-              </div>
-            </>
-          )}
-        </div>
+        <ChatTooltipButton />
         <button
           type="button"
           className="text-label-l text-base-content/20 px-2"
@@ -149,12 +188,14 @@ export default function GroupPage() {
           profileImageUrl={selectedGroup?.profileImageUrl ?? null}
           createdAt={selectedGroup?.createdAt ?? new Date().toISOString()}
           onChemistryClick={() =>
-            router.push(`/${params.lang}/my-group/${params.aidolId}/chemistry`)
+            router.push(
+              `/${params.lang}/aidols/my-group/${params.aidolId}/chemistry`,
+            )
           }
         />
 
         {/* 탭 */}
-        <div className="px-6">
+        <div className="px-6 pb-12">
           <p className="border-base-content text-label-l w-fit border-b-2 py-2">
             {t("aidol:myGroup.highlights")}
           </p>
@@ -170,12 +211,21 @@ export default function GroupPage() {
                 <p className="text-body-s text-neutral">{section.subtitle}</p>
               </div>
 
-              {/* TODO: 클릭 시 하이라이트 상세 모달 표시 */}
-              <HighlightCarousel items={section.items} onItemClick={() => {}} />
+              <HighlightCarousel
+                items={section.items}
+                onItemClick={(item) => void handleHighlightClick(item)}
+              />
             </div>
           ))}
         </div>
       </div>
+
+      <HighlightDetailModal
+        isOpen={isModalOpen}
+        messages={highlightMessages}
+        companions={companions}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }
