@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { GroupCard } from "@/components/group/GroupCard";
 import { GroupInfoBanner } from "@/components/group/GroupInfoBanner";
 import { Loading } from "@/components/Loading";
@@ -20,8 +22,10 @@ interface GroupsPageProps {
 }
 
 export default function GroupsPage({ params }: GroupsPageProps) {
+  const { t } = useTranslation("aidol");
   const { lang } = params;
   const router = useRouter();
+  const { showToast } = useToast();
   const [groups, setGroups] = useState<AIdol[]>([]);
   const [memberCountMap, setMemberCountMap] = useState<Record<string, number>>(
     {},
@@ -30,7 +34,6 @@ export default function GroupsPage({ params }: GroupsPageProps) {
     Record<string, AIdolHighlight>
   >({});
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,27 +68,20 @@ export default function GroupsPage({ params }: GroupsPageProps) {
           }
         }
         setHighlightMap(hlMap);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : String(err));
+      } catch (error) {
+        console.error("Failed to fetch group list:", error);
+        showToast(t("groupList.error.load"), "error");
       } finally {
         setIsLoading(false);
       }
     };
     void fetchData();
-  }, []);
+  }, [showToast, t]);
 
   if (isLoading) {
     return (
       <div className="bg-base-100 flex h-dvh flex-col items-center justify-center">
         <Loading />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-base-100 flex h-dvh flex-col items-center justify-center">
-        <p className="text-body-m text-error">{error}</p>
       </div>
     );
   }

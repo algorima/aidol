@@ -259,6 +259,9 @@
       "title": "Humanap ng grupo na gusto mo!",
       "description": "Ang mga idol character (mukha, boses, video) sa content na ito ay orihinal na virtual character na ginawa ng AI at hindi batay sa totoong tao, kabilang ang mga idol at celebrity."
     },
-    "memberCount": "{{count}} miyembro"
+    "memberCount": "{{count}} miyembro",
+    "error": {
+      "load": "Hindi na-load ang listahan ng grupo."
+    }
   }
 }

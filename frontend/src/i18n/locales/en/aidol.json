@@ -259,6 +259,9 @@
       "title": "Find a group you like!",
       "description": "The idol characters (face, voice, video) in this content are original virtual characters created by AI and are not based on any real person, including idols and celebrities."
     },
-    "memberCount": "{{count}} members"
+    "memberCount": "{{count}} members",
+    "error": {
+      "load": "Failed to load group list."
+    }
   }
 }
