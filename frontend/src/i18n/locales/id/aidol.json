@@ -231,9 +231,15 @@
     }
   },
   "myGroup": {
+    "header": "Grup Saya",
     "chatComingSoon": "Chat dengan member segera hadir👋",
     "settings": "Pengaturan",
-    "highlights": "Sorotan"
+    "highlights": "Sorotan",
+    "empty": {
+      "title": "Belum ada grup",
+      "description": "Buat grup idol AI-mu sendiri!",
+      "cta": "Buat Idol"
+    }
   },
   "highlight": {
     "interviewer": "Pewawancara"

@@ -1,15 +1,20 @@
 "use client";
 
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
+import { Header } from "@/components/Header";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { getApiService } from "@/services/ApiService";
 
 export default function MyGroupRedirectPage() {
   const router = useRouter();
   const params = useParams<{ lang: string }>();
+  const { t } = useTranslation();
   const [error, setError] = useState<Error | null>(null);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const aidolRepository = useMemo(
     () => new AIdolRepository(getApiService()),
@@ -22,6 +27,8 @@ export default function MyGroupRedirectPage() {
       const firstGroup = myGroups[0];
       if (firstGroup) {
         router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
+      } else {
+        setIsEmpty(true);
       }
     };
 
@@ -30,6 +37,28 @@ export default function MyGroupRedirectPage() {
 
   if (error) {
     throw error;
+  }
+
+  if (isEmpty) {
+    return (
+      <div className="bg-base-100 flex min-h-dvh flex-col">
+        <Header title={t("aidol:myGroup.header")} />
+        <div className="flex flex-1 flex-col items-center justify-center gap-6 px-6">
+          <p className="text-headline-s text-base-content text-center">
+            {t("aidol:myGroup.empty.title")}
+          </p>
+          <p className="text-body-m text-neutral text-center">
+            {t("aidol:myGroup.empty.description")}
+          </p>
+          <Link
+            href={`/${params.lang}`}
+            className="btn btn-primary text-label-l rounded-lg"
+          >
+            {t("aidol:myGroup.empty.cta")}
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (

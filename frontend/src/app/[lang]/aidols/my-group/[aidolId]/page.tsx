@@ -95,6 +95,8 @@ export default function GroupPage() {
           const firstGroup = myGroups[0];
           if (firstGroup) {
             router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
+          } else {
+            router.replace(`/${params.lang}/aidols/my-group`);
           }
         }
       } catch (error) {

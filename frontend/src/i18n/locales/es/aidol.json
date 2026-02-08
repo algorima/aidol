@@ -231,9 +231,15 @@
     }
   },
   "myGroup": {
+    "header": "Mi Grupo",
     "chatComingSoon": "Chat con miembros próximamente👋",
     "settings": "Configuración",
-    "highlights": "Destacados"
+    "highlights": "Destacados",
+    "empty": {
+      "title": "Aún no tienes grupos",
+      "description": "¡Crea tu propio grupo de ídolos AI!",
+      "cta": "Crear Ídolo"
+    }
   },
   "highlight": {
     "interviewer": "Entrevistador"

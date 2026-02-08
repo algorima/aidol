@@ -231,9 +231,15 @@
     }
   },
   "myGroup": {
+    "header": "Nhóm Của Tôi",
     "chatComingSoon": "Chat với thành viên sắp ra mắt👋",
     "settings": "Cài đặt",
-    "highlights": "Điểm nổi bật"
+    "highlights": "Điểm nổi bật",
+    "empty": {
+      "title": "Chưa có nhóm nào",
+      "description": "Tạo nhóm idol AI của riêng bạn!",
+      "cta": "Tạo Idol"
+    }
   },
   "highlight": {
     "interviewer": "Người phỏng vấn"

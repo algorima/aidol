@@ -231,9 +231,15 @@
     }
   },
   "myGroup": {
+    "header": "マイグループ",
     "chatComingSoon": "メンバーとのチャット準備中👋",
     "settings": "設定",
-    "highlights": "ハイライト"
+    "highlights": "ハイライト",
+    "empty": {
+      "title": "まだグループがありません",
+      "description": "自分だけのAIアイドルグループを作ろう！",
+      "cta": "アイドルを作る"
+    }
   },
   "highlight": {
     "interviewer": "インタビュアー"

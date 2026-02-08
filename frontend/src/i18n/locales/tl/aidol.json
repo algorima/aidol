@@ -231,9 +231,15 @@
     }
   },
   "myGroup": {
+    "header": "Aking Grupo",
     "chatComingSoon": "Chat sa mga miyembro, malapit na👋",
     "settings": "Mga Setting",
-    "highlights": "Mga Highlight"
+    "highlights": "Mga Highlight",
+    "empty": {
+      "title": "Wala pang grupo",
+      "description": "Gumawa ng sarili mong AI idol group!",
+      "cta": "Gumawa ng Idol"
+    }
   },
   "highlight": {
     "interviewer": "Tagapanayam"

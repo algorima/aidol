@@ -231,9 +231,15 @@
     }
   },
   "myGroup": {
+    "header": "กรุ๊ปของฉัน",
     "chatComingSoon": "แชทกับสมาชิกเร็วๆ นี้👋",
     "settings": "ตั้งค่า",
-    "highlights": "ไฮไลท์"
+    "highlights": "ไฮไลท์",
+    "empty": {
+      "title": "ยังไม่มีกรุ๊ป",
+      "description": "สร้างกรุ๊ปไอดอล AI ของคุณเอง!",
+      "cta": "สร้างไอดอล"
+    }
   },
   "highlight": {
     "interviewer": "ผู้สัมภาษณ์"
