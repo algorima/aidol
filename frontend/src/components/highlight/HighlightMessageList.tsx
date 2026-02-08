@@ -23,7 +23,7 @@ function InterviewerMessage({ content }: { content: string }) {
         {t("highlight.interviewer")}
       </span>
       <div className="max-w-[263px] overflow-hidden rounded-xl bg-black p-2">
-        <p className="text-body-s text-white">{content}</p>
+        <p className="text-body-s text-neutral-content">{content}</p>
       </div>
     </div>
   );
