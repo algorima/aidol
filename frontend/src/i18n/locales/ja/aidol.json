@@ -247,7 +247,10 @@
     }
   },
   "highlight": {
-    "interviewer": "インタビュアー"
+    "interviewer": "インタビュアー",
+    "error": {
+      "load": "ハイライトの読み込みに失敗しました"
+    }
   },
   "group": {
     "title": "シーズン1 デビュー組",

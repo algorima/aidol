@@ -247,7 +247,10 @@
     }
   },
   "highlight": {
-    "interviewer": "Pewawancara"
+    "interviewer": "Pewawancara",
+    "error": {
+      "load": "Gagal memuat highlight"
+    }
   },
   "group": {
     "title": "Debut Musim 1",

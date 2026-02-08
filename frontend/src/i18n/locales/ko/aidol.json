@@ -238,7 +238,10 @@
     }
   },
   "highlight": {
-    "interviewer": "인터뷰어"
+    "interviewer": "인터뷰어",
+    "error": {
+      "load": "하이라이트를 불러오지 못했습니다"
+    }
   },
   "group": {
     "title": "시즌1 데뷔조",

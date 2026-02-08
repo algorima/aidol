@@ -247,7 +247,10 @@
     }
   },
   "highlight": {
-    "interviewer": "Interviewer"
+    "interviewer": "Interviewer",
+    "error": {
+      "load": "Failed to load highlight"
+    }
   },
   "group": {
     "title": "Season 1 Debut",

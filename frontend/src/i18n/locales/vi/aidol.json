@@ -247,7 +247,10 @@
     }
   },
   "highlight": {
-    "interviewer": "Người phỏng vấn"
+    "interviewer": "Người phỏng vấn",
+    "error": {
+      "load": "Không thể tải highlight"
+    }
   },
   "group": {
     "title": "Ra Mắt Mùa 1",

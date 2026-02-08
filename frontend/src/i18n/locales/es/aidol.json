@@ -247,7 +247,10 @@
     }
   },
   "highlight": {
-    "interviewer": "Entrevistador"
+    "interviewer": "Entrevistador",
+    "error": {
+      "load": "Error al cargar el destacado"
+    }
   },
   "group": {
     "title": "Debut Temporada 1",
