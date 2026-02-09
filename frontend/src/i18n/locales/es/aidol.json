@@ -256,6 +256,7 @@
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",
     "followButton": "Seguir",
+    "highlightTab": "Destacados",
     "follow": {
       "header": "Seguir",
       "title": "¡Te enviaremos historias reales\nde los miembros de {{name}}!",
@@ -266,6 +267,9 @@
       "success": "¡Ahora estás siguiendo!",
       "error": "No se pudo seguir. Inténtalo de nuevo.",
       "loadError": "No se pudo cargar la información del grupo"
+    },
+    "error": {
+      "load": "No se pudo cargar la información del grupo"
     }
   },
   "groupList": {

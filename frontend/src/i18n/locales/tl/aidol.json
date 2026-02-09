@@ -256,6 +256,7 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",
     "followButton": "Sundan",
+    "highlightTab": "Mga Highlight",
     "follow": {
       "header": "Sundan",
       "title": "Magpapadala kami ng mga totoong kwento\nmula sa mga miyembro ng {{name}}!",
@@ -266,6 +267,9 @@
       "success": "Sinusundan mo na!",
       "error": "Hindi ma-follow. Subukan muli.",
       "loadError": "Hindi na-load ang impormasyon ng grupo"
+    },
+    "error": {
+      "load": "Hindi ma-load ang impormasyon ng grupo"
     }
   },
   "groupList": {

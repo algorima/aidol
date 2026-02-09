@@ -19,6 +19,7 @@ const sampleImage =
 
 export const Default: Story = {
   args: {
+    name: "시즌1 데뷔조",
     profileImageUrl: sampleImage,
     createdAt: "2026-01-29T00:00:00Z",
     onChemistryClick: () => alert("멤버 간 케미"),
@@ -27,6 +28,7 @@ export const Default: Story = {
 
 export const WithoutImage: Story = {
   args: {
+    name: "시즌1 데뷔조",
     profileImageUrl: null,
     createdAt: "2026-01-20T00:00:00Z",
     onChemistryClick: () => alert("멤버 간 케미"),
@@ -35,6 +37,7 @@ export const WithoutImage: Story = {
 
 export const RecentlyCreated: Story = {
   args: {
+    name: "시즌1 데뷔조",
     profileImageUrl: sampleImage,
     createdAt: new Date().toISOString(),
     onChemistryClick: () => alert("멤버 간 케미"),
@@ -43,6 +46,7 @@ export const RecentlyCreated: Story = {
 
 export const WithFollowButton: Story = {
   args: {
+    name: "시즌1 데뷔조",
     profileImageUrl: sampleImage,
     createdAt: "2026-01-29T00:00:00Z",
     onChemistryClick: () => alert("멤버 간 케미"),

@@ -256,6 +256,7 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Member Chemistry 💭",
     "followButton": "Follow",
+    "highlightTab": "Highlights",
     "follow": {
       "header": "Follow",
       "title": "We'll send you real stories\nfrom {{name}} members!",
@@ -266,6 +267,9 @@
       "success": "You're now following!",
       "error": "Failed to follow. Please try again.",
       "loadError": "Failed to load group information"
+    },
+    "error": {
+      "load": "Failed to load group information"
     }
   },
   "groupList": {

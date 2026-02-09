@@ -256,6 +256,7 @@
     "title": "Ra Mắt Mùa 1",
     "chemistryButton": "Phản Ứng Hóa Học Giữa Thành Viên 💭",
     "followButton": "Theo dõi",
+    "highlightTab": "Nổi bật",
     "follow": {
       "header": "Theo dõi",
       "title": "Chúng tôi sẽ gửi cho bạn những câu chuyện thật\ntừ các thành viên {{name}}!",
@@ -266,6 +267,9 @@
       "success": "Bạn đã theo dõi thành công!",
       "error": "Theo dõi thất bại. Vui lòng thử lại.",
       "loadError": "Không thể tải thông tin nhóm"
+    },
+    "error": {
+      "load": "Không thể tải thông tin nhóm"
     }
   },
   "groupList": {
