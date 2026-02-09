@@ -93,6 +93,21 @@ export const InterviewerOnly: Story = {
   ],
 };
 
+/** 컴패니언 메시지만 있는 경우 */
+export const CompanionOnly: Story = {
+  args: {
+    messages: MOCK_MESSAGES.filter((m) => m.companionId !== null),
+    companions: MOCK_COMPANIONS,
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-[345px]">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
 /** 여러 컴패니언이 참여하는 대화 */
 export const MultipleCompanions: Story = {
   args: {
