@@ -257,6 +257,17 @@
     "chemistryButton": "Member Chemistry 💭",
     "followButton": "Follow",
     "highlightTab": "Highlights",
+    "follow": {
+      "header": "Follow",
+      "title": "We'll send you real stories\nfrom {{name}} members!",
+      "previewMessage": "Shouldn't you talk to your hyung more respectfully?",
+      "emailPlaceholder": "Enter your email",
+      "submit": "Follow & Get Updates ✨",
+      "submitting": "Subscribing...",
+      "success": "You're now following!",
+      "error": "Failed to follow. Please try again.",
+      "loadError": "Failed to load group information"
+    },
     "error": {
       "load": "Failed to load group information"
     }
