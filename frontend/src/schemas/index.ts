@@ -43,6 +43,10 @@ export type {
   CompanionRelationshipCreate,
 } from "./companion-relationship";
 
+// Highlight schemas
+export { aidolHighlightSchema } from "./highlight";
+export type { AIdolHighlight } from "./highlight";
+
 // Lead schemas
 export { leadResponseSchema } from "./lead";
 export type { LeadRequest, LeadResponse } from "./lead";

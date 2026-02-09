@@ -52,6 +52,9 @@
       "title": "Casting Hoàn Tất!",
       "description": "Thực tập sinh đã gia nhập nhóm",
       "viewBoard": "Xem Bảng Casting"
+    },
+    "error": {
+      "cast": "Casting thất bại"
     }
   },
   "share": "Chia sẻ",
@@ -79,7 +82,10 @@
     "subtitle": "Đã thêm vào danh sách ứng viên casting",
     "remainingSlots": "Slot Casting Còn Lại",
     "findNext": "Tìm Thực Tập Sinh Tiếp",
-    "viewBoard": "Xem Bảng Casting"
+    "viewBoard": "Xem Bảng Casting",
+    "error": {
+      "load": "Không thể tải thông tin slot"
+    }
   },
   "companion": {
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
@@ -258,6 +264,16 @@
     "addRelation": "Thêm Mối Quan Hệ",
     "error": {
       "load": "Không thể tải thông tin thành viên"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Tìm nhóm bạn thích!",
+      "description": "Các nhân vật idol (khuôn mặt, giọng nói, video) trong nội dung này là nhân vật ảo nguyên bản được tạo bởi AI và không dựa trên người thật, bao gồm idol và người nổi tiếng."
+    },
+    "memberCount": "{{count}} thành viên",
+    "error": {
+      "load": "Không thể tải danh sách nhóm."
     }
   }
 }
