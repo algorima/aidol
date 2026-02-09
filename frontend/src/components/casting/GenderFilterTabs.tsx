@@ -14,7 +14,7 @@ export function GenderFilterTabs({
   activeTab,
   onTabChange,
 }: GenderFilterTabsProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("aidol");
 
   return (
     <div role="tablist" className="flex gap-2">
@@ -25,14 +25,14 @@ export function GenderFilterTabs({
           role="tab"
           aria-selected={activeTab === tab}
           className={clsx(
-            "text-label-l rounded-lg border p-2",
+            "bg-base-200 text-label-l rounded-lg border p-2",
             activeTab === tab
               ? "border-base-content text-base-content"
-              : "border-base-300 text-base-300",
+              : "border-base-400 text-base-400",
           )}
           onClick={() => onTabChange(tab)}
         >
-          {t(`aidol:casting.tabs.${tab}`)}
+          {t(`casting.tabs.${tab}`)}
         </button>
       ))}
     </div>

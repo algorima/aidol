@@ -2,7 +2,7 @@ import { HeartIcon } from "@heroicons/react/24/solid";
 import { useTranslation } from "react-i18next";
 
 interface CastingCompleteProps {
-  remainingSlots: number;
+  remainingSlots: number | null;
   onFindNext: () => void;
   onViewBoard: () => void;
 }
@@ -27,17 +27,20 @@ export function CastingComplete({
         </p>
       </div>
 
-      <div className="border-base-300 bg-base-200 flex shrink-0 items-center gap-2 rounded-lg border p-4">
-        <span className="text-title-s text-base-content">
-          {t("aidol:castingComplete.remainingSlots")}
-        </span>
-        <span className="text-title-s text-primary">{remainingSlots}</span>
-      </div>
+      {remainingSlots !== null && (
+        <div className="border-base-300 bg-base-200 flex shrink-0 items-center gap-2 rounded-lg border p-4">
+          <span className="text-title-s text-base-content">
+            {t("aidol:castingComplete.remainingSlots")}
+          </span>
+          <span className="text-title-s text-primary">{remainingSlots}</span>
+        </div>
+      )}
 
       <div className="flex w-full gap-4">
         <button
           type="button"
           onClick={onFindNext}
+          disabled={remainingSlots !== null && remainingSlots <= 0}
           className="btn btn-lg btn-neutral text-label-l flex-1 rounded-lg"
         >
           {t("aidol:castingComplete.findNext")}
