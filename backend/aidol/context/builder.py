@@ -109,7 +109,7 @@ class MessageContextBuilder:
     4. Current conversation messages
 
     Usage:
-        builder = MessageContextBuilder(provider, persona)
+        builder = MessageContextBuilder(constraints, persona)
         context = (
             builder
             .with_persona()
@@ -122,16 +122,16 @@ class MessageContextBuilder:
 
     def __init__(
         self,
-        provider: ProviderConstraints,
+        constraints: ProviderConstraints,
         persona: Persona | None = None,
     ) -> None:
         """Initialize MessageContextBuilder.
 
         Args:
-            provider: Provider with constraint properties for context building.
+            constraints: Provider constraints for context building.
             persona: Optional persona with system prompt.
         """
-        self.provider = provider
+        self._constraints = constraints
         self.persona = persona
 
         # Component buffers
@@ -227,7 +227,7 @@ class MessageContextBuilder:
 
         # 2. Apply combine_system_messages constraint
         messages: list[LLMMessage]
-        if self.provider.combine_system_messages and len(system_messages) > 1:
+        if self._constraints.combine_system_messages and len(system_messages) > 1:
             # Some providers (e.g., Anthropic) require all system messages to be combined into one
             combined_content = "\n\n".join(str(m.content) for m in system_messages)
             messages = [SystemMessage(content=combined_content)]
@@ -261,10 +261,10 @@ class MessageContextBuilder:
         """
         verify_system_messages_at_front(messages)
 
-        if self.provider.require_first_user_message:
+        if self._constraints.require_first_user_message:
             ensure_first_user_message(messages)
 
-        if self.provider.enforce_alternating_turns:
+        if self._constraints.enforce_alternating_turns:
             messages = deduplicate_consecutive_same_role_messages(messages)
 
         return messages
