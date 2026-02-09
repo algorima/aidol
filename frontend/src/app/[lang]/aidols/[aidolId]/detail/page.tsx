@@ -58,15 +58,32 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [aidolResponse, highlightsResponse] = await Promise.all([
-          aidolRepository.getOne({ id: aidolId }),
-          highlightRepository.getList({
-            filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
-            pagination: { current: 1, pageSize: 100 },
-          }),
-        ]);
+        const [aidolResponse, highlightsResponse, companionsResponse] =
+          await Promise.all([
+            aidolRepository.getOne({ id: aidolId }),
+            highlightRepository.getList({
+              filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+              pagination: { current: 1, pageSize: 100 },
+            }),
+            companionRepository.getList({
+              filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+              pagination: { current: 1, pageSize: 100 },
+            }),
+          ]);
         setAidol(aidolResponse.data);
         setHighlights(highlightsResponse.data);
+
+        const companionMap: Record<
+          string,
+          { name: string; imageUrl?: string }
+        > = {};
+        for (const c of companionsResponse.data) {
+          companionMap[c.id] = {
+            name: c.name ?? "",
+            imageUrl: c.profilePictureUrl ?? undefined,
+          };
+        }
+        setCompanions(companionMap);
       } catch (error) {
         console.error("Failed to fetch group detail:", error);
         showToast(t("group.error.load"), "error");
@@ -76,31 +93,21 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     };
 
     void fetchData();
-  }, [aidolId, aidolRepository, highlightRepository, showToast, t]);
+  }, [
+    aidolId,
+    aidolRepository,
+    highlightRepository,
+    companionRepository,
+    showToast,
+    t,
+  ]);
 
   const handleHighlightClick = async (highlightId: string) => {
     setSelectedHighlightId(highlightId);
     setIsModalLoading(true);
     try {
-      const [messagesData, companionsResponse] = await Promise.all([
-        highlightRepository.getMessages(highlightId),
-        companionRepository.getList({
-          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
-          pagination: { current: 1, pageSize: 100 },
-        }),
-      ]);
-
+      const messagesData = await highlightRepository.getMessages(highlightId);
       setMessages(messagesData);
-
-      const companionMap: Record<string, { name: string; imageUrl?: string }> =
-        {};
-      for (const c of companionsResponse.data) {
-        companionMap[c.id] = {
-          name: c.name ?? "",
-          imageUrl: c.profilePictureUrl ?? undefined,
-        };
-      }
-      setCompanions(companionMap);
     } catch (error) {
       console.error("Failed to fetch highlight messages:", error);
       showToast(t("highlight.error.load"), "error");
