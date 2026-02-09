@@ -52,6 +52,9 @@
       "title": "Casting Selesai!",
       "description": "Trainee telah bergabung dengan grup",
       "viewBoard": "Lihat Casting Board"
+    },
+    "error": {
+      "cast": "Gagal melakukan casting"
     }
   },
   "share": "Bagikan",
@@ -79,7 +82,10 @@
     "subtitle": "Ditambahkan ke daftar kandidat casting",
     "remainingSlots": "Slot Casting Tersisa",
     "findNext": "Cari Trainee Berikutnya",
-    "viewBoard": "Lihat Papan Casting"
+    "viewBoard": "Lihat Papan Casting",
+    "error": {
+      "load": "Gagal memuat informasi slot"
+    }
   },
   "companion": {
     "promptPlaceholder": "Gimana idol kamu ngobrol? Ceritain kepribadiannya...",
@@ -260,6 +266,16 @@
       "success": "Anda sekarang mengikuti!",
       "error": "Gagal mengikuti. Silakan coba lagi.",
       "loadError": "Gagal memuat informasi grup"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Temukan grup yang kamu suka!",
+      "description": "Karakter idol (wajah, suara, video) dalam konten ini adalah karakter virtual asli yang dibuat oleh AI dan tidak berdasarkan orang nyata, termasuk idol dan selebriti."
+    },
+    "memberCount": "{{count}} anggota",
+    "error": {
+      "load": "Gagal memuat daftar grup."
     }
   }
 }

@@ -1,21 +1,48 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
+import { useToast } from "@/app/providers/Toast";
 import { CastingComplete } from "@/components/casting-board";
+import { CompanionRepository } from "@/repositories/CompanionRepository";
+import { getApiService } from "@/services/ApiService";
 
 interface CastingCompletePageProps {
   params: { lang: string; aidolId: string };
 }
 
-const MOCK_REMAINING_SLOTS = 2;
+const MAX_MEMBERS = 25;
 
 export default function CastingCompletePage({
   params,
 }: CastingCompletePageProps) {
   const { lang, aidolId } = params;
+  const { t } = useTranslation();
+  const { showToast } = useToast();
   const router = useRouter();
+  const [remainingSlots, setRemainingSlots] = useState<number | null>(null);
+
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+
+  useEffect(() => {
+    const fetchMemberCount = async () => {
+      try {
+        const response = await companionRepository.getList({
+          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+        });
+        setRemainingSlots(MAX_MEMBERS - response.data.length);
+      } catch {
+        showToast(t("aidol:castingComplete.error.load"), "error");
+      }
+    };
+
+    void fetchMemberCount();
+  }, [aidolId, companionRepository, showToast, t]);
 
   const handleFindNext = useCallback(() => {
     router.push(`/${lang}/aidols/${aidolId}/casting`);
@@ -27,7 +54,7 @@ export default function CastingCompletePage({
 
   return (
     <CastingComplete
-      remainingSlots={MOCK_REMAINING_SLOTS}
+      remainingSlots={remainingSlots}
       onFindNext={handleFindNext}
       onViewBoard={handleViewBoard}
     />
