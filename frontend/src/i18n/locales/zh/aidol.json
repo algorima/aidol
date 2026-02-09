@@ -52,6 +52,9 @@
       "title": "选秀完成！",
       "description": "练习生已加入组合",
       "viewBoard": "查看选秀面板"
+    },
+    "error": {
+      "cast": "选角失败"
     }
   },
   "share": "分享",
@@ -79,7 +82,10 @@
     "subtitle": "已添加到候选名单",
     "remainingSlots": "剩余选秀名额",
     "findNext": "寻找下一位练习生",
-    "viewBoard": "查看选秀板"
+    "viewBoard": "查看选秀板",
+    "error": {
+      "load": "无法加载名额信息"
+    }
   },
   "companion": {
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
@@ -256,5 +262,15 @@
     "title": "第一季出道组",
     "chemistryButton": "成员间默契 💭",
     "followButton": "关注"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "找到你喜欢的组合吧！",
+      "description": "本内容中的偶像角色（面部、声音、视频）是由AI制作的原创虚拟人物，不基于任何真实人物，包括偶像和艺人。"
+    },
+    "memberCount": "{{count}}人组",
+    "error": {
+      "load": "无法加载群组列表。"
+    }
   }
 }

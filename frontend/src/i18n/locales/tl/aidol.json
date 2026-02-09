@@ -52,6 +52,9 @@
       "title": "Tapos na ang Casting!",
       "description": "Sumali na ang trainee sa grupo",
       "viewBoard": "Tingnan ang Casting Board"
+    },
+    "error": {
+      "cast": "Nabigong mag-cast"
     }
   },
   "share": "I-share",
@@ -79,7 +82,10 @@
     "subtitle": "Naidagdag sa listahan ng kandidato",
     "remainingSlots": "Natitirang Casting Slot",
     "findNext": "Hanapin ang Susunod na Trainee",
-    "viewBoard": "Tingnan ang Casting Board"
+    "viewBoard": "Tingnan ang Casting Board",
+    "error": {
+      "load": "Hindi ma-load ang impormasyon ng slot"
+    }
   },
   "companion": {
     "promptPlaceholder": "Paano nagsasalita ang idol mo? Ilarawan ang personality...",
@@ -256,5 +262,15 @@
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",
     "followButton": "Sundan"
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Humanap ng grupo na gusto mo!",
+      "description": "Ang mga idol character (mukha, boses, video) sa content na ito ay orihinal na virtual character na ginawa ng AI at hindi batay sa totoong tao, kabilang ang mga idol at celebrity."
+    },
+    "memberCount": "{{count}} miyembro",
+    "error": {
+      "load": "Hindi na-load ang listahan ng grupo."
+    }
   }
 }
