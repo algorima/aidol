@@ -2,7 +2,6 @@
 Real Integration Test for Image Generation API.
 """
 
-import os
 import unittest
 
 import PIL.Image
