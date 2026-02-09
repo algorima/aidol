@@ -36,14 +36,14 @@ export type {
   Position,
 } from "./companion";
 
-// Lead schemas
-export { leadResponseSchema } from "./lead";
-export type { LeadRequest, LeadResponse } from "./lead";
-
 // Highlight schemas
-export { highlightMessageSchema, highlightSchema } from "./highlight";
+export { aidolHighlightSchema, highlightMessageSchema } from "./highlight";
 export type {
-  Highlight,
+  AIdolHighlight,
   HighlightMessage,
   MyGroupHighlightSection,
 } from "./highlight";
+
+// Lead schemas
+export { leadResponseSchema } from "./lead";
+export type { LeadRequest, LeadResponse } from "./lead";

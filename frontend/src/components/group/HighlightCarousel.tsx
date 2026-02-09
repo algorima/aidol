@@ -2,11 +2,11 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import { useDragScroll } from "@/hooks/useDragScroll";
-import type { Highlight } from "@/schemas/highlight";
+import type { AIdolHighlight } from "@/schemas/highlight";
 
 interface HighlightCarouselProps {
-  items: Highlight[];
-  onItemClick: (item: Highlight) => void;
+  items: AIdolHighlight[];
+  onItemClick: (item: AIdolHighlight) => void;
 }
 
 export function HighlightCarousel({

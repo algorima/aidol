@@ -19,14 +19,14 @@ import { HighlightRepository } from "@/repositories/HighlightRepository";
 import type { AIdol } from "@/schemas/aidol";
 import type { Companion } from "@/schemas/companion";
 import type {
-  Highlight,
+  AIdolHighlight,
   HighlightMessage,
   MyGroupHighlightSection,
 } from "@/schemas/highlight";
 import { getApiService } from "@/services/ApiService";
 
 const groupMyGroupHighlights = (
-  highlights: Highlight[],
+  highlights: AIdolHighlight[],
 ): MyGroupHighlightSection[] => {
   const sectionMap = new Map<string, MyGroupHighlightSection>();
 
@@ -41,7 +41,15 @@ const groupMyGroupHighlights = (
       });
     }
 
-    sectionMap.get(key)!.items.push(highlight);
+    sectionMap.get(key)!.items.push({
+      id: highlight.id,
+      aidolId: highlight.aidolId,
+      title: highlight.title,
+      subtitle: highlight.subtitle,
+      thumbnailUrl: highlight.thumbnailUrl,
+      createdAt: highlight.createdAt,
+      updatedAt: highlight.updatedAt,
+    });
   }
 
   return Array.from(sectionMap.values());
@@ -136,7 +144,7 @@ export default function GroupPage() {
     router.push(`/${params.lang}/aidols/my-group/${group.id}`);
   };
 
-  const handleHighlightClick = async (highlight: Highlight) => {
+  const handleHighlightClick = async (highlight: AIdolHighlight) => {
     try {
       const { data: messages } = await highlightRepository.getMessages(
         highlight.id,

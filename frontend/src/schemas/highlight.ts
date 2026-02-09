@@ -1,4 +1,14 @@
+/**
+ * AIdol Highlight schemas
+ * Matches backend aidol/schemas/highlight.py definitions
+ */
+
+import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
+
+// ---------------------------------------------------------------------------
+// HighlightMessage
+// ---------------------------------------------------------------------------
 
 export interface HighlightMessage {
   id: string;
@@ -20,21 +30,33 @@ export const highlightMessageSchema = z.object({
   updatedAt: z.string(),
 }) satisfies z.ZodType<HighlightMessage>;
 
-export const highlightSchema = z.object({
+// ---------------------------------------------------------------------------
+// AIdolHighlight
+// ---------------------------------------------------------------------------
+
+export const aidolHighlightSchema = z.object({
   id: z.string(),
-  aidolId: z.string(),
+  aidolId: z.string().nullable().optional(),
   title: z.string(),
-  subtitle: z.string(),
   thumbnailUrl: z.string(),
+  subtitle: z.string(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
 
-export type Highlight = z.infer<typeof highlightSchema>;
+export interface AIdolHighlight extends BaseRecord {
+  id: string;
+  aidolId?: string | null;
+  title: string;
+  thumbnailUrl: string;
+  subtitle: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 // 내그룹의 하이라이트 섹션 표현이 달라서 따로 정의
 export interface MyGroupHighlightSection {
   title: string;
   subtitle: string;
-  items: Highlight[];
+  items: AIdolHighlight[];
 }

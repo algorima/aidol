@@ -1,4 +1,4 @@
-import type { Highlight, HighlightMessage } from "@/schemas/highlight";
+import type { AIdolHighlight, HighlightMessage } from "@/schemas/highlight";
 
 export const mockHighlightMessages: Record<string, HighlightMessage[]> = {
   "highlight-001": [
@@ -106,7 +106,7 @@ export const getMockHighlightMessages = (
   return mockHighlightMessages[highlightId] ?? [];
 };
 
-export const mockHighlights: Highlight[] = [
+export const mockHighlights: AIdolHighlight[] = [
   {
     id: "highlight-001",
     aidolId: "aidol-group-001",
@@ -136,6 +136,8 @@ export const mockHighlights: Highlight[] = [
   },
 ];
 
-export const getMockHighlightsByAidolId = (aidolId: string): Highlight[] => {
+export const getMockHighlightsByAidolId = (
+  aidolId: string,
+): AIdolHighlight[] => {
   return mockHighlights.filter((h) => h.aidolId === aidolId);
 };

@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
 import { HighlightCarousel } from "@/components/group/HighlightCarousel";
-import type { Highlight } from "@/schemas/highlight";
+import type { AIdolHighlight } from "@/schemas/highlight";
 
 const sampleImage =
   "https://images.unsplash.com/photo-1740252117070-7aa2955b25f8?fm=jpg&q=60&w=3000&auto=format&fit=crop";
 
-const mockHighlights: Highlight[] = [
+const mockHighlights: AIdolHighlight[] = [
   {
     id: "highlight-001",
     aidolId: "aidol-group-001",
