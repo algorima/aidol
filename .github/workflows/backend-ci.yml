@@ -46,3 +46,7 @@ jobs:
       - name: Run Tests
         run: make unit-test
         working-directory: backend
+
+      - name: Run Integration Tests
+        run: make integration-test
+        working-directory: backend
