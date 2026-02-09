@@ -70,7 +70,7 @@ export const MyGroupActive: Story = {
   parameters: {
     nextjs: {
       navigation: {
-        pathname: "/ko/aidols/test-aidol-id/my-group",
+        pathname: "/ko/aidols/my-group/test-aidol-id",
       },
     },
   },

@@ -1,17 +1,21 @@
 "use client";
 
+import { HomeIcon as HomeSolid } from "@heroicons/react/20/solid";
+import {
+  HomeIcon as HomeOutline,
+  SparklesIcon as SparklesOutline,
+  UserCircleIcon as UserCircleOutline,
+} from "@heroicons/react/24/outline";
+import {
+  SparklesIcon as SparklesSolid,
+  UserCircleIcon as UserCircleSolid,
+} from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { ComponentType, SVGProps } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  HiMiniHome,
-  HiOutlineHome,
-  HiOutlineSparkles,
-  HiOutlineUserCircle,
-  HiSparkles,
-  HiUserCircle,
-} from "react-icons/hi2";
-import type { IconType } from "react-icons/lib";
+
+type HeroIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
 type TabKey = "home" | "explore" | "myGroup";
 
@@ -20,8 +24,8 @@ interface TabConfig {
   getHref: (lang: string, aidolId: string) => string;
   matchPath: (pathname: string, lang: string, aidolId: string) => boolean;
   labelKey: string;
-  IconOutline: IconType;
-  IconSolid: IconType;
+  IconOutline: HeroIcon;
+  IconSolid: HeroIcon;
 }
 
 const tabs: TabConfig[] = [
@@ -30,8 +34,8 @@ const tabs: TabConfig[] = [
     getHref: (lang) => `/${lang}/aidols`,
     matchPath: (pathname, lang) => pathname === `/${lang}/aidols`,
     labelKey: "navigation.home",
-    IconOutline: HiOutlineHome,
-    IconSolid: HiMiniHome,
+    IconOutline: HomeOutline,
+    IconSolid: HomeSolid,
   },
   {
     key: "explore",
@@ -39,8 +43,8 @@ const tabs: TabConfig[] = [
     matchPath: (pathname, lang, aidolId) =>
       pathname.startsWith(`/${lang}/aidols/${aidolId}/casting`),
     labelKey: "navigation.explore",
-    IconOutline: HiOutlineSparkles,
-    IconSolid: HiSparkles,
+    IconOutline: SparklesOutline,
+    IconSolid: SparklesSolid,
   },
   {
     key: "myGroup",
@@ -48,8 +52,8 @@ const tabs: TabConfig[] = [
     matchPath: (pathname, lang) =>
       pathname.startsWith(`/${lang}/aidols/my-group`),
     labelKey: "navigation.myGroup",
-    IconOutline: HiOutlineUserCircle,
-    IconSolid: HiUserCircle,
+    IconOutline: UserCircleOutline,
+    IconSolid: UserCircleSolid,
   },
 ];
 
