@@ -24,18 +24,17 @@ class TestRealImageGenerationAPI(unittest.TestCase):
     """
 
     def setUp(self) -> None:
-        # Check if either GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT is set
-        api_key = os.getenv("GOOGLE_API_KEY")
-        cloud_project = os.getenv("GOOGLE_CLOUD_PROJECT")
+        # GoogleGenAISettings will automatically load from environment variables
+        settings = GoogleGenAISettings()
 
-        if not api_key and not cloud_project:
+        # Check if either GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT is set
+        if not settings.api_key and not settings.cloud_project:
             self.skipTest(
                 "GOOGLE_API_KEY 또는 GOOGLE_CLOUD_PROJECT가 설정되지 않아 "
                 "실제 API 테스트를 건너뜁니다."
             )
 
-        # GoogleGenAISettings will automatically load from environment variables
-        self.service = ImageGenerationService(settings=GoogleGenAISettings())
+        self.service = ImageGenerationService(settings=settings)
 
     def test_generate_image_real_call(self):
         """
