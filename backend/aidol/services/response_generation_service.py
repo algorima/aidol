@@ -6,9 +6,8 @@ Integrators can extend for AUDIO/VIDEO response types.
 
 from __future__ import annotations
 
-from langchain_core.messages import BaseMessage, SystemMessage
-
 from aidol.providers.llm import LLMProvider
+from aidol.providers.llm.messages import LLMMessage, SystemMessage
 from aidol.schemas import ModelSettings
 
 
@@ -51,7 +50,7 @@ class ResponseGenerationService:
         """
         return []
 
-    def generate_response(self, context: list[BaseMessage]) -> str:
+    def generate_response(self, context: list[LLMMessage]) -> str:
         """Generate response from prepared context.
 
         Args:

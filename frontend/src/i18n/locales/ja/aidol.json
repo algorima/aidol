@@ -261,7 +261,11 @@
   "group": {
     "title": "シーズン1 デビュー組",
     "chemistryButton": "メンバー間ケミストリー 💭",
-    "followButton": "フォロー"
+    "followButton": "フォロー",
+    "highlightTab": "ハイライト",
+    "error": {
+      "load": "グループ情報の読み込みに失敗しました"
+    }
   },
   "groupList": {
     "infoBanner": {

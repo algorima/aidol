@@ -261,7 +261,11 @@
   "group": {
     "title": "Season 1 Debut",
     "chemistryButton": "Member Chemistry 💭",
-    "followButton": "Follow"
+    "followButton": "Follow",
+    "highlightTab": "Highlights",
+    "error": {
+      "load": "Failed to load group information"
+    }
   },
   "groupList": {
     "infoBanner": {

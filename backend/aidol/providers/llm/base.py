@@ -1,8 +1,8 @@
 """LLM Provider Protocol for AIdol.
 
 This module defines the LLMProvider Protocol for platform-agnostic LLM integration.
-Implementations can use any LLM SDK (LangChain, LiteLLM, direct API calls, etc.).
-Uses LangChain message types for type safety in the interface.
+Implementations can use any LLM SDK (LiteLLM, direct API calls, etc.).
+Uses custom LLMMessage types for type safety in the interface.
 """
 
 # pylint: disable=unnecessary-ellipsis,redundant-returns-doc
@@ -13,8 +13,8 @@ from collections.abc import Sequence
 from typing import Protocol
 
 import litellm
-from langchain_core.messages import BaseMessage
 
+from aidol.providers.llm.messages import LLMMessage
 from aidol.schemas import ModelSettings
 
 
@@ -69,11 +69,10 @@ class LLMProvider(ProviderConstraints, Protocol):
     Implementations are free to use any underlying SDK.
 
     Example implementations:
-    - LangChain wrapper (for LangChain-based integrators)
     - LiteLLM direct calls (for standalone aidol)
     - Direct API calls (for custom integrations)
 
-    Uses LangChain message types for type safety in the interface.
+    Uses custom LLMMessage types for type safety in the interface.
     """
 
     @property
@@ -106,14 +105,14 @@ class LLMProvider(ProviderConstraints, Protocol):
     def completion(
         self,
         model_settings: ModelSettings,
-        messages: Sequence[BaseMessage],
+        messages: Sequence[LLMMessage],
         response_format: dict[str, str] | None = None,
     ) -> str:
         """Generate completion from messages.
 
         Args:
             model_settings: Model configuration (model name, temperature, etc.)
-            messages: LangChain messages (BaseMessage).
+            messages: LLM messages (LLMMessage subclasses).
             response_format: Optional response format specification.
                 Example: {"type": "json_object"}
                 Note: Not all providers support this (e.g., Anthropic ignores it).
