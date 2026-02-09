@@ -43,7 +43,7 @@ jobs:
         run: make type-check
         working-directory: backend
 
-      - name: Run Tests
+      - name: Run Unit Tests
         run: make unit-test
         working-directory: backend
 
