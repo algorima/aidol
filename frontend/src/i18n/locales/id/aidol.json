@@ -255,7 +255,11 @@
   "group": {
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
-    "followButton": "Ikuti"
+    "followButton": "Ikuti",
+    "highlightTab": "Sorotan",
+    "error": {
+      "load": "Gagal memuat informasi grup"
+    }
   },
   "groupList": {
     "infoBanner": {

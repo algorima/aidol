@@ -27,7 +27,7 @@ export function HighlightCard({
     >
       <Image src={imageUrl} alt={title} fill className="object-cover" />
 
-      <div className="from-neutral absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t to-transparent opacity-60" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
 
       <div className="absolute inset-x-4 bottom-4 z-10">
         <span className="text-headline-m text-neutral-content line-clamp-2">
