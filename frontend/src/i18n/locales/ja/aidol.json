@@ -255,7 +255,22 @@
   "group": {
     "title": "シーズン1 デビュー組",
     "chemistryButton": "メンバー間ケミストリー 💭",
-    "followButton": "フォロー"
+    "followButton": "フォロー",
+    "highlightTab": "ハイライト",
+    "follow": {
+      "header": "フォロー",
+      "title": "{{name}}メンバーたちの\nリアルなストーリーをお届けします！",
+      "previewMessage": "ヒョンにそんな言い方したらダメじゃない？",
+      "emailPlaceholder": "メールアドレスを入力してください",
+      "submit": "フォローして最新情報を受け取る ✨",
+      "submitting": "登録中...",
+      "success": "フォローが完了しました！",
+      "error": "フォローに失敗しました。もう一度お試しください。",
+      "loadError": "グループ情報の読み込みに失敗しました"
+    },
+    "error": {
+      "load": "グループ情報の読み込みに失敗しました"
+    }
   },
   "chemistry": {
     "header": "メンバー間ケミストリー",

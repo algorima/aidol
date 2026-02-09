@@ -12,7 +12,6 @@ from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings, OpenAIAPISettings
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from humps import camelize
-from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -23,6 +22,7 @@ from aidol.protocols import (
     CompanionRepositoryFactoryProtocol,
 )
 from aidol.providers.llm import OpenAILLMProvider
+from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
@@ -57,17 +57,16 @@ class GenerateResponse(BaseModel):
     content: str = Field(..., description="AI response content")
 
 
-def _to_langchain_messages(messages: list[Message]) -> list[BaseMessage]:
-    """
-    Convert Message schemas to LangChain BaseMessage format.
+def _to_llm_messages(messages: list[Message]) -> list[LLMMessage]:
+    """Convert Message schemas to LLMMessage format.
 
     Args:
         messages: List of Message from repository.
 
     Returns:
-        List of LangChain BaseMessage (HumanMessage or AIMessage).
+        List of LLMMessage (HumanMessage or AIMessage).
     """
-    result: list[BaseMessage] = []
+    result: list[LLMMessage] = []
     for msg in messages:
         if msg.sender_type == SenderType.USER:
             result.append(HumanMessage(content=msg.content))
@@ -254,9 +253,9 @@ class ChatroomRouter(
                 offset=0,
             )
 
-            # Convert to LangChain BaseMessage format
+            # Convert to LLMMessage format
             # Reverse: DB returns newest-first, LLM needs chronological order
-            langchain_messages = _to_langchain_messages(list(reversed(messages)))
+            llm_messages = _to_llm_messages(list(reversed(messages)))
 
             # Create persona from companion (KST fixed for MVP)
             persona = Persona(
@@ -272,7 +271,7 @@ class ChatroomRouter(
                 MessageContextBuilder(provider, persona)
                 .with_persona()
                 .with_real_time_context()
-                .with_current_conversation(langchain_messages)
+                .with_current_conversation(llm_messages)
                 .build()
             )
             service = ResponseGenerationService(provider, model_settings)

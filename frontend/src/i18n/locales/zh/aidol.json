@@ -255,7 +255,22 @@
   "group": {
     "title": "第一季出道组",
     "chemistryButton": "成员间默契 💭",
-    "followButton": "关注"
+    "followButton": "关注",
+    "highlightTab": "精彩集锦",
+    "follow": {
+      "header": "关注",
+      "title": "我们会向您发送\n{{name}}成员们的真实故事！",
+      "previewMessage": "你不应该那样跟哥哥说话吧？",
+      "emailPlaceholder": "请输入您的邮箱",
+      "submit": "关注并接收动态 ✨",
+      "submitting": "订阅中...",
+      "success": "关注成功！",
+      "error": "关注失败，请重试。",
+      "loadError": "加载群组信息失败"
+    },
+    "error": {
+      "load": "加载群组信息失败"
+    }
   },
   "chemistry": {
     "header": "成员间默契",

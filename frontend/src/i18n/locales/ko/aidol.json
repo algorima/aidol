@@ -246,7 +246,22 @@
   "group": {
     "title": "시즌1 데뷔조",
     "chemistryButton": "멤버 간 케미 💭",
-    "followButton": "팔로우"
+    "followButton": "팔로우",
+    "highlightTab": "하이라이트",
+    "follow": {
+      "header": "팔로우",
+      "title": "{{name}} 멤버들의\n리얼한 이야기를 보내드려요!",
+      "previewMessage": "형한테 그런식으로 말하면 안되지 않을까?",
+      "emailPlaceholder": "이메일을 입력해주세요",
+      "submit": "팔로잉 하고 소식 받기 ✨",
+      "submitting": "구독 중...",
+      "success": "팔로잉이 완료되었습니다!",
+      "error": "팔로잉에 실패했습니다. 다시 시도해주세요.",
+      "loadError": "그룹 정보를 불러오지 못했습니다"
+    },
+    "error": {
+      "load": "그룹 정보를 불러오지 못했습니다"
+    }
   },
   "chemistry": {
     "header": "멤버 간 케미",
