@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Gagal memuat info grup"
+    }
+  },
   "common": {
     "close": "Tutup"
   },
@@ -236,6 +241,20 @@
       "button": "Selesai Casting"
     }
   },
+  "myGroup": {
+    "header": "Grup Saya",
+    "chatComingSoon": "Chat dengan member segera hadir👋",
+    "settings": "Pengaturan",
+    "highlights": "Sorotan",
+    "empty": {
+      "title": "Belum ada grup",
+      "description": "Buat grup idol AI-mu sendiri!",
+      "cta": "Buat Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Pewawancara"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -250,6 +269,12 @@
     },
     "error": {
       "create": "Gagal memulai."
+    }
+  },
+  "highlight": {
+    "interviewer": "Pewawancara",
+    "error": {
+      "load": "Gagal memuat highlight"
     }
   },
   "group": {

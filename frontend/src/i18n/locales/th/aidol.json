@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "ไม่สามารถโหลดข้อมูลกลุ่ม"
+    }
+  },
   "common": {
     "close": "ปิด"
   },
@@ -236,6 +241,20 @@
       "button": "แคสติ้งเสร็จสิ้น"
     }
   },
+  "myGroup": {
+    "header": "กรุ๊ปของฉัน",
+    "chatComingSoon": "แชทกับสมาชิกเร็วๆ นี้👋",
+    "settings": "ตั้งค่า",
+    "highlights": "ไฮไลท์",
+    "empty": {
+      "title": "ยังไม่มีกรุ๊ป",
+      "description": "สร้างกรุ๊ปไอดอล AI ของคุณเอง!",
+      "cta": "สร้างไอดอล"
+    }
+  },
+  "highlight": {
+    "interviewer": "ผู้สัมภาษณ์"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -250,6 +269,12 @@
     },
     "error": {
       "create": "เริ่มต้นไม่สำเร็จ"
+    }
+  },
+  "highlight": {
+    "interviewer": "ผู้สัมภาษณ์",
+    "error": {
+      "load": "ไม่สามารถโหลดไฮไลท์ได้"
     }
   },
   "group": {

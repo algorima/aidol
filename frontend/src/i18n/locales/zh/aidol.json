@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "无法加载组合信息"
+    }
+  },
   "common": {
     "close": "关闭"
   },
@@ -236,6 +241,20 @@
       "button": "完成选角"
     }
   },
+  "myGroup": {
+    "header": "我的组合",
+    "chatComingSoon": "与成员聊天即将上线👋",
+    "settings": "设置",
+    "highlights": "精彩集锦",
+    "empty": {
+      "title": "还没有创建的组合",
+      "description": "创建属于你的AI偶像组合吧！",
+      "cta": "创建偶像"
+    }
+  },
+  "highlight": {
+    "interviewer": "采访者"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -250,6 +269,12 @@
     },
     "error": {
       "create": "启动失败。"
+    }
+  },
+  "highlight": {
+    "interviewer": "采访者",
+    "error": {
+      "load": "无法加载精彩集锦"
     }
   },
   "group": {

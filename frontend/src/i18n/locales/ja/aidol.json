@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "グループ情報の読み込みに失敗しました"
+    }
+  },
   "common": {
     "close": "閉じる"
   },
@@ -236,6 +241,20 @@
       "button": "キャスティング完了"
     }
   },
+  "myGroup": {
+    "header": "マイグループ",
+    "chatComingSoon": "メンバーとのチャット準備中👋",
+    "settings": "設定",
+    "highlights": "ハイライト",
+    "empty": {
+      "title": "まだグループがありません",
+      "description": "自分だけのAIアイドルグループを作ろう！",
+      "cta": "アイドルを作る"
+    }
+  },
+  "highlight": {
+    "interviewer": "インタビュアー"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -250,6 +269,12 @@
     },
     "error": {
       "create": "開始に失敗しました。"
+    }
+  },
+  "highlight": {
+    "interviewer": "インタビュアー",
+    "error": {
+      "load": "ハイライトの読み込みに失敗しました"
     }
   },
   "group": {

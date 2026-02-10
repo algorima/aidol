@@ -13,6 +13,9 @@ export * from "./creation";
 // Group page components
 export * from "./group";
 
+// Highlight components
+export * from "./highlight";
+
 // Landing page components
 export * from "./landing";
 
