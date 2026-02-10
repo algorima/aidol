@@ -52,8 +52,6 @@ export default function HighlightMessagePage({
           }),
         ]);
 
-        setMessages(messagesData);
-
         const companionMap: Record<
           string,
           { name: string; imageUrl?: string }
@@ -64,6 +62,22 @@ export default function HighlightMessagePage({
             imageUrl: c.profilePictureUrl ?? undefined,
           };
         }
+        const invalid = messagesData.filter(
+          (msg) =>
+            msg.companionId !== null && !(msg.companionId in companionMap),
+        );
+        if (invalid.length > 0) {
+          console.error(
+            "Unknown companionIds:",
+            invalid.map((msg) => msg.companionId),
+          );
+        }
+        setMessages(
+          messagesData.filter(
+            (msg) =>
+              msg.companionId === null || msg.companionId in companionMap,
+          ),
+        );
         setCompanions(companionMap);
       } catch (error) {
         console.error("Failed to fetch highlight messages:", error);

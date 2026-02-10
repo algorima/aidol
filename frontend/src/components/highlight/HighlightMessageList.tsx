@@ -74,14 +74,11 @@ export function HighlightMessageList({
           );
         }
 
-        const companion = companions[message.companionId];
-        if (!companion) return null;
-
         return (
           <CompanionMessage
             key={message.id}
             content={message.content}
-            companion={companion}
+            companion={companions[message.companionId]}
           />
         );
       })}

@@ -108,7 +108,20 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     try {
       const { data: messagesData } =
         await highlightRepository.getMessages(highlightId);
-      setMessages(messagesData);
+      const invalid = messagesData.filter(
+        (msg) => msg.companionId !== null && !(msg.companionId in companions),
+      );
+      if (invalid.length > 0) {
+        console.error(
+          "Unknown companionIds:",
+          invalid.map((msg) => msg.companionId),
+        );
+      }
+      setMessages(
+        messagesData.filter(
+          (msg) => msg.companionId === null || msg.companionId in companions,
+        ),
+      );
     } catch (error) {
       console.error("Failed to fetch highlight messages:", error);
       showToast(t("highlight.error.load"), "error");
