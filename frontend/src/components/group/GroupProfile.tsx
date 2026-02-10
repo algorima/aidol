@@ -1,5 +1,3 @@
-"use client";
-
 import { ShareIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
@@ -7,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { formatDate, getDaysSince } from "@/lib/date";
 
 interface GroupProfileProps {
+  name: string;
   profileImageUrl: string | null;
   createdAt: string;
   onChemistryClick: () => void;
@@ -14,6 +13,7 @@ interface GroupProfileProps {
 }
 
 export function GroupProfile({
+  name,
   profileImageUrl,
   createdAt,
   onChemistryClick,
@@ -28,7 +28,7 @@ export function GroupProfile({
           {profileImageUrl ? (
             <Image
               src={profileImageUrl}
-              alt={t("group.title")}
+              alt={name}
               fill
               className="object-cover"
             />
@@ -39,10 +39,8 @@ export function GroupProfile({
           )}
         </div>
         <div>
-          <p className="text-label-l text-base-content font-bold">
-            {t("group.title")}
-          </p>
-          <p className="text-label-l text-base-content font-bold">
+          <p className="text-label-l text-base-content">{name}</p>
+          <p className="text-label-l text-base-content">
             {formatDate(createdAt)} (D+{getDaysSince(createdAt)})
           </p>
         </div>
@@ -50,7 +48,7 @@ export function GroupProfile({
 
       <div className="flex flex-col gap-2">
         <button
-          className="btn btn-primary text-label-l w-full rounded-lg"
+          className="btn btn-primary text-label-l w-full rounded-lg shadow-[0_0_4px_rgba(0,0,0,0.1)]"
           onClick={onChemistryClick}
         >
           {t("group.chemistryButton")}
@@ -64,7 +62,7 @@ export function GroupProfile({
               {t("group.followButton")}
             </button>
             <button
-              className="btn bg-base-300 text-base-content text-label-l flex-1 rounded-lg"
+              className="btn bg-base-300 text-label-l disabled:bg-base-300 disabled:text-base-content/40 flex-1 rounded-lg"
               disabled
             >
               {t("share")}
@@ -73,7 +71,7 @@ export function GroupProfile({
           </div>
         ) : (
           <button
-            className="btn bg-base-300 text-base-content text-label-l w-full rounded-lg"
+            className="btn bg-base-300 text-label-l disabled:bg-base-300 disabled:text-base-content/40 w-full rounded-lg"
             disabled
           >
             {t("share")}

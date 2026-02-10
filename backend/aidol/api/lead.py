@@ -69,35 +69,17 @@ class LeadRouter(
             ),
         ):
             """Collect email."""
-            email_saved = False
-
-            # 1. Try to associate with AIdol if token is present
-            if anonymous_id:
-                # Reuse session from dependency
+            # 1. Try to associate with AIdol if aidol_id and token are present
+            if request.aidol_id and anonymous_id:
                 aidol_repo = self.aidol_repository_factory.create_repository(db_session)
+                aidol = aidol_repo.get_by_id(request.aidol_id)
 
-                # Find AIdol by anonymous_id
-                # Assuming get_all supports filters
-                items, _ = aidol_repo.get_all(
-                    filters=[
-                        {
-                            "field": "anonymous_id",
-                            "operator": "eq",
-                            "value": anonymous_id,
-                        }
-                    ]
-                )
-
-                if items:
-                    aidol = items[0]
-                    # Update AIdol email
+                if aidol and aidol.anonymous_id == anonymous_id:
                     aidol_repo.update(aidol.id, AIdolUpdate(email=request.email))
-                    email_saved = True
+                    return SingleItemResponse(data=LeadResponse(email=request.email))
 
-            # 2. If not saved as AIdol email, create Lead
-            if not email_saved:
-                lead_repository.create(request)
-
+            # 2. If not associated with AIdol, create a new Lead entry
+            lead_repository.create(request)
             return SingleItemResponse(data=LeadResponse(email=request.email))
 
 

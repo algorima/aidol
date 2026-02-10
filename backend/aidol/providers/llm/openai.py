@@ -1,23 +1,25 @@
 """OpenAI LLM Provider for AIdol standalone.
 
-Default provider implementation using LangChain ChatOpenAI.
+Default provider implementation using LiteLLM.
 Uses aioia-core OpenAIAPISettings for configuration.
 """
 
 from __future__ import annotations
 
 from collections.abc import Sequence
+from dataclasses import asdict
 
+import litellm
 from aioia_core.settings import OpenAIAPISettings
-from langchain_core.messages import BaseMessage
-from langchain_openai import ChatOpenAI
+from litellm.types.utils import Choices, ModelResponse
 
 from aidol.providers.llm.base import lookup_context_window
+from aidol.providers.llm.messages import LLMMessage
 from aidol.schemas import ModelSettings
 
 
 class OpenAILLMProvider:
-    """OpenAI LLM Provider using LangChain.
+    """OpenAI LLM Provider using LiteLLM.
 
     Default implementation for AIdol standalone apps.
     Uses aioia-core OpenAIAPISettings for explicit API key injection.
@@ -54,38 +56,50 @@ class OpenAILLMProvider:
     def completion(
         self,
         model_settings: ModelSettings,
-        messages: Sequence[BaseMessage],
+        messages: Sequence[LLMMessage],
         response_format: dict[str, str] | None = None,
     ) -> str:
-        """Generate completion using ChatOpenAI.
+        """Generate completion using LiteLLM.
 
         Args:
             model_settings: Model configuration (chat_model, temperature, etc.)
-            messages: LangChain messages (BaseMessage).
+            messages: LLM messages (LLMMessage subclasses).
             response_format: Optional response format (e.g., {"type": "json_object"}).
 
         Returns:
             Generated text response.
         """
-        # Build model_kwargs with optional response_format
-        model_kwargs: dict[str, dict[str, str]] = {}
+        # Convert to LiteLLM format using dataclasses.asdict
+        litellm_messages = [asdict(msg) for msg in messages]
+
+        # Build kwargs
+        kwargs: dict = {
+            "model": model_settings.chat_model,
+            "messages": litellm_messages,
+            "temperature": model_settings.temperature,
+            "api_key": self._settings.api_key,
+        }
+
+        # Add optional parameters
+        if model_settings.seed is not None:
+            kwargs["seed"] = model_settings.seed
+        if model_settings.frequency_penalty != 0.0:
+            kwargs["frequency_penalty"] = model_settings.frequency_penalty
         if response_format:
-            model_kwargs["response_format"] = response_format
+            kwargs["response_format"] = response_format
+        if self._settings.organization:
+            kwargs["organization"] = self._settings.organization
 
-        # Initialize ChatOpenAI with model settings and explicit API key injection
-        chat_model = ChatOpenAI(
-            model=model_settings.chat_model,
-            temperature=model_settings.temperature,
-            seed=model_settings.seed,
-            frequency_penalty=model_settings.frequency_penalty,
-            model_kwargs=model_kwargs,
-            openai_api_key=self._settings.api_key,  # type: ignore[arg-type]
-            openai_organization=self._settings.organization,  # type: ignore[arg-type]
-        )
+        # Call LiteLLM (stream=False for non-streaming response)
+        response = litellm.completion(**kwargs, stream=False)
 
-        # Generate response
-        response = chat_model.generate([list(messages)])
-        return response.generations[0][0].text
+        # Invariant: stream=False returns ModelResponse with Choices (LiteLLM contract)
+        assert isinstance(response, ModelResponse)
+        choice = response.choices[0]
+        assert isinstance(choice, Choices)
+        content = choice.message.content
+        assert content is not None
+        return content
 
     def get_context_size(self, model_name: str) -> int:
         """Get maximum context window size for OpenAI model.

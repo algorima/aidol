@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Hindi ma-load ang info ng grupo"
+    }
+  },
   "common": {
     "close": "Isara"
   },
@@ -52,6 +57,9 @@
       "title": "Tapos na ang Casting!",
       "description": "Sumali na ang trainee sa grupo",
       "viewBoard": "Tingnan ang Casting Board"
+    },
+    "error": {
+      "cast": "Nabigong mag-cast"
     }
   },
   "share": "I-share",
@@ -233,6 +241,20 @@
       "button": "Kumpletuhin ang Casting"
     }
   },
+  "myGroup": {
+    "header": "Aking Grupo",
+    "chatComingSoon": "Chat sa mga miyembro, malapit na👋",
+    "settings": "Mga Setting",
+    "highlights": "Mga Highlight",
+    "empty": {
+      "title": "Wala pang grupo",
+      "description": "Gumawa ng sarili mong AI idol group!",
+      "cta": "Gumawa ng Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Tagapanayam"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -249,9 +271,40 @@
       "create": "Hindi masimulan."
     }
   },
+  "highlight": {
+    "interviewer": "Tagapanayam",
+    "error": {
+      "load": "Hindi ma-load ang highlight"
+    }
+  },
   "group": {
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",
-    "followButton": "Sundan"
+    "followButton": "Sundan",
+    "highlightTab": "Mga Highlight",
+    "follow": {
+      "header": "Sundan",
+      "title": "Magpapadala kami ng mga totoong kwento\nmula sa mga miyembro ng {{name}}!",
+      "previewMessage": "Hindi ba dapat mas magalang kang makipag-usap sa hyung mo?",
+      "emailPlaceholder": "Ilagay ang iyong email",
+      "submit": "Sundan at Makatanggap ng Balita ✨",
+      "submitting": "Nagsu-subscribe...",
+      "success": "Sinusundan mo na!",
+      "error": "Hindi ma-follow. Subukan muli.",
+      "loadError": "Hindi na-load ang impormasyon ng grupo"
+    },
+    "error": {
+      "load": "Hindi ma-load ang impormasyon ng grupo"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Humanap ng grupo na gusto mo!",
+      "description": "Ang mga idol character (mukha, boses, video) sa content na ito ay orihinal na virtual character na ginawa ng AI at hindi batay sa totoong tao, kabilang ang mga idol at celebrity."
+    },
+    "memberCount": "{{count}} miyembro",
+    "error": {
+      "load": "Hindi na-load ang listahan ng grupo."
+    }
   }
 }
