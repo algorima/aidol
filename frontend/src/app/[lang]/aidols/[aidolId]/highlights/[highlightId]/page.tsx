@@ -44,7 +44,7 @@ export default function HighlightMessagePage({
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [messagesData, companionsResponse] = await Promise.all([
+        const [{ data: messagesData }, companionsResponse] = await Promise.all([
           highlightRepository.getMessages(highlightId),
           companionRepository.getList({
             filters: [{ field: "aidolId", operator: "eq", value: aidolId }],

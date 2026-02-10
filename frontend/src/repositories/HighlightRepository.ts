@@ -1,5 +1,4 @@
 import { BaseCrudRepository } from "@aioia/core";
-import { z } from "zod";
 
 import type { AIdolHighlight, HighlightMessage } from "../schemas";
 import { aidolHighlightSchema, highlightMessageSchema } from "../schemas";
@@ -11,15 +10,20 @@ export class HighlightRepository extends BaseCrudRepository<AIdolHighlight> {
     return aidolHighlightSchema;
   }
 
-  /**
-   * Get messages from a highlight
-   * GET /aidol-highlights/{id}/messages
-   */
-  async getMessages(highlightId: string): Promise<HighlightMessage[]> {
+  async getByAidolId(aidolId: string) {
+    return this.getList({
+      filters: [{ field: "aidol_id", operator: "eq", value: aidolId }],
+    });
+  }
+
+  async getMessages(
+    highlightId: string,
+    fetchOptions?: RequestInit,
+  ): Promise<{ data: HighlightMessage[] }> {
     const url = this.apiService.buildUrl(
       `${this.resource}/${highlightId}/messages`,
     );
-    const rawResponse = await this.apiService.request(url);
-    return this.validateResponse(rawResponse, z.array(highlightMessageSchema));
+    const raw = await this.apiService.request(url, fetchOptions);
+    return { data: highlightMessageSchema.array().parse(raw) };
   }
 }

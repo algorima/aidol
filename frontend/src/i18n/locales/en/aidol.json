@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Failed to load group info"
+    }
+  },
   "common": {
     "close": "Close"
   },
@@ -236,6 +241,20 @@
       "button": "Complete Casting"
     }
   },
+  "myGroup": {
+    "header": "My Group",
+    "chatComingSoon": "Chat with members coming soon👋",
+    "settings": "Settings",
+    "highlights": "Highlights",
+    "empty": {
+      "title": "No groups yet",
+      "description": "Create your own AI idol group!",
+      "cta": "Create Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Interviewer"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -263,6 +282,17 @@
     "chemistryButton": "Member Chemistry 💭",
     "followButton": "Follow",
     "highlightTab": "Highlights",
+    "follow": {
+      "header": "Follow",
+      "title": "We'll send you real stories\nfrom {{name}} members!",
+      "previewMessage": "Shouldn't you talk to your hyung more respectfully?",
+      "emailPlaceholder": "Enter your email",
+      "submit": "Follow & Get Updates ✨",
+      "submitting": "Subscribing...",
+      "success": "You're now following!",
+      "error": "Failed to follow. Please try again.",
+      "loadError": "Failed to load group information"
+    },
     "error": {
       "load": "Failed to load group information"
     }

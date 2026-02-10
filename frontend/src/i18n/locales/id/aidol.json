@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Gagal memuat info grup"
+    }
+  },
   "common": {
     "close": "Tutup"
   },
@@ -236,6 +241,20 @@
       "button": "Selesai Casting"
     }
   },
+  "myGroup": {
+    "header": "Grup Saya",
+    "chatComingSoon": "Chat dengan member segera hadir👋",
+    "settings": "Pengaturan",
+    "highlights": "Sorotan",
+    "empty": {
+      "title": "Belum ada grup",
+      "description": "Buat grup idol AI-mu sendiri!",
+      "cta": "Buat Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Pewawancara"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -263,6 +282,17 @@
     "chemistryButton": "Kimia Antar Anggota 💭",
     "followButton": "Ikuti",
     "highlightTab": "Sorotan",
+    "follow": {
+      "header": "Ikuti",
+      "title": "Kami akan mengirimkan cerita nyata\ndari anggota {{name}}!",
+      "previewMessage": "Bukankah seharusnya kamu bicara lebih sopan pada hyung?",
+      "emailPlaceholder": "Masukkan email Anda",
+      "submit": "Ikuti & Dapatkan Info ✨",
+      "submitting": "Berlangganan...",
+      "success": "Anda sekarang mengikuti!",
+      "error": "Gagal mengikuti. Silakan coba lagi.",
+      "loadError": "Gagal memuat informasi grup"
+    },
     "error": {
       "load": "Gagal memuat informasi grup"
     }

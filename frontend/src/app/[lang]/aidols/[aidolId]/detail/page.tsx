@@ -106,7 +106,8 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     setSelectedHighlightId(highlightId);
     setIsModalLoading(true);
     try {
-      const messagesData = await highlightRepository.getMessages(highlightId);
+      const { data: messagesData } =
+        await highlightRepository.getMessages(highlightId);
       setMessages(messagesData);
     } catch (error) {
       console.error("Failed to fetch highlight messages:", error);

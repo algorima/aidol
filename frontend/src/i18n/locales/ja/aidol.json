@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "グループ情報の読み込みに失敗しました"
+    }
+  },
   "common": {
     "close": "閉じる"
   },
@@ -236,6 +241,20 @@
       "button": "キャスティング完了"
     }
   },
+  "myGroup": {
+    "header": "マイグループ",
+    "chatComingSoon": "メンバーとのチャット準備中👋",
+    "settings": "設定",
+    "highlights": "ハイライト",
+    "empty": {
+      "title": "まだグループがありません",
+      "description": "自分だけのAIアイドルグループを作ろう！",
+      "cta": "アイドルを作る"
+    }
+  },
+  "highlight": {
+    "interviewer": "インタビュアー"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -263,6 +282,17 @@
     "chemistryButton": "メンバー間ケミストリー 💭",
     "followButton": "フォロー",
     "highlightTab": "ハイライト",
+    "follow": {
+      "header": "フォロー",
+      "title": "{{name}}メンバーたちの\nリアルなストーリーをお届けします！",
+      "previewMessage": "ヒョンにそんな言い方したらダメじゃない？",
+      "emailPlaceholder": "メールアドレスを入力してください",
+      "submit": "フォローして最新情報を受け取る ✨",
+      "submitting": "登録中...",
+      "success": "フォローが完了しました！",
+      "error": "フォローに失敗しました。もう一度お試しください。",
+      "loadError": "グループ情報の読み込みに失敗しました"
+    },
     "error": {
       "load": "グループ情報の読み込みに失敗しました"
     }
