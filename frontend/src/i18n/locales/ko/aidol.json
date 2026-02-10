@@ -262,6 +262,12 @@
       "create": "시작에 실패했습니다."
     }
   },
+  "highlight": {
+    "interviewer": "인터뷰어",
+    "error": {
+      "load": "하이라이트를 불러오지 못했습니다"
+    }
+  },
   "group": {
     "title": "시즌1 데뷔조",
     "chemistryButton": "멤버 간 케미 💭",

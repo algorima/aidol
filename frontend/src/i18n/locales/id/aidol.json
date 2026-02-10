@@ -271,6 +271,12 @@
       "create": "Gagal memulai."
     }
   },
+  "highlight": {
+    "interviewer": "Pewawancara",
+    "error": {
+      "load": "Gagal memuat highlight"
+    }
+  },
   "group": {
     "title": "Debut Musim 1",
     "chemistryButton": "Kimia Antar Anggota 💭",
