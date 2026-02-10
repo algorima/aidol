@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { Card } from "@/components";
 import type { Companion } from "@/schemas/companion";
-import type { CompanionRelationship } from "@/schemas/companionRelationship";
+import type { CompanionRelationship } from "@/schemas/companion-relationship";
 
 interface SelectMemberStepProps {
   companions: Companion[];
@@ -37,7 +37,7 @@ export function SelectMemberStep({
       <div className="grid grid-cols-2 gap-4">
         {companions.map((member) => {
           const relationship = getRelationshipFrom(member.id);
-          const hasRelationship = relationship && relationship.intimacy > 0;
+          const hasRelationship = relationship && (relationship.intimacy ?? 0) > 0;
           const isSelected = member.id === selectedCompanionId;
 
           return (

@@ -1,9 +1,7 @@
 import { BaseCrudRepository } from "@aioia/core";
 
-import {
-  companionRelationshipSchema,
-  type CompanionRelationship,
-} from "@/schemas/companionRelationship";
+import type { CompanionRelationship } from "../schemas";
+import { companionRelationshipSchema } from "../schemas";
 
 export class CompanionRelationshipRepository extends BaseCrudRepository<CompanionRelationship> {
   readonly resource = "companion-relationships";

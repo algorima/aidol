@@ -278,6 +278,12 @@
       "create": "Hindi masimulan."
     }
   },
+  "highlight": {
+    "interviewer": "Tagapanayam",
+    "error": {
+      "load": "Hindi ma-load ang highlight"
+    }
+  },
   "group": {
     "title": "Season 1 Debut",
     "chemistryButton": "Chemistry ng mga Miyembro 💭",

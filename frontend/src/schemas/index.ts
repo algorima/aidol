@@ -36,6 +36,13 @@ export type {
   Position,
 } from "./companion";
 
+// Companion Relationship schemas
+export { companionRelationshipSchema } from "./companion-relationship";
+export type {
+  CompanionRelationship,
+  CompanionRelationshipCreate,
+} from "./companion-relationship";
+
 // Highlight schemas
 export { aidolHighlightSchema, highlightMessageSchema } from "./highlight";
 export type {
@@ -43,10 +50,6 @@ export type {
   HighlightMessage,
   MyGroupHighlightSection,
 } from "./highlight";
-
-// Companion Relationship schemas
-export { companionRelationshipSchema } from "./companionRelationship";
-export type { CompanionRelationship } from "./companionRelationship";
 
 // Lead schemas
 export { leadResponseSchema } from "./lead";

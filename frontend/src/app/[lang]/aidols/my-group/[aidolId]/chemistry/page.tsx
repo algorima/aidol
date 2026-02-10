@@ -22,7 +22,7 @@ import {
   CompanionRepository,
 } from "@/repositories";
 import type { Companion } from "@/schemas/companion";
-import type { CompanionRelationship } from "@/schemas/companionRelationship";
+import type { CompanionRelationship } from "@/schemas/companion-relationship";
 import { getApiService } from "@/services/ApiService";
 
 interface GroupChemistryPageProps {
@@ -235,7 +235,7 @@ export default function GroupChemistryPage({
                   if (!customRel) return null;
 
                   const relationshipType = getRelationshipType(
-                    customRel.intimacy,
+                    customRel.intimacy ?? 0,
                   );
                   return (
                     <ChemistryRelationCard

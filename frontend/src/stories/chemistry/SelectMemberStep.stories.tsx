@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { SelectMemberStep } from "@/components/chemistry/SelectMemberStep";
 import type { Companion } from "@/schemas/companion";
-import type { CompanionRelationship } from "@/schemas/companionRelationship";
+import type { CompanionRelationship } from "@/schemas/companion-relationship";
 
 const MOCK_COMPANIONS: Companion[] = [
   {

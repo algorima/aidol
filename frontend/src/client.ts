@@ -71,6 +71,9 @@ export { PositionSelector } from "./components/position";
 // Newsletter components
 export { NewsletterForm } from "./components/newsletter/NewsletterForm";
 
+// Highlight components
+export { HighlightMessageList } from "./components/highlight";
+
 // Shared components
 export { Header } from "./components/Header";
 export { Loading } from "./components/Loading";

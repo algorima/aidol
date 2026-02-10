@@ -19,7 +19,7 @@ import {
   CompanionRepository,
 } from "@/repositories";
 import type { Companion } from "@/schemas/companion";
-import type { CompanionRelationship } from "@/schemas/companionRelationship";
+import type { CompanionRelationship } from "@/schemas/companion-relationship";
 import { getApiService } from "@/services/ApiService";
 
 interface AddRelationshipPageProps {

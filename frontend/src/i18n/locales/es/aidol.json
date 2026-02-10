@@ -278,6 +278,12 @@
       "create": "No se pudo iniciar."
     }
   },
+  "highlight": {
+    "interviewer": "Entrevistador",
+    "error": {
+      "load": "Error al cargar el destacado"
+    }
+  },
   "group": {
     "title": "Debut Temporada 1",
     "chemistryButton": "Química entre Miembros 💭",
