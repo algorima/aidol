@@ -31,8 +31,9 @@ interface TabConfig {
 const tabs: TabConfig[] = [
   {
     key: "home",
-    getHref: (lang) => `/${lang}/aidols`,
-    matchPath: (pathname, lang) => pathname === `/${lang}/aidols`,
+    getHref: (lang, aidolId) => `/${lang}/aidols/${aidolId}/home`,
+    matchPath: (pathname, lang, aidolId) =>
+      pathname === `/${lang}/aidols/${aidolId}/home`,
     labelKey: "navigation.home",
     IconOutline: HomeOutline,
     IconSolid: HomeSolid,

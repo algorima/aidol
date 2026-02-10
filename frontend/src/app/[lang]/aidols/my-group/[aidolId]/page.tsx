@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import {
   ChatTooltipButton,
   GroupDropdown,
@@ -184,6 +185,7 @@ export default function GroupPage() {
       <div className="bg-base-100 text-base-content flex flex-1 flex-col">
         {selectedGroup && (
           <GroupProfile
+            name={selectedGroup.name ?? ""}
             profileImageUrl={selectedGroup.profileImageUrl}
             createdAt={selectedGroup.createdAt}
             onChemistryClick={() =>
@@ -219,6 +221,8 @@ export default function GroupPage() {
           ))}
         </div>
       </div>
+
+      <BottomNavigation aidolId={params.aidolId} lang={params.lang} />
 
       <HighlightDetailModal
         isOpen={isModalOpen}

@@ -7,6 +7,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import type { GenderTab } from "@/components/casting";
 import {
   CastingCardGrid,
@@ -158,6 +159,8 @@ export default function CastingPage({ params }: CastingPageProps) {
           <SquaresPlusIcon className="text-neutral-content size-6" />
         </button>
       </div>
+
+      <BottomNavigation aidolId={aidolId} lang={lang} />
 
       {selectedCompanion && (
         <Modal
