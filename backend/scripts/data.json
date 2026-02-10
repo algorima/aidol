@@ -1,0 +1,3457 @@
+{
+  "aidols": [
+    {
+      "id": "aidol-1",
+      "name": "NØVAIR",
+      "email": null,
+      "greeting": "우리가 새로운 바람이야!",
+      "concept": "자유로운 영혼의 보이그룹",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-2",
+      "name": "DAYFRAME",
+      "email": null,
+      "greeting": "매일이 한 프레임처럼!",
+      "concept": "일상 속 특별함을 담는 그룹",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-3",
+      "name": "RIFT",
+      "email": null,
+      "greeting": "균열 속에서 빛나는 우리!",
+      "concept": "강렬한 퍼포먼스 그룹",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-4",
+      "name": "LUMIÉRA",
+      "email": null,
+      "greeting": "빛나는 순간을 함께!",
+      "concept": "감성적인 걸그룹",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-5",
+      "name": "P!NKSHIFT",
+      "email": null,
+      "greeting": "세상을 핑크빛으로!",
+      "concept": "걸크러시 콘셉트",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-6",
+      "name": "ECLIPSE°",
+      "email": null,
+      "greeting": "어둠 속 한 줄기 빛!",
+      "concept": "미스터리 콘셉트",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-7",
+      "name": "OFFSET",
+      "email": null,
+      "greeting": "다르니까 완벽해!",
+      "concept": "다양성의 혼성그룹",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-8",
+      "name": "NEUTRALIZE",
+      "email": null,
+      "greeting": "경계를 넘어서!",
+      "concept": "장르 파괴 혼성그룹",
+      "profileImageUrl": null,
+      "anonymousId": null
+    },
+    {
+      "id": "aidol-9",
+      "name": "COMMON ROOM",
+      "email": null,
+      "greeting": "우리의 공간에 오신 걸 환영해!",
+      "concept": "편안한 분위기의 혼성그룹",
+      "profileImageUrl": null,
+      "anonymousId": null
+    }
+  ],
+  "companions": [
+    {
+      "id": "companion-1",
+      "aidolId": "aidol-1",
+      "name": "레온",
+      "gender": "male",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 3,
+      "mbtiPerception": 7,
+      "mbtiJudgment": 4,
+      "mbtiLifestyle": 8,
+      "vocal": 85,
+      "dance": 78,
+      "rap": 70,
+      "visual": 88,
+      "stamina": 75,
+      "charm": 90,
+      "status": "published"
+    },
+    {
+      "id": "companion-2",
+      "aidolId": "aidol-1",
+      "name": "주아",
+      "gender": "male",
+      "grade": "A",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 7,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 6,
+      "mbtiLifestyle": 3,
+      "vocal": 95,
+      "dance": 65,
+      "rap": 50,
+      "visual": 80,
+      "stamina": 70,
+      "charm": 85,
+      "status": "published"
+    },
+    {
+      "id": "companion-3",
+      "aidolId": "aidol-1",
+      "name": "케인",
+      "gender": "male",
+      "grade": "B",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 4,
+      "mbtiPerception": 6,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 7,
+      "vocal": 60,
+      "dance": 95,
+      "rap": 55,
+      "visual": 82,
+      "stamina": 85,
+      "charm": 78,
+      "status": "published"
+    },
+    {
+      "id": "companion-4",
+      "aidolId": "aidol-1",
+      "name": "로엔",
+      "gender": "male",
+      "grade": "B",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 4,
+      "vocal": 75,
+      "dance": 70,
+      "rap": 45,
+      "visual": 90,
+      "stamina": 60,
+      "charm": 82,
+      "status": "published"
+    },
+    {
+      "id": "companion-5",
+      "aidolId": "aidol-1",
+      "name": "엘릭",
+      "gender": "male",
+      "grade": "C",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 6,
+      "mbtiPerception": 5,
+      "mbtiJudgment": 5,
+      "mbtiLifestyle": 6,
+      "vocal": 70,
+      "dance": 72,
+      "rap": 60,
+      "visual": 85,
+      "stamina": 80,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-6",
+      "aidolId": "aidol-2",
+      "name": "미노",
+      "gender": "male",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 2,
+      "mbtiPerception": 8,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 7,
+      "vocal": 80,
+      "dance": 82,
+      "rap": 75,
+      "visual": 85,
+      "stamina": 78,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-7",
+      "aidolId": "aidol-2",
+      "name": "테온",
+      "gender": "male",
+      "grade": "A",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 5,
+      "mbtiPerception": 5,
+      "mbtiJudgment": 4,
+      "mbtiLifestyle": 6,
+      "vocal": 65,
+      "dance": 95,
+      "rap": 60,
+      "visual": 80,
+      "stamina": 90,
+      "charm": 75,
+      "status": "published"
+    },
+    {
+      "id": "companion-8",
+      "aidolId": "aidol-2",
+      "name": "지아",
+      "gender": "male",
+      "grade": "B",
+      "position": "mainRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 3,
+      "mbtiPerception": 7,
+      "mbtiJudgment": 2,
+      "mbtiLifestyle": 8,
+      "vocal": 55,
+      "dance": 70,
+      "rap": 95,
+      "visual": 78,
+      "stamina": 82,
+      "charm": 80,
+      "status": "published"
+    },
+    {
+      "id": "companion-9",
+      "aidolId": "aidol-2",
+      "name": "아론",
+      "gender": "male",
+      "grade": "B",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 7,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 6,
+      "mbtiLifestyle": 3,
+      "vocal": 78,
+      "dance": 68,
+      "rap": 50,
+      "visual": 88,
+      "stamina": 65,
+      "charm": 85,
+      "status": "published"
+    },
+    {
+      "id": "companion-10",
+      "aidolId": "aidol-2",
+      "name": "하엔",
+      "gender": "male",
+      "grade": "C",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 8,
+      "mbtiLifestyle": 2,
+      "vocal": 72,
+      "dance": 75,
+      "rap": 55,
+      "visual": 82,
+      "stamina": 70,
+      "charm": 90,
+      "status": "published"
+    },
+    {
+      "id": "companion-11",
+      "aidolId": "aidol-3",
+      "name": "제하",
+      "gender": "male",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 4,
+      "mbtiPerception": 6,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 7,
+      "vocal": 82,
+      "dance": 88,
+      "rap": 70,
+      "visual": 85,
+      "stamina": 80,
+      "charm": 86,
+      "status": "published"
+    },
+    {
+      "id": "companion-12",
+      "aidolId": "aidol-3",
+      "name": "잭스",
+      "gender": "male",
+      "grade": "A",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 2,
+      "mbtiPerception": 8,
+      "mbtiJudgment": 4,
+      "mbtiLifestyle": 6,
+      "vocal": 60,
+      "dance": 95,
+      "rap": 65,
+      "visual": 80,
+      "stamina": 90,
+      "charm": 78,
+      "status": "published"
+    },
+    {
+      "id": "companion-13",
+      "aidolId": "aidol-3",
+      "name": "우린",
+      "gender": "male",
+      "grade": "B",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 7,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 4,
+      "vocal": 92,
+      "dance": 65,
+      "rap": 50,
+      "visual": 78,
+      "stamina": 68,
+      "charm": 82,
+      "status": "published"
+    },
+    {
+      "id": "companion-14",
+      "aidolId": "aidol-3",
+      "name": "블루",
+      "gender": "male",
+      "grade": "B",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 8,
+      "mbtiLifestyle": 3,
+      "vocal": 75,
+      "dance": 72,
+      "rap": 58,
+      "visual": 88,
+      "stamina": 65,
+      "charm": 90,
+      "status": "published"
+    },
+    {
+      "id": "companion-15",
+      "aidolId": "aidol-4",
+      "name": "아레",
+      "gender": "female",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 3,
+      "mbtiPerception": 7,
+      "mbtiJudgment": 5,
+      "mbtiLifestyle": 5,
+      "vocal": 85,
+      "dance": 80,
+      "rap": 60,
+      "visual": 90,
+      "stamina": 75,
+      "charm": 92,
+      "status": "published"
+    },
+    {
+      "id": "companion-16",
+      "aidolId": "aidol-4",
+      "name": "셀라",
+      "gender": "female",
+      "grade": "A",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 6,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 3,
+      "vocal": 95,
+      "dance": 62,
+      "rap": 48,
+      "visual": 85,
+      "stamina": 68,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-17",
+      "aidolId": "aidol-4",
+      "name": "유에",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 4,
+      "mbtiPerception": 6,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 7,
+      "vocal": 70,
+      "dance": 92,
+      "rap": 55,
+      "visual": 82,
+      "stamina": 85,
+      "charm": 80,
+      "status": "published"
+    },
+    {
+      "id": "companion-18",
+      "aidolId": "aidol-4",
+      "name": "미르",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 2,
+      "mbtiPerception": 8,
+      "mbtiJudgment": 2,
+      "mbtiLifestyle": 8,
+      "vocal": 58,
+      "dance": 75,
+      "rap": 90,
+      "visual": 80,
+      "stamina": 78,
+      "charm": 82,
+      "status": "published"
+    },
+    {
+      "id": "companion-19",
+      "aidolId": "aidol-4",
+      "name": "아이",
+      "gender": "female",
+      "grade": "C",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 8,
+      "mbtiLifestyle": 2,
+      "vocal": 78,
+      "dance": 70,
+      "rap": 45,
+      "visual": 88,
+      "stamina": 62,
+      "charm": 92,
+      "status": "published"
+    },
+    {
+      "id": "companion-20",
+      "aidolId": "aidol-5",
+      "name": "제인",
+      "gender": "female",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 3,
+      "mbtiPerception": 6,
+      "mbtiJudgment": 4,
+      "mbtiLifestyle": 7,
+      "vocal": 82,
+      "dance": 85,
+      "rap": 68,
+      "visual": 88,
+      "stamina": 80,
+      "charm": 86,
+      "status": "published"
+    },
+    {
+      "id": "companion-21",
+      "aidolId": "aidol-5",
+      "name": "루아",
+      "gender": "female",
+      "grade": "A",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 5,
+      "mbtiPerception": 5,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 7,
+      "vocal": 93,
+      "dance": 60,
+      "rap": 52,
+      "visual": 82,
+      "stamina": 72,
+      "charm": 85,
+      "status": "published"
+    },
+    {
+      "id": "companion-22",
+      "aidolId": "aidol-5",
+      "name": "린린",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 7,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 6,
+      "mbtiLifestyle": 4,
+      "vocal": 65,
+      "dance": 92,
+      "rap": 58,
+      "visual": 85,
+      "stamina": 88,
+      "charm": 80,
+      "status": "published"
+    },
+    {
+      "id": "companion-23",
+      "aidolId": "aidol-5",
+      "name": "록시",
+      "gender": "female",
+      "grade": "B",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 3,
+      "vocal": 72,
+      "dance": 78,
+      "rap": 55,
+      "visual": 90,
+      "stamina": 65,
+      "charm": 92,
+      "status": "published"
+    },
+    {
+      "id": "companion-24",
+      "aidolId": "aidol-6",
+      "name": "세린",
+      "gender": "female",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 4,
+      "mbtiPerception": 7,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 6,
+      "vocal": 80,
+      "dance": 82,
+      "rap": 65,
+      "visual": 88,
+      "stamina": 78,
+      "charm": 85,
+      "status": "published"
+    },
+    {
+      "id": "companion-25",
+      "aidolId": "aidol-6",
+      "name": "베인",
+      "gender": "female",
+      "grade": "A",
+      "position": "mainRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 2,
+      "mbtiPerception": 8,
+      "mbtiJudgment": 2,
+      "mbtiLifestyle": 8,
+      "vocal": 55,
+      "dance": 78,
+      "rap": 92,
+      "visual": 82,
+      "stamina": 85,
+      "charm": 80,
+      "status": "published"
+    },
+    {
+      "id": "companion-26",
+      "aidolId": "aidol-6",
+      "name": "슈아",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 6,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 4,
+      "vocal": 92,
+      "dance": 68,
+      "rap": 48,
+      "visual": 80,
+      "stamina": 65,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-27",
+      "aidolId": "aidol-6",
+      "name": "아리",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 7,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 5,
+      "mbtiLifestyle": 5,
+      "vocal": 65,
+      "dance": 90,
+      "rap": 55,
+      "visual": 85,
+      "stamina": 82,
+      "charm": 78,
+      "status": "published"
+    },
+    {
+      "id": "companion-28",
+      "aidolId": "aidol-7",
+      "name": "준",
+      "gender": "male",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 3,
+      "mbtiPerception": 6,
+      "mbtiJudgment": 4,
+      "mbtiLifestyle": 7,
+      "vocal": 78,
+      "dance": 85,
+      "rap": 72,
+      "visual": 82,
+      "stamina": 80,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-29",
+      "aidolId": "aidol-7",
+      "name": "레오",
+      "gender": "male",
+      "grade": "A",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 2,
+      "mbtiPerception": 8,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 7,
+      "vocal": 60,
+      "dance": 95,
+      "rap": 58,
+      "visual": 85,
+      "stamina": 92,
+      "charm": 78,
+      "status": "published"
+    },
+    {
+      "id": "companion-30",
+      "aidolId": "aidol-7",
+      "name": "애시",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 3,
+      "vocal": 90,
+      "dance": 62,
+      "rap": 50,
+      "visual": 80,
+      "stamina": 60,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-31",
+      "aidolId": "aidol-7",
+      "name": "유",
+      "gender": "female",
+      "grade": "B",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 6,
+      "mbtiPerception": 5,
+      "mbtiJudgment": 6,
+      "mbtiLifestyle": 4,
+      "vocal": 80,
+      "dance": 70,
+      "rap": 55,
+      "visual": 85,
+      "stamina": 68,
+      "charm": 82,
+      "status": "published"
+    },
+    {
+      "id": "companion-32",
+      "aidolId": "aidol-7",
+      "name": "레인",
+      "gender": "male",
+      "grade": "C",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 7,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 8,
+      "mbtiLifestyle": 2,
+      "vocal": 72,
+      "dance": 75,
+      "rap": 60,
+      "visual": 88,
+      "stamina": 72,
+      "charm": 90,
+      "status": "published"
+    },
+    {
+      "id": "companion-33",
+      "aidolId": "aidol-8",
+      "name": "알렌",
+      "gender": "male",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 5,
+      "mbtiPerception": 5,
+      "mbtiJudgment": 5,
+      "mbtiLifestyle": 5,
+      "vocal": 82,
+      "dance": 80,
+      "rap": 70,
+      "visual": 85,
+      "stamina": 78,
+      "charm": 86,
+      "status": "published"
+    },
+    {
+      "id": "companion-34",
+      "aidolId": "aidol-8",
+      "name": "미하",
+      "gender": "female",
+      "grade": "A",
+      "position": "mainRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 2,
+      "mbtiPerception": 7,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 8,
+      "vocal": 58,
+      "dance": 75,
+      "rap": 92,
+      "visual": 80,
+      "stamina": 85,
+      "charm": 82,
+      "status": "published"
+    },
+    {
+      "id": "companion-35",
+      "aidolId": "aidol-8",
+      "name": "소린",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 7,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 3,
+      "vocal": 90,
+      "dance": 65,
+      "rap": 50,
+      "visual": 82,
+      "stamina": 68,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-36",
+      "aidolId": "aidol-8",
+      "name": "앤",
+      "gender": "male",
+      "grade": "B",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 6,
+      "mbtiLifestyle": 4,
+      "vocal": 75,
+      "dance": 72,
+      "rap": 62,
+      "visual": 88,
+      "stamina": 70,
+      "charm": 90,
+      "status": "published"
+    },
+    {
+      "id": "companion-37",
+      "aidolId": "aidol-9",
+      "name": "지노",
+      "gender": "male",
+      "grade": "A",
+      "position": "subVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 3,
+      "mbtiPerception": 7,
+      "mbtiJudgment": 4,
+      "mbtiLifestyle": 6,
+      "vocal": 80,
+      "dance": 82,
+      "rap": 68,
+      "visual": 85,
+      "stamina": 78,
+      "charm": 88,
+      "status": "published"
+    },
+    {
+      "id": "companion-38",
+      "aidolId": "aidol-9",
+      "name": "민유",
+      "gender": "male",
+      "grade": "A",
+      "position": "mainVocal",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 6,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 6,
+      "mbtiLifestyle": 4,
+      "vocal": 92,
+      "dance": 60,
+      "rap": 52,
+      "visual": 80,
+      "stamina": 65,
+      "charm": 85,
+      "status": "published"
+    },
+    {
+      "id": "companion-39",
+      "aidolId": "aidol-9",
+      "name": "미츠",
+      "gender": "female",
+      "grade": "B",
+      "position": "mainDancer",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 4,
+      "mbtiPerception": 6,
+      "mbtiJudgment": 3,
+      "mbtiLifestyle": 7,
+      "vocal": 65,
+      "dance": 90,
+      "rap": 58,
+      "visual": 82,
+      "stamina": 85,
+      "charm": 80,
+      "status": "published"
+    },
+    {
+      "id": "companion-40",
+      "aidolId": "aidol-9",
+      "name": "로아",
+      "gender": "female",
+      "grade": "B",
+      "position": "subRapper",
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 8,
+      "mbtiPerception": 3,
+      "mbtiJudgment": 8,
+      "mbtiLifestyle": 2,
+      "vocal": 72,
+      "dance": 75,
+      "rap": 55,
+      "visual": 90,
+      "stamina": 68,
+      "charm": 92,
+      "status": "published"
+    },
+    {
+      "id": "companion-41",
+      "aidolId": null,
+      "name": "하율",
+      "gender": "male",
+      "grade": "C",
+      "position": null,
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 5,
+      "mbtiPerception": 5,
+      "mbtiJudgment": 5,
+      "mbtiLifestyle": 5,
+      "vocal": 60,
+      "dance": 65,
+      "rap": 55,
+      "visual": 70,
+      "stamina": 68,
+      "charm": 72,
+      "status": "published"
+    },
+    {
+      "id": "companion-42",
+      "aidolId": null,
+      "name": "소하",
+      "gender": "female",
+      "grade": "F",
+      "position": null,
+      "biography": null,
+      "profilePictureUrl": null,
+      "systemPrompt": null,
+      "mbtiEnergy": 6,
+      "mbtiPerception": 4,
+      "mbtiJudgment": 7,
+      "mbtiLifestyle": 3,
+      "vocal": 55,
+      "dance": 58,
+      "rap": 50,
+      "visual": 75,
+      "stamina": 60,
+      "charm": 68,
+      "status": "published"
+    }
+  ],
+  "aidol_highlights": [
+    {
+      "id": "highlight-14",
+      "aidolId": "aidol-1",
+      "title": "하루만에 마스터",
+      "thumbnailUrl": null,
+      "subtitle": "저글링 도전 - 시작"
+    },
+    {
+      "id": "highlight-13",
+      "aidolId": "aidol-1",
+      "title": "레벨업 챌린지",
+      "thumbnailUrl": null,
+      "subtitle": "바리스타 도전 - 초급 테스트"
+    },
+    {
+      "id": "highlight-5",
+      "aidolId": "aidol-2",
+      "title": "떴다! OOO",
+      "thumbnailUrl": null,
+      "subtitle": "노량진 수산시장 도착"
+    },
+    {
+      "id": "highlight-10",
+      "aidolId": "aidol-2",
+      "title": "미스터리 나잇",
+      "thumbnailUrl": null,
+      "subtitle": "폐교 진입"
+    },
+    {
+      "id": "highlight-6",
+      "aidolId": "aidol-3",
+      "title": "본격 수다타임",
+      "thumbnailUrl": null,
+      "subtitle": "밸런스 게임: 연애 vs 우정"
+    },
+    {
+      "id": "highlight-8",
+      "aidolId": "aidol-3",
+      "title": "히든루트",
+      "thumbnailUrl": null,
+      "subtitle": "힌트 해독 중"
+    },
+    {
+      "id": "highlight-17",
+      "aidolId": "aidol-4",
+      "title": "퇴근 후 일상",
+      "thumbnailUrl": null,
+      "subtitle": "콘서트 후 숙소"
+    },
+    {
+      "id": "highlight-7",
+      "aidolId": "aidol-4",
+      "title": "어디까지 가봤니",
+      "thumbnailUrl": null,
+      "subtitle": "교통 룰렛"
+    },
+    {
+      "id": "highlight-11",
+      "aidolId": "aidol-5",
+      "title": "범인은 이 안에",
+      "thumbnailUrl": null,
+      "subtitle": "역할 배정 후"
+    },
+    {
+      "id": "highlight-16",
+      "aidolId": "aidol-5",
+      "title": "멤버네컷",
+      "thumbnailUrl": null,
+      "subtitle": "제인 편 - 키워드 '과거'"
+    },
+    {
+      "id": "highlight-2",
+      "aidolId": "aidol-6",
+      "title": "올인원",
+      "thumbnailUrl": null,
+      "subtitle": "100인분 비빔밥 미션 공개"
+    },
+    {
+      "id": "highlight-12",
+      "aidolId": "aidol-6",
+      "title": "탈출하라 24시",
+      "thumbnailUrl": null,
+      "subtitle": "첫 번째 퍼즐"
+    },
+    {
+      "id": "highlight-3",
+      "aidolId": "aidol-7",
+      "title": "런앤헌트",
+      "thumbnailUrl": null,
+      "subtitle": "헌터 지정 순간"
+    },
+    {
+      "id": "highlight-15",
+      "aidolId": "aidol-7",
+      "title": "극한직업 아이돌",
+      "thumbnailUrl": null,
+      "subtitle": "소방관 체험"
+    },
+    {
+      "id": "highlight-18",
+      "aidolId": "aidol-8",
+      "title": "심야식당",
+      "thumbnailUrl": null,
+      "subtitle": "야식: 라면 + 데뷔 이야기"
+    },
+    {
+      "id": "highlight-9",
+      "aidolId": "aidol-8",
+      "title": "랜덤트립",
+      "thumbnailUrl": null,
+      "subtitle": "예산 뽑기"
+    },
+    {
+      "id": "highlight-1",
+      "aidolId": "aidol-9",
+      "title": "판 뒤집기",
+      "thumbnailUrl": null,
+      "subtitle": "팀 구성 후 첫 미션 시작"
+    },
+    {
+      "id": "highlight-4",
+      "aidolId": "aidol-9",
+      "title": "우당탕 하우스",
+      "thumbnailUrl": null,
+      "subtitle": "상황 카드: 갑자기 정전"
+    }
+  ],
+  "highlight_messages": [
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-1",
+      "sequence": 1,
+      "content": "24시간 안에 저글링 5개 성공이래."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-3",
+      "sequence": 2,
+      "content": "3개도 못 하는데?"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-5",
+      "sequence": 3,
+      "content": "저 공 하나도 못 받아요."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-2",
+      "sequence": 4,
+      "content": "일단 2개부터 시작하자."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-4",
+      "sequence": 5,
+      "content": "(2개 성공) 어, 되네?"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-1",
+      "sequence": 6,
+      "content": "오!!! 천재?!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-4",
+      "sequence": 7,
+      "content": "(3개 도전) ...아."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": null,
+      "sequence": 8,
+      "content": "[연출] (공 다 떨어뜨림)"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-3",
+      "sequence": 9,
+      "content": "그렇지."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-2",
+      "sequence": 10,
+      "content": "(3개 성공) 야, 드디어 됐어!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-5",
+      "sequence": 11,
+      "content": "우와!!! 멋있어요!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-1",
+      "sequence": 12,
+      "content": "나도 3개 됐어!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-3",
+      "sequence": 13,
+      "content": "저도요!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-4",
+      "sequence": 14,
+      "content": "...나만 안 돼."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-5",
+      "sequence": 15,
+      "content": "화이팅!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-4",
+      "sequence": 16,
+      "content": "(계속 연습) 제발..."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-2",
+      "sequence": 17,
+      "content": "12시간 남았어, 할 수 있어."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-1",
+      "sequence": 18,
+      "content": "자, 5개 간다!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": null,
+      "sequence": 19,
+      "content": "[전원] (집중)"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-1",
+      "sequence": 20,
+      "content": "(성공) 우와!!!!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-3",
+      "sequence": 21,
+      "content": "합격!!!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-4",
+      "sequence": 22,
+      "content": "(도전) ...!!!! (성공)"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-5",
+      "sequence": 23,
+      "content": "해냈어요!!!"
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-4",
+      "sequence": 24,
+      "content": "(눈물) 24시간 동안 공만 봤더니..."
+    },
+    {
+      "highlightId": "highlight-14",
+      "companionId": "companion-2",
+      "sequence": 25,
+      "content": "수고했어!"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": null,
+      "sequence": 1,
+      "content": "[강사] 먼저 에스프레소 추출해 보세요."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-1",
+      "sequence": 2,
+      "content": "(도전) 이렇게요?"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": null,
+      "sequence": 3,
+      "content": "[강사] 네, 좋아요. 합격!"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-1",
+      "sequence": 4,
+      "content": "오!!! 초급 뱃지!"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-2",
+      "sequence": 5,
+      "content": "나도! (시도)"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": null,
+      "sequence": 6,
+      "content": "[연출] (물이 사방으로 튐)"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-3",
+      "sequence": 7,
+      "content": "ㅋㅋㅋㅋㅋ!!!"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-2",
+      "sequence": 8,
+      "content": "왜 이래?!"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": null,
+      "sequence": 9,
+      "content": "[강사] 탬핑을 너무 세게 하셨어요."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-4",
+      "sequence": 10,
+      "content": "탬핑이 뭐예요?"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-5",
+      "sequence": 11,
+      "content": "저도 몰라요..."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": null,
+      "sequence": 12,
+      "content": "[강사] 다시 설명해 드릴게요."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-2",
+      "sequence": 13,
+      "content": "(좌절) 난 커피 마시기만 할래..."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-3",
+      "sequence": 14,
+      "content": "와, 라떼 아트 어렵다."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-1",
+      "sequence": 15,
+      "content": "하트 아니고 콩나물 같아요."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-3",
+      "sequence": 16,
+      "content": "야!!!"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-4",
+      "sequence": 17,
+      "content": "저는 해봤어요! (보여줌)"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-5",
+      "sequence": 18,
+      "content": "...이게 뭐예요?"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-4",
+      "sequence": 19,
+      "content": "나뭇잎이야!"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-2",
+      "sequence": 20,
+      "content": "어디가...?"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": null,
+      "sequence": 21,
+      "content": "[강사] (웃으며) 열정이 좋으시네요."
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-4",
+      "sequence": 22,
+      "content": "...칭찬이죠?"
+    },
+    {
+      "highlightId": "highlight-13",
+      "companionId": "companion-1",
+      "sequence": 23,
+      "content": "아닌 것 같은데."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-6",
+      "sequence": 1,
+      "content": "우와... 여기 진짜 크다."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-8",
+      "sequence": 2,
+      "content": "냄새 장난 아닌데요?"
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-7",
+      "sequence": 3,
+      "content": "오늘 미션이 뭐래?"
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": null,
+      "sequence": 4,
+      "content": "[나레이션] 오늘의 미션! 회 직접 떠서 손님에게 판매하기!"
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-9",
+      "sequence": 5,
+      "content": "칼 잡아본 적도 없는데..."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": null,
+      "sequence": 6,
+      "content": "[사장님] 자, 이렇게 잡고 쓱쓱 하면 돼요."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-7",
+      "sequence": 7,
+      "content": "(도전) 이렇게요?"
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": null,
+      "sequence": 8,
+      "content": "[사장님] 아... 그건 회가 아니라 다진 생선이에요."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-6",
+      "sequence": 9,
+      "content": "ㅋㅋㅋㅋ 재능 없다."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-7",
+      "sequence": 10,
+      "content": "야, 너 해봐."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-6",
+      "sequence": 11,
+      "content": "(도전) 어... 어?"
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": null,
+      "sequence": 12,
+      "content": "[사장님] 그건 뼈예요."
+    },
+    {
+      "highlightId": "highlight-5",
+      "companionId": "companion-8",
+      "sequence": 13,
+      "content": "둘 다 꽝이네."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-10",
+      "sequence": 1,
+      "content": "다들... 저 무서워요."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-8",
+      "sequence": 2,
+      "content": "괜찮아, 다 연출이야."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-6",
+      "sequence": 3,
+      "content": "그래도 분위기 장난 아닌데?"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-7",
+      "sequence": 4,
+      "content": "자, 첫 번째 단서 찾으러 가자."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-9",
+      "sequence": 5,
+      "content": "저는 테온랑 같이 갈래요."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-10",
+      "sequence": 6,
+      "content": "저도요!"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-6",
+      "sequence": 7,
+      "content": "야, 그럼 우리 셋이 같이 가잖아."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-8",
+      "sequence": 8,
+      "content": "흩어져야 빨리 찾지."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-10",
+      "sequence": 9,
+      "content": "싫어요..."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": null,
+      "sequence": 10,
+      "content": "[연출] (갑자기 불 꺼짐)"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-10",
+      "sequence": 11,
+      "content": "으악!!!!"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-9",
+      "sequence": 12,
+      "content": "뭐야 뭐야?!"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-8",
+      "sequence": 13,
+      "content": "다들 진정해!"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": null,
+      "sequence": 14,
+      "content": "[연출] (복도 끝에서 인형 굴러옴)"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-6",
+      "sequence": 15,
+      "content": "!!!!!!"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-7",
+      "sequence": 16,
+      "content": "(도망) 나 먼저 간다!!!"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-9",
+      "sequence": 17,
+      "content": "버리고 가면 어떡해!!!"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-10",
+      "sequence": 18,
+      "content": "(울먹) 나가고 싶어요..."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-8",
+      "sequence": 19,
+      "content": "(인형 집어들며) ...어, 이거 단서인데?"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-6",
+      "sequence": 20,
+      "content": "...뭐?"
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-8",
+      "sequence": 21,
+      "content": "인형 안에 쪽지 있어."
+    },
+    {
+      "highlightId": "highlight-10",
+      "companionId": "companion-9",
+      "sequence": 22,
+      "content": "와... 심장 떨어지는 줄 알았네."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 1,
+      "content": "자, 오늘의 주제. 10년 친구가 내 전 연인과 사귀겠대. 용서한다 vs 절교한다."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-12",
+      "sequence": 2,
+      "content": "당연히 절교지."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-13",
+      "sequence": 3,
+      "content": "어? 저는 용서인데요?"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-14",
+      "sequence": 4,
+      "content": "진심이에요?"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-13",
+      "sequence": 5,
+      "content": "이미 헤어진 사이잖아요."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 6,
+      "content": "근데 10년 친구면... 음..."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 7,
+      "content": "제하는 뭐야?"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 8,
+      "content": "저도 절교요. 친구가 먼저 말했어야죠."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-12",
+      "sequence": 9,
+      "content": "맞아!"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-13",
+      "sequence": 10,
+      "content": "아니, 헤어진 사람한테 허락을 왜 받아?"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-14",
+      "sequence": 11,
+      "content": "그건 예의지!"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-13",
+      "sequence": 12,
+      "content": "어휴, 답답해."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 13,
+      "content": "ㅋㅋㅋ 우리 팀 싸움 났다."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 14,
+      "content": "자, 오늘 고백 타임 주자는... 블루!"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-14",
+      "sequence": 15,
+      "content": "아... 저요?"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-12",
+      "sequence": 16,
+      "content": "숨긴 거 있어?"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-14",
+      "sequence": 17,
+      "content": "사실... 저 제하 옷 몰래 입은 적 있어요."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 18,
+      "content": "?!?!?!"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-13",
+      "sequence": 19,
+      "content": "뭐?!"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-14",
+      "sequence": 20,
+      "content": "그... 그 후드티 너무 예뻐서..."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 21,
+      "content": "그래서 늘어났구나?!"
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-14",
+      "sequence": 22,
+      "content": "미안..."
+    },
+    {
+      "highlightId": "highlight-6",
+      "companionId": "companion-11",
+      "sequence": 23,
+      "content": "ㅋㅋㅋㅋ 대참사."
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-11",
+      "sequence": 1,
+      "content": "첫 번째 힌트. \"골목 끝, 빨간 문, 50년 전통\"."
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-13",
+      "sequence": 2,
+      "content": "빨간 문? 여기 빨간 문 많은데?"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-12",
+      "sequence": 3,
+      "content": "50년 전통이면 꽤 오래된 곳이네."
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-14",
+      "sequence": 4,
+      "content": "저기요! (지나가는 주민에게) 혹시 50년 된 맛집 아세요?"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": null,
+      "sequence": 5,
+      "content": "[주민] 아, 순대국집?"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-11",
+      "sequence": 6,
+      "content": "순대국!"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-14",
+      "sequence": 7,
+      "content": "어디예요?!"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": null,
+      "sequence": 8,
+      "content": "[주민] 저 골목 끝에 빨간 문."
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-11",
+      "sequence": 9,
+      "content": "와!!! 찾았다!!!"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-13",
+      "sequence": 10,
+      "content": "(순대국 앞에서) 우와... 진짜 맛있겠다."
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-12",
+      "sequence": 11,
+      "content": "(한 입) !!!"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-11",
+      "sequence": 12,
+      "content": "맛있어요?"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-12",
+      "sequence": 13,
+      "content": "(말 못 하고 끄덕끄덕)"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-14",
+      "sequence": 14,
+      "content": "ㅋㅋㅋ 표정 봐."
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-11",
+      "sequence": 15,
+      "content": "(먹으며) 이거 별점 몇 개야?"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-13",
+      "sequence": 16,
+      "content": "저는 5점 만점에 5점이요."
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-11",
+      "sequence": 17,
+      "content": "저도요!"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-12",
+      "sequence": 18,
+      "content": "(아직도 먹는 중)"
+    },
+    {
+      "highlightId": "highlight-8",
+      "companionId": "companion-14",
+      "sequence": 19,
+      "content": "밥만 먹어, 평가는 우리가 할게."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-15",
+      "sequence": 1,
+      "content": "(카메라 들고) 야, 다들 뭐 해?"
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-16",
+      "sequence": 2,
+      "content": "(소파에 누워서) 죽어있어."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-17",
+      "sequence": 3,
+      "content": "저는 라면 끓여요."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-18",
+      "sequence": 4,
+      "content": "나도 줘."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-17",
+      "sequence": 5,
+      "content": "본인이 끓여."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-19",
+      "sequence": 6,
+      "content": "(피아노 치며) 저는 좀 쉬면서요..."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-15",
+      "sequence": 7,
+      "content": "와, 오늘 콘서트 어땠어?"
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-16",
+      "sequence": 8,
+      "content": "진짜 행복했어."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-18",
+      "sequence": 9,
+      "content": "앵콜 때 아이 울었잖아."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-19",
+      "sequence": 10,
+      "content": "(연주 멈추며) 그건 비밀!"
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-17",
+      "sequence": 11,
+      "content": "ㅋㅋㅋ 이미 다 봤어."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-17",
+      "sequence": 12,
+      "content": "(먹으며) 이게 진짜 행복이지."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-18",
+      "sequence": 13,
+      "content": "콘서트 끝나고 먹는 라면..."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-15",
+      "sequence": 14,
+      "content": "팬분들 오늘 진짜 대단했어."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-16",
+      "sequence": 15,
+      "content": "맞아, 떼창 소름 돋았어."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-19",
+      "sequence": 16,
+      "content": "우리 때문에 그렇게 응원해 주시는 거잖아요."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-18",
+      "sequence": 17,
+      "content": "우리 더 열심히 해야지."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-17",
+      "sequence": 18,
+      "content": "일단 라면 먹고."
+    },
+    {
+      "highlightId": "highlight-17",
+      "companionId": "companion-15",
+      "sequence": 19,
+      "content": "ㅋㅋㅋ 그래, 먼저 먹자."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-15",
+      "sequence": 1,
+      "content": "자, 부산까지 가는 교통수단 뽑자!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-16",
+      "sequence": 2,
+      "content": "제발 KTX..."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-17",
+      "sequence": 3,
+      "content": "(돌림판 돌림) 빙글빙글..."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-19",
+      "sequence": 4,
+      "content": "버스! 버스!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-18",
+      "sequence": 5,
+      "content": "나는 비행기!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": null,
+      "sequence": 6,
+      "content": "[(결과] 자전거)"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": null,
+      "sequence": 7,
+      "content": "[전원] ............"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-15",
+      "sequence": 8,
+      "content": "자전거?!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-17",
+      "sequence": 9,
+      "content": "서울에서 부산을?!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-16",
+      "sequence": 10,
+      "content": "이거 며칠 걸려?"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-18",
+      "sequence": 11,
+      "content": "죽는다 우리..."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-19",
+      "sequence": 12,
+      "content": "아 잠깐, 다시 뽑으면 안 돼요?"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-15",
+      "sequence": 13,
+      "content": "안 된대."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-19",
+      "sequence": 14,
+      "content": "...ㅠㅠ"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-17",
+      "sequence": 15,
+      "content": "미션 성공! 교통수단 업그레이드래!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-16",
+      "sequence": 16,
+      "content": "뭐로?!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": null,
+      "sequence": 17,
+      "content": "[MC] 오토바이로 업그레이드!"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-18",
+      "sequence": 18,
+      "content": "...그게 업그레이드야?"
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-15",
+      "sequence": 19,
+      "content": "자전거보단 낫지."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-19",
+      "sequence": 20,
+      "content": "타본 적도 없는데..."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-17",
+      "sequence": 21,
+      "content": "야, 뒤에 타면 되잖아."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-19",
+      "sequence": 22,
+      "content": "(안도) 아, 그렇구나."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-16",
+      "sequence": 23,
+      "content": "근데 오토바이 두 대야. 세 명은 여전히 자전거."
+    },
+    {
+      "highlightId": "highlight-7",
+      "companionId": "companion-18",
+      "sequence": 24,
+      "content": "누가 자전거야?!"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 1,
+      "content": "자, 다들 역할 확인했지? 절대 말하면 안 돼."
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-21",
+      "sequence": 2,
+      "content": "(포커페이스)"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-22",
+      "sequence": 3,
+      "content": "(표정 관리 중)"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-23",
+      "sequence": 4,
+      "content": "(눈 마주치면 피함)"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 5,
+      "content": "(너무 긴장)"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 6,
+      "content": "제인야, 왜 그렇게 긴장해?"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 7,
+      "content": "아, 아니에요! 긴장 안 해요!"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-23",
+      "sequence": 8,
+      "content": "수상하다..."
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 9,
+      "content": "저 아니에요!!!"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-22",
+      "sequence": 10,
+      "content": "아직 아무 말도 안 했는데?"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-21",
+      "sequence": 11,
+      "content": "나는 록시가 수상해."
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-23",
+      "sequence": 12,
+      "content": "왜요?!"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-21",
+      "sequence": 13,
+      "content": "아까부터 눈 안 마주치잖아."
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-23",
+      "sequence": 14,
+      "content": "그건 루아가 무서워서 그래요!"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 15,
+      "content": "ㅋㅋㅋㅋ"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-22",
+      "sequence": 16,
+      "content": "저는 루아가 너무 침착해서 의심돼요."
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-21",
+      "sequence": 17,
+      "content": "난 원래 침착해."
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 18,
+      "content": "맞아, 원래 그래요."
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-23",
+      "sequence": 19,
+      "content": "제인는 왜 루아 편들어?"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 20,
+      "content": "?! 편드는 거 아닌데?!"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 21,
+      "content": "공범인가?"
+    },
+    {
+      "highlightId": "highlight-11",
+      "companionId": "companion-20",
+      "sequence": 22,
+      "content": "아니라고요!!!!"
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 1,
+      "content": "과거요... 연습생 시절이 생각나요."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 2,
+      "content": "(인터뷰어) 그때 어땠어?"
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 3,
+      "content": "진짜 힘들었죠. 다들 없었으면 못 버텼을 거예요."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-22",
+      "sequence": 4,
+      "content": "(영상 메시지) 제인야, 너 연습생 때 맨날 울었잖아."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 5,
+      "content": "ㅋㅋㅋ..."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-22",
+      "sequence": 6,
+      "content": "근데 지금은 진짜 많이 컸어. 자랑스러워."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 7,
+      "content": "(눈물) 아 왜 울려..."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 8,
+      "content": "자, 비밀 하나 공개해."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 9,
+      "content": "음... 사실 데뷔 전에 포기하려고 했어요."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 10,
+      "content": "진짜?"
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 11,
+      "content": "네, 근데 루아가 밤새 얘기해 줬거든요."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-21",
+      "sequence": 12,
+      "content": "(영상 메시지) 그때 네가 그만두면 나도 그만둔다고 했지."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 13,
+      "content": "그 말 듣고 다시 마음 잡았어요."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-23",
+      "sequence": 14,
+      "content": "(영상 메시지) 우리 제인 안 그만둬서 다행이야."
+    },
+    {
+      "highlightId": "highlight-16",
+      "companionId": "companion-20",
+      "sequence": 15,
+      "content": "(눈물) 너무해, 왜 다 울려..."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 1,
+      "content": "100인분?! 100인분이요?!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-26",
+      "sequence": 2,
+      "content": "우리 넷이서?"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-25",
+      "sequence": 3,
+      "content": "일단 역할 분담하자. 누가 뭐 잘해?"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 4,
+      "content": "저 밥 잘 먹어요."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-27",
+      "sequence": 5,
+      "content": "그건 도움이 안 돼..."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 6,
+      "content": "나 야채 썰기 할게."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-26",
+      "sequence": 7,
+      "content": "칼 잡을 줄 알아?"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 8,
+      "content": "...유튜브 보면서 하면 되지."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-27",
+      "sequence": 9,
+      "content": "야, 야, 야! 고추장이 없어!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-25",
+      "sequence": 10,
+      "content": "뭐?! 비빔밥인데 고추장이 없어?!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 11,
+      "content": "제가 달려갈게요! 슈퍼 어디예요?!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 12,
+      "content": "거기 10분 거리인데?"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 13,
+      "content": "5분 컷 가능! (뛰어나감)"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-26",
+      "sequence": 14,
+      "content": "와... 진짜 뛰네."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-27",
+      "sequence": 15,
+      "content": "잘 다녀와!!!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-25",
+      "sequence": 16,
+      "content": "자, 이제 다 담았어?"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 17,
+      "content": "네, 99번째 그릇 완료!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-26",
+      "sequence": 18,
+      "content": "100번째 누가 담아?"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-27",
+      "sequence": 19,
+      "content": "다 같이 담자."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 20,
+      "content": "(숟가락 들고) 하나, 둘, 셋!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": null,
+      "sequence": 21,
+      "content": "[전원] 비빔밥 완성!!!"
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 22,
+      "content": "(눈물) 우리가 해냈어..."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-26",
+      "sequence": 23,
+      "content": "아직 먹어야 해."
+    },
+    {
+      "highlightId": "highlight-2",
+      "companionId": "companion-24",
+      "sequence": 24,
+      "content": "...100인분을?"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 1,
+      "content": "자, 이 숫자가 뭔지 알아내야 해."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-26",
+      "sequence": 2,
+      "content": "3, 7, 15, 31... 규칙이 뭐지?"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-27",
+      "sequence": 3,
+      "content": "2배 하고 1 더하는 거 아니에요?"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-25",
+      "sequence": 4,
+      "content": "오, 그러네! 그럼 다음은 63?"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 5,
+      "content": "(자물쇠에 입력) 안 열려요."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 6,
+      "content": "뭐?!"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-26",
+      "sequence": 7,
+      "content": "잠깐, 다시 보자..."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-27",
+      "sequence": 8,
+      "content": "아, 2배가 아니라 2를 더하고 곱하기 2인가?"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-25",
+      "sequence": 9,
+      "content": "그게 뭐가 달라?"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 10,
+      "content": "(다시 시도) ...열렸다!!!"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 11,
+      "content": "우와!!! 아리 천재!"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-27",
+      "sequence": 12,
+      "content": "(뿌듯) 수학 1등급의 힘."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-26",
+      "sequence": 13,
+      "content": "수능 3등급이었잖아요."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-27",
+      "sequence": 14,
+      "content": "...조용히 해."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-25",
+      "sequence": 15,
+      "content": "이거 진짜 모르겠는데, 힌트 쓸까?"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 16,
+      "content": "아직 2개 남았잖아요."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 17,
+      "content": "근데 시간이 10분밖에 안 남았어."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-26",
+      "sequence": 18,
+      "content": "쓰자!"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-27",
+      "sequence": 19,
+      "content": "잠깐, 내가 한 번만 더 생각해 볼게."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-25",
+      "sequence": 20,
+      "content": "아까도 그러더니 5분 날렸잖아."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-27",
+      "sequence": 21,
+      "content": "이번엔 진짜!"
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-24",
+      "sequence": 22,
+      "content": "...30초 준다."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": "companion-27",
+      "sequence": 23,
+      "content": "(열심히 보다가) ...쓰자."
+    },
+    {
+      "highlightId": "highlight-12",
+      "companionId": null,
+      "sequence": 24,
+      "content": "[전원] ㅋㅋㅋㅋㅋ"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": null,
+      "sequence": 1,
+      "content": "[MC] 오늘의 헌터는... 레오!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-29",
+      "sequence": 2,
+      "content": "(선글라스 쓰며) 다 잡는다."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-32",
+      "sequence": 3,
+      "content": "하필 제일 빠른 사람이..."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-31",
+      "sequence": 4,
+      "content": "도망쳐!!!!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-28",
+      "sequence": 5,
+      "content": "작전! 일단 흩어져!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-30",
+      "sequence": 6,
+      "content": "어디로?!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-28",
+      "sequence": 7,
+      "content": "아무 데나!!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-31",
+      "sequence": 8,
+      "content": "(속삭임) 야, 레인야."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-32",
+      "sequence": 9,
+      "content": "(속삭임) 왜?"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-31",
+      "sequence": 10,
+      "content": "여기 창고 안전한 것 같아."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-32",
+      "sequence": 11,
+      "content": "근데 아까 레오가 이쪽으로 온 것 같은데..."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-31",
+      "sequence": 12,
+      "content": "...뭐?"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-29",
+      "sequence": 13,
+      "content": "(문 열며) 찾았다."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-31",
+      "sequence": 14,
+      "content": "으아아아악!!!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-32",
+      "sequence": 15,
+      "content": "(혼자 탈출) 살았다..."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-28",
+      "sequence": 16,
+      "content": "미션 카드 뭐야?"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-30",
+      "sequence": 17,
+      "content": "'교실에서 교과서 3권 찾기'래요."
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-28",
+      "sequence": 18,
+      "content": "여기 교실이 열 개는 되는데?"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-30",
+      "sequence": 19,
+      "content": "빨리 찾아요, 레오 온다!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-28",
+      "sequence": 20,
+      "content": "(책상 뒤지며) 국어, 수학... 하나 더!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-29",
+      "sequence": 21,
+      "content": "(복도에서) 누구 있어~?"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-30",
+      "sequence": 22,
+      "content": "(책 집어들며) 과학! 도망쳐요!!"
+    },
+    {
+      "highlightId": "highlight-3",
+      "companionId": "companion-28",
+      "sequence": 23,
+      "content": "보호막 획득! 살았어!!"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": null,
+      "sequence": 1,
+      "content": "[소방관] 오늘 화재 진압 훈련합니다."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-32",
+      "sequence": 2,
+      "content": "(장비 입으며) 이거 진짜 무거워요..."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-28",
+      "sequence": 3,
+      "content": "이걸 입고 뛰어?"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": null,
+      "sequence": 4,
+      "content": "[소방관] 네, 그리고 사다리도 올라가셔야 해요."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-31",
+      "sequence": 5,
+      "content": "높이가 어느 정도예요?"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": null,
+      "sequence": 6,
+      "content": "[소방관] 15미터요."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-30",
+      "sequence": 7,
+      "content": "...저 고소공포증인데요."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-29",
+      "sequence": 8,
+      "content": "ㅋㅋㅋ 오늘 극한이 맞네."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-29",
+      "sequence": 9,
+      "content": "(올라가며) 생각보다 괜찮은데?"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-28",
+      "sequence": 10,
+      "content": "진짜 멋있다!"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-30",
+      "sequence": 11,
+      "content": "(1미터 올라감) ...안 돼, 못 해."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-31",
+      "sequence": 12,
+      "content": "괜찮아요?"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-30",
+      "sequence": 13,
+      "content": "(내려옴) 미안, 진짜 무서워."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-32",
+      "sequence": 14,
+      "content": "괜찮아요, 저도 무섭긴 해요."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-28",
+      "sequence": 15,
+      "content": "우리가 대신 더 열심히 할게!"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-30",
+      "sequence": 16,
+      "content": "고마워..."
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": null,
+      "sequence": 17,
+      "content": "[소방관] 다른 훈련도 있으니까 괜찮습니다!"
+    },
+    {
+      "highlightId": "highlight-15",
+      "companionId": "companion-30",
+      "sequence": 18,
+      "content": "(안도) 휴..."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-34",
+      "sequence": 1,
+      "content": "(라면 먹으며) 야, 데뷔 때 생각나?"
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-33",
+      "sequence": 2,
+      "content": "완전. 떨려서 가사 까먹을 뻔했잖아."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-35",
+      "sequence": 3,
+      "content": "ㅋㅋㅋ 저는 안무 틀렸는데 카메라가 안 잡아서 살았어요."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-36",
+      "sequence": 4,
+      "content": "진짜?! 몰랐어!"
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-33",
+      "sequence": 5,
+      "content": "저는 너무 긴장해서 기억이 없어요."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-34",
+      "sequence": 6,
+      "content": "그래도 다들 잘했어."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-33",
+      "sequence": 7,
+      "content": "그때는 몰랐는데, 지금 생각하면 진짜 대단한 거더라."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-36",
+      "sequence": 8,
+      "content": "맞아요."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-35",
+      "sequence": 9,
+      "content": "우리 여기까지 온 거 뿌듯하다."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-34",
+      "sequence": 10,
+      "content": "자, 오늘 마무리로 옆 사람한테 한마디씩."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-33",
+      "sequence": 11,
+      "content": "미하야, 항상 든든해. 고마워."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-34",
+      "sequence": 12,
+      "content": "(쑥스러움) ...뭐야 갑자기."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-35",
+      "sequence": 13,
+      "content": "앤야, 앞으로도 같이 가자."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-36",
+      "sequence": 14,
+      "content": "ㅋㅋ 그래요."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-33",
+      "sequence": 15,
+      "content": "저는요... 다들 있어서 행복해요."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-33",
+      "sequence": 16,
+      "content": "우리 알렌..."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-36",
+      "sequence": 17,
+      "content": "왜 또 울려 해..."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-33",
+      "sequence": 18,
+      "content": "안 울어요! (눈물 참음)"
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": "companion-34",
+      "sequence": 19,
+      "content": "ㅋㅋㅋ 울어도 돼."
+    },
+    {
+      "highlightId": "highlight-18",
+      "companionId": null,
+      "sequence": 20,
+      "content": "[전원] (웃음)"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 1,
+      "content": "자, 1박 2일 예산 뽑자."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-34",
+      "sequence": 2,
+      "content": "제발 넉넉하게..."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-35",
+      "sequence": 3,
+      "content": "(뽑음) ...5만원."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-36",
+      "sequence": 4,
+      "content": "5만원?! 1인당?!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-35",
+      "sequence": 5,
+      "content": "아니, 전체."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 6,
+      "content": "넷이서 5만원이요?!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 7,
+      "content": "1인당 만원..."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-34",
+      "sequence": 8,
+      "content": "이건 노숙이다."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-36",
+      "sequence": 9,
+      "content": "찬스 카드! 찬스 카드 있잖아!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-35",
+      "sequence": 10,
+      "content": "(찬스 카드 뽑음) \"예산 2배\"!!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": null,
+      "sequence": 11,
+      "content": "[전원] 우와!!!!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 12,
+      "content": "10만원이다!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 13,
+      "content": "...그래도 적은 건 마찬가지인데."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-34",
+      "sequence": 14,
+      "content": "일정표 뭐야?"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-36",
+      "sequence": 15,
+      "content": "(읽음) 오전 6시 기상, 등산..."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 16,
+      "content": "등산이요?! 저 운동화 안 가져왔는데!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-35",
+      "sequence": 17,
+      "content": "아, 여기 \"위기 카드\" 발동이래."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 18,
+      "content": "뭔데?"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-35",
+      "sequence": 19,
+      "content": "\"알렌가 모든 짐 들기\"."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 20,
+      "content": "...네?!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-36",
+      "sequence": 21,
+      "content": "ㅋㅋㅋㅋ 미안 알렌야."
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-33",
+      "sequence": 22,
+      "content": "이건 너무해!!!"
+    },
+    {
+      "highlightId": "highlight-9",
+      "companionId": "companion-34",
+      "sequence": 23,
+      "content": "(가방 넘기며) 화이팅."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 1,
+      "content": "자, 오늘 팀 구성 어떻게 됐어요?"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-38",
+      "sequence": 2,
+      "content": "저랑 로아, 지노 한 팀이에요."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-39",
+      "sequence": 3,
+      "content": "뭐야, 우리 둘이서 셋을 이겨야 해?"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 4,
+      "content": "아니 걱정 마, 나 있잖아."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-39",
+      "sequence": 5,
+      "content": "...그래서 걱정이야."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-40",
+      "sequence": 6,
+      "content": "ㅋㅋㅋㅋ 시작도 전에 팀킬?"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": null,
+      "sequence": 7,
+      "content": "[MC] 반전 카드! 지노 상대팀으로 이동!"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 8,
+      "content": "네?! 저요?!"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-38",
+      "sequence": 9,
+      "content": "아 잠깐, 우리 에이스인데..."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 10,
+      "content": "(이동하며) 미안, 이제 적이야."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 11,
+      "content": "어서 와, 우리 팀."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-39",
+      "sequence": 12,
+      "content": "갑자기 희망이 보인다."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-40",
+      "sequence": 13,
+      "content": "야!! 배신자!!"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 14,
+      "content": "(손 흔들며) 안녕~"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-38",
+      "sequence": 15,
+      "content": "잠깐, 지금 몇 대 몇이야?"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-40",
+      "sequence": 16,
+      "content": "우리가 3점 뒤처져 있어..."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 17,
+      "content": "마지막 미션 10점짜리래."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-39",
+      "sequence": 18,
+      "content": "그럼 아직 가능하잖아!"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-37",
+      "sequence": 19,
+      "content": "근데 마지막 미션 뭔데?"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": null,
+      "sequence": 20,
+      "content": "[MC] 마지막 미션, '림보 대결'입니다."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-38",
+      "sequence": 21,
+      "content": "..."
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-40",
+      "sequence": 22,
+      "content": "민유 허리 괜찮아요?"
+    },
+    {
+      "highlightId": "highlight-1",
+      "companionId": "companion-38",
+      "sequence": 23,
+      "content": "오늘 진다."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 1,
+      "content": "(불 꺼짐) ...뭐야?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-39",
+      "sequence": 2,
+      "content": "정전이야?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 3,
+      "content": "무서워요..."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-38",
+      "sequence": 4,
+      "content": "괜찮아, 촛불 어디 있지?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-40",
+      "sequence": 5,
+      "content": "촛불 우리 집에 없는데요."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 6,
+      "content": "손전등!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-39",
+      "sequence": 7,
+      "content": "그것도 없어."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-38",
+      "sequence": 8,
+      "content": "...우리 집에 뭐가 있는 거야?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 9,
+      "content": "핸드폰! 플래시!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-40",
+      "sequence": 10,
+      "content": "오 천재!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 11,
+      "content": "(플래시 켜며 얼굴 비춤) 이렇게요?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-39",
+      "sequence": 12,
+      "content": "야!!!! 무섭게 하지 마!!!!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 13,
+      "content": "야, 내 새우깡 어딨어?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-38",
+      "sequence": 14,
+      "content": "몰라."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-39",
+      "sequence": 15,
+      "content": "저도 몰라요."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-40",
+      "sequence": 16,
+      "content": "(우물우물)"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 17,
+      "content": "...로아야."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-40",
+      "sequence": 18,
+      "content": "네?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 19,
+      "content": "입에 새우깡 묻었어요."
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-40",
+      "sequence": 20,
+      "content": "!!!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 21,
+      "content": "너...?!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-40",
+      "sequence": 22,
+      "content": "아니 이게... 다른 새우깡이야!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-38",
+      "sequence": 23,
+      "content": "새우깡이 두 종류야?"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-39",
+      "sequence": 24,
+      "content": "ㅋㅋㅋㅋㅋㅋ"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-40",
+      "sequence": 25,
+      "content": "(도망) 미안해!!!"
+    },
+    {
+      "highlightId": "highlight-4",
+      "companionId": "companion-37",
+      "sequence": 26,
+      "content": "(추격) 서!!!"
+    }
+  ]
+}
