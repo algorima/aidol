@@ -10,7 +10,8 @@
     "saved": "Guardado correctamente.",
     "deleted": "Eliminado correctamente.",
     "error": {
-      "save": "Error al guardar"
+      "save": "Error al guardar",
+      "load": "Error al cargar los datos"
     }
   },
   "position": {

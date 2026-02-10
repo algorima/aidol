@@ -10,7 +10,8 @@
     "saved": "Đã lưu thành công.",
     "deleted": "Đã xóa thành công.",
     "error": {
-      "save": "Không thể lưu"
+      "save": "Không thể lưu",
+      "load": "Không thể tải dữ liệu"
     }
   },
   "position": {

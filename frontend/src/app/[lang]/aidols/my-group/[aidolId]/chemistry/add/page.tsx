@@ -74,6 +74,7 @@ export default function AddRelationshipPage({
         setRelationships(relationshipData);
       } catch (error) {
         console.error("Failed to fetch data:", error);
+        showToast(t("aidol:common.error.load"), "error");
       }
 
       setIsLoading(false);

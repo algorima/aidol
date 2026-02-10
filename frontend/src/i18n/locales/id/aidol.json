@@ -10,7 +10,8 @@
     "saved": "Berhasil disimpan.",
     "deleted": "Berhasil dihapus.",
     "error": {
-      "save": "Gagal menyimpan"
+      "save": "Gagal menyimpan",
+      "load": "Gagal memuat data"
     }
   },
   "position": {

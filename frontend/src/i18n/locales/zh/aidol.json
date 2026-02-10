@@ -10,7 +10,8 @@
     "saved": "保存成功。",
     "deleted": "删除成功。",
     "error": {
-      "save": "保存失败"
+      "save": "保存失败",
+      "load": "无法加载数据"
     }
   },
   "position": {

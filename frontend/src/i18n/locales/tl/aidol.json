@@ -10,7 +10,8 @@
     "saved": "Matagumpay na na-save.",
     "deleted": "Matagumpay na na-delete.",
     "error": {
-      "save": "Hindi ma-save"
+      "save": "Hindi ma-save",
+      "load": "Hindi ma-load ang data"
     }
   },
   "position": {

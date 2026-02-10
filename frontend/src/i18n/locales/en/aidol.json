@@ -10,7 +10,8 @@
     "saved": "Saved successfully.",
     "deleted": "Deleted successfully.",
     "error": {
-      "save": "Failed to save"
+      "save": "Failed to save",
+      "load": "Failed to load data"
     }
   },
   "position": {
