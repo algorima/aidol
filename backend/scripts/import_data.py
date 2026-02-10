@@ -14,6 +14,7 @@ from sqlalchemy.orm import sessionmaker
 from aidol.models.aidol import DBAIdol
 from aidol.models.companion import DBCompanion
 from aidol.models.highlight import DBAIdolHighlight, DBHighlightMessage
+
 # pylint: enable=wrong-import-position
 
 
