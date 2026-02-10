@@ -184,6 +184,7 @@ export default function GroupPage() {
       <div className="bg-base-100 text-base-content flex flex-1 flex-col">
         {selectedGroup && (
           <GroupProfile
+            name={t("aidol:group.title")}
             profileImageUrl={selectedGroup.profileImageUrl}
             createdAt={selectedGroup.createdAt}
             onChemistryClick={() =>
