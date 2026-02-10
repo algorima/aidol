@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Gagal memuat info grup"
+    }
+  },
   "common": {
     "close": "Tutup"
   },
@@ -235,6 +240,20 @@
       "bioPlaceholder": "Perjalanan apa yang telah dilalui?",
       "button": "Selesai Casting"
     }
+  },
+  "myGroup": {
+    "header": "Grup Saya",
+    "chatComingSoon": "Chat dengan member segera hadir👋",
+    "settings": "Pengaturan",
+    "highlights": "Sorotan",
+    "empty": {
+      "title": "Belum ada grup",
+      "description": "Buat grup idol AI-mu sendiri!",
+      "cta": "Buat Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Pewawancara"
   },
   "landing": {
     "hero": {

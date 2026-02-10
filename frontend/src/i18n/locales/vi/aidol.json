@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Không thể tải thông tin nhóm"
+    }
+  },
   "common": {
     "close": "Đóng"
   },
@@ -235,6 +240,20 @@
       "bioPlaceholder": "Đã trải qua hành trình gì?",
       "button": "Hoàn Thành Tuyển Chọn"
     }
+  },
+  "myGroup": {
+    "header": "Nhóm Của Tôi",
+    "chatComingSoon": "Chat với thành viên sắp ra mắt👋",
+    "settings": "Cài đặt",
+    "highlights": "Điểm nổi bật",
+    "empty": {
+      "title": "Chưa có nhóm nào",
+      "description": "Tạo nhóm idol AI của riêng bạn!",
+      "cta": "Tạo Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Người phỏng vấn"
   },
   "landing": {
     "hero": {

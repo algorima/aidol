@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Hindi ma-load ang info ng grupo"
+    }
+  },
   "common": {
     "close": "Isara"
   },
@@ -235,6 +240,20 @@
       "bioPlaceholder": "Anong paglalakbay ang naranasan?",
       "button": "Kumpletuhin ang Casting"
     }
+  },
+  "myGroup": {
+    "header": "Aking Grupo",
+    "chatComingSoon": "Chat sa mga miyembro, malapit na👋",
+    "settings": "Mga Setting",
+    "highlights": "Mga Highlight",
+    "empty": {
+      "title": "Wala pang grupo",
+      "description": "Gumawa ng sarili mong AI idol group!",
+      "cta": "Gumawa ng Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Tagapanayam"
   },
   "landing": {
     "hero": {
