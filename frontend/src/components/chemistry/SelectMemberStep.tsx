@@ -37,7 +37,8 @@ export function SelectMemberStep({
       <div className="grid grid-cols-2 gap-4">
         {companions.map((member) => {
           const relationship = getRelationshipFrom(member.id);
-          const hasRelationship = relationship && (relationship.intimacy ?? 0) > 0;
+          const hasRelationship =
+            relationship && (relationship.intimacy ?? 0) > 0;
           const isSelected = member.id === selectedCompanionId;
 
           return (
