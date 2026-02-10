@@ -10,6 +10,9 @@ export * from "./companion";
 // Creation flow components
 export * from "./creation";
 
+// Group page components
+export * from "./group";
+
 // Landing page components
 export * from "./landing";
 

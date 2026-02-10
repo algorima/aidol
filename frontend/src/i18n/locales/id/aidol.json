@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Gagal memuat info grup"
+    }
+  },
   "common": {
     "close": "Tutup"
   },
@@ -57,6 +62,9 @@
       "title": "Casting Selesai!",
       "description": "Trainee telah bergabung dengan grup",
       "viewBoard": "Lihat Casting Board"
+    },
+    "error": {
+      "cast": "Gagal melakukan casting"
     }
   },
   "share": "Bagikan",
@@ -84,7 +92,10 @@
     "subtitle": "Ditambahkan ke daftar kandidat casting",
     "remainingSlots": "Slot Casting Tersisa",
     "findNext": "Cari Trainee Berikutnya",
-    "viewBoard": "Lihat Papan Casting"
+    "viewBoard": "Lihat Papan Casting",
+    "error": {
+      "load": "Gagal memuat informasi slot"
+    }
   },
   "companion": {
     "promptPlaceholder": "Gimana idol kamu ngobrol? Ceritain kepribadiannya...",
@@ -235,6 +246,20 @@
       "button": "Selesai Casting"
     }
   },
+  "myGroup": {
+    "header": "Grup Saya",
+    "chatComingSoon": "Chat dengan member segera hadir👋",
+    "settings": "Pengaturan",
+    "highlights": "Sorotan",
+    "empty": {
+      "title": "Belum ada grup",
+      "description": "Buat grup idol AI-mu sendiri!",
+      "cta": "Buat Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Pewawancara"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -249,6 +274,36 @@
     },
     "error": {
       "create": "Gagal memulai."
+    }
+  },
+  "group": {
+    "title": "Debut Musim 1",
+    "chemistryButton": "Kimia Antar Anggota 💭",
+    "followButton": "Ikuti",
+    "highlightTab": "Sorotan",
+    "follow": {
+      "header": "Ikuti",
+      "title": "Kami akan mengirimkan cerita nyata\ndari anggota {{name}}!",
+      "previewMessage": "Bukankah seharusnya kamu bicara lebih sopan pada hyung?",
+      "emailPlaceholder": "Masukkan email Anda",
+      "submit": "Ikuti & Dapatkan Info ✨",
+      "submitting": "Berlangganan...",
+      "success": "Anda sekarang mengikuti!",
+      "error": "Gagal mengikuti. Silakan coba lagi.",
+      "loadError": "Gagal memuat informasi grup"
+    },
+    "error": {
+      "load": "Gagal memuat informasi grup"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Temukan grup yang kamu suka!",
+      "description": "Karakter idol (wajah, suara, video) dalam konten ini adalah karakter virtual asli yang dibuat oleh AI dan tidak berdasarkan orang nyata, termasuk idol dan selebriti."
+    },
+    "memberCount": "{{count}} anggota",
+    "error": {
+      "load": "Gagal memuat daftar grup."
     }
   }
 }

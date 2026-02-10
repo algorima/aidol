@@ -12,7 +12,6 @@ from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings, OpenAIAPISettings
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from humps import camelize
-from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -23,6 +22,7 @@ from aidol.protocols import (
     CompanionRepositoryFactoryProtocol,
 )
 from aidol.providers.llm import OpenAILLMProvider
+from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
@@ -57,17 +57,16 @@ class GenerateResponse(BaseModel):
     content: str = Field(..., description="AI response content")
 
 
-def _to_langchain_messages(messages: list[Message]) -> list[BaseMessage]:
-    """
-    Convert Message schemas to LangChain BaseMessage format.
+def _to_llm_messages(messages: list[Message]) -> list[LLMMessage]:
+    """Convert Message schemas to LLMMessage format.
 
     Args:
         messages: List of Message from repository.
 
     Returns:
-        List of LangChain BaseMessage (HumanMessage or AIMessage).
+        List of LLMMessage (HumanMessage or AIMessage).
     """
-    result: list[BaseMessage] = []
+    result: list[LLMMessage] = []
     for msg in messages:
         if msg.sender_type == SenderType.USER:
             result.append(HumanMessage(content=msg.content))
@@ -184,14 +183,14 @@ class ChatroomRouter(
         async def send_message(
             item_id: str,
             request: MessageCreate,
-            claim_token: Annotated[
+            anonymous_id: Annotated[
                 str | None, Cookie(alias="aioia_anonymous_id")
             ] = None,
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""
             # Guard Clause: aioia_anonymous_id cookie is required
-            if not claim_token:
+            if not anonymous_id:
                 raise HTTPException(
                     status_code=status.HTTP_400_BAD_REQUEST,
                     detail="aioia_anonymous_id cookie is required",
@@ -205,7 +204,7 @@ class ChatroomRouter(
 
             # Convert to internal schema with anonymous_id from Cookie
             message_data = MessageCreateWithAnonymousId(
-                **request.model_dump(), anonymous_id=claim_token
+                **request.model_dump(), anonymous_id=anonymous_id
             )
 
             # Pass MessageCreateWithAnonymousId to repository
@@ -254,9 +253,9 @@ class ChatroomRouter(
                 offset=0,
             )
 
-            # Convert to LangChain BaseMessage format
+            # Convert to LLMMessage format
             # Reverse: DB returns newest-first, LLM needs chronological order
-            langchain_messages = _to_langchain_messages(list(reversed(messages)))
+            llm_messages = _to_llm_messages(list(reversed(messages)))
 
             # Create persona from companion (KST fixed for MVP)
             persona = Persona(
@@ -272,7 +271,7 @@ class ChatroomRouter(
                 MessageContextBuilder(provider, persona)
                 .with_persona()
                 .with_real_time_context()
-                .with_current_conversation(langchain_messages)
+                .with_current_conversation(llm_messages)
                 .build()
             )
             service = ResponseGenerationService(provider, model_settings)
@@ -338,6 +337,6 @@ def create_chatroom_router(
         user_info_provider=user_info_provider,
         jwt_secret_key=jwt_settings.secret_key if jwt_settings else None,
         resource_name=resource_name,
-        tags=tags or ["Aidol"],
+        tags=tags or ["Chatroom"],
     )
     return router.get_router()

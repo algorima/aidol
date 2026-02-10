@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Failed to load group info"
+    }
+  },
   "common": {
     "close": "Close"
   },
@@ -57,6 +62,9 @@
       "title": "Casting Complete!",
       "description": "The trainee has joined the group",
       "viewBoard": "View Casting Board"
+    },
+    "error": {
+      "cast": "Failed to cast"
     }
   },
   "share": "Share",
@@ -84,7 +92,10 @@
     "subtitle": "Added to the casting candidate list",
     "remainingSlots": "Remaining Casting Slots",
     "findNext": "Find Next Trainee",
-    "viewBoard": "View Casting Board"
+    "viewBoard": "View Casting Board",
+    "error": {
+      "load": "Failed to load slot information"
+    }
   },
   "companion": {
     "promptPlaceholder": "How does your idol talk? Describe their vibe...",
@@ -235,6 +246,20 @@
       "button": "Complete Casting"
     }
   },
+  "myGroup": {
+    "header": "My Group",
+    "chatComingSoon": "Chat with members coming soon👋",
+    "settings": "Settings",
+    "highlights": "Highlights",
+    "empty": {
+      "title": "No groups yet",
+      "description": "Create your own AI idol group!",
+      "cta": "Create Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Interviewer"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -249,6 +274,36 @@
     },
     "error": {
       "create": "Failed to start."
+    }
+  },
+  "group": {
+    "title": "Season 1 Debut",
+    "chemistryButton": "Member Chemistry 💭",
+    "followButton": "Follow",
+    "highlightTab": "Highlights",
+    "follow": {
+      "header": "Follow",
+      "title": "We'll send you real stories\nfrom {{name}} members!",
+      "previewMessage": "Shouldn't you talk to your hyung more respectfully?",
+      "emailPlaceholder": "Enter your email",
+      "submit": "Follow & Get Updates ✨",
+      "submitting": "Subscribing...",
+      "success": "You're now following!",
+      "error": "Failed to follow. Please try again.",
+      "loadError": "Failed to load group information"
+    },
+    "error": {
+      "load": "Failed to load group information"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Find a group you like!",
+      "description": "The idol characters (face, voice, video) in this content are original virtual characters created by AI and are not based on any real person, including idols and celebrities."
+    },
+    "memberCount": "{{count}} members",
+    "error": {
+      "load": "Failed to load group list."
     }
   }
 }

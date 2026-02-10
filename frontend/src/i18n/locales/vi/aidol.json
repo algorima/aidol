@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Không thể tải thông tin nhóm"
+    }
+  },
   "common": {
     "close": "Đóng"
   },
@@ -57,6 +62,9 @@
       "title": "Casting Hoàn Tất!",
       "description": "Thực tập sinh đã gia nhập nhóm",
       "viewBoard": "Xem Bảng Casting"
+    },
+    "error": {
+      "cast": "Casting thất bại"
     }
   },
   "share": "Chia sẻ",
@@ -84,7 +92,10 @@
     "subtitle": "Đã thêm vào danh sách ứng viên casting",
     "remainingSlots": "Slot Casting Còn Lại",
     "findNext": "Tìm Thực Tập Sinh Tiếp",
-    "viewBoard": "Xem Bảng Casting"
+    "viewBoard": "Xem Bảng Casting",
+    "error": {
+      "load": "Không thể tải thông tin slot"
+    }
   },
   "companion": {
     "promptPlaceholder": "Idol của bạn nói chuyện như thế nào? Mô tả tính cách...",
@@ -235,6 +246,20 @@
       "button": "Hoàn Thành Tuyển Chọn"
     }
   },
+  "myGroup": {
+    "header": "Nhóm Của Tôi",
+    "chatComingSoon": "Chat với thành viên sắp ra mắt👋",
+    "settings": "Cài đặt",
+    "highlights": "Điểm nổi bật",
+    "empty": {
+      "title": "Chưa có nhóm nào",
+      "description": "Tạo nhóm idol AI của riêng bạn!",
+      "cta": "Tạo Idol"
+    }
+  },
+  "highlight": {
+    "interviewer": "Người phỏng vấn"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -249,6 +274,36 @@
     },
     "error": {
       "create": "Không thể bắt đầu."
+    }
+  },
+  "group": {
+    "title": "Ra Mắt Mùa 1",
+    "chemistryButton": "Phản Ứng Hóa Học Giữa Thành Viên 💭",
+    "followButton": "Theo dõi",
+    "highlightTab": "Nổi bật",
+    "follow": {
+      "header": "Theo dõi",
+      "title": "Chúng tôi sẽ gửi cho bạn những câu chuyện thật\ntừ các thành viên {{name}}!",
+      "previewMessage": "Không nên nói chuyện với anh như vậy chứ?",
+      "emailPlaceholder": "Nhập email của bạn",
+      "submit": "Theo dõi & Nhận tin tức ✨",
+      "submitting": "Đang đăng ký...",
+      "success": "Bạn đã theo dõi thành công!",
+      "error": "Theo dõi thất bại. Vui lòng thử lại.",
+      "loadError": "Không thể tải thông tin nhóm"
+    },
+    "error": {
+      "load": "Không thể tải thông tin nhóm"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "Tìm nhóm bạn thích!",
+      "description": "Các nhân vật idol (khuôn mặt, giọng nói, video) trong nội dung này là nhân vật ảo nguyên bản được tạo bởi AI và không dựa trên người thật, bao gồm idol và người nổi tiếng."
+    },
+    "memberCount": "{{count}} thành viên",
+    "error": {
+      "load": "Không thể tải danh sách nhóm."
     }
   }
 }

@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "グループ情報の読み込みに失敗しました"
+    }
+  },
   "common": {
     "close": "閉じる"
   },
@@ -57,6 +62,9 @@
       "title": "キャスティング完了！",
       "description": "練習生がグループに合流しました",
       "viewBoard": "キャスティングボードを見る"
+    },
+    "error": {
+      "cast": "キャスティングに失敗しました"
     }
   },
   "share": "共有",
@@ -84,7 +92,10 @@
     "subtitle": "候補リストに追加されました",
     "remainingSlots": "残りキャスティングスロット",
     "findNext": "次の練習生を探す",
-    "viewBoard": "キャスティングボードを見る"
+    "viewBoard": "キャスティングボードを見る",
+    "error": {
+      "load": "スロット情報の読み込みに失敗しました"
+    }
   },
   "companion": {
     "promptPlaceholder": "どんな話し方をする？性格を教えてね...",
@@ -235,6 +246,20 @@
       "button": "キャスティング完了"
     }
   },
+  "myGroup": {
+    "header": "マイグループ",
+    "chatComingSoon": "メンバーとのチャット準備中👋",
+    "settings": "設定",
+    "highlights": "ハイライト",
+    "empty": {
+      "title": "まだグループがありません",
+      "description": "自分だけのAIアイドルグループを作ろう！",
+      "cta": "アイドルを作る"
+    }
+  },
+  "highlight": {
+    "interviewer": "インタビュアー"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -249,6 +274,36 @@
     },
     "error": {
       "create": "開始に失敗しました。"
+    }
+  },
+  "group": {
+    "title": "シーズン1 デビュー組",
+    "chemistryButton": "メンバー間ケミストリー 💭",
+    "followButton": "フォロー",
+    "highlightTab": "ハイライト",
+    "follow": {
+      "header": "フォロー",
+      "title": "{{name}}メンバーたちの\nリアルなストーリーをお届けします！",
+      "previewMessage": "ヒョンにそんな言い方したらダメじゃない？",
+      "emailPlaceholder": "メールアドレスを入力してください",
+      "submit": "フォローして最新情報を受け取る ✨",
+      "submitting": "登録中...",
+      "success": "フォローが完了しました！",
+      "error": "フォローに失敗しました。もう一度お試しください。",
+      "loadError": "グループ情報の読み込みに失敗しました"
+    },
+    "error": {
+      "load": "グループ情報の読み込みに失敗しました"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "好きなグループを探してみよう！",
+      "description": "本コンテンツのアイドルキャラクター（顔・声・映像）はAIで制作されたオリジナルの仮想人物であり、実在の人物（アイドル/芸能人を含む）に基づいていません。"
+    },
+    "memberCount": "{{count}}人組",
+    "error": {
+      "load": "グループリストの読み込みに失敗しました。"
     }
   }
 }

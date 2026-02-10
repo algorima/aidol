@@ -1,11 +1,12 @@
 import { LottiePlayer } from "@aioia/core/client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Card } from "@/components/companion/Card";
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Modal } from "@/components/Modal";
+import { useDragScroll } from "@/hooks/useDragScroll";
 import type { AIdol, Companion } from "@/schemas";
 
 const CONFETTI_LOTTIE =
@@ -15,6 +16,7 @@ interface CompleteContentProps {
   aidol: AIdol;
   companions: Companion[];
   onCreateAnother: () => void;
+  isCreating?: boolean;
   onShare: () => void;
   onNewsletter: () => void;
 }
@@ -23,39 +25,22 @@ export function CompleteContent({
   aidol,
   companions,
   onCreateAnother,
+  isCreating = false,
   onShare,
   onNewsletter,
 }: CompleteContentProps) {
   const { t } = useTranslation();
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [hasDragged, setHasDragged] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const {
+    scrollRef,
+    isDragging,
+    hasDragged,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+  } = useDragScroll();
   const [selectedCompanion, setSelectedCompanion] = useState<Companion | null>(
     null,
   );
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollRef.current) return;
-    setIsDragging(true);
-    setHasDragged(false);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollRef.current) return;
-    e.preventDefault();
-    setHasDragged(true);
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
 
   const handleCardClick = (companion: Companion) => {
     if (!hasDragged) {
@@ -142,9 +127,14 @@ export function CompleteContent({
         <button
           type="button"
           onClick={onCreateAnother}
-          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none"
+          disabled={isCreating}
+          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none disabled:opacity-50"
         >
-          {t("aidol:complete.createAnother")}
+          {isCreating ? (
+            <span className="loading loading-spinner loading-sm" />
+          ) : (
+            t("aidol:complete.createAnother")
+          )}
         </button>
         <button
           type="button"

@@ -27,8 +27,15 @@ const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
 };
 
 const buildFilters = (gender: Gender | undefined): GetListParams["filters"] => {
-  if (!gender) return undefined;
-  return [{ field: "gender", operator: "eq", value: gender }];
+  const filters: GetListParams["filters"] = [
+    { field: "status", operator: "eq", value: "published" },
+  ];
+
+  if (gender) {
+    filters.push({ field: "gender", operator: "eq", value: gender });
+  }
+
+  return filters;
 };
 
 interface CastingPageProps {
@@ -83,10 +90,28 @@ export default function CastingPage({ params }: CastingPageProps) {
     setIsProfileOpen(true);
   }, []);
 
-  const handleCast = useCallback(() => {
-    setIsProfileOpen(false);
-    router.push(`/${lang}/aidols/${aidolId}/casting-complete`);
-  }, [lang, aidolId, router]);
+  const handleCast = useCallback(async () => {
+    if (!selectedCompanion) return;
+
+    try {
+      await companionRepository.update({
+        id: selectedCompanion.id,
+        variables: { aidolId },
+      });
+      setIsProfileOpen(false);
+      router.push(`/${lang}/aidols/${aidolId}/casting-complete`);
+    } catch {
+      showToast(t("aidol:casting.error.cast"), "error");
+    }
+  }, [
+    selectedCompanion,
+    companionRepository,
+    aidolId,
+    lang,
+    router,
+    showToast,
+    t,
+  ]);
 
   const handleNewMember = useCallback(() => {
     router.push(`/${lang}/aidols/${aidolId}/companions/create`);
@@ -94,19 +119,16 @@ export default function CastingPage({ params }: CastingPageProps) {
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">
-      <Header
-        title={t("aidol:casting.title")}
-        rightContent={
-          <button
-            type="button"
-            className="btn btn-primary gap-2.5"
-            onClick={handleNewMember}
-          >
-            {t("aidol:casting.addMember")}
-            <PlusIcon className="size-4" />
-          </button>
-        }
-      />
+      <Header title={t("aidol:casting.title")}>
+        <button
+          type="button"
+          className="btn btn-primary gap-2.5"
+          onClick={handleNewMember}
+        >
+          {t("aidol:casting.addMember")}
+          <PlusIcon className="size-4" />
+        </button>
+      </Header>
 
       <div className="flex flex-col gap-6 px-6 py-4">
         <CastingInfoBanner />
@@ -143,7 +165,7 @@ export default function CastingPage({ params }: CastingPageProps) {
           onClose={() => setIsProfileOpen(false)}
           action={{
             label: t("aidol:casting.castButton"),
-            onClick: handleCast,
+            onClick: () => void handleCast(),
             variant: "primary",
           }}
         >

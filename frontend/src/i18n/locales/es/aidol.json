@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "Error al cargar la información del grupo"
+    }
+  },
   "common": {
     "close": "Cerrar"
   },
@@ -57,6 +62,9 @@
       "title": "¡Casting Completo!",
       "description": "El aprendiz se ha unido al grupo",
       "viewBoard": "Ver Panel de Casting"
+    },
+    "error": {
+      "cast": "Error al realizar el casting"
     }
   },
   "share": "Compartir",
@@ -84,7 +92,10 @@
     "subtitle": "Agregado a la lista de candidatos",
     "remainingSlots": "Slots de Casting Restantes",
     "findNext": "Buscar Siguiente Trainee",
-    "viewBoard": "Ver Tablero de Casting"
+    "viewBoard": "Ver Tablero de Casting",
+    "error": {
+      "load": "Error al cargar la información de slots"
+    }
   },
   "companion": {
     "promptPlaceholder": "¿Cómo habla tu idol? Describe su personalidad...",
@@ -235,6 +246,20 @@
       "button": "Completar Casting"
     }
   },
+  "myGroup": {
+    "header": "Mi Grupo",
+    "chatComingSoon": "Chat con miembros próximamente👋",
+    "settings": "Configuración",
+    "highlights": "Destacados",
+    "empty": {
+      "title": "Aún no tienes grupos",
+      "description": "¡Crea tu propio grupo de ídolos AI!",
+      "cta": "Crear Ídolo"
+    }
+  },
+  "highlight": {
+    "interviewer": "Entrevistador"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -249,6 +274,36 @@
     },
     "error": {
       "create": "No se pudo iniciar."
+    }
+  },
+  "group": {
+    "title": "Debut Temporada 1",
+    "chemistryButton": "Química entre Miembros 💭",
+    "followButton": "Seguir",
+    "highlightTab": "Destacados",
+    "follow": {
+      "header": "Seguir",
+      "title": "¡Te enviaremos historias reales\nde los miembros de {{name}}!",
+      "previewMessage": "¿No deberías hablarle a tu hyung con más respeto?",
+      "emailPlaceholder": "Ingresa tu correo electrónico",
+      "submit": "Seguir y recibir novedades ✨",
+      "submitting": "Suscribiendo...",
+      "success": "¡Ahora estás siguiendo!",
+      "error": "No se pudo seguir. Inténtalo de nuevo.",
+      "loadError": "No se pudo cargar la información del grupo"
+    },
+    "error": {
+      "load": "No se pudo cargar la información del grupo"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "¡Encuentra un grupo que te guste!",
+      "description": "Los personajes idol (rostro, voz, video) de este contenido son personajes virtuales originales creados por IA y no están basados en personas reales, incluidos idols y celebridades."
+    },
+    "memberCount": "{{count}} miembros",
+    "error": {
+      "load": "No se pudo cargar la lista de grupos."
     }
   }
 }

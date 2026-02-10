@@ -11,9 +11,8 @@ from datetime import datetime, timedelta
 from typing import Self
 from zoneinfo import ZoneInfo
 
-from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
-
 from aidol.providers.llm import ProviderConstraints
+from aidol.providers.llm.messages import HumanMessage, LLMMessage, SystemMessage
 from aidol.schemas import Persona
 
 logger = logging.getLogger(__name__)
@@ -110,7 +109,7 @@ class MessageContextBuilder:
     4. Current conversation messages
 
     Usage:
-        builder = MessageContextBuilder(provider, persona)
+        builder = MessageContextBuilder(constraints, persona)
         context = (
             builder
             .with_persona()
@@ -123,23 +122,23 @@ class MessageContextBuilder:
 
     def __init__(
         self,
-        provider: ProviderConstraints,
+        constraints: ProviderConstraints,
         persona: Persona | None = None,
     ) -> None:
         """Initialize MessageContextBuilder.
 
         Args:
-            provider: Provider with constraint properties for context building.
+            constraints: Provider constraints for context building.
             persona: Optional persona with system prompt.
         """
-        self.provider = provider
+        self._constraints = constraints
         self.persona = persona
 
         # Component buffers
-        self._persona_prompts: list[BaseMessage] = []
-        self._context_prompts: list[BaseMessage] = []
+        self._persona_prompts: list[LLMMessage] = []
+        self._context_prompts: list[LLMMessage] = []
         self._purpose_prompts: list[SystemMessage] = []
-        self._current: list[BaseMessage] = []
+        self._current: list[LLMMessage] = []
 
     def with_persona(self) -> Self:
         """Add persona system prompt.
@@ -194,7 +193,7 @@ class MessageContextBuilder:
             self._purpose_prompts = list(prompts)
         return self
 
-    def with_current_conversation(self, messages: list[BaseMessage]) -> Self:
+    def with_current_conversation(self, messages: list[LLMMessage]) -> Self:
         """Add current conversation messages.
 
         Args:
@@ -206,7 +205,7 @@ class MessageContextBuilder:
         self._current = list(messages)
         return self
 
-    def build(self) -> list[BaseMessage]:
+    def build(self) -> list[LLMMessage]:
         """Assemble all components with provider constraints applied.
 
         Assembly order:
@@ -227,8 +226,8 @@ class MessageContextBuilder:
         )
 
         # 2. Apply combine_system_messages constraint
-        messages: list[BaseMessage]
-        if self.provider.combine_system_messages and len(system_messages) > 1:
+        messages: list[LLMMessage]
+        if self._constraints.combine_system_messages and len(system_messages) > 1:
             # Some providers (e.g., Anthropic) require all system messages to be combined into one
             combined_content = "\n\n".join(str(m.content) for m in system_messages)
             messages = [SystemMessage(content=combined_content)]
@@ -243,8 +242,8 @@ class MessageContextBuilder:
         return self._apply_provider_constraints(messages)
 
     def _apply_provider_constraints(
-        self, messages: list[BaseMessage]
-    ) -> list[BaseMessage]:
+        self, messages: list[LLMMessage]
+    ) -> list[LLMMessage]:
         """Apply provider constraints to assembled messages.
 
         Reusable by subclasses that override build() but need the same constraint logic.
@@ -262,16 +261,16 @@ class MessageContextBuilder:
         """
         verify_system_messages_at_front(messages)
 
-        if self.provider.require_first_user_message:
+        if self._constraints.require_first_user_message:
             ensure_first_user_message(messages)
 
-        if self.provider.enforce_alternating_turns:
+        if self._constraints.enforce_alternating_turns:
             messages = deduplicate_consecutive_same_role_messages(messages)
 
         return messages
 
 
-def verify_system_messages_at_front(messages: list[BaseMessage]) -> None:
+def verify_system_messages_at_front(messages: list[LLMMessage]) -> None:
     """Verify all SystemMessages are at the front.
 
     This function enforces the runtime precondition of build():
@@ -299,7 +298,7 @@ def verify_system_messages_at_front(messages: list[BaseMessage]) -> None:
             found_non_system = True
 
 
-def ensure_first_user_message(messages: list[BaseMessage]) -> None:
+def ensure_first_user_message(messages: list[LLMMessage]) -> None:
     """Ensure first non-system message is from user.
 
     Some providers (e.g., Anthropic) require the first non-system message
@@ -321,8 +320,8 @@ def ensure_first_user_message(messages: list[BaseMessage]) -> None:
 
 
 def deduplicate_consecutive_same_role_messages(
-    messages: list[BaseMessage],
-) -> list[BaseMessage]:
+    messages: list[LLMMessage],
+) -> list[LLMMessage]:
     """Keep only the latest message when consecutive same-role messages occur.
 
     Some LLM providers (e.g., Anthropic) require strict user-assistant alternation.
@@ -348,7 +347,7 @@ def deduplicate_consecutive_same_role_messages(
     if not messages:
         return []
 
-    result: list[BaseMessage] = []
+    result: list[LLMMessage] = []
     prev_role: type | None = None
 
     for msg in messages:

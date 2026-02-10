@@ -1,4 +1,9 @@
 {
+  "error": {
+    "load": {
+      "group": "无法加载组合信息"
+    }
+  },
   "common": {
     "close": "关闭"
   },
@@ -57,6 +62,9 @@
       "title": "选秀完成！",
       "description": "练习生已加入组合",
       "viewBoard": "查看选秀面板"
+    },
+    "error": {
+      "cast": "选角失败"
     }
   },
   "share": "分享",
@@ -84,7 +92,10 @@
     "subtitle": "已添加到候选名单",
     "remainingSlots": "剩余选秀名额",
     "findNext": "寻找下一位练习生",
-    "viewBoard": "查看选秀板"
+    "viewBoard": "查看选秀板",
+    "error": {
+      "load": "无法加载名额信息"
+    }
   },
   "companion": {
     "promptPlaceholder": "你的偶像怎么说话？描述一下性格...",
@@ -235,6 +246,20 @@
       "button": "完成选角"
     }
   },
+  "myGroup": {
+    "header": "我的组合",
+    "chatComingSoon": "与成员聊天即将上线👋",
+    "settings": "设置",
+    "highlights": "精彩集锦",
+    "empty": {
+      "title": "还没有创建的组合",
+      "description": "创建属于你的AI偶像组合吧！",
+      "cta": "创建偶像"
+    }
+  },
+  "highlight": {
+    "interviewer": "采访者"
+  },
   "landing": {
     "hero": {
       "title": {
@@ -249,6 +274,36 @@
     },
     "error": {
       "create": "启动失败。"
+    }
+  },
+  "group": {
+    "title": "第一季出道组",
+    "chemistryButton": "成员间默契 💭",
+    "followButton": "关注",
+    "highlightTab": "精彩集锦",
+    "follow": {
+      "header": "关注",
+      "title": "我们会向您发送\n{{name}}成员们的真实故事！",
+      "previewMessage": "你不应该那样跟哥哥说话吧？",
+      "emailPlaceholder": "请输入您的邮箱",
+      "submit": "关注并接收动态 ✨",
+      "submitting": "订阅中...",
+      "success": "关注成功！",
+      "error": "关注失败，请重试。",
+      "loadError": "加载群组信息失败"
+    },
+    "error": {
+      "load": "加载群组信息失败"
+    }
+  },
+  "groupList": {
+    "infoBanner": {
+      "title": "找到你喜欢的组合吧！",
+      "description": "本内容中的偶像角色（面部、声音、视频）是由AI制作的原创虚拟人物，不基于任何真实人物，包括偶像和艺人。"
+    },
+    "memberCount": "{{count}}人组",
+    "error": {
+      "load": "无法加载群组列表。"
     }
   }
 }
