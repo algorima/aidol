@@ -304,15 +304,6 @@
       "load": "Gagal memuat informasi grup"
     }
   },
-  "chemistry": {
-    "header": "Kimia Antar Anggota",
-    "relationTitle": "Ringkasan Kimia",
-    "relationSubtitle": "Hubungan mempengaruhi konten chat!",
-    "addRelation": "Tambah Hubungan",
-    "error": {
-      "load": "Gagal memuat informasi anggota"
-    }
-  },
   "groupList": {
     "infoBanner": {
       "title": "Temukan grup yang kamu suka!",
@@ -328,6 +319,9 @@
     "sectionTitle": "Ringkasan Kimia Anggota",
     "sectionSubtitle": "Hubungan memengaruhi konten obrolan!",
     "addRelationship": "Tambah Hubungan",
+    "error": {
+      "load": "Gagal memuat informasi anggota"
+    },
     "add": {
       "header": "Tambah Hubungan",
       "memberNotFound": "Anggota tidak ditemukan.",

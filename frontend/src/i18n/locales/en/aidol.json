@@ -304,15 +304,6 @@
       "load": "Failed to load group information"
     }
   },
-  "chemistry": {
-    "header": "Member Chemistry",
-    "relationTitle": "Chemistry Summary",
-    "relationSubtitle": "Relationships affect chat content!",
-    "addRelation": "Add Relationship",
-    "error": {
-      "load": "Failed to load member information"
-    }
-  },
   "groupList": {
     "infoBanner": {
       "title": "Find a group you like!",
@@ -328,6 +319,9 @@
     "sectionTitle": "Member Chemistry Summary",
     "sectionSubtitle": "Relationships affect chat content!",
     "addRelationship": "Add Relationship",
+    "error": {
+      "load": "Failed to load member information"
+    },
     "add": {
       "header": "Add Relationship",
       "memberNotFound": "Member not found.",

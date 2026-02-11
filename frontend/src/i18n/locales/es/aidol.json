@@ -304,15 +304,6 @@
       "load": "No se pudo cargar la información del grupo"
     }
   },
-  "chemistry": {
-    "header": "Química entre Miembros",
-    "relationTitle": "Resumen de Química",
-    "relationSubtitle": "¡Las relaciones afectan el contenido del chat!",
-    "addRelation": "Agregar Relación",
-    "error": {
-      "load": "No se pudo cargar la información del miembro"
-    }
-  },
   "groupList": {
     "infoBanner": {
       "title": "¡Encuentra un grupo que te guste!",
@@ -328,6 +319,9 @@
     "sectionTitle": "Resumen de Química",
     "sectionSubtitle": "¡Las relaciones afectan el contenido del chat!",
     "addRelationship": "Agregar Relación",
+    "error": {
+      "load": "No se pudo cargar la información del miembro"
+    },
     "add": {
       "header": "Agregar Relación",
       "memberNotFound": "No se encontró el miembro.",

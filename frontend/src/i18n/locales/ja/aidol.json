@@ -304,15 +304,6 @@
       "load": "グループ情報の読み込みに失敗しました"
     }
   },
-  "chemistry": {
-    "header": "メンバー間ケミストリー",
-    "relationTitle": "メンバーとのケミストリーまとめ",
-    "relationSubtitle": "関係性はチャット内容に影響します！",
-    "addRelation": "関係性を追加",
-    "error": {
-      "load": "メンバー情報の読み込みに失敗しました"
-    }
-  },
   "groupList": {
     "infoBanner": {
       "title": "好きなグループを探してみよう！",
@@ -328,6 +319,9 @@
     "sectionTitle": "メンバーとのケミまとめ",
     "sectionSubtitle": "関係性はチャット内容に影響します！",
     "addRelationship": "関係性を追加",
+    "error": {
+      "load": "メンバー情報の読み込みに失敗しました"
+    },
     "add": {
       "header": "関係性を追加",
       "memberNotFound": "メンバーが見つかりません。",

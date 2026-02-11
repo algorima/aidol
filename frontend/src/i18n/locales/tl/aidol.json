@@ -304,15 +304,6 @@
       "load": "Hindi ma-load ang impormasyon ng grupo"
     }
   },
-  "chemistry": {
-    "header": "Chemistry ng mga Miyembro",
-    "relationTitle": "Buod ng Chemistry",
-    "relationSubtitle": "Ang relasyon ay nakakaapekto sa nilalaman ng chat!",
-    "addRelation": "Magdagdag ng Relasyon",
-    "error": {
-      "load": "Hindi na-load ang impormasyon ng miyembro"
-    }
-  },
   "groupList": {
     "infoBanner": {
       "title": "Humanap ng grupo na gusto mo!",
@@ -328,6 +319,9 @@
     "sectionTitle": "Buod ng Chemistry",
     "sectionSubtitle": "Nakakaapekto ang relasyon sa nilalaman ng chat!",
     "addRelationship": "Magdagdag ng Relasyon",
+    "error": {
+      "load": "Hindi na-load ang impormasyon ng miyembro"
+    },
     "add": {
       "header": "Magdagdag ng Relasyon",
       "memberNotFound": "Hindi nahanap ang miyembro.",
