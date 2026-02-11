@@ -59,9 +59,9 @@ export function ChemistryContent({
             >
               <div
                 className={clsx(
-                  "relative size-[70px] overflow-hidden rounded-lg",
+                  "relative size-17.5 overflow-hidden rounded-lg",
                   companion.id === selectedMember.id
-                    ? "border-primary border-2"
+                    ? "ring-primary ring-2"
                     : "border-base-300 border",
                 )}
               >
