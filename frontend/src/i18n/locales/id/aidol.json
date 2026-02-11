@@ -5,7 +5,14 @@
     }
   },
   "common": {
-    "close": "Tutup"
+    "close": "Tutup",
+    "save": "Simpan",
+    "saved": "Berhasil disimpan.",
+    "deleted": "Berhasil dihapus.",
+    "error": {
+      "save": "Gagal menyimpan",
+      "load": "Gagal memuat data"
+    }
   },
   "position": {
     "header": "Penetapan Posisi",
@@ -305,6 +312,34 @@
     "memberCount": "{{count}} anggota",
     "error": {
       "load": "Gagal memuat daftar grup."
+    }
+  },
+  "chemistry": {
+    "header": "Kimia Antar Anggota",
+    "sectionTitle": "Ringkasan Kimia Anggota",
+    "sectionSubtitle": "Hubungan memengaruhi konten obrolan!",
+    "addRelationship": "Tambah Hubungan",
+    "add": {
+      "header": "Tambah Hubungan",
+      "memberNotFound": "Anggota tidak ditemukan.",
+      "createRelationshipWith": "Buat hubungan dengan {{name}}",
+      "selectedMemberPlaceholder": "Anggota\nterpilih",
+      "selectMember": "Pilih Anggota",
+      "relationshipType": "Jenis Hubungan",
+      "types": {
+        "awkward": "Masih Canggung",
+        "polite": "Sopan",
+        "friendly": "Ramah",
+        "tikitaka": "Tiki-Taka",
+        "trust": "Dapat Dipercaya",
+        "emotional": "Emosional",
+        "bestFriend": "Sahabat",
+        "inseparable": "Tak Terpisahkan"
+      },
+      "intimacy": "Keintiman",
+      "startsAt": "Mulai dari <highlight>{{intimacy}}%</highlight>",
+      "relationshipNickname": "Nama Panggilan Hubungan",
+      "nicknamePlaceholder": "cth.) Squad, Besties"
     }
   }
 }

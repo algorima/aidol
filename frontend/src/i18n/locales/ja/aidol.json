@@ -5,7 +5,14 @@
     }
   },
   "common": {
-    "close": "閉じる"
+    "close": "閉じる",
+    "save": "保存",
+    "saved": "保存しました。",
+    "deleted": "削除しました。",
+    "error": {
+      "save": "保存に失敗しました",
+      "load": "データの読み込みに失敗しました"
+    }
   },
   "position": {
     "header": "ポジション配置",
@@ -305,6 +312,34 @@
     "memberCount": "{{count}}人組",
     "error": {
       "load": "グループリストの読み込みに失敗しました。"
+    }
+  },
+  "chemistry": {
+    "header": "メンバー間ケミストリー",
+    "sectionTitle": "メンバーとのケミまとめ",
+    "sectionSubtitle": "関係性はチャット内容に影響します！",
+    "addRelationship": "関係性を追加",
+    "add": {
+      "header": "関係性を追加",
+      "memberNotFound": "メンバーが見つかりません。",
+      "createRelationshipWith": "{{name}}との関係を作りましょう",
+      "selectedMemberPlaceholder": "選択した\nメンバー表示",
+      "selectMember": "メンバー選択",
+      "relationshipType": "関係タイプ",
+      "types": {
+        "awkward": "まだぎこちない",
+        "polite": "礼儀正しく",
+        "friendly": "親しみやすく",
+        "tikitaka": "ティキタカ",
+        "trust": "信頼できる",
+        "emotional": "感情的",
+        "bestFriend": "親友",
+        "inseparable": "離れられない"
+      },
+      "intimacy": "親密度",
+      "startsAt": "<highlight>{{intimacy}}%</highlight>からスタート",
+      "relationshipNickname": "関係の別名",
+      "nicknamePlaceholder": "例）同い年ズ、仲良しズ"
     }
   }
 }
