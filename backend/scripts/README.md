@@ -20,7 +20,15 @@ poetry run python scripts/import_data.py
 ```bash
 # (backend 디렉토리에서)
 poetry run uvicorn main:app --reload
+
 ```
+서버 실행
+```bash
+# (frontend 디렉토리에서)
+npm run dev
+```
+- `"dev": "next dev"` -> `"dev": "next dev -H 127.0.0.1"`
+
 ### DB 초기화
 local_database.db 파일 삭제 후 서버 실행 시 자동 생성
 
