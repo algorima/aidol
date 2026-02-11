@@ -5,7 +5,14 @@
     }
   },
   "common": {
-    "close": "ปิด"
+    "close": "ปิด",
+    "save": "บันทึก",
+    "saved": "บันทึกสำเร็จแล้ว",
+    "deleted": "ลบสำเร็จแล้ว",
+    "error": {
+      "save": "ไม่สามารถบันทึก",
+      "load": "ไม่สามารถโหลดข้อมูล"
+    }
   },
   "position": {
     "header": "กำหนดตำแหน่ง",
@@ -314,6 +321,34 @@
     "memberCount": "{{count}} คน",
     "error": {
       "load": "ไม่สามารถโหลดรายการกลุ่มได้"
+    }
+  },
+  "chemistry": {
+    "header": "เคมีระหว่างสมาชิก",
+    "sectionTitle": "สรุปเคมีของสมาชิก",
+    "sectionSubtitle": "ความสัมพันธ์มีผลต่อเนื้อหาแชท!",
+    "addRelationship": "เพิ่มความสัมพันธ์",
+    "add": {
+      "header": "เพิ่มความสัมพันธ์",
+      "memberNotFound": "ไม่พบสมาชิก",
+      "createRelationshipWith": "สร้างความสัมพันธ์กับ{{name}}",
+      "selectedMemberPlaceholder": "สมาชิก\nที่เลือก",
+      "selectMember": "เลือกสมาชิก",
+      "relationshipType": "ประเภทความสัมพันธ์",
+      "types": {
+        "awkward": "ยังเขินอยู่",
+        "polite": "สุภาพ",
+        "friendly": "เป็นมิตร",
+        "tikitaka": "ทิกิ-ตากา",
+        "trust": "ไว้วางใจได้",
+        "emotional": "อารมณ์ดี",
+        "bestFriend": "เพื่อนรัก",
+        "inseparable": "แยกกันไม่ออก"
+      },
+      "intimacy": "ความสนิท",
+      "startsAt": "เริ่มต้นที่ <highlight>{{intimacy}}%</highlight>",
+      "relationshipNickname": "ชื่อเล่นความสัมพันธ์",
+      "nicknamePlaceholder": "เช่น) กลุ่มเพื่อน, คู่ซี้"
     }
   }
 }
