@@ -3,22 +3,17 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
+import { INTIMACY_TO_RELATIONSHIP_TYPE } from "@/constants/relationship";
 import { handleClickKeyDown } from "@/lib/handleClickKeyDown";
 import type { Companion } from "@/schemas/companion";
+import type { CompanionRelationship } from "@/schemas/companion-relationship";
 
 import { ChemistryRelationCard } from "./ChemistryRelationCard";
 import { MemberProfileCard } from "./MemberProfileCard";
 
-export interface ChemistryRelation {
-  fromId: string;
-  toId: string;
-  fromLabel: string;
-  toLabel: string;
-}
-
 interface ChemistryContentProps {
   companions: Companion[];
-  relations: ChemistryRelation[];
+  relationships: CompanionRelationship[];
   selectedMember: Companion;
   onSelectMember: (id: string) => void;
   onBack: () => void;
@@ -26,12 +21,26 @@ interface ChemistryContentProps {
 
 export function ChemistryContent({
   companions,
-  relations,
+  relationships,
   selectedMember,
   onSelectMember,
   onBack,
 }: ChemistryContentProps) {
   const { t } = useTranslation("aidol");
+
+  const otherCompanions = companions.filter((c) => c.id !== selectedMember.id);
+
+  const getRelationshipTo = (toId: string) => {
+    return relationships.find(
+      (rel) =>
+        rel.fromCompanionId === selectedMember.id && rel.toCompanionId === toId,
+    );
+  };
+
+  const getPositionLabel = (position: string | null | undefined) => {
+    if (!position) return t("position.unassigned");
+    return t(`position.${position}`);
+  };
 
   return (
     <div className="bg-base-100 max-w-mobile min-w-mobile mx-auto flex min-h-dvh flex-col">
@@ -103,19 +112,37 @@ export function ChemistryContent({
           </div>
 
           <div className="flex flex-col gap-4">
-            {relations.map((relation) => {
-              const toMember = companions.find((c) => c.id === relation.toId);
-              if (!toMember) return null;
-              return (
-                <ChemistryRelationCard
-                  key={`${relation.fromId}-${relation.toId}`}
-                  fromName={selectedMember.name ?? ""}
-                  toName={toMember.name ?? ""}
-                  fromLabel={relation.fromLabel}
-                  toLabel={relation.toLabel}
-                />
-              );
-            })}
+            {/* 커스텀 관계 */}
+            {otherCompanions
+              .map((target) => {
+                const customRel = getRelationshipTo(target.id);
+                if (!customRel) return null;
+
+                const relationshipType =
+                  INTIMACY_TO_RELATIONSHIP_TYPE[customRel.intimacy ?? 0];
+
+                return (
+                  <ChemistryRelationCard
+                    key={`custom-${target.id}`}
+                    fromName={selectedMember.name ?? ""}
+                    toName={target.name ?? ""}
+                    relationshipType={customRel.nickname ?? undefined}
+                    description={relationshipType}
+                  />
+                );
+              })
+              .filter(Boolean)}
+
+            {/* 포지션 (프리셋) */}
+            {otherCompanions.map((target) => (
+              <ChemistryRelationCard
+                key={`position-${target.id}`}
+                fromName={selectedMember.name ?? ""}
+                toName={target.name ?? ""}
+                fromLabel={getPositionLabel(selectedMember.position)}
+                toLabel={getPositionLabel(target.position)}
+              />
+            ))}
           </div>
         </div>
       </div>

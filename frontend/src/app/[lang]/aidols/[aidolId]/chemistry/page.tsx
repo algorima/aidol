@@ -5,10 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
-import {
-  ChemistryContent,
-  type ChemistryRelation,
-} from "@/components/group/ChemistryContent";
+import { ChemistryContent } from "@/components/group/ChemistryContent";
 import { Loading } from "@/components/Loading";
 import { CompanionRelationshipRepository } from "@/repositories/CompanionRelationshipRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
@@ -27,7 +24,9 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
   const { aidolId } = params;
 
   const [companions, setCompanions] = useState<Companion[]>([]);
-  const [relations, setRelations] = useState<ChemistryRelation[]>([]);
+  const [relationships, setRelationships] = useState<CompanionRelationship[]>(
+    [],
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [selectedMemberId, setSelectedMemberId] = useState<string | null>(null);
 
@@ -65,14 +64,7 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
             ],
             pagination: { current: 1, pageSize: 100 },
           });
-
-          const companionMap = new Map(fetchedCompanions.map((c) => [c.id, c]));
-          const chemistryRelations = buildChemistryRelations(
-            relationshipsResponse.data,
-            companionMap,
-            t,
-          );
-          setRelations(chemistryRelations);
+          setRelationships(relationshipsResponse.data);
         }
       } catch (error) {
         console.error("Failed to fetch chemistry page data:", error);
@@ -97,53 +89,13 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
 
   if (!selectedMember) return null;
 
-  const filteredRelations = relations.filter(
-    (r) => r.fromId === selectedMemberId,
-  );
-
   return (
     <ChemistryContent
       companions={companions}
-      relations={filteredRelations}
+      relationships={relationships}
       selectedMember={selectedMember}
       onSelectMember={setSelectedMemberId}
       onBack={() => router.push(`/${params.lang}/aidols/${aidolId}/detail`)}
     />
   );
 }
-
-/**
- * API 관계 데이터를 ChemistryRelation으로 변환
- * A→B 관계를 설정하면 A 선택 시에만 B와의 관계가 표시됨
- */
-const buildChemistryRelations = (
-  relationships: CompanionRelationship[],
-  companionMap: Map<string, Companion>,
-  t: (key: string, options?: Record<string, unknown>) => string,
-): ChemistryRelation[] => {
-  const results: ChemistryRelation[] = [];
-
-  for (const rel of relationships) {
-    if (!rel.fromCompanionId || !rel.toCompanionId) continue;
-
-    const fromCompanion = companionMap.get(rel.fromCompanionId);
-    const toCompanion = companionMap.get(rel.toCompanionId);
-    if (!fromCompanion || !toCompanion) continue;
-
-    const fromLabel = fromCompanion.position
-      ? t(`position.${fromCompanion.position}`)
-      : "";
-    const toLabel = toCompanion.position
-      ? t(`position.${toCompanion.position}`)
-      : "";
-
-    results.push({
-      fromId: rel.fromCompanionId,
-      toId: rel.toCompanionId,
-      fromLabel,
-      toLabel,
-    });
-  }
-
-  return results;
-};
