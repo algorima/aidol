@@ -21,7 +21,8 @@ export function ImagePreview({ url, alt, variant = "default" }: ProfileProps) {
   return (
     <div
       className={clsx(
-        "border-base-300 bg-base-200 relative overflow-hidden rounded-lg border",
+        "bg-base-200 relative overflow-hidden",
+        variant === "default" && "rounded-lg",
         SIZE_CLASSES[variant],
       )}
     >

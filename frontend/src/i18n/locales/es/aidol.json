@@ -5,7 +5,14 @@
     }
   },
   "common": {
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "save": "Guardar",
+    "saved": "Guardado correctamente.",
+    "deleted": "Eliminado correctamente.",
+    "error": {
+      "save": "Error al guardar",
+      "load": "Error al cargar los datos"
+    }
   },
   "position": {
     "header": "Asignación de Posición",
@@ -305,6 +312,37 @@
     "memberCount": "{{count}} miembros",
     "error": {
       "load": "No se pudo cargar la lista de grupos."
+    }
+  },
+  "chemistry": {
+    "header": "Química entre Miembros",
+    "sectionTitle": "Resumen de Química",
+    "sectionSubtitle": "¡Las relaciones afectan el contenido del chat!",
+    "addRelationship": "Agregar Relación",
+    "error": {
+      "load": "No se pudo cargar la información del miembro"
+    },
+    "add": {
+      "header": "Agregar Relación",
+      "memberNotFound": "No se encontró el miembro.",
+      "createRelationshipWith": "Crea una relación con {{name}}",
+      "selectedMemberPlaceholder": "Miembro\nseleccionado",
+      "selectMember": "Seleccionar Miembro",
+      "relationshipType": "Tipo de Relación",
+      "types": {
+        "awkward": "Todavía Incómodo",
+        "polite": "Cortés",
+        "friendly": "Amigable",
+        "tikitaka": "Tiki-Taka",
+        "trust": "Confiable",
+        "emotional": "Emocional",
+        "bestFriend": "Mejor Amigo",
+        "inseparable": "Inseparable"
+      },
+      "intimacy": "Intimidad",
+      "startsAt": "Comienza en <highlight>{{intimacy}}%</highlight>",
+      "relationshipNickname": "Apodo de Relación",
+      "nicknamePlaceholder": "ej.) Squad, Mejores"
     }
   }
 }

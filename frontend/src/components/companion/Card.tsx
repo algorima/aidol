@@ -12,13 +12,23 @@ interface CardProps {
   companion: Companion;
   variant?: CardVariant;
   onClick?: () => void;
+  overlayText?: string;
+  disabled?: boolean;
+  className?: string;
 }
 
-export function Card({ companion, variant = "grade", onClick }: CardProps) {
+export function Card({
+  companion,
+  variant = "grade",
+  onClick,
+  overlayText,
+  disabled,
+  className,
+}: CardProps) {
   const { t } = useTranslation();
   const isSigned = companion.aidolId !== null;
   const showSignedOverlay = isSigned && variant === "grade";
-  const isClickable = onClick && !showSignedOverlay;
+  const isClickable = onClick && !showSignedOverlay && !disabled;
 
   const gradientOpacity =
     variant === "position"
@@ -37,8 +47,10 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
   return (
     <div
       className={clsx(
-        "h-card max-w-card border-base-300 relative isolate w-full overflow-hidden rounded-lg border",
+        "border-base-300 relative isolate overflow-hidden rounded-lg border",
+        !className && "h-card max-w-card w-full",
         isClickable && "cursor-pointer",
+        className,
       )}
       onClick={isClickable ? onClick : undefined}
       role={isClickable ? "button" : undefined}
@@ -53,14 +65,16 @@ export function Card({ companion, variant = "grade", onClick }: CardProps) {
         />
       </div>
 
-      {showSignedOverlay && (
+      {(showSignedOverlay || disabled) && (
         <>
           <div className="absolute inset-0 z-20 bg-black/40 backdrop-blur-sm" />
-          <div className="absolute top-4 left-4 z-20">
-            <span className="bg-base-100 text-body-s text-base-content w-fit rounded-lg px-2 py-1">
-              {t("companion.signed")}
-            </span>
-          </div>
+          {(showSignedOverlay || overlayText) && (
+            <div className="absolute top-4 left-4 z-20">
+              <span className="text-body-s w-fit rounded-lg bg-black px-2 py-1 text-white">
+                {showSignedOverlay ? t("companion.signed") : overlayText}
+              </span>
+            </div>
+          )}
         </>
       )}
 

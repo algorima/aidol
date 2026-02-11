@@ -5,7 +5,14 @@
     }
   },
   "common": {
-    "close": "Isara"
+    "close": "Isara",
+    "save": "I-save",
+    "saved": "Matagumpay na na-save.",
+    "deleted": "Matagumpay na na-delete.",
+    "error": {
+      "save": "Hindi ma-save",
+      "load": "Hindi ma-load ang data"
+    }
   },
   "position": {
     "header": "Pagtatalaga ng Posisyon",
@@ -305,6 +312,37 @@
     "memberCount": "{{count}} miyembro",
     "error": {
       "load": "Hindi na-load ang listahan ng grupo."
+    }
+  },
+  "chemistry": {
+    "header": "Chemistry ng mga Miyembro",
+    "sectionTitle": "Buod ng Chemistry",
+    "sectionSubtitle": "Nakakaapekto ang relasyon sa nilalaman ng chat!",
+    "addRelationship": "Magdagdag ng Relasyon",
+    "error": {
+      "load": "Hindi na-load ang impormasyon ng miyembro"
+    },
+    "add": {
+      "header": "Magdagdag ng Relasyon",
+      "memberNotFound": "Hindi nahanap ang miyembro.",
+      "createRelationshipWith": "Gumawa ng relasyon kay {{name}}",
+      "selectedMemberPlaceholder": "Napiling\nmiyembro dito",
+      "selectMember": "Pumili ng Miyembro",
+      "relationshipType": "Uri ng Relasyon",
+      "types": {
+        "awkward": "Medyo Awkward Pa",
+        "polite": "Magalang",
+        "friendly": "Palakaibigan",
+        "tikitaka": "Tiki-Taka",
+        "trust": "Mapagkakatiwalaan",
+        "emotional": "Emosyonal",
+        "bestFriend": "Pinakamatalik na Kaibigan",
+        "inseparable": "Hindi Mapaghiwalay"
+      },
+      "intimacy": "Intimacy",
+      "startsAt": "Nagsisimula sa <highlight>{{intimacy}}%</highlight>",
+      "relationshipNickname": "Palayaw ng Relasyon",
+      "nicknamePlaceholder": "hal.) Squad, Besties"
     }
   }
 }
