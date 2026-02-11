@@ -1,4 +1,5 @@
 export { ChatTooltipButton } from "./ChatTooltipButton";
+export { ChemistryContent } from "./ChemistryContent";
 export { ChemistryRelationCard } from "./ChemistryRelationCard";
 export { GroupCard } from "./GroupCard";
 export { GroupDropdown } from "./GroupDropdown";

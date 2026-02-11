@@ -319,6 +319,9 @@
     "sectionTitle": "メンバーとのケミまとめ",
     "sectionSubtitle": "関係性はチャット内容に影響します！",
     "addRelationship": "関係性を追加",
+    "error": {
+      "load": "メンバー情報の読み込みに失敗しました"
+    },
     "add": {
       "header": "関係性を追加",
       "memberNotFound": "メンバーが見つかりません。",

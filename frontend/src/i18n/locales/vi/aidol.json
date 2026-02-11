@@ -319,6 +319,9 @@
     "sectionTitle": "Tóm Tắt Mối Quan Hệ",
     "sectionSubtitle": "Mối quan hệ ảnh hưởng đến nội dung trò chuyện!",
     "addRelationship": "Thêm Mối Quan Hệ",
+    "error": {
+      "load": "Không thể tải thông tin thành viên"
+    },
     "add": {
       "header": "Thêm Mối Quan Hệ",
       "memberNotFound": "Không tìm thấy thành viên.",

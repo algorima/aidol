@@ -319,6 +319,9 @@
     "sectionTitle": "Member Chemistry Summary",
     "sectionSubtitle": "Relationships affect chat content!",
     "addRelationship": "Add Relationship",
+    "error": {
+      "load": "Failed to load member information"
+    },
     "add": {
       "header": "Add Relationship",
       "memberNotFound": "Member not found.",

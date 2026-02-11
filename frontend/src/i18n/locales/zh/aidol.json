@@ -319,6 +319,9 @@
     "sectionTitle": "成员关系整理",
     "sectionSubtitle": "关系会影响聊天内容！",
     "addRelationship": "添加关系",
+    "error": {
+      "load": "无法加载成员信息"
+    },
     "add": {
       "header": "添加关系",
       "memberNotFound": "找不到成员。",

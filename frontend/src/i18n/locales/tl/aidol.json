@@ -319,6 +319,9 @@
     "sectionTitle": "Buod ng Chemistry",
     "sectionSubtitle": "Nakakaapekto ang relasyon sa nilalaman ng chat!",
     "addRelationship": "Magdagdag ng Relasyon",
+    "error": {
+      "load": "Hindi na-load ang impormasyon ng miyembro"
+    },
     "add": {
       "header": "Magdagdag ng Relasyon",
       "memberNotFound": "Hindi nahanap ang miyembro.",

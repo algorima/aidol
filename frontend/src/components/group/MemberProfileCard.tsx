@@ -33,9 +33,7 @@ export function MemberProfileCard({ companion }: MemberProfileCardProps) {
         </div>
 
         <div className="flex flex-col gap-2">
-          <span className="text-title-s text-base-content font-bold">
-            {name ?? ""}
-          </span>
+          <span className="text-title-s text-base-content">{name ?? ""}</span>
           {(grade || mbti || position) && (
             <div className="flex gap-1">
               {grade && (

@@ -319,6 +319,9 @@
     "sectionTitle": "Ringkasan Kimia Anggota",
     "sectionSubtitle": "Hubungan memengaruhi konten obrolan!",
     "addRelationship": "Tambah Hubungan",
+    "error": {
+      "load": "Gagal memuat informasi anggota"
+    },
     "add": {
       "header": "Tambah Hubungan",
       "memberNotFound": "Anggota tidak ditemukan.",
