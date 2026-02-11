@@ -50,32 +50,45 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
         const fetchedCompanions = companionsResponse.data;
         setCompanions(fetchedCompanions);
 
-        if (fetchedCompanions.length > 0) {
-          setSelectedMemberId(fetchedCompanions[0].id);
-
-          const companionIds = fetchedCompanions.map((c) => c.id);
-          const relationshipsResponse = await relationshipRepository.getList({
-            filters: [
-              {
-                field: "fromCompanionId",
-                operator: "in",
-                value: companionIds,
-              },
-            ],
-            pagination: { current: 1, pageSize: 100 },
-          });
-          setRelationships(relationshipsResponse.data);
+        if (fetchedCompanions.length === 0) {
+          showToast(t("chemistry.error.load"), "error");
+          router.push(`/${params.lang}/aidols/${aidolId}/detail`);
+          return;
         }
+
+        setSelectedMemberId(fetchedCompanions[0].id);
+
+        const companionIds = fetchedCompanions.map((c) => c.id);
+        const relationshipsResponse = await relationshipRepository.getList({
+          filters: [
+            {
+              field: "fromCompanionId",
+              operator: "in",
+              value: companionIds,
+            },
+          ],
+          pagination: { current: 1, pageSize: 100 },
+        });
+        setRelationships(relationshipsResponse.data);
       } catch (error) {
         console.error("Failed to fetch chemistry page data:", error);
         showToast(t("chemistry.error.load"), "error");
+        router.push(`/${params.lang}/aidols/${aidolId}/detail`);
       } finally {
         setIsLoading(false);
       }
     };
 
     void fetchData();
-  }, [aidolId, companionRepository, relationshipRepository, showToast, t]);
+  }, [
+    aidolId,
+    companionRepository,
+    relationshipRepository,
+    showToast,
+    t,
+    router,
+    params.lang,
+  ]);
 
   if (isLoading) {
     return (
@@ -87,7 +100,13 @@ export default function ChemistryPage({ params }: ChemistryPageProps) {
 
   const selectedMember = companions.find((c) => c.id === selectedMemberId);
 
-  if (!selectedMember) return null;
+  if (!selectedMember) {
+    return (
+      <div className="bg-base-100 flex h-dvh flex-col items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <ChemistryContent
