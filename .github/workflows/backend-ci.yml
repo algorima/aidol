@@ -42,3 +42,40 @@ jobs:
       - name: Type Check
         run: make type-check
         working-directory: backend
+
+      - name: Run Unit Tests
+        run: make unit-test
+        working-directory: backend
+
+  integration-tests:
+    needs: backend-ci
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GKE_SA_KEY }}
+
+      - name: Read Python version
+        id: python-version
+        run: echo "version=$(cat backend/.python-version)" >> $GITHUB_OUTPUT
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ steps.python-version.outputs.version }}
+
+      - name: Install Dependencies
+        run: |
+          pip install poetry
+          poetry install
+        working-directory: backend
+
+      - name: Run Integration Tests
+        env:
+          GOOGLE_CLOUD_PROJECT: ${{ secrets.GKE_PROJECT }}
+        run: make integration-test
+        working-directory: backend

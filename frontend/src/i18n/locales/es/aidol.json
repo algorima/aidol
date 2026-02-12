@@ -14,6 +14,11 @@
       "load": "Error al cargar los datos"
     }
   },
+  "navigation": {
+    "home": "Inicio",
+    "explore": "Explorar",
+    "myGroup": "Mi Grupo"
+  },
   "position": {
     "header": "Asignación de Posición",
     "title": "¡Asigna una posición a cada miembro!",
@@ -258,9 +263,6 @@
       "description": "¡Crea tu propio grupo de ídolos AI!",
       "cta": "Crear Ídolo"
     }
-  },
-  "highlight": {
-    "interviewer": "Entrevistador"
   },
   "landing": {
     "hero": {

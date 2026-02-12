@@ -1,12 +1,13 @@
 "use client";
 
 import type { GetListParams } from "@aioia/core";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import type { GenderTab } from "@/components/casting";
 import {
   CastingCardGrid,
@@ -145,6 +146,21 @@ export default function CastingPage({ params }: CastingPageProps) {
           />
         )}
       </div>
+
+      <div className="max-w-mobile pointer-events-none fixed bottom-24 left-1/2 w-full -translate-x-1/2">
+        <button
+          type="button"
+          onClick={() =>
+            router.push(`/${lang}/aidols/${aidolId}/casting-board`)
+          }
+          className="bg-neutral pointer-events-auto mr-6 ml-auto flex size-[54px] cursor-pointer items-center justify-center rounded-full shadow-[0px_4px_16px_0px_rgba(0,0,0,0.4)]"
+          aria-label={t("aidol:castingBoard.header")}
+        >
+          <SquaresPlusIcon className="text-neutral-content size-6" />
+        </button>
+      </div>
+
+      <BottomNavigation lang={lang} />
 
       {selectedCompanion && (
         <Modal
