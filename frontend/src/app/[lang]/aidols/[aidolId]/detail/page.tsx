@@ -9,10 +9,13 @@ import { GroupProfile } from "@/components/group/GroupProfile";
 import { HighlightCard } from "@/components/group/HighlightCard";
 import { HighlightSectionHeader } from "@/components/group/HighlightSectionHeader";
 import { Header } from "@/components/Header";
+import { HighlightMessageList } from "@/components/highlight";
 import { Loading } from "@/components/Loading";
+import { Modal } from "@/components/Modal";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
+import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { HighlightRepository } from "@/repositories/HighlightRepository";
-import type { AIdol, AIdolHighlight } from "@/schemas";
+import type { AIdol, AIdolHighlight, HighlightMessage } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
 
 interface GroupDetailPageProps {
@@ -29,6 +32,15 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
   const [highlights, setHighlights] = useState<AIdolHighlight[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [selectedHighlightId, setSelectedHighlightId] = useState<string | null>(
+    null,
+  );
+  const [messages, setMessages] = useState<HighlightMessage[]>([]);
+  const [companions, setCompanions] = useState<
+    Record<string, { name: string; imageUrl?: string }>
+  >({});
+  const [isModalLoading, setIsModalLoading] = useState(false);
+
   const aidolRepository = useMemo(
     () => new AIdolRepository(getApiService()),
     [],
@@ -37,20 +49,41 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     () => new HighlightRepository(getApiService()),
     [],
   );
+  const companionRepository = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [aidolResponse, highlightsResponse] = await Promise.all([
-          aidolRepository.getOne({ id: aidolId }),
-          highlightRepository.getList({
-            filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
-            pagination: { current: 1, pageSize: 100 },
-          }),
-        ]);
+        const [aidolResponse, highlightsResponse, companionsResponse] =
+          await Promise.all([
+            aidolRepository.getOne({ id: aidolId }),
+            highlightRepository.getList({
+              filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+              pagination: { current: 1, pageSize: 100 },
+            }),
+            companionRepository.getList({
+              filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+              pagination: { current: 1, pageSize: 100 },
+            }),
+          ]);
         setAidol(aidolResponse.data);
         setHighlights(highlightsResponse.data);
+
+        const companionMap: Record<
+          string,
+          { name: string; imageUrl?: string }
+        > = {};
+        for (const c of companionsResponse.data) {
+          companionMap[c.id] = {
+            name: c.name ?? "",
+            imageUrl: c.profilePictureUrl ?? undefined,
+          };
+        }
+        setCompanions(companionMap);
       } catch (error) {
         console.error("Failed to fetch group detail:", error);
         showToast(t("group.error.load"), "error");
@@ -60,7 +93,43 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     };
 
     void fetchData();
-  }, [aidolId, aidolRepository, highlightRepository, showToast, t]);
+  }, [
+    aidolId,
+    aidolRepository,
+    highlightRepository,
+    companionRepository,
+    showToast,
+    t,
+  ]);
+
+  const handleHighlightClick = async (highlightId: string) => {
+    setSelectedHighlightId(highlightId);
+    setIsModalLoading(true);
+    try {
+      const { data: messagesData } =
+        await highlightRepository.getMessages(highlightId);
+      const invalid = messagesData.filter(
+        (msg) => msg.companionId !== null && !(msg.companionId in companions),
+      );
+      if (invalid.length > 0) {
+        console.error(
+          "Unknown companionIds:",
+          invalid.map((msg) => msg.companionId),
+        );
+      }
+      setMessages(
+        messagesData.filter(
+          (msg) => msg.companionId === null || msg.companionId in companions,
+        ),
+      );
+    } catch (error) {
+      console.error("Failed to fetch highlight messages:", error);
+      showToast(t("highlight.error.load"), "error");
+      setSelectedHighlightId(null);
+    } finally {
+      setIsModalLoading(false);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -112,11 +181,23 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
               <HighlightCard
                 imageUrl={highlight.thumbnailUrl}
                 title={highlight.title}
+                onClick={() => handleHighlightClick(highlight.id)}
               />
             </div>
           ))}
         </div>
       </main>
+
+      <Modal
+        isOpen={selectedHighlightId !== null}
+        onClose={() => setSelectedHighlightId(null)}
+      >
+        {isModalLoading ? (
+          <Loading />
+        ) : (
+          <HighlightMessageList messages={messages} companions={companions} />
+        )}
+      </Modal>
     </div>
   );
 }

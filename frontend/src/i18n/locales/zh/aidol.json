@@ -5,7 +5,14 @@
     }
   },
   "common": {
-    "close": "关闭"
+    "close": "关闭",
+    "save": "保存",
+    "saved": "保存成功。",
+    "deleted": "删除成功。",
+    "error": {
+      "save": "保存失败",
+      "load": "无法加载数据"
+    }
   },
   "navigation": {
     "home": "首页",
@@ -257,9 +264,6 @@
       "cta": "创建偶像"
     }
   },
-  "highlight": {
-    "interviewer": "采访者"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -274,6 +278,12 @@
     },
     "error": {
       "create": "启动失败。"
+    }
+  },
+  "highlight": {
+    "interviewer": "采访者",
+    "error": {
+      "load": "无法加载精彩集锦"
     }
   },
   "group": {
@@ -304,6 +314,37 @@
     "memberCount": "{{count}}人组",
     "error": {
       "load": "无法加载群组列表。"
+    }
+  },
+  "chemistry": {
+    "header": "成员间默契",
+    "sectionTitle": "成员关系整理",
+    "sectionSubtitle": "关系会影响聊天内容！",
+    "addRelationship": "添加关系",
+    "error": {
+      "load": "无法加载成员信息"
+    },
+    "add": {
+      "header": "添加关系",
+      "memberNotFound": "找不到成员。",
+      "createRelationshipWith": "创建与{{name}}的关系",
+      "selectedMemberPlaceholder": "已选择的\n成员显示",
+      "selectMember": "选择成员",
+      "relationshipType": "关系类型",
+      "types": {
+        "awkward": "还很尴尬",
+        "polite": "有礼貌",
+        "friendly": "友好",
+        "tikitaka": "默契十足",
+        "trust": "值得信赖",
+        "emotional": "感性",
+        "bestFriend": "最好的朋友",
+        "inseparable": "形影不离"
+      },
+      "intimacy": "亲密度",
+      "startsAt": "从<highlight>{{intimacy}}%</highlight>开始",
+      "relationshipNickname": "关系别名",
+      "nicknamePlaceholder": "例）同龄组、闺蜜组"
     }
   }
 }
