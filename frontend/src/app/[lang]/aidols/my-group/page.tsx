@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { Header } from "@/components/Header";
+import { Loading } from "@/components/Loading";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { getApiService } from "@/services/ApiService";
 
@@ -65,9 +66,7 @@ export default function MyGroupRedirectPage() {
 
   return (
     <div className="bg-base-100 flex min-h-dvh flex-col">
-      <div className="flex flex-1 items-center justify-center">
-        <span className="loading loading-spinner loading-lg" />
-      </div>
+      <Loading />
       <BottomNavigation lang={params.lang} />
     </div>
   );
