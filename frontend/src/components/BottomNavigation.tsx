@@ -1,3 +1,5 @@
+"use client";
+
 import { HomeIcon as HomeSolid } from "@heroicons/react/20/solid";
 import {
   HomeIcon as HomeOutline,
