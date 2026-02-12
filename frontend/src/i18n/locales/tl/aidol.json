@@ -14,6 +14,11 @@
       "load": "Hindi ma-load ang data"
     }
   },
+  "navigation": {
+    "home": "Home",
+    "explore": "Tuklasin",
+    "myGroup": "Aking Grupo"
+  },
   "position": {
     "header": "Pagtatalaga ng Posisyon",
     "title": "Italaga ang posisyon sa bawat miyembro!",
@@ -258,9 +263,6 @@
       "description": "Gumawa ng sarili mong AI idol group!",
       "cta": "Gumawa ng Idol"
     }
-  },
-  "highlight": {
-    "interviewer": "Tagapanayam"
   },
   "landing": {
     "hero": {

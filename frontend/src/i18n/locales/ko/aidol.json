@@ -14,6 +14,11 @@
       "load": "데이터를 불러오지 못했습니다"
     }
   },
+  "navigation": {
+    "home": "홈",
+    "explore": "발견",
+    "myGroup": "내그룹"
+  },
   "position": {
     "header": "포지션 배정",
     "title": "멤버별 포지션을 배정하세요!",
@@ -249,9 +254,6 @@
       "description": "나만의 AI 아이돌 그룹을 만들어보세요!",
       "cta": "아이돌 만들기"
     }
-  },
-  "highlight": {
-    "interviewer": "인터뷰어"
   },
   "landing": {
     "hero": {
