@@ -29,6 +29,7 @@ def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
         greeting=db_aidol.greeting,
         concept=db_aidol.concept,
         profile_image_url=db_aidol.profile_image_url,
+        status=db_aidol.status,
         anonymous_id=db_aidol.anonymous_id,
         created_at=db_aidol.created_at.replace(tzinfo=timezone.utc),
         updated_at=db_aidol.updated_at.replace(tzinfo=timezone.utc),
