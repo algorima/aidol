@@ -259,9 +259,6 @@
       "cta": "Gumawa ng Idol"
     }
   },
-  "highlight": {
-    "interviewer": "Tagapanayam"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -279,7 +276,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Tagapanayam",
     "error": {
       "load": "Hindi ma-load ang highlight"
     }

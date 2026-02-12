@@ -259,9 +259,6 @@
       "cta": "สร้างไอดอล"
     }
   },
-  "highlight": {
-    "interviewer": "ผู้สัมภาษณ์"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -279,7 +276,6 @@
     }
   },
   "highlight": {
-    "interviewer": "ผู้สัมภาษณ์",
     "error": {
       "load": "ไม่สามารถโหลดไฮไลท์ได้"
     }

@@ -1,6 +1,5 @@
 import { UserIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
 
 import type { HighlightMessage } from "@/schemas";
 
@@ -12,21 +11,6 @@ interface CompanionInfo {
 interface HighlightMessageListProps {
   messages: HighlightMessage[];
   companions: Record<string, CompanionInfo>;
-}
-
-function InterviewerMessage({ content }: { content: string }) {
-  const { t } = useTranslation("aidol");
-
-  return (
-    <div className="flex flex-col items-end gap-2">
-      <span className="text-body-s text-base-content">
-        {t("highlight.interviewer")}
-      </span>
-      <div className="max-w-[263px] overflow-hidden rounded-xl bg-black p-2">
-        <p className="text-body-s text-neutral-content">{content}</p>
-      </div>
-    </div>
-  );
 }
 
 function CompanionMessage({
@@ -67,21 +51,18 @@ export function HighlightMessageList({
 }: HighlightMessageListProps) {
   return (
     <div className="flex flex-col gap-4">
-      {messages.map((message) => {
-        if (message.companionId === null) {
-          return (
-            <InterviewerMessage key={message.id} content={message.content} />
-          );
-        }
-
-        return (
+      {messages
+        .filter(
+          (m): m is HighlightMessage & { companionId: string } =>
+            m.companionId !== null,
+        )
+        .map((message) => (
           <CompanionMessage
             key={message.id}
             content={message.content}
             companion={companions[message.companionId]}
           />
-        );
-      })}
+        ))}
     </div>
   );
 }

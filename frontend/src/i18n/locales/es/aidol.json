@@ -259,9 +259,6 @@
       "cta": "Crear Ídolo"
     }
   },
-  "highlight": {
-    "interviewer": "Entrevistador"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -279,7 +276,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Entrevistador",
     "error": {
       "load": "Error al cargar el destacado"
     }

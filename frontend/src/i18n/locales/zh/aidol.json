@@ -259,9 +259,6 @@
       "cta": "创建偶像"
     }
   },
-  "highlight": {
-    "interviewer": "采访者"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -279,7 +276,6 @@
     }
   },
   "highlight": {
-    "interviewer": "采访者",
     "error": {
       "load": "无法加载精彩集锦"
     }

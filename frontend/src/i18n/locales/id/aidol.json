@@ -259,9 +259,6 @@
       "cta": "Buat Idol"
     }
   },
-  "highlight": {
-    "interviewer": "Pewawancara"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -279,7 +276,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Pewawancara",
     "error": {
       "load": "Gagal memuat highlight"
     }

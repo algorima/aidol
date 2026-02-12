@@ -259,9 +259,6 @@
       "cta": "アイドルを作る"
     }
   },
-  "highlight": {
-    "interviewer": "インタビュアー"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -279,7 +276,6 @@
     }
   },
   "highlight": {
-    "interviewer": "インタビュアー",
     "error": {
       "load": "ハイライトの読み込みに失敗しました"
     }

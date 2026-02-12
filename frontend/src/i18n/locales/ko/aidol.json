@@ -250,9 +250,6 @@
       "cta": "아이돌 만들기"
     }
   },
-  "highlight": {
-    "interviewer": "인터뷰어"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -270,7 +267,6 @@
     }
   },
   "highlight": {
-    "interviewer": "인터뷰어",
     "error": {
       "load": "하이라이트를 불러오지 못했습니다"
     }

@@ -259,9 +259,6 @@
       "cta": "Create Idol"
     }
   },
-  "highlight": {
-    "interviewer": "Interviewer"
-  },
   "landing": {
     "hero": {
       "title": {
@@ -279,7 +276,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Interviewer",
     "error": {
       "load": "Failed to load highlight"
     }
