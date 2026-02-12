@@ -54,7 +54,7 @@ export function HighlightMessageList({
       {messages
         .filter(
           (m): m is HighlightMessage & { companionId: string } =>
-            m.companionId !== null,
+            m.companionId !== null && m.companionId in companions,
         )
         .map((message) => (
           <CompanionMessage
