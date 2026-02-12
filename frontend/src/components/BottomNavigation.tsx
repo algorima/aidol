@@ -1,5 +1,3 @@
-"use client";
-
 import { HomeIcon as HomeSolid } from "@heroicons/react/20/solid";
 import {
   HomeIcon as HomeOutline,
@@ -11,63 +9,34 @@ import {
   UserCircleIcon as UserCircleSolid,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import type { ComponentType, SVGProps } from "react";
 import { useTranslation } from "react-i18next";
 
 type HeroIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
-type TabKey = "home" | "explore" | "myGroup";
+export type TabKey = "home" | "explore" | "myGroup";
 
-interface TabConfig {
+export interface TabItem {
   key: TabKey;
-  getHref: (lang: string) => string;
-  matchPath: (pathname: string, lang: string) => boolean;
+  href: string;
   labelKey: string;
   IconOutline: HeroIcon;
   IconSolid: HeroIcon;
 }
 
-const tabs: TabConfig[] = [
-  {
-    key: "home",
-    getHref: (lang) => `/${lang}/aidols/home`,
-    matchPath: (pathname, lang) => pathname === `/${lang}/aidols/home`,
-    labelKey: "navigation.home",
-    IconOutline: HomeOutline,
-    IconSolid: HomeSolid,
-  },
-  {
-    key: "explore",
-    getHref: (lang) => `/${lang}/aidols/explore`,
-    matchPath: (pathname, lang) =>
-      pathname.startsWith(`/${lang}/aidols/explore`) ||
-      pathname.endsWith("/casting"),
-    labelKey: "navigation.explore",
-    IconOutline: SparklesOutline,
-    IconSolid: SparklesSolid,
-  },
-  {
-    key: "myGroup",
-    getHref: (lang) => `/${lang}/aidols/my-group`,
-    matchPath: (pathname, lang) =>
-      pathname.startsWith(`/${lang}/aidols/my-group`),
-    labelKey: "navigation.myGroup",
-    IconOutline: UserCircleOutline,
-    IconSolid: UserCircleSolid,
-  },
-];
+export const TAB_ICONS = {
+  home: { IconOutline: HomeOutline, IconSolid: HomeSolid },
+  explore: { IconOutline: SparklesOutline, IconSolid: SparklesSolid },
+  myGroup: { IconOutline: UserCircleOutline, IconSolid: UserCircleSolid },
+} as const;
 
 interface BottomNavigationProps {
-  lang: string;
+  tabs: TabItem[];
+  activeTab: TabKey;
 }
 
-export function BottomNavigation({ lang }: BottomNavigationProps) {
+export function BottomNavigation({ tabs, activeTab }: BottomNavigationProps) {
   const { t } = useTranslation("aidol");
-  const pathname = usePathname();
-
-  const activeTab =
-    tabs.find((tab) => tab.matchPath(pathname, lang))?.key ?? "explore";
 
   return (
     <nav className="bg-base-100 border-base-300 h-header sticky bottom-0 flex shrink-0 items-center justify-between border-t px-10 py-5">
@@ -78,7 +47,7 @@ export function BottomNavigation({ lang }: BottomNavigationProps) {
         return (
           <Link
             key={tab.key}
-            href={tab.getHref(lang)}
+            href={tab.href}
             className="flex flex-col items-center justify-center gap-1"
           >
             <Icon className="text-base-content size-6" />
