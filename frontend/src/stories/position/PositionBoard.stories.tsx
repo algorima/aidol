@@ -37,7 +37,7 @@ const createCompanion = (
   position,
   mbti: "ENFP",
   aidolId: "aidol-1",
-  status: "published",
+  status: "PUBLISHED",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 });
@@ -50,17 +50,17 @@ const allUnassigned = [
 ];
 
 const partialAssigned = [
-  createCompanion("1", "김민지", "A", "mainVocal"),
-  createCompanion("2", "이수진", "A", "mainDancer"),
+  createCompanion("1", "김민지", "A", "MAIN_VOCAL"),
+  createCompanion("2", "이수진", "A", "MAIN_DANCER"),
   createCompanion("3", "박서연", "A"),
   createCompanion("4", "최유나", "B"),
 ];
 
 const allAssigned = [
-  createCompanion("1", "김민지", "A", "mainVocal"),
-  createCompanion("2", "이수진", "A", "mainDancer"),
-  createCompanion("3", "박서연", "A", "subVocal"),
-  createCompanion("4", "최유나", "B", "mainRapper"),
+  createCompanion("1", "김민지", "A", "MAIN_VOCAL"),
+  createCompanion("2", "이수진", "A", "MAIN_DANCER"),
+  createCompanion("3", "박서연", "A", "SUB_VOCAL"),
+  createCompanion("4", "최유나", "B", "MAIN_RAPPER"),
 ];
 
 function PageWrapper({

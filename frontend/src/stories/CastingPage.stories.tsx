@@ -20,7 +20,7 @@ const storyCompanions: Companion[] = [
   {
     id: "s-01",
     name: "민준",
-    gender: "male",
+    gender: "MALE",
     grade: "A",
     mbti: "ENFJ",
     biography: "스토리용 샘플 연습생",
@@ -35,14 +35,14 @@ const storyCompanions: Companion[] = [
     },
     aidolId: null,
     position: null,
-    status: "published",
+    status: "PUBLISHED",
     createdAt: now,
     updatedAt: now,
   },
   {
     id: "s-02",
     name: "서연",
-    gender: "female",
+    gender: "FEMALE",
     grade: "A",
     mbti: "ENFP",
     biography: "스토리용 샘플 연습생",
@@ -57,7 +57,7 @@ const storyCompanions: Companion[] = [
     },
     aidolId: null,
     position: null,
-    status: "published",
+    status: "PUBLISHED",
     createdAt: now,
     updatedAt: now,
   },
@@ -74,8 +74,8 @@ function CastingPageFull() {
     activeTab === "mixed"
       ? storyCompanions
       : storyCompanions.filter(
-          (c) => c.gender === (activeTab === "boy" ? "male" : "female"),
-        );
+        (c) => c.gender === (activeTab === "boy" ? "MALE" : "FEMALE"),
+      );
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">
@@ -95,7 +95,7 @@ function CastingPageFull() {
             setSelectedCompanion(companion);
             setIsModalOpen(true);
           }}
-          onNewMember={() => {}}
+          onNewMember={() => { }}
         />
       </div>
 
@@ -145,7 +145,7 @@ export const FilterTabs: Story = {
 export const NewMember: Story = {
   render: () => (
     <div className="max-w-mobile p-6">
-      <NewMemberSection onNewMember={() => {}} />
+      <NewMemberSection onNewMember={() => { }} />
     </div>
   ),
 };
