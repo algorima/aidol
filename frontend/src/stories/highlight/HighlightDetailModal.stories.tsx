@@ -82,3 +82,12 @@ export const Default: Story = {
     companions: mockCompanions,
   },
 };
+
+export const Loading: Story = {
+  args: {
+    isOpen: true,
+    isLoading: true,
+    messages: [],
+    companions: [],
+  },
+};
