@@ -81,8 +81,11 @@ export default function GroupsPage({ params }: GroupsPageProps) {
 
   if (isLoading) {
     return (
-      <div className="bg-base-100 flex h-dvh flex-col items-center justify-center">
-        <Loading />
+      <div className="bg-base-100 flex h-dvh flex-col">
+        <div className="flex flex-1 items-center justify-center">
+          <Loading />
+        </div>
+        <BottomNavigation lang={lang} />
       </div>
     );
   }

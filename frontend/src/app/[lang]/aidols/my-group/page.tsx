@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { BottomNavigation } from "@/components/BottomNavigation";
 import { Header } from "@/components/Header";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { getApiService } from "@/services/ApiService";
@@ -57,13 +58,17 @@ export default function MyGroupRedirectPage() {
             {t("aidol:myGroup.empty.cta")}
           </Link>
         </div>
+        <BottomNavigation lang={params.lang} />
       </div>
     );
   }
 
   return (
-    <div className="bg-base-100 flex min-h-screen items-center justify-center">
-      <span className="loading loading-spinner loading-lg" />
+    <div className="bg-base-100 flex min-h-screen flex-col">
+      <div className="flex flex-1 items-center justify-center">
+        <span className="loading loading-spinner loading-lg" />
+      </div>
+      <BottomNavigation lang={params.lang} />
     </div>
   );
 }

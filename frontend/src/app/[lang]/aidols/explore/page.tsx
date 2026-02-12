@@ -1,10 +1,11 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { getApiService } from "@/services/ApiService";
 
@@ -14,6 +15,7 @@ export default function ExplorePage() {
   const { t } = useTranslation();
   const { showToast } = useToast();
   const [error, setError] = useState(false);
+  const isCreating = useRef(false);
 
   const aidolRepository = useMemo(
     () => new AIdolRepository(getApiService()),
@@ -21,6 +23,9 @@ export default function ExplorePage() {
   );
 
   useEffect(() => {
+    if (isCreating.current) return;
+    isCreating.current = true;
+
     const createAndRedirect = async () => {
       try {
         const aidol = await aidolRepository.createAIdol({
@@ -44,8 +49,11 @@ export default function ExplorePage() {
   }
 
   return (
-    <div className="bg-base-100 flex min-h-screen items-center justify-center">
-      <span className="loading loading-spinner loading-lg" />
+    <div className="bg-base-100 flex min-h-screen flex-col">
+      <div className="flex flex-1 items-center justify-center">
+        <span className="loading loading-spinner loading-lg" />
+      </div>
+      <BottomNavigation lang={params.lang} />
     </div>
   );
 }

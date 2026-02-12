@@ -69,7 +69,7 @@ export function BottomNavigation({ lang }: BottomNavigationProps) {
     tabs.find((tab) => tab.matchPath(pathname, lang))?.key ?? "explore";
 
   return (
-    <nav className="bg-base-100 border-base-300 h-header flex shrink-0 items-center justify-between border-t px-10 py-5">
+    <nav className="bg-base-100 border-base-300 h-header sticky bottom-0 flex shrink-0 items-center justify-between border-t px-10 py-5">
       {tabs.map((tab) => {
         const isActive = activeTab === tab.key;
         const Icon = isActive ? tab.IconSolid : tab.IconOutline;
