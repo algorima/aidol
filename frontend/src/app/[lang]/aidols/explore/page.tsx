@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -15,7 +15,6 @@ export default function ExplorePage() {
   const params = useParams<{ lang: string }>();
   const { t } = useTranslation();
   const { showToast } = useToast();
-  const [error, setError] = useState<Error | null>(null);
   const isCreating = useRef(false);
 
   const aidolRepository = useMemo(
@@ -37,17 +36,12 @@ export default function ExplorePage() {
       } catch (err) {
         console.error("Failed to create AIdol:", err);
         showToast(t("aidol:landing.error.create"), "error");
-        setError(err instanceof Error ? err : new Error(String(err)));
         router.replace(`/${params.lang}/aidols/home`);
       }
     };
 
     void createAndRedirect();
   }, [aidolRepository, params.lang, router, showToast, t]);
-
-  if (error) {
-    throw error;
-  }
 
   return (
     <div className="bg-base-100 flex min-h-dvh flex-col">
