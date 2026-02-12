@@ -18,7 +18,7 @@ from aidol.schemas import (
     Gender,
     Grade,
     Position,
-    Status,
+    CompanionStatus,
 )
 
 
@@ -37,7 +37,7 @@ def _convert_db_companion_to_model(db_companion: DBCompanion) -> Companion:
         biography=db_companion.biography,
         profile_picture_url=db_companion.profile_picture_url,
         position=Position(db_companion.position) if db_companion.position else None,
-        status=Status(db_companion.status),
+        status=CompanionStatus(db_companion.status),
         system_prompt=db_companion.system_prompt,
         mbti_energy=db_companion.mbti_energy,
         mbti_perception=db_companion.mbti_perception,
