@@ -24,4 +24,4 @@ class DBAIdol(BaseModel):
     anonymous_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
     email: Mapped[str | None] = mapped_column(String, nullable=True)
     greeting: Mapped[str | None] = mapped_column(String, nullable=True)
-    status: Mapped[str] = mapped_column(String, default="draft")
+    status: Mapped[str] = mapped_column(String, default="DRAFT")
