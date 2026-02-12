@@ -5,12 +5,8 @@ import { Modal } from "@/components/Modal";
 import type { Companion } from "@/schemas/companion";
 import type { HighlightMessage } from "@/schemas/highlight";
 
+import type { CompanionInfo } from "./HighlightMessageList";
 import { HighlightMessageList } from "./HighlightMessageList";
-
-interface CompanionInfo {
-  name: string;
-  imageUrl?: string;
-}
 
 interface HighlightDetailModalProps {
   isOpen: boolean;

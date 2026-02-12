@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import type { HighlightMessage } from "@/schemas";
 
-interface CompanionInfo {
+export interface CompanionInfo {
   name: string;
   imageUrl?: string;
 }
