@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "Chọn giới tính",
-      "female": "Nữ",
-      "male": "Nam"
+      "FEMALE": "Nữ",
+      "MALE": "Nam"
     },
     "personality": {
       "stepTitle": "Cho chúng tôi biết về tính cách",

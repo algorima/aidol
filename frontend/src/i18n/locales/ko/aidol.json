@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "성별을 정해주세요",
-      "female": "여성",
-      "male": "남성"
+      "FEMALE": "여성",
+      "MALE": "남성"
     },
     "personality": {
       "stepTitle": "성격을 알려주세요",

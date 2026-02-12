@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "เลือกเพศ",
-      "female": "หญิง",
-      "male": "ชาย"
+      "FEMALE": "หญิง",
+      "MALE": "ชาย"
     },
     "personality": {
       "stepTitle": "บอกเราเกี่ยวกับบุคลิกภาพ",

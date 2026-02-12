@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "Elige un género",
-      "female": "Femenino",
-      "male": "Masculino"
+      "FEMALE": "Femenino",
+      "MALE": "Masculino"
     },
     "personality": {
       "stepTitle": "Cuéntanos sobre la personalidad",
