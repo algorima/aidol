@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { HighlightDetailModal } from "@/components/group/HighlightDetailModal";
+import { HighlightDetailModal } from "@/components/highlight";
 import type { Companion } from "@/schemas/companion";
 import type { HighlightMessage } from "@/schemas/highlight";
 
@@ -70,7 +70,7 @@ const mockMessages: HighlightMessage[] = [
 ];
 
 const meta: Meta<typeof HighlightDetailModal> = {
-  title: "Components/Group/HighlightDetailModal",
+  title: "Components/Highlight/HighlightDetailModal",
   component: HighlightDetailModal,
   tags: ["autodocs"],
   parameters: {
