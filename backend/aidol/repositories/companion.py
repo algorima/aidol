@@ -69,7 +69,7 @@ def _convert_companion_schema_to_db(
 
     # Enforce DRAFT status on creation (Draft pattern)
     if isinstance(schema, CompanionCreate):
-        data["status"] = Status.DRAFT.value
+        data["status"] = CompanionStatus.DRAFT.value
 
     # Decompose stats into individual columns
     if schema.stats is not None:

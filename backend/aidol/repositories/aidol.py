@@ -38,7 +38,9 @@ def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
 
 def _convert_aidol_create_to_db(schema: AIdolCreateWithAnonymousId) -> dict:
     """Convert AIdolCreateWithAnonymousId schema to DB model data dict."""
-    return schema.model_dump(exclude_unset=True)
+    data = schema.model_dump(exclude_unset=True)
+    data["status"] = AIdolStatus.DRAFT.value
+    return data
 
 
 class AIdolRepository(
