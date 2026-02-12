@@ -14,11 +14,11 @@ from aidol.schemas import (
     Companion,
     CompanionCreate,
     CompanionStats,
+    CompanionStatus,
     CompanionUpdate,
     Gender,
     Grade,
     Position,
-    CompanionStatus,
 )
 
 
