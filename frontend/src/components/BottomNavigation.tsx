@@ -41,7 +41,8 @@ const tabs: TabConfig[] = [
     key: "explore",
     getHref: (lang) => `/${lang}/aidols/explore`,
     matchPath: (pathname, lang) =>
-      pathname.startsWith(`/${lang}/aidols/explore`),
+      pathname.startsWith(`/${lang}/aidols/explore`) ||
+      pathname.endsWith("/casting"),
     labelKey: "navigation.explore",
     IconOutline: SparklesOutline,
     IconSolid: SparklesSolid,
