@@ -160,7 +160,7 @@ export default function CastingPage({ params }: CastingPageProps) {
         </button>
       </div>
 
-      <BottomNavigation aidolId={aidolId} lang={lang} />
+      <BottomNavigation lang={lang} />
 
       {selectedCompanion && (
         <Modal

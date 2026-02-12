@@ -11,7 +11,7 @@ const meta: Meta<typeof BottomNavigation> = {
     nextjs: {
       appDirectory: true,
       navigation: {
-        pathname: "/ko/aidols/test-aidol-id/casting",
+        pathname: "/ko/aidols/explore",
       },
     },
   },
@@ -29,20 +29,18 @@ type Story = StoryObj<typeof BottomNavigation>;
 
 export const Default: Story = {
   args: {
-    aidolId: "test-aidol-id",
     lang: "ko",
   },
 };
 
 export const HomeActive: Story = {
   args: {
-    aidolId: "test-aidol-id",
     lang: "ko",
   },
   parameters: {
     nextjs: {
       navigation: {
-        pathname: "/ko/aidols/test-aidol-id/home",
+        pathname: "/ko/aidols/home",
       },
     },
   },
@@ -50,13 +48,12 @@ export const HomeActive: Story = {
 
 export const ExploreActive: Story = {
   args: {
-    aidolId: "test-aidol-id",
     lang: "ko",
   },
   parameters: {
     nextjs: {
       navigation: {
-        pathname: "/ko/aidols/test-aidol-id/casting",
+        pathname: "/ko/aidols/explore",
       },
     },
   },
@@ -64,7 +61,6 @@ export const ExploreActive: Story = {
 
 export const MyGroupActive: Story = {
   args: {
-    aidolId: "test-aidol-id",
     lang: "ko",
   },
   parameters: {
