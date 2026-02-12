@@ -9,13 +9,13 @@ import { GroupProfile } from "@/components/group/GroupProfile";
 import { HighlightCard } from "@/components/group/HighlightCard";
 import { HighlightSectionHeader } from "@/components/group/HighlightSectionHeader";
 import { Header } from "@/components/Header";
-import { HighlightMessageList } from "@/components/highlight";
+import { HighlightDetailModal } from "@/components/highlight";
 import { Loading } from "@/components/Loading";
-import { Modal } from "@/components/Modal";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { HighlightRepository } from "@/repositories/HighlightRepository";
 import type { AIdol, AIdolHighlight, HighlightMessage } from "@/schemas";
+import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
 interface GroupDetailPageProps {
@@ -36,9 +36,7 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     null,
   );
   const [messages, setMessages] = useState<HighlightMessage[]>([]);
-  const [companions, setCompanions] = useState<
-    Record<string, { name: string; imageUrl?: string }>
-  >({});
+  const [companions, setCompanions] = useState<Companion[]>([]);
   const [isModalLoading, setIsModalLoading] = useState(false);
 
   const aidolRepository = useMemo(
@@ -72,18 +70,7 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
           ]);
         setAidol(aidolResponse.data);
         setHighlights(highlightsResponse.data);
-
-        const companionMap: Record<
-          string,
-          { name: string; imageUrl?: string }
-        > = {};
-        for (const c of companionsResponse.data) {
-          companionMap[c.id] = {
-            name: c.name ?? "",
-            imageUrl: c.profilePictureUrl ?? undefined,
-          };
-        }
-        setCompanions(companionMap);
+        setCompanions(companionsResponse.data);
       } catch (error) {
         console.error("Failed to fetch group detail:", error);
         showToast(t("group.error.load"), "error");
@@ -108,8 +95,10 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
     try {
       const { data: messagesData } =
         await highlightRepository.getMessages(highlightId);
+
+      const companionIds = new Set(companions.map((c) => c.id));
       const invalid = messagesData.filter(
-        (msg) => msg.companionId !== null && !(msg.companionId in companions),
+        (msg) => msg.companionId !== null && !companionIds.has(msg.companionId),
       );
       if (invalid.length > 0) {
         console.error(
@@ -119,7 +108,8 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
       }
       setMessages(
         messagesData.filter(
-          (msg) => msg.companionId === null || msg.companionId in companions,
+          (msg) =>
+            msg.companionId === null || companionIds.has(msg.companionId),
         ),
       );
     } catch (error) {
@@ -188,16 +178,13 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
         </div>
       </main>
 
-      <Modal
+      <HighlightDetailModal
         isOpen={selectedHighlightId !== null}
+        isLoading={isModalLoading}
+        messages={messages}
+        companions={companions}
         onClose={() => setSelectedHighlightId(null)}
-      >
-        {isModalLoading ? (
-          <Loading />
-        ) : (
-          <HighlightMessageList messages={messages} companions={companions} />
-        )}
-      </Modal>
+      />
     </div>
   );
 }
