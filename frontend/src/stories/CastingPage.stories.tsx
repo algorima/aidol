@@ -74,8 +74,8 @@ function CastingPageFull() {
     activeTab === "mixed"
       ? storyCompanions
       : storyCompanions.filter(
-        (c) => c.gender === (activeTab === "boy" ? "MALE" : "FEMALE"),
-      );
+          (c) => c.gender === (activeTab === "boy" ? "MALE" : "FEMALE"),
+        );
 
   return (
     <div className="max-w-mobile mx-auto flex min-h-screen flex-col">
@@ -95,7 +95,7 @@ function CastingPageFull() {
             setSelectedCompanion(companion);
             setIsModalOpen(true);
           }}
-          onNewMember={() => { }}
+          onNewMember={() => {}}
         />
       </div>
 
@@ -145,7 +145,7 @@ export const FilterTabs: Story = {
 export const NewMember: Story = {
   render: () => (
     <div className="max-w-mobile p-6">
-      <NewMemberSection onNewMember={() => { }} />
+      <NewMemberSection onNewMember={() => {}} />
     </div>
   ),
 };

@@ -82,7 +82,7 @@ export const Default: Story = {
     relationships: [],
     fromCompanionId: "c-1",
     selectedCompanionId: null,
-    onSelect: () => { },
+    onSelect: () => {},
   },
 };
 
@@ -92,7 +92,7 @@ export const WithSelection: Story = {
     relationships: [],
     fromCompanionId: "c-1",
     selectedCompanionId: "c-3",
-    onSelect: () => { },
+    onSelect: () => {},
   },
 };
 
@@ -102,6 +102,6 @@ export const WithExistingRelationship: Story = {
     relationships: [MOCK_RELATIONSHIP],
     fromCompanionId: "c-1",
     selectedCompanionId: null,
-    onSelect: () => { },
+    onSelect: () => {},
   },
 };
