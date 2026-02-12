@@ -138,7 +138,7 @@ export default function GroupChemistryPage({
     <div className="bg-base-100 flex min-h-screen flex-col">
       <Header
         title={t("aidol:chemistry.header")}
-        onBackClick={() => router.back()}
+        onBackClick={() => router.push(`/${lang}/aidols/my-group/${aidolId}`)}
       />
 
       <div className="flex-1 p-6">
