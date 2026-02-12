@@ -79,7 +79,7 @@ class AIdolUpdate(BaseModel):
     greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
     profile_image_url: str | None = Field(default=None, description="Profile image URL")
-    status: Status = Field(default=Status.DRAFT, description="Group status")
+    status: Status | None = Field(default=None, description="Group status")
 
 
 class AIdol(AIdolBase):
