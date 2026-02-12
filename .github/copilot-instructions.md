@@ -58,6 +58,7 @@ When performing a code review, respond in Korean.
 
 - Python: `snake_case.py`, `PascalCase`, `snake_case()`
 - TypeScript: `PascalCase.tsx`, `camelCase()`, `index.ts`
+- Enum 값: 대문자 (`DRAFT`, `PUBLISHED`) - DB 저장 및 API 응답 모두 동일
 
 ## 스타일링
 
