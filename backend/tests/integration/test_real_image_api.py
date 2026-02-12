@@ -2,7 +2,6 @@
 Real Integration Test for Image Generation API.
 """
 
-import os
 import unittest
 
 import PIL.Image
@@ -16,27 +15,32 @@ class TestRealImageGenerationAPI(unittest.TestCase):
     실제 통합 테스트: Google Gemini 이미지 생성 API 호출
 
     이 테스트는 Mock을 사용하지 않고 '실제' 외부 API를 호출합니다.
-    GOOGLE_API_KEY가 환경 변수로 설정되어 있어야 실행됩니다.
+    다음 중 하나의 환경 변수가 설정되어 있어야 실행됩니다:
+    - GOOGLE_API_KEY (Google AI API)
+    - GOOGLE_CLOUD_PROJECT (Vertex AI with ADC)
+
     비용이 발생할 수 있으므로 주의해서 실행해야 합니다.
     """
 
     def setUp(self) -> None:
-        api_key = os.getenv("GOOGLE_API_KEY")
-        if not api_key:
+        # GoogleGenAISettings will automatically load from environment variables
+        settings = GoogleGenAISettings()
+
+        # Check if either GOOGLE_API_KEY or GOOGLE_CLOUD_PROJECT is set
+        if not settings.api_key and not settings.cloud_project:
             self.skipTest(
-                "GOOGLE_API_KEY가 설정되지 않아 실제 API 테스트를 건너뜁니다."
+                "GOOGLE_API_KEY 또는 GOOGLE_CLOUD_PROJECT가 설정되지 않아 "
+                "실제 API 테스트를 건너뜁니다."
             )
 
-        self.service = ImageGenerationService(
-            settings=GoogleGenAISettings(api_key=api_key)
-        )
+        self.service = ImageGenerationService(settings=settings)
 
     def test_generate_image_real_call(self):
         """
         실제 Google Gemini API를 호출하여 이미지 생성 검증
 
         시나리오:
-        - 환경: 유효한 GOOGLE_API_KEY 존재
+        - 환경: GOOGLE_API_KEY 또는 GOOGLE_CLOUD_PROJECT 설정됨
         - 요청: 간단한 프롬프트로 이미지 생성 요청
         - 기대 결과:
             1. 에러 없이 성공
