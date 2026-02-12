@@ -45,6 +45,8 @@ function CompanionMessage({
   );
 }
 
+const UNKNOWN_COMPANION: CompanionInfo = { name: "?" };
+
 export function HighlightMessageList({
   messages,
   companions,
@@ -56,13 +58,21 @@ export function HighlightMessageList({
           (m): m is HighlightMessage & { companionId: string } =>
             m.companionId !== null,
         )
-        .map((message) => (
-          <CompanionMessage
-            key={message.id}
-            content={message.content}
-            companion={companions[message.companionId]}
-          />
-        ))}
+        .map((message) => {
+          const companion = companions[message.companionId];
+          if (!companion) {
+            console.warn(
+              `[HighlightMessageList] companion not found: ${message.companionId}`,
+            );
+          }
+          return (
+            <CompanionMessage
+              key={message.id}
+              content={message.content}
+              companion={companion ?? UNKNOWN_COMPANION}
+            />
+          );
+        })}
     </div>
   );
 }

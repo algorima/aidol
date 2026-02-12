@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { Modal } from "@/components/Modal";
 import type { Companion } from "@/schemas/companion";
 import type { HighlightMessage } from "@/schemas/highlight";
@@ -35,12 +37,11 @@ export function HighlightDetailModal({
   companions,
   onClose,
 }: HighlightDetailModalProps) {
+  const companionMap = useMemo(() => toCompanionMap(companions), [companions]);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <HighlightMessageList
-        messages={messages}
-        companions={toCompanionMap(companions)}
-      />
+      <HighlightMessageList messages={messages} companions={companionMap} />
     </Modal>
   );
 }

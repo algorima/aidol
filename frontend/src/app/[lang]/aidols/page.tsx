@@ -61,6 +61,7 @@ export default function GroupsPage({ params }: GroupsPageProps) {
         setMemberCountMap(countMap);
 
         // 그룹별 첫 번째 하이라이트만 사용
+        // TODO: 백엔드 is_premium 배포 후 → highlightRes.data.filter(h => !h.isPremium)
         const hlMap: Record<string, AIdolHighlight> = {};
         for (const highlight of highlightRes.data) {
           if (highlight.aidolId && !hlMap[highlight.aidolId]) {
