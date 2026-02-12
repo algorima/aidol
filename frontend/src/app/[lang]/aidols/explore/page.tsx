@@ -49,7 +49,7 @@ export default function ExplorePage() {
   }
 
   return (
-    <div className="bg-base-100 flex min-h-screen flex-col">
+    <div className="bg-base-100 flex min-h-dvh flex-col">
       <div className="flex flex-1 items-center justify-center">
         <span className="loading loading-spinner loading-lg" />
       </div>
