@@ -78,9 +78,9 @@ class AIdolUpdate(BaseModel):
     email: str | None = Field(default=None, description="Creator email")
     greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
-    profile_image_url: str | None = Field(default=None, description="Profile image URL")    
+    profile_image_url: str | None = Field(default=None, description="Profile image URL")
     status: Status = Field(default=Status.DRAFT, description="Group status")
-    
+
 
 class AIdol(AIdolBase):
     """AIdol response schema with id and timestamps.

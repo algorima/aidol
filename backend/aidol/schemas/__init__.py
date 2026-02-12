@@ -12,8 +12,8 @@ from aidol.schemas.aidol import (
     ImageGenerationData,
     ImageGenerationRequest,
     ImageGenerationResponse,
-    Status as AIdolStatus,
 )
+from aidol.schemas.aidol import Status as AIdolStatus
 from aidol.schemas.aidol_lead import AIdolLead, AIdolLeadBase, AIdolLeadCreate
 from aidol.schemas.chatroom import (
     AudioFormat,
@@ -39,8 +39,8 @@ from aidol.schemas.companion import (
     Gender,
     Grade,
     Position,
-    Status as CompanionStatus,
 )
+from aidol.schemas.companion import Status as CompanionStatus
 from aidol.schemas.companion_relationship import (
     CompanionRelationship,
     CompanionRelationshipBase,

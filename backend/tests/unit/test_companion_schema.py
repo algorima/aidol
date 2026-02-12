@@ -17,11 +17,10 @@ from aidol.schemas import (
     CompanionCreate,
     CompanionPublic,
     CompanionStats,
+    CompanionStatus,
     Gender,
     Grade,
     Position,
-    Position,
-    CompanionStatus,
 )
 
 
