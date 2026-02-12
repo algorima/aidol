@@ -86,6 +86,7 @@ export default function GroupPage() {
 
   // 하이라이트 모달 상태
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalLoading, setIsModalLoading] = useState(false);
   const [highlightMessages, setHighlightMessages] = useState<
     HighlightMessage[]
   >([]);
@@ -145,6 +146,8 @@ export default function GroupPage() {
   };
 
   const handleHighlightClick = async (highlight: AIdolHighlight) => {
+    setIsModalOpen(true);
+    setIsModalLoading(true);
     try {
       const { data: messagesData } = await highlightRepository.getMessages(
         highlight.id,
@@ -166,9 +169,10 @@ export default function GroupPage() {
             msg.companionId === null || companionIds.has(msg.companionId),
         ),
       );
-      setIsModalOpen(true);
     } catch (error) {
       console.error("Failed to fetch highlight messages:", error);
+    } finally {
+      setIsModalLoading(false);
     }
   };
 
@@ -239,6 +243,7 @@ export default function GroupPage() {
 
       <HighlightDetailModal
         isOpen={isModalOpen}
+        isLoading={isModalLoading}
         messages={highlightMessages}
         companions={companions}
         onClose={() => setIsModalOpen(false)}

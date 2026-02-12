@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import { Loading } from "@/components/Loading";
 import { Modal } from "@/components/Modal";
 import type { Companion } from "@/schemas/companion";
 import type { HighlightMessage } from "@/schemas/highlight";
@@ -13,6 +14,7 @@ interface CompanionInfo {
 
 interface HighlightDetailModalProps {
   isOpen: boolean;
+  isLoading?: boolean;
   messages: HighlightMessage[];
   companions: Companion[];
   onClose: () => void;
@@ -33,6 +35,7 @@ const toCompanionMap = (
 
 export function HighlightDetailModal({
   isOpen,
+  isLoading = false,
   messages,
   companions,
   onClose,
@@ -41,7 +44,11 @@ export function HighlightDetailModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <HighlightMessageList messages={messages} companions={companionMap} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <HighlightMessageList messages={messages} companions={companionMap} />
+      )}
     </Modal>
   );
 }
