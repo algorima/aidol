@@ -146,10 +146,26 @@ export default function GroupPage() {
 
   const handleHighlightClick = async (highlight: AIdolHighlight) => {
     try {
-      const { data: messages } = await highlightRepository.getMessages(
+      const { data: messagesData } = await highlightRepository.getMessages(
         highlight.id,
       );
-      setHighlightMessages(messages);
+
+      const companionIds = new Set(companions.map((c) => c.id));
+      const invalid = messagesData.filter(
+        (msg) => msg.companionId !== null && !companionIds.has(msg.companionId),
+      );
+      if (invalid.length > 0) {
+        console.error(
+          "Unknown companionIds:",
+          invalid.map((msg) => msg.companionId),
+        );
+      }
+      setHighlightMessages(
+        messagesData.filter(
+          (msg) =>
+            msg.companionId === null || companionIds.has(msg.companionId),
+        ),
+      );
       setIsModalOpen(true);
     } catch (error) {
       console.error("Failed to fetch highlight messages:", error);
