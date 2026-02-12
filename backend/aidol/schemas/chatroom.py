@@ -22,17 +22,17 @@ class SenderType(str, Enum):
     may define their own extended SenderType with additional values.
     """
 
-    USER = "user"
-    COMPANION = "companion"
+    USER = "USER"
+    COMPANION = "COMPANION"
 
 
 @unique
 class AudioFormat(str, Enum):
     """Audio format types."""
 
-    MP3 = "mp3"
-    WAV = "wav"
-    OGG = "ogg"
+    MP3 = "MP3"
+    WAV = "WAV"
+    OGG = "OGG"
 
 
 # =============================================================================
