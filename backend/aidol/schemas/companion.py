@@ -28,6 +28,7 @@ class Gender(str, Enum):
     MALE = "MALE"
     FEMALE = "FEMALE"
 
+
 @unique
 class Grade(str, Enum):
     """Grade levels for companions."""
