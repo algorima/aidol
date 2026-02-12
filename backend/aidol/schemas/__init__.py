@@ -12,6 +12,7 @@ from aidol.schemas.aidol import (
     ImageGenerationData,
     ImageGenerationRequest,
     ImageGenerationResponse,
+    Status as AIdolStatus,
 )
 from aidol.schemas.aidol_lead import AIdolLead, AIdolLeadBase, AIdolLeadCreate
 from aidol.schemas.chatroom import (
@@ -38,7 +39,7 @@ from aidol.schemas.companion import (
     Gender,
     Grade,
     Position,
-    Status,
+    Status as CompanionStatus,
 )
 from aidol.schemas.companion_relationship import (
     CompanionRelationship,
@@ -70,6 +71,7 @@ __all__ = [
     "ImageGenerationData",
     "ImageGenerationRequest",
     "ImageGenerationResponse",
+    "AIdolStatus",
     # AIdolLead
     "AIdolLead",
     "AIdolLeadBase",
@@ -97,6 +99,7 @@ __all__ = [
     "Gender",
     "Grade",
     "Position",
+    "CompanionStatus",
     # CompanionRelationship
     "CompanionRelationship",
     "CompanionRelationshipBase",
@@ -111,7 +114,6 @@ __all__ = [
     "HighlightMessageBase",
     "HighlightMessageCreate",
     "HighlightMessageUpdate",
-    "Status",
     # Model Settings
     "ModelSettings",
     "ModelSettingsBase",
