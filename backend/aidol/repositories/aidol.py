@@ -36,10 +36,16 @@ def _convert_db_aidol_to_model(db_aidol: DBAIdol) -> AIdol:
     )
 
 
-def _convert_aidol_create_to_db(schema: AIdolCreateWithAnonymousId) -> dict:
-    """Convert AIdolCreateWithAnonymousId schema to DB model data dict."""
+def _convert_aidol_create_to_db(
+    schema: AIdolCreateWithAnonymousId | AIdolUpdate,
+) -> dict:
+    """Convert AIdolCreateWithAnonymousId or AIdolUpdate schema to DB model data dict."""
     data = schema.model_dump(exclude_unset=True)
-    data["status"] = AIdolStatus.DRAFT.value
+
+    # Enforce DRAFT status only on creation
+    if isinstance(schema, AIdolCreateWithAnonymousId):
+        data["status"] = AIdolStatus.DRAFT.value
+
     return data
 
 
