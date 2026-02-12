@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import {
   ChatTooltipButton,
   GroupDropdown,
@@ -242,6 +243,8 @@ export default function GroupPage() {
           ))}
         </div>
       </div>
+
+      <BottomNavigation aidolId={params.aidolId} lang={params.lang} />
 
       <HighlightDetailModal
         isOpen={isModalOpen}

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import { GroupCard } from "@/components/group/GroupCard";
 import { GroupInfoBanner } from "@/components/group/GroupInfoBanner";
 import { Loading } from "@/components/Loading";
@@ -18,12 +19,13 @@ import { getApiService } from "@/services/ApiService";
 interface GroupsPageProps {
   params: {
     lang: string;
+    aidolId: string;
   };
 }
 
 export default function GroupsPage({ params }: GroupsPageProps) {
   const { t } = useTranslation("aidol");
-  const { lang } = params;
+  const { lang, aidolId } = params;
   const router = useRouter();
   const { showToast } = useToast();
   const [groups, setGroups] = useState<AIdol[]>([]);
@@ -92,7 +94,7 @@ export default function GroupsPage({ params }: GroupsPageProps) {
       <header className="h-header bg-base-100 flex shrink-0 items-center px-6 py-4">
         <Image src="/images/logo.svg" alt="AIdol" width={92} height={28} />
       </header>
-      <div className="flex flex-col gap-6 px-6 py-4">
+      <div className="flex flex-1 flex-col gap-6 px-6 py-4">
         <GroupInfoBanner />
         <div className="flex flex-col gap-6">
           {groups.map((group) => {
@@ -113,6 +115,7 @@ export default function GroupsPage({ params }: GroupsPageProps) {
           })}
         </div>
       </div>
+      <BottomNavigation aidolId={aidolId} lang={lang} />
     </div>
   );
 }

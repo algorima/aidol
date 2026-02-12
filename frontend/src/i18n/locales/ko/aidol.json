@@ -14,6 +14,11 @@
       "load": "데이터를 불러오지 못했습니다"
     }
   },
+  "navigation": {
+    "home": "홈",
+    "explore": "발견",
+    "myGroup": "내그룹"
+  },
   "position": {
     "header": "포지션 배정",
     "title": "멤버별 포지션을 배정하세요!",

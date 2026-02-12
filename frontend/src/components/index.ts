@@ -20,6 +20,7 @@ export * from "./highlight";
 export * from "./landing";
 
 // Shared components
+export { BottomNavigation } from "./BottomNavigation";
 export { Header } from "./Header";
 export { Loading } from "./Loading";
 export { Modal } from "./Modal";
