@@ -171,6 +171,8 @@ export default function GroupPage() {
       );
     } catch (error) {
       console.error("Failed to fetch highlight messages:", error);
+      showToast(t("aidol:highlight.error.load"), "error");
+      setIsModalOpen(false);
     } finally {
       setIsModalLoading(false);
     }
