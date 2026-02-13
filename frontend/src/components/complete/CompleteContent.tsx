@@ -128,7 +128,7 @@ export function CompleteContent({
           type="button"
           onClick={onCreateAnother}
           disabled={isCreating}
-          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none disabled:opacity-50"
+          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center break-keep rounded-lg border-0 px-4 shadow-none disabled:opacity-50"
         >
           {isCreating ? (
             <span className="loading loading-spinner loading-sm" />
