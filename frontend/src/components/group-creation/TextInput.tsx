@@ -1,9 +1,12 @@
+import { useLayoutEffect, useRef } from "react";
+
 interface TextInputProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   maxLength?: number;
   disabled?: boolean;
+  onKeyDown?: React.KeyboardEventHandler<HTMLTextAreaElement>;
 }
 
 export function TextInput({
@@ -12,16 +15,23 @@ export function TextInput({
   placeholder,
   maxLength,
   disabled = false,
+  onKeyDown,
 }: TextInputProps) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  }, [value]);
+
   return (
     <textarea
+      ref={ref}
       value={value}
-      onChange={(e) => {
-        onChange(e.target.value);
-        const target = e.target;
-        target.style.height = "auto";
-        target.style.height = `${target.scrollHeight}px`;
-      }}
+      onChange={(e) => onChange(e.target.value)}
+      onKeyDown={onKeyDown}
       placeholder={placeholder}
       maxLength={maxLength}
       disabled={disabled}

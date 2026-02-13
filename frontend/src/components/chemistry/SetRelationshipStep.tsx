@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Trans, useTranslation } from "react-i18next";
 
+import { TextInput } from "@/components/group-creation/TextInput";
 import {
   RELATIONSHIP_TYPE_TO_INTIMACY,
   type RelationshipType,
@@ -70,17 +71,10 @@ export function SetRelationshipStep({
       <p className="text-title-s mb-4">
         {t("aidol:chemistry.add.relationshipNickname")}
       </p>
-      <textarea
-        placeholder={t("aidol:chemistry.add.nicknamePlaceholder")}
+      <TextInput
         value={nickname}
-        onChange={(e) => {
-          onNicknameChange(e.target.value);
-          const target = e.target;
-          target.style.height = "auto";
-          target.style.height = `${target.scrollHeight}px`;
-        }}
-        className="textarea border-base-400 bg-base-200 min-h-0 w-full resize-none overflow-hidden rounded-lg px-4 py-3"
-        rows={1}
+        onChange={onNicknameChange}
+        placeholder={t("aidol:chemistry.add.nicknamePlaceholder")}
       />
     </>
   );
