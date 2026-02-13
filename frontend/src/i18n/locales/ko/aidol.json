@@ -112,6 +112,12 @@
     "tab": {
       "profile": "프로필",
       "stats": "능력치"
+    },
+    "activity": {
+      "RESTING": "휴식 중",
+      "PRACTICING": "연습 중",
+      "SHORT_BREAK": "잠깐 휴식 중",
+      "RESTING_AT_HOME": "집에서 휴식 중"
     }
   },
   "aidol": {

@@ -112,6 +112,12 @@
     "tab": {
       "profile": "โปรไฟล์",
       "stats": "สถิติ"
+    },
+    "activity": {
+      "RESTING": "พักผ่อน",
+      "PRACTICING": "ฝึกซ้อม",
+      "SHORT_BREAK": "พักเบรก",
+      "RESTING_AT_HOME": "พักที่บ้าน"
     }
   },
   "aidol": {

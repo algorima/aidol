@@ -112,6 +112,12 @@
     "tab": {
       "profile": "プロフィール",
       "stats": "能力値"
+    },
+    "activity": {
+      "RESTING": "休憩中",
+      "PRACTICING": "練習中",
+      "SHORT_BREAK": "小休憩中",
+      "RESTING_AT_HOME": "自宅で休憩中"
     }
   },
   "aidol": {
