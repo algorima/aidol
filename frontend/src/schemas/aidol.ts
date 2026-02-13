@@ -12,6 +12,8 @@ import type { Companion } from "./companion";
  * AIdol schema (public fields only, excludes anonymous_id)
  * Matches backend AIdolPublic (aidol/schemas/aidol.py)
  */
+export type AIdolStatus = "DRAFT" | "PUBLISHED";
+
 export const aidolSchema = z.object({
   id: z.string(),
   name: z.string().nullable(),
@@ -19,6 +21,7 @@ export const aidolSchema = z.object({
   greeting: z.string().nullable().optional(),
   concept: z.string().nullable().optional(),
   profileImageUrl: z.string().nullable(),
+  status: z.enum(["DRAFT", "PUBLISHED"]),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -30,6 +33,7 @@ export interface AIdol extends BaseRecord {
   greeting?: string | null;
   concept?: string | null;
   profileImageUrl: string | null;
+  status: AIdolStatus;
   createdAt: string;
   updatedAt: string;
   companions?: Companion[];

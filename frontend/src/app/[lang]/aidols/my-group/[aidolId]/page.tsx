@@ -96,14 +96,19 @@ export default function GroupPage() {
     const fetchGroups = async () => {
       try {
         const { data: myGroups } = await aidolRepository.getMy();
-        setGroups(myGroups);
+        const publishedGroups = myGroups.filter(
+          (g) => g.status === "PUBLISHED",
+        );
+        setGroups(publishedGroups);
 
-        const currentGroup = myGroups.find((g) => g.id === params.aidolId);
+        const currentGroup = publishedGroups.find(
+          (g) => g.id === params.aidolId,
+        );
         if (currentGroup) {
           setSelectedGroup(currentGroup);
         } else {
           // 해당 그룹이 없으면 첫 번째 그룹으로 redirect
-          const firstGroup = myGroups[0];
+          const firstGroup = publishedGroups[0];
           if (firstGroup) {
             router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
           } else {
