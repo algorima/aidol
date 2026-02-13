@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -22,6 +22,17 @@ export default function GroupsPage() {
   const { lang } = params;
   const router = useRouter();
   const { showToast } = useToast();
+
+  const aidolRepo = useMemo(() => new AIdolRepository(getApiService()), []);
+  const companionRepo = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+  const highlightRepo = useMemo(
+    () => new HighlightRepository(getApiService()),
+    [],
+  );
+
   const [groups, setGroups] = useState<AIdol[]>([]);
   const [memberCountMap, setMemberCountMap] = useState<Record<string, number>>(
     {},
@@ -34,11 +45,6 @@ export default function GroupsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiService = getApiService();
-        const aidolRepo = new AIdolRepository(apiService);
-        const companionRepo = new CompanionRepository(apiService);
-        const highlightRepo = new HighlightRepository(apiService);
-
         const [aidolRes, companionRes, highlightRes] = await Promise.all([
           aidolRepo.getList(),
           companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
@@ -73,7 +79,7 @@ export default function GroupsPage() {
       }
     };
     void fetchData();
-  }, [showToast, t]);
+  }, [aidolRepo, companionRepo, highlightRepo, showToast, t]);
 
   if (isLoading) {
     return (

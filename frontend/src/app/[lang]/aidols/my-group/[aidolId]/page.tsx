@@ -85,6 +85,11 @@ export default function GroupPage() {
   >([]);
   const [companions, setCompanions] = useState<Companion[]>([]);
 
+  const companionIds = useMemo(
+    () => new Set(companions.map((c) => c.id)),
+    [companions],
+  );
+
   useEffect(() => {
     const fetchGroups = async () => {
       try {
@@ -146,7 +151,6 @@ export default function GroupPage() {
         highlight.id,
       );
 
-      const companionIds = new Set(companions.map((c) => c.id));
       const invalid = messagesData.filter(
         (msg) => msg.companionId !== null && !companionIds.has(msg.companionId),
       );

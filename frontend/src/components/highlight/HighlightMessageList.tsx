@@ -51,18 +51,18 @@ export function HighlightMessageList({
 }: HighlightMessageListProps) {
   return (
     <div className="flex flex-col gap-4">
-      {messages
-        .filter(
-          (m): m is HighlightMessage & { companionId: string } =>
-            m.companionId !== null && m.companionId in companions,
-        )
-        .map((message) => (
+      {messages.map((message) => {
+        if (message.companionId === null) return null;
+        const companion = companions[message.companionId];
+        if (!companion) return null;
+        return (
           <CompanionMessage
             key={message.id}
             content={message.content}
-            companion={companions[message.companionId]}
+            companion={companion}
           />
-        ))}
+        );
+      })}
     </div>
   );
 }

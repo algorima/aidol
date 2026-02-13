@@ -39,6 +39,11 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
   const [companions, setCompanions] = useState<Companion[]>([]);
   const [isModalLoading, setIsModalLoading] = useState(false);
 
+  const companionIds = useMemo(
+    () => new Set(companions.map((c) => c.id)),
+    [companions],
+  );
+
   const aidolRepository = useMemo(
     () => new AIdolRepository(getApiService()),
     [],
@@ -96,7 +101,6 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
       const { data: messagesData } =
         await highlightRepository.getMessages(highlightId);
 
-      const companionIds = new Set(companions.map((c) => c.id));
       const invalid = messagesData.filter(
         (msg) => msg.companionId !== null && !companionIds.has(msg.companionId),
       );
