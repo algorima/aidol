@@ -12,7 +12,7 @@ export const ACTIVITIES = [
 
 export type Activity = (typeof ACTIVITIES)[number];
 
-export interface ScheduleSlot {
+interface ScheduleSlot {
   startHour: number;
   endHour: number;
   activity: Activity;

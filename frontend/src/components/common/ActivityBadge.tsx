@@ -14,7 +14,7 @@ export function ActivityBadge({ activity, className }: ActivityBadgeProps) {
   return (
     <span
       className={clsx(
-        "bg-accent text-accent-content text-label-m rounded-lg px-1",
+        "bg-accent text-accent-content text-label-m rounded-lg p-1",
         className,
       )}
     >
