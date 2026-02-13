@@ -123,7 +123,7 @@ export default function CastingPage({ params }: CastingPageProps) {
       <Header title={t("aidol:casting.title")}>
         <button
           type="button"
-          className="btn btn-primary gap-2.5"
+          className="btn btn-primary gap-2.5 rounded-lg"
           onClick={handleNewMember}
         >
           {t("aidol:casting.addMember")}
