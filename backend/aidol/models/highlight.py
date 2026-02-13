@@ -20,6 +20,7 @@ class DBAIdolHighlight(BaseModel):
     title: Mapped[str] = mapped_column(String, nullable=False)
     thumbnail_url: Mapped[str] = mapped_column(String, nullable=False)
     subtitle: Mapped[str] = mapped_column(String, nullable=False)
+    is_premium: Mapped[bool] = mapped_column(default=False, nullable=False)
 
     __table_args__ = (Index("ix_aidol_highlights_aidol_id", "aidol_id"),)
 
