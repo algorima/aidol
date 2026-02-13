@@ -13,6 +13,7 @@ from aidol.schemas.aidol import (
     ImageGenerationRequest,
     ImageGenerationResponse,
 )
+from aidol.schemas.aidol import Status as AIdolStatus
 from aidol.schemas.aidol_lead import AIdolLead, AIdolLeadBase, AIdolLeadCreate
 from aidol.schemas.chatroom import (
     AudioFormat,
@@ -38,8 +39,8 @@ from aidol.schemas.companion import (
     Gender,
     Grade,
     Position,
-    Status,
 )
+from aidol.schemas.companion import Status as CompanionStatus
 from aidol.schemas.companion_relationship import (
     CompanionRelationship,
     CompanionRelationshipBase,
@@ -70,6 +71,7 @@ __all__ = [
     "ImageGenerationData",
     "ImageGenerationRequest",
     "ImageGenerationResponse",
+    "AIdolStatus",
     # AIdolLead
     "AIdolLead",
     "AIdolLeadBase",
@@ -97,6 +99,7 @@ __all__ = [
     "Gender",
     "Grade",
     "Position",
+    "CompanionStatus",
     # CompanionRelationship
     "CompanionRelationship",
     "CompanionRelationshipBase",
@@ -111,7 +114,6 @@ __all__ = [
     "HighlightMessageBase",
     "HighlightMessageCreate",
     "HighlightMessageUpdate",
-    "Status",
     # Model Settings
     "ModelSettings",
     "ModelSettingsBase",

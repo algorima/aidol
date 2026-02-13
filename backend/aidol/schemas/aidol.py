@@ -11,9 +11,27 @@ Schema hierarchy:
 """
 
 from datetime import datetime
+from enum import Enum, unique
 
 from humps import camelize
 from pydantic import BaseModel, ConfigDict, Field
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+
+@unique
+class Status(str, Enum):
+    """Status for draft pattern."""
+
+    DRAFT = "DRAFT"
+    PUBLISHED = "PUBLISHED"
+
+
+# ---------------------------------------------------------------------------
+# Request Schemas
+# ---------------------------------------------------------------------------
 
 
 class AIdolBase(BaseModel):
@@ -30,6 +48,7 @@ class AIdolBase(BaseModel):
     greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
     profile_image_url: str | None = Field(default=None, description="Profile image URL")
+    status: Status = Field(default=Status.DRAFT, description="Group status")
 
 
 class AIdolCreate(AIdolBase):
@@ -60,6 +79,7 @@ class AIdolUpdate(BaseModel):
     greeting: str | None = Field(default=None, description="Greeting message")
     concept: str | None = Field(default=None, description="Group concept or theme")
     profile_image_url: str | None = Field(default=None, description="Profile image URL")
+    status: Status | None = Field(default=None, description="Group status")
 
 
 class AIdol(AIdolBase):
