@@ -7,7 +7,8 @@
       "greeting": "우리가 새로운 바람이야!",
       "concept": "자유로운 영혼의 보이그룹",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-2",
@@ -16,7 +17,8 @@
       "greeting": "매일이 한 프레임처럼!",
       "concept": "일상 속 특별함을 담는 그룹",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-3",
@@ -25,7 +27,8 @@
       "greeting": "균열 속에서 빛나는 우리!",
       "concept": "강렬한 퍼포먼스 그룹",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-4",
@@ -34,7 +37,8 @@
       "greeting": "빛나는 순간을 함께!",
       "concept": "감성적인 걸그룹",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-5",
@@ -43,7 +47,8 @@
       "greeting": "세상을 핑크빛으로!",
       "concept": "걸크러시 콘셉트",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-6",
@@ -52,7 +57,8 @@
       "greeting": "어둠 속 한 줄기 빛!",
       "concept": "미스터리 콘셉트",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-7",
@@ -61,7 +67,8 @@
       "greeting": "다르니까 완벽해!",
       "concept": "다양성의 혼성그룹",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-8",
@@ -70,7 +77,8 @@
       "greeting": "경계를 넘어서!",
       "concept": "장르 파괴 혼성그룹",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     },
     {
       "id": "aidol-9",
@@ -79,7 +87,8 @@
       "greeting": "우리의 공간에 오신 걸 환영해!",
       "concept": "편안한 분위기의 혼성그룹",
       "profileImageUrl": null,
-      "anonymousId": null
+      "anonymousId": null,
+      "status": "PUBLISHED"
     }
   ],
   "companions": [
@@ -87,9 +96,9 @@
       "id": "companion-1",
       "aidolId": "aidol-1",
       "name": "레온",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -103,15 +112,15 @@
       "visual": 88,
       "stamina": 75,
       "charm": 90,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-2",
       "aidolId": "aidol-1",
       "name": "주아",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -125,15 +134,15 @@
       "visual": 80,
       "stamina": 70,
       "charm": 85,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-3",
       "aidolId": "aidol-1",
       "name": "케인",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "B",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -147,15 +156,15 @@
       "visual": 82,
       "stamina": 85,
       "charm": 78,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-4",
       "aidolId": "aidol-1",
       "name": "로엔",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "B",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -169,15 +178,15 @@
       "visual": 90,
       "stamina": 60,
       "charm": 82,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-5",
       "aidolId": "aidol-1",
       "name": "엘릭",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "C",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -191,15 +200,15 @@
       "visual": 85,
       "stamina": 80,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-6",
       "aidolId": "aidol-2",
       "name": "미노",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -213,15 +222,15 @@
       "visual": 85,
       "stamina": 78,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-7",
       "aidolId": "aidol-2",
       "name": "테온",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -235,15 +244,15 @@
       "visual": 80,
       "stamina": 90,
       "charm": 75,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-8",
       "aidolId": "aidol-2",
       "name": "지아",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "B",
-      "position": "mainRapper",
+      "position": "MAIN_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -257,15 +266,15 @@
       "visual": 78,
       "stamina": 82,
       "charm": 80,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-9",
       "aidolId": "aidol-2",
       "name": "아론",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "B",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -279,15 +288,15 @@
       "visual": 88,
       "stamina": 65,
       "charm": 85,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-10",
       "aidolId": "aidol-2",
       "name": "하엔",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "C",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -301,15 +310,15 @@
       "visual": 82,
       "stamina": 70,
       "charm": 90,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-11",
       "aidolId": "aidol-3",
       "name": "제하",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -323,15 +332,15 @@
       "visual": 85,
       "stamina": 80,
       "charm": 86,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-12",
       "aidolId": "aidol-3",
       "name": "잭스",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -345,15 +354,15 @@
       "visual": 80,
       "stamina": 90,
       "charm": 78,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-13",
       "aidolId": "aidol-3",
       "name": "우린",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "B",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -367,15 +376,15 @@
       "visual": 78,
       "stamina": 68,
       "charm": 82,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-14",
       "aidolId": "aidol-3",
       "name": "블루",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "B",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -389,15 +398,15 @@
       "visual": 88,
       "stamina": 65,
       "charm": 90,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-15",
       "aidolId": "aidol-4",
       "name": "아레",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -411,15 +420,15 @@
       "visual": 90,
       "stamina": 75,
       "charm": 92,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-16",
       "aidolId": "aidol-4",
       "name": "셀라",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "A",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -433,15 +442,15 @@
       "visual": 85,
       "stamina": 68,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-17",
       "aidolId": "aidol-4",
       "name": "유에",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -455,15 +464,15 @@
       "visual": 82,
       "stamina": 85,
       "charm": 80,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-18",
       "aidolId": "aidol-4",
       "name": "미르",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainRapper",
+      "position": "MAIN_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -477,15 +486,15 @@
       "visual": 80,
       "stamina": 78,
       "charm": 82,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-19",
       "aidolId": "aidol-4",
       "name": "아이",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "C",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -499,15 +508,15 @@
       "visual": 88,
       "stamina": 62,
       "charm": 92,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-20",
       "aidolId": "aidol-5",
       "name": "제인",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -521,15 +530,15 @@
       "visual": 88,
       "stamina": 80,
       "charm": 86,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-21",
       "aidolId": "aidol-5",
       "name": "루아",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "A",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -543,15 +552,15 @@
       "visual": 82,
       "stamina": 72,
       "charm": 85,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-22",
       "aidolId": "aidol-5",
       "name": "린린",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -565,15 +574,15 @@
       "visual": 85,
       "stamina": 88,
       "charm": 80,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-23",
       "aidolId": "aidol-5",
       "name": "록시",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -587,15 +596,15 @@
       "visual": 90,
       "stamina": 65,
       "charm": 92,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-24",
       "aidolId": "aidol-6",
       "name": "세린",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -609,15 +618,15 @@
       "visual": 88,
       "stamina": 78,
       "charm": 85,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-25",
       "aidolId": "aidol-6",
       "name": "베인",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "A",
-      "position": "mainRapper",
+      "position": "MAIN_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -631,15 +640,15 @@
       "visual": 82,
       "stamina": 85,
       "charm": 80,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-26",
       "aidolId": "aidol-6",
       "name": "슈아",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -653,15 +662,15 @@
       "visual": 80,
       "stamina": 65,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-27",
       "aidolId": "aidol-6",
       "name": "아리",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -675,15 +684,15 @@
       "visual": 85,
       "stamina": 82,
       "charm": 78,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-28",
       "aidolId": "aidol-7",
       "name": "준",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -697,15 +706,15 @@
       "visual": 82,
       "stamina": 80,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-29",
       "aidolId": "aidol-7",
       "name": "레오",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -719,15 +728,15 @@
       "visual": 85,
       "stamina": 92,
       "charm": 78,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-30",
       "aidolId": "aidol-7",
       "name": "애시",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -741,15 +750,15 @@
       "visual": 80,
       "stamina": 60,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-31",
       "aidolId": "aidol-7",
       "name": "유",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -763,15 +772,15 @@
       "visual": 85,
       "stamina": 68,
       "charm": 82,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-32",
       "aidolId": "aidol-7",
       "name": "레인",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "C",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -785,15 +794,15 @@
       "visual": 88,
       "stamina": 72,
       "charm": 90,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-33",
       "aidolId": "aidol-8",
       "name": "알렌",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -807,15 +816,15 @@
       "visual": 85,
       "stamina": 78,
       "charm": 86,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-34",
       "aidolId": "aidol-8",
       "name": "미하",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "A",
-      "position": "mainRapper",
+      "position": "MAIN_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -829,15 +838,15 @@
       "visual": 80,
       "stamina": 85,
       "charm": 82,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-35",
       "aidolId": "aidol-8",
       "name": "소린",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -851,15 +860,15 @@
       "visual": 82,
       "stamina": 68,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-36",
       "aidolId": "aidol-8",
       "name": "앤",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "B",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -873,15 +882,15 @@
       "visual": 88,
       "stamina": 70,
       "charm": 90,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-37",
       "aidolId": "aidol-9",
       "name": "지노",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "subVocal",
+      "position": "SUB_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -895,15 +904,15 @@
       "visual": 85,
       "stamina": 78,
       "charm": 88,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-38",
       "aidolId": "aidol-9",
       "name": "민유",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "A",
-      "position": "mainVocal",
+      "position": "MAIN_VOCAL",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -917,15 +926,15 @@
       "visual": 80,
       "stamina": 65,
       "charm": 85,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-39",
       "aidolId": "aidol-9",
       "name": "미츠",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "mainDancer",
+      "position": "MAIN_DANCER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -939,15 +948,15 @@
       "visual": 82,
       "stamina": 85,
       "charm": 80,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-40",
       "aidolId": "aidol-9",
       "name": "로아",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "B",
-      "position": "subRapper",
+      "position": "SUB_RAPPER",
       "biography": null,
       "profilePictureUrl": null,
       "systemPrompt": null,
@@ -961,13 +970,13 @@
       "visual": 90,
       "stamina": 68,
       "charm": 92,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-41",
       "aidolId": null,
       "name": "하율",
-      "gender": "male",
+      "gender": "MALE",
       "grade": "C",
       "position": null,
       "biography": null,
@@ -983,13 +992,13 @@
       "visual": 70,
       "stamina": 68,
       "charm": 72,
-      "status": "published"
+      "status": "PUBLISHED"
     },
     {
       "id": "companion-42",
       "aidolId": null,
       "name": "소하",
-      "gender": "female",
+      "gender": "FEMALE",
       "grade": "F",
       "position": null,
       "biography": null,
@@ -1005,7 +1014,7 @@
       "visual": 75,
       "stamina": 60,
       "charm": 68,
-      "status": "published"
+      "status": "PUBLISHED"
     }
   ],
   "aidol_highlights": [
@@ -1014,126 +1023,144 @@
       "aidolId": "aidol-1",
       "title": "새벽 귀신 사건",
       "thumbnailUrl": "/images/thumbnails/highlight_2.png",
-      "subtitle": "숙소 새벽 3시, 비명 한 방"
+      "subtitle": "숙소 새벽 3시, 비명 한 방",
+      "is_premium": false
     },
     {
       "id": "highlight-2",
       "aidolId": "aidol-1",
       "title": "샤워 순서 전쟁",
       "thumbnailUrl": "/images/thumbnails/highlight_2.png",
-      "subtitle": "뜨거운 물은 한정적이다"
+      "subtitle": "뜨거운 물은 한정적이다",
+      "is_premium": false
     },
     {
       "id": "highlight-3",
       "aidolId": "aidol-2",
       "title": "냉장고 털이범",
       "thumbnailUrl": "/images/thumbnails/highlight_3.png",
-      "subtitle": "내 푸딩 어디 갔어"
+      "subtitle": "내 푸딩 어디 갔어",
+      "is_premium": false
     },
     {
       "id": "highlight-4",
       "aidolId": "aidol-2",
       "title": "양말 실종 사건",
       "thumbnailUrl": "/images/thumbnails/highlight_4.png",
-      "subtitle": "세탁기의 블랙홀"
+      "subtitle": "세탁기의 블랙홀",
+      "is_premium": false
     },
     {
       "id": "highlight-5",
       "aidolId": "aidol-3",
       "title": "슬리퍼 바뀜 사건",
       "thumbnailUrl": "/images/thumbnails/highlight_5.png",
-      "subtitle": "이거 내 슬리퍼 아닌데"
+      "subtitle": "이거 내 슬리퍼 아닌데",
+      "is_premium": false
     },
     {
       "id": "highlight-6",
       "aidolId": "aidol-3",
       "title": "누가 내 컵 썼어",
       "thumbnailUrl": "/images/thumbnails/highlight_6.png",
-      "subtitle": "내 컵에 연필이 꽂혀있다"
+      "subtitle": "내 컵에 연필이 꽂혀있다",
+      "is_premium": false
     },
     {
       "id": "highlight-7",
       "aidolId": "aidol-4",
       "title": "미묘했던 순간",
       "thumbnailUrl": "/images/thumbnails/highlight_7.png",
-      "subtitle": "새벽, 다른 모습"
+      "subtitle": "새벽, 다른 모습",
+      "is_premium": false
     },
     {
       "id": "highlight-8",
       "aidolId": "aidol-4",
       "title": "핸드폰 바뀜",
       "thumbnailUrl": "/images/thumbnails/highlight_8.png",
-      "subtitle": "잠금화면의 비밀"
+      "subtitle": "잠금화면의 비밀",
+      "is_premium": false
     },
     {
       "id": "highlight-9",
       "aidolId": "aidol-5",
       "title": "새벽 라면",
       "thumbnailUrl": "/images/thumbnails/highlight_9.png",
-      "subtitle": "힘든 날의 위로"
+      "subtitle": "힘든 날의 위로",
+      "is_premium": false
     },
     {
       "id": "highlight-10",
       "aidolId": "aidol-5",
       "title": "정전 사건",
       "thumbnailUrl": "/images/thumbnails/highlight_10.png",
-      "subtitle": "촛불 아래 우리"
+      "subtitle": "촛불 아래 우리",
+      "is_premium": false
     },
     {
       "id": "highlight-11",
       "aidolId": "aidol-6",
       "title": "생일 깜짝 파티",
       "thumbnailUrl": "/images/thumbnails/highlight_11.png",
-      "subtitle": "몰래 준비한 마음"
+      "subtitle": "몰래 준비한 마음",
+      "is_premium": false
     },
     {
       "id": "highlight-12",
       "aidolId": "aidol-6",
       "title": "비 오는 날 발코니",
       "thumbnailUrl": "/images/thumbnails/highlight_12.png",
-      "subtitle": "말없이 함께"
+      "subtitle": "말없이 함께",
+      "is_premium": false
     },
     {
       "id": "highlight-13",
       "aidolId": "aidol-7",
       "title": "세탁기 귀신",
       "thumbnailUrl": "/images/thumbnails/highlight_13.png",
-      "subtitle": "새벽에 돌아가는 세탁기"
+      "subtitle": "새벽에 돌아가는 세탁기",
+      "is_premium": false
     },
     {
       "id": "highlight-14",
       "aidolId": "aidol-7",
       "title": "과자 서랍 분쟁",
       "thumbnailUrl": "/images/thumbnails/highlight_14.png",
-      "subtitle": "내 새우깡 어디 갔어"
+      "subtitle": "내 새우깡 어디 갔어",
+      "is_premium": false
     },
     {
       "id": "highlight-15",
       "aidolId": "aidol-8",
       "title": "드라이기 순서 전쟁",
       "thumbnailUrl": "/images/thumbnails/highlight_15.png",
-      "subtitle": "드라이기는 하나인데 머리는 넷"
+      "subtitle": "드라이기는 하나인데 머리는 넷",
+      "is_premium": false
     },
     {
       "id": "highlight-16",
       "aidolId": "aidol-8",
       "title": "이어폰 실종",
       "thumbnailUrl": "/images/thumbnails/highlight_16.png",
-      "subtitle": "에어팟 미스터리"
+      "subtitle": "에어팟 미스터리",
+      "is_premium": false
     },
     {
       "id": "highlight-17",
       "aidolId": "aidol-9",
       "title": "새벽 토스트",
       "thumbnailUrl": "/images/thumbnails/highlight_17.png",
-      "subtitle": "버터 냄새에 모이는 사람들"
+      "subtitle": "버터 냄새에 모이는 사람들",
+      "is_premium": false
     },
     {
       "id": "highlight-18",
       "aidolId": "aidol-9",
       "title": "깜짝 기념일",
       "thumbnailUrl": "/images/thumbnails/highlight_18.png",
-      "subtitle": "데뷔 100일의 선물"
+      "subtitle": "데뷔 100일의 선물",
+      "is_premium": false
     }
   ],
   "highlight_messages": [
