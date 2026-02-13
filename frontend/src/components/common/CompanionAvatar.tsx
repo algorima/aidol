@@ -17,7 +17,7 @@ export function CompanionAvatar({
   className,
 }: CompanionAvatarProps) {
   return (
-    <div className={clsx("relative shrink-0", className)}>
+    <div className={clsx("relative w-fit shrink-0", className)}>
       <div className="border-base-300 bg-base-200 relative size-12 overflow-hidden rounded-lg border">
         {imageUrl ? (
           <Image src={imageUrl} alt={name} fill className="object-cover" />
