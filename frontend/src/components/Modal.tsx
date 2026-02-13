@@ -13,9 +13,16 @@ interface ModalProps {
   onClose: () => void;
   children: ReactNode;
   action?: ModalAction;
+  allowOverflow?: boolean;
 }
 
-export function Modal({ isOpen, onClose, children, action }: ModalProps) {
+export function Modal({
+  isOpen,
+  onClose,
+  children,
+  action,
+  allowOverflow,
+}: ModalProps) {
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -25,6 +32,8 @@ export function Modal({ isOpen, onClose, children, action }: ModalProps) {
 
     if (isOpen) {
       dialog.showModal();
+      const modalBox = dialog.querySelector<HTMLElement>(".modal-box");
+      modalBox?.focus();
     } else {
       dialog.close();
     }
@@ -43,9 +52,20 @@ export function Modal({ isOpen, onClose, children, action }: ModalProps) {
       onClick={handleBackdropClick}
       onClose={onClose}
     >
-      <div className="modal-box bg-base-200 max-w-mobile relative flex max-h-170 min-h-90 w-full flex-col gap-6 overflow-hidden rounded-lg p-6">
+      <div
+        tabIndex={-1}
+        className={clsx(
+          "modal-box scrollbar-hide bg-base-200 relative flex max-h-170 min-h-90 w-88.25 flex-col gap-6 rounded-lg p-6 outline-none",
+          allowOverflow ? "overflow-visible" : "overflow-hidden",
+        )}
+      >
         {/* 모달 내용 */}
-        <div className="scrollbar-hide flex-1 overflow-y-auto pb-20">
+        <div
+          className={clsx(
+            "scrollbar-hide flex-1 pb-20",
+            allowOverflow ? "overflow-visible" : "overflow-y-auto",
+          )}
+        >
           {children}
         </div>
 
