@@ -24,12 +24,12 @@
     "title": "给每位成员分配位置！",
     "subtitle": "点击分配位置",
     "unassigned": "未分配",
-    "mainVocal": "主唱",
-    "subVocal": "副唱",
-    "mainDancer": "主舞",
-    "subDancer": "副舞",
-    "mainRapper": "主说唱",
-    "subRapper": "副说唱",
+    "MAIN_VOCAL": "主唱",
+    "SUB_VOCAL": "副唱",
+    "MAIN_DANCER": "主舞",
+    "SUB_DANCER": "副舞",
+    "MAIN_RAPPER": "主说唱",
+    "SUB_RAPPER": "副说唱",
     "assignedTo": "{{position}}({{name}})",
     "assign": "分配",
     "confirm": "规划组合",
@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "请选择性别",
-      "female": "女性",
-      "male": "男性"
+      "FEMALE": "女性",
+      "MALE": "男性"
     },
     "personality": {
       "stepTitle": "告诉我们性格",

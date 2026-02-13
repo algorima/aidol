@@ -11,7 +11,7 @@ Schema hierarchy:
 """
 
 from datetime import datetime
-from enum import Enum
+from enum import Enum, unique
 
 from humps import camelize
 from pydantic import BaseModel, ConfigDict, Field
@@ -21,13 +21,15 @@ from pydantic import BaseModel, ConfigDict, Field
 # ---------------------------------------------------------------------------
 
 
+@unique
 class Gender(str, Enum):
     """Gender options for companions."""
 
-    MALE = "male"
-    FEMALE = "female"
+    MALE = "MALE"
+    FEMALE = "FEMALE"
 
 
+@unique
 class Grade(str, Enum):
     """Grade levels for companions."""
 
@@ -37,25 +39,24 @@ class Grade(str, Enum):
     F = "F"
 
 
+@unique
 class Status(str, Enum):
     """Status for draft pattern."""
 
-    DRAFT = "draft"
-    PUBLISHED = "published"
+    DRAFT = "DRAFT"
+    PUBLISHED = "PUBLISHED"
 
 
+@unique
 class Position(str, Enum):
     """Position roles in the group."""
 
-    LEADER = "leader"
-    MAIN_VOCAL = "mainVocal"
-    SUB_VOCAL = "subVocal"
-    MAIN_DANCER = "mainDancer"
-    SUB_DANCER = "subDancer"
-    MAIN_RAPPER = "mainRapper"
-    SUB_RAPPER = "subRapper"
-    VISUAL = "visual"
-    MAKNAE = "maknae"
+    MAIN_VOCAL = "MAIN_VOCAL"
+    SUB_VOCAL = "SUB_VOCAL"
+    MAIN_DANCER = "MAIN_DANCER"
+    SUB_DANCER = "SUB_DANCER"
+    MAIN_RAPPER = "MAIN_RAPPER"
+    SUB_RAPPER = "SUB_RAPPER"
 
 
 # ---------------------------------------------------------------------------

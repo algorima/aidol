@@ -33,11 +33,11 @@ const baseCompanion: Companion = {
   name: "홍길동",
   profilePictureUrl: sampleImage,
   grade: "A",
-  position: "mainVocal",
+  position: "MAIN_VOCAL",
   mbti: "ENFP",
   biography:
     "국민경제자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 위원은 정당에 가입하거나 정치에 관여할 수 없다.",
-  status: "published",
+  status: "PUBLISHED",
   createdAt: "2024-01-01T00:00:00Z",
   updatedAt: "2024-01-01T00:00:00Z",
 };

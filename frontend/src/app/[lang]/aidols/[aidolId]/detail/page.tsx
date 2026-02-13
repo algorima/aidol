@@ -140,7 +140,7 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
   return (
     <div className="bg-base-100 flex min-h-screen flex-col">
       <Header
-        onBackClick={() => router.push(`/${lang}/aidols/${aidolId}/home`)}
+        onBackClick={() => router.push(`/${lang}/aidols/home`)}
         title={aidol.name ?? ""}
       />
 

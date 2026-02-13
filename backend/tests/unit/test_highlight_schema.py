@@ -34,6 +34,26 @@ class TestAIdolHighlightCreateSchema(unittest.TestCase):
         self.assertEqual(highlight.title, "테스트 하이라이트")
         self.assertEqual(highlight.thumbnail_url, "https://example.com/thumb.jpg")
         self.assertEqual(highlight.subtitle, "부제목")
+        self.assertFalse(highlight.is_premium)
+
+    def test_is_premium_default_false(self):
+        """is_premium 기본값은 False"""
+        highlight = AIdolHighlightCreate(
+            title="테스트",
+            thumbnail_url="url",
+            subtitle="부제목",
+        )
+        self.assertFalse(highlight.is_premium)
+
+    def test_is_premium_can_be_true(self):
+        """is_premium True 설정 가능"""
+        highlight = AIdolHighlightCreate(
+            title="테스트",
+            thumbnail_url="url",
+            subtitle="부제목",
+            is_premium=True,
+        )
+        self.assertTrue(highlight.is_premium)
 
     def test_aidol_id_optional(self):
         """aidol_id는 optional"""
@@ -70,6 +90,12 @@ class TestAIdolHighlightUpdateSchema(unittest.TestCase):
 
         self.assertEqual(update.title, "새 제목")
         self.assertIsNone(update.subtitle)
+        self.assertIsNone(update.is_premium)
+
+    def test_update_is_premium(self):
+        """is_premium 업데이트 가능"""
+        update = AIdolHighlightUpdate(is_premium=True)
+        self.assertTrue(update.is_premium)
 
 
 class TestAIdolHighlightResponseSchema(unittest.TestCase):
@@ -85,10 +111,12 @@ class TestAIdolHighlightResponseSchema(unittest.TestCase):
             subtitle="부제목",
             created_at=now,
             updated_at=now,
+            is_premium=True,
         )
 
         self.assertEqual(highlight.id, "test-id")
         self.assertEqual(highlight.created_at, now)
+        self.assertTrue(highlight.is_premium)
 
 
 class TestHighlightMessageCreateSchema(unittest.TestCase):

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -16,16 +16,10 @@ import { HighlightRepository } from "@/repositories/HighlightRepository";
 import type { AIdol, AIdolHighlight } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
 
-interface GroupsPageProps {
-  params: {
-    lang: string;
-    aidolId: string;
-  };
-}
-
-export default function GroupsPage({ params }: GroupsPageProps) {
+export default function GroupsPage() {
   const { t } = useTranslation("aidol");
-  const { lang, aidolId } = params;
+  const params = useParams<{ lang: string }>();
+  const { lang } = params;
   const router = useRouter();
   const { showToast } = useToast();
   const [groups, setGroups] = useState<AIdol[]>([]);
@@ -83,8 +77,9 @@ export default function GroupsPage({ params }: GroupsPageProps) {
 
   if (isLoading) {
     return (
-      <div className="bg-base-100 flex h-dvh flex-col items-center justify-center">
+      <div className="bg-base-100 flex h-dvh flex-col">
         <Loading />
+        <BottomNavigation lang={lang} />
       </div>
     );
   }
@@ -115,7 +110,7 @@ export default function GroupsPage({ params }: GroupsPageProps) {
           })}
         </div>
       </div>
-      <BottomNavigation aidolId={aidolId} lang={lang} />
+      <BottomNavigation lang={lang} />
     </div>
   );
 }

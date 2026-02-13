@@ -24,12 +24,12 @@
     "title": "กำหนดตำแหน่งให้สมาชิกแต่ละคน!",
     "subtitle": "แตะเพื่อกำหนดตำแหน่ง",
     "unassigned": "ยังไม่กำหนด",
-    "mainVocal": "เมนโวคอล",
-    "subVocal": "ซับโวคอล",
-    "mainDancer": "เมนแดนเซอร์",
-    "subDancer": "ซับแดนเซอร์",
-    "mainRapper": "เมนแร็ปเปอร์",
-    "subRapper": "ซับแร็ปเปอร์",
+    "MAIN_VOCAL": "เมนโวคอล",
+    "SUB_VOCAL": "ซับโวคอล",
+    "MAIN_DANCER": "เมนแดนเซอร์",
+    "SUB_DANCER": "ซับแดนเซอร์",
+    "MAIN_RAPPER": "เมนแร็ปเปอร์",
+    "SUB_RAPPER": "ซับแร็ปเปอร์",
     "assignedTo": "{{position}}({{name}})",
     "assign": "กำหนด",
     "confirm": "วางแผนกลุ่ม",
@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "เลือกเพศ",
-      "female": "หญิง",
-      "male": "ชาย"
+      "FEMALE": "หญิง",
+      "MALE": "ชาย"
     },
     "personality": {
       "stepTitle": "บอกเราเกี่ยวกับบุคลิกภาพ",

@@ -32,6 +32,7 @@ def _convert_db_highlight_to_model(db_highlight: DBAIdolHighlight) -> AIdolHighl
         title=db_highlight.title,
         thumbnail_url=db_highlight.thumbnail_url,
         subtitle=db_highlight.subtitle,
+        is_premium=db_highlight.is_premium,
         created_at=db_highlight.created_at.replace(tzinfo=timezone.utc),
         updated_at=db_highlight.updated_at.replace(tzinfo=timezone.utc),
     )

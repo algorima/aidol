@@ -9,7 +9,7 @@ AIdol 스키마 유닛 테스트
 import unittest
 from datetime import datetime
 
-from aidol.schemas import AIdolCreate, AIdolPublic
+from aidol.schemas import AIdolCreate, AIdolPublic, AIdolStatus
 
 
 class TestAIdolCreateSchema(unittest.TestCase):
@@ -24,6 +24,7 @@ class TestAIdolCreateSchema(unittest.TestCase):
         """필드 없이 생성 가능해야 함"""
         schema = AIdolCreate()
         self.assertIsNone(schema.name)
+        self.assertEqual(schema.status, AIdolStatus.DRAFT)
 
 
 class TestAIdolPublicSchema(unittest.TestCase):
@@ -37,6 +38,7 @@ class TestAIdolPublicSchema(unittest.TestCase):
         self.assertNotIn("anonymous_id", fields)
         self.assertIn("id", fields)
         self.assertIn("name", fields)
+        self.assertIn("status", fields)
 
     def test_response_serialization_excludes_sensitive_info(self):
         """직렬화 시 민감 정보가 제외되어야 함"""
@@ -44,12 +46,14 @@ class TestAIdolPublicSchema(unittest.TestCase):
         public = AIdolPublic(
             id="test-id",
             name="테스트 그룹",
+            status=AIdolStatus.PUBLISHED,
             created_at=now,
             updated_at=now,
         )
         data = public.model_dump(by_alias=True)
 
         self.assertIn("id", data)
+        self.assertEqual(data["status"], "PUBLISHED")
         self.assertNotIn("anonymousId", data)
         self.assertNotIn("anonymous_id", data)
 

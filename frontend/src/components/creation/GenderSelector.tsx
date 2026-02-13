@@ -12,8 +12,8 @@ export function GenderSelector({ value, onChange }: GenderSelectorProps) {
   const { t } = useTranslation();
 
   const options: { gender: Gender; label: string }[] = [
-    { gender: "female", label: t("aidol:companionCreate.gender.female") },
-    { gender: "male", label: t("aidol:companionCreate.gender.male") },
+    { gender: "FEMALE", label: t("aidol:companionCreate.gender.FEMALE") },
+    { gender: "MALE", label: t("aidol:companionCreate.gender.MALE") },
   ];
 
   return (

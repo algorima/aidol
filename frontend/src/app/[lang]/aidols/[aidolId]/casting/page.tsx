@@ -22,14 +22,14 @@ import type { Companion, Gender } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
 const TAB_TO_GENDER: Record<GenderTab, Gender | undefined> = {
-  boy: "male",
-  girl: "female",
+  boy: "MALE",
+  girl: "FEMALE",
   mixed: undefined,
 };
 
 const buildFilters = (gender: Gender | undefined): GetListParams["filters"] => {
   const filters: GetListParams["filters"] = [
-    { field: "status", operator: "eq", value: "published" },
+    { field: "status", operator: "eq", value: "PUBLISHED" },
   ];
 
   if (gender) {
@@ -160,7 +160,7 @@ export default function CastingPage({ params }: CastingPageProps) {
         </button>
       </div>
 
-      <BottomNavigation aidolId={aidolId} lang={lang} />
+      <BottomNavigation lang={lang} />
 
       {selectedCompanion && (
         <Modal

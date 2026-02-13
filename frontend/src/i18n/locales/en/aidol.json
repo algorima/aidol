@@ -24,12 +24,12 @@
     "title": "Assign positions to each member!",
     "subtitle": "Tap to assign a position",
     "unassigned": "Unassigned",
-    "mainVocal": "Main Vocal",
-    "subVocal": "Sub Vocal",
-    "mainDancer": "Main Dancer",
-    "subDancer": "Sub Dancer",
-    "mainRapper": "Main Rapper",
-    "subRapper": "Sub Rapper",
+    "MAIN_VOCAL": "Main Vocal",
+    "SUB_VOCAL": "Sub Vocal",
+    "MAIN_DANCER": "Main Dancer",
+    "SUB_DANCER": "Sub Dancer",
+    "MAIN_RAPPER": "Main Rapper",
+    "SUB_RAPPER": "Sub Rapper",
     "assignedTo": "{{position}}({{name}})",
     "assign": "Assign",
     "confirm": "Plan Group",
@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "Choose a gender",
-      "female": "Female",
-      "male": "Male"
+      "FEMALE": "Female",
+      "MALE": "Male"
     },
     "personality": {
       "stepTitle": "Tell us about the personality",

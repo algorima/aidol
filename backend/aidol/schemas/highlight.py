@@ -32,6 +32,7 @@ class AIdolHighlightBase(BaseModel):
     title: str = Field(..., description="하이라이트 제목")
     thumbnail_url: str = Field(..., description="썸네일 이미지 URL")
     subtitle: str = Field(..., description="부제목")
+    is_premium: bool = Field(default=False, description="프리미엄 콘텐츠 여부")
 
 
 class AIdolHighlightCreate(AIdolHighlightBase):
@@ -47,6 +48,7 @@ class AIdolHighlightUpdate(BaseModel):
     title: str | None = Field(default=None, description="하이라이트 제목")
     thumbnail_url: str | None = Field(default=None, description="썸네일 이미지 URL")
     subtitle: str | None = Field(default=None, description="부제목")
+    is_premium: bool | None = Field(default=None, description="프리미엄 콘텐츠 여부")
 
 
 class AIdolHighlight(AIdolHighlightBase):

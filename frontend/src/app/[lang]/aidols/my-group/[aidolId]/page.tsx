@@ -244,7 +244,7 @@ export default function GroupPage() {
         </div>
       </div>
 
-      <BottomNavigation aidolId={params.aidolId} lang={params.lang} />
+      <BottomNavigation lang={params.lang} />
 
       <HighlightDetailModal
         isOpen={isModalOpen}
