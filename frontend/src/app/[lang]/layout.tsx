@@ -30,9 +30,9 @@ export default async function LangLayout({
 
   return (
     <html lang={lang}>
-      <body>
+      <body className="sm:bg-backdrop">
         <I18nProvider lang={lang} resources={resources}>
-          <div className="min-w-mobile max-w-mobile mx-auto min-h-dvh">
+          <div className="min-w-mobile max-w-mobile bg-base-100 mx-auto min-h-dvh">
             <ToastProvider>{children}</ToastProvider>
           </div>
         </I18nProvider>
