@@ -24,12 +24,12 @@
     "title": "Tetapkan posisi untuk setiap anggota!",
     "subtitle": "Ketuk untuk menetapkan posisi",
     "unassigned": "Belum ditetapkan",
-    "mainVocal": "Vokal Utama",
-    "subVocal": "Vokal Pendukung",
-    "mainDancer": "Penari Utama",
-    "subDancer": "Penari Pendukung",
-    "mainRapper": "Rapper Utama",
-    "subRapper": "Rapper Pendukung",
+    "MAIN_VOCAL": "Vokal Utama",
+    "SUB_VOCAL": "Vokal Pendukung",
+    "MAIN_DANCER": "Penari Utama",
+    "SUB_DANCER": "Penari Pendukung",
+    "MAIN_RAPPER": "Rapper Utama",
+    "SUB_RAPPER": "Rapper Pendukung",
     "assignedTo": "{{position}}({{name}})",
     "assign": "Tetapkan",
     "confirm": "Rencanakan Grup",
@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "Pilih jenis kelamin",
-      "female": "Perempuan",
-      "male": "Laki-laki"
+      "FEMALE": "Perempuan",
+      "MALE": "Laki-laki"
     },
     "personality": {
       "stepTitle": "Ceritakan kepribadiannya",

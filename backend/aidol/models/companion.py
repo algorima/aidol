@@ -41,6 +41,6 @@ class DBCompanion(BaseModel):
     charm: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
     position: Mapped[str | None] = mapped_column(String, nullable=True)
-    status: Mapped[str] = mapped_column(String, nullable=False, default="draft")
+    status: Mapped[str] = mapped_column(String, nullable=False, default="DRAFT")
 
     __table_args__ = (Index("ix_companions_aidol_id", "aidol_id"),)

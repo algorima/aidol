@@ -36,8 +36,8 @@ export interface ChatroomCreate {
 // =============================================================================
 
 export enum SenderType {
-  USER = "user",
-  COMPANION = "companion",
+  USER = "USER",
+  COMPANION = "COMPANION",
 }
 
 export const messageSchema = z.object({

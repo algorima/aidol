@@ -81,7 +81,7 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
       ...fetchOptions,
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content, senderType: "user" }),
+      body: JSON.stringify({ content, senderType: "USER" }),
     });
 
     return this.validateResponse(rawResponse, messageSchema);

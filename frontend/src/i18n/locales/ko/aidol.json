@@ -24,12 +24,12 @@
     "title": "멤버별 포지션을 배정하세요!",
     "subtitle": "탭하여 포지션을 배정할 수 있어요",
     "unassigned": "미배정",
-    "mainVocal": "메인 보컬",
-    "subVocal": "서브 보컬",
-    "mainDancer": "메인 댄서",
-    "subDancer": "서브 댄서",
-    "mainRapper": "메인 래퍼",
-    "subRapper": "서브 래퍼",
+    "MAIN_VOCAL": "메인 보컬",
+    "SUB_VOCAL": "서브 보컬",
+    "MAIN_DANCER": "메인 댄서",
+    "SUB_DANCER": "서브 댄서",
+    "MAIN_RAPPER": "메인 래퍼",
+    "SUB_RAPPER": "서브 래퍼",
     "assignedTo": "{{position}}({{name}})",
     "assign": "배정하기",
     "confirm": "그룹 기획하기",
@@ -134,13 +134,22 @@
       "powerful": "파워풀"
     },
     "personalities": {
-      "cheerful": { "label": "활발한", "description": "항상 밝고 긍정적인" },
-      "cool": { "label": "쿨한", "description": "차분하고 침착한" },
+      "cheerful": {
+        "label": "활발한",
+        "description": "항상 밝고 긍정적인"
+      },
+      "cool": {
+        "label": "쿨한",
+        "description": "차분하고 침착한"
+      },
       "tsundere": {
         "label": "츤데레",
         "description": "겉은 차갑지만 속은 따뜻한"
       },
-      "gentle": { "label": "다정한", "description": "친절하고 배려심 깊은" }
+      "gentle": {
+        "label": "다정한",
+        "description": "친절하고 배려심 깊은"
+      }
     },
     "step1": "그룹",
     "step2": "멤버",
@@ -211,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "성별을 정해주세요",
-      "female": "여성",
-      "male": "남성"
+      "FEMALE": "여성",
+      "MALE": "남성"
     },
     "personality": {
       "stepTitle": "성격을 알려주세요",
