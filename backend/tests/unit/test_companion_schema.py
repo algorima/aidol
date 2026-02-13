@@ -62,8 +62,8 @@ class TestCompanionEnums(unittest.TestCase):
 
     def test_gender_enum_values(self):
         """Gender enum 값 확인"""
-        self.assertEqual(Gender.MALE.value, "male")
-        self.assertEqual(Gender.FEMALE.value, "female")
+        self.assertEqual(Gender.MALE.value, "MALE")
+        self.assertEqual(Gender.FEMALE.value, "FEMALE")
 
     def test_grade_enum_values(self):
         """Grade enum 값 확인"""
@@ -72,8 +72,8 @@ class TestCompanionEnums(unittest.TestCase):
 
     def test_position_enum_values(self):
         """Position enum 값 확인"""
-        self.assertEqual(Position.LEADER.value, "leader")
-        self.assertEqual(Position.MAIN_VOCAL.value, "mainVocal")
+        self.assertEqual(Position.SUB_VOCAL.value, "SUB_VOCAL")
+        self.assertEqual(Position.MAIN_VOCAL.value, "MAIN_VOCAL")
 
 
 class TestCompanionCreateSchema(unittest.TestCase):

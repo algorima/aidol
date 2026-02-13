@@ -24,12 +24,12 @@
     "title": "Italaga ang posisyon sa bawat miyembro!",
     "subtitle": "I-tap para magtalaga ng posisyon",
     "unassigned": "Hindi pa naitalaga",
-    "mainVocal": "Main Vocal",
-    "subVocal": "Sub Vocal",
-    "mainDancer": "Main Dancer",
-    "subDancer": "Sub Dancer",
-    "mainRapper": "Main Rapper",
-    "subRapper": "Sub Rapper",
+    "MAIN_VOCAL": "Main Vocal",
+    "SUB_VOCAL": "Sub Vocal",
+    "MAIN_DANCER": "Main Dancer",
+    "SUB_DANCER": "Sub Dancer",
+    "MAIN_RAPPER": "Main Rapper",
+    "SUB_RAPPER": "Sub Rapper",
     "assignedTo": "{{position}}({{name}})",
     "assign": "Italaga",
     "confirm": "Planuhin ang Grupo",
@@ -220,8 +220,8 @@
     },
     "gender": {
       "stepTitle": "Pumili ng kasarian",
-      "female": "Babae",
-      "male": "Lalaki"
+      "FEMALE": "Babae",
+      "MALE": "Lalaki"
     },
     "personality": {
       "stepTitle": "Sabihin ang personalidad",

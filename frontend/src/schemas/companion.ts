@@ -7,21 +7,21 @@ import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
 export const POSITIONS = [
-  "mainVocal",
-  "subVocal",
-  "mainDancer",
-  "subDancer",
-  "mainRapper",
-  "subRapper",
+  "MAIN_VOCAL",
+  "SUB_VOCAL",
+  "MAIN_DANCER",
+  "SUB_DANCER",
+  "MAIN_RAPPER",
+  "SUB_RAPPER",
 ] as const;
 
 export type Position = (typeof POSITIONS)[number];
 
-export type Gender = "male" | "female";
+export type Gender = "MALE" | "FEMALE";
 
 export type Grade = "A" | "B" | "C" | "F";
 
-export type Status = "draft" | "published";
+export type Status = "DRAFT" | "PUBLISHED";
 
 export interface CompanionStats {
   vocal: number;
@@ -53,18 +53,18 @@ export const companionSchema = z.object({
   grade: z.enum(["A", "B", "C", "F"]).nullable().optional(),
   position: z
     .enum([
-      "mainVocal",
-      "subVocal",
-      "mainDancer",
-      "subDancer",
-      "mainRapper",
-      "subRapper",
+      "MAIN_VOCAL",
+      "SUB_VOCAL",
+      "MAIN_DANCER",
+      "SUB_DANCER",
+      "MAIN_RAPPER",
+      "SUB_RAPPER",
     ])
     .nullable()
     .optional(),
   mbti: z.string().nullable().optional(),
-  gender: z.enum(["male", "female"]).nullable().optional(),
-  status: z.enum(["draft", "published"]),
+  gender: z.enum(["MALE", "FEMALE"]).nullable().optional(),
+  status: z.enum(["DRAFT", "PUBLISHED"]),
   stats: companionStatsSchema.optional(),
   createdAt: z.string(),
   updatedAt: z.string(),

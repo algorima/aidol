@@ -12,7 +12,7 @@ const mockCompanions: Companion[] = [
     name: "하늘",
     profilePictureUrl:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop",
-    status: "published",
+    status: "PUBLISHED",
     createdAt: "2026-01-29T00:00:00Z",
     updatedAt: "2026-01-29T00:00:00Z",
   },
@@ -22,7 +22,7 @@ const mockCompanions: Companion[] = [
     name: "지우",
     profilePictureUrl:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
-    status: "published",
+    status: "PUBLISHED",
     createdAt: "2026-01-29T00:00:00Z",
     updatedAt: "2026-01-29T00:00:00Z",
   },

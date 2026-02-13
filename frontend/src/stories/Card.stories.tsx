@@ -26,7 +26,7 @@ const gradeCompanion: Companion = {
   position: null,
   grade: "A",
   aidolId: null,
-  status: "published",
+  status: "PUBLISHED",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 };
@@ -45,7 +45,7 @@ const signedCompanion: Companion = {
   position: null,
   grade: "A",
   aidolId: "aidol-1234",
-  status: "published",
+  status: "PUBLISHED",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 };
@@ -61,10 +61,10 @@ const positionCompanion: Companion = {
   name: "홍길동",
   profilePictureUrl: sampleImage,
   biography: "아이돌입니다",
-  position: "mainVocal",
+  position: "MAIN_VOCAL",
   grade: "A",
   aidolId: null,
-  status: "published",
+  status: "PUBLISHED",
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
 };
