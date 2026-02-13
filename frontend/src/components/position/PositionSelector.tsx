@@ -20,11 +20,11 @@ export function PositionSelector({
   const { t } = useTranslation();
 
   return (
-    <div className="dropdown dropdown-start w-full">
+    <div className="dropdown dropdown-start w-full pb-10">
       <div
         tabIndex={0}
         role="button"
-        className="border-base-300 text-body-m flex w-full items-center justify-between rounded-lg border bg-white px-4 py-3 text-black"
+        className="border-base-300 text-body-m bg-base-200 text-base-content flex w-full cursor-pointer items-center justify-between rounded-lg border px-4 py-3"
       >
         {selectedPosition
           ? t(`aidol:position.${selectedPosition}`)
@@ -33,7 +33,7 @@ export function PositionSelector({
       </div>
       <ul
         tabIndex={-1}
-        className="dropdown-content menu rounded-box mt-1 w-full bg-white text-black shadow-sm"
+        className="dropdown-content menu rounded-box bg-base-200 text-base-content mt-1 w-full shadow-sm"
       >
         {POSITIONS.map((position) => {
           const assignedTo = companions.find(
