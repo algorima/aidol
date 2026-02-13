@@ -5,8 +5,8 @@ import { useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { Loading } from "@/components/Loading";
+import { BottomNavigationContainer } from "@/containers";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { getApiService } from "@/services/ApiService";
 
@@ -46,7 +46,7 @@ export default function ExplorePage() {
   return (
     <div className="bg-base-100 flex min-h-dvh flex-col">
       <Loading />
-      <BottomNavigation lang={params.lang} />
+      <BottomNavigationContainer lang={params.lang} />
     </div>
   );
 }

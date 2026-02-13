@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { GroupCard } from "@/components/group/GroupCard";
 import { GroupInfoBanner } from "@/components/group/GroupInfoBanner";
 import { Loading } from "@/components/Loading";
+import { BottomNavigationContainer } from "@/containers";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { HighlightRepository } from "@/repositories/HighlightRepository";
@@ -78,7 +78,7 @@ export default function GroupsPage() {
     return (
       <div className="bg-base-100 flex h-dvh flex-col">
         <Loading />
-        <BottomNavigation lang={lang} />
+        <BottomNavigationContainer lang={lang} />
       </div>
     );
   }
@@ -109,7 +109,7 @@ export default function GroupsPage() {
           })}
         </div>
       </div>
-      <BottomNavigation lang={lang} />
+      <BottomNavigationContainer lang={lang} />
     </div>
   );
 }
