@@ -56,10 +56,10 @@ export default function GroupsPage() {
         }
         setMemberCountMap(countMap);
 
-        // 그룹별 첫 번째 하이라이트만 사용
-        // TODO: 백엔드 is_premium 배포 후 → highlightRes.data.filter(h => !h.isPremium)
+        // 그룹별 첫 번째 무료 하이라이트만 사용
+        const freeHighlights = highlightRes.data.filter((h) => !h.isPremium);
         const hlMap: Record<string, AIdolHighlight> = {};
-        for (const highlight of highlightRes.data) {
+        for (const highlight of freeHighlights) {
           if (highlight.aidolId && !hlMap[highlight.aidolId]) {
             hlMap[highlight.aidolId] = highlight;
           }

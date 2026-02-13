@@ -40,7 +40,7 @@ export const aidolHighlightSchema = z.object({
   title: z.string(),
   thumbnailUrl: z.string(),
   subtitle: z.string(),
-  isPremium: z.boolean().optional(), // TODO: 백엔드 배포 후 .optional() 제거
+  isPremium: z.boolean(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -51,7 +51,7 @@ export interface AIdolHighlight extends BaseRecord {
   title: string;
   thumbnailUrl: string;
   subtitle: string;
-  isPremium?: boolean; // TODO: 백엔드 배포 후 optional 제거
+  isPremium: boolean;
   createdAt: string;
   updatedAt: string;
 }

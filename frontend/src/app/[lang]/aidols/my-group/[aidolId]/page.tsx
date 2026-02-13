@@ -42,15 +42,7 @@ const groupMyGroupHighlights = (
       });
     }
 
-    sectionMap.get(key)!.items.push({
-      id: highlight.id,
-      aidolId: highlight.aidolId,
-      title: highlight.title,
-      subtitle: highlight.subtitle,
-      thumbnailUrl: highlight.thumbnailUrl,
-      createdAt: highlight.createdAt,
-      updatedAt: highlight.updatedAt,
-    });
+    sectionMap.get(key)!.items.push(highlight);
   }
 
   return Array.from(sectionMap.values());
