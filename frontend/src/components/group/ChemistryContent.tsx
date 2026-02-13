@@ -127,9 +127,10 @@ export function ChemistryContent({
                     fromName={selectedMember.name ?? ""}
                     toName={target.name ?? ""}
                     relationshipType={customRel.nickname ?? undefined}
-                    description={t(
-                      `aidol:chemistry.add.types.${relationshipType}`,
-                    )}
+                    description={
+                      relationshipType &&
+                      t(`aidol:chemistry.add.types.${relationshipType}`)
+                    }
                   />
                 );
               })
