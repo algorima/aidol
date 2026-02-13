@@ -70,12 +70,17 @@ export function SetRelationshipStep({
       <p className="text-title-s mb-4">
         {t("aidol:chemistry.add.relationshipNickname")}
       </p>
-      <input
-        type="text"
+      <textarea
         placeholder={t("aidol:chemistry.add.nicknamePlaceholder")}
         value={nickname}
-        onChange={(e) => onNicknameChange(e.target.value)}
-        className="input border-base-400 bg-base-200 text-body-s placeholder:text-base-400 w-full rounded-lg border px-4 py-3"
+        onChange={(e) => {
+          onNicknameChange(e.target.value);
+          const target = e.target;
+          target.style.height = "auto";
+          target.style.height = `${target.scrollHeight}px`;
+        }}
+        className="textarea border-base-400 bg-base-200 min-h-0 w-full resize-none overflow-hidden rounded-lg px-4 py-3"
+        rows={1}
       />
     </>
   );

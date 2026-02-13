@@ -16,16 +16,19 @@ export function CompanionNameInput({
   const { t } = useTranslation();
 
   return (
-    <input
-      type="text"
+    <textarea
       value={value}
-      onChange={(e) =>
+      onChange={(e) => {
         onChange(
           e.target.value.replace(SPECIAL_CHARS_REGEX, "").slice(0, maxLength),
-        )
-      }
+        );
+        const target = e.target;
+        target.style.height = "auto";
+        target.style.height = `${target.scrollHeight}px`;
+      }}
       placeholder={t("aidol:companionCreate.complete.namePlaceholder")}
-      className="input w-full bg-white text-black"
+      className="textarea border-base-400 bg-base-200 min-h-0 w-full resize-none overflow-hidden rounded-lg px-4 py-3"
+      rows={1}
     />
   );
 }

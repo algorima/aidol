@@ -28,7 +28,7 @@ export function EmblemGenerator({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && prompt.trim() && !isGenerating && !disabled) {
       e.preventDefault();
       handleGenerate();
@@ -38,16 +38,21 @@ export function EmblemGenerator({
   return (
     <fieldset className="fieldset w-full">
       <div className="flex gap-2">
-        <input
-          type="text"
+        <textarea
           value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
+          onChange={(e) => {
+            setPrompt(e.target.value);
+            const target = e.target;
+            target.style.height = "auto";
+            target.style.height = `${target.scrollHeight}px`;
+          }}
           onKeyDown={handleKeyDown}
           placeholder={t("aidol:creation.emblemPromptPlaceholder")}
           maxLength={200}
-          className="input flex-1"
+          className="textarea border-base-400 bg-base-200 min-h-0 flex-1 resize-none overflow-hidden rounded-lg px-4 py-3"
           disabled={disabled || isGenerating}
           data-testid="emblem-prompt-input"
+          rows={1}
         />
         <button
           type="button"

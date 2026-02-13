@@ -14,14 +14,19 @@ export function TextInput({
   disabled = false,
 }: TextInputProps) {
   return (
-    <input
-      type="text"
+    <textarea
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => {
+        onChange(e.target.value);
+        const target = e.target;
+        target.style.height = "auto";
+        target.style.height = `${target.scrollHeight}px`;
+      }}
       placeholder={placeholder}
       maxLength={maxLength}
       disabled={disabled}
-      className="border-base-300 text-body-m placeholder:text-base-300 w-full rounded-lg border bg-white px-4 py-3 text-black focus:outline-none"
+      className="textarea border-base-400 bg-base-200 min-h-0 w-full resize-none overflow-hidden rounded-lg px-4 py-3"
+      rows={1}
     />
   );
 }

@@ -1,4 +1,5 @@
 import { SparklesIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
@@ -23,18 +24,26 @@ export function ProfileImageGenerator({
 
   return (
     <div className="flex flex-col gap-4">
-      <input
-        type="text"
+      <textarea
         value={prompt}
-        onChange={(e) => onPromptChange(e.target.value)}
+        onChange={(e) => {
+          onPromptChange(e.target.value);
+          const target = e.target;
+          target.style.height = "auto";
+          target.style.height = `${target.scrollHeight}px`;
+        }}
         placeholder={t("aidol:companionCreate.image.promptPlaceholder")}
-        className="input w-full bg-white text-black"
+        className="textarea border-base-400 bg-base-200 min-h-0 w-full resize-none overflow-hidden rounded-lg px-4 py-3"
+        rows={1}
       />
       <button
         type="button"
         onClick={onGenerate}
         disabled={isGenerating || !prompt.trim()}
-        className="btn btn-primary w-full"
+        className={clsx(
+          "btn btn-lg text-label-l w-full rounded-lg",
+          hasGenerated ? "bg-base-300 text-base-content" : "btn-primary",
+        )}
       >
         {isGenerating && <span className="loading loading-spinner" />}
         {hasGenerated
