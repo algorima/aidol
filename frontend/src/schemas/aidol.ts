@@ -12,7 +12,8 @@ import type { Companion } from "./companion";
  * AIdol schema (public fields only, excludes anonymous_id)
  * Matches backend AIdolPublic (aidol/schemas/aidol.py)
  */
-export type AIdolStatus = "DRAFT" | "PUBLISHED";
+export const aidolStatusSchema = z.enum(["DRAFT", "PUBLISHED"]);
+export type AIdolStatus = z.infer<typeof aidolStatusSchema>;
 
 export const aidolSchema = z.object({
   id: z.string(),
@@ -21,7 +22,7 @@ export const aidolSchema = z.object({
   greeting: z.string().nullable().optional(),
   concept: z.string().nullable().optional(),
   profileImageUrl: z.string().nullable(),
-  status: z.enum(["DRAFT", "PUBLISHED"]),
+  status: aidolStatusSchema,
   createdAt: z.string(),
   updatedAt: z.string(),
 });
