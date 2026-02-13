@@ -1,4 +1,5 @@
-import { LockClosedIcon, UserIcon } from "@heroicons/react/24/solid";
+import { UserIcon } from "@heroicons/react/24/outline";
+import { LockClosedIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import Image from "next/image";
 
