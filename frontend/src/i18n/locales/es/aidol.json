@@ -6,6 +6,7 @@
   },
   "common": {
     "close": "Cerrar",
+    "confirm": "Aceptar",
     "save": "Guardar",
     "saved": "Guardado correctamente.",
     "deleted": "Eliminado correctamente.",
@@ -109,6 +110,10 @@
     "addMember": "Añadir Miembro",
     "signed": "Firmado 🥺",
     "grade": "Grado {{grade}}",
+    "locked": {
+      "title": "¡El chat con {{name}} se abrirá pronto!",
+      "subtitle": "¡Acércate más a {{name}} para desbloquear más miembros💖!"
+    },
     "tab": {
       "profile": "Perfil",
       "stats": "Estadísticas"

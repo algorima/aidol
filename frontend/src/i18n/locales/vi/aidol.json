@@ -6,6 +6,7 @@
   },
   "common": {
     "close": "Đóng",
+    "confirm": "OK",
     "save": "Lưu",
     "saved": "Đã lưu thành công.",
     "deleted": "Đã xóa thành công.",
@@ -109,6 +110,10 @@
     "addMember": "Thêm Thành Viên",
     "signed": "Đã ký hợp đồng 🥺",
     "grade": "Hạng {{grade}}",
+    "locked": {
+      "title": "Cuộc trò chuyện với {{name}} sắp mở!",
+      "subtitle": "Thân hơn với {{name}} để mở khóa thêm thành viên💖"
+    },
     "tab": {
       "profile": "Hồ sơ",
       "stats": "Chỉ số"

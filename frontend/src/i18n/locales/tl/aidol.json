@@ -6,6 +6,7 @@
   },
   "common": {
     "close": "Isara",
+    "confirm": "OK",
     "save": "I-save",
     "saved": "Matagumpay na na-save.",
     "deleted": "Matagumpay na na-delete.",
@@ -109,6 +110,10 @@
     "addMember": "Magdagdag ng Miyembro",
     "signed": "Naka-kontrata na 🥺",
     "grade": "Grade {{grade}}",
+    "locked": {
+      "title": "Malapit nang mabukas ang chat kay {{name}}!",
+      "subtitle": "Maging mas malapit kay {{name}} para ma-unlock ang iba pang miyembro💖"
+    },
     "tab": {
       "profile": "Profile",
       "stats": "Stats"

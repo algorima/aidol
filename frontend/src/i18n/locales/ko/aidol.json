@@ -6,6 +6,7 @@
   },
   "common": {
     "close": "닫기",
+    "confirm": "확인",
     "save": "저장",
     "saved": "저장되었습니다.",
     "deleted": "삭제되었습니다.",
@@ -109,6 +110,10 @@
     "addMember": "멤버 추가",
     "signed": "계약 완료 🥺",
     "grade": "{{grade}} 등급",
+    "locked": {
+      "title": "{{name}}과의 대화는 곧 열릴 예정이에요!",
+      "subtitle": "{{name}}과 더 친해지면 다른 멤버들도 만들 수 있어요💖"
+    },
     "tab": {
       "profile": "프로필",
       "stats": "능력치"

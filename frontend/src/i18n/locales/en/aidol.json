@@ -6,6 +6,7 @@
   },
   "common": {
     "close": "Close",
+    "confirm": "OK",
     "save": "Save",
     "saved": "Saved successfully.",
     "deleted": "Deleted successfully.",
@@ -109,6 +110,10 @@
     "addMember": "Add Member",
     "signed": "Signed 🥺",
     "grade": "Grade {{grade}}",
+    "locked": {
+      "title": "Chat with {{name}} is opening soon!",
+      "subtitle": "Get closer to {{name}} to unlock more members💖"
+    },
     "tab": {
       "profile": "Profile",
       "stats": "Stats"

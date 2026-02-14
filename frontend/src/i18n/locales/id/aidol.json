@@ -6,6 +6,7 @@
   },
   "common": {
     "close": "Tutup",
+    "confirm": "OK",
     "save": "Simpan",
     "saved": "Berhasil disimpan.",
     "deleted": "Berhasil dihapus.",
@@ -109,6 +110,10 @@
     "addMember": "Tambah Anggota",
     "signed": "Sudah Dikontrak 🥺",
     "grade": "Grade {{grade}}",
+    "locked": {
+      "title": "Obrolan dengan {{name}} akan segera dibuka!",
+      "subtitle": "Semakin dekat dengan {{name}}, kamu bisa membuat anggota lainnya💖"
+    },
     "tab": {
       "profile": "Profil",
       "stats": "Statistik"
