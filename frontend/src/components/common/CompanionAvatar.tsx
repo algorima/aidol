@@ -33,7 +33,7 @@ export function CompanionAvatar({
         )}
       </div>
       {active && (
-        <span className="bg-primary border-base-100 absolute -right-1 -bottom-1 size-[18px] rounded-full border-4" />
+        <span className="bg-primary border-base-100 absolute -right-1 -bottom-1 size-4.5 rounded-full border-4" />
       )}
     </div>
   );
