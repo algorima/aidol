@@ -11,6 +11,7 @@ const mockGroups: AIdol[] = [
     profileImageUrl:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop",
     concept: "청량",
+    status: "PUBLISHED",
     createdAt: "2026-01-29T00:00:00Z",
     updatedAt: "2026-01-29T00:00:00Z",
   },
@@ -20,6 +21,7 @@ const mockGroups: AIdol[] = [
     profileImageUrl:
       "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&h=400&fit=crop",
     concept: "파워풀",
+    status: "PUBLISHED",
     createdAt: "2026-01-30T00:00:00Z",
     updatedAt: "2026-01-30T00:00:00Z",
   },
@@ -28,6 +30,7 @@ const mockGroups: AIdol[] = [
     name: "문라이즈",
     profileImageUrl: null,
     concept: "몽환",
+    status: "PUBLISHED",
     createdAt: "2026-01-31T00:00:00Z",
     updatedAt: "2026-01-31T00:00:00Z",
   },

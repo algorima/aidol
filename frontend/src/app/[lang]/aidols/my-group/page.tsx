@@ -26,7 +26,7 @@ export default function MyGroupRedirectPage() {
   useEffect(() => {
     const fetchAndRedirect = async () => {
       const { data: myGroups } = await aidolRepository.getMy();
-      const firstGroup = myGroups[0];
+      const firstGroup = myGroups.find((g) => g.status === "PUBLISHED");
       if (firstGroup) {
         router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
       } else {
