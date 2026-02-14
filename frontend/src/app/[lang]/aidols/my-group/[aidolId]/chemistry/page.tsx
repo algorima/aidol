@@ -243,7 +243,10 @@ export default function GroupChemistryPage({
                       fromName={from?.name ?? ""}
                       toName={target.name ?? ""}
                       relationshipType={customRel.nickname ?? undefined}
-                      description={relationshipType}
+                      description={
+                        relationshipType &&
+                        t(`aidol:chemistry.add.types.${relationshipType}`)
+                      }
                       onClose={() => handleDeleteRelationship(customRel.id)}
                     />
                   );
