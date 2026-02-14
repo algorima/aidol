@@ -51,8 +51,9 @@ export function ChemistryRelationCard({
                 onClose();
               }}
               aria-label={t("common.close")}
+              className="cursor-pointer"
             >
-              <XMarkIcon className="text-base-content size-5" />
+              <XMarkIcon className="text-base-content size-6" />
             </button>
           )}
         </div>
@@ -60,7 +61,7 @@ export function ChemistryRelationCard({
 
       <div className="flex items-center gap-2">
         <span className="text-body-s text-base-content">{fromName}</span>
-        <ArrowLongRightIcon className="text-base-content size-5" />
+        <ArrowLongRightIcon className="text-base-content size-6" />
         <span className="text-body-s text-base-content">{toName}</span>
       </div>
 
@@ -70,7 +71,7 @@ export function ChemistryRelationCard({
         </span>
       )}
 
-      {relationshipType && description && (
+      {description && (
         <span className="text-label-m text-neutral">{description}</span>
       )}
     </div>

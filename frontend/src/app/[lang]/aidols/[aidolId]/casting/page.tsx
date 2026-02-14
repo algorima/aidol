@@ -7,7 +7,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import type { GenderTab } from "@/components/casting";
 import {
   CastingCardGrid,
@@ -17,6 +16,7 @@ import {
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Header } from "@/components/Header";
 import { Modal } from "@/components/Modal";
+import { BottomNavigationContainer } from "@/containers";
 import { CompanionRepository } from "@/repositories";
 import type { Companion, Gender } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
@@ -160,7 +160,7 @@ export default function CastingPage({ params }: CastingPageProps) {
         </button>
       </div>
 
-      <BottomNavigation lang={lang} />
+      <BottomNavigationContainer lang={lang} />
 
       {selectedCompanion && (
         <Modal

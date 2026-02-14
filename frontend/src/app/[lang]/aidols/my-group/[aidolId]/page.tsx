@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import {
   ChatTooltipButton,
   GroupDropdown,
@@ -14,6 +13,7 @@ import {
 } from "@/components/group";
 import { HighlightDetailModal } from "@/components/group/HighlightDetailModal";
 import { Header } from "@/components/Header";
+import { BottomNavigationContainer } from "@/containers";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { HighlightRepository } from "@/repositories/HighlightRepository";
@@ -222,7 +222,7 @@ export default function GroupPage() {
         </div>
       </div>
 
-      <BottomNavigation lang={params.lang} />
+      <BottomNavigationContainer lang={params.lang} />
 
       <HighlightDetailModal
         isOpen={isModalOpen}

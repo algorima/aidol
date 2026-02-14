@@ -95,6 +95,10 @@ export default function AddRelationshipPage({
     }
   };
 
+  const handleClose = () => {
+    router.push(`/${lang}/aidols/my-group/${aidolId}/chemistry`);
+  };
+
   const handleBack = () => {
     setTargetCompanionId(null);
     setSelectedType("awkward");
@@ -116,7 +120,7 @@ export default function AddRelationshipPage({
       });
 
       showToast(t("aidol:common.saved"), "accent");
-      router.push(`/${lang}/aidols/my-group/${aidolId}/chemistry`);
+      handleClose();
     } catch (error) {
       console.error("Failed to create relationship:", error);
       showToast(t("aidol:common.error.save"), "error");
@@ -128,7 +132,7 @@ export default function AddRelationshipPage({
       <div className="bg-base-100 flex min-h-screen flex-col">
         <Header
           title={t("aidol:chemistry.add.header")}
-          onCloseClick={() => router.back()}
+          onCloseClick={handleClose}
         />
         <div className="flex flex-1 items-center justify-center">
           <span className="loading loading-spinner loading-lg" />
@@ -142,7 +146,7 @@ export default function AddRelationshipPage({
       <div className="bg-base-100 flex min-h-screen flex-col">
         <Header
           title={t("aidol:chemistry.add.header")}
-          onCloseClick={() => router.back()}
+          onCloseClick={handleClose}
         />
         <div className="flex flex-1 items-center justify-center">
           <p className="text-base-content/60">
@@ -157,7 +161,7 @@ export default function AddRelationshipPage({
     <div className="bg-base-100 flex min-h-screen flex-col">
       <Header
         title={t("aidol:chemistry.add.header")}
-        onCloseClick={() => router.back()}
+        onCloseClick={handleClose}
       />
 
       <div className="flex-1 overflow-y-auto p-6">

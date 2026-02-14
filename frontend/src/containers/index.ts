@@ -1,0 +1,1 @@
+export { BottomNavigationContainer } from "./BottomNavigationContainer";
