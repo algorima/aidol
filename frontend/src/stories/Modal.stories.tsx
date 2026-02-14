@@ -118,3 +118,40 @@ export const WithStats: Story = {
     />
   ),
 };
+
+/** 하단 바텀시트 위치 */
+export const BottomPosition: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <div className="bg-base-100 flex h-screen items-center justify-center">
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="btn btn-primary"
+        >
+          바텀시트 열기
+        </button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          position="bottom"
+        >
+          <div className="flex flex-col items-center gap-4 px-6 pt-8 pb-6">
+            <p className="text-title-s text-base-content">바텀시트 예시</p>
+            <p className="text-body-s text-base-content/50">
+              position=&quot;bottom&quot; 사용 시 하단에서 올라옵니다.
+            </p>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="btn btn-primary w-full rounded-lg"
+            >
+              닫기
+            </button>
+          </div>
+        </Modal>
+      </div>
+    );
+  },
+};
