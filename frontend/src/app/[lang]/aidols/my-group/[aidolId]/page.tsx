@@ -127,7 +127,10 @@ export default function GroupPage() {
           companionRepository.getByAidolId(selectedGroup.id),
         ]);
 
-        setHighlightSections(groupMyGroupHighlights(highlightsResult.data));
+        const premiumHighlights = highlightsResult.data.filter(
+          (h) => h.isPremium,
+        );
+        setHighlightSections(groupMyGroupHighlights(premiumHighlights));
         setCompanions(companionsResult.data);
       } catch (error) {
         console.error("Failed to fetch group data:", error);
