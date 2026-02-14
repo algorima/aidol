@@ -29,8 +29,8 @@ export default async function LangLayout({
   const { resources } = await getServerTranslationResources(lang);
 
   return (
-    <html lang={lang}>
-      <body className="sm:bg-backdrop">
+    <html lang={lang} className="sm:bg-backdrop">
+      <body>
         <I18nProvider lang={lang} resources={resources}>
           <div className="min-w-mobile max-w-mobile bg-base-100 mx-auto min-h-dvh">
             <ToastProvider>{children}</ToastProvider>
