@@ -54,7 +54,7 @@ export function Modal({
         className={clsx(
           "modal-box bg-base-200 max-w-mobile w-full",
           position === "bottom"
-            ? "rounded-t-2xl rounded-b-none"
+            ? "mx-auto rounded-t-2xl rounded-b-none"
             : "relative flex max-h-170 min-h-90 flex-col gap-6 overflow-hidden rounded-lg p-6",
         )}
       >
