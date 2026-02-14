@@ -20,5 +20,5 @@ export const getCurrentActivity = (now: Date = new Date()): Activity => {
     }
   }
 
-  return DAILY_SCHEDULE[0].activity;
+  throw new Error("Could not determine activity for the current time. The schedule may be incomplete.");
 };
