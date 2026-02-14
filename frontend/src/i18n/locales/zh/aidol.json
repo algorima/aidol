@@ -281,7 +281,6 @@
     }
   },
   "highlight": {
-    "interviewer": "采访者",
     "error": {
       "load": "无法加载精彩集锦"
     }

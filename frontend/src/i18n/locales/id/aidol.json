@@ -281,7 +281,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Pewawancara",
     "error": {
       "load": "Gagal memuat highlight"
     }

@@ -281,7 +281,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Interviewer",
     "error": {
       "load": "Failed to load highlight"
     }

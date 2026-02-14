@@ -281,7 +281,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Người phỏng vấn",
     "error": {
       "load": "Không thể tải highlight"
     }

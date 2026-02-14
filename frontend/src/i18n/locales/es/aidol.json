@@ -281,7 +281,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Entrevistador",
     "error": {
       "load": "Error al cargar el destacado"
     }
