@@ -1,4 +1,5 @@
-import { LockClosedIcon, UserIcon } from "@heroicons/react/24/solid";
+import { UserIcon } from "@heroicons/react/24/outline";
+import { LockClosedIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
@@ -37,7 +38,7 @@ export function LockedCompanionSheet({
             </div>
           )}
           <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-            <LockClosedIcon className="size-5 text-white" />
+            <LockClosedIcon className="size-6 text-white" />
           </div>
         </div>
 
