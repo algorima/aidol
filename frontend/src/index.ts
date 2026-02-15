@@ -16,6 +16,7 @@ export { AIdolRepository } from "./repositories/AIdolRepository";
 export { ChatroomRepository } from "./repositories/ChatroomRepository";
 export type { GenerateResponse } from "./repositories/ChatroomRepository";
 export { CompanionRepository } from "./repositories/CompanionRepository";
+export { HighlightRepository } from "./repositories/HighlightRepository";
 export { LeadsRepository } from "./repositories/LeadsRepository";
 export { LocalChatroomIdsRepository } from "./repositories/LocalChatroomIdsRepository";
 
@@ -48,6 +49,16 @@ export type {
   Position,
 } from "./schemas/companion";
 export { companionSchema } from "./schemas/companion";
+
+export type {
+  AIdolHighlight,
+  HighlightMessage,
+  MyGroupHighlightSection,
+} from "./schemas/highlight";
+export {
+  aidolHighlightSchema,
+  highlightMessageSchema,
+} from "./schemas/highlight";
 
 // i18n - Server-safe exports (JSON resources and constants)
 export { AIDOL_NS, aidolTranslations } from "./i18n/translations";

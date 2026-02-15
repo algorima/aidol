@@ -12,6 +12,10 @@
 export { CompanionGrid } from "./components/aidol";
 export { GroupHeader } from "./components/aidol";
 
+// Group components
+export { GroupCard } from "./components/group/GroupCard";
+export { GroupInfoBanner } from "./components/group/GroupInfoBanner";
+
 // Chatroom components
 export { ChatRoom } from "./components/chatroom";
 export { MessageInput } from "./components/chatroom";
