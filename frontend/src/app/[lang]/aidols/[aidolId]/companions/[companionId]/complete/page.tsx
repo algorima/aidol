@@ -11,6 +11,7 @@ import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayo
 import { CompanionNameInput } from "@/components/creation/CompanionNameInput";
 import { StepCard } from "@/components/creation/StepCard";
 import { CompanionRepository } from "@/repositories";
+import { companionSchema } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
 interface CompletePageProps {
@@ -40,7 +41,11 @@ export default function CompletePage({ params }: CompletePageProps) {
     try {
       await companionRepository.update({
         id: companionId,
-        variables: { name, biography, status: "PUBLISHED" },
+        variables: {
+          name,
+          biography,
+          status: companionSchema.shape.status.enum.PUBLISHED,
+        },
       });
       router.push(`/${lang}/aidols/${aidolId}/casting-complete`);
     } catch {
