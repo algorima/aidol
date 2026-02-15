@@ -14,11 +14,14 @@ export { GroupHeader } from "./components/aidol";
 
 // Group components
 export { ChatTooltipButton } from "./components/group";
+export { ChemistryContent } from "./components/group";
 export { GroupCard } from "./components/group/GroupCard";
 export { GroupDropdown } from "./components/group";
 export { GroupInfoBanner } from "./components/group/GroupInfoBanner";
 export { GroupProfile } from "./components/group";
+export { HighlightCard } from "./components/group";
 export { HighlightCarousel } from "./components/group";
+export { HighlightSectionHeader } from "./components/group";
 
 // Chatroom components
 export { ChatRoom } from "./components/chatroom";
@@ -78,6 +81,9 @@ export { PositionSelector } from "./components/position";
 
 // Newsletter components
 export { NewsletterForm } from "./components/newsletter/NewsletterForm";
+
+// Follow components
+export { FollowForm } from "./components/follow";
 
 // Highlight components
 export { HighlightDetailModal } from "./components/highlight";
