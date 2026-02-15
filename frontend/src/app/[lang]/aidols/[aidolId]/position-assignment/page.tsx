@@ -115,7 +115,6 @@ export default function PositionPage({ params }: PositionPageProps) {
         <Modal
           isOpen={isModalOpen}
           onClose={handleCloseModal}
-          allowOverflow
           action={{
             label: t("aidol:position.assign"),
             onClick: () => void handleAssign(),
