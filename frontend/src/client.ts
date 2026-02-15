@@ -76,6 +76,9 @@ export { HighlightDetailModal } from "./components/highlight";
 export { HighlightMessageList } from "./components/highlight";
 
 // Shared components
+export { BottomNavigation } from "./components/BottomNavigation";
+export type { TabItem, TabKey } from "./components/BottomNavigation";
+export { TAB_ICONS } from "./components/BottomNavigation";
 export { Header } from "./components/Header";
 export { Loading } from "./components/Loading";
 export { Modal } from "./components/Modal";
