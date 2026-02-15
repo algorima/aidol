@@ -13,8 +13,12 @@ export { CompanionGrid } from "./components/aidol";
 export { GroupHeader } from "./components/aidol";
 
 // Group components
+export { ChatTooltipButton } from "./components/group";
 export { GroupCard } from "./components/group/GroupCard";
+export { GroupDropdown } from "./components/group";
 export { GroupInfoBanner } from "./components/group/GroupInfoBanner";
+export { GroupProfile } from "./components/group";
+export { HighlightCarousel } from "./components/group";
 
 // Chatroom components
 export { ChatRoom } from "./components/chatroom";
