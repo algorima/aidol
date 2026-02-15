@@ -48,7 +48,10 @@ export default function GroupsPage() {
         const [aidolRes, companionRes, highlightRes] = await Promise.all([
           aidolRepo.getList(),
           companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
-          highlightRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
+          highlightRepo.getList({
+            filters: [{ field: "is_premium", operator: "eq", value: false }],
+            pagination: { current: 1, pageSize: 100 },
+          }),
         ]);
 
         setGroups(aidolRes.data);
@@ -63,9 +66,8 @@ export default function GroupsPage() {
         setMemberCountMap(countMap);
 
         // 그룹별 첫 번째 무료 하이라이트만 사용
-        const freeHighlights = highlightRes.data.filter((h) => !h.isPremium);
         const hlMap: Record<string, AIdolHighlight> = {};
-        for (const highlight of freeHighlights) {
+        for (const highlight of highlightRes.data) {
           if (highlight.aidolId && !hlMap[highlight.aidolId]) {
             hlMap[highlight.aidolId] = highlight;
           }
@@ -98,22 +100,24 @@ export default function GroupsPage() {
       <div className="flex flex-1 flex-col gap-6 px-6 py-4">
         <GroupInfoBanner />
         <div className="flex flex-col gap-6">
-          {groups.map((group) => {
-            const highlight = highlightMap[group.id];
-            return (
-              <GroupCard
-                key={group.id}
-                avatarUrl={group.profileImageUrl}
-                groupName={group.name ?? ""}
-                memberCount={memberCountMap[group.id] ?? 0}
-                highlightImageUrl={highlight?.thumbnailUrl}
-                highlightTitle={highlight?.title}
-                onClick={() =>
-                  router.push(`/${lang}/aidols/${group.id}/detail`)
-                }
-              />
-            );
-          })}
+          {groups
+            .filter((group) => highlightMap[group.id])
+            .map((group) => {
+              const highlight = highlightMap[group.id];
+              return (
+                <GroupCard
+                  key={group.id}
+                  avatarUrl={group.profileImageUrl}
+                  groupName={group.name ?? ""}
+                  memberCount={memberCountMap[group.id] ?? 0}
+                  highlightImageUrl={highlight?.thumbnailUrl}
+                  highlightTitle={highlight?.title}
+                  onClick={() =>
+                    router.push(`/${lang}/aidols/${group.id}/detail`)
+                  }
+                />
+              );
+            })}
         </div>
       </div>
       <BottomNavigationContainer lang={lang} />
