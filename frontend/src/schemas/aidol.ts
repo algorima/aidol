@@ -65,6 +65,7 @@ export interface AIdolUpdate {
   name?: string;
   concept?: string | null;
   profileImageUrl?: string | null;
+  status?: AIdolStatus;
 }
 
 // ---------------------------------------------------------------------------
