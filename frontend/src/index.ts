@@ -15,6 +15,7 @@
 export { AIdolRepository } from "./repositories/AIdolRepository";
 export { ChatroomRepository } from "./repositories/ChatroomRepository";
 export type { GenerateResponse } from "./repositories/ChatroomRepository";
+export { CompanionRelationshipRepository } from "./repositories/CompanionRelationshipRepository";
 export { CompanionRepository } from "./repositories/CompanionRepository";
 export { HighlightRepository } from "./repositories/HighlightRepository";
 export { LeadsRepository } from "./repositories/LeadsRepository";
