@@ -4,7 +4,7 @@ import type { AIdolHighlight, HighlightMessage } from "../schemas";
 import { aidolHighlightSchema, highlightMessageSchema } from "../schemas";
 
 export class HighlightRepository extends BaseCrudRepository<AIdolHighlight> {
-  readonly resource = "highlights";
+  readonly resource = "aidol-highlights";
 
   protected getDataSchema() {
     return aidolHighlightSchema;
