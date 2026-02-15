@@ -40,7 +40,7 @@ export default function CompletePage({ params }: CompletePageProps) {
     try {
       await companionRepository.update({
         id: companionId,
-        variables: { name, biography, status: "published" },
+        variables: { name, biography, status: "PUBLISHED" },
       });
       router.push(`/${lang}/aidols/${aidolId}/casting-complete`);
     } catch {
