@@ -67,5 +67,12 @@ export {
   highlightMessageSchema,
 } from "./schemas/highlight";
 
+// Constants (server-safe)
+export {
+  INTIMACY_TO_RELATIONSHIP_TYPE,
+  RELATIONSHIP_TYPE_TO_INTIMACY,
+} from "./constants/relationship";
+export type { RelationshipType } from "./constants/relationship";
+
 // i18n - Server-safe exports (JSON resources and constants)
 export { AIDOL_NS, aidolTranslations } from "./i18n/translations";

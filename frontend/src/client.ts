@@ -103,3 +103,6 @@ export { Header } from "./components/Header";
 export { Loading } from "./components/Loading";
 export { Modal } from "./components/Modal";
 export { ShareButton } from "./components/ShareButton";
+
+// Hooks
+export { useDragScroll } from "./hooks/useDragScroll";
