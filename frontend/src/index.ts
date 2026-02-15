@@ -74,5 +74,8 @@ export {
 } from "./constants/relationship";
 export type { RelationshipType } from "./constants/relationship";
 
+// Utils (server-safe)
+export { getParticle } from "./lib/koreanParticle";
+
 // i18n - Server-safe exports (JSON resources and constants)
 export { AIDOL_NS, aidolTranslations } from "./i18n/translations";
