@@ -5,9 +5,9 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { Header } from "@/components/Header";
 import { Loading } from "@/components/Loading";
+import { BottomNavigationContainer } from "@/containers";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { getApiService } from "@/services/ApiService";
 
@@ -26,7 +26,7 @@ export default function MyGroupRedirectPage() {
   useEffect(() => {
     const fetchAndRedirect = async () => {
       const { data: myGroups } = await aidolRepository.getMy();
-      const firstGroup = myGroups[0];
+      const firstGroup = myGroups.find((g) => g.status === "PUBLISHED");
       if (firstGroup) {
         router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
       } else {
@@ -59,7 +59,7 @@ export default function MyGroupRedirectPage() {
             {t("aidol:myGroup.empty.cta")}
           </Link>
         </div>
-        <BottomNavigation lang={params.lang} />
+        <BottomNavigationContainer lang={params.lang} />
       </div>
     );
   }
@@ -67,7 +67,7 @@ export default function MyGroupRedirectPage() {
   return (
     <div className="bg-base-100 flex min-h-dvh flex-col">
       <Loading />
-      <BottomNavigation lang={params.lang} />
+      <BottomNavigationContainer lang={params.lang} />
     </div>
   );
 }

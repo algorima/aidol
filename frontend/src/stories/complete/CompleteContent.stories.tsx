@@ -25,6 +25,7 @@ const mockAidol: AIdol = {
   id: "aidol-1",
   name: "드리머즈",
   profileImageUrl: sampleEmblemUrl,
+  status: "PUBLISHED",
   createdAt: "2024-01-01T00:00:00Z",
   updatedAt: "2024-01-01T00:00:00Z",
 };

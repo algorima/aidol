@@ -1,6 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { BottomNavigation } from "@/components/BottomNavigation";
+import { BottomNavigation, TAB_ICONS } from "@/components/BottomNavigation";
+
+const defaultTabs = [
+  {
+    key: "home" as const,
+    href: "/ko/aidols/home",
+    labelKey: "navigation.home",
+    ...TAB_ICONS.home,
+  },
+  {
+    key: "explore" as const,
+    href: "/ko/aidols/explore",
+    labelKey: "navigation.explore",
+    ...TAB_ICONS.explore,
+  },
+  {
+    key: "myGroup" as const,
+    href: "/ko/aidols/my-group",
+    labelKey: "navigation.myGroup",
+    ...TAB_ICONS.myGroup,
+  },
+];
 
 const meta: Meta<typeof BottomNavigation> = {
   title: "Components/BottomNavigation",
@@ -8,12 +29,6 @@ const meta: Meta<typeof BottomNavigation> = {
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
-    nextjs: {
-      appDirectory: true,
-      navigation: {
-        pathname: "/ko/aidols/explore",
-      },
-    },
   },
   decorators: [
     (Story) => (
@@ -22,6 +37,9 @@ const meta: Meta<typeof BottomNavigation> = {
       </div>
     ),
   ],
+  args: {
+    tabs: defaultTabs,
+  },
 };
 
 export default meta;
@@ -29,45 +47,24 @@ type Story = StoryObj<typeof BottomNavigation>;
 
 export const Default: Story = {
   args: {
-    lang: "ko",
+    activeTab: "explore",
   },
 };
 
 export const HomeActive: Story = {
   args: {
-    lang: "ko",
-  },
-  parameters: {
-    nextjs: {
-      navigation: {
-        pathname: "/ko/aidols/home",
-      },
-    },
+    activeTab: "home",
   },
 };
 
 export const ExploreActive: Story = {
   args: {
-    lang: "ko",
-  },
-  parameters: {
-    nextjs: {
-      navigation: {
-        pathname: "/ko/aidols/explore",
-      },
-    },
+    activeTab: "explore",
   },
 };
 
 export const MyGroupActive: Story = {
   args: {
-    lang: "ko",
-  },
-  parameters: {
-    nextjs: {
-      navigation: {
-        pathname: "/ko/aidols/my-group/test-aidol-id",
-      },
-    },
+    activeTab: "myGroup",
   },
 };

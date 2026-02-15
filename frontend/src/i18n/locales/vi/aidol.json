@@ -287,7 +287,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Người phỏng vấn",
     "error": {
       "load": "Không thể tải highlight"
     }
@@ -340,10 +339,10 @@
       "types": {
         "awkward": "Còn Ngại",
         "polite": "Lịch Sự",
-        "friendly": "Thân Thiện",
+        "friendly": "Đang thân hơn",
         "tikitaka": "Ăn Ý",
-        "trust": "Đáng Tin Cậy",
-        "emotional": "Tình Cảm",
+        "trust": "Tin tưởng nhau",
+        "emotional": "Gần gũi về cảm xúc",
         "bestFriend": "Bạn Thân Nhất",
         "inseparable": "Không Thể Tách Rời"
       },

@@ -287,7 +287,6 @@
     }
   },
   "highlight": {
-    "interviewer": "인터뷰어",
     "error": {
       "load": "하이라이트를 불러오지 못했습니다"
     }
@@ -339,13 +338,13 @@
       "relationshipType": "관계 유형",
       "types": {
         "awkward": "아직 어색해요",
-        "polite": "예의 바르게",
-        "friendly": "친근하게",
+        "polite": "예의를 차려요",
+        "friendly": "조금 친해요",
         "tikitaka": "티키타카",
-        "trust": "믿음직해요",
-        "emotional": "감성적이에요",
-        "bestFriend": "베스트프렌드",
-        "inseparable": "떼려야 뗄 수 없는"
+        "trust": "서로 신뢰해요",
+        "emotional": "정서적으로 의지해요",
+        "bestFriend": "찐친",
+        "inseparable": "항상 함께해요"
       },
       "intimacy": "친밀도",
       "startsAt": "<highlight>{{intimacy}}%</highlight>에서 시작",

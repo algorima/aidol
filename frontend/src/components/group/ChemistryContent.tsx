@@ -55,7 +55,7 @@ export function ChemistryContent({
 
       <div className="flex flex-col px-4">
         {/* Member thumbnail list */}
-        <div className="mt-6 flex gap-3 overflow-x-auto p-1">
+        <div className="scrollbar-hide mt-6 flex gap-3 overflow-x-auto p-1">
           {companions.map((companion) => (
             <div
               key={companion.id}
@@ -127,7 +127,10 @@ export function ChemistryContent({
                     fromName={selectedMember.name ?? ""}
                     toName={target.name ?? ""}
                     relationshipType={customRel.nickname ?? undefined}
-                    description={relationshipType}
+                    description={
+                      relationshipType &&
+                      t(`aidol:chemistry.add.types.${relationshipType}`)
+                    }
                   />
                 );
               })

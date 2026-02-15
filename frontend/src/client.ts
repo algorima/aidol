@@ -72,6 +72,7 @@ export { PositionSelector } from "./components/position";
 export { NewsletterForm } from "./components/newsletter/NewsletterForm";
 
 // Highlight components
+export { HighlightDetailModal } from "./components/highlight";
 export { HighlightMessageList } from "./components/highlight";
 
 // Shared components

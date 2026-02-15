@@ -287,7 +287,6 @@
     }
   },
   "highlight": {
-    "interviewer": "采访者",
     "error": {
       "load": "无法加载精彩集锦"
     }
@@ -340,10 +339,10 @@
       "types": {
         "awkward": "还很尴尬",
         "polite": "有礼貌",
-        "friendly": "友好",
+        "friendly": "渐渐熟悉",
         "tikitaka": "默契十足",
-        "trust": "值得信赖",
-        "emotional": "感性",
+        "trust": "互相信任",
+        "emotional": "情感上的依靠",
         "bestFriend": "最好的朋友",
         "inseparable": "形影不离"
       },

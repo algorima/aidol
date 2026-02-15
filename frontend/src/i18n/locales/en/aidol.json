@@ -287,7 +287,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Interviewer",
     "error": {
       "load": "Failed to load highlight"
     }
@@ -340,10 +339,10 @@
       "types": {
         "awkward": "Still Awkward",
         "polite": "Polite",
-        "friendly": "Friendly",
+        "friendly": "Getting closer",
         "tikitaka": "Tiki-Taka",
-        "trust": "Trustworthy",
-        "emotional": "Emotional",
+        "trust": "Trust each other",
+        "emotional": "Emotionally close",
         "bestFriend": "Best Friend",
         "inseparable": "Inseparable"
       },

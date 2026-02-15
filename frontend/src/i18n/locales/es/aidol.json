@@ -287,7 +287,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Entrevistador",
     "error": {
       "load": "Error al cargar el destacado"
     }
@@ -340,10 +339,10 @@
       "types": {
         "awkward": "Todavía Incómodo",
         "polite": "Cortés",
-        "friendly": "Amigable",
+        "friendly": "Acercándose",
         "tikitaka": "Tiki-Taka",
-        "trust": "Confiable",
-        "emotional": "Emocional",
+        "trust": "Confían mutuamente",
+        "emotional": "Cercanía emocional",
         "bestFriend": "Mejor Amigo",
         "inseparable": "Inseparable"
       },
