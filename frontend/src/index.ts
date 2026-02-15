@@ -52,6 +52,13 @@ export type {
 export { companionSchema } from "./schemas/companion";
 
 export type {
+  CompanionRelationship,
+  CompanionRelationshipCreate,
+  CompanionRelationshipUpdate,
+} from "./schemas/companion-relationship";
+export { companionRelationshipSchema } from "./schemas/companion-relationship";
+
+export type {
   AIdolHighlight,
   HighlightMessage,
   MyGroupHighlightSection,
