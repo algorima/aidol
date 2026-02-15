@@ -11,7 +11,6 @@ import {
   GroupPlanningLayout,
 } from "@/components/group-creation";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
-import { aidolStatusSchema } from "@/schemas/aidol";
 import { getApiService } from "@/services/ApiService";
 
 interface EmblemPageProps {
@@ -74,10 +73,7 @@ export default function EmblemPage({ params }: EmblemPageProps) {
     try {
       await aidolRepository.update({
         id: aidolId,
-        variables: {
-          profileImageUrl: emblemUrl,
-          status: aidolStatusSchema.enum.PUBLISHED,
-        },
+        variables: { profileImageUrl: emblemUrl, status: "PUBLISHED" },
       });
       router.push(`/${lang}/aidols/${aidolId}`);
     } catch (error) {
