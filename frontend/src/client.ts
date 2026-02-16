@@ -12,6 +12,19 @@
 export { CompanionGrid } from "./components/aidol";
 export { GroupHeader } from "./components/aidol";
 
+// Group components
+export { ChatTooltipButton } from "./components/group";
+export { ChemistryContent } from "./components/group";
+export { ChemistryRelationCard } from "./components/group";
+export { GroupCard } from "./components/group";
+export { GroupDropdown } from "./components/group";
+export { GroupInfoBanner } from "./components/group";
+export { GroupProfile } from "./components/group";
+export { HighlightCard } from "./components/group";
+export { HighlightCarousel } from "./components/group";
+export { HighlightSectionHeader } from "./components/group";
+export { MemberProfileCard } from "./components/group";
+
 // Chatroom components
 export { ChatRoom } from "./components/chatroom";
 export { MessageInput } from "./components/chatroom";
@@ -71,12 +84,25 @@ export { PositionSelector } from "./components/position";
 // Newsletter components
 export { NewsletterForm } from "./components/newsletter/NewsletterForm";
 
+// Follow components
+export { FollowForm } from "./components/follow";
+
 // Highlight components
 export { HighlightDetailModal } from "./components/highlight";
 export { HighlightMessageList } from "./components/highlight";
 
+// Chemistry components
+export { SelectMemberStep } from "./components/chemistry";
+export { SetRelationshipStep } from "./components/chemistry";
+
 // Shared components
+export { BottomNavigation } from "./components/BottomNavigation";
+export type { TabItem, TabKey } from "./components/BottomNavigation";
+export { TAB_ICONS } from "./components/BottomNavigation";
 export { Header } from "./components/Header";
 export { Loading } from "./components/Loading";
 export { Modal } from "./components/Modal";
 export { ShareButton } from "./components/ShareButton";
+
+// Hooks
+export { useDragScroll } from "./hooks/useDragScroll";
