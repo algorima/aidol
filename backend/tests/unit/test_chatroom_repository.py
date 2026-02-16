@@ -70,9 +70,12 @@ class TestChatroomRepository(unittest.TestCase):
 
         self.assertEqual(len(items), 2)
         self.assertEqual(items[0].id, "chatroom-a")
-        self.assertIsNotNone(items[0].last_message)
-        self.assertEqual(items[0].last_message.content, "hello")
-        self.assertIsNotNone(items[0].last_message.created_at.tzinfo)
+        first_last_message = items[0].last_message
+        self.assertIsNotNone(first_last_message)
+        if first_last_message is None:
+            self.fail("last_message should not be None for chatroom-a")
+        self.assertEqual(first_last_message.content, "hello")
+        self.assertIsNotNone(first_last_message.created_at.tzinfo)
         self.assertIsNotNone(items[0].created_at.tzinfo)
         self.assertEqual(items[1].id, "chatroom-b")
         self.assertIsNone(items[1].last_message)
