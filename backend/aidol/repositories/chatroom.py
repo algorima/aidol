@@ -8,7 +8,7 @@ import uuid
 from datetime import datetime, timezone
 
 from aioia_core.repositories import BaseRepository
-from sqlalchemy import and_, func
+from sqlalchemy import and_, func, select
 from sqlalchemy.orm import Session
 
 from aidol.models import DBChatroom, DBMessage
@@ -150,9 +150,7 @@ class ChatroomRepository(
         """Get chatrooms owned by anonymous_id with last message summary."""
         # Pre-filter: only consider chatrooms owned by this user
         my_chatroom_ids = (
-            self.db_session.query(DBChatroom.id)
-            .filter(DBChatroom.anonymous_id == anonymous_id)
-            .subquery()
+            select(DBChatroom.id).where(DBChatroom.anonymous_id == anonymous_id)
         )
 
         ranked_messages = (
