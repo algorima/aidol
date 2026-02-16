@@ -348,12 +348,12 @@
   },
   "chat": {
     "comingSoon": "Cuộc trò chuyện với {{name}}\nsắp được mở!",
-    "unlockHint": "Thân hơn với {{name}} để gặp các thành viên khác",
+    "unlockHint": "Thân hơn với {{name}} để gặp các thành viên khác 💖",
     "greeting": "Trò chuyện thoải mái với {{name}}!",
     "placeholder": "Nhập tin nhắn",
     "confirm": "OK",
     "typing": "Đang nhập...",
-    "thinkingLong": "Cần thêm chút thời gian để suy nghĩ",
+    "thinkingLong": "Cần thêm chút thời gian để suy nghĩ 🥺",
     "retry": "Thử lại",
     "resend": "Gửi lại",
     "time": {

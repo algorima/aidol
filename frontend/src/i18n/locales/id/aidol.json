@@ -348,12 +348,12 @@
   },
   "chat": {
     "comingSoon": "Obrolan dengan {{name}}\nakan segera dibuka!",
-    "unlockHint": "Berteman lebih dekat dengan {{name}} untuk bertemu anggota lain",
+    "unlockHint": "Berteman lebih dekat dengan {{name}} untuk bertemu anggota lain 💖",
     "greeting": "Ngobrol bebas dengan {{name}}!",
     "placeholder": "Ketik pesan",
     "confirm": "OK",
     "typing": "Mengetik...",
-    "thinkingLong": "Butuh waktu sedikit lebih lama untuk berpikir",
+    "thinkingLong": "Butuh waktu sedikit lebih lama untuk berpikir 🥺",
     "retry": "Coba lagi",
     "resend": "Kirim ulang",
     "time": {

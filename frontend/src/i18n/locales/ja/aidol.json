@@ -348,12 +348,12 @@
   },
   "chat": {
     "comingSoon": "{{name}}とのチャットは\nもうすぐオープン予定です！",
-    "unlockHint": "{{name}}ともっと仲良くなると他のメンバーにも会えます",
+    "unlockHint": "{{name}}ともっと仲良くなると他のメンバーにも会えます 💖",
     "greeting": "{{name}}と自由にチャットしましょう！",
     "placeholder": "メッセージを入力",
     "confirm": "確認",
     "typing": "入力中...",
-    "thinkingLong": "少し考えが長くなりました",
+    "thinkingLong": "少し考えが長くなりました 🥺",
     "retry": "再読み込み",
     "resend": "再送信",
     "time": {

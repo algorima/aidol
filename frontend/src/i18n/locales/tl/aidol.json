@@ -348,12 +348,12 @@
   },
   "chat": {
     "comingSoon": "Ang chat kay {{name}} ay\nmalapit nang magbukas!",
-    "unlockHint": "Maging mas malapit kay {{name}} para makilala ang ibang miyembro",
+    "unlockHint": "Maging mas malapit kay {{name}} para makilala ang ibang miyembro 💖",
     "greeting": "Makipag-chat nang malaya kay {{name}}!",
     "placeholder": "Mag-type ng mensahe",
     "confirm": "OK",
     "typing": "Nagta-type...",
-    "thinkingLong": "Medyo tumagal ang pag-iisip",
+    "thinkingLong": "Medyo tumagal ang pag-iisip 🥺",
     "retry": "Subukan muli",
     "resend": "Ipadala muli",
     "time": {

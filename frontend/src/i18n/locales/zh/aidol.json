@@ -348,12 +348,12 @@
   },
   "chat": {
     "comingSoon": "与{{name}}的聊天\n即将开放！",
-    "unlockHint": "和{{name}}更亲近就能遇到其他成员",
+    "unlockHint": "和{{name}}更亲近就能遇到其他成员 💖",
     "greeting": "和{{name}}自由聊天吧！",
     "placeholder": "输入消息",
     "confirm": "确认",
     "typing": "正在输入...",
-    "thinkingLong": "思考时间稍长了一些",
+    "thinkingLong": "思考时间稍长了一些 🥺",
     "retry": "重新加载",
     "resend": "重新发送",
     "time": {

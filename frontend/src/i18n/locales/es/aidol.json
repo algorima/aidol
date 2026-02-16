@@ -348,12 +348,12 @@
   },
   "chat": {
     "comingSoon": "La conversación con {{name}}\nse abrirá pronto!",
-    "unlockHint": "Hazte más cercano a {{name}} para conocer a otros miembros",
+    "unlockHint": "Hazte más cercano a {{name}} para conocer a otros miembros 💖",
     "greeting": "¡Chatea libremente con {{name}}!",
     "placeholder": "Escribe un mensaje",
     "confirm": "Confirmar",
     "typing": "Escribiendo...",
-    "thinkingLong": "Está pensando un poco más",
+    "thinkingLong": "Está pensando un poco más 🥺",
     "retry": "Reintentar",
     "resend": "Reenviar",
     "time": {
