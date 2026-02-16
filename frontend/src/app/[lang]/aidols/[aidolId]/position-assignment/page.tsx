@@ -118,7 +118,7 @@ export default function PositionPage({ params }: PositionPageProps) {
           action={{
             label: t("aidol:position.assign"),
             onClick: () => void handleAssign(),
-            variant: "neutral",
+            variant: "primary",
           }}
         >
           <div className="flex flex-col gap-6">

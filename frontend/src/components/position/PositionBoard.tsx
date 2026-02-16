@@ -78,12 +78,10 @@ export function PositionBoard({
           disabled={!canConfirm}
           className={clsx(
             "btn btn-lg text-label-l w-full rounded-lg",
-            canConfirm ? "btn-primary" : "bg-base-300 text-base-content",
+            canConfirm ? "btn-primary" : "bg-base-300 text-base-400",
           )}
         >
-          {canConfirm
-            ? t("aidol:position.confirm")
-            : t("aidol:position.needMore", { count: unassignedCount })}
+          {t("aidol:position.confirm")}
         </button>
       </div>
     </div>

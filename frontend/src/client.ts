@@ -38,7 +38,6 @@ export { ProfileContent } from "./components/companion";
 export { PromptInput } from "./components/companion";
 
 // Creation flow components
-export { BiographyInput } from "./components/creation";
 export { CompanionCreateLayout } from "./components/creation";
 export { CompanionNameInput } from "./components/creation";
 export { ConceptSelector } from "./components/creation";
