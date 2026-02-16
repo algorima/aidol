@@ -44,6 +44,18 @@ from aidol.settings import Settings
 DEFAULT_HISTORY_LIMIT = 200
 
 
+def get_required_anonymous_id(
+    anonymous_id: Annotated[str | None, Cookie(alias="aioia_anonymous_id")] = None,
+) -> str:
+    """Dependency to validate and return required anonymous_id cookie."""
+    if not anonymous_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="aioia_anonymous_id cookie is required",
+        )
+    return anonymous_id
+
+
 class ChatroomSingleItemResponse(BaseModel):
     """Single item response for chatroom."""
 
@@ -133,18 +145,10 @@ class ChatroomRouter(
             description="List chatrooms owned by the current user (based on cookie)",
         )
         async def list_my_chatrooms(
-            anonymous_id: Annotated[
-                str | None, Cookie(alias="aioia_anonymous_id")
-            ] = None,
+            anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """List my chatrooms with last message summary."""
-            if not anonymous_id:
-                raise HTTPException(
-                    status_code=status.HTTP_400_BAD_REQUEST,
-                    detail="aioia_anonymous_id cookie is required",
-                )
-
             items = repository.get_my_chatrooms_with_last_message(
                 anonymous_id=anonymous_id
             )
@@ -162,18 +166,10 @@ class ChatroomRouter(
         )
         async def create_chatroom(
             request: ChatroomCreate,
-            anonymous_id: Annotated[
-                str | None, Cookie(alias="aioia_anonymous_id")
-            ] = None,
+            anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new chatroom."""
-            if not anonymous_id:
-                raise HTTPException(
-                    status_code=status.HTTP_400_BAD_REQUEST,
-                    detail="aioia_anonymous_id cookie is required",
-                )
-
             create_data = ChatroomCreateWithAnonymousId(
                 **request.model_dump(),
                 anonymous_id=anonymous_id,
@@ -238,19 +234,10 @@ class ChatroomRouter(
         async def send_message(
             item_id: str,
             request: MessageCreate,
-            anonymous_id: Annotated[
-                str | None, Cookie(alias="aioia_anonymous_id")
-            ] = None,
+            anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""
-            # Guard Clause: aioia_anonymous_id cookie is required
-            if not anonymous_id:
-                raise HTTPException(
-                    status_code=status.HTTP_400_BAD_REQUEST,
-                    detail="aioia_anonymous_id cookie is required",
-                )
-
             # Verify chatroom exists
             self._get_item_or_404(repository, item_id)
 
