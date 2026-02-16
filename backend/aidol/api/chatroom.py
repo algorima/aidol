@@ -26,7 +26,9 @@ from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
     ChatroomUpdate,
+    ChatroomWithLastMessage,
     CompanionMessageCreate,
     Message,
     MessageCreate,
@@ -46,6 +48,12 @@ class ChatroomSingleItemResponse(BaseModel):
     """Single item response for chatroom."""
 
     data: Chatroom
+
+
+class ChatroomListResponse(BaseModel):
+    """List response for chatrooms."""
+
+    data: list[ChatroomWithLastMessage]
 
 
 class GenerateResponse(BaseModel):
@@ -76,7 +84,9 @@ def _to_llm_messages(messages: list[Message]) -> list[LLMMessage]:
 
 
 class ChatroomRouter(
-    BaseCrudRouter[Chatroom, ChatroomCreate, ChatroomUpdate, ChatroomRepositoryProtocol]
+    BaseCrudRouter[
+        Chatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate, ChatroomRepositoryProtocol
+    ]
 ):
     """
     Chatroom router with custom message endpoints.
@@ -100,6 +110,7 @@ class ChatroomRouter(
     def _register_routes(self) -> None:
         """Register routes (fancall pattern: public CRUD + message endpoints)"""
         # Chatroom CRUD (public, no auth)
+        self._register_public_my_route()
         self._register_public_create_route()
         self._register_public_get_route()
 
@@ -107,6 +118,34 @@ class ChatroomRouter(
         self._register_get_messages_route()
         self._register_send_message_route()
         self._register_generate_response_route()
+
+    def _register_public_my_route(self) -> None:
+        """GET /me/{resource_name} - List my chatrooms (filtered by cookie)"""
+
+        @self.router.get(
+            f"/me/{self.resource_name}",
+            response_model=ChatroomListResponse,
+            status_code=status.HTTP_200_OK,
+            summary="List my chatrooms",
+            description="List chatrooms owned by the current user (based on cookie)",
+        )
+        async def list_my_chatrooms(
+            anonymous_id: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
+            repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
+        ):
+            """List my chatrooms with last message summary."""
+            if not anonymous_id:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="aioia_anonymous_id cookie is required",
+                )
+
+            items = repository.get_my_chatrooms_with_last_message(
+                anonymous_id=anonymous_id
+            )
+            return ChatroomListResponse(data=items)
 
     def _register_public_create_route(self) -> None:
         """POST /{resource_name} - Create a chatroom (public, fancall pattern)"""
@@ -120,10 +159,23 @@ class ChatroomRouter(
         )
         async def create_chatroom(
             request: ChatroomCreate,
+            anonymous_id: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new chatroom."""
-            created = repository.create(request)
+            if not anonymous_id:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="aioia_anonymous_id cookie is required",
+                )
+
+            create_data = ChatroomCreateWithAnonymousId(
+                **request.model_dump(),
+                anonymous_id=anonymous_id,
+            )
+            created = repository.create(create_data)
             return ChatroomSingleItemResponse(data=created)
 
     def _register_public_get_route(self) -> None:
@@ -330,7 +382,7 @@ def create_chatroom_router(
         openai_settings=openai_settings,
         companion_repository_factory=companion_repository_factory,
         model_class=Chatroom,
-        create_schema=ChatroomCreate,
+        create_schema=ChatroomCreateWithAnonymousId,
         update_schema=ChatroomUpdate,
         db_session_factory=db_session_factory,
         repository_factory=repository_factory,
