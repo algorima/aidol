@@ -26,6 +26,7 @@ from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
     ChatroomUpdate,
+    ChatroomWithLastMessage,
     Companion,
     CompanionCreate,
     CompanionRelationship,
@@ -80,6 +81,16 @@ class ChatroomRepositoryProtocol(
         Args:
             chatroom_id: Chatroom ID.
             message: MessageCreateWithAnonymousId or CompanionMessageCreate schema (with anonymous_id).
+        """
+        ...
+
+    def get_my_chatrooms_with_last_message(
+        self, anonymous_id: str
+    ) -> list[ChatroomWithLastMessage]:
+        """Get my chatrooms with each chatroom's last message.
+
+        Args:
+            anonymous_id: Chatroom owner anonymous identifier.
         """
         ...
 
