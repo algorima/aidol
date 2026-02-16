@@ -345,5 +345,22 @@
       "relationshipNickname": "Nama Panggilan Hubungan",
       "nicknamePlaceholder": "cth.) Squad, Besties"
     }
+  },
+  "chat": {
+    "comingSoon": "Obrolan dengan {{name}}\nakan segera dibuka!",
+    "unlockHint": "Berteman lebih dekat dengan {{name}} untuk bertemu anggota lain",
+    "greeting": "Ngobrol bebas dengan {{name}}!",
+    "placeholder": "Ketik pesan",
+    "confirm": "OK",
+    "typing": "Mengetik...",
+    "thinkingLong": "Butuh waktu sedikit lebih lama untuk berpikir",
+    "retry": "Coba lagi",
+    "time": {
+      "justNow": "Baru saja",
+      "minutesAgo": "{{count}} menit lalu",
+      "hoursAgo": "{{count}} jam lalu",
+      "am": "AM",
+      "pm": "PM"
+    }
   }
 }

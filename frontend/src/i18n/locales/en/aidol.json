@@ -345,5 +345,22 @@
       "relationshipNickname": "Relationship Nickname",
       "nicknamePlaceholder": "e.g.) Squad, Besties"
     }
+  },
+  "chat": {
+    "comingSoon": "Chat with {{name}}\nis coming soon!",
+    "unlockHint": "Get closer to {{name}} to unlock other members",
+    "greeting": "Chat freely with {{name}}!",
+    "placeholder": "Type a message",
+    "confirm": "OK",
+    "typing": "Typing...",
+    "thinkingLong": "Taking a bit longer to think",
+    "retry": "Retry",
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "am": "AM",
+      "pm": "PM"
+    }
   }
 }
