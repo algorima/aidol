@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 from aidol.models import DBChatroom, DBMessage
 from aidol.schemas import (
     Chatroom,
-    ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
     ChatroomUpdate,
     ChatroomWithLastMessage,
     CompanionMessage,
@@ -36,8 +36,8 @@ def _convert_db_chatroom_to_model(db_chatroom: DBChatroom) -> Chatroom:
     )
 
 
-def _convert_chatroom_create_to_db_model(schema: ChatroomCreate) -> dict:
-    """Convert ChatroomCreate schema to DB model data dict."""
+def _convert_chatroom_create_to_db_model(schema: ChatroomCreateWithAnonymousId) -> dict:
+    """Convert ChatroomCreateWithAnonymousId schema to DB model data dict."""
     return schema.model_dump(exclude_unset=True)
 
 
@@ -63,7 +63,7 @@ def _convert_db_message_to_model(db_message: DBMessage) -> Message:
 
 
 class ChatroomRepository(
-    BaseRepository[Chatroom, DBChatroom, ChatroomCreate, ChatroomUpdate]
+    BaseRepository[Chatroom, DBChatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate]
 ):
     """
     Database-backed chatroom repository.

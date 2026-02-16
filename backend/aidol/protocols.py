@@ -24,7 +24,7 @@ from aidol.schemas import (
     AIdolLeadCreate,
     AIdolUpdate,
     Chatroom,
-    ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
     ChatroomUpdate,
     ChatroomWithLastMessage,
     Companion,
@@ -46,7 +46,10 @@ class NoUpdate(BaseModel):
 
 
 class ChatroomRepositoryProtocol(
-    CrudRepositoryProtocol[Chatroom, ChatroomCreate, ChatroomUpdate], Protocol
+    CrudRepositoryProtocol[
+        Chatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate
+    ],
+    Protocol,
 ):
     """Protocol defining chatroom repository expectations.
 
