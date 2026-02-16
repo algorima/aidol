@@ -70,7 +70,7 @@ export function CompleteContent({
           autoplay
           loop={false}
           className="size-full"
-          {...({ keepLastFrame: true } as object)}
+          keepLastFrame
         />
       </div>
 
