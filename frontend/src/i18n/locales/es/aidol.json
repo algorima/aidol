@@ -355,6 +355,7 @@
     "typing": "Escribiendo...",
     "thinkingLong": "Está pensando un poco más",
     "retry": "Reintentar",
+    "resend": "Reenviar",
     "time": {
       "justNow": "Ahora",
       "minutesAgo": "Hace {{count}}min",

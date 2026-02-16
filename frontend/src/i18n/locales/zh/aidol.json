@@ -355,6 +355,7 @@
     "typing": "正在输入...",
     "thinkingLong": "思考时间稍长了一些",
     "retry": "重新加载",
+    "resend": "重新发送",
     "time": {
       "justNow": "刚刚",
       "minutesAgo": "{{count}}分钟前",

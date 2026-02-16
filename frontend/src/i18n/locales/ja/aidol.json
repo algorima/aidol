@@ -355,6 +355,7 @@
     "typing": "入力中...",
     "thinkingLong": "少し考えが長くなりました",
     "retry": "再読み込み",
+    "resend": "再送信",
     "time": {
       "justNow": "たった今",
       "minutesAgo": "{{count}}分前",

@@ -355,6 +355,7 @@
     "typing": "Nagta-type...",
     "thinkingLong": "Medyo tumagal ang pag-iisip",
     "retry": "Subukan muli",
+    "resend": "Ipadala muli",
     "time": {
       "justNow": "Ngayon lang",
       "minutesAgo": "{{count}} min ang nakalipas",

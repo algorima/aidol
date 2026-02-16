@@ -355,6 +355,7 @@
     "typing": "Mengetik...",
     "thinkingLong": "Butuh waktu sedikit lebih lama untuk berpikir",
     "retry": "Coba lagi",
+    "resend": "Kirim ulang",
     "time": {
       "justNow": "Baru saja",
       "minutesAgo": "{{count}} menit lalu",

@@ -355,6 +355,7 @@
     "typing": "Đang nhập...",
     "thinkingLong": "Cần thêm chút thời gian để suy nghĩ",
     "retry": "Thử lại",
+    "resend": "Gửi lại",
     "time": {
       "justNow": "Vừa xong",
       "minutesAgo": "{{count}} phút trước",
