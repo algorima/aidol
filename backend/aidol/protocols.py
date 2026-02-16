@@ -46,9 +46,7 @@ class NoUpdate(BaseModel):
 
 
 class ChatroomRepositoryProtocol(
-    CrudRepositoryProtocol[
-        Chatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate
-    ],
+    CrudRepositoryProtocol[Chatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate],
     Protocol,
 ):
     """Protocol defining chatroom repository expectations.

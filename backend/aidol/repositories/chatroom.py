@@ -149,8 +149,8 @@ class ChatroomRepository(
     ) -> list[ChatroomWithLastMessage]:
         """Get chatrooms owned by anonymous_id with last message summary."""
         # Pre-filter: only consider chatrooms owned by this user
-        my_chatroom_ids = (
-            select(DBChatroom.id).where(DBChatroom.anonymous_id == anonymous_id)
+        my_chatroom_ids = select(DBChatroom.id).where(
+            DBChatroom.anonymous_id == anonymous_id
         )
 
         ranked_messages = (

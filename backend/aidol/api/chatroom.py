@@ -85,7 +85,10 @@ def _to_llm_messages(messages: list[Message]) -> list[LLMMessage]:
 
 class ChatroomRouter(
     BaseCrudRouter[
-        Chatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate, ChatroomRepositoryProtocol
+        Chatroom,
+        ChatroomCreateWithAnonymousId,
+        ChatroomUpdate,
+        ChatroomRepositoryProtocol,
     ]
 ):
     """
