@@ -112,6 +112,12 @@
     "tab": {
       "profile": "Hồ sơ",
       "stats": "Chỉ số"
+    },
+    "activity": {
+      "RESTING": "Đang nghỉ",
+      "PRACTICING": "Đang tập",
+      "SHORT_BREAK": "Nghỉ ngắn",
+      "RESTING_AT_HOME": "Nghỉ ở nhà"
     }
   },
   "aidol": {
@@ -345,5 +351,9 @@
       "relationshipNickname": "Biệt Danh Quan Hệ",
       "nicknamePlaceholder": "vd) Đồng trang lứa, Cặp đôi"
     }
+  },
+  "inbox": {
+    "header": "Trò chuyện",
+    "beta": "BETA"
   }
 }

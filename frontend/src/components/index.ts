@@ -1,6 +1,9 @@
 // AIdol group components
 export * from "./aidol";
 
+// Common shared components
+export * from "./common";
+
 // Casting components
 export * from "./casting";
 
@@ -15,6 +18,9 @@ export * from "./group";
 
 // Highlight components
 export * from "./highlight";
+
+// Inbox components
+export * from "./inbox";
 
 // Landing page components
 export * from "./landing";

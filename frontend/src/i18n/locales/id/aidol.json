@@ -112,6 +112,12 @@
     "tab": {
       "profile": "Profil",
       "stats": "Statistik"
+    },
+    "activity": {
+      "RESTING": "Istirahat",
+      "PRACTICING": "Berlatih",
+      "SHORT_BREAK": "Istirahat sebentar",
+      "RESTING_AT_HOME": "Istirahat di rumah"
     }
   },
   "aidol": {
@@ -345,5 +351,9 @@
       "relationshipNickname": "Nama Panggilan Hubungan",
       "nicknamePlaceholder": "cth.) Squad, Besties"
     }
+  },
+  "inbox": {
+    "header": "Obrolan",
+    "beta": "BETA"
   }
 }

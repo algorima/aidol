@@ -112,6 +112,12 @@
     "tab": {
       "profile": "Profile",
       "stats": "Stats"
+    },
+    "activity": {
+      "RESTING": "Nagpapahinga",
+      "PRACTICING": "Nagpapraktis",
+      "SHORT_BREAK": "Sandaling pahinga",
+      "RESTING_AT_HOME": "Nagpapahinga sa bahay"
     }
   },
   "aidol": {
@@ -345,5 +351,9 @@
       "relationshipNickname": "Palayaw ng Relasyon",
       "nicknamePlaceholder": "hal.) Squad, Besties"
     }
+  },
+  "inbox": {
+    "header": "Chat",
+    "beta": "BETA"
   }
 }

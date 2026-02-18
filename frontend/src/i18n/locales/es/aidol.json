@@ -112,6 +112,12 @@
     "tab": {
       "profile": "Perfil",
       "stats": "Estadísticas"
+    },
+    "activity": {
+      "RESTING": "Descansando",
+      "PRACTICING": "Practicando",
+      "SHORT_BREAK": "Descanso breve",
+      "RESTING_AT_HOME": "Descansando en casa"
     }
   },
   "aidol": {
@@ -345,5 +351,9 @@
       "relationshipNickname": "Apodo de Relación",
       "nicknamePlaceholder": "ej.) Squad, Mejores"
     }
+  },
+  "inbox": {
+    "header": "Chat",
+    "beta": "BETA"
   }
 }

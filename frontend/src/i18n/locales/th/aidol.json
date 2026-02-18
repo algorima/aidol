@@ -112,6 +112,12 @@
     "tab": {
       "profile": "โปรไฟล์",
       "stats": "สถิติ"
+    },
+    "activity": {
+      "RESTING": "พักผ่อน",
+      "PRACTICING": "ฝึกซ้อม",
+      "SHORT_BREAK": "พักเบรก",
+      "RESTING_AT_HOME": "พักที่บ้าน"
     }
   },
   "aidol": {
@@ -345,5 +351,9 @@
       "relationshipNickname": "ชื่อเล่นความสัมพันธ์",
       "nicknamePlaceholder": "เช่น) กลุ่มเพื่อน, คู่ซี้"
     }
+  },
+  "inbox": {
+    "header": "แชท",
+    "beta": "BETA"
   }
 }
