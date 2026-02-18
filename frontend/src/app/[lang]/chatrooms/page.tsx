@@ -2,7 +2,7 @@
 
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useParams, useRouter } from "next/navigation";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { InboxBlock } from "@/components/inbox";
@@ -46,6 +46,17 @@ export default function InboxPage() {
   // TODO: API 연동 시 교체
   const activity = useMemo(() => getCurrentActivity(), []);
 
+  const handleBack = useCallback(() => {
+    router.back();
+  }, [router]);
+
+  const handleRoomClick = useCallback(
+    (roomId: string) => {
+      router.push(`/${params.lang}/chatrooms/${roomId}/companion`);
+    },
+    [params.lang, router],
+  );
+
   return (
     <div className="bg-base-100 flex min-h-dvh flex-col">
       {/* Inline header — Figma: back + title + BETA badge in same row */}
@@ -53,7 +64,7 @@ export default function InboxPage() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => router.back()}
+            onClick={handleBack}
             className="text-base-content flex cursor-pointer items-center justify-center"
             aria-label={t("common.close")}
           >
@@ -62,7 +73,7 @@ export default function InboxPage() {
           <h1 className="text-headline-s text-base-content">
             {t("inbox.header")}
           </h1>
-          <span className="bg-secondary text-body-s rounded-lg px-2 py-1 font-medium text-white">
+          <span className="bg-secondary text-label-l text-secondary-content rounded-lg px-2 py-1">
             {t("inbox.beta")}
           </span>
         </div>
@@ -79,9 +90,7 @@ export default function InboxPage() {
             activity={room.active ? activity : undefined}
             lastMessage={room.lastMessage}
             lastMessageAt={room.lastMessageAt}
-            onClick={() =>
-              router.push(`/${params.lang}/chatrooms/${room.id}/companion`)
-            }
+            onClick={() => handleRoomClick(room.id)}
           />
         ))}
       </div>

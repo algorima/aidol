@@ -40,19 +40,25 @@ export function InboxBlock({
           {active && activity && <ActivityBadge activity={activity} />}
         </div>
 
-        <div className="flex w-full items-center justify-between gap-2">
-          <span className="text-body-s text-base-content truncate opacity-50">
-            {lastMessage}
-          </span>
-          <span
-            className={clsx(
-              "text-label-m text-base-content shrink-0",
-              active ? "opacity-50" : "opacity-0",
+        {(lastMessage || lastMessageAt) && (
+          <div className="flex w-full items-center justify-between gap-2">
+            {lastMessage && (
+              <span className="text-body-s text-base-content truncate opacity-50">
+                {lastMessage}
+              </span>
             )}
-          >
-            {lastMessageAt}
-          </span>
-        </div>
+            {lastMessageAt && (
+              <span
+                className={clsx(
+                  "text-label-m text-base-content shrink-0",
+                  active ? "opacity-50" : "opacity-0",
+                )}
+              >
+                {lastMessageAt}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </button>
   );
