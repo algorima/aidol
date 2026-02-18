@@ -67,7 +67,7 @@ export function Card({
 
       {(showSignedOverlay || disabled) && (
         <>
-          <div className="absolute inset-0 z-20 bg-black/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 z-20 bg-white/50 backdrop-blur-xs" />
           {(showSignedOverlay || overlayText) && (
             <div className="absolute top-4 left-4 z-20">
               <span className="text-body-s w-fit rounded-lg bg-black px-2 py-1 text-white">

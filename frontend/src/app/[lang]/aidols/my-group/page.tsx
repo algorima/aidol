@@ -54,7 +54,7 @@ export default function MyGroupRedirectPage() {
           </p>
           <Link
             href={`/${params.lang}`}
-            className="btn btn-primary text-label-l rounded-lg"
+            className="btn btn-primary text-label-l btn-lg rounded-lg"
           >
             {t("aidol:myGroup.empty.cta")}
           </Link>

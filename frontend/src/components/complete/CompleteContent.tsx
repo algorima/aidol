@@ -70,7 +70,7 @@ export function CompleteContent({
           autoplay
           loop={false}
           className="size-full"
-          {...({ keepLastFrame: true } as object)}
+          keepLastFrame
         />
       </div>
 
@@ -128,7 +128,7 @@ export function CompleteContent({
           type="button"
           onClick={onCreateAnother}
           disabled={isCreating}
-          className="text-label-l bg-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none disabled:opacity-50"
+          className="btn text-label-l btn-neutral text-neutral-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg break-keep"
         >
           {isCreating ? (
             <span className="loading loading-spinner loading-sm" />
@@ -139,7 +139,7 @@ export function CompleteContent({
         <button
           type="button"
           onClick={onShare}
-          className="text-label-l bg-primary text-primary-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4 shadow-none"
+          className="btn text-label-l btn-primary text-primary-content h-14 flex-1 cursor-pointer items-center justify-center rounded-lg border-0 px-4"
         >
           {t("aidol:complete.share")}
         </button>
@@ -149,7 +149,7 @@ export function CompleteContent({
       <button
         type="button"
         onClick={onNewsletter}
-        className="from-primary to-secondary flex w-full cursor-pointer items-center justify-center rounded-lg bg-linear-to-r p-4"
+        className="btn from-primary to-secondary flex w-full cursor-pointer items-center justify-center rounded-lg bg-linear-to-r py-6.5 shadow"
       >
         <p className="text-label-l text-white">{t("aidol:complete.banner")}</p>
       </button>

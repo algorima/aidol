@@ -32,6 +32,8 @@ export function Modal({
 
     if (isOpen) {
       dialog.showModal();
+      const modalBox = dialog.querySelector<HTMLElement>(".modal-box");
+      modalBox?.focus();
     } else {
       dialog.close();
     }
@@ -46,16 +48,20 @@ export function Modal({
   return (
     <dialog
       ref={dialogRef}
-      className={clsx("modal", position === "bottom" && "modal-bottom")}
+      className={clsx(
+        "modal bg-black/80",
+        position === "bottom" && "modal-bottom",
+      )}
       onClick={handleBackdropClick}
       onClose={onClose}
     >
       <div
+        {...(position !== "bottom" ? { tabIndex: -1 } : {})}
         className={clsx(
-          "modal-box bg-base-200 max-w-mobile w-full",
+          "modal-box bg-base-200",
           position === "bottom"
-            ? "mx-auto rounded-t-2xl rounded-b-none"
-            : "relative flex max-h-170 min-h-90 flex-col gap-6 overflow-hidden rounded-lg p-6",
+            ? "max-w-mobile mx-auto w-full rounded-t-2xl rounded-b-none"
+            : "scrollbar-hide relative flex max-h-170 min-h-90 w-88.25 flex-col gap-6 overflow-hidden rounded-lg p-6 outline-none",
         )}
       >
         {position === "bottom" ? (

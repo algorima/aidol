@@ -50,14 +50,14 @@ export function CastingBoard({
                 autoplay
                 loop={false}
                 className="block size-9 dark:hidden"
-                {...({ keepLastFrame: true } as object)}
+                keepLastFrame
               />
               <LottiePlayer
                 src={CHECK_LOTTIE.dark}
                 autoplay
                 loop={false}
                 className="hidden size-9 dark:block"
-                {...({ keepLastFrame: true } as object)}
+                keepLastFrame
               />
             </div>
             <span className="text-title-s text-base-content">
