@@ -12,16 +12,28 @@ import { z } from "zod";
 
 export const chatroomSchema = z.object({
   id: z.string(),
+  companionId: z.string(),
   name: z.string(),
   language: z.string(),
+  lastMessage: z
+    .object({
+      content: z.string(),
+      createdAt: z.string(),
+    })
+    .nullable(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
 
 export interface Chatroom extends BaseRecord {
   id: string;
+  companionId: string;
   name: string;
   language: string;
+  lastMessage: {
+    content: string;
+    createdAt: string;
+  } | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -45,6 +57,8 @@ export const messageSchema = z.object({
   senderType: z.nativeEnum(SenderType),
   content: z.string(),
   createdAt: z.string(),
+  companionId: z.string().optional(),
+  annoymousId: z.string().optional(),
 });
 
 export interface Message extends BaseRecord {
@@ -52,6 +66,8 @@ export interface Message extends BaseRecord {
   senderType: SenderType;
   content: string;
   createdAt: string;
+  companionId?: string;
+  anonymousId?: string;
 }
 
 /**
