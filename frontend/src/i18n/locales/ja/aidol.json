@@ -354,7 +354,7 @@
     "confirm": "確認",
     "typing": "入力中...",
     "thinkingLong": "少し考えが長くなりました 🥺",
-    "retry": "再読み込み",
+    "reload": "再読み込み",
     "resend": "再送信",
     "time": {
       "justNow": "たった今",

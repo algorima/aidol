@@ -354,7 +354,7 @@
     "confirm": "확인",
     "typing": "작성중...",
     "thinkingLong": "생각이 조금 길어졌어요🥺",
-    "retry": "다시 불러오기",
+    "reload": "다시 불러오기",
     "resend": "재전송",
     "time": {
       "justNow": "방금 전",
