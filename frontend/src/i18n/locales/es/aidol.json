@@ -347,8 +347,8 @@
     }
   },
   "chat": {
-    "comingSoon": "La conversación con {{name}}\nse abrirá pronto!",
-    "unlockHint": "Hazte más cercano a {{name}} para conocer a otros miembros 💖",
+    "comingSoon": "¡La conversación con {{name}}\nse abrirá pronto!",
+    "unlockHint": "Acércate más a {{name}} para conocer a otros miembros 💖",
     "greeting": "¡Chatea libremente con {{name}}!",
     "placeholder": "Escribe un mensaje",
     "confirm": "Confirmar",
@@ -360,8 +360,8 @@
       "justNow": "Ahora",
       "minutesAgo": "Hace {{count}}min",
       "hoursAgo": "Hace {{count}}h",
-      "am": "AM",
-      "pm": "PM"
+      "am": "a.m.",
+      "pm": "p.m."
     }
   }
 }
