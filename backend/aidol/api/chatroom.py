@@ -4,6 +4,7 @@ Chatroom API router
 Implements BaseCrudRouter pattern for consistency with aioia-core patterns.
 """
 
+import logging
 from typing import Annotated
 
 from aioia_core.auth import UserInfoProvider
@@ -21,7 +22,8 @@ from aidol.protocols import (
     ChatroomRepositoryProtocol,
     CompanionRepositoryFactoryProtocol,
 )
-from aidol.providers.llm import OpenAILLMProvider
+from aidol.prompts import build_chat_system_prompt
+from aidol.providers.llm import GeminiLLMProvider, OpenAILLMProvider
 from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
@@ -40,6 +42,7 @@ from aidol.settings import Settings
 
 # Maximum number of messages to fetch for conversation history
 DEFAULT_HISTORY_LIMIT = 200
+logger = logging.getLogger(__name__)
 
 
 class ChatroomSingleItemResponse(BaseModel):
@@ -73,6 +76,14 @@ def _to_llm_messages(messages: list[Message]) -> list[LLMMessage]:
         else:
             result.append(AIMessage(content=msg.content))
     return result
+
+
+def _resolve_llm_status_code(exc: Exception) -> int:
+    """Resolve HTTP status code from provider exception."""
+    status_code = getattr(exc, "status_code", None)
+    if isinstance(status_code, int) and 400 <= status_code <= 599:
+        return status_code
+    return status.HTTP_500_INTERNAL_SERVER_ERROR
 
 
 class ChatroomRouter(
@@ -257,14 +268,38 @@ class ChatroomRouter(
             # Reverse: DB returns newest-first, LLM needs chronological order
             llm_messages = _to_llm_messages(list(reversed(messages)))
 
+            # Build base prompt from companion table fields and optional extension.
+            system_prompt = build_chat_system_prompt(companion)
+
             # Create persona from companion (KST fixed for MVP)
             persona = Persona(
                 name=companion.name,
-                system_prompt=companion.system_prompt,
+                system_prompt=system_prompt,
                 timezone_name="Asia/Seoul",
             )
-            provider = OpenAILLMProvider(settings=self.openai_settings)
-            model_settings = ModelSettings(chat_model=self.model_settings.openai_model)
+            chat_model = (
+                self.model_settings.gemini_model or self.model_settings.openai_model
+            )
+            if self.model_settings.gemini_model:
+                provider = GeminiLLMProvider()
+                provider_name = "gemini"
+                reasoning_effort = self.model_settings.gemini_reasoning_effort
+            else:
+                provider = OpenAILLMProvider(settings=self.openai_settings)
+                provider_name = "openai"
+                reasoning_effort = None
+            logger.info(
+                "Using chat model | chatroom_id=%s companion_id=%s provider=%s model=%s reasoning_effort=%s",
+                item_id,
+                companion_id,
+                provider_name,
+                chat_model,
+                reasoning_effort,
+            )
+            model_settings = ModelSettings(
+                chat_model=chat_model,
+                reasoning_effort=reasoning_effort,
+            )
 
             # Generate text response using ResponseGenerationService
             context = (
@@ -275,7 +310,24 @@ class ChatroomRouter(
                 .build()
             )
             service = ResponseGenerationService(provider, model_settings)
-            response_text = service.generate_response(context)
+            try:
+                response_text = service.generate_response(context)
+            except Exception as exc:
+                status_code = _resolve_llm_status_code(exc)
+                logger.error(
+                    "AI response generation failed | chatroom_id=%s companion_id=%s provider=%s model=%s status_code=%s error=%s",
+                    item_id,
+                    companion_id,
+                    provider_name,
+                    chat_model,
+                    status_code,
+                    str(exc),
+                    exc_info=True,
+                )
+                raise HTTPException(
+                    status_code=status_code,
+                    detail=str(exc),
+                ) from exc
 
             # Save companion message (repository handles commit)
             # Use CompanionMessageCreate (no id) - aioia-core pattern
