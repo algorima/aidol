@@ -16,11 +16,13 @@ from aidol.providers.llm.messages import (
     SystemMessage,
     TextBlock,
 )
+from aidol.providers.llm.gemini import GeminiLLMProvider
 from aidol.providers.llm.openai import OpenAILLMProvider
 
 __all__ = [
     "AIMessage",
     "ContentBlock",
+    "GeminiLLMProvider",
     "HumanMessage",
     "ImageUrlBlock",
     "ImageUrlValue",
