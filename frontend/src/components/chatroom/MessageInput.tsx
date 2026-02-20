@@ -1,7 +1,9 @@
 "use client";
 
-import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
 import { FormEvent, useState } from "react";
+
+import { TextInput } from "../group-creation/TextInput";
 
 interface MessageInputProps {
   onSubmit: (message: string) => Promise<void>;
@@ -13,8 +15,8 @@ interface MessageInputProps {
 export function MessageInput({ onSubmit }: MessageInputProps) {
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
     if (message.trim()) {
       await onSubmit(message);
       setMessage("");
@@ -22,22 +24,29 @@ export function MessageInput({ onSubmit }: MessageInputProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 px-4 py-2">
-      <div className="relative flex-1">
-        <input
-          type="text"
+    <form
+      onSubmit={handleSubmit}
+      className="bg-base-100 border-base-400 flex items-end gap-2 border-t px-4 pt-2 pb-6"
+    >
+      <div className="flex-1">
+        <TextInput
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={setMessage}
           placeholder="Enter your message..."
-          className="input bg-neutral/30 text-base-content placeholder:text-base-content focus:border-primary w-full pr-12"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              void handleSubmit();
+            }
+          }}
         />
-        <button
-          type="submit"
-          className="btn btn-circle btn-ghost text-primary hover:bg-primary hover:text-primary-content absolute top-1/2 right-2 -translate-y-1/2"
-        >
-          <PaperAirplaneIcon className="size-6" />
-        </button>
       </div>
+      <button
+        type="submit"
+        className="btn btn-square btn-primary mb-1 rounded-lg"
+      >
+        <ArrowUpIcon className="size-3" stroke-width="2.5" />
+      </button>
     </form>
   );
 }
