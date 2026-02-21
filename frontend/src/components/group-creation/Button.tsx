@@ -11,39 +11,27 @@ interface ButtonProps {
   className?: string;
 }
 
-const variantStyles: Record<
-  ButtonVariant,
-  { enabled: string; disabled: string }
-> = {
-  neutral: {
-    enabled: "bg-neutral text-neutral-content",
-    disabled: "bg-neutral/20 text-neutral-content",
-  },
-  primary: {
-    enabled: "bg-primary text-primary-content",
-    disabled: "bg-primary/20 text-primary-content",
-  },
+const variantStyles: Record<ButtonVariant, string> = {
+  neutral: "btn-neutral",
+  primary: "btn-primary",
 };
 
 export function Button({
   onClick,
   disabled = false,
   isLoading = false,
-  variant = "neutral",
+  variant = "primary",
   children,
   className,
 }: ButtonProps) {
-  const isDisabled = disabled || isLoading;
-  const styles = variantStyles[variant];
-
   return (
     <button
       type="button"
       onClick={onClick}
-      disabled={isDisabled}
+      disabled={disabled || isLoading}
       className={clsx(
-        "btn btn-lg text-label-l rounded-lg border-0 shadow-none",
-        isDisabled ? styles.disabled : styles.enabled,
+        "btn btn-lg text-label-l rounded-lg",
+        variantStyles[variant],
         className,
       )}
     >

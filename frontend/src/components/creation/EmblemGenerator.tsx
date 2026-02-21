@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { TextInput } from "@/components/group-creation/TextInput";
+
 interface EmblemGeneratorProps {
   onGenerate: (prompt: string) => void;
   isGenerating: boolean;
@@ -28,7 +30,7 @@ export function EmblemGenerator({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && prompt.trim() && !isGenerating && !disabled) {
       e.preventDefault();
       handleGenerate();
@@ -38,16 +40,13 @@ export function EmblemGenerator({
   return (
     <fieldset className="fieldset w-full">
       <div className="flex gap-2">
-        <input
-          type="text"
+        <TextInput
           value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
+          onChange={setPrompt}
           onKeyDown={handleKeyDown}
           placeholder={t("aidol:creation.emblemPromptPlaceholder")}
           maxLength={200}
-          className="input flex-1"
           disabled={disabled || isGenerating}
-          data-testid="emblem-prompt-input"
         />
         <button
           type="button"

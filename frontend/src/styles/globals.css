@@ -19,6 +19,12 @@
   --color-backdrop: #212121;
 }
 
+@media (width >= 640px) {
+  :root {
+    --root-bg: var(--color-backdrop);
+  }
+}
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;

@@ -31,12 +31,12 @@ export function ProfileContent({
         {(grade || mbti) && (
           <div className="flex gap-2">
             {grade && (
-              <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
+              <span className="text-label-l rounded-lg bg-black px-2 py-1 text-white">
                 {t("aidol:companion.grade", { grade })}
               </span>
             )}
             {mbti && (
-              <span className="text-label-l bg-base-content text-base-100 rounded-lg px-2 py-1">
+              <span className="text-label-l rounded-lg bg-black px-2 py-1 text-white">
                 {mbti}
               </span>
             )}
@@ -45,7 +45,7 @@ export function ProfileContent({
       </div>
 
       {showBiography && biography && (
-        <p className="text-body-s text-base-content">{biography}</p>
+        <p className="text-body-s text-base-content self-start">{biography}</p>
       )}
 
       {showStats && stats && <RadarChart stats={stats} />}

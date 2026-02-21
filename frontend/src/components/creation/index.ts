@@ -1,4 +1,3 @@
-export { BiographyInput } from "./BiographyInput";
 export { CompanionCreateLayout } from "./CompanionCreateLayout";
 export { CompanionNameInput } from "./CompanionNameInput";
 export { ConceptSelector } from "./ConceptSelector";
