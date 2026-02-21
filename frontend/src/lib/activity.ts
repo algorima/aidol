@@ -5,7 +5,13 @@ import { type Activity, DAILY_SCHEDULE } from "@/constants/activity";
  * Handles midnight-crossing slots (e.g., 19:00-06:00).
  */
 export const getCurrentActivity = (now: Date = new Date()): Activity => {
-  const hour = now.getHours();
+  const hour = Number(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Seoul",
+      hour: "numeric",
+      hour12: false,
+    }).format(now),
+  );
 
   for (const slot of DAILY_SCHEDULE) {
     if (slot.startHour < slot.endHour) {
