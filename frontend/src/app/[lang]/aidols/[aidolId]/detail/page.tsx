@@ -67,7 +67,7 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
             highlightRepository.getList({
               filters: [
                 { field: "aidolId", operator: "eq", value: aidolId },
-                { field: "is_premium", operator: "eq", value: false },
+                { field: "isPremium", operator: "eq", value: false },
               ],
               pagination: { current: 1, pageSize: 100 },
             }),

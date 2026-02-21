@@ -49,7 +49,7 @@ export default function GroupsPage() {
           aidolRepo.getList(),
           companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
           highlightRepo.getList({
-            filters: [{ field: "is_premium", operator: "eq", value: false }],
+            filters: [{ field: "isPremium", operator: "eq", value: false }],
             pagination: { current: 1, pageSize: 100 },
           }),
         ]);
