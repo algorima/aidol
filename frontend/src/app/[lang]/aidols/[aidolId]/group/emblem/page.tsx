@@ -73,7 +73,7 @@ export default function EmblemPage({ params }: EmblemPageProps) {
     try {
       await aidolRepository.update({
         id: aidolId,
-        variables: { profileImageUrl: emblemUrl },
+        variables: { profileImageUrl: emblemUrl, status: "PUBLISHED" },
       });
       router.push(`/${lang}/aidols/${aidolId}`);
     } catch (error) {

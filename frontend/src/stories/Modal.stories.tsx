@@ -3,7 +3,8 @@ import { useState } from "react";
 
 import { ProfileContent } from "@/components/companion/ProfileContent";
 import { Modal } from "@/components/Modal";
-import type { Companion, CompanionStats } from "@/schemas/companion";
+import { PositionSelector } from "@/components/position/PositionSelector";
+import type { Companion, CompanionStats, Position } from "@/schemas/companion";
 
 const meta: Meta<typeof Modal> = {
   title: "Components/Modal",
@@ -117,4 +118,59 @@ export const WithStats: Story = {
       }}
     />
   ),
+};
+
+const POSITION_COMPANIONS: Companion[] = [
+  { ...SAMPLE_COMPANION, id: "1", name: "김민지", position: "MAIN_VOCAL" },
+  { ...SAMPLE_COMPANION, id: "2", name: "이수진", position: "MAIN_DANCER" },
+  { ...SAMPLE_COMPANION, id: "3", name: "박서연", position: null },
+];
+
+function PositionModalWrapper() {
+  const [isOpen, setIsOpen] = useState(true);
+  const [selectedPosition, setSelectedPosition] = useState<Position | null>(
+    null,
+  );
+  const companion = POSITION_COMPANIONS[2];
+
+  return (
+    <div className="bg-base-100 flex h-screen items-center justify-center">
+      <button
+        type="button"
+        onClick={() => setIsOpen(true)}
+        className="btn btn-primary"
+      >
+        포지션 선택 팝업 열기
+      </button>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        action={{
+          label: "배정하기",
+          onClick: () => alert(`${selectedPosition} 배정!`),
+          variant: "primary",
+        }}
+      >
+        <div className="flex flex-col gap-6">
+          <ProfileContent
+            companion={companion}
+            showBiography={false}
+            showStats={false}
+          />
+          <PositionSelector
+            selectedPosition={selectedPosition}
+            companions={POSITION_COMPANIONS}
+            currentCompanionId={companion.id}
+            onPositionChange={setSelectedPosition}
+          />
+        </div>
+      </Modal>
+    </div>
+  );
+}
+
+/** 포지션 선택 모달 */
+export const WithPositionSelector: Story = {
+  render: () => <PositionModalWrapper />,
 };
