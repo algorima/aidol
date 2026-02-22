@@ -40,3 +40,21 @@ export const NoImage: Story = {
     active: true,
   },
 };
+
+export const Small: Story = {
+  args: {
+    imageUrl: sampleImage,
+    name: "홍길동",
+    active: true,
+    size: "sm",
+  },
+};
+
+export const Large: Story = {
+  args: {
+    imageUrl: sampleImage,
+    name: "홍길동",
+    active: true,
+    size: "lg",
+  },
+};
