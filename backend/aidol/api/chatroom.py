@@ -17,17 +17,13 @@ from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session, sessionmaker
 
 from aidol.context import MessageContextBuilder
+from aidol.prompts import build_chat_system_prompt, build_initial_system_prompt
 from aidol.protocols import (
     ChatroomRepositoryFactoryProtocol,
     ChatroomRepositoryProtocol,
     CompanionRepositoryFactoryProtocol,
 )
-from aidol.prompts import build_chat_system_prompt, build_initial_system_prompt
-from aidol.providers.llm import (
-    LLMProvider,
-    GeminiLLMProvider,
-    OpenAILLMProvider,
-)
+from aidol.providers.llm import GeminiLLMProvider, LLMProvider, OpenAILLMProvider
 from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
