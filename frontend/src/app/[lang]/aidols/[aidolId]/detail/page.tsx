@@ -65,7 +65,10 @@ export default function GroupDetailPage({ params }: GroupDetailPageProps) {
           await Promise.all([
             aidolRepository.getOne({ id: aidolId }),
             highlightRepository.getList({
-              filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+              filters: [
+                { field: "aidolId", operator: "eq", value: aidolId },
+                { field: "isPremium", operator: "eq", value: false },
+              ],
               pagination: { current: 1, pageSize: 100 },
             }),
             companionRepository.getList({
