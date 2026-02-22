@@ -149,6 +149,8 @@ def _render_gender(gender: Gender | None) -> str:
 
 
 def _render_position(position: Position | None) -> str:
+    if position is None:
+        return "포지션 미정"
     return POSITION_MAP.get(position, "포지션 미정")
 
 
