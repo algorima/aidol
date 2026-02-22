@@ -345,5 +345,23 @@
       "relationshipNickname": "ชื่อเล่นความสัมพันธ์",
       "nicknamePlaceholder": "เช่น) กลุ่มเพื่อน, คู่ซี้"
     }
+  },
+  "chat": {
+    "comingSoon": "แชทกับ{{name}}\nจะเปิดให้บริการเร็วๆ นี้!",
+    "unlockHint": "สนิทกับ{{name}}มากขึ้นเพื่อพบสมาชิกคนอื่น 💖",
+    "greeting": "แชทกับ{{name}}ได้อย่างอิสระ!",
+    "placeholder": "พิมพ์ข้อความ",
+    "confirm": "ตกลง",
+    "typing": "กำลังพิมพ์...",
+    "thinkingLong": "ใช้เวลาคิดนานหน่อย 🥺",
+    "reload": "โหลดใหม่",
+    "resend": "ส่งอีกครั้ง",
+    "time": {
+      "justNow": "เมื่อกี้",
+      "minutesAgo": "{{count}} นาทีที่แล้ว",
+      "hoursAgo": "{{count}} ชั่วโมงที่แล้ว",
+      "am": "AM",
+      "pm": "PM"
+    }
   }
 }

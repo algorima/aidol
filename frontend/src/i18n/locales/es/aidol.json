@@ -345,5 +345,23 @@
       "relationshipNickname": "Apodo de Relación",
       "nicknamePlaceholder": "ej.) Squad, Mejores"
     }
+  },
+  "chat": {
+    "comingSoon": "¡La conversación con {{name}}\nse abrirá pronto!",
+    "unlockHint": "Acércate más a {{name}} para conocer a otros miembros 💖",
+    "greeting": "¡Chatea libremente con {{name}}!",
+    "placeholder": "Escribe un mensaje",
+    "confirm": "Confirmar",
+    "typing": "Escribiendo...",
+    "thinkingLong": "Está pensando un poco más 🥺",
+    "reload": "Recargar",
+    "resend": "Reenviar",
+    "time": {
+      "justNow": "Ahora",
+      "minutesAgo": "Hace {{count}}min",
+      "hoursAgo": "Hace {{count}}h",
+      "am": "a.m.",
+      "pm": "p.m."
+    }
   }
 }

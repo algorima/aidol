@@ -345,5 +345,23 @@
       "relationshipNickname": "关系别名",
       "nicknamePlaceholder": "例）同龄组、闺蜜组"
     }
+  },
+  "chat": {
+    "comingSoon": "与{{name}}的聊天\n即将开放！",
+    "unlockHint": "和{{name}}更亲近就能遇到其他成员 💖",
+    "greeting": "和{{name}}自由聊天吧！",
+    "placeholder": "输入消息",
+    "confirm": "确认",
+    "typing": "正在输入...",
+    "thinkingLong": "想得有点久了 🥺",
+    "reload": "重新加载",
+    "resend": "重新发送",
+    "time": {
+      "justNow": "刚刚",
+      "minutesAgo": "{{count}}分钟前",
+      "hoursAgo": "{{count}}小时前",
+      "am": "上午",
+      "pm": "下午"
+    }
   }
 }
