@@ -79,6 +79,24 @@ export const Sending: Story = {
   },
 };
 
+/** 유저 메시지 전송 실패 */
+export const Error: Story = {
+  args: {
+    messages: [
+      ...MOCK_MESSAGES.slice(0, 3),
+      {
+        id: "4",
+        senderType: SenderType.USER,
+        content: "어 안녕",
+        createdAt: "2026-02-17T10:01:00Z",
+        status: MessageStatus.ERROR,
+      },
+    ],
+    companionName: "테오",
+    companionImageUrl: SAMPLE_IMAGE,
+  },
+};
+
 /** 작성중 표시 — AI가 연속으로 답하는 중 */
 export const Typing: Story = {
   args: {

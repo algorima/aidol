@@ -39,18 +39,8 @@ export default function Chatpage({ params }: ChatpageProps) {
     })();
   }, [chatroomId, chatroomRepo, showToast]);
 
-  const handleSubmit = useCallback(
-    async (content: string) => {
-      const tempId = `temp_${Date.now()}`;
-      const optimisticMessage: Message = {
-        id: tempId,
-        senderType: SenderType.USER,
-        content,
-        createdAt: new Date().toISOString(),
-        status: MessageStatus.SENDING,
-      };
-      setMessages((prev) => [...(prev ?? []), optimisticMessage]);
-
+  const sendAndGenerate = useCallback(
+    async (content: string, tempId: string) => {
       try {
         const userMessage = await chatroomRepo.sendMessage(chatroomId, content);
         setMessages((prev) =>
@@ -67,7 +57,6 @@ export default function Chatpage({ params }: ChatpageProps) {
             m.id === tempId ? { ...m, status: MessageStatus.ERROR } : m,
           ),
         );
-        showToast("메시지 전송에 실패했습니다", "error");
         return;
       }
 
@@ -109,6 +98,34 @@ export default function Chatpage({ params }: ChatpageProps) {
     [chatroomId, companionId, chatroomRepo, showToast],
   );
 
+  const handleResend = useCallback(
+    (message: Message) => {
+      setMessages((prev) =>
+        prev?.map((m) =>
+          m.id === message.id ? { ...m, status: MessageStatus.SENDING } : m,
+        ),
+      );
+      void sendAndGenerate(message.content, message.id);
+    },
+    [sendAndGenerate],
+  );
+
+  const handleSubmit = useCallback(
+    async (content: string) => {
+      const tempId = `temp_${Date.now()}`;
+      const optimisticMessage: Message = {
+        id: tempId,
+        senderType: SenderType.USER,
+        content,
+        createdAt: new Date().toISOString(),
+        status: MessageStatus.SENDING,
+      };
+      setMessages((prev) => [...(prev ?? []), optimisticMessage]);
+      await sendAndGenerate(content, tempId);
+    },
+    [sendAndGenerate],
+  );
+
   return (
     <div className="flex h-screen flex-col">
       <header className="flex items-center justify-between px-6 py-4">
@@ -133,6 +150,7 @@ export default function Chatpage({ params }: ChatpageProps) {
         companionName="테오"
         companionImageUrl="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop"
         isTyping={isTyping}
+        onResend={handleResend}
       />
 
       <MessageInput onSubmit={handleSubmit} />

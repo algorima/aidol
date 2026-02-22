@@ -1,6 +1,6 @@
 "use client";
 
-import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
 import { useMemo } from "react";
@@ -40,6 +40,7 @@ interface MessageListProps {
   companionName: string;
   companionImageUrl?: string | null;
   isTyping?: boolean;
+  onResend?: (message: Message) => void;
 }
 
 /**
@@ -50,6 +51,7 @@ export function MessageList({
   companionName,
   companionImageUrl,
   isTyping = false,
+  onResend,
 }: MessageListProps) {
   const expanded = useMemo(
     () => (messages ? expandMessages(messages) : undefined),
@@ -169,7 +171,15 @@ export function MessageList({
                     {message.content}
                   </ReactMarkdown>
                 </div>
-                {message.status === MessageStatus.SENDING ? (
+                {message.status === MessageStatus.ERROR ? (
+                  <button
+                    className="bg-error text-error-content flex cursor-pointer items-center gap-1 rounded-lg p-2"
+                    onClick={() => onResend?.(message)}
+                  >
+                    <ArrowPathIcon className="size-4" />
+                    <span className="text-label-s">재전송</span>
+                  </button>
+                ) : message.status === MessageStatus.SENDING ? (
                   <PaperAirplaneIcon className="text-base-400 size-4 rotate-180" />
                 ) : (
                   isLastByMinute && (
