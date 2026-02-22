@@ -216,6 +216,8 @@
     "error": {
       "update": "保存に失敗しました。",
       "generateImage": "画像の生成に失敗しました。",
+      "promptTooLong": "プロンプトは200文字以内で入力してください。",
+      "promptEmpty": "プロンプトを入力してください。",
       "load": "練習生の読み込みに失敗しました。"
     },
     "gender": {

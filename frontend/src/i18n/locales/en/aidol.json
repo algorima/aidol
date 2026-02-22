@@ -216,6 +216,8 @@
     "error": {
       "update": "Failed to save.",
       "generateImage": "Failed to generate image.",
+      "promptTooLong": "Prompt must be 200 characters or less.",
+      "promptEmpty": "Please enter a prompt.",
       "load": "Failed to load trainees."
     },
     "gender": {

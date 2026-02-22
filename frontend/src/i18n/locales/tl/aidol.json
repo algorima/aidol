@@ -216,6 +216,8 @@
     "error": {
       "update": "Hindi na-save.",
       "generateImage": "Hindi nagawa ang larawan.",
+      "promptTooLong": "Ang prompt ay dapat 200 character o mas maikli.",
+      "promptEmpty": "Mangyaring maglagay ng prompt.",
       "load": "Hindi ma-load ang listahan ng trainee."
     },
     "gender": {
