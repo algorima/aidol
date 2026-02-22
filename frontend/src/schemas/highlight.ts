@@ -6,6 +6,8 @@
 import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
+import { resolveImageUrl } from "../lib/imageUrl";
+
 // ---------------------------------------------------------------------------
 // HighlightMessage
 // ---------------------------------------------------------------------------
@@ -38,7 +40,7 @@ export const aidolHighlightSchema = z.object({
   id: z.string(),
   aidolId: z.string().nullable().optional(),
   title: z.string(),
-  thumbnailUrl: z.string(),
+  thumbnailUrl: z.string().transform((value) => resolveImageUrl(value)),
   subtitle: z.string(),
   isPremium: z.boolean(),
   createdAt: z.string(),

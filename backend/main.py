@@ -21,6 +21,7 @@ import base64
 import io
 import logging
 import os
+from pathlib import Path
 
 import PIL.Image
 from aioia_core.errors import (
@@ -36,6 +37,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -152,6 +154,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve local seed images for development.
+images_dir = Path(__file__).resolve().parent / "scripts" / "images"
+if images_dir.exists():
+    app.mount("/images", StaticFiles(directory=str(images_dir)), name="images")
+    logger.info("Mounted static images at /images from %s", images_dir)
+else:
+    logger.warning("Static image directory not found: %s", images_dir)
 
 
 # ==============================================================================

@@ -6,6 +6,8 @@
 import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
+import { resolveImageUrl } from "../lib/imageUrl";
+
 import type { Companion } from "./companion";
 
 /**
@@ -21,7 +23,10 @@ export const aidolSchema = z.object({
   email: z.string().nullable().optional(),
   greeting: z.string().nullable().optional(),
   concept: z.string().nullable().optional(),
-  profileImageUrl: z.string().nullable(),
+  profileImageUrl: z
+    .string()
+    .nullable()
+    .transform((value) => (value ? resolveImageUrl(value) : value)),
   status: aidolStatusSchema,
   createdAt: z.string(),
   updatedAt: z.string(),

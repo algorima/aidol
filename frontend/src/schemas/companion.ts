@@ -6,6 +6,8 @@
 import type { BaseRecord } from "@aioia/core";
 import { z } from "zod";
 
+import { resolveImageUrl } from "../lib/imageUrl";
+
 export const POSITIONS = [
   "MAIN_VOCAL",
   "SUB_VOCAL",
@@ -49,7 +51,11 @@ export const companionSchema = z.object({
   aidolId: z.string().nullable().optional(),
   name: z.string().nullable().optional(),
   biography: z.string().nullable().optional(),
-  profilePictureUrl: z.string().nullable().optional(),
+  profilePictureUrl: z
+    .string()
+    .nullable()
+    .optional()
+    .transform((value) => (typeof value === "string" ? resolveImageUrl(value) : value)),
   grade: z.enum(["A", "B", "C", "F"]).nullable().optional(),
   position: z
     .enum([
