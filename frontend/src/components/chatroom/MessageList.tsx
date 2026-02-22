@@ -1,5 +1,6 @@
 "use client";
 
+import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
 import { useMemo } from "react";
@@ -7,8 +8,7 @@ import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 
-
-import { Message, SenderType } from "../../schemas";
+import { Message, MessageStatus, SenderType } from "../../schemas";
 import { Loading } from "../Loading";
 
 const MAX_BUBBLES = 3;
@@ -169,13 +169,17 @@ export function MessageList({
                     {message.content}
                   </ReactMarkdown>
                 </div>
-                {isLastByMinute && (
-                  <span className="text-label-s text-base-content/50">
-                    {new Date(message.createdAt).toLocaleTimeString("ko", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </span>
+                {message.status === MessageStatus.SENDING ? (
+                  <PaperAirplaneIcon className="text-base-400 size-4 rotate-180" />
+                ) : (
+                  isLastByMinute && (
+                    <span className="text-label-s text-base-content/50">
+                      {new Date(message.createdAt).toLocaleTimeString("ko", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </span>
+                  )
                 )}
               </div>
             </div>

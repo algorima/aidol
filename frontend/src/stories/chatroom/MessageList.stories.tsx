@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { MessageList } from "@/components/chatroom/MessageList";
-import { Message, SenderType } from "@/schemas";
+import { Message, MessageStatus, SenderType } from "@/schemas";
 
 const SAMPLE_IMAGE =
   "https://images.unsplash.com/photo-1740252117070-7aa2955b25f8?fm=jpg&q=60&w=3000&auto=format&fit=crop";
@@ -56,6 +56,24 @@ type Story = StoryObj<typeof MessageList>;
 export const Default: Story = {
   args: {
     messages: MOCK_MESSAGES,
+    companionName: "테오",
+    companionImageUrl: SAMPLE_IMAGE,
+  },
+};
+
+/** 유저 메시지 전송 중 */
+export const Sending: Story = {
+  args: {
+    messages: [
+      ...MOCK_MESSAGES.slice(0, 3),
+      {
+        id: "4",
+        senderType: SenderType.USER,
+        content: "어 안녕",
+        createdAt: "2026-02-17T10:01:00Z",
+        status: MessageStatus.SENDING,
+      },
+    ],
     companionName: "테오",
     companionImageUrl: SAMPLE_IMAGE,
   },

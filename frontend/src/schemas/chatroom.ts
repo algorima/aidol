@@ -52,6 +52,12 @@ export enum SenderType {
   COMPANION = "COMPANION",
 }
 
+export enum MessageStatus {
+  SENDING = "SENDING",
+  SENT = "SENT",
+  ERROR = "ERROR",
+}
+
 export const messageSchema = z.object({
   id: z.string(),
   senderType: z.nativeEnum(SenderType),
@@ -68,6 +74,7 @@ export interface Message extends BaseRecord {
   createdAt: string;
   companionId?: string;
   anonymousId?: string;
+  status?: MessageStatus;
 }
 
 /**

@@ -8,7 +8,7 @@ import { MessageInput } from "@/client";
 import { ActivityBadge, CompanionAvatar } from "@/components";
 import { MessageList } from "@/components/chatroom/MessageList";
 import { ChatroomRepository } from "@/repositories";
-import { Message, SenderType } from "@/schemas";
+import { Message, MessageStatus, SenderType } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
 
 interface ChatpageProps {
@@ -41,11 +41,32 @@ export default function Chatpage({ params }: ChatpageProps) {
 
   const handleSubmit = useCallback(
     async (content: string) => {
+      const tempId = `temp_${Date.now()}`;
+      const optimisticMessage: Message = {
+        id: tempId,
+        senderType: SenderType.USER,
+        content,
+        createdAt: new Date().toISOString(),
+        status: MessageStatus.SENDING,
+      };
+      setMessages((prev) => [...(prev ?? []), optimisticMessage]);
+
       try {
         const userMessage = await chatroomRepo.sendMessage(chatroomId, content);
-        setMessages((prev) => [...(prev ?? []), userMessage]);
+        setMessages((prev) =>
+          prev?.map((m) =>
+            m.id === tempId
+              ? { ...userMessage, status: MessageStatus.SENT }
+              : m,
+          ),
+        );
       } catch (error) {
         console.error("Failed to send message:", error);
+        setMessages((prev) =>
+          prev?.map((m) =>
+            m.id === tempId ? { ...m, status: MessageStatus.ERROR } : m,
+          ),
+        );
         showToast("메시지 전송에 실패했습니다", "error");
         return;
       }
