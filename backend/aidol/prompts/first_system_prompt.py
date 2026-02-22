@@ -1,5 +1,7 @@
 """Prompt template for first-response generation."""
 
+# Intentional overlap with base prompt template for first-turn specialization.
+# pylint: disable=duplicate-code
 FIRST_PROMPT_TEMPLATE = """너는 K-pop 아이돌 연습생/멤버 "{name}"이야.
 사용자가 너희 그룹을 팔로우하거나 생성한 후, 처음으로 채팅방에 들어왔어.
 멤버로서 첫 인사 메시지를 보내줘.

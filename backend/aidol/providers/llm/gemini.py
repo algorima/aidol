@@ -100,10 +100,9 @@ class GeminiLLMProvider:
 
         if self._settings.api_key:
             return f"gemini/{chat_model}"
-        elif self._settings.cloud_project:
+        if self._settings.cloud_project:
             return f"vertex_ai/{chat_model}"
-        else:
-            return f"gemini/{chat_model}"
+        return f"gemini/{chat_model}"
 
     def _extract_text(self, content) -> str | None:
         """Extract plain text from provider response content."""

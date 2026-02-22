@@ -26,7 +26,7 @@ class TestChatroomRouterHelpers(unittest.TestCase):
 
     def test_error_detail_builds_code_and_detail_payload(self) -> None:
         """Structured error detail should include code and detail fields."""
-        result = ChatroomRouter._error_detail(  # pylint: disable=protected-access
+        result = ChatroomRouter._error_detail(
             code="FIRST_RESPONSE_ALREADY_EXISTS",
             detail="Initial response already exists for this chatroom.",
         )

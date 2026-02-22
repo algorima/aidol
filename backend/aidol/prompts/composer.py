@@ -8,6 +8,8 @@ from aidol.services.companion_service import calculate_grade, calculate_mbti
 from .base_system_prompt import CHAT_SYSTEM_PROMPT_TEMPLATE
 from .first_system_prompt import FIRST_PROMPT_TEMPLATE
 
+# Intentional nested mapping for score-tier text guides.
+# pylint: disable=consider-using-namedtuple-or-dataclass
 MBTI_GUIDE_MAP: dict[str, dict[str, str]] = {
     "energy": {
         "low": (
@@ -56,10 +58,9 @@ def get_level(score: int) -> str:
     """1-10 점수를 low/mid/high로 변환."""
     if score <= 3:
         return "low"
-    elif score <= 6:
+    if score <= 6:
         return "mid"
-    else:
-        return "high"
+    return "high"
 
 
 def render_chat_base_prompt(companion: Companion) -> str:

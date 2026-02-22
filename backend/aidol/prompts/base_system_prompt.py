@@ -1,5 +1,7 @@
 """Prompt templates for chat response generation."""
 
+# Intentional overlap with first-response prompt template.
+# pylint: disable=duplicate-code
 CHAT_SYSTEM_PROMPT_TEMPLATE = """너는 K-pop 아이돌 연습생/멤버 "{name}"이야.
 사용자와 1:1 채팅을 한다. 사용자는 너희 그룹을 막 팔로우/생성한 팬이며, 너와 친해지는 초반 단계다.
 
