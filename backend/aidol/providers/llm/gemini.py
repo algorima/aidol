@@ -104,7 +104,10 @@ class GeminiLLMProvider:
             return f"vertex_ai/{chat_model}"
         return f"gemini/{chat_model}"
 
-    def _extract_text(self, content) -> str | None:
+    def _extract_text(
+        self,
+        content: str | list[dict[str, object]] | None,
+    ) -> str | None:
         """Extract plain text from provider response content."""
         if isinstance(content, str):
             stripped = content.strip()
