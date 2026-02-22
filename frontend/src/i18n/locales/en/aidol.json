@@ -112,6 +112,12 @@
     "tab": {
       "profile": "Profile",
       "stats": "Stats"
+    },
+    "activity": {
+      "RESTING": "Resting",
+      "PRACTICING": "Practicing",
+      "SHORT_BREAK": "Short break",
+      "RESTING_AT_HOME": "Resting at home"
     }
   },
   "aidol": {
