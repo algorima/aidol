@@ -5,8 +5,10 @@ from datetime import datetime, timezone
 
 from aidol.prompts.composer import (
     build_chat_system_prompt,
+    build_initial_system_prompt,
     get_level,
     render_chat_base_prompt,
+    render_initial_base_prompt,
 )
 from aidol.schemas import (
     Companion,
@@ -102,7 +104,9 @@ class TestPromptComposer(unittest.TestCase):
         self.assertEqual(final_prompt, base_prompt)
         self.assertNotIn("## 추가 캐릭터 설정 (선택)", final_prompt)
 
-    def test_render_chat_base_prompt_uses_fallback_values_for_missing_fields(self) -> None:
+    def test_render_chat_base_prompt_uses_fallback_values_for_missing_fields(
+        self,
+    ) -> None:
         """Missing optional fields should render stable fallback text."""
         companion = self._build_companion()
         companion.name = "   "
@@ -126,7 +130,9 @@ class TestPromptComposer(unittest.TestCase):
         self.assertIn("- 판단: [점수: 미정] 적당한 감정 표현", prompt)
         self.assertIn("- 생활: [점수: 미정] 자연스러운 흐름", prompt)
 
-    def test_render_chat_base_prompt_applies_name_fallback_in_judgment_template(self) -> None:
+    def test_render_chat_base_prompt_applies_name_fallback_in_judgment_template(
+        self,
+    ) -> None:
         """Name fallback should be applied before judgment template formatting."""
         companion = self._build_companion()
         companion.name = None
@@ -144,6 +150,22 @@ class TestPromptComposer(unittest.TestCase):
         self.assertEqual(get_level(6), "mid")
         self.assertEqual(get_level(7), "high")
         self.assertEqual(get_level(10), "high")
+
+    def test_render_initial_base_prompt_includes_companion_values(self) -> None:
+        """Initial prompt should include companion values."""
+        companion = self._build_companion()
+        prompt = render_initial_base_prompt(companion)
+
+        self.assertIn("Haru", prompt)
+        self.assertIn("- 등급: B", prompt)
+
+    def test_build_initial_system_prompt_appends_extension_prompt(self) -> None:
+        """Companion-specific extension should also apply to initial prompt."""
+        companion = self._build_companion(system_prompt="Use one cheerful nickname.")
+        prompt = build_initial_system_prompt(companion)
+
+        self.assertIn("## 추가 캐릭터 설정 (선택)", prompt)
+        self.assertIn("Use one cheerful nickname.", prompt)
 
 
 if __name__ == "__main__":
