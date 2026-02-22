@@ -18,6 +18,7 @@ interface ChatpageProps {
 export default function Chatpage({ params }: ChatpageProps) {
   const { chatroomId, companionId } = params;
   const [messages, setMessages] = useState<Message[] | undefined>(undefined);
+  const [isTyping, setIsTyping] = useState(false);
   const { showToast } = useToast();
 
   const chatroomRepo = useMemo(
@@ -50,17 +51,35 @@ export default function Chatpage({ params }: ChatpageProps) {
       }
 
       try {
-        const response = await chatroomRepo.generateResponse(
-          chatroomId,
-          companionId,
-        );
-        const aiMessage: Message = {
-          id: response.messageId,
-          senderType: SenderType.COMPANION,
-          content: response.content,
-          createdAt: new Date().toISOString(),
-        };
-        setMessages((prev) => [...(prev ?? []), aiMessage]);
+        const response = chatroomRepo.generateResponse(chatroomId, companionId);
+
+        const delay = (ms: number) =>
+          new Promise((resolve) => setTimeout(resolve, ms));
+
+        setIsTyping(true);
+        const [generated] = await Promise.all([response, delay(3000)]);
+        const createdAt = new Date().toISOString();
+        const paragraphs = generated.content.split("\n\n");
+        const bubbles =
+          paragraphs.length <= 3
+            ? paragraphs
+            : [...paragraphs.slice(0, 2), paragraphs.slice(2).join(" ")];
+
+        for (let i = 0; i < bubbles.length; i++) {
+          if (i !== 0) {
+            setIsTyping(true);
+            await delay(3000);
+          }
+
+          const aiMessage: Message = {
+            id: `${generated.messageId}_${i}`,
+            senderType: SenderType.COMPANION,
+            content: bubbles[i],
+            createdAt,
+          };
+          setMessages((prev) => [...(prev ?? []), aiMessage]);
+          setIsTyping(false);
+        }
       } catch (error) {
         console.error("Failed to generate AI response:", error);
         showToast("AI 응답 생성에 실패했습니다", "error");
@@ -92,6 +111,7 @@ export default function Chatpage({ params }: ChatpageProps) {
         messages={messages}
         companionName="테오"
         companionImageUrl="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop"
+        isTyping={isTyping}
       />
 
       <MessageInput onSubmit={handleSubmit} />

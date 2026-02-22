@@ -60,3 +60,21 @@ export const Default: Story = {
     companionImageUrl: SAMPLE_IMAGE,
   },
 };
+
+/** 작성중 표시 — AI가 연속으로 답하는 중 */
+export const Typing: Story = {
+  args: {
+    messages: [
+      ...MOCK_MESSAGES,
+      {
+        id: "5",
+        senderType: SenderType.COMPANION,
+        content: "오늘 연습 많이 했어",
+        createdAt: "2026-02-17T10:01:00Z",
+      },
+    ],
+    companionName: "테오",
+    companionImageUrl: SAMPLE_IMAGE,
+    isTyping: true,
+  },
+};
