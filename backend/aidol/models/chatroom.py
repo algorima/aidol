@@ -18,8 +18,14 @@ class DBChatroom(BaseModel):
     __tablename__ = "chatrooms"
 
     # id, created_at, updated_at inherited from BaseModel
+    companion_id: Mapped[str] = mapped_column(
+        ForeignKey("companions.id"), nullable=False, index=True
+    )
     name: Mapped[str] = mapped_column(String, nullable=False)
     language: Mapped[str] = mapped_column(String, nullable=False, default="en")
+    anonymous_id: Mapped[str | None] = mapped_column(
+        String(36), nullable=True, index=True
+    )  # Anonymous user identifier for ownership
 
     __table_args__ = (Index("ix_chatrooms_language", "language"),)
 

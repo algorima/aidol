@@ -24,7 +24,8 @@ from aidol.schemas import (
     AIdolLeadCreate,
     AIdolUpdate,
     Chatroom,
-    ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
+    ChatroomListItem,
     ChatroomUpdate,
     Companion,
     CompanionCreate,
@@ -35,6 +36,7 @@ from aidol.schemas import (
     HighlightMessage,
     HighlightMessageCreate,
     HighlightMessageUpdate,
+    LastMessage,
     Message,
     MessageCreateWithAnonymousId,
 )
@@ -45,7 +47,8 @@ class NoUpdate(BaseModel):
 
 
 class ChatroomRepositoryProtocol(
-    CrudRepositoryProtocol[Chatroom, ChatroomCreate, ChatroomUpdate], Protocol
+    CrudRepositoryProtocol[Chatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate],
+    Protocol,
 ):
     """Protocol defining chatroom repository expectations.
 
@@ -80,6 +83,24 @@ class ChatroomRepositoryProtocol(
         Args:
             chatroom_id: Chatroom ID.
             message: MessageCreateWithAnonymousId or CompanionMessageCreate schema (with anonymous_id).
+        """
+        ...
+
+    def get_last_message_by_chatroom_id(self, chatroom_id: str) -> LastMessage | None:
+        """Get the last message in a chatroom.
+
+        Args:
+            chatroom_id: Chatroom ID.
+        """
+        ...
+
+    def get_chatrooms_with_last_message_by_anonymous_id(
+        self, anonymous_id: str
+    ) -> list[ChatroomListItem]:
+        """Get all chatrooms owned by the user with their last messages.
+
+        Args:
+            anonymous_id: Anonymous user identifier.
         """
         ...
 

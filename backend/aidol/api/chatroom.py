@@ -26,6 +26,8 @@ from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
+    ChatroomListItem,
     ChatroomUpdate,
     CompanionMessageCreate,
     Message,
@@ -75,8 +77,19 @@ def _to_llm_messages(messages: list[Message]) -> list[LLMMessage]:
     return result
 
 
+class MyChatroomsResponse(BaseModel):
+    """Response for /me/chatrooms endpoint."""
+
+    data: list[ChatroomListItem]
+
+
 class ChatroomRouter(
-    BaseCrudRouter[Chatroom, ChatroomCreate, ChatroomUpdate, ChatroomRepositoryProtocol]
+    BaseCrudRouter[
+        Chatroom,
+        ChatroomCreateWithAnonymousId,
+        ChatroomUpdate,
+        ChatroomRepositoryProtocol,
+    ]
 ):
     """
     Chatroom router with custom message endpoints.
@@ -102,6 +115,7 @@ class ChatroomRouter(
         # Chatroom CRUD (public, no auth)
         self._register_public_create_route()
         self._register_public_get_route()
+        self._register_my_chatrooms_route()
 
         # Message endpoints (public)
         self._register_get_messages_route()
@@ -120,10 +134,23 @@ class ChatroomRouter(
         )
         async def create_chatroom(
             request: ChatroomCreate,
+            anonymous_id: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new chatroom."""
-            created = repository.create(request)
+            if not anonymous_id:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="aioia_anonymous_id cookie is required",
+                )
+
+            # Convert body schema to internal schema with anonymous_id from Cookie
+            create_data = ChatroomCreateWithAnonymousId(
+                **request.model_dump(), anonymous_id=anonymous_id
+            )
+            created = repository.create(create_data)
             return ChatroomSingleItemResponse(data=created)
 
     def _register_public_get_route(self) -> None:
@@ -146,6 +173,34 @@ class ChatroomRouter(
             """Get chatroom by ID."""
             chatroom = self._get_item_or_404(repository, item_id)
             return ChatroomSingleItemResponse(data=chatroom)
+
+    def _register_my_chatrooms_route(self) -> None:
+        """GET /me/{resource_name} - List my chatrooms (filtered by cookie)"""
+
+        @self.router.get(
+            f"/me/{self.resource_name}",
+            response_model=MyChatroomsResponse,
+            status_code=status.HTTP_200_OK,
+            summary="List my chatrooms",
+            description="List chatrooms owned by the current user (based on cookie)",
+        )
+        async def list_my_chatrooms(
+            anonymous_id: Annotated[
+                str | None, Cookie(alias="aioia_anonymous_id")
+            ] = None,
+            repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
+        ):
+            """List my chatrooms filtered by anonymous_id from cookie."""
+            if not anonymous_id:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="aioia_anonymous_id cookie is required",
+                )
+
+            items = repository.get_chatrooms_with_last_message_by_anonymous_id(
+                anonymous_id
+            )
+            return MyChatroomsResponse(data=items)
 
     def _register_get_messages_route(self) -> None:
         """GET /{resource_name}/{id}/messages - Get messages from a chatroom"""
@@ -330,7 +385,7 @@ def create_chatroom_router(
         openai_settings=openai_settings,
         companion_repository_factory=companion_repository_factory,
         model_class=Chatroom,
-        create_schema=ChatroomCreate,
+        create_schema=ChatroomCreateWithAnonymousId,
         update_schema=ChatroomUpdate,
         db_session_factory=db_session_factory,
         repository_factory=repository_factory,

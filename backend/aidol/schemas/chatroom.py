@@ -124,6 +124,7 @@ class ChatroomBase(BaseModel):
 
     model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
 
+    companion_id: str = Field(..., description="Companion ID for the chatroom")
     name: str = Field(..., description="Chatroom name")
     language: str = Field(default="en", description="Chatroom language")
 
@@ -141,7 +142,21 @@ class Chatroom(ChatroomBase):
 
 
 class ChatroomCreate(ChatroomBase):
-    """Schema for creating a chatroom (no id)."""
+    """API body schema for creating a chatroom (no id, no anonymous_id).
+
+    anonymous_id is excluded (read from Cookie by router).
+    """
+
+
+class ChatroomCreateWithAnonymousId(ChatroomBase):
+    """Internal schema for repository with anonymous_id.
+
+    Used by router to pass Cookie-based anonymous_id to repository.
+    """
+
+    anonymous_id: str | None = Field(
+        default=None, description="Anonymous user identifier for ownership"
+    )
 
 
 class ChatroomUpdate(BaseModel):
@@ -151,3 +166,29 @@ class ChatroomUpdate(BaseModel):
 
     name: str | None = Field(default=None, description="Chatroom name")
     language: str | None = Field(default=None, description="Chatroom language")
+
+
+# =============================================================================
+# My Chatrooms Response Schemas
+# =============================================================================
+
+
+class LastMessage(BaseModel):
+    """Last message summary for chatroom list."""
+
+    model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
+
+    content: str = Field(..., description="Message content")
+    created_at: datetime = Field(..., description="Message creation timestamp")
+
+
+class ChatroomListItem(BaseModel):
+    """Chatroom item for /me/chatrooms response."""
+
+    model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
+
+    id: str = Field(..., description="Chatroom ID")
+    companion_id: str = Field(..., description="Companion ID")
+    last_message: LastMessage | None = Field(
+        default=None, description="Last message in the chatroom"
+    )

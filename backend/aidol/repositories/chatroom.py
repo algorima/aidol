@@ -13,9 +13,11 @@ from sqlalchemy.orm import Session
 from aidol.models import DBChatroom, DBMessage
 from aidol.schemas import (
     Chatroom,
-    ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
+    ChatroomListItem,
     ChatroomUpdate,
     CompanionMessage,
+    LastMessage,
     Message,
     MessageCreateWithAnonymousId,
     SenderType,
@@ -26,6 +28,7 @@ def _convert_db_chatroom_to_model(db_chatroom: DBChatroom) -> Chatroom:
     """Convert DB chatroom to Pydantic model."""
     return Chatroom(
         id=db_chatroom.id,
+        companion_id=db_chatroom.companion_id,
         name=db_chatroom.name,
         language=db_chatroom.language,
         created_at=db_chatroom.created_at.replace(tzinfo=timezone.utc),
@@ -33,8 +36,8 @@ def _convert_db_chatroom_to_model(db_chatroom: DBChatroom) -> Chatroom:
     )
 
 
-def _convert_chatroom_create_to_db_model(schema: ChatroomCreate) -> dict:
-    """Convert ChatroomCreate schema to DB model data dict."""
+def _convert_chatroom_create_to_db_model(schema: ChatroomCreateWithAnonymousId) -> dict:
+    """Convert ChatroomCreateWithAnonymousId schema to DB model data dict."""
     return schema.model_dump(exclude_unset=True)
 
 
@@ -60,7 +63,7 @@ def _convert_db_message_to_model(db_message: DBMessage) -> Message:
 
 
 class ChatroomRepository(
-    BaseRepository[Chatroom, DBChatroom, ChatroomCreate, ChatroomUpdate]
+    BaseRepository[Chatroom, DBChatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate]
 ):
     """
     Database-backed chatroom repository.
@@ -140,3 +143,59 @@ class ChatroomRepository(
             .all()
         )
         return [_convert_db_message_to_model(msg) for msg in db_messages]
+
+    def get_last_message_by_chatroom_id(self, chatroom_id: str) -> LastMessage | None:
+        """
+        Get the last message in a chatroom.
+
+        Args:
+            chatroom_id: Chatroom ID
+
+        Returns:
+            LastMessage or None if no messages exist
+        """
+        db_message = (
+            self.db_session.query(DBMessage)
+            .filter(DBMessage.chatroom_id == chatroom_id)
+            .order_by(DBMessage.created_at.desc())
+            .first()
+        )
+        if db_message is None:
+            return None
+
+        return LastMessage(
+            content=db_message.content,
+            created_at=db_message.created_at.replace(tzinfo=timezone.utc),
+        )
+
+    def get_chatrooms_with_last_message_by_anonymous_id(
+        self, anonymous_id: str
+    ) -> list[ChatroomListItem]:
+        """
+        Get all chatrooms owned by the user with their last messages.
+
+        Args:
+            anonymous_id: Anonymous user identifier
+
+        Returns:
+            List of ChatroomListItem with last message info
+        """
+        db_chatrooms = (
+            self.db_session.query(DBChatroom)
+            .filter(DBChatroom.anonymous_id == anonymous_id)
+            .order_by(DBChatroom.updated_at.desc())
+            .all()
+        )
+
+        result: list[ChatroomListItem] = []
+        for db_chatroom in db_chatrooms:
+            last_message = self.get_last_message_by_chatroom_id(db_chatroom.id)
+            result.append(
+                ChatroomListItem(
+                    id=db_chatroom.id,
+                    companion_id=db_chatroom.companion_id,
+                    last_message=last_message,
+                )
+            )
+
+        return result
