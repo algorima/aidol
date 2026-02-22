@@ -281,7 +281,6 @@
     }
   },
   "highlight": {
-    "interviewer": "Pewawancara",
     "error": {
       "load": "Gagal memuat highlight"
     }
@@ -345,6 +344,24 @@
       "startsAt": "Mulai dari <highlight>{{intimacy}}%</highlight>",
       "relationshipNickname": "Nama Panggilan Hubungan",
       "nicknamePlaceholder": "cth.) Squad, Besties"
+    }
+  },
+  "chat": {
+    "comingSoon": "Obrolan dengan {{name}}\nakan segera dibuka!",
+    "unlockHint": "Berteman lebih dekat dengan {{name}} untuk bertemu anggota lain 💖",
+    "greeting": "Ngobrol bebas dengan {{name}}!",
+    "placeholder": "Ketik pesan",
+    "confirm": "OK",
+    "typing": "Mengetik...",
+    "thinkingLong": "Masih berpikir 🥺",
+    "reload": "Muat ulang",
+    "resend": "Kirim ulang",
+    "time": {
+      "justNow": "Baru saja",
+      "minutesAgo": "{{count}} menit lalu",
+      "hoursAgo": "{{count}} jam lalu",
+      "am": "AM",
+      "pm": "PM"
     }
   }
 }

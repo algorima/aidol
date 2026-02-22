@@ -36,7 +36,7 @@ export function EmblemStep({
       <Button
         onClick={onGenerate}
         disabled={!prompt.trim() || isGeneratingImage}
-        variant="primary"
+        variant={emblemUrl ? "neutral" : "primary"}
         className="w-full"
       >
         {emblemUrl

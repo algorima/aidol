@@ -11,8 +11,8 @@ import {
   GroupProfile,
   HighlightCarousel,
 } from "@/components/group";
-import { HighlightDetailModal } from "@/components/group/HighlightDetailModal";
 import { Header } from "@/components/Header";
+import { HighlightDetailModal } from "@/components/highlight";
 import { BottomNavigationContainer } from "@/containers";
 import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
@@ -42,15 +42,7 @@ const groupMyGroupHighlights = (
       });
     }
 
-    sectionMap.get(key)!.items.push({
-      id: highlight.id,
-      aidolId: highlight.aidolId,
-      title: highlight.title,
-      subtitle: highlight.subtitle,
-      thumbnailUrl: highlight.thumbnailUrl,
-      createdAt: highlight.createdAt,
-      updatedAt: highlight.updatedAt,
-    });
+    sectionMap.get(key)!.items.push(highlight);
   }
 
   return Array.from(sectionMap.values());
@@ -87,23 +79,34 @@ export default function GroupPage() {
 
   // 하이라이트 모달 상태
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalLoading, setIsModalLoading] = useState(false);
   const [highlightMessages, setHighlightMessages] = useState<
     HighlightMessage[]
   >([]);
   const [companions, setCompanions] = useState<Companion[]>([]);
 
+  const companionIds = useMemo(
+    () => new Set(companions.map((c) => c.id)),
+    [companions],
+  );
+
   useEffect(() => {
     const fetchGroups = async () => {
       try {
         const { data: myGroups } = await aidolRepository.getMy();
-        setGroups(myGroups);
+        const publishedGroups = myGroups.filter(
+          (g) => g.status === "PUBLISHED",
+        );
+        setGroups(publishedGroups);
 
-        const currentGroup = myGroups.find((g) => g.id === params.aidolId);
+        const currentGroup = publishedGroups.find(
+          (g) => g.id === params.aidolId,
+        );
         if (currentGroup) {
           setSelectedGroup(currentGroup);
         } else {
           // 해당 그룹이 없으면 첫 번째 그룹으로 redirect
-          const firstGroup = myGroups[0];
+          const firstGroup = publishedGroups[0];
           if (firstGroup) {
             router.replace(`/${params.lang}/aidols/my-group/${firstGroup.id}`);
           } else {
@@ -129,7 +132,10 @@ export default function GroupPage() {
           companionRepository.getByAidolId(selectedGroup.id),
         ]);
 
-        setHighlightSections(groupMyGroupHighlights(highlightsResult.data));
+        const premiumHighlights = highlightsResult.data.filter(
+          (h) => h.isPremium,
+        );
+        setHighlightSections(groupMyGroupHighlights(premiumHighlights));
         setCompanions(companionsResult.data);
       } catch (error) {
         console.error("Failed to fetch group data:", error);
@@ -146,14 +152,34 @@ export default function GroupPage() {
   };
 
   const handleHighlightClick = async (highlight: AIdolHighlight) => {
+    setIsModalOpen(true);
+    setIsModalLoading(true);
     try {
-      const { data: messages } = await highlightRepository.getMessages(
+      const { data: messagesData } = await highlightRepository.getMessages(
         highlight.id,
       );
-      setHighlightMessages(messages);
-      setIsModalOpen(true);
+
+      const invalid = messagesData.filter(
+        (msg) => msg.companionId !== null && !companionIds.has(msg.companionId),
+      );
+      if (invalid.length > 0) {
+        console.error(
+          "Unknown companionIds:",
+          invalid.map((msg) => msg.companionId),
+        );
+      }
+      setHighlightMessages(
+        messagesData.filter(
+          (msg) =>
+            msg.companionId === null || companionIds.has(msg.companionId),
+        ),
+      );
     } catch (error) {
       console.error("Failed to fetch highlight messages:", error);
+      showToast(t("aidol:highlight.error.load"), "error");
+      setIsModalOpen(false);
+    } finally {
+      setIsModalLoading(false);
     }
   };
 
@@ -226,6 +252,7 @@ export default function GroupPage() {
 
       <HighlightDetailModal
         isOpen={isModalOpen}
+        isLoading={isModalLoading}
         messages={highlightMessages}
         companions={companions}
         onClose={() => setIsModalOpen(false)}

@@ -40,14 +40,14 @@ export function PositionBoard({
                 autoplay
                 loop={false}
                 className="block size-9 dark:hidden"
-                {...({ keepLastFrame: true } as object)}
+                keepLastFrame
               />
               <LottiePlayer
                 src={CHECK_LOTTIE.dark}
                 autoplay
                 loop={false}
                 className="hidden size-9 dark:block"
-                {...({ keepLastFrame: true } as object)}
+                keepLastFrame
               />
             </div>
             <span className="text-title-s text-base-content">
@@ -78,12 +78,10 @@ export function PositionBoard({
           disabled={!canConfirm}
           className={clsx(
             "btn btn-lg text-label-l w-full rounded-lg",
-            canConfirm ? "btn-primary" : "bg-base-300 text-base-content",
+            canConfirm ? "btn-primary" : "bg-base-300 text-base-400",
           )}
         >
-          {canConfirm
-            ? t("aidol:position.confirm")
-            : t("aidol:position.needMore", { count: unassignedCount })}
+          {t("aidol:position.confirm")}
         </button>
       </div>
     </div>

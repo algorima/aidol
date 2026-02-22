@@ -74,7 +74,7 @@ export default function PersonalityPage({ params }: PersonalityPageProps) {
           type="button"
           disabled={isSubmitting}
           onClick={handleNext}
-          className="btn btn-neutral w-full"
+          className="btn btn-primary btn-lg text-label-l w-full rounded-lg"
         >
           {t("aidol:companionCreate.next")}
         </button>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -22,6 +22,17 @@ export default function GroupsPage() {
   const { lang } = params;
   const router = useRouter();
   const { showToast } = useToast();
+
+  const aidolRepo = useMemo(() => new AIdolRepository(getApiService()), []);
+  const companionRepo = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
+  const highlightRepo = useMemo(
+    () => new HighlightRepository(getApiService()),
+    [],
+  );
+
   const [groups, setGroups] = useState<AIdol[]>([]);
   const [memberCountMap, setMemberCountMap] = useState<Record<string, number>>(
     {},
@@ -34,15 +45,13 @@ export default function GroupsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiService = getApiService();
-        const aidolRepo = new AIdolRepository(apiService);
-        const companionRepo = new CompanionRepository(apiService);
-        const highlightRepo = new HighlightRepository(apiService);
-
         const [aidolRes, companionRes, highlightRes] = await Promise.all([
           aidolRepo.getList(),
           companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
-          highlightRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
+          highlightRepo.getList({
+            filters: [{ field: "isPremium", operator: "eq", value: false }],
+            pagination: { current: 1, pageSize: 100 },
+          }),
         ]);
 
         setGroups(aidolRes.data);
@@ -56,7 +65,7 @@ export default function GroupsPage() {
         }
         setMemberCountMap(countMap);
 
-        // 그룹별 첫 번째 하이라이트만 사용
+        // 그룹별 첫 번째 무료 하이라이트만 사용
         const hlMap: Record<string, AIdolHighlight> = {};
         for (const highlight of highlightRes.data) {
           if (highlight.aidolId && !hlMap[highlight.aidolId]) {
@@ -72,7 +81,7 @@ export default function GroupsPage() {
       }
     };
     void fetchData();
-  }, [showToast, t]);
+  }, [aidolRepo, companionRepo, highlightRepo, showToast, t]);
 
   if (isLoading) {
     return (
@@ -91,22 +100,24 @@ export default function GroupsPage() {
       <div className="flex flex-1 flex-col gap-6 px-6 py-4">
         <GroupInfoBanner />
         <div className="flex flex-col gap-6">
-          {groups.map((group) => {
-            const highlight = highlightMap[group.id];
-            return (
-              <GroupCard
-                key={group.id}
-                avatarUrl={group.profileImageUrl}
-                groupName={group.name ?? ""}
-                memberCount={memberCountMap[group.id] ?? 0}
-                highlightImageUrl={highlight?.thumbnailUrl}
-                highlightTitle={highlight?.title}
-                onClick={() =>
-                  router.push(`/${lang}/aidols/${group.id}/detail`)
-                }
-              />
-            );
-          })}
+          {groups
+            .filter((group) => highlightMap[group.id])
+            .map((group) => {
+              const highlight = highlightMap[group.id];
+              return (
+                <GroupCard
+                  key={group.id}
+                  avatarUrl={group.profileImageUrl}
+                  groupName={group.name ?? ""}
+                  memberCount={memberCountMap[group.id] ?? 0}
+                  highlightImageUrl={highlight?.thumbnailUrl}
+                  highlightTitle={highlight?.title}
+                  onClick={() =>
+                    router.push(`/${lang}/aidols/${group.id}/detail`)
+                  }
+                />
+              );
+            })}
         </div>
       </div>
       <BottomNavigationContainer lang={lang} />

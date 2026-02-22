@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 
+import { TextInput } from "@/components/group-creation/TextInput";
+
 interface CompanionNameInputProps {
   value: string;
   onChange: (value: string) => void;
@@ -16,16 +18,12 @@ export function CompanionNameInput({
   const { t } = useTranslation();
 
   return (
-    <input
-      type="text"
+    <TextInput
       value={value}
-      onChange={(e) =>
-        onChange(
-          e.target.value.replace(SPECIAL_CHARS_REGEX, "").slice(0, maxLength),
-        )
+      onChange={(v) =>
+        onChange(v.replace(SPECIAL_CHARS_REGEX, "").slice(0, maxLength))
       }
       placeholder={t("aidol:companionCreate.complete.namePlaceholder")}
-      className="input w-full bg-white text-black"
     />
   );
 }
