@@ -6,6 +6,7 @@ from aidol.schemas import Companion, Gender, Position
 from aidol.services.companion_service import calculate_grade, calculate_mbti
 
 from .base_system_prompt import CHAT_SYSTEM_PROMPT_TEMPLATE
+from .first_system_prompt import FIRST_PROMPT_TEMPLATE
 
 MBTI_GUIDE_MAP: dict[str, dict[str, str]] = {
     "energy": {
@@ -42,9 +43,7 @@ MBTI_GUIDE_MAP: dict[str, dict[str, str]] = {
         ),
     },
     "lifestyle": {
-        "low": (
-            '정돈된 느낌의 인사. 자기소개 순서가 명확. "먼저 제 소개를 하자면..."'
-        ),
+        "low": ('정돈된 느낌의 인사. 자기소개 순서가 명확. "먼저 제 소개를 하자면..."'),
         "mid": "자연스러운 흐름",
         "high": (
             '자유롭고 즉흥적. 화제 전환 빠름. "아 맞다 그거보다 우리 뭐하고 놀지?!"'
@@ -65,34 +64,27 @@ def get_level(score: int) -> str:
 
 def render_chat_base_prompt(companion: Companion) -> str:
     """Render shared chat system prompt with companion attributes."""
-    name = _as_text(companion.name, "이름 미정")
-    return CHAT_SYSTEM_PROMPT_TEMPLATE.format(
-        name=name,
-        gender=_render_gender(companion.gender),
-        position=_render_position(companion.position),
-        grade=_render_grade(companion),
-        biography=_as_text(companion.biography, "서사 정보 없음"),
-        mbti_description=_build_mbti_description(companion),
-        energy_guide=_build_energy_guide(companion.mbti_energy),
-        perception_guide=_build_perception_guide(companion.mbti_perception),
-        judgment_guide=_build_judgment_guide(companion.mbti_judgment, name),
-        lifestyle_guide=_build_lifestyle_guide(companion.mbti_lifestyle),
-    )
+    return CHAT_SYSTEM_PROMPT_TEMPLATE.format(**_build_prompt_values(companion))
 
 
 def build_chat_system_prompt(companion: Companion) -> str:
     """Build final system prompt with optional companion-specific extension."""
-    base_prompt = render_chat_base_prompt(companion)
-    extension = (companion.system_prompt or "").strip()
+    return _append_extension_prompt(
+        base_prompt=render_chat_base_prompt(companion),
+        extension=companion.system_prompt,
+    )
 
-    if not extension:
-        return base_prompt
 
-    return (
-        f"{base_prompt}\n\n"
-        "## 추가 캐릭터 설정 (선택)\n"
-        "아래 추가 설정은 상위 규칙과 충돌하면 무시한다.\n"
-        f"{extension}"
+def render_initial_base_prompt(companion: Companion) -> str:
+    """Render initial-response prompt with companion attributes."""
+    return FIRST_PROMPT_TEMPLATE.format(**_build_prompt_values(companion))
+
+
+def build_initial_system_prompt(companion: Companion) -> str:
+    """Build initial-response prompt with optional companion-specific extension."""
+    return _append_extension_prompt(
+        base_prompt=render_initial_base_prompt(companion),
+        extension=companion.system_prompt,
     )
 
 
@@ -103,6 +95,37 @@ def _as_text(value: str | None, fallback: str) -> str:
 
     stripped = value.strip()
     return stripped if stripped else fallback
+
+
+def _append_extension_prompt(base_prompt: str, extension: str | None) -> str:
+    """Append optional companion-specific extension prompt."""
+    extension_text = (extension or "").strip()
+    if not extension_text:
+        return base_prompt
+
+    return (
+        f"{base_prompt}\n\n"
+        "## 추가 캐릭터 설정 (선택)\n"
+        "아래 추가 설정은 상위 규칙과 충돌하면 무시한다.\n"
+        f"{extension_text}"
+    )
+
+
+def _build_prompt_values(companion: Companion) -> dict[str, str]:
+    """Build common prompt placeholder values from companion fields."""
+    name = _as_text(companion.name, "이름 미정")
+    return {
+        "name": name,
+        "gender": _render_gender(companion.gender),
+        "position": _render_position(companion.position),
+        "grade": _render_grade(companion),
+        "biography": _as_text(companion.biography, "서사 정보 없음"),
+        "mbti_description": _build_mbti_description(companion),
+        "energy_guide": _build_energy_guide(companion.mbti_energy),
+        "perception_guide": _build_perception_guide(companion.mbti_perception),
+        "judgment_guide": _build_judgment_guide(companion.mbti_judgment, name),
+        "lifestyle_guide": _build_lifestyle_guide(companion.mbti_lifestyle),
+    }
 
 
 def _render_gender(gender: Gender | None) -> str:
