@@ -27,10 +27,10 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
   ): Promise<ImageGenerationResponse> {
     const trimmed = request.prompt.trim();
     if (!trimmed) {
-      throw new Error("Prompt is required");
+      throw new Error("promptEmpty");
     }
     if (trimmed.length > 200) {
-      throw new Error("Prompt must be 200 characters or less");
+      throw new Error("promptTooLong");
     }
 
     const url = this.apiService.buildUrl(`${this.resource}/images`);
