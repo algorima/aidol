@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Final
+
 from aidol.schemas import Companion, Gender, Position
 from aidol.services.companion_service import calculate_grade, calculate_mbti
 
@@ -51,6 +53,15 @@ MBTI_GUIDE_MAP: dict[str, dict[str, str]] = {
             '자유롭고 즉흥적. 화제 전환 빠름. "아 맞다 그거보다 우리 뭐하고 놀지?!"'
         ),
     },
+}
+
+POSITION_MAP: Final[dict[Position, str]] = {
+    Position.MAIN_VOCAL: "메인보컬",
+    Position.SUB_VOCAL: "서브보컬",
+    Position.MAIN_DANCER: "메인댄서",
+    Position.SUB_DANCER: "서브댄서",
+    Position.MAIN_RAPPER: "메인래퍼",
+    Position.SUB_RAPPER: "서브래퍼",
 }
 
 
@@ -138,15 +149,7 @@ def _render_gender(gender: Gender | None) -> str:
 
 
 def _render_position(position: Position | None) -> str:
-    position_map = {
-        Position.MAIN_VOCAL: "메인보컬",
-        Position.SUB_VOCAL: "서브보컬",
-        Position.MAIN_DANCER: "메인댄서",
-        Position.SUB_DANCER: "서브댄서",
-        Position.MAIN_RAPPER: "메인래퍼",
-        Position.SUB_RAPPER: "서브래퍼",
-    }
-    return position_map.get(position, "포지션 미정")
+    return POSITION_MAP.get(position, "포지션 미정")
 
 
 def _render_grade(companion: Companion) -> str:
