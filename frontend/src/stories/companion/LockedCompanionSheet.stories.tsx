@@ -4,7 +4,7 @@ import { useState } from "react";
 import { LockedCompanionSheet } from "@/components/companion/LockedCompanionSheet";
 
 const meta: Meta<typeof LockedCompanionSheet> = {
-  title: "Companion/LockedCompanionSheet",
+  title: "Components/Companion/LockedCompanionSheet",
   component: LockedCompanionSheet,
   parameters: {
     layout: "fullscreen",
@@ -16,9 +16,11 @@ export default meta;
 type Story = StoryObj<typeof LockedCompanionSheet>;
 
 function SheetWrapper({
+  companionName = "루나",
   companionImageUrl,
   defaultOpen = false,
 }: {
+  companionName?: string;
   companionImageUrl?: string;
   defaultOpen?: boolean;
 }) {
@@ -37,7 +39,7 @@ function SheetWrapper({
       <LockedCompanionSheet
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        companionName="루나"
+        companionName={companionName}
         companionImageUrl={companionImageUrl}
       />
     </div>
@@ -46,9 +48,7 @@ function SheetWrapper({
 
 /** 프로필 이미지가 있는 기본 상태 */
 export const Default: Story = {
-  render: () => (
-    <SheetWrapper companionImageUrl="https://images.unsplash.com/photo-1740252117070-7aa2955b25f8?fm=jpg&q=60&w=3000&auto=format&fit=crop" />
-  ),
+  render: () => <SheetWrapper companionImageUrl="https://placehold.co/96x96" />,
 };
 
 /** 프로필 이미지 없이 UserIcon 폴백 */
@@ -59,9 +59,17 @@ export const WithoutImage: Story = {
 /** 열린 상태로 시작 */
 export const Open: Story = {
   render: () => (
+    <SheetWrapper defaultOpen companionImageUrl="https://placehold.co/96x96" />
+  ),
+};
+
+/** 받침 있는 이름 — "과" 조사 확인 */
+export const WithFinalConsonant: Story = {
+  render: () => (
     <SheetWrapper
       defaultOpen
-      companionImageUrl="https://images.unsplash.com/photo-1740252117070-7aa2955b25f8?fm=jpg&q=60&w=3000&auto=format&fit=crop"
+      companionName="서윤"
+      companionImageUrl="https://placehold.co/96x96"
     />
   ),
 };
