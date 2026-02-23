@@ -13,6 +13,8 @@ import { ChatroomRepository } from "@/repositories";
 import { Message, MessageStatus, SenderType } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
 
+const PAGE_SIZE = 100;
+
 interface ChatpageProps {
   params: { lang: string; chatroomId: string; companionId: string };
 }
@@ -21,6 +23,8 @@ export default function Chatpage({ params }: ChatpageProps) {
   const { chatroomId, companionId } = params;
   const [messages, setMessages] = useState<Message[] | undefined>(undefined);
   const [isTyping, setIsTyping] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const { t } = useTranslation("aidol");
   const { showToast } = useToast();
 
@@ -32,15 +36,37 @@ export default function Chatpage({ params }: ChatpageProps) {
   useEffect(() => {
     void (async () => {
       try {
-        const fetched = await chatroomRepo.getMessages(chatroomId);
+        const fetched = await chatroomRepo.getMessages(chatroomId, {
+          limit: PAGE_SIZE,
+        });
         setMessages(fetched);
+        if (fetched.length < PAGE_SIZE) setHasMore(false);
       } catch (error) {
         console.error("Failed to load messages:", error);
         showToast(t("common.error.load"), "error");
         setMessages([]);
+        setHasMore(false);
       }
     })();
   }, [chatroomId, chatroomRepo, showToast]);
+
+  const handleLoadMore = useCallback(async () => {
+    if (isLoadingMore) return;
+    setIsLoadingMore(true);
+    try {
+      const offset = messages?.length ?? 0;
+      const fetched = await chatroomRepo.getMessages(chatroomId, {
+        limit: PAGE_SIZE,
+        offset,
+      });
+      setMessages((prev) => [...(prev ?? []), ...fetched]);
+      if (fetched.length < PAGE_SIZE) setHasMore(false);
+    } catch (error) {
+      console.error("Failed to load more messages:", error);
+    } finally {
+      setIsLoadingMore(false);
+    }
+  }, [isLoadingMore, messages?.length, chatroomRepo, chatroomId]);
 
   const generateWithTyping = useCallback(async () => {
     const delay = (ms: number) =>
@@ -228,6 +254,9 @@ export default function Chatpage({ params }: ChatpageProps) {
         isTyping={isTyping}
         onResend={handleResend}
         onRetryGenerate={handleRetryGenerate}
+        onLoadMore={handleLoadMore}
+        hasMore={hasMore}
+        isLoadingMore={isLoadingMore}
       />
 
       <MessageInput onSubmit={handleSubmit} />

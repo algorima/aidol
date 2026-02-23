@@ -3,7 +3,7 @@
 import { ArrowPathIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
@@ -48,6 +48,9 @@ interface MessageListProps {
   isTyping?: boolean;
   onResend?: (message: Message) => void;
   onRetryGenerate?: (message: Message) => void;
+  onLoadMore?: () => void;
+  hasMore?: boolean;
+  isLoadingMore?: boolean;
 }
 
 /**
@@ -60,12 +63,35 @@ export function MessageList({
   isTyping = false,
   onResend,
   onRetryGenerate,
+  onLoadMore,
+  hasMore = false,
+  isLoadingMore = false,
 }: MessageListProps) {
   const { t } = useTranslation("aidol");
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const expanded = useMemo(
     () => (messages ? expandMessages(messages) : undefined),
     [messages],
   );
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    const root = scrollRef.current;
+    if (!sentinel || !root || !onLoadMore) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && hasMore && !isLoadingMore) {
+          onLoadMore();
+        }
+      },
+      { root, rootMargin: "200px" },
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [onLoadMore, hasMore, isLoadingMore]);
 
   if (!expanded) {
     return (
@@ -76,7 +102,10 @@ export function MessageList({
   }
 
   return (
-    <div className="bg-base-100 flex min-h-0 w-full flex-1 flex-col-reverse overflow-y-auto p-6">
+    <div
+      ref={scrollRef}
+      className="bg-base-100 flex min-h-0 w-full flex-1 flex-col-reverse overflow-y-auto p-6"
+    >
       <div className="mt-auto" />
       {isTyping &&
         (() => {
@@ -222,7 +251,8 @@ export function MessageList({
                         {(() => {
                           const d = new Date(message.createdAt);
                           const h = d.getHours();
-                          const period = h < 12 ? t("chat.time.am") : t("chat.time.pm");
+                          const period =
+                            h < 12 ? t("chat.time.am") : t("chat.time.pm");
                           return t("chat.time.format", {
                             period,
                             hour: String(h % 12 || 12),
@@ -238,6 +268,11 @@ export function MessageList({
           </div>
         );
       })}
+      {hasMore && (
+        <div ref={sentinelRef} className="flex justify-center py-4">
+          {isLoadingMore && <Loading />}
+        </div>
+      )}
     </div>
   );
 }
