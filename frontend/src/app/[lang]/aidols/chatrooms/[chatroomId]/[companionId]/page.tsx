@@ -9,8 +9,9 @@ import { MessageInput } from "@/client";
 import { ActivityBadge, CompanionAvatar } from "@/components";
 import { MessageList } from "@/components/chatroom/MessageList";
 import { getParticle } from "@/lib/koreanParticle";
-import { ChatroomRepository } from "@/repositories";
+import { ChatroomRepository, CompanionRepository } from "@/repositories";
 import { Message, MessageStatus, SenderType } from "@/schemas";
+import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
 const PAGE_SIZE = 100;
@@ -21,6 +22,7 @@ interface ChatpageProps {
 
 export default function Chatpage({ params }: ChatpageProps) {
   const { chatroomId, companionId } = params;
+  const [companion, setCompanion] = useState<Companion | null>(null);
   const [messages, setMessages] = useState<Message[] | undefined>(undefined);
   const [isTyping, setIsTyping] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -32,23 +34,39 @@ export default function Chatpage({ params }: ChatpageProps) {
     () => new ChatroomRepository(getApiService()),
     [],
   );
+  const companionRepo = useMemo(
+    () => new CompanionRepository(getApiService()),
+    [],
+  );
 
   useEffect(() => {
     void (async () => {
-      try {
-        const fetched = await chatroomRepo.getMessages(chatroomId, {
-          limit: PAGE_SIZE,
-        });
-        setMessages(fetched);
-        if (fetched.length < PAGE_SIZE) setHasMore(false);
-      } catch (error) {
-        console.error("Failed to load messages:", error);
+      const [, companionResult] = await Promise.allSettled([
+        (async () => {
+          try {
+            const fetched = await chatroomRepo.getMessages(chatroomId, {
+              limit: PAGE_SIZE,
+            });
+            setMessages(fetched);
+            if (fetched.length < PAGE_SIZE) setHasMore(false);
+          } catch (error) {
+            console.error("Failed to load messages:", error);
+            showToast(t("common.error.load"), "error");
+            setMessages([]);
+            setHasMore(false);
+          }
+        })(),
+        companionRepo.getOne({ id: companionId }),
+      ]);
+
+      if (companionResult.status === "fulfilled") {
+        setCompanion(companionResult.value.data);
+      } else {
+        console.error("Failed to load companion:", companionResult.reason);
         showToast(t("common.error.load"), "error");
-        setMessages([]);
-        setHasMore(false);
       }
     })();
-  }, [chatroomId, chatroomRepo, showToast]);
+  }, [chatroomId, chatroomRepo, companionId, companionRepo, showToast]);
 
   const handleLoadMore = useCallback(async () => {
     if (isLoadingMore) return;
@@ -227,30 +245,36 @@ export default function Chatpage({ params }: ChatpageProps) {
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="flex items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-2">
-          <ArrowLeftIcon className="text-base-content size-5" strokeWidth={2} />
+      <header className="flex items-center justify-between gap-1 px-6 py-4">
+        <div className="flex min-w-0 items-center gap-2">
+          <ArrowLeftIcon
+            className="text-base-content size-5 shrink-0"
+            strokeWidth={2}
+          />
           <CompanionAvatar
-            imageUrl="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop"
-            name="테오"
+            imageUrl={companion?.profilePictureUrl ?? undefined}
+            name={companion?.name ?? ""}
+            size="sm"
             active
           />
-          <span>테오</span>
+          <span className="truncate">{companion?.name ?? ""}</span>
         </div>
         <ActivityBadge activity="RESTING" />
       </header>
 
       <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">
-        {t("chat.greeting", {
-          name: "테오",
-          particle: getParticle("테오", "과", "와"),
-        })}
+        {companion?.name
+          ? t("chat.greeting", {
+              name: companion.name,
+              particle: getParticle(companion.name, "과", "와"),
+            })
+          : ""}
       </div>
 
       <MessageList
         messages={messages}
-        companionName="테오"
-        companionImageUrl="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop"
+        companionName={companion?.name ?? ""}
+        companionImageUrl={companion?.profilePictureUrl ?? undefined}
         isTyping={isTyping}
         onResend={handleResend}
         onRetryGenerate={handleRetryGenerate}
