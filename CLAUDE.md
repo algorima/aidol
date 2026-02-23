@@ -14,6 +14,27 @@
 - 오류 처리: 예상 오류 catch, 예상 외 throw
 - 불변 조건(DB에서 조회한 데이터의 필수 필드 등)은 `assert`로 검증
 
+## 로깅
+
+### 레벨 (3단계)
+
+**INFO** - 비즈니스 흐름 추적
+- API 호출/완료, DB 작업, 상태 변경
+- Backend/Mobile에서만 사용
+
+**WARNING** - 예상된 비정상
+- 설정 누락(폴백 가능), 외부 API 일부 실패(재시도)
+- 작업 계속되지만 관리자 확인 필요
+
+**ERROR/SEVERE** - 작업 실패
+- 필수 작업 실패, 예외 throw 직전 기록
+- Sentry: 자동 캡처 + 필요 시 수동 호출
+
+### ❌ 금지
+
+- **DEBUG 사용 금지**: 프로덕션 로그는 운영용. 개발 디버깅은 breakpoint/테스트 코드 사용
+- **Frontend에서 INFO 이상 로그 금지**: 에러만 `console.error()` + Sentry 사용
+
 ## 아키텍처 원칙
 
 - **Presentational** (`/components/**`): UI만 담당. API/전역상태/라우팅 금지. i18n(useTranslation)은 허용.

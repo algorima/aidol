@@ -355,5 +355,23 @@
   "inbox": {
     "header": "Trò chuyện",
     "beta": "BETA"
+  },
+  "chat": {
+    "comingSoon": "Cuộc trò chuyện với {{name}}\nsắp được mở!",
+    "unlockHint": "Thân hơn với {{name}} để gặp các thành viên khác 💖",
+    "greeting": "Trò chuyện thoải mái với {{name}}!",
+    "placeholder": "Nhập tin nhắn",
+    "confirm": "OK",
+    "typing": "Đang nhập...",
+    "thinkingLong": "Cần thêm chút thời gian để suy nghĩ 🥺",
+    "reload": "Tải lại",
+    "resend": "Gửi lại",
+    "time": {
+      "justNow": "Vừa xong",
+      "minutesAgo": "{{count}} phút trước",
+      "hoursAgo": "{{count}} giờ trước",
+      "am": "SA",
+      "pm": "CH"
+    }
   }
 }
