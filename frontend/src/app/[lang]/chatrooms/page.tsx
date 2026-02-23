@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { InboxBlock } from "@/components/inbox";
 import { getCurrentActivity } from "@/lib/activity";
+import { getRelativeTime } from "@/lib/date";
 
 // TODO: API 연동 시 교체
 const MOCK_CHATROOMS = [
@@ -16,7 +17,7 @@ const MOCK_CHATROOMS = [
     imageUrl: "https://placehold.co/96x96",
     active: true,
     lastMessage: "안녕하세요! 오늘 컨디션은 어때요?",
-    lastMessageAt: "오후 2:30",
+    lastMessageAt: new Date(Date.now() - 30 * 1000).toISOString(),
   },
   {
     id: "2",
@@ -24,7 +25,7 @@ const MOCK_CHATROOMS = [
     imageUrl: "https://placehold.co/96x96",
     active: false,
     lastMessage: "다음에 또 이야기해요!",
-    lastMessageAt: "어제",
+    lastMessageAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
   },
   {
     id: "3",
@@ -87,7 +88,14 @@ export default function InboxPage() {
             active={room.active}
             activity={room.active ? activity : undefined}
             lastMessage={room.lastMessage}
-            lastMessageAt={room.lastMessageAt}
+            lastMessageAt={
+              room.lastMessageAt
+                ? (() => {
+                    const rel = getRelativeTime(room.lastMessageAt);
+                    return rel ? t(rel.key, rel.params) : null;
+                  })()
+                : null
+            }
             onClick={() => handleRoomClick(room.id)}
           />
         ))}
