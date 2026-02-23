@@ -18,8 +18,8 @@ export function MessageInput({ onSubmit }: MessageInputProps) {
   const handleSubmit = async (e?: FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
     if (message.trim()) {
-      await onSubmit(message);
       setMessage("");
+      await onSubmit(message);
     }
   };
 

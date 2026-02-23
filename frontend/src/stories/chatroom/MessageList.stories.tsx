@@ -97,6 +97,24 @@ export const Error: Story = {
   },
 };
 
+/** AI 응답 생성 실패 */
+export const ErrorAI: Story = {
+  args: {
+    messages: [
+      ...MOCK_MESSAGES,
+      {
+        id: "5",
+        senderType: SenderType.COMPANION,
+        content: "",
+        createdAt: "2026-02-17T10:02:00Z",
+        status: MessageStatus.ERROR,
+      },
+    ],
+    companionName: "테오",
+    companionImageUrl: SAMPLE_IMAGE,
+  },
+};
+
 /** 작성중 표시 — AI가 연속으로 답하는 중 */
 export const Typing: Story = {
   args: {

@@ -39,6 +39,51 @@ export default function Chatpage({ params }: ChatpageProps) {
     })();
   }, [chatroomId, chatroomRepo, showToast]);
 
+  const generateWithTyping = useCallback(async () => {
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
+
+    try {
+      const response = chatroomRepo.generateResponse(chatroomId, companionId);
+
+      setIsTyping(true);
+      const [generated] = await Promise.all([response, delay(3000)]);
+      const createdAt = new Date().toISOString();
+      const paragraphs = generated.content.split("\n\n");
+      const bubbles =
+        paragraphs.length <= 3
+          ? paragraphs
+          : [...paragraphs.slice(0, 2), paragraphs.slice(2).join(" ")];
+
+      for (let i = 0; i < bubbles.length; i++) {
+        if (i !== 0) {
+          setIsTyping(true);
+          await delay(3000);
+        }
+
+        const aiMessage: Message = {
+          id: `${generated.messageId}_${i}`,
+          senderType: SenderType.COMPANION,
+          content: bubbles[i],
+          createdAt,
+        };
+        setMessages((prev) => [aiMessage, ...(prev ?? [])]);
+        setIsTyping(false);
+      }
+    } catch (error) {
+      console.error("Failed to generate AI response:", error);
+      setIsTyping(false);
+      const errorMessage: Message = {
+        id: `error_${Date.now()}`,
+        senderType: SenderType.COMPANION,
+        content: "",
+        createdAt: new Date().toISOString(),
+        status: MessageStatus.ERROR,
+      };
+      setMessages((prev) => [errorMessage, ...(prev ?? [])]);
+    }
+  }, [chatroomId, companionId, chatroomRepo]);
+
   const sendAndGenerate = useCallback(
     async (content: string, tempId: string) => {
       try {
@@ -60,42 +105,67 @@ export default function Chatpage({ params }: ChatpageProps) {
         return;
       }
 
-      try {
-        const response = chatroomRepo.generateResponse(chatroomId, companionId);
+      await generateWithTyping();
+    },
+    [chatroomId, chatroomRepo, generateWithTyping],
+  );
 
+  const handleRetryGenerate = useCallback(
+    (errorMsg: Message) => {
+      setMessages((prev) =>
+        prev?.map((m) =>
+          m.id === errorMsg.id ? { ...m, status: MessageStatus.SENDING } : m,
+        ),
+      );
+
+      const retry = async () => {
         const delay = (ms: number) =>
           new Promise((resolve) => setTimeout(resolve, ms));
 
-        setIsTyping(true);
-        const [generated] = await Promise.all([response, delay(3000)]);
-        const createdAt = new Date().toISOString();
-        const paragraphs = generated.content.split("\n\n");
-        const bubbles =
-          paragraphs.length <= 3
-            ? paragraphs
-            : [...paragraphs.slice(0, 2), paragraphs.slice(2).join(" ")];
+        try {
+          const response = chatroomRepo.generateResponse(
+            chatroomId,
+            companionId,
+          );
+          const [generated] = await Promise.all([response, delay(3000)]);
 
-        for (let i = 0; i < bubbles.length; i++) {
-          if (i !== 0) {
-            setIsTyping(true);
-            await delay(3000);
+          setMessages((prev) => prev?.filter((m) => m.id !== errorMsg.id));
+
+          const createdAt = new Date().toISOString();
+          const paragraphs = generated.content.split("\n\n");
+          const bubbles =
+            paragraphs.length <= 3
+              ? paragraphs
+              : [...paragraphs.slice(0, 2), paragraphs.slice(2).join(" ")];
+
+          for (let i = 0; i < bubbles.length; i++) {
+            if (i !== 0) {
+              setIsTyping(true);
+              await delay(3000);
+            }
+
+            const aiMessage: Message = {
+              id: `${generated.messageId}_${i}`,
+              senderType: SenderType.COMPANION,
+              content: bubbles[i],
+              createdAt,
+            };
+            setMessages((prev) => [aiMessage, ...(prev ?? [])]);
+            setIsTyping(false);
           }
-
-          const aiMessage: Message = {
-            id: `${generated.messageId}_${i}`,
-            senderType: SenderType.COMPANION,
-            content: bubbles[i],
-            createdAt,
-          };
-          setMessages((prev) => [...(prev ?? []), aiMessage]);
-          setIsTyping(false);
+        } catch (error) {
+          console.error("Failed to generate AI response:", error);
+          setMessages((prev) =>
+            prev?.map((m) =>
+              m.id === errorMsg.id ? { ...m, status: MessageStatus.ERROR } : m,
+            ),
+          );
         }
-      } catch (error) {
-        console.error("Failed to generate AI response:", error);
-        showToast("AI 응답 생성에 실패했습니다", "error");
-      }
+      };
+
+      void retry();
     },
-    [chatroomId, companionId, chatroomRepo, showToast],
+    [chatroomId, companionId, chatroomRepo],
   );
 
   const handleResend = useCallback(
@@ -120,7 +190,7 @@ export default function Chatpage({ params }: ChatpageProps) {
         createdAt: new Date().toISOString(),
         status: MessageStatus.SENDING,
       };
-      setMessages((prev) => [...(prev ?? []), optimisticMessage]);
+      setMessages((prev) => [optimisticMessage, ...(prev ?? [])]);
       await sendAndGenerate(content, tempId);
     },
     [sendAndGenerate],
@@ -151,6 +221,7 @@ export default function Chatpage({ params }: ChatpageProps) {
         companionImageUrl="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop"
         isTyping={isTyping}
         onResend={handleResend}
+        onRetryGenerate={handleRetryGenerate}
       />
 
       <MessageInput onSubmit={handleSubmit} />
