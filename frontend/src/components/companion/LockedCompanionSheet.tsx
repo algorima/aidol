@@ -58,7 +58,7 @@ export function LockedCompanionSheet({
         <button
           type="button"
           onClick={onClose}
-          className="btn btn-primary text-label-l h-auto w-full rounded-lg !py-4"
+          className="btn btn-primary text-label-l h-auto w-full rounded-lg py-4!"
         >
           {t("common.confirm")}
         </button>
