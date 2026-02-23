@@ -12,6 +12,8 @@ import remarkGfm from "remark-gfm";
 import { Message, MessageStatus, SenderType } from "../../schemas";
 import { Loading } from "../Loading";
 
+import { ErrorBubble } from "./ErrorBubble";
+
 const MAX_BUBBLES = 3;
 
 /**
@@ -192,24 +194,10 @@ export function MessageList({
                 </span>
               )}
               {isCompanionError || isCompanionRetrying ? (
-                <div className="border-base-400 bg-base-200 flex max-w-[200px] flex-col gap-2 rounded-lg border p-2">
-                  <span className="text-body-s text-base-content">
-                    {isCompanionRetrying
-                      ? t("chat.typing")
-                      : t("chat.thinkingLong")}
-                  </span>
-                  <button
-                    className="bg-base-300 text-label-l text-base-content flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg p-1.5 shadow-sm"
-                    onClick={() => onRetryGenerate?.(message)}
-                    disabled={isCompanionRetrying}
-                  >
-                    {isCompanionRetrying ? (
-                      <span className="loading loading-spinner loading-sm text-primary" />
-                    ) : (
-                      t("chat.reload")
-                    )}
-                  </button>
-                </div>
+                <ErrorBubble
+                  isRetrying={isCompanionRetrying}
+                  onRetry={() => onRetryGenerate?.(message)}
+                />
               ) : (
                 <div
                   className={clsx("flex items-end gap-1", {
