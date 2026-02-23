@@ -117,6 +117,12 @@
     "tab": {
       "profile": "프로필",
       "stats": "능력치"
+    },
+    "activity": {
+      "RESTING": "휴식 중",
+      "PRACTICING": "연습 중",
+      "SHORT_BREAK": "잠깐 휴식 중",
+      "RESTING_AT_HOME": "집에서 휴식 중"
     }
   },
   "aidol": {
@@ -349,6 +355,24 @@
       "startsAt": "<highlight>{{intimacy}}%</highlight>에서 시작",
       "relationshipNickname": "관계 별칭",
       "nicknamePlaceholder": "예)동갑즈, 멍멍즈"
+    }
+  },
+  "chat": {
+    "comingSoon": "{{name}}{{particle}}의 대화는\n곧 열릴 예정이에요!",
+    "unlockHint": "{{name}}{{particle}} 더 친해지면 다른 멤버들도 만날 수 있어요💖",
+    "greeting": "{{name}}{{particle}} 자유롭게 대화 나눠보세요!",
+    "placeholder": "내용을 입력하세요",
+    "confirm": "확인",
+    "typing": "작성중...",
+    "thinkingLong": "생각이 조금 길어졌어요🥺",
+    "reload": "다시 불러오기",
+    "resend": "재전송",
+    "time": {
+      "justNow": "방금 전",
+      "minutesAgo": "{{count}}분 전",
+      "hoursAgo": "{{count}}시간 전",
+      "am": "오전",
+      "pm": "오후"
     }
   }
 }
