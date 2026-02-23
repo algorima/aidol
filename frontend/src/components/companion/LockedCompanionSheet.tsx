@@ -24,9 +24,9 @@ export function LockedCompanionSheet({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} position="bottom">
-      <div className="flex flex-col items-center gap-6 px-6 pt-12 pb-6">
+      <div className="flex flex-col items-center gap-6 pt-6">
         {/* 잠금 아바타 */}
-        <div className="relative size-12 overflow-hidden rounded-lg">
+        <div className="relative size-20 overflow-hidden rounded-lg">
           {companionImageUrl ? (
             <Image
               src={companionImageUrl}
@@ -36,11 +36,11 @@ export function LockedCompanionSheet({
             />
           ) : (
             <div className="bg-base-300 flex size-full items-center justify-center">
-              <UserIcon className="text-base-content/50 size-6" />
+              <UserIcon className="text-base-content/50 size-10" />
             </div>
           )}
           <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-            <LockClosedIcon className="size-6 text-white" />
+            <LockClosedIcon className="size-8 text-white" />
           </div>
         </div>
 
@@ -58,7 +58,7 @@ export function LockedCompanionSheet({
         <button
           type="button"
           onClick={onClose}
-          className="btn btn-primary text-label-l w-full rounded-lg shadow-[0_0_4px_0_rgba(0,0,0,0.1)]"
+          className="btn btn-primary text-label-l w-full rounded-lg !py-4"
         >
           {t("common.confirm")}
         </button>
