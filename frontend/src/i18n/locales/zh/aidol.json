@@ -367,7 +367,8 @@
       "minutesAgo": "{{count}}分钟前",
       "hoursAgo": "{{count}}小时前",
       "am": "上午",
-      "pm": "下午"
+      "pm": "下午",
+      "format": "{{period}} {{hour}}:{{minute}}"
     }
   }
 }

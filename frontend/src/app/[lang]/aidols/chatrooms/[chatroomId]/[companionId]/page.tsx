@@ -2,11 +2,13 @@
 
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
 import { MessageInput } from "@/client";
 import { ActivityBadge, CompanionAvatar } from "@/components";
 import { MessageList } from "@/components/chatroom/MessageList";
+import { getParticle } from "@/lib/koreanParticle";
 import { ChatroomRepository } from "@/repositories";
 import { Message, MessageStatus, SenderType } from "@/schemas";
 import { getApiService } from "@/services/ApiService";
@@ -19,6 +21,7 @@ export default function Chatpage({ params }: ChatpageProps) {
   const { chatroomId, companionId } = params;
   const [messages, setMessages] = useState<Message[] | undefined>(undefined);
   const [isTyping, setIsTyping] = useState(false);
+  const { t } = useTranslation("aidol");
   const { showToast } = useToast();
 
   const chatroomRepo = useMemo(
@@ -33,7 +36,7 @@ export default function Chatpage({ params }: ChatpageProps) {
         setMessages(fetched);
       } catch (error) {
         console.error("Failed to load messages:", error);
-        showToast("메시지를 불러오지 못했습니다", "error");
+        showToast(t("common.error.load"), "error");
         setMessages([]);
       }
     })();
@@ -212,7 +215,10 @@ export default function Chatpage({ params }: ChatpageProps) {
       </header>
 
       <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">
-        태오와 자유롭게 대화 나눠보세요!
+        {t("chat.greeting", {
+          name: "테오",
+          particle: getParticle("테오", "과", "와"),
+        })}
       </div>
 
       <MessageList

@@ -4,6 +4,7 @@ import { ArrowPathIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Image from "next/image";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
@@ -60,6 +61,7 @@ export function MessageList({
   onResend,
   onRetryGenerate,
 }: MessageListProps) {
+  const { t } = useTranslation("aidol");
   const expanded = useMemo(
     () => (messages ? expandMessages(messages) : undefined),
     [messages],
@@ -106,7 +108,7 @@ export function MessageList({
                   </span>
                 )}
                 <div className="text-body-s bg-base-400 text-base-content w-fit rounded-lg p-2">
-                  작성중...
+                  {t("chat.typing")}
                 </div>
               </div>
             </div>
@@ -164,8 +166,8 @@ export function MessageList({
                 <div className="border-base-400 bg-base-200 flex max-w-[200px] flex-col gap-2 rounded-lg border p-2">
                   <span className="text-body-s text-base-content">
                     {isCompanionRetrying
-                      ? "작성중..."
-                      : "생각이 조금 길어졌어요🥺"}
+                      ? t("chat.typing")
+                      : t("chat.thinkingLong")}
                   </span>
                   <button
                     className="bg-base-300 text-label-l text-base-content flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg p-1.5 shadow-sm"
@@ -175,7 +177,7 @@ export function MessageList({
                     {isCompanionRetrying ? (
                       <span className="loading loading-spinner loading-sm text-primary" />
                     ) : (
-                      "다시 불러오기"
+                      t("chat.reload")
                     )}
                   </button>
                 </div>
@@ -210,17 +212,23 @@ export function MessageList({
                       onClick={() => onResend?.(message)}
                     >
                       <ArrowPathIcon className="size-4" />
-                      <span className="text-label-s">재전송</span>
+                      <span className="text-label-s">{t("chat.resend")}</span>
                     </button>
                   ) : message.status === MessageStatus.SENDING ? (
                     <PaperAirplaneIcon className="text-base-400 size-4 rotate-180" />
                   ) : (
                     isFirstByMinute && (
                       <span className="text-label-s text-base-content/50">
-                        {new Date(message.createdAt).toLocaleTimeString("ko", {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
+                        {(() => {
+                          const d = new Date(message.createdAt);
+                          const h = d.getHours();
+                          const period = h < 12 ? t("chat.time.am") : t("chat.time.pm");
+                          return t("chat.time.format", {
+                            period,
+                            hour: String(h % 12 || 12),
+                            minute: String(d.getMinutes()).padStart(2, "0"),
+                          });
+                        })()}
                       </span>
                     )
                   )}

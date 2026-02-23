@@ -367,7 +367,8 @@
       "minutesAgo": "{{count}}分前",
       "hoursAgo": "{{count}}時間前",
       "am": "午前",
-      "pm": "午後"
+      "pm": "午後",
+      "format": "{{period}} {{hour}}:{{minute}}"
     }
   }
 }

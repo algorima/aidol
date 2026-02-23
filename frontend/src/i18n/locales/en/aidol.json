@@ -367,7 +367,8 @@
       "minutesAgo": "{{count}}m ago",
       "hoursAgo": "{{count}}h ago",
       "am": "AM",
-      "pm": "PM"
+      "pm": "PM",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

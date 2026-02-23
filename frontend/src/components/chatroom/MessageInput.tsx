@@ -2,6 +2,7 @@
 
 import { ArrowUpIcon } from "@heroicons/react/24/outline";
 import { FormEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { TextInput } from "../group-creation/TextInput";
 
@@ -13,6 +14,7 @@ interface MessageInputProps {
  * A reusable message input component for sending messages.
  */
 export function MessageInput({ onSubmit }: MessageInputProps) {
+  const { t } = useTranslation("aidol");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e?: FormEvent<HTMLFormElement>) => {
@@ -32,7 +34,7 @@ export function MessageInput({ onSubmit }: MessageInputProps) {
         <TextInput
           value={message}
           onChange={setMessage}
-          placeholder="Enter your message..."
+          placeholder={t("chat.placeholder")}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
