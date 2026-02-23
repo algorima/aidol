@@ -13,6 +13,7 @@ from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings, OpenAIAPISettings
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from humps import camelize
+from litellm import BadRequestError, RateLimitError, ServiceUnavailableError
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -204,7 +205,8 @@ class ChatroomRouter(
         service = ResponseGenerationService(provider, model_settings)
         try:
             return service.generate_response(context)
-        except Exception as exc:
+        # Catch expected LLM provider failures only.
+        except (BadRequestError, RateLimitError, ServiceUnavailableError) as exc:
             status_code = _resolve_llm_status_code(exc)
             logger.error(
                 "AI response generation failed | chatroom_id=%s companion_id=%s provider=%s model=%s status_code=%s error=%s",
@@ -218,7 +220,10 @@ class ChatroomRouter(
             )
             raise HTTPException(
                 status_code=status_code,
-                detail=str(exc),
+                detail=self._error_detail(
+                    code=type(exc).__name__,
+                    detail=str(exc),
+                ),
             ) from exc
 
     def _save_companion_message(
