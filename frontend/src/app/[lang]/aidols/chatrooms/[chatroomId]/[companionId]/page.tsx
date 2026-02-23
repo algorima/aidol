@@ -86,15 +86,13 @@ export default function Chatpage({ params }: ChatpageProps) {
     }
   }, [isLoadingMore, messages?.length, chatroomRepo, chatroomId]);
 
-  const generateWithTyping = useCallback(async () => {
-    const delay = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms));
+  const delay = useCallback(
+    (ms: number) => new Promise((resolve) => setTimeout(resolve, ms)),
+    [],
+  );
 
-    try {
-      const response = chatroomRepo.generateResponse(chatroomId, companionId);
-
-      setIsTyping(true);
-      const [generated] = await Promise.all([response, delay(3000)]);
+  const displayBubbles = useCallback(
+    async (generated: { messageId: string; content: string }) => {
       const createdAt = new Date().toISOString();
       const paragraphs = generated.content.split("\n\n");
       const bubbles =
@@ -117,6 +115,16 @@ export default function Chatpage({ params }: ChatpageProps) {
         setMessages((prev) => [aiMessage, ...(prev ?? [])]);
         setIsTyping(false);
       }
+    },
+    [delay],
+  );
+
+  const generateWithTyping = useCallback(async () => {
+    try {
+      const response = chatroomRepo.generateResponse(chatroomId, companionId);
+      setIsTyping(true);
+      const [generated] = await Promise.all([response, delay(3000)]);
+      await displayBubbles(generated);
     } catch (error) {
       console.error("Failed to generate AI response:", error);
       setIsTyping(false);
@@ -129,7 +137,7 @@ export default function Chatpage({ params }: ChatpageProps) {
       };
       setMessages((prev) => [errorMessage, ...(prev ?? [])]);
     }
-  }, [chatroomId, companionId, chatroomRepo]);
+  }, [chatroomId, companionId, chatroomRepo, delay, displayBubbles]);
 
   const sendAndGenerate = useCallback(
     async (content: string, tempId: string) => {
@@ -166,40 +174,14 @@ export default function Chatpage({ params }: ChatpageProps) {
       );
 
       const retry = async () => {
-        const delay = (ms: number) =>
-          new Promise((resolve) => setTimeout(resolve, ms));
-
         try {
           const response = chatroomRepo.generateResponse(
             chatroomId,
             companionId,
           );
           const [generated] = await Promise.all([response, delay(3000)]);
-
           setMessages((prev) => prev?.filter((m) => m.id !== errorMsg.id));
-
-          const createdAt = new Date().toISOString();
-          const paragraphs = generated.content.split("\n\n");
-          const bubbles =
-            paragraphs.length <= 3
-              ? paragraphs
-              : [...paragraphs.slice(0, 2), paragraphs.slice(2).join(" ")];
-
-          for (let i = 0; i < bubbles.length; i++) {
-            if (i !== 0) {
-              setIsTyping(true);
-              await delay(3000);
-            }
-
-            const aiMessage: Message = {
-              id: `${generated.messageId}_${i}`,
-              senderType: SenderType.COMPANION,
-              content: bubbles[i],
-              createdAt,
-            };
-            setMessages((prev) => [aiMessage, ...(prev ?? [])]);
-            setIsTyping(false);
-          }
+          await displayBubbles(generated);
         } catch (error) {
           console.error("Failed to generate AI response:", error);
           setMessages((prev) =>
@@ -212,7 +194,7 @@ export default function Chatpage({ params }: ChatpageProps) {
 
       void retry();
     },
-    [chatroomId, companionId, chatroomRepo],
+    [chatroomId, companionId, chatroomRepo, delay, displayBubbles],
   );
 
   const handleResend = useCallback(
