@@ -14,8 +14,7 @@ const meta: Meta<typeof InboxBlock> = {
 export default meta;
 type Story = StoryObj<typeof InboxBlock>;
 
-const sampleImage =
-  "https://images.unsplash.com/photo-1740252117070-7aa2955b25f8?fm=jpg&q=60&w=3000&auto=format&fit=crop";
+const sampleImage = "https://placehold.co/96x96";
 
 export const Active: Story = {
   args: {

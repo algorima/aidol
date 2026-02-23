@@ -53,7 +53,7 @@ export function InboxBlock({
         </div>
 
         {lastMessage && (
-          <span className="text-body-s text-base-content w-full truncate opacity-50">
+          <span className="text-body-s text-base-content w-full truncate text-left opacity-50">
             {lastMessage}
           </span>
         )}

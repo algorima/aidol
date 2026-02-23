@@ -13,8 +13,7 @@ const MOCK_CHATROOMS = [
   {
     id: "1",
     name: "데프레임",
-    imageUrl:
-      "https://images.unsplash.com/photo-1740252117070-7aa2955b25f8?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    imageUrl: "https://placehold.co/96x96",
     active: true,
     lastMessage: "안녕하세요! 오늘 컨디션은 어때요?",
     lastMessageAt: "오후 2:30",
@@ -22,8 +21,7 @@ const MOCK_CHATROOMS = [
   {
     id: "2",
     name: "스타라이트",
-    imageUrl:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?fm=jpg&q=60&w=3000&auto=format&fit=crop",
+    imageUrl: "https://placehold.co/96x96",
     active: false,
     lastMessage: "다음에 또 이야기해요!",
     lastMessageAt: "어제",
