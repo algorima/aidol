@@ -29,6 +29,14 @@ const MOCK_CHATROOMS = [
   },
   {
     id: "3",
+    name: "루미너스",
+    imageUrl: "https://placehold.co/96x96",
+    active: false,
+    lastMessage: "내일 연습 때 봐요!",
+    lastMessageAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: "4",
     name: "드리머즈",
     imageUrl: null,
     active: false,
@@ -92,7 +100,10 @@ export default function InboxPage() {
               room.lastMessageAt
                 ? (() => {
                     const rel = getRelativeTime(room.lastMessageAt);
-                    return rel ? t(rel.key, rel.params) : null;
+                    if (!rel) return null;
+                    if (rel.formattedTime)
+                      return `${t(rel.key)} ${rel.formattedTime}`;
+                    return t(rel.key, rel.params);
                   })()
                 : null
             }

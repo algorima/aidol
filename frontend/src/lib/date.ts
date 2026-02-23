@@ -10,13 +10,18 @@ export const formatDate = (dateStr: string) => {
 export interface RelativeTime {
   key: string;
   params?: { count: number };
+  /** 24시간 이상일 때 "오후 2:30" 형태의 절대 시간 */
+  formattedTime?: string;
 }
 
 /**
  * Returns an i18n key + params for relative time display.
  * - < 1 min → chat.time.justNow
  * - < 60 min → chat.time.minutesAgo { count }
- * - otherwise → chat.time.hoursAgo { count }
+ * - < 24 hours → chat.time.hoursAgo { count }
+ * - >= 24 hours → chat.time.am/pm + formattedTime
+ *
+ * 24시간 이상: caller에서 `${t(result.key)} ${result.formattedTime}` 으로 조합
  */
 export const getRelativeTime = (
   dateStr: string,
@@ -33,7 +38,15 @@ export const getRelativeTime = (
     return { key: "chat.time.minutesAgo", params: { count: diffMin } };
 
   const diffHour = Math.floor(diffMin / 60);
-  return { key: "chat.time.hoursAgo", params: { count: diffHour } };
+  if (diffHour < 24)
+    return { key: "chat.time.hoursAgo", params: { count: diffHour } };
+
+  const hours = date.getHours();
+  const ampmKey = hours < 12 ? "chat.time.am" : "chat.time.pm";
+  const displayHour = hours % 12 || 12;
+  const minute = String(date.getMinutes()).padStart(2, "0");
+
+  return { key: ampmKey, formattedTime: `${displayHour}:${minute}` };
 };
 
 export const getDaysSince = (dateStr: string) => {
