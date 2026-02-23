@@ -40,13 +40,8 @@ export function InboxBlock({
             </span>
             {active && activity && <ActivityBadge activity={activity} />}
           </div>
-          {lastMessageAt && (
-            <span
-              className={clsx(
-                "text-label-m text-base-content shrink-0",
-                active ? "opacity-50" : "opacity-0",
-              )}
-            >
+          {active && lastMessageAt && (
+            <span className="text-label-m text-base-content shrink-0 opacity-50">
               {lastMessageAt}
             </span>
           )}

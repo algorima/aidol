@@ -64,6 +64,17 @@ export default function InboxPage() {
     [params.lang, router],
   );
 
+  const formatLastMessageAt = useCallback(
+    (dateStr: string | null) => {
+      if (!dateStr) return null;
+      const rel = getRelativeTime(dateStr);
+      if (!rel) return null;
+      if (rel.formattedTime) return `${t(rel.key)} ${rel.formattedTime}`;
+      return t(rel.key, rel.params);
+    },
+    [t],
+  );
+
   return (
     <div className="bg-base-100 flex min-h-dvh flex-col">
       {/* Inline header — Figma: back + title + BETA badge in same row */}
@@ -96,17 +107,7 @@ export default function InboxPage() {
             active={room.active}
             activity={room.active ? activity : undefined}
             lastMessage={room.lastMessage}
-            lastMessageAt={
-              room.lastMessageAt
-                ? (() => {
-                    const rel = getRelativeTime(room.lastMessageAt);
-                    if (!rel) return null;
-                    if (rel.formattedTime)
-                      return `${t(rel.key)} ${rel.formattedTime}`;
-                    return t(rel.key, rel.params);
-                  })()
-                : null
-            }
+            lastMessageAt={formatLastMessageAt(room.lastMessageAt)}
             onClick={() => handleRoomClick(room.id)}
           />
         ))}

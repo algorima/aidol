@@ -31,8 +31,9 @@ export const getRelativeTime = (
   if (isNaN(date.getTime())) return null;
 
   const diffMs = now.getTime() - date.getTime();
-  const diffMin = Math.floor(diffMs / (1000 * 60));
+  if (diffMs < 0) return { key: "chat.time.justNow" };
 
+  const diffMin = Math.floor(diffMs / (1000 * 60));
   if (diffMin < 1) return { key: "chat.time.justNow" };
   if (diffMin < 60)
     return { key: "chat.time.minutesAgo", params: { count: diffMin } };
