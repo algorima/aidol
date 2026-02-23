@@ -111,8 +111,8 @@
     "signed": "계약 완료 🥺",
     "grade": "{{grade}} 등급",
     "locked": {
-      "title": "{{name}}과의 대화는 곧 열릴 예정이에요!",
-      "subtitle": "{{name}}과 더 친해지면 다른 멤버들도 만들 수 있어요💖"
+      "title": "{{name}}{{particle}}의 대화는 곧 열릴 예정이에요!",
+      "subtitle": "{{name}}{{particle}} 더 친해지면 다른 멤버들도 만들 수 있어요💖"
     },
     "tab": {
       "profile": "프로필",

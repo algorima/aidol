@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 import { Modal } from "@/components/Modal";
+import { getParticle } from "@/lib/koreanParticle";
 
 interface LockedCompanionSheetProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ export function LockedCompanionSheet({
   companionImageUrl,
 }: LockedCompanionSheetProps) {
   const { t } = useTranslation("aidol");
+  const particle = getParticle(companionName, "과", "와");
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} position="bottom">
@@ -45,10 +47,10 @@ export function LockedCompanionSheet({
         {/* 텍스트 */}
         <div className="flex flex-col items-center gap-2">
           <p className="text-title-s text-base-content text-center">
-            {t("companion.locked.title", { name: companionName })}
+            {t("companion.locked.title", { name: companionName, particle })}
           </p>
           <p className="text-body-s text-base-content/50 text-center">
-            {t("companion.locked.subtitle", { name: companionName })}
+            {t("companion.locked.subtitle", { name: companionName, particle })}
           </p>
         </div>
 
@@ -56,7 +58,7 @@ export function LockedCompanionSheet({
         <button
           type="button"
           onClick={onClose}
-          className="btn btn-primary text-label-l w-full rounded-lg shadow-sm"
+          className="btn btn-primary text-label-l w-full rounded-lg shadow-[0_0_4px_0_rgba(0,0,0,0.1)]"
         >
           {t("common.confirm")}
         </button>
