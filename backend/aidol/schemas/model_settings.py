@@ -24,6 +24,10 @@ class ModelSettingsBase(BaseModel):
     frequency_penalty: float = Field(
         default=0.0, description="Frequency penalty (-2.0-2.0)"
     )
+    reasoning_effort: str | None = Field(
+        default=None,
+        description="Reasoning effort level for supported models (e.g., low/medium/high)",
+    )
 
 
 class ModelSettings(ModelSettingsBase):
