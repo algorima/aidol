@@ -10,10 +10,9 @@ from datetime import datetime, timedelta
 from unittest.mock import MagicMock, patch
 from zoneinfo import ZoneInfo
 
-from aidol.context import format_datetime_korean, format_utc_offset
+from aidol.context import Persona, format_datetime_korean, format_utc_offset
 from aidol.context.builder import MessageContextBuilder
 from aidol.providers.llm import ProviderConstraints
-from aidol.schemas import Persona
 
 
 class TestFormatUtcOffset(unittest.TestCase):

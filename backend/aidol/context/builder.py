@@ -11,9 +11,9 @@ from datetime import datetime, timedelta
 from typing import Self
 from zoneinfo import ZoneInfo
 
+from aidol.context.persona import Persona
 from aidol.providers.llm import ProviderConstraints
 from aidol.providers.llm.messages import HumanMessage, LLMMessage, SystemMessage
-from aidol.schemas import Persona
 
 logger = logging.getLogger(__name__)
 
