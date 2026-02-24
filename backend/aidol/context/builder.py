@@ -186,10 +186,8 @@ def _render_position(position: Position | None) -> str:
     return POSITION_MAP.get(position, "포지션 미정")
 
 
-def _render_grade(grade: Grade | None) -> str:
-    """Render grade value or fallback."""
-    if grade is None:
-        return "미정"
+def _render_grade(grade: Grade) -> str:
+    """Render grade value."""
     return grade.value
 
 

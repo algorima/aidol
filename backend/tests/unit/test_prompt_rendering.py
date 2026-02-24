@@ -89,7 +89,6 @@ class TestPromptRendering(unittest.TestCase):
         persona.name = "   "
         persona.gender = None
         persona.position = None
-        persona.grade = None
         persona.biography = "   "
         persona.mbti_energy = None
         persona.mbti_perception = None
@@ -101,7 +100,7 @@ class TestPromptRendering(unittest.TestCase):
         self.assertIn("- 이름: 이름 미정", prompt)
         self.assertIn("- 성별: 미정", prompt)
         self.assertIn("- 포지션: 포지션 미정", prompt)
-        self.assertIn("- 등급: 미정", prompt)
+        self.assertIn("- 등급: B", prompt)
         self.assertIn("- 서사(배경): 서사 정보 없음", prompt)
         self.assertIn("- MBTI 성향: 정보 없음", prompt)
         self.assertIn("- 에너지: [점수: 미정] 자연스럽고 무난한 인사", prompt)

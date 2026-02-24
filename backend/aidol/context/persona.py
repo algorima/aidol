@@ -31,7 +31,7 @@ class Persona(BaseModel):
     # K-pop domain fields (used by builder to render prompts)
     gender: Gender | None = Field(default=None, description="Gender")
     position: Position | None = Field(default=None, description="Position in group")
-    grade: Grade | None = Field(default=None, description="Grade level")
+    grade: Grade = Field(..., description="Grade level")
     biography: str | None = Field(default=None, description="Background story")
 
     # MBTI personality scores (1-10 for each dimension)
