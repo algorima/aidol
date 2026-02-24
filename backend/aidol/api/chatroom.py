@@ -44,6 +44,7 @@ from aidol.schemas import (
     SenderType,
 )
 from aidol.services import ResponseGenerationService
+from aidol.services.companion_service import calculate_grade
 from aidol.settings import Settings
 
 # Maximum number of messages to fetch for conversation history
@@ -154,7 +155,7 @@ class ChatroomRouter(
             # K-pop domain fields
             gender=companion.gender,
             position=companion.position,
-            grade=companion.grade,
+            grade=companion.grade or calculate_grade(companion.stats),
             biography=companion.biography,
             # MBTI scores
             mbti_energy=companion.mbti_energy,

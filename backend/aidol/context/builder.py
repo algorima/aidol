@@ -187,11 +187,7 @@ def _render_position(position: Position | None) -> str:
 
 
 def _render_grade(grade: Grade | None) -> str:
-    """Render grade value or fallback.
-
-    For Persona (no stats), grade must be provided directly.
-    For Companion conversion, call calculate_grade(stats) before passing.
-    """
+    """Render grade value or fallback."""
     if grade is None:
         return "미정"
     return grade.value
