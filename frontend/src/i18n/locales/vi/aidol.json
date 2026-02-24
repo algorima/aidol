@@ -371,7 +371,8 @@
       "minutesAgo": "{{count}} phút trước",
       "hoursAgo": "{{count}} giờ trước",
       "am": "SA",
-      "pm": "CH"
+      "pm": "CH",
+      "absolute": "{{time}} $t(chat.time.{{ampm}})"
     }
   }
 }

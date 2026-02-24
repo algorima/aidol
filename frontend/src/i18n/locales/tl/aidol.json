@@ -371,7 +371,8 @@
       "minutesAgo": "{{count}} min ang nakalipas",
       "hoursAgo": "{{count}} oras ang nakalipas",
       "am": "AM",
-      "pm": "PM"
+      "pm": "PM",
+      "absolute": "{{time}} $t(chat.time.{{ampm}})"
     }
   }
 }

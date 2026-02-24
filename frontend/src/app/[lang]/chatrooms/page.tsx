@@ -69,7 +69,6 @@ export default function InboxPage() {
       if (!dateStr) return null;
       const rel = getRelativeTime(dateStr);
       if (!rel) return null;
-      if (rel.formattedTime) return `${t(rel.key)} ${rel.formattedTime}`;
       return t(rel.key, rel.params);
     },
     [t],
