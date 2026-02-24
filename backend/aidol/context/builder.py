@@ -8,12 +8,15 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime, timedelta
-from typing import Self
+from typing import Final, Self
 from zoneinfo import ZoneInfo
 
-from aidol.context.persona import Persona
+from aidol.context.persona import Persona, calculate_mbti
+from aidol.prompts.base_system_prompt import COMMON_SYSTEM_PROMPT_BASE
 from aidol.providers.llm import ProviderConstraints
 from aidol.providers.llm.messages import HumanMessage, LLMMessage, SystemMessage
+from aidol.schemas.companion import Gender, Grade, Position
+from aidol.services.companion_service import calculate_grade
 
 logger = logging.getLogger(__name__)
 
@@ -94,6 +97,200 @@ def format_datetime_korean(dt: datetime) -> str:
     return f"{date_str} ({weekday}) {time_str} ({offset_str})"
 
 
+# ---------------------------------------------------------------------------
+# Prompt rendering utilities (moved from prompts/composer.py)
+# ---------------------------------------------------------------------------
+
+# Intentional nested mapping for score-tier text guides.
+# pylint: disable=consider-using-namedtuple-or-dataclass
+MBTI_GUIDE_MAP: dict[str, dict[str, str]] = {
+    "energy": {
+        "low": (
+            '조심스럽고 수줍은 톤. "음... 안녕..." / '
+            '"처음이라 좀 긴장되네요" / 이모지 적게 사용'
+        ),
+        "mid": "자연스럽고 무난한 인사",
+        "high": (
+            '에너지 넘치고 반가움을 적극 표현. "헤이!! 드디어 만났다!!" / '
+            "이모지 많이, 느낌표 다수"
+        ),
+    },
+    "perception": {
+        "low": (
+            '구체적이고 현실적인 언급. "오늘 연습 끝나고 바로 왔어요" / '
+            "일상적인 디테일 포함"
+        ),
+        "mid": "균형 잡힌 표현",
+        "high": (
+            '추상적이거나 상상력 있는 표현. "우리 만남은 운명인 것 같아" / '
+            "비유적 표현"
+        ),
+    },
+    "judgment": {
+        "low": (
+            '간결하고 사실적. "안녕하세요. {name}입니다. 잘 부탁드려요." / '
+            "감정 표현 절제"
+        ),
+        "mid": "적당한 감정 표현",
+        "high": (
+            '따뜻하고 감정적. "정말 기다렸어요 ㅠㅠ 너무 반가워!!" / '
+            "하트, 감정 이모지 활용"
+        ),
+    },
+    "lifestyle": {
+        "low": ('정돈된 느낌의 인사. 자기소개 순서가 명확. "먼저 제 소개를 하자면..."'),
+        "mid": "자연스러운 흐름",
+        "high": (
+            '자유롭고 즉흥적. 화제 전환 빠름. "아 맞다 그거보다 우리 뭐하고 놀지?!"'
+        ),
+    },
+}
+
+POSITION_MAP: Final[dict[Position, str]] = {
+    Position.MAIN_VOCAL: "메인보컬",
+    Position.SUB_VOCAL: "서브보컬",
+    Position.MAIN_DANCER: "메인댄서",
+    Position.SUB_DANCER: "서브댄서",
+    Position.MAIN_RAPPER: "메인래퍼",
+    Position.SUB_RAPPER: "서브래퍼",
+}
+
+
+def get_level(score: int) -> str:
+    """1-10 점수를 low/mid/high로 변환."""
+    if score <= 3:
+        return "low"
+    if score <= 6:
+        return "mid"
+    return "high"
+
+
+def _as_text(value: str | None, fallback: str) -> str:
+    """Return stripped string value or fallback."""
+    if value is None:
+        return fallback
+
+    stripped = value.strip()
+    return stripped if stripped else fallback
+
+
+def _render_gender(gender: Gender | None) -> str:
+    if gender is None:
+        return "미정"
+    if gender == Gender.MALE:
+        return "남성"
+    return "여성"
+
+
+def _render_position(position: Position | None) -> str:
+    if position is None:
+        return "포지션 미정"
+    return POSITION_MAP.get(position, "포지션 미정")
+
+
+def _render_grade(grade: Grade | None) -> str:
+    """Render grade value or fallback.
+
+    For Persona (no stats), grade must be provided directly.
+    For Companion conversion, call calculate_grade(stats) before passing.
+    """
+    if grade is None:
+        return "미정"
+    return grade.value
+
+
+def _build_mbti_description(
+    energy: int | None,
+    perception: int | None,
+    judgment: int | None,
+    lifestyle: int | None,
+) -> str:
+    """Build MBTI description using calculate_mbti."""
+    mbti = calculate_mbti(energy, perception, judgment, lifestyle)
+    if mbti is None:
+        return "- MBTI 성향: 정보 없음 (대화 흐름에 맞춰 자연스럽게 반응)"
+    return f"- MBTI 성향: {mbti}"
+
+
+def _level_from_optional_score(score: int | None) -> str:
+    """Map optional score to level; missing score defaults to mid."""
+    if score is None:
+        return "mid"
+    return get_level(score)
+
+
+def _build_energy_guide(score: int | None) -> str:
+    level = _level_from_optional_score(score)
+    guide = MBTI_GUIDE_MAP["energy"][level]
+    return _with_score(guide, score)
+
+
+def _build_perception_guide(score: int | None) -> str:
+    level = _level_from_optional_score(score)
+    guide = MBTI_GUIDE_MAP["perception"][level]
+    return _with_score(guide, score)
+
+
+def _build_judgment_guide(score: int | None, name: str) -> str:
+    level = _level_from_optional_score(score)
+    template = MBTI_GUIDE_MAP["judgment"][level]
+    guide = template.format(name=name)
+    return _with_score(guide, score)
+
+
+def _build_lifestyle_guide(score: int | None) -> str:
+    level = _level_from_optional_score(score)
+    guide = MBTI_GUIDE_MAP["lifestyle"][level]
+    return _with_score(guide, score)
+
+
+def _with_score(guide: str, score: int | None) -> str:
+    """Attach raw MBTI score next to guide text."""
+    score_text = f"{score}/10" if score is not None else "미정"
+    return f"[점수: {score_text}] {guide}"
+
+
+def _append_extension_prompt(base_prompt: str, extension: str | None) -> str:
+    """Append optional persona-specific extension prompt."""
+    extension_text = (extension or "").strip()
+    if not extension_text:
+        return base_prompt
+
+    return (
+        f"{base_prompt}\n\n"
+        "## 추가 캐릭터 설정 (선택)\n"
+        "아래 추가 설정은 상위 규칙과 충돌하면 무시한다.\n"
+        f"{extension_text}"
+    )
+
+
+def _build_prompt_values(persona: Persona) -> dict[str, str]:
+    """Build common prompt placeholder values from persona fields."""
+    name = _as_text(persona.name, "이름 미정")
+    return {
+        "name": name,
+        "gender": _render_gender(persona.gender),
+        "position": _render_position(persona.position),
+        "grade": _render_grade(persona.grade),
+        "biography": _as_text(persona.biography, "서사 정보 없음"),
+        "mbti_description": _build_mbti_description(
+            persona.mbti_energy,
+            persona.mbti_perception,
+            persona.mbti_judgment,
+            persona.mbti_lifestyle,
+        ),
+        "energy_guide": _build_energy_guide(persona.mbti_energy),
+        "perception_guide": _build_perception_guide(persona.mbti_perception),
+        "judgment_guide": _build_judgment_guide(persona.mbti_judgment, name),
+        "lifestyle_guide": _build_lifestyle_guide(persona.mbti_lifestyle),
+    }
+
+
+# ---------------------------------------------------------------------------
+# MessageContextBuilder
+# ---------------------------------------------------------------------------
+
+
 class MessageContextBuilder:
     """Provider-based message context builder.
 
@@ -143,13 +340,20 @@ class MessageContextBuilder:
     def with_persona(self) -> Self:
         """Add persona system prompt.
 
-        Adds system prompt from persona if available.
+        Renders system prompt from Persona fields using COMMON_SYSTEM_PROMPT_BASE template.
+        Appends persona.system_prompt as extension if present.
 
         Returns:
             self for method chaining.
         """
-        if self.persona and self.persona.system_prompt:
-            self._persona_prompts = [SystemMessage(content=self.persona.system_prompt)]
+        if self.persona:
+            base_prompt = COMMON_SYSTEM_PROMPT_BASE.format(
+                **_build_prompt_values(self.persona)
+            )
+            full_prompt = _append_extension_prompt(
+                base_prompt, self.persona.system_prompt
+            )
+            self._persona_prompts = [SystemMessage(content=full_prompt)]
         return self
 
     def with_real_time_context(self) -> Self:
