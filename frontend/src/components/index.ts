@@ -1,6 +1,9 @@
 // AIdol group components
 export * from "./aidol";
 
+// Common shared components
+export * from "./common";
+
 // Casting components
 export * from "./casting";
 

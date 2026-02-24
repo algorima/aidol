@@ -112,6 +112,12 @@
     "tab": {
       "profile": "プロフィール",
       "stats": "能力値"
+    },
+    "activity": {
+      "RESTING": "休憩中",
+      "PRACTICING": "練習中",
+      "SHORT_BREAK": "小休憩中",
+      "RESTING_AT_HOME": "自宅で休憩中"
     }
   },
   "aidol": {
@@ -344,6 +350,24 @@
       "startsAt": "<highlight>{{intimacy}}%</highlight>からスタート",
       "relationshipNickname": "関係の別名",
       "nicknamePlaceholder": "例）同い年ズ、仲良しズ"
+    }
+  },
+  "chat": {
+    "comingSoon": "{{name}}とのチャットは\nもうすぐオープン予定です！",
+    "unlockHint": "{{name}}ともっと仲良くなると他のメンバーにも会えます 💖",
+    "greeting": "{{name}}と自由にチャットしましょう！",
+    "placeholder": "メッセージを入力",
+    "confirm": "確認",
+    "typing": "入力中...",
+    "thinkingLong": "ちょっと考え込んでます 🥺",
+    "reload": "再読み込み",
+    "resend": "再送信",
+    "time": {
+      "justNow": "たった今",
+      "minutesAgo": "{{count}}分前",
+      "hoursAgo": "{{count}}時間前",
+      "am": "午前",
+      "pm": "午後"
     }
   }
 }

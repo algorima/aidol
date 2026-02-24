@@ -112,6 +112,12 @@
     "tab": {
       "profile": "Profile",
       "stats": "Stats"
+    },
+    "activity": {
+      "RESTING": "Resting",
+      "PRACTICING": "Practicing",
+      "SHORT_BREAK": "Short break",
+      "RESTING_AT_HOME": "Resting at home"
     }
   },
   "aidol": {
@@ -344,6 +350,24 @@
       "startsAt": "Starts at <highlight>{{intimacy}}%</highlight>",
       "relationshipNickname": "Relationship Nickname",
       "nicknamePlaceholder": "e.g.) Squad, Besties"
+    }
+  },
+  "chat": {
+    "comingSoon": "Chat with {{name}}\nis coming soon!",
+    "unlockHint": "Get closer to {{name}} to unlock other members 💖",
+    "greeting": "Chat freely with {{name}}!",
+    "placeholder": "Type a message",
+    "confirm": "OK",
+    "typing": "Typing...",
+    "thinkingLong": "Still thinking... 🥺",
+    "reload": "Reload",
+    "resend": "Resend",
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "am": "AM",
+      "pm": "PM"
     }
   }
 }

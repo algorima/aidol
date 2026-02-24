@@ -112,6 +112,12 @@
     "tab": {
       "profile": "Profile",
       "stats": "Stats"
+    },
+    "activity": {
+      "RESTING": "Nagpapahinga",
+      "PRACTICING": "Nagpapraktis",
+      "SHORT_BREAK": "Sandaling pahinga",
+      "RESTING_AT_HOME": "Nagpapahinga sa bahay"
     }
   },
   "aidol": {
@@ -344,6 +350,24 @@
       "startsAt": "Nagsisimula sa <highlight>{{intimacy}}%</highlight>",
       "relationshipNickname": "Palayaw ng Relasyon",
       "nicknamePlaceholder": "hal.) Squad, Besties"
+    }
+  },
+  "chat": {
+    "comingSoon": "Ang chat kay {{name}} ay\nmalapit nang magbukas!",
+    "unlockHint": "Maging mas malapit kay {{name}} para makilala ang ibang miyembro 💖",
+    "greeting": "Makipag-chat nang malaya kay {{name}}!",
+    "placeholder": "Mag-type ng mensahe",
+    "confirm": "OK",
+    "typing": "Nagta-type...",
+    "thinkingLong": "Medyo tumagal ang pag-iisip 🥺",
+    "reload": "I-reload",
+    "resend": "Ipadala muli",
+    "time": {
+      "justNow": "Ngayon lang",
+      "minutesAgo": "{{count}} min ang nakalipas",
+      "hoursAgo": "{{count}} oras ang nakalipas",
+      "am": "AM",
+      "pm": "PM"
     }
   }
 }

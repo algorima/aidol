@@ -15,7 +15,9 @@
 export { AIdolRepository } from "./repositories/AIdolRepository";
 export { ChatroomRepository } from "./repositories/ChatroomRepository";
 export type { GenerateResponse } from "./repositories/ChatroomRepository";
+export { CompanionRelationshipRepository } from "./repositories/CompanionRelationshipRepository";
 export { CompanionRepository } from "./repositories/CompanionRepository";
+export { HighlightRepository } from "./repositories/HighlightRepository";
 export { LeadsRepository } from "./repositories/LeadsRepository";
 export { LocalChatroomIdsRepository } from "./repositories/LocalChatroomIdsRepository";
 
@@ -48,6 +50,32 @@ export type {
   Position,
 } from "./schemas/companion";
 export { companionSchema } from "./schemas/companion";
+
+export type {
+  CompanionRelationship,
+  CompanionRelationshipCreate,
+} from "./schemas/companion-relationship";
+export { companionRelationshipSchema } from "./schemas/companion-relationship";
+
+export type {
+  AIdolHighlight,
+  HighlightMessage,
+  MyGroupHighlightSection,
+} from "./schemas/highlight";
+export {
+  aidolHighlightSchema,
+  highlightMessageSchema,
+} from "./schemas/highlight";
+
+// Constants (server-safe)
+export {
+  INTIMACY_TO_RELATIONSHIP_TYPE,
+  RELATIONSHIP_TYPE_TO_INTIMACY,
+} from "./constants/relationship";
+export type { RelationshipType } from "./constants/relationship";
+
+// Utils (server-safe)
+export { getParticle } from "./lib/koreanParticle";
 
 // i18n - Server-safe exports (JSON resources and constants)
 export { AIDOL_NS, aidolTranslations } from "./i18n/translations";

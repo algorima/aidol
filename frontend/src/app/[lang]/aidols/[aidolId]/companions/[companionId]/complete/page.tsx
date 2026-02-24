@@ -6,10 +6,10 @@ import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
-import { BiographyInput } from "@/components/creation/BiographyInput";
 import { CompanionCreateLayout } from "@/components/creation/CompanionCreateLayout";
 import { CompanionNameInput } from "@/components/creation/CompanionNameInput";
 import { StepCard } from "@/components/creation/StepCard";
+import { TextInput } from "@/components/group-creation/TextInput";
 import { CompanionRepository } from "@/repositories";
 import { getApiService } from "@/services/ApiService";
 
@@ -68,7 +68,7 @@ export default function CompletePage({ params }: CompletePageProps) {
           type="button"
           disabled={!name.trim() || isSubmitting}
           onClick={handleComplete}
-          className="btn btn-neutral w-full"
+          className="btn btn-primary btn-lg text-label-l w-full rounded-lg"
         >
           {t("aidol:companionCreate.complete.button")}
           <SparklesIcon className="size-5" />
@@ -85,7 +85,11 @@ export default function CompletePage({ params }: CompletePageProps) {
         step={5}
         title={t("aidol:companionCreate.complete.bioStepTitle")}
       >
-        <BiographyInput value={biography} onChange={setBiography} />
+        <TextInput
+          value={biography}
+          onChange={setBiography}
+          placeholder={t("aidol:companionCreate.complete.bioPlaceholder")}
+        />
       </StepCard>
     </CompanionCreateLayout>
   );
