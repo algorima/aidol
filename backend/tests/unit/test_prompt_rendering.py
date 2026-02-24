@@ -34,11 +34,11 @@ class TestPromptRendering(unittest.TestCase):
         )
 
     def _render_base_prompt(self, persona: Persona) -> str:
-        """Helper to render base prompt (equivalent to old render_chat_base_prompt)."""
+        """Render base prompt from persona fields."""
         return COMMON_SYSTEM_PROMPT_BASE.format(**_build_prompt_values(persona))
 
     def _build_full_prompt(self, persona: Persona) -> str:
-        """Helper to build full prompt with extension (equivalent to old build_chat_system_prompt)."""
+        """Build full prompt with optional extension appended."""
         base_prompt = self._render_base_prompt(persona)
         return _append_extension_prompt(base_prompt, persona.system_prompt)
 

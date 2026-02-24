@@ -97,10 +97,9 @@ def format_datetime_korean(dt: datetime) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Prompt rendering utilities (moved from prompts/composer.py)
+# Prompt rendering utilities
 # ---------------------------------------------------------------------------
 
-# Intentional nested mapping for score-tier text guides.
 # pylint: disable=consider-using-namedtuple-or-dataclass
 MBTI_GUIDE_MAP: dict[str, dict[str, str]] = {
     "energy": {
