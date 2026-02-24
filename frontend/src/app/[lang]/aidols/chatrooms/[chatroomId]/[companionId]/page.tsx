@@ -1,12 +1,11 @@
 "use client";
 
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
 import { MessageInput } from "@/client";
-import { ActivityBadge, CompanionAvatar } from "@/components";
+import { ChatHeader } from "@/components/chatroom/ChatHeader";
 import { MessageList } from "@/components/chatroom/MessageList";
 import { getCurrentActivity } from "@/lib/activity";
 import { getParticle } from "@/lib/koreanParticle";
@@ -228,22 +227,11 @@ export default function Chatpage({ params }: ChatpageProps) {
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="flex items-center justify-between gap-1 px-6 py-4">
-        <div className="flex min-w-0 items-center gap-2">
-          <ArrowLeftIcon
-            className="text-base-content size-5 shrink-0"
-            strokeWidth={2}
-          />
-          <CompanionAvatar
-            imageUrl={companion?.profilePictureUrl ?? undefined}
-            name={companion?.name ?? ""}
-            size="sm"
-            active
-          />
-          <span className="truncate">{companion?.name ?? ""}</span>
-        </div>
-        <ActivityBadge activity={getCurrentActivity()} />
-      </header>
+      <ChatHeader
+        companionName={companion?.name ?? undefined}
+        companionImageUrl={companion?.profilePictureUrl}
+        activity={getCurrentActivity()}
+      />
 
       <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">
         {companion?.name
