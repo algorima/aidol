@@ -8,6 +8,7 @@ import { useToast } from "@/app/providers/Toast";
 import { MessageInput } from "@/client";
 import { ActivityBadge, CompanionAvatar } from "@/components";
 import { MessageList } from "@/components/chatroom/MessageList";
+import { getCurrentActivity } from "@/lib/activity";
 import { getParticle } from "@/lib/koreanParticle";
 import { ChatroomRepository, CompanionRepository } from "@/repositories";
 import { Message, MessageStatus, SenderType } from "@/schemas";
@@ -241,7 +242,7 @@ export default function Chatpage({ params }: ChatpageProps) {
           />
           <span className="truncate">{companion?.name ?? ""}</span>
         </div>
-        <ActivityBadge activity="RESTING" />
+        <ActivityBadge activity={getCurrentActivity()} />
       </header>
 
       <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">
