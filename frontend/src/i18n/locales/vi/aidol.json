@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "Trò chuyện",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "Chưa có phòng trò chuyện",
+    "error": {
+      "load": "Không thể tải phòng trò chuyện"
+    }
   },
   "chat": {
     "comingSoon": "Cuộc trò chuyện với {{name}}\nsắp được mở!",

@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "채팅",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "채팅방이 없습니다",
+    "error": {
+      "load": "채팅방 목록을 불러오지 못했습니다"
+    }
   },
   "chat": {
     "comingSoon": "{{name}}{{particle}}의 대화는\n곧 열릴 예정이에요!",

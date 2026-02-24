@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "聊天",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "暂无聊天室",
+    "error": {
+      "load": "无法加载聊天室"
+    }
   },
   "chat": {
     "comingSoon": "与{{name}}的聊天\n即将开放！",

@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "Chat",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "No chatrooms yet",
+    "error": {
+      "load": "Failed to load chatrooms"
+    }
   },
   "chat": {
     "comingSoon": "Chat with {{name}}\nis coming soon!",

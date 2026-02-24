@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "チャット",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "チャットルームがありません",
+    "error": {
+      "load": "チャットルームの読み込みに失敗しました"
+    }
   },
   "chat": {
     "comingSoon": "{{name}}とのチャットは\nもうすぐオープン予定です！",

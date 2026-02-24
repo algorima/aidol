@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "Obrolan",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "Belum ada ruang obrolan",
+    "error": {
+      "load": "Gagal memuat ruang obrolan"
+    }
   },
   "chat": {
     "comingSoon": "Obrolan dengan {{name}}\nakan segera dibuka!",

@@ -9,6 +9,21 @@ import {
 } from "../schemas";
 
 /**
+ * Schema for "my chatrooms" list item (GET /me/chatrooms response)
+ */
+const myChatroomItemSchema = z.object({
+  id: z.string(),
+  companionId: z.string(),
+  lastMessage: z.string().nullable(),
+});
+
+export interface MyChatroomItem {
+  id: string;
+  companionId: string;
+  lastMessage: string | null;
+}
+
+/**
  * Response schema for generate AI response endpoint
  */
 const generateResponseSchema = z.object({
@@ -107,5 +122,18 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
     });
 
     return this.validateResponse(rawResponse, generateResponseSchema);
+  }
+
+  /**
+   * Get the current user's chatroom list
+   * TODO: GET /me/chatrooms — replace stub when feat/my-chatrooms merges
+   */
+  getMyChatrooms(): Promise<MyChatroomItem[]> {
+    // TODO: Uncomment when API is available
+    // const url = this.apiService.buildUrl("me/chatrooms");
+    // const rawResponse = await this.apiService.request(url);
+    // return this.validateResponse(rawResponse, z.array(myChatroomItemSchema));
+    void myChatroomItemSchema; // keep schema referenced until API integration
+    return Promise.resolve([]);
   }
 }

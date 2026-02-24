@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "Chat",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "Wala pang chatroom",
+    "error": {
+      "load": "Hindi na-load ang mga chatroom"
+    }
   },
   "chat": {
     "comingSoon": "Ang chat kay {{name}} ay\nmalapit nang magbukas!",

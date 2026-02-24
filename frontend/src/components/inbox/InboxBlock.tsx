@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 import type { Activity } from "@/constants/activity";
 
 import { ActivityBadge } from "../common/ActivityBadge";

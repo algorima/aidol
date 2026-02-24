@@ -354,7 +354,11 @@
   },
   "inbox": {
     "header": "Chat",
-    "beta": "BETA"
+    "beta": "BETA",
+    "empty": "No hay salas de chat",
+    "error": {
+      "load": "No se pudieron cargar las salas de chat"
+    }
   },
   "chat": {
     "comingSoon": "¡La conversación con {{name}}\nse abrirá pronto!",
