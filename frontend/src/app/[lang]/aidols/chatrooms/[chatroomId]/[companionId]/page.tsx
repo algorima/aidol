@@ -5,8 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
 import { MessageInput } from "@/client";
-import { ChatHeader } from "@/components/chatroom/ChatHeader";
-import { MessageList } from "@/components/chatroom/MessageList";
+import { ChatHeader, MessageList } from "@/components/chatroom";
 import { getCurrentActivity } from "@/lib/activity";
 import { getParticle } from "@/lib/koreanParticle";
 import { ChatroomRepository, CompanionRepository } from "@/repositories";
