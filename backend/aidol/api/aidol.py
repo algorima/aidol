@@ -123,10 +123,10 @@ class AIdolRouter(
             return AIdolPaginatedResponse(data=public_items, total=total)
 
     def _register_public_my_route(self) -> None:
-        """GET /{resource_name}/my - List my AIdols (filtered by cookie)"""
+        """GET /me/{resource_name} - List my AIdols (filtered by cookie)."""
 
         @self.router.get(
-            f"/{self.resource_name}/my",
+            f"/me/{self.resource_name}",
             response_model=AIdolPaginatedResponse,
             status_code=status.HTTP_200_OK,
             summary="List my AIdols",
