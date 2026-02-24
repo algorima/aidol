@@ -16,7 +16,6 @@ from aidol.prompts.base_system_prompt import COMMON_SYSTEM_PROMPT_BASE
 from aidol.providers.llm import ProviderConstraints
 from aidol.providers.llm.messages import HumanMessage, LLMMessage, SystemMessage
 from aidol.schemas.companion import Gender, Grade, Position
-from aidol.services.companion_service import calculate_grade
 
 logger = logging.getLogger(__name__)
 

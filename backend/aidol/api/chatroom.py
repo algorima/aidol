@@ -19,13 +19,13 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from aidol.context import MessageContextBuilder, Persona
 from aidol.prompts import CHAT_PROMPT, GREETING_PROMPT
+from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage, SystemMessage
 from aidol.protocols import (
     ChatroomRepositoryFactoryProtocol,
     ChatroomRepositoryProtocol,
     CompanionRepositoryFactoryProtocol,
 )
 from aidol.providers.llm import GeminiLLMProvider, LLMProvider, OpenAILLMProvider
-from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
@@ -205,8 +205,6 @@ class ChatroomRouter(
             item_id=item_id,
             companion_id=companion_id,
         )
-
-        from aidol.providers.llm.messages import SystemMessage
 
         context = (
             MessageContextBuilder(provider, persona)
