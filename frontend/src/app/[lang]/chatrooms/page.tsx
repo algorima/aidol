@@ -166,7 +166,7 @@ export default function InboxPage() {
 
   if (isLoading) {
     return (
-      <div className="bg-base-100 flex min-h-dvh flex-col">
+      <div className="bg-base-100 flex h-dvh flex-col">
         {header}
         <Loading />
       </div>
@@ -174,11 +174,11 @@ export default function InboxPage() {
   }
 
   return (
-    <div className="bg-base-100 flex min-h-dvh flex-col">
+    <div className="bg-base-100 flex h-dvh flex-col">
       {header}
 
       {/* Chatroom list */}
-      <div className="flex flex-col">
+      <div className="scrollbar-hide flex flex-1 flex-col overflow-y-auto">
         {/* TODO: API 연동 후 mock fallback 제거 시 empty state 도달 가능 */}
         {chatrooms.length === 0 ? (
           <p className="text-body-m text-base-content/60 py-20 text-center">
