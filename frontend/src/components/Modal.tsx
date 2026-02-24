@@ -60,7 +60,7 @@ export function Modal({
         className={clsx(
           "modal-box bg-base-200",
           position === "bottom"
-            ? "max-w-mobile mx-auto w-full rounded-t-2xl rounded-b-none"
+            ? "max-w-mobile mx-auto w-full overflow-hidden rounded-t-2xl rounded-b-none"
             : "scrollbar-hide relative flex max-h-170 min-h-90 w-88.25 flex-col gap-6 overflow-hidden rounded-lg p-6 outline-none",
         )}
       >
