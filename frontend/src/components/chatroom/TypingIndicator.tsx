@@ -20,7 +20,7 @@ export function TypingIndicator({
     !newestMessage || newestMessage.senderType !== SenderType.COMPANION;
 
   return (
-    <div className={clsx("flex items-end gap-2", showAvatar ? "mt-4" : "mt-2")}>
+    <div className={clsx("flex items-end gap-2", showAvatar && "mt-2")}>
       <div className="w-10 shrink-0 self-start">
         {showAvatar && (
           <Image
