@@ -9,9 +9,15 @@ const SAMPLE_IMAGE =
 
 const MOCK_MESSAGES: Message[] = [
   {
-    id: "1",
+    id: "4",
+    senderType: SenderType.USER,
+    content: "어 안녕",
+    createdAt: "2026-02-17T10:01:00Z",
+  },
+  {
+    id: "3",
     senderType: SenderType.COMPANION,
-    content: "안녕! 나 테오야",
+    content: "편하게 이야기 해줘",
     createdAt: "2026-02-17T10:00:00Z",
   },
   {
@@ -21,16 +27,10 @@ const MOCK_MESSAGES: Message[] = [
     createdAt: "2026-02-17T10:00:00Z",
   },
   {
-    id: "3",
+    id: "1",
     senderType: SenderType.COMPANION,
-    content: "편하게 이야기 해줘",
+    content: "안녕! 나 테오야",
     createdAt: "2026-02-17T10:00:00Z",
-  },
-  {
-    id: "4",
-    senderType: SenderType.USER,
-    content: "어 안녕",
-    createdAt: "2026-02-17T10:01:00Z",
   },
 ];
 
@@ -57,16 +57,6 @@ type Story = StoryObj<typeof ChatRoom>;
 export const Default: Story = {
   args: {
     messages: MOCK_MESSAGES,
-    companionName: "테오",
-    companionImageUrl: SAMPLE_IMAGE,
-    onSendMessage: fn(),
-  },
-};
-
-/** 로딩 중 */
-export const Loading: Story = {
-  args: {
-    messages: undefined,
     companionName: "테오",
     companionImageUrl: SAMPLE_IMAGE,
     onSendMessage: fn(),

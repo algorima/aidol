@@ -8,9 +8,15 @@ const SAMPLE_IMAGE =
 
 const MOCK_MESSAGES: Message[] = [
   {
-    id: "1",
+    id: "4",
+    senderType: SenderType.USER,
+    content: "어 안녕",
+    createdAt: "2026-02-17T10:01:00Z",
+  },
+  {
+    id: "3",
     senderType: SenderType.COMPANION,
-    content: "안녕! 나 테오야",
+    content: "편하게 이야기 해줘",
     createdAt: "2026-02-17T10:00:00Z",
   },
   {
@@ -20,16 +26,10 @@ const MOCK_MESSAGES: Message[] = [
     createdAt: "2026-02-17T10:00:00Z",
   },
   {
-    id: "3",
+    id: "1",
     senderType: SenderType.COMPANION,
-    content: "편하게 이야기 해줘",
+    content: "안녕! 나 테오야",
     createdAt: "2026-02-17T10:00:00Z",
-  },
-  {
-    id: "4",
-    senderType: SenderType.USER,
-    content: "어 안녕",
-    createdAt: "2026-02-17T10:01:00Z",
   },
 ];
 
@@ -65,7 +65,6 @@ export const Default: Story = {
 export const Sending: Story = {
   args: {
     messages: [
-      ...MOCK_MESSAGES.slice(0, 3),
       {
         id: "4",
         senderType: SenderType.USER,
@@ -73,6 +72,7 @@ export const Sending: Story = {
         createdAt: "2026-02-17T10:01:00Z",
         status: MessageStatus.SENDING,
       },
+      ...MOCK_MESSAGES.slice(1),
     ],
     companionName: "테오",
     companionImageUrl: SAMPLE_IMAGE,
@@ -83,7 +83,6 @@ export const Sending: Story = {
 export const Error: Story = {
   args: {
     messages: [
-      ...MOCK_MESSAGES.slice(0, 3),
       {
         id: "4",
         senderType: SenderType.USER,
@@ -91,6 +90,7 @@ export const Error: Story = {
         createdAt: "2026-02-17T10:01:00Z",
         status: MessageStatus.ERROR,
       },
+      ...MOCK_MESSAGES.slice(1),
     ],
     companionName: "테오",
     companionImageUrl: SAMPLE_IMAGE,
@@ -101,7 +101,6 @@ export const Error: Story = {
 export const ErrorAI: Story = {
   args: {
     messages: [
-      ...MOCK_MESSAGES,
       {
         id: "5",
         senderType: SenderType.COMPANION,
@@ -109,6 +108,7 @@ export const ErrorAI: Story = {
         createdAt: "2026-02-17T10:02:00Z",
         status: MessageStatus.ERROR,
       },
+      ...MOCK_MESSAGES,
     ],
     companionName: "테오",
     companionImageUrl: SAMPLE_IMAGE,
@@ -119,13 +119,13 @@ export const ErrorAI: Story = {
 export const Typing: Story = {
   args: {
     messages: [
-      ...MOCK_MESSAGES,
       {
         id: "5",
         senderType: SenderType.COMPANION,
         content: "오늘 연습 많이 했어",
         createdAt: "2026-02-17T10:01:00Z",
       },
+      ...MOCK_MESSAGES,
     ],
     companionName: "테오",
     companionImageUrl: SAMPLE_IMAGE,
