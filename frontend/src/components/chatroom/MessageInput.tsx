@@ -47,7 +47,7 @@ export function MessageInput({ onSubmit }: MessageInputProps) {
         type="submit"
         className="btn btn-square btn-primary mb-1 rounded-lg"
       >
-        <ArrowUpIcon className="size-3" stroke-width="2.5" />
+        <ArrowUpIcon className="size-3" strokeWidth="2.5" />
       </button>
     </form>
   );
