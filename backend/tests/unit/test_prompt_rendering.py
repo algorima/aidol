@@ -17,7 +17,7 @@ class TestPromptRendering(unittest.TestCase):
 
     def _build_persona(
         self,
-        grade: Grade | None = Grade.B,
+        grade: Grade = Grade.B,
         system_prompt: str | None = None,
     ) -> Persona:
         return Persona(
