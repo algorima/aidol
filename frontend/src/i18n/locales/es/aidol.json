@@ -261,7 +261,7 @@
   },
   "myGroup": {
     "header": "Mi Grupo",
-    "chatComingSoon": "¡Los miembros tienen algo que decirte! 👋",
+    "chatNotification": "¡Los miembros tienen algo que decirte! 👋",
     "settings": "Configuración",
     "highlights": "Destacados",
     "empty": {

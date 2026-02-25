@@ -80,7 +80,7 @@ export function ChatTooltipButton({ onClick }: ChatTooltipButtonProps) {
           >
             <div className="border-b-primary absolute -top-2 right-3 size-0 border-x-8 border-b-8 border-x-transparent" />
             <div className="bg-primary text-primary-content text-label-m rounded-lg px-2 py-1 font-bold whitespace-nowrap">
-              {t("aidol:myGroup.chatComingSoon")}
+              {t("aidol:myGroup.chatNotification")}
             </div>
           </div>
         </>

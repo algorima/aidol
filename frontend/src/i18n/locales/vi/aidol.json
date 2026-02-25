@@ -261,7 +261,7 @@
   },
   "myGroup": {
     "header": "Nhóm Của Tôi",
-    "chatComingSoon": "Các thành viên có điều muốn nói! 👋",
+    "chatNotification": "Các thành viên có điều muốn nói! 👋",
     "settings": "Cài đặt",
     "highlights": "Điểm nổi bật",
     "empty": {

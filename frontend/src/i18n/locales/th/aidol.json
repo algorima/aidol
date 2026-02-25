@@ -261,7 +261,7 @@
   },
   "myGroup": {
     "header": "กรุ๊ปของฉัน",
-    "chatComingSoon": "สมาชิกมีเรื่องอยากบอก! 👋",
+    "chatNotification": "สมาชิกมีเรื่องอยากบอก! 👋",
     "settings": "ตั้งค่า",
     "highlights": "ไฮไลท์",
     "empty": {
