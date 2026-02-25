@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -21,6 +22,7 @@ interface ChatpageProps {
 
 export default function Chatpage({ params }: ChatpageProps) {
   const { chatroomId, companionId } = params;
+  const router = useRouter();
   const [companion, setCompanion] = useState<Companion | null>(null);
   const [messages, setMessages] = useState<Message[] | undefined>(undefined);
   const [isTyping, setIsTyping] = useState(false);
@@ -230,6 +232,7 @@ export default function Chatpage({ params }: ChatpageProps) {
         companionName={companion?.name ?? undefined}
         companionImageUrl={companion?.profilePictureUrl}
         activity={getCurrentActivity()}
+        onBack={() => router.back()}
       />
 
       <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">
