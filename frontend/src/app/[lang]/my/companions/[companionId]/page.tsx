@@ -69,9 +69,7 @@ export default function CompanionProfilePage({
 
     if (existingChatroomId) {
       // Navigate to existing chatroom
-      router.push(
-        `/${lang}/chatrooms/${existingChatroomId}/${companionId}`,
-      );
+      router.push(`/${lang}/chatrooms/${existingChatroomId}/${companionId}`);
       return;
     }
 
@@ -88,9 +86,7 @@ export default function CompanionProfilePage({
       LocalChatroomIdsRepository.setChatroomId(companionId, response.data.id);
 
       // Navigate to new chatroom
-      router.push(
-        `/${lang}/chatrooms/${response.data.id}/${companionId}`,
-      );
+      router.push(`/${lang}/chatrooms/${response.data.id}/${companionId}`);
     } catch (err) {
       setCreateError(err as Error);
     } finally {
