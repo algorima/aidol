@@ -5,7 +5,11 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export function ChatTooltipButton() {
+interface ChatTooltipButtonProps {
+  onClick?: () => void;
+}
+
+export function ChatTooltipButton({ onClick }: ChatTooltipButtonProps) {
   const { t } = useTranslation();
   const [isFirstVisit, setIsFirstVisit] = useState(() => {
     if (typeof window === "undefined") return true;
@@ -53,6 +57,7 @@ export function ChatTooltipButton() {
       <button
         type="button"
         className="relative z-50 flex size-10 cursor-pointer items-center justify-center"
+        onClick={onClick}
       >
         <ChatBubbleLeftEllipsisIcon className="text-base-content size-6" />
       </button>
