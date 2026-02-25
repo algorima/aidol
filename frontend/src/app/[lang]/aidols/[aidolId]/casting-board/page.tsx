@@ -40,7 +40,10 @@ export default function CastingBoardPage({ params }: CastingBoardProps) {
       setIsLoading(true);
       try {
         const response = await companionRepository.getList({
-          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+          filters: [
+            { field: "aidolId", operator: "eq", value: aidolId },
+            { field: "status", operator: "eq", value: "PUBLISHED" },
+          ],
         });
         setCompanions(response.data);
       } catch (error) {
