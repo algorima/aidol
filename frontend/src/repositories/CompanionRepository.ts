@@ -17,7 +17,7 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
 
   async getByAidolId(aidolId: string) {
     return this.getList({
-      filters: [{ field: "aidol_id", operator: "eq", value: aidolId }],
+      filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
     });
   }
 
