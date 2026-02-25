@@ -1,0 +1,11 @@
+# Generated images (large binary files)
+output/profiles/
+output/highlight_thumbnails/
+output/emblems/
+output/delivery/
+output/face_refs/
+output/idol_transformation/
+output/*.png
+
+# Python cache
+__pycache__/
