@@ -9,6 +9,13 @@ const meta: Meta<typeof GroupProfile> = {
   parameters: {
     layout: "padded",
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-base-100">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
