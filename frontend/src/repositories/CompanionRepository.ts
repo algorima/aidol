@@ -1,5 +1,6 @@
 import { BaseCrudRepository } from "@aioia/core";
 
+import { MAX_MEMBERS } from "../constants/companion";
 import type {
   Companion,
   ImageGenerationRequest,
@@ -17,6 +18,7 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
 
   async getByAidolId(aidolId: string) {
     return this.getList({
+      pagination: { pageSize: MAX_MEMBERS },
       filters: [{ field: "aidol_id", operator: "eq", value: aidolId }],
     });
   }
