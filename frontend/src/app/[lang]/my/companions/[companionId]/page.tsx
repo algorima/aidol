@@ -70,7 +70,7 @@ export default function CompanionProfilePage({
     if (existingChatroomId) {
       // Navigate to existing chatroom
       router.push(
-        `/${lang}/aidols/chatrooms/${existingChatroomId}/${companionId}`,
+        `/${lang}/chatrooms/${existingChatroomId}/${companionId}`,
       );
       return;
     }
@@ -89,7 +89,7 @@ export default function CompanionProfilePage({
 
       // Navigate to new chatroom
       router.push(
-        `/${lang}/aidols/chatrooms/${response.data.id}/${companionId}`,
+        `/${lang}/chatrooms/${response.data.id}/${companionId}`,
       );
     } catch (err) {
       setCreateError(err as Error);
