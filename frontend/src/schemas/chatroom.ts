@@ -64,7 +64,7 @@ export const messageSchema = z.object({
   content: z.string(),
   createdAt: z.string(),
   companionId: z.string().optional(),
-  annoymousId: z.string().optional(),
+  anonymousId: z.string().optional(),
 });
 
 export interface Message extends BaseRecord {
