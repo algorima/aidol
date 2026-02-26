@@ -31,7 +31,7 @@ export class AIdolRepository extends BaseCrudRepository<AIdol> {
   }
 
   async getMy(fetchOptions?: RequestInit): Promise<{ data: AIdol[] }> {
-    const url = this.apiService.buildUrl(`${this.resource}/my`);
+    const url = this.apiService.buildUrl("me/aidols");
     const raw = (await this.apiService.request(url, fetchOptions)) as {
       data: unknown[];
       total: number;

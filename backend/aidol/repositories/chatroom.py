@@ -8,14 +8,17 @@ import uuid
 from datetime import datetime, timezone
 
 from aioia_core.repositories import BaseRepository
+from sqlalchemy import and_, func, select
 from sqlalchemy.orm import Session
 
 from aidol.models import DBChatroom, DBMessage
 from aidol.schemas import (
     Chatroom,
-    ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
     ChatroomUpdate,
+    ChatroomWithLastMessage,
     CompanionMessage,
+    LastMessage,
     Message,
     MessageCreateWithAnonymousId,
     SenderType,
@@ -33,8 +36,8 @@ def _convert_db_chatroom_to_model(db_chatroom: DBChatroom) -> Chatroom:
     )
 
 
-def _convert_chatroom_create_to_db_model(schema: ChatroomCreate) -> dict:
-    """Convert ChatroomCreate schema to DB model data dict."""
+def _convert_chatroom_create_to_db_model(schema: ChatroomCreateWithAnonymousId) -> dict:
+    """Convert ChatroomCreateWithAnonymousId schema to DB model data dict."""
     return schema.model_dump(exclude_unset=True)
 
 
@@ -60,7 +63,7 @@ def _convert_db_message_to_model(db_message: DBMessage) -> Message:
 
 
 class ChatroomRepository(
-    BaseRepository[Chatroom, DBChatroom, ChatroomCreate, ChatroomUpdate]
+    BaseRepository[Chatroom, DBChatroom, ChatroomCreateWithAnonymousId, ChatroomUpdate]
 ):
     """
     Database-backed chatroom repository.
@@ -140,3 +143,73 @@ class ChatroomRepository(
             .all()
         )
         return [_convert_db_message_to_model(msg) for msg in db_messages]
+
+    def get_my_chatrooms_with_last_message(
+        self, anonymous_id: str
+    ) -> list[ChatroomWithLastMessage]:
+        """Get chatrooms owned by anonymous_id with last message summary."""
+        # Pre-filter: only consider chatrooms owned by this user
+        my_chatroom_ids = select(DBChatroom.id).where(
+            DBChatroom.anonymous_id == anonymous_id
+        )
+
+        ranked_messages = (
+            self.db_session.query(
+                DBMessage.chatroom_id.label("chatroom_id"),
+                DBMessage.created_at.label("created_at"),
+                DBMessage.content.label("content"),
+                func.row_number()
+                .over(
+                    partition_by=DBMessage.chatroom_id,
+                    order_by=(DBMessage.created_at.desc(), DBMessage.id.desc()),
+                )
+                .label("rn"),
+            )
+            .filter(DBMessage.chatroom_id.in_(my_chatroom_ids))
+            .subquery()
+        )
+
+        rows = (
+            self.db_session.query(
+                DBChatroom,
+                ranked_messages.c.created_at.label("last_message_created_at"),
+                ranked_messages.c.content.label("last_message_content"),
+            )
+            .outerjoin(
+                ranked_messages,
+                and_(
+                    ranked_messages.c.chatroom_id == DBChatroom.id,
+                    ranked_messages.c.rn == 1,
+                ),
+            )
+            .filter(DBChatroom.anonymous_id == anonymous_id)
+            .order_by(
+                ranked_messages.c.created_at.is_(None),
+                ranked_messages.c.created_at.desc(),
+                DBChatroom.id.desc(),
+            )
+            .all()
+        )
+
+        result: list[ChatroomWithLastMessage] = []
+        for chatroom, last_created_at, last_content in rows:
+            last_message = (
+                LastMessage(
+                    created_at=last_created_at.replace(tzinfo=timezone.utc),
+                    content=last_content,
+                )
+                if last_created_at is not None and last_content is not None
+                else None
+            )
+            result.append(
+                ChatroomWithLastMessage(
+                    id=chatroom.id,
+                    name=chatroom.name,
+                    language=chatroom.language,
+                    created_at=chatroom.created_at.replace(tzinfo=timezone.utc),
+                    updated_at=chatroom.updated_at.replace(tzinfo=timezone.utc),
+                    last_message=last_message,
+                )
+            )
+
+        return result
