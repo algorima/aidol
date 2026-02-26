@@ -53,7 +53,12 @@ export function ChemistryRelationCard({
       )}
 
       {relationshipType && (
-        <span className="text-label-l bg-base-content text-base-100 self-start rounded-lg px-2 py-1">
+        <span
+          className={clsx(
+            "text-label-l bg-base-content text-base-100 self-start rounded-lg px-2 py-1",
+            onClose && "mr-8",
+          )}
+        >
           {relationshipType}
         </span>
       )}
