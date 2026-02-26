@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from typing import Final, Self
 from zoneinfo import ZoneInfo
 
+from aidol.context.mbti_profiles import MBTI_PROFILE_MAP
 from aidol.context.persona import Persona, calculate_mbti
 from aidol.prompts.base_system_prompt import COMMON_SYSTEM_PROMPT_BASE
 from aidol.providers.llm import ProviderConstraints
@@ -204,6 +205,24 @@ def _build_mbti_description(
     return f"- MBTI 성향: {mbti}"
 
 
+def _build_mbti_profile(
+    energy: int | None,
+    perception: int | None,
+    judgment: int | None,
+    lifestyle: int | None,
+) -> str:
+    """Build MBTI profile text mapped from calculated MBTI type."""
+    mbti = calculate_mbti(energy, perception, judgment, lifestyle)
+    if mbti is None:
+        return "- MBTI 상세 프로필: 정보 없음 (성향 점수 미설정)"
+
+    profile = MBTI_PROFILE_MAP.get(mbti)
+    if profile is None:
+        return f"- MBTI 상세 프로필: {mbti} (상세 설명 정보 없음)"
+
+    return f"- MBTI 상세 프로필 ({mbti})\n{profile}"
+
+
 def _level_from_optional_score(score: int | None) -> str:
     """Map optional score to level; missing score defaults to mid."""
     if score is None:
@@ -266,6 +285,12 @@ def _build_prompt_values(persona: Persona) -> dict[str, str]:
         "grade": _render_grade(persona.grade),
         "biography": _as_text(persona.biography, "서사 정보 없음"),
         "mbti_description": _build_mbti_description(
+            persona.mbti_energy,
+            persona.mbti_perception,
+            persona.mbti_judgment,
+            persona.mbti_lifestyle,
+        ),
+        "mbti_profile": _build_mbti_profile(
             persona.mbti_energy,
             persona.mbti_perception,
             persona.mbti_judgment,
