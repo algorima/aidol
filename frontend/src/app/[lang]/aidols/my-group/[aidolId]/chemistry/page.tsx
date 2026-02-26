@@ -99,7 +99,7 @@ export default function GroupChemistryPage({
     };
 
     void fetchRelationships();
-  }, [selectedCompanionId, relationshipRepository]);
+  }, [selectedCompanionId, relationshipRepository, showToast, t]);
 
   // 선택된 멤버
   const selectedCompanion = companions.find(
