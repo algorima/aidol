@@ -31,9 +31,7 @@ export default function CastingCompletePage({
   useEffect(() => {
     const fetchMemberCount = async () => {
       try {
-        const response = await companionRepository.getList({
-          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
-        });
+        const response = await companionRepository.getByAidolId(aidolId);
         setRemainingSlots(MAX_MEMBERS - response.data.length);
       } catch {
         showToast(t("aidol:castingComplete.error.load"), "error");
