@@ -13,14 +13,18 @@ class TestChatroomCreateSchema(unittest.TestCase):
     def test_companion_id_is_required(self) -> None:
         """companion_id must be provided when creating chatroom."""
         with self.assertRaises(ValidationError):
-            ChatroomCreate(name="My Chatroom", language="ko")
+            ChatroomCreate.model_validate(
+                {"name": "My Chatroom", "language": "ko"}
+            )
 
     def test_companion_id_accepts_camel_case_alias(self) -> None:
         """companionId alias should map to companion_id field."""
-        schema = ChatroomCreate(
-            name="My Chatroom",
-            language="ko",
-            companionId="companion-uuid",
+        schema = ChatroomCreate.model_validate(
+            {
+                "name": "My Chatroom",
+                "language": "ko",
+                "companionId": "companion-uuid",
+            }
         )
         self.assertEqual(schema.companion_id, "companion-uuid")
 
