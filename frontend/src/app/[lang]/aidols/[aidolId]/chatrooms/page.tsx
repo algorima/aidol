@@ -102,7 +102,11 @@ export default function InboxPage() {
                 },
               },
             ]);
-          } catch {
+          } catch (error) {
+            console.error(
+              `Initial response failed for chatroom ${newChatroom.id}:`,
+              error,
+            );
             setChatrooms([
               {
                 id: newChatroom.id,
@@ -155,7 +159,15 @@ export default function InboxPage() {
     };
 
     void fetchChatrooms();
-  }, [aidolRepo, chatroomRepo, companionRepo, params.aidolId, params.lang, showToast, t]);
+  }, [
+    aidolRepo,
+    chatroomRepo,
+    companionRepo,
+    params.aidolId,
+    params.lang,
+    showToast,
+    t,
+  ]);
 
   const handleBack = useCallback(() => {
     router.back();
