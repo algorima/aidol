@@ -11,17 +11,10 @@ import { Loading } from "@/components/Loading";
 import { getCurrentActivity } from "@/lib/activity";
 import { getRelativeTime } from "@/lib/date";
 import { ChatroomRepository } from "@/repositories/ChatroomRepository";
+import type { MyChatroomItem } from "@/repositories/ChatroomRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
+import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
-
-interface ChatroomView {
-  id: string;
-  name: string;
-  imageUrl: string | null;
-  active: boolean;
-  lastMessage: string | null;
-  lastMessageAt: string | null;
-}
 
 export default function InboxPage() {
   const params = useParams<{ lang: string }>();
@@ -39,7 +32,10 @@ export default function InboxPage() {
     [apiService],
   );
 
-  const [chatrooms, setChatrooms] = useState<ChatroomView[]>([]);
+  const [chatrooms, setChatrooms] = useState<MyChatroomItem[]>([]);
+  const [companionMap, setCompanionMap] = useState<Map<string, Companion>>(
+    new Map(),
+  );
   const [isLoading, setIsLoading] = useState(true);
 
   const activity = useMemo(() => getCurrentActivity(), []);
@@ -60,22 +56,8 @@ export default function InboxPage() {
           pagination: { current: 1, pageSize: companionIds.length },
         });
 
-        const companionMap = new Map(companions.map((c) => [c.id, c]));
-
-        const rooms: ChatroomView[] = myChatrooms.map((chatroom) => {
-          const companion = companionMap.get(chatroom.companionId);
-          return {
-            id: chatroom.id,
-            name: companion?.name ?? "",
-            imageUrl: companion?.profilePictureUrl ?? null,
-            // TODO: active 상태는 기획 확정 후 구현
-            active: false,
-            lastMessage: chatroom.lastMessage?.content ?? null,
-            lastMessageAt: chatroom.lastMessage?.createdAt ?? null,
-          };
-        });
-
-        setChatrooms(rooms);
+        setCompanionMap(new Map(companions.map((c) => [c.id, c])));
+        setChatrooms(myChatrooms);
 
         // Secondary task: Generate initial AI response for empty chatrooms
         const emptyChatrooms = myChatrooms.filter(
@@ -90,8 +72,10 @@ export default function InboxPage() {
                   room.id === chatroom.id
                     ? {
                         ...room,
-                        lastMessage: response.content,
-                        lastMessageAt: new Date().toISOString(),
+                        lastMessage: {
+                          content: response.content,
+                          createdAt: new Date().toISOString(),
+                        },
                       }
                     : room,
                 ),
@@ -120,8 +104,8 @@ export default function InboxPage() {
   }, [router]);
 
   const handleRoomClick = useCallback(
-    (roomId: string) => {
-      router.push(`/${params.lang}/chatrooms/${roomId}/companion`);
+    (chatroomId: string, companionId: string) => {
+      router.push(`/${params.lang}/chatrooms/${chatroomId}/${companionId}`);
     },
     [params.lang, router],
   );
@@ -178,18 +162,25 @@ export default function InboxPage() {
             {t("inbox.empty")}
           </p>
         ) : (
-          chatrooms.map((room) => (
-            <InboxBlock
-              key={room.id}
-              name={room.name}
-              imageUrl={room.imageUrl}
-              active={room.active}
-              activity={room.active ? activity : undefined}
-              lastMessage={room.lastMessage}
-              lastMessageAt={formatLastMessageAt(room.lastMessageAt)}
-              onClick={() => handleRoomClick(room.id)}
-            />
-          ))
+          chatrooms.map((room) => {
+            const companion = companionMap.get(room.companionId);
+            // TODO: active 상태는 기획 확정 후 구현
+            const active = false;
+            return (
+              <InboxBlock
+                key={room.id}
+                name={companion?.name ?? ""}
+                imageUrl={companion?.profilePictureUrl ?? null}
+                active={active}
+                activity={active ? activity : undefined}
+                lastMessage={room.lastMessage?.content ?? null}
+                lastMessageAt={formatLastMessageAt(
+                  room.lastMessage?.createdAt ?? null,
+                )}
+                onClick={() => handleRoomClick(room.id, room.companionId)}
+              />
+            );
+          })
         )}
       </div>
     </div>
