@@ -222,6 +222,8 @@
     "error": {
       "update": "Failed to save.",
       "generateImage": "Failed to generate image.",
+      "promptTooLong": "Prompt must be 200 characters or less.",
+      "promptEmpty": "Please enter a prompt.",
       "load": "Failed to load trainees."
     },
     "gender": {
@@ -367,7 +369,8 @@
       "minutesAgo": "{{count}}m ago",
       "hoursAgo": "{{count}}h ago",
       "am": "AM",
-      "pm": "PM"
+      "pm": "PM",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

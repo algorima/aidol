@@ -10,10 +10,10 @@ from datetime import datetime, timedelta
 from unittest.mock import MagicMock, patch
 from zoneinfo import ZoneInfo
 
-from aidol.context import format_datetime_korean, format_utc_offset
+from aidol.context import Persona, format_datetime_korean, format_utc_offset
 from aidol.context.builder import MessageContextBuilder
 from aidol.providers.llm import ProviderConstraints
-from aidol.schemas import Persona
+from aidol.schemas.companion import Grade
 
 
 class TestFormatUtcOffset(unittest.TestCase):
@@ -100,6 +100,7 @@ class TestFormatCurrentTime(unittest.TestCase):
             name="Test",
             system_prompt="Test prompt",
             timezone_name="Asia/Seoul",
+            grade=Grade.B,
         )
         builder = MessageContextBuilder(self.mock_provider, persona)
 
@@ -126,6 +127,7 @@ class TestFormatCurrentTime(unittest.TestCase):
             name="Test",
             system_prompt="Test prompt",
             timezone_name="UTC",
+            grade=Grade.B,
         )
         builder = MessageContextBuilder(self.mock_provider, persona)
 
@@ -152,6 +154,7 @@ class TestFormatCurrentTime(unittest.TestCase):
             name="Test",
             system_prompt="Test prompt",
             timezone_name="America/St_Johns",
+            grade=Grade.B,
         )
         builder = MessageContextBuilder(self.mock_provider, persona)
 
@@ -180,6 +183,7 @@ class TestFormatCurrentTime(unittest.TestCase):
             name="Test",
             system_prompt="Test prompt",
             timezone_name="America/Los_Angeles",
+            grade=Grade.B,
         )
         builder = MessageContextBuilder(self.mock_provider, persona)
 

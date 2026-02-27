@@ -222,6 +222,8 @@
     "error": {
       "update": "Gagal menyimpan.",
       "generateImage": "Gagal membuat gambar.",
+      "promptTooLong": "Prompt harus 200 karakter atau kurang.",
+      "promptEmpty": "Silakan masukkan prompt.",
       "load": "Gagal memuat daftar trainee."
     },
     "gender": {
@@ -367,7 +369,8 @@
       "minutesAgo": "{{count}} menit lalu",
       "hoursAgo": "{{count}} jam lalu",
       "am": "AM",
-      "pm": "PM"
+      "pm": "PM",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

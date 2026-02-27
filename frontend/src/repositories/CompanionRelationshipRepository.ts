@@ -13,7 +13,7 @@ export class CompanionRelationshipRepository extends BaseCrudRepository<Companio
   async getByFromCompanionId(fromCompanionId: string) {
     return this.getList({
       filters: [
-        { field: "from_companion_id", operator: "eq", value: fromCompanionId },
+        { field: "fromCompanionId", operator: "eq", value: fromCompanionId },
       ],
     });
   }

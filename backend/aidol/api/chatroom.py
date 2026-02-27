@@ -17,15 +17,20 @@ from litellm.exceptions import BadRequestError, RateLimitError, ServiceUnavailab
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session, sessionmaker
 
-from aidol.context import MessageContextBuilder
-from aidol.prompts import build_chat_system_prompt, build_initial_system_prompt
+from aidol.context import MessageContextBuilder, Persona
+from aidol.prompts import CHAT_PROMPT, GREETING_PROMPT
 from aidol.protocols import (
     ChatroomRepositoryFactoryProtocol,
     ChatroomRepositoryProtocol,
     CompanionRepositoryFactoryProtocol,
 )
 from aidol.providers.llm import GeminiLLMProvider, LLMProvider, OpenAILLMProvider
-from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
+from aidol.providers.llm.messages import (
+    AIMessage,
+    HumanMessage,
+    LLMMessage,
+    SystemMessage,
+)
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
@@ -38,10 +43,10 @@ from aidol.schemas import (
     MessageCreate,
     MessageCreateWithAnonymousId,
     ModelSettings,
-    Persona,
     SenderType,
 )
 from aidol.services import ResponseGenerationService
+from aidol.services.companion_service import calculate_grade
 from aidol.settings import Settings
 
 # Maximum number of messages to fetch for conversation history
@@ -167,12 +172,23 @@ class ChatroomRouter(
         llm_messages = _to_llm_messages(list(reversed(messages)))
         return messages, llm_messages
 
-    def _build_persona(self, companion: Companion, system_prompt: str) -> Persona:
+    def _build_persona(self, companion: Companion) -> Persona:
         """Create persona for response generation (KST fixed for MVP)."""
         return Persona(
             name=companion.name,
-            system_prompt=system_prompt,
             timezone_name=KST_TIMEZONE_NAME,
+            # K-pop domain fields
+            gender=companion.gender,
+            position=companion.position,
+            grade=companion.grade or calculate_grade(companion.stats),
+            biography=companion.biography,
+            # MBTI scores
+            mbti_energy=companion.mbti_energy,
+            mbti_perception=companion.mbti_perception,
+            mbti_judgment=companion.mbti_judgment,
+            mbti_lifestyle=companion.mbti_lifestyle,
+            # Extension prompt (if any)
+            system_prompt=companion.system_prompt,
         )
 
     def _resolve_runtime(
@@ -213,6 +229,7 @@ class ChatroomRouter(
         companion_id: str,
         persona: Persona,
         llm_messages: list[LLMMessage],
+        purpose_prompt: str,
     ) -> str:
         """Generate response text from LLM with shared logging/error handling."""
         provider, provider_name, chat_model, model_settings = self._resolve_runtime(
@@ -224,6 +241,7 @@ class ChatroomRouter(
             MessageContextBuilder(provider, persona)
             .with_persona()
             .with_real_time_context()
+            .with_purpose_prompts([SystemMessage(content=purpose_prompt)])
             .with_current_conversation(llm_messages)
             .build()
         )
@@ -444,13 +462,13 @@ class ChatroomRouter(
                     ),
                 )
 
-            system_prompt = build_initial_system_prompt(companion=companion)
-            persona = self._build_persona(companion, system_prompt)
+            persona = self._build_persona(companion)
             response_text = self._generate_response_text(
                 item_id=item_id,
                 companion_id=companion_id,
                 persona=persona,
                 llm_messages=llm_messages,
+                purpose_prompt=GREETING_PROMPT,
             )
 
             companion_message = self._save_companion_message(
@@ -486,13 +504,13 @@ class ChatroomRouter(
 
             companion = self._get_companion_or_404(db_session, companion_id)
             _, llm_messages = self._get_history_messages(repository, item_id)
-            system_prompt = build_chat_system_prompt(companion)
-            persona = self._build_persona(companion, system_prompt)
+            persona = self._build_persona(companion)
             response_text = self._generate_response_text(
                 item_id=item_id,
                 companion_id=companion_id,
                 persona=persona,
                 llm_messages=llm_messages,
+                purpose_prompt=CHAT_PROMPT,
             )
             companion_message = self._save_companion_message(
                 repository=repository,

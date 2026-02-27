@@ -222,6 +222,8 @@
     "error": {
       "update": "Error al guardar.",
       "generateImage": "Error al generar imagen.",
+      "promptTooLong": "El texto debe tener 200 caracteres o menos.",
+      "promptEmpty": "Por favor, ingresa un texto.",
       "load": "Error al cargar aprendices."
     },
     "gender": {
@@ -367,7 +369,8 @@
       "minutesAgo": "Hace {{count}}min",
       "hoursAgo": "Hace {{count}}h",
       "am": "a.m.",
-      "pm": "p.m."
+      "pm": "p.m.",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

@@ -61,7 +61,6 @@ from aidol.schemas.highlight import (
     HighlightMessageUpdate,
 )
 from aidol.schemas.model_settings import ModelSettings, ModelSettingsBase
-from aidol.schemas.persona import Persona
 
 __all__ = [
     # AIdol
@@ -123,6 +122,4 @@ __all__ = [
     # Model Settings
     "ModelSettings",
     "ModelSettingsBase",
-    # Persona
-    "Persona",
 ]

@@ -1,245 +1,262 @@
 "use client";
 
-import * as Sentry from "@sentry/react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { ChatRoom } from "@/components/chatroom";
+import { useToast } from "@/app/providers/Toast";
+import { MessageInput } from "@/client";
+import { ChatHeader, MessageList } from "@/components/chatroom";
+import { getCurrentActivity } from "@/lib/activity";
+import { getParticle } from "@/lib/koreanParticle";
 import { ChatroomRepository, CompanionRepository } from "@/repositories";
-import { SenderType, type Message } from "@/schemas/chatroom";
+import { Message, MessageStatus, SenderType } from "@/schemas";
 import type { Companion } from "@/schemas/companion";
 import { getApiService } from "@/services/ApiService";
 
-interface ChatPageProps {
-  params: {
-    lang: string;
-    chatroomId: string;
-    companionId: string;
-  };
+const PAGE_SIZE = 100;
+
+interface ChatpageProps {
+  params: { lang: string; chatroomId: string; companionId: string };
 }
 
-/**
- * 채팅 페이지 (Container)
- * - 메시지 목록 조회 및 전송
- * - AI 응답 생성
- * - UI는 ChatRoom 컴포넌트에 위임
- */
-export default function ChatPage({ params }: ChatPageProps): JSX.Element {
-  const { lang, chatroomId, companionId } = params;
+export default function Chatpage({ params }: ChatpageProps) {
+  const { chatroomId, companionId } = params;
   const router = useRouter();
-
   const [companion, setCompanion] = useState<Companion | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [isLoadingCompanion, setIsLoadingCompanion] = useState(true);
-  const [isLoadingMessages, setIsLoadingMessages] = useState(true);
-  const [isSending, setIsSending] = useState(false);
-  const [companionError, setCompanionError] = useState<Error | null>(null);
-  const [error, setError] = useState<Error | null>(null);
+  const [messages, setMessages] = useState<Message[] | undefined>(undefined);
+  const [isTyping, setIsTyping] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const { t } = useTranslation("aidol");
+  const { showToast } = useToast();
 
-  const companionRepository = useMemo(
+  const chatroomRepo = useMemo(
+    () => new ChatroomRepository(getApiService()),
+    [],
+  );
+  const companionRepo = useMemo(
     () => new CompanionRepository(getApiService()),
     [],
   );
 
-  const chatroomRepository = useMemo(
-    () => new ChatroomRepository(getApiService()),
+  useEffect(() => {
+    void (async () => {
+      const [, companionResult] = await Promise.allSettled([
+        (async () => {
+          try {
+            const fetched = await chatroomRepo.getMessages(chatroomId, {
+              limit: PAGE_SIZE,
+            });
+            setMessages(fetched);
+            if (fetched.length < PAGE_SIZE) setHasMore(false);
+          } catch (error) {
+            console.error("Failed to load messages:", error);
+            showToast(t("common.error.load"), "error");
+            setMessages([]);
+            setHasMore(false);
+          }
+        })(),
+        companionRepo.getOne({ id: companionId }),
+      ]);
+
+      if (companionResult.status === "fulfilled") {
+        setCompanion(companionResult.value.data);
+      } else {
+        console.error("Failed to load companion:", companionResult.reason);
+        showToast(t("common.error.load"), "error");
+      }
+    })();
+  }, [chatroomId, chatroomRepo, companionId, companionRepo, showToast]);
+
+  const handleLoadMore = useCallback(async () => {
+    if (isLoadingMore) return;
+    setIsLoadingMore(true);
+    try {
+      const offset = messages?.length ?? 0;
+      const fetched = await chatroomRepo.getMessages(chatroomId, {
+        limit: PAGE_SIZE,
+        offset,
+      });
+      setMessages((prev) => [...(prev ?? []), ...fetched]);
+      if (fetched.length < PAGE_SIZE) setHasMore(false);
+    } catch (error) {
+      console.error("Failed to load more messages:", error);
+    } finally {
+      setIsLoadingMore(false);
+    }
+  }, [isLoadingMore, messages?.length, chatroomRepo, chatroomId]);
+
+  const delay = useCallback(
+    (ms: number) => new Promise((resolve) => setTimeout(resolve, ms)),
     [],
   );
 
-  // Fetch companion on mount
-  useEffect(() => {
-    void (async () => {
-      try {
-        setIsLoadingCompanion(true);
-        const response = await companionRepository.getOne({ id: companionId });
-        setCompanion(response.data);
-      } catch (err) {
-        setCompanionError(err as Error);
-      } finally {
-        setIsLoadingCompanion(false);
-      }
-    })();
-  }, [companionId, companionRepository]);
+  const displayBubbles = useCallback(
+    async (generated: { messageId: string; content: string }) => {
+      const createdAt = new Date().toISOString();
+      const paragraphs = generated.content.split("\n\n");
+      const bubbles =
+        paragraphs.length <= 3
+          ? paragraphs
+          : [...paragraphs.slice(0, 2), paragraphs.slice(2).join(" ")];
 
-  // Load messages on mount
-  useEffect(() => {
-    void (async () => {
+      for (let i = 0; i < bubbles.length; i++) {
+        if (i !== 0) {
+          setIsTyping(true);
+          await delay(3000);
+        }
+
+        const aiMessage: Message = {
+          id: `${generated.messageId}_${i}`,
+          senderType: SenderType.COMPANION,
+          content: bubbles[i],
+          createdAt,
+        };
+        setMessages((prev) => [aiMessage, ...(prev ?? [])]);
+        setIsTyping(false);
+      }
+    },
+    [delay],
+  );
+
+  const generateWithTyping = useCallback(async () => {
+    try {
+      const response = chatroomRepo.generateResponse(chatroomId, companionId);
+      setIsTyping(true);
+      const [generated] = await Promise.all([response, delay(3000)]);
+      await displayBubbles(generated);
+    } catch (error) {
+      console.error("Failed to generate AI response:", error);
+      setIsTyping(false);
+      const errorMessage: Message = {
+        id: `error_${Date.now()}`,
+        senderType: SenderType.COMPANION,
+        content: "",
+        createdAt: new Date().toISOString(),
+        status: MessageStatus.ERROR,
+      };
+      setMessages((prev) => [errorMessage, ...(prev ?? [])]);
+    }
+  }, [chatroomId, companionId, chatroomRepo, delay, displayBubbles]);
+
+  const sendAndGenerate = useCallback(
+    async (content: string, tempId: string) => {
       try {
-        setIsLoadingMessages(true);
-        const fetchedMessages = await chatroomRepository.getMessages(
-          chatroomId,
-          { limit: 100 },
+        const userMessage = await chatroomRepo.sendMessage(chatroomId, content);
+        setMessages((prev) =>
+          prev?.map((m) =>
+            m.id === tempId
+              ? { ...userMessage, status: MessageStatus.SENT }
+              : m,
+          ),
         );
-        setMessages(fetchedMessages);
-      } catch (err) {
-        setError(err as Error);
-      } finally {
-        setIsLoadingMessages(false);
+      } catch (error) {
+        console.error("Failed to send message:", error);
+        setMessages((prev) =>
+          prev?.map((m) =>
+            m.id === tempId ? { ...m, status: MessageStatus.ERROR } : m,
+          ),
+        );
+        return;
       }
-    })();
-  }, [chatroomId, chatroomRepository]);
 
-  const handleSendMessage = useCallback(
+      await generateWithTyping();
+    },
+    [chatroomId, chatroomRepo, generateWithTyping],
+  );
+
+  const handleRetryGenerate = useCallback(
+    (errorMsg: Message) => {
+      setMessages((prev) =>
+        prev?.map((m) =>
+          m.id === errorMsg.id ? { ...m, status: MessageStatus.SENDING } : m,
+        ),
+      );
+
+      const retry = async () => {
+        try {
+          const response = chatroomRepo.generateResponse(
+            chatroomId,
+            companionId,
+          );
+          const [generated] = await Promise.all([response, delay(3000)]);
+          setMessages((prev) => prev?.filter((m) => m.id !== errorMsg.id));
+          await displayBubbles(generated);
+        } catch (error) {
+          console.error("Failed to generate AI response:", error);
+          setMessages((prev) =>
+            prev?.map((m) =>
+              m.id === errorMsg.id ? { ...m, status: MessageStatus.ERROR } : m,
+            ),
+          );
+        }
+      };
+
+      void retry();
+    },
+    [chatroomId, companionId, chatroomRepo, delay, displayBubbles],
+  );
+
+  const handleResend = useCallback(
+    (message: Message) => {
+      setMessages((prev) =>
+        prev?.map((m) =>
+          m.id === message.id ? { ...m, status: MessageStatus.SENDING } : m,
+        ),
+      );
+      void sendAndGenerate(message.content, message.id);
+    },
+    [sendAndGenerate],
+  );
+
+  const handleSubmit = useCallback(
     async (content: string) => {
-      if (!content.trim() || isSending) return;
-
-      setIsSending(true);
-      setError(null);
-
-      // Generate temporary message ID for optimistic update
-      const tempMessageId = `temp_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-
-      // Optimistic UI update - add temporary user message
-      const tempMessage: Message = {
-        id: tempMessageId,
+      const tempId = `temp_${Date.now()}`;
+      const optimisticMessage: Message = {
+        id: tempId,
         senderType: SenderType.USER,
         content,
         createdAt: new Date().toISOString(),
+        status: MessageStatus.SENDING,
       };
-      setMessages((prev) => [tempMessage, ...prev]);
-
-      let createdMessage: Message;
-
-      try {
-        // Core task: Send user message (anonymous ID sent via httpOnly cookie)
-        createdMessage = await chatroomRepository.sendMessage(
-          chatroomId,
-          content,
-        );
-
-        // Replace temporary message with actual message
-        setMessages((prev) =>
-          prev.map((msg) => (msg.id === tempMessageId ? createdMessage : msg)),
-        );
-      } catch (coreTaskError) {
-        // Core task failure: rollback and propagate
-        console.error("Failed to send message:", coreTaskError);
-        setMessages((prev) => prev.filter((msg) => msg.id !== tempMessageId));
-        setIsSending(false);
-        throw coreTaskError;
-      }
-
-      // Secondary task: Generate AI response
-      // Failure here doesn't affect user message (already sent)
-      try {
-        const response = await chatroomRepository.generateResponse(
-          chatroomId,
-          companionId,
-        );
-
-        const aiMessage: Message = {
-          id: response.messageId,
-          senderType: SenderType.COMPANION,
-          content: response.content,
-          createdAt: new Date().toISOString(),
-        };
-        setMessages((prev) => [aiMessage, ...prev]);
-      } catch (secondaryTaskError) {
-        console.error(
-          "AI response failed (message sending was successful):",
-          secondaryTaskError,
-        );
-        Sentry.captureException(secondaryTaskError);
-        throw secondaryTaskError;
-      } finally {
-        setIsSending(false);
-      }
+      setMessages((prev) => [optimisticMessage, ...(prev ?? [])]);
+      await sendAndGenerate(content, tempId);
     },
-    [chatroomId, chatroomRepository, companionId, isSending],
+    [sendAndGenerate],
   );
 
-  const handleBack = useCallback(() => {
-    router.push(`/${lang}/my/companions/${companionId}`);
-  }, [companionId, lang, router]);
-
-  const isLoading = isLoadingMessages || isLoadingCompanion;
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-dvh items-center justify-center">
-        <span className="loading loading-spinner loading-lg" />
-      </div>
-    );
-  }
-
-  if (companionError || !companion) {
-    return (
-      <div className="flex min-h-dvh items-center justify-center">
-        <div className="alert alert-error max-w-md">
-          <span>{companionError?.message || "Companion not found"}</span>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <main className="bg-base-100 flex h-dvh flex-col">
-      {/* Header */}
-      <header className="bg-base-200 flex items-center gap-4 px-4 py-3">
-        <button
-          type="button"
-          onClick={handleBack}
-          className="btn btn-ghost btn-sm btn-circle"
-          aria-label="Back"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="size-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-        </button>
-        <div className="flex items-center gap-3">
-          <div className="avatar">
-            <div className="bg-base-300 w-10 rounded-full">
-              {companion.profilePictureUrl ? (
-                <Image
-                  src={companion.profilePictureUrl}
-                  alt={companion.name ?? companion.id}
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
-              ) : (
-                <div className="flex h-full items-center justify-center text-lg">
-                  {(companion.name ?? companion.id).charAt(0)}
-                </div>
-              )}
-            </div>
-          </div>
-          <h1 className="font-semibold">{companion.name ?? companion.id}</h1>
-        </div>
-      </header>
+    <div className="flex h-screen flex-col">
+      <ChatHeader
+        companionName={companion?.name ?? undefined}
+        companionImageUrl={companion?.profilePictureUrl}
+        activity={getCurrentActivity()}
+        onBack={() => router.back()}
+      />
 
-      {/* Error Message */}
-      {error && (
-        <div className="px-4 py-2">
-          <div className="alert alert-error">
-            <span>{error.message}</span>
-          </div>
-        </div>
-      )}
-
-      {/* Chat Room */}
-      <div className="flex-1 overflow-hidden">
-        <ChatRoom messages={messages} onSendMessage={handleSendMessage} />
+      <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">
+        {companion?.name
+          ? t("chat.greeting", {
+              name: companion.name,
+              particle: getParticle(companion.name, "과", "와"),
+            })
+          : ""}
       </div>
 
-      {/* Sending indicator */}
-      {isSending && (
-        <div className="bg-base-200 px-4 py-2 text-center text-sm opacity-70">
-          <span className="loading loading-dots loading-sm" />
-        </div>
-      )}
-    </main>
+      <MessageList
+        messages={messages}
+        companionName={companion?.name ?? ""}
+        companionImageUrl={companion?.profilePictureUrl ?? undefined}
+        isTyping={isTyping}
+        onResend={handleResend}
+        onRetryGenerate={handleRetryGenerate}
+        onLoadMore={handleLoadMore}
+        hasMore={hasMore}
+        isLoadingMore={isLoadingMore}
+      />
+
+      <MessageInput onSubmit={handleSubmit} />
+    </div>
   );
 }

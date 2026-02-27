@@ -31,6 +31,14 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     request: ImageGenerationRequest,
     fetchOptions?: RequestInit,
   ): Promise<ImageGenerationResponse> {
+    const trimmed = request.prompt.trim();
+    if (!trimmed) {
+      throw new Error("promptEmpty");
+    }
+    if (trimmed.length > 200) {
+      throw new Error("promptTooLong");
+    }
+
     const url = this.apiService.buildUrl(`${this.resource}/images`);
     const rawResponse = await this.apiService.request(url, {
       ...fetchOptions,

@@ -222,6 +222,8 @@
     "error": {
       "update": "Lưu thất bại.",
       "generateImage": "Tạo ảnh thất bại.",
+      "promptTooLong": "Nội dung phải từ 200 ký tự trở xuống.",
+      "promptEmpty": "Vui lòng nhập nội dung.",
       "load": "Không thể tải danh sách thực tập sinh."
     },
     "gender": {
@@ -367,7 +369,8 @@
       "minutesAgo": "{{count}} phút trước",
       "hoursAgo": "{{count}} giờ trước",
       "am": "SA",
-      "pm": "CH"
+      "pm": "CH",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }
