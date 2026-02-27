@@ -367,7 +367,8 @@
       "minutesAgo": "Hace {{count}}min",
       "hoursAgo": "Hace {{count}}h",
       "am": "a.m.",
-      "pm": "p.m."
+      "pm": "p.m.",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

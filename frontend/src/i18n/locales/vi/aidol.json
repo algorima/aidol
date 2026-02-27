@@ -367,7 +367,8 @@
       "minutesAgo": "{{count}} phút trước",
       "hoursAgo": "{{count}} giờ trước",
       "am": "SA",
-      "pm": "CH"
+      "pm": "CH",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }
