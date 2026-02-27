@@ -16,7 +16,7 @@ const lastMessageSchema = z.object({
   createdAt: z.string(),
 });
 
-const myChatroomItemSchema = z.object({
+const _myChatroomItemSchema = z.object({
   id: z.string(),
   companionId: z.string(),
   lastMessage: lastMessageSchema.nullable(),
@@ -136,14 +136,46 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
 
   /**
    * Get the current user's chatroom list
-   * TODO: GET /me/chatrooms — replace stub when feat/my-chatrooms merges
+   * TODO: GET /me/chatrooms — replace mock when API is available
    */
-  getMyChatrooms(): Promise<MyChatroomItem[]> {
-    // TODO: Uncomment when API is available
+  async getMyChatrooms(): Promise<MyChatroomItem[]> {
+    // TODO: Replace mock with API call when available
     // const url = this.apiService.buildUrl("me/chatrooms");
     // const rawResponse = await this.apiService.request(url);
-    // return this.validateResponse(rawResponse, z.array(myChatroomItemSchema));
-    void myChatroomItemSchema; // keep schema referenced until API integration
-    return Promise.resolve([]);
+    // return this.validateResponse(rawResponse, z.array(_myChatroomItemSchema));
+    return MOCK_MY_CHATROOMS;
   }
 }
+
+// TODO: Remove when API is available
+const MOCK_MY_CHATROOMS: MyChatroomItem[] = [
+  {
+    id: "mock-chatroom-1",
+    companionId: "mock-companion-1",
+    lastMessage: {
+      content: "안녕하세요! 오늘 컨디션은 어때요?",
+      createdAt: new Date(Date.now() - 30 * 1000).toISOString(),
+    },
+  },
+  {
+    id: "mock-chatroom-2",
+    companionId: "mock-companion-2",
+    lastMessage: {
+      content: "다음에 또 이야기해요!",
+      createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+    },
+  },
+  {
+    id: "mock-chatroom-3",
+    companionId: "mock-companion-3",
+    lastMessage: {
+      content: "내일 연습 때 봐요!",
+      createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    },
+  },
+  {
+    id: "mock-chatroom-4",
+    companionId: "mock-companion-4",
+    lastMessage: null,
+  },
+];

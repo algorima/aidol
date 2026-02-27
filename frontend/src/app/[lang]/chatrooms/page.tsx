@@ -10,8 +10,8 @@ import { InboxBlock } from "@/components/inbox";
 import { Loading } from "@/components/Loading";
 import { getCurrentActivity } from "@/lib/activity";
 import { getRelativeTime } from "@/lib/date";
+import { ChatroomRepository } from "@/repositories/ChatroomRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
-import { LocalChatroomIdsRepository } from "@/repositories/LocalChatroomIdsRepository";
 import { getApiService } from "@/services/ApiService";
 
 interface ChatroomView {
@@ -23,51 +23,20 @@ interface ChatroomView {
   lastMessageAt: string | null;
 }
 
-// TODO: API 연동 시 제거
-const MOCK_CHATROOMS: ChatroomView[] = [
-  {
-    id: "1",
-    name: "데프레임",
-    imageUrl: "https://placehold.co/96x96",
-    active: true,
-    lastMessage: "안녕하세요! 오늘 컨디션은 어때요?",
-    lastMessageAt: new Date(Date.now() - 30 * 1000).toISOString(),
-  },
-  {
-    id: "2",
-    name: "스타라이트",
-    imageUrl: "https://placehold.co/96x96",
-    active: false,
-    lastMessage: "다음에 또 이야기해요!",
-    lastMessageAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
-  },
-  {
-    id: "3",
-    name: "루미너스",
-    imageUrl: "https://placehold.co/96x96",
-    active: false,
-    lastMessage: "내일 연습 때 봐요!",
-    lastMessageAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-  },
-  {
-    id: "4",
-    name: "드리머즈",
-    imageUrl: null,
-    active: false,
-    lastMessage: null,
-    lastMessageAt: null,
-  },
-];
-
 export default function InboxPage() {
   const params = useParams<{ lang: string }>();
   const router = useRouter();
   const { t } = useTranslation("aidol");
   const { showToast } = useToast();
 
+  const apiService = useMemo(() => getApiService(), []);
+  const chatroomRepo = useMemo(
+    () => new ChatroomRepository(apiService),
+    [apiService],
+  );
   const companionRepo = useMemo(
-    () => new CompanionRepository(getApiService()),
-    [],
+    () => new CompanionRepository(apiService),
+    [apiService],
   );
 
   const [chatrooms, setChatrooms] = useState<ChatroomView[]>([]);
@@ -78,48 +47,45 @@ export default function InboxPage() {
   useEffect(() => {
     const fetchChatrooms = async () => {
       try {
-        const chatroomIdMap = LocalChatroomIdsRepository.getAll();
-        const companionIds = Object.keys(chatroomIdMap);
+        const myChatrooms = await chatroomRepo.getMyChatrooms();
 
-        if (companionIds.length === 0) {
-          setChatrooms(MOCK_CHATROOMS);
+        if (myChatrooms.length === 0) {
+          setChatrooms([]);
           return;
         }
 
+        const companionIds = myChatrooms.map((c) => c.companionId);
         const { data: companions } = await companionRepo.getList({
-          pagination: { current: 1, pageSize: 100 },
+          filters: [{ field: "id", operator: "in", value: companionIds }],
+          pagination: { current: 1, pageSize: companionIds.length },
         });
 
         const companionMap = new Map(companions.map((c) => [c.id, c]));
 
-        const rooms: ChatroomView[] = companionIds.flatMap((companionId) => {
-          const companion = companionMap.get(companionId);
-          if (!companion) return [];
-
-          const room: ChatroomView = {
-            id: chatroomIdMap[companionId],
-            name: companion.name ?? "",
-            imageUrl: companion.profilePictureUrl ?? null,
+        const rooms: ChatroomView[] = myChatrooms.map((chatroom) => {
+          const companion = companionMap.get(chatroom.companionId);
+          return {
+            id: chatroom.id,
+            name: companion?.name ?? "",
+            imageUrl: companion?.profilePictureUrl ?? null,
             // TODO: active 상태는 기획 확정 후 구현
             active: false,
-            lastMessage: null,
-            lastMessageAt: null,
+            lastMessage: chatroom.lastMessage?.content ?? null,
+            lastMessageAt: chatroom.lastMessage?.createdAt ?? null,
           };
-          return [room];
         });
 
-        setChatrooms(rooms.length > 0 ? rooms : MOCK_CHATROOMS);
+        setChatrooms(rooms);
       } catch (error) {
         console.error("Failed to fetch chatrooms:", error);
         showToast(t("inbox.error.load"), "error");
-        setChatrooms(MOCK_CHATROOMS);
       } finally {
         setIsLoading(false);
       }
     };
 
     void fetchChatrooms();
-  }, [companionRepo, showToast, t]);
+  }, [chatroomRepo, companionRepo, showToast, t]);
 
   const handleBack = useCallback(() => {
     router.back();
@@ -179,7 +145,6 @@ export default function InboxPage() {
 
       {/* Chatroom list */}
       <div className="scrollbar-hide flex flex-1 flex-col overflow-y-auto">
-        {/* TODO: API 연동 후 mock fallback 제거 시 empty state 도달 가능 */}
         {chatrooms.length === 0 ? (
           <p className="text-body-m text-base-content/60 py-20 text-center">
             {t("inbox.empty")}
