@@ -32,8 +32,6 @@ export const Inactive: Story = {
     name: "스타라이트",
     imageUrl: sampleImage,
     active: false,
-    lastMessage: "다음에 또 이야기해요!",
-    lastMessageAt: "어제",
   },
 };
 
