@@ -76,6 +76,34 @@ export default function InboxPage() {
         });
 
         setChatrooms(rooms);
+
+        // Secondary task: Generate initial AI response for empty chatrooms
+        const emptyChatrooms = myChatrooms.filter(
+          (c) => c.lastMessage === null,
+        );
+        for (const chatroom of emptyChatrooms) {
+          chatroomRepo
+            .generateInitialResponse(chatroom.id, chatroom.companionId)
+            .then((response) => {
+              setChatrooms((prev) =>
+                prev.map((room) =>
+                  room.id === chatroom.id
+                    ? {
+                        ...room,
+                        lastMessage: response.content,
+                        lastMessageAt: new Date().toISOString(),
+                      }
+                    : room,
+                ),
+              );
+            })
+            .catch((error) => {
+              console.error(
+                `Initial response failed for chatroom ${chatroom.id}:`,
+                error,
+              );
+            });
+        }
       } catch (error) {
         console.error("Failed to fetch chatrooms:", error);
         showToast(t("inbox.error.load"), "error");
@@ -93,7 +121,7 @@ export default function InboxPage() {
 
   const handleRoomClick = useCallback(
     (roomId: string) => {
-      router.push(`/${params.lang}/chatrooms/${roomId}/companion`);
+      router.push(`/${params.lang}/aidols/chatrooms/${roomId}/companion`);
     },
     [params.lang, router],
   );
