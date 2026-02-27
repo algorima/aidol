@@ -1,5 +1,6 @@
 import { BaseCrudRepository } from "@aioia/core";
 
+import { MAX_MEMBERS } from "../constants/companion";
 import type {
   Companion,
   ImageGenerationRequest,
@@ -15,9 +16,14 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     return companionSchema;
   }
 
+  /** PUBLISHED 상태의 멤버만 최대 MAX_MEMBERS명까지 조회 */
   async getByAidolId(aidolId: string) {
     return this.getList({
-      filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
+      pagination: { pageSize: MAX_MEMBERS },
+      filters: [
+        { field: "aidolId", operator: "eq", value: aidolId },
+        { field: "status", operator: "eq", value: "PUBLISHED" },
+      ],
     });
   }
 
