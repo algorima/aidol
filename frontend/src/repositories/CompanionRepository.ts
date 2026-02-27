@@ -21,7 +21,7 @@ export class CompanionRepository extends BaseCrudRepository<Companion> {
     return this.getList({
       pagination: { pageSize: MAX_MEMBERS },
       filters: [
-        { field: "aidol_id", operator: "eq", value: aidolId },
+        { field: "aidolId", operator: "eq", value: aidolId },
         { field: "status", operator: "eq", value: "PUBLISHED" },
       ],
     });
