@@ -11,16 +11,26 @@ import {
 /**
  * Schema for "my chatrooms" list item (GET /me/chatrooms response)
  */
+const lastMessageSchema = z.object({
+  content: z.string(),
+  createdAt: z.string(),
+});
+
 const myChatroomItemSchema = z.object({
   id: z.string(),
   companionId: z.string(),
-  lastMessage: z.string().nullable(),
+  lastMessage: lastMessageSchema.nullable(),
 });
+
+export interface MyChatroomLastMessage {
+  content: string;
+  createdAt: string;
+}
 
 export interface MyChatroomItem {
   id: string;
   companionId: string;
-  lastMessage: string | null;
+  lastMessage: MyChatroomLastMessage | null;
 }
 
 /**

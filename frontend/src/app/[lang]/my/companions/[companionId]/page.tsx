@@ -79,7 +79,11 @@ export default function CompanionProfilePage({
       setCreateError(null);
 
       const response = await chatroomRepository.create<ChatroomCreate>({
-        variables: { name: companion?.name ?? "Chat", language: lang },
+        variables: {
+          companionId,
+          name: companion?.name ?? "Chat",
+          language: lang,
+        },
       });
 
       // Save to localStorage

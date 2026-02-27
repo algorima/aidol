@@ -12,6 +12,7 @@ import { z } from "zod";
 
 export const chatroomSchema = z.object({
   id: z.string(),
+  companionId: z.string(),
   name: z.string(),
   language: z.string(),
   createdAt: z.string(),
@@ -20,6 +21,7 @@ export const chatroomSchema = z.object({
 
 export interface Chatroom extends BaseRecord {
   id: string;
+  companionId: string;
   name: string;
   language: string;
   createdAt: string;
@@ -27,6 +29,7 @@ export interface Chatroom extends BaseRecord {
 }
 
 export interface ChatroomCreate {
+  companionId: string;
   name: string;
   language?: string;
 }
