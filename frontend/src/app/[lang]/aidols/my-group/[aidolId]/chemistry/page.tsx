@@ -71,19 +71,35 @@ export default function GroupChemistryPage({
         if (groupCompanions.length > 0) {
           setSelectedCompanionId(groupCompanions[0].id);
         }
-
-        const { data: relationshipData } =
-          await relationshipRepository.getList();
-        setRelationships(relationshipData);
       } catch (error) {
-        console.error("Failed to fetch data:", error);
+        console.error("Failed to fetch companions:", error);
+        showToast(t("aidol:chemistry.error.load"), "error");
       }
 
       setIsLoading(false);
     };
 
     void fetchData();
-  }, [aidolId, companionRepository, relationshipRepository]);
+  }, [aidolId, companionRepository, showToast, t]);
+
+  useEffect(() => {
+    if (!selectedCompanionId) return;
+
+    const fetchRelationships = async () => {
+      try {
+        const { data: relationshipData } =
+          await relationshipRepository.getByFromCompanionId(
+            selectedCompanionId,
+          );
+        setRelationships(relationshipData);
+      } catch (error) {
+        console.error("Failed to fetch relationships:", error);
+        showToast(t("aidol:chemistry.error.load"), "error");
+      }
+    };
+
+    void fetchRelationships();
+  }, [selectedCompanionId, relationshipRepository, showToast, t]);
 
   // 선택된 멤버
   const selectedCompanion = companions.find(
@@ -96,9 +112,7 @@ export default function GroupChemistryPage({
   );
 
   // 선택된 멤버의 커스텀 관계 수
-  const customRelationshipCount = relationships.filter(
-    (rel) => rel.fromCompanionId === selectedCompanionId,
-  ).length;
+  const customRelationshipCount = relationships.length;
 
   // 모든 멤버와 관계가 형성되었는지
   const isAllRelationshipsCreated =
@@ -106,11 +120,7 @@ export default function GroupChemistryPage({
 
   // 단방향: from → to 관계 찾기
   const getRelationshipTo = (toId: string) => {
-    return relationships.find(
-      (rel) =>
-        rel.fromCompanionId === selectedCompanionId &&
-        rel.toCompanionId === toId,
-    );
+    return relationships.find((rel) => rel.toCompanionId === toId);
   };
 
   const getPositionLabel = (position: string | null | undefined) => {
