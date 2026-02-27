@@ -25,15 +25,15 @@ export default function InboxPage() {
   const { showToast } = useToast();
 
   const apiService = useMemo(() => getApiService(), []);
-  const chatroomRepo = useMemo(
+  const chatroomRepository = useMemo(
     () => new ChatroomRepository(apiService),
     [apiService],
   );
-  const companionRepo = useMemo(
+  const companionRepository = useMemo(
     () => new CompanionRepository(apiService),
     [apiService],
   );
-  const aidolRepo = useMemo(
+  const aidolRepository = useMemo(
     () => new AIdolRepository(apiService),
     [apiService],
   );
@@ -56,9 +56,9 @@ export default function InboxPage() {
       try {
         const [myChatrooms, { data: companions }, { data: aidol }] =
           await Promise.all([
-            chatroomRepo.getMyChatrooms(),
-            companionRepo.getByAidolId(params.aidolId),
-            aidolRepo.getOne({ id: params.aidolId }),
+            chatroomRepository.getMyChatrooms(),
+            companionRepository.getByAidolId(params.aidolId),
+            aidolRepository.getOne({ id: params.aidolId }),
           ]);
 
         setGroupName(aidol.name ?? null);
@@ -80,7 +80,7 @@ export default function InboxPage() {
             return;
           }
 
-          const { data: newChatroom } = await chatroomRepo.create({
+          const { data: newChatroom } = await chatroomRepository.create({
             variables: {
               name: randomCompanion.name ?? "",
               language: params.lang,
@@ -88,7 +88,7 @@ export default function InboxPage() {
             },
           });
           try {
-            const response = await chatroomRepo.generateInitialResponse(
+            const response = await chatroomRepository.generateInitialResponse(
               newChatroom.id,
               randomCompanion.id,
             );
@@ -124,10 +124,11 @@ export default function InboxPage() {
           void (async () => {
             for (const chatroom of emptyChatrooms) {
               try {
-                const response = await chatroomRepo.generateInitialResponse(
-                  chatroom.id,
-                  chatroom.companionId,
-                );
+                const response =
+                  await chatroomRepository.generateInitialResponse(
+                    chatroom.id,
+                    chatroom.companionId,
+                  );
                 setChatrooms((prev) =>
                   prev.map((room) =>
                     room.id === chatroom.id
@@ -160,9 +161,9 @@ export default function InboxPage() {
 
     void fetchChatrooms();
   }, [
-    aidolRepo,
-    chatroomRepo,
-    companionRepo,
+    aidolRepository,
+    chatroomRepository,
+    companionRepository,
     params.aidolId,
     params.lang,
     showToast,

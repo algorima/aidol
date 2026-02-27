@@ -33,11 +33,11 @@ export default function Chatpage() {
   const { t } = useTranslation("aidol");
   const { showToast } = useToast();
 
-  const chatroomRepo = useMemo(
+  const chatroomRepository = useMemo(
     () => new ChatroomRepository(getApiService()),
     [],
   );
-  const companionRepo = useMemo(
+  const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
     [],
   );
@@ -47,7 +47,7 @@ export default function Chatpage() {
       const [, companionResult] = await Promise.allSettled([
         (async () => {
           try {
-            const fetched = await chatroomRepo.getMessages(chatroomId, {
+            const fetched = await chatroomRepository.getMessages(chatroomId, {
               limit: PAGE_SIZE,
             });
             setMessages(fetched);
@@ -59,7 +59,7 @@ export default function Chatpage() {
             setHasMore(false);
           }
         })(),
-        companionRepo.getOne({ id: companionId }),
+        companionRepository.getOne({ id: companionId }),
       ]);
 
       if (companionResult.status === "fulfilled") {
@@ -69,14 +69,21 @@ export default function Chatpage() {
         showToast(t("common.error.load"), "error");
       }
     })();
-  }, [chatroomId, chatroomRepo, companionId, companionRepo, showToast, t]);
+  }, [
+    chatroomId,
+    chatroomRepository,
+    companionId,
+    companionRepository,
+    showToast,
+    t,
+  ]);
 
   const handleLoadMore = useCallback(async () => {
     if (isLoadingMore) return;
     setIsLoadingMore(true);
     try {
       const offset = messages?.length ?? 0;
-      const fetched = await chatroomRepo.getMessages(chatroomId, {
+      const fetched = await chatroomRepository.getMessages(chatroomId, {
         limit: PAGE_SIZE,
         offset,
       });
@@ -87,7 +94,7 @@ export default function Chatpage() {
     } finally {
       setIsLoadingMore(false);
     }
-  }, [isLoadingMore, messages?.length, chatroomRepo, chatroomId]);
+  }, [isLoadingMore, messages?.length, chatroomRepository, chatroomId]);
 
   const delay = useCallback(
     (ms: number) => new Promise((resolve) => setTimeout(resolve, ms)),
@@ -124,7 +131,10 @@ export default function Chatpage() {
 
   const generateWithTyping = useCallback(async () => {
     try {
-      const response = chatroomRepo.generateResponse(chatroomId, companionId);
+      const response = chatroomRepository.generateResponse(
+        chatroomId,
+        companionId,
+      );
       setIsTyping(true);
       const [generated] = await Promise.all([response, delay(3000)]);
       await displayBubbles(generated);
@@ -140,12 +150,15 @@ export default function Chatpage() {
       };
       setMessages((prev) => [errorMessage, ...(prev ?? [])]);
     }
-  }, [chatroomId, companionId, chatroomRepo, delay, displayBubbles]);
+  }, [chatroomId, companionId, chatroomRepository, delay, displayBubbles]);
 
   const sendAndGenerate = useCallback(
     async (content: string, tempId: string) => {
       try {
-        const userMessage = await chatroomRepo.sendMessage(chatroomId, content);
+        const userMessage = await chatroomRepository.sendMessage(
+          chatroomId,
+          content,
+        );
         setMessages((prev) =>
           prev?.map((m) =>
             m.id === tempId
@@ -165,7 +178,7 @@ export default function Chatpage() {
 
       await generateWithTyping();
     },
-    [chatroomId, chatroomRepo, generateWithTyping],
+    [chatroomId, chatroomRepository, generateWithTyping],
   );
 
   const handleRetryGenerate = useCallback(
@@ -178,7 +191,7 @@ export default function Chatpage() {
 
       const retry = async () => {
         try {
-          const response = chatroomRepo.generateResponse(
+          const response = chatroomRepository.generateResponse(
             chatroomId,
             companionId,
           );
@@ -197,7 +210,7 @@ export default function Chatpage() {
 
       void retry();
     },
-    [chatroomId, companionId, chatroomRepo, delay, displayBubbles],
+    [chatroomId, companionId, chatroomRepository, delay, displayBubbles],
   );
 
   const handleBack = useCallback(() => {
