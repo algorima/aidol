@@ -10,6 +10,7 @@ import { InboxBlock } from "@/components/inbox";
 import { Loading } from "@/components/Loading";
 import { getCurrentActivity } from "@/lib/activity";
 import { getRelativeTime } from "@/lib/date";
+import { AIdolRepository } from "@/repositories/AIdolRepository";
 import { ChatroomRepository } from "@/repositories/ChatroomRepository";
 import type { MyChatroomItem } from "@/repositories/ChatroomRepository";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
@@ -31,11 +32,16 @@ export default function InboxPage() {
     () => new CompanionRepository(apiService),
     [apiService],
   );
+  const aidolRepo = useMemo(
+    () => new AIdolRepository(apiService),
+    [apiService],
+  );
 
   const [chatrooms, setChatrooms] = useState<MyChatroomItem[]>([]);
   const [companionMap, setCompanionMap] = useState<Map<string, Companion>>(
     new Map(),
   );
+  const [groupName, setGroupName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const activity = useMemo(() => getCurrentActivity(), []);
@@ -56,8 +62,18 @@ export default function InboxPage() {
           pagination: { current: 1, pageSize: companionIds.length },
         });
 
-        setCompanionMap(new Map(companions.map((c) => [c.id, c])));
+        const newCompanionMap = new Map(companions.map((c) => [c.id, c]));
+        setCompanionMap(newCompanionMap);
         setChatrooms(myChatrooms);
+
+        // Fetch group name from first companion's aidolId
+        const firstCompanion = companions[0];
+        if (firstCompanion?.aidolId) {
+          const { data: aidol } = await aidolRepo.getOne({
+            id: firstCompanion.aidolId,
+          });
+          setGroupName(aidol.name);
+        }
 
         // Secondary task: Generate initial AI response for empty chatrooms
         // Runs sequentially to avoid flooding the server with N simultaneous requests
@@ -101,7 +117,7 @@ export default function InboxPage() {
     };
 
     void fetchChatrooms();
-  }, [chatroomRepo, companionRepo, showToast, t]);
+  }, [aidolRepo, chatroomRepo, companionRepo, showToast, t]);
 
   const handleBack = useCallback(() => {
     router.back();
@@ -141,7 +157,7 @@ export default function InboxPage() {
           <ArrowLeftIcon className="size-6" />
         </button>
         <h1 className="text-headline-s text-base-content">
-          {t("inbox.header")}
+          {groupName ?? t("inbox.header")}
         </h1>
         <span className="bg-secondary text-label-l text-secondary-content rounded-lg px-2 py-1">
           {t("inbox.beta")}
