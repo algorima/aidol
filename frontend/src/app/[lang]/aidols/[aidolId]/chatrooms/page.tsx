@@ -53,6 +53,7 @@ export default function InboxPage() {
 
   useEffect(() => {
     const fetchChatrooms = async () => {
+      setIsLoading(true);
       try {
         const [myChatrooms, { data: companions }, { data: aidol }] =
           await Promise.all([
