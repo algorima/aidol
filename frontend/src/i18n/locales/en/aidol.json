@@ -222,6 +222,8 @@
     "error": {
       "update": "Failed to save.",
       "generateImage": "Failed to generate image.",
+      "promptTooLong": "Prompt must be 200 characters or less.",
+      "promptEmpty": "Please enter a prompt.",
       "load": "Failed to load trainees."
     },
     "gender": {
@@ -376,7 +378,8 @@
       "hoursAgo": "{{count}}h ago",
       "am": "AM",
       "pm": "PM",
-      "absolute": "{{time}} $t(chat.time.{{ampm}})"
+      "absolute": "{{time}} $t(chat.time.{{ampm}})",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

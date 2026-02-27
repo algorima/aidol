@@ -222,6 +222,8 @@
     "error": {
       "update": "บันทึกไม่สำเร็จ",
       "generateImage": "สร้างรูปไม่สำเร็จ",
+      "promptTooLong": "ข้อความต้องไม่เกิน 200 ตัวอักษร",
+      "promptEmpty": "กรุณากรอกข้อความ",
       "load": "ไม่สามารถโหลดรายชื่อเทรนนี่ได้"
     },
     "gender": {
@@ -376,7 +378,8 @@
       "hoursAgo": "{{count}} ชั่วโมงที่แล้ว",
       "am": "AM",
       "pm": "PM",
-      "absolute": "{{time}} $t(chat.time.{{ampm}})"
+      "absolute": "{{time}} $t(chat.time.{{ampm}})",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

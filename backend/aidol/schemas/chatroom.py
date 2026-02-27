@@ -144,6 +144,12 @@ class ChatroomCreate(ChatroomBase):
     """Schema for creating a chatroom (no id)."""
 
 
+class ChatroomCreateWithAnonymousId(ChatroomBase):
+    """Internal schema for creating a chatroom with owner anonymous_id."""
+
+    anonymous_id: str = Field(..., description="Chatroom owner anonymous identifier")
+
+
 class ChatroomUpdate(BaseModel):
     """Schema for updating a chatroom (all fields optional)."""
 
@@ -151,3 +157,20 @@ class ChatroomUpdate(BaseModel):
 
     name: str | None = Field(default=None, description="Chatroom name")
     language: str | None = Field(default=None, description="Chatroom language")
+
+
+class LastMessage(BaseModel):
+    """Last message summary for chatroom list responses."""
+
+    model_config = ConfigDict(populate_by_name=True, alias_generator=camelize)
+
+    created_at: datetime = Field(..., description="Last message creation timestamp")
+    content: str = Field(..., description="Last message content")
+
+
+class ChatroomWithLastMessage(Chatroom):
+    """Chatroom response schema with last message summary."""
+
+    last_message: LastMessage | None = Field(
+        default=None, description="Last message in the chatroom"
+    )

@@ -222,6 +222,8 @@
     "error": {
       "update": "保存失败。",
       "generateImage": "生成图片失败。",
+      "promptTooLong": "提示词不能超过200个字符。",
+      "promptEmpty": "请输入提示词。",
       "load": "加载练习生列表失败。"
     },
     "gender": {
@@ -376,7 +378,8 @@
       "hoursAgo": "{{count}}小时前",
       "am": "上午",
       "pm": "下午",
-      "absolute": "$t(chat.time.{{ampm}}) {{time}}"
+      "absolute": "$t(chat.time.{{ampm}}) {{time}}",
+      "format": "{{period}} {{hour}}:{{minute}}"
     }
   }
 }

@@ -15,9 +15,12 @@ from aidol.context.builder import (
     format_utc_offset,
     verify_system_messages_at_front,
 )
+from aidol.context.persona import Persona, calculate_mbti
 
 __all__ = [
     "MessageContextBuilder",
+    "Persona",
+    "calculate_mbti",
     "deduplicate_consecutive_same_role_messages",
     "ensure_first_user_message",
     "format_datetime_korean",

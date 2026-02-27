@@ -17,29 +17,36 @@ from litellm.exceptions import BadRequestError, RateLimitError, ServiceUnavailab
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session, sessionmaker
 
-from aidol.context import MessageContextBuilder
-from aidol.prompts import build_chat_system_prompt, build_initial_system_prompt
+from aidol.context import MessageContextBuilder, Persona
+from aidol.prompts import CHAT_PROMPT, GREETING_PROMPT
 from aidol.protocols import (
     ChatroomRepositoryFactoryProtocol,
     ChatroomRepositoryProtocol,
     CompanionRepositoryFactoryProtocol,
 )
 from aidol.providers.llm import GeminiLLMProvider, LLMProvider, OpenAILLMProvider
-from aidol.providers.llm.messages import AIMessage, HumanMessage, LLMMessage
+from aidol.providers.llm.messages import (
+    AIMessage,
+    HumanMessage,
+    LLMMessage,
+    SystemMessage,
+)
 from aidol.schemas import (
     Chatroom,
     ChatroomCreate,
+    ChatroomCreateWithAnonymousId,
     ChatroomUpdate,
+    ChatroomWithLastMessage,
     Companion,
     CompanionMessageCreate,
     Message,
     MessageCreate,
     MessageCreateWithAnonymousId,
     ModelSettings,
-    Persona,
     SenderType,
 )
 from aidol.services import ResponseGenerationService
+from aidol.services.companion_service import calculate_grade
 from aidol.settings import Settings
 
 # Maximum number of messages to fetch for conversation history
@@ -52,10 +59,28 @@ FIRST_RESPONSE_ALREADY_EXISTS_DETAIL = (
 logger = logging.getLogger(__name__)
 
 
+def get_required_anonymous_id(
+    anonymous_id: Annotated[str | None, Cookie(alias="aioia_anonymous_id")] = None,
+) -> str:
+    """Dependency to validate and return required anonymous_id cookie."""
+    if not anonymous_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="aioia_anonymous_id cookie is required",
+        )
+    return anonymous_id
+
+
 class ChatroomSingleItemResponse(BaseModel):
     """Single item response for chatroom."""
 
     data: Chatroom
+
+
+class ChatroomListResponse(BaseModel):
+    """List response for chatrooms."""
+
+    data: list[ChatroomWithLastMessage]
 
 
 class GenerateResponse(BaseModel):
@@ -94,7 +119,12 @@ def _resolve_llm_status_code(exc: Exception) -> int:
 
 
 class ChatroomRouter(
-    BaseCrudRouter[Chatroom, ChatroomCreate, ChatroomUpdate, ChatroomRepositoryProtocol]
+    BaseCrudRouter[
+        Chatroom,
+        ChatroomCreateWithAnonymousId,
+        ChatroomUpdate,
+        ChatroomRepositoryProtocol,
+    ]
 ):
     """
     Chatroom router with custom message endpoints.
@@ -142,12 +172,23 @@ class ChatroomRouter(
         llm_messages = _to_llm_messages(list(reversed(messages)))
         return messages, llm_messages
 
-    def _build_persona(self, companion: Companion, system_prompt: str) -> Persona:
+    def _build_persona(self, companion: Companion) -> Persona:
         """Create persona for response generation (KST fixed for MVP)."""
         return Persona(
             name=companion.name,
-            system_prompt=system_prompt,
             timezone_name=KST_TIMEZONE_NAME,
+            # K-pop domain fields
+            gender=companion.gender,
+            position=companion.position,
+            grade=companion.grade or calculate_grade(companion.stats),
+            biography=companion.biography,
+            # MBTI scores
+            mbti_energy=companion.mbti_energy,
+            mbti_perception=companion.mbti_perception,
+            mbti_judgment=companion.mbti_judgment,
+            mbti_lifestyle=companion.mbti_lifestyle,
+            # Extension prompt (if any)
+            system_prompt=companion.system_prompt,
         )
 
     def _resolve_runtime(
@@ -188,6 +229,7 @@ class ChatroomRouter(
         companion_id: str,
         persona: Persona,
         llm_messages: list[LLMMessage],
+        purpose_prompt: str,
     ) -> str:
         """Generate response text from LLM with shared logging/error handling."""
         provider, provider_name, chat_model, model_settings = self._resolve_runtime(
@@ -199,6 +241,7 @@ class ChatroomRouter(
             MessageContextBuilder(provider, persona)
             .with_persona()
             .with_real_time_context()
+            .with_purpose_prompts([SystemMessage(content=purpose_prompt)])
             .with_current_conversation(llm_messages)
             .build()
         )
@@ -250,6 +293,7 @@ class ChatroomRouter(
     def _register_routes(self) -> None:
         """Register routes (fancall pattern: public CRUD + message endpoints)"""
         # Chatroom CRUD (public, no auth)
+        self._register_public_my_route()
         self._register_public_create_route()
         self._register_public_get_route()
 
@@ -258,6 +302,26 @@ class ChatroomRouter(
         self._register_send_message_route()
         self._register_generate_initial_response_route()
         self._register_generate_response_route()
+
+    def _register_public_my_route(self) -> None:
+        """GET /me/{resource_name} - List my chatrooms (filtered by cookie)"""
+
+        @self.router.get(
+            f"/me/{self.resource_name}",
+            response_model=ChatroomListResponse,
+            status_code=status.HTTP_200_OK,
+            summary="List my chatrooms",
+            description="List chatrooms owned by the current user (based on cookie)",
+        )
+        async def list_my_chatrooms(
+            anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
+            repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
+        ):
+            """List my chatrooms with last message summary."""
+            items = repository.get_my_chatrooms_with_last_message(
+                anonymous_id=anonymous_id
+            )
+            return ChatroomListResponse(data=items)
 
     def _register_public_create_route(self) -> None:
         """POST /{resource_name} - Create a chatroom (public, fancall pattern)"""
@@ -271,10 +335,15 @@ class ChatroomRouter(
         )
         async def create_chatroom(
             request: ChatroomCreate,
+            anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new chatroom."""
-            created = repository.create(request)
+            create_data = ChatroomCreateWithAnonymousId(
+                **request.model_dump(),
+                anonymous_id=anonymous_id,
+            )
+            created = repository.create(create_data)
             return ChatroomSingleItemResponse(data=created)
 
     def _register_public_get_route(self) -> None:
@@ -334,19 +403,10 @@ class ChatroomRouter(
         async def send_message(
             item_id: str,
             request: MessageCreate,
-            anonymous_id: Annotated[
-                str | None, Cookie(alias="aioia_anonymous_id")
-            ] = None,
+            anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Send a message to a chatroom."""
-            # Guard Clause: aioia_anonymous_id cookie is required
-            if not anonymous_id:
-                raise HTTPException(
-                    status_code=status.HTTP_400_BAD_REQUEST,
-                    detail="aioia_anonymous_id cookie is required",
-                )
-
             # Verify chatroom exists
             self._get_item_or_404(repository, item_id)
 
@@ -402,13 +462,13 @@ class ChatroomRouter(
                     ),
                 )
 
-            system_prompt = build_initial_system_prompt(companion=companion)
-            persona = self._build_persona(companion, system_prompt)
+            persona = self._build_persona(companion)
             response_text = self._generate_response_text(
                 item_id=item_id,
                 companion_id=companion_id,
                 persona=persona,
                 llm_messages=llm_messages,
+                purpose_prompt=GREETING_PROMPT,
             )
 
             companion_message = self._save_companion_message(
@@ -444,13 +504,13 @@ class ChatroomRouter(
 
             companion = self._get_companion_or_404(db_session, companion_id)
             _, llm_messages = self._get_history_messages(repository, item_id)
-            system_prompt = build_chat_system_prompt(companion)
-            persona = self._build_persona(companion, system_prompt)
+            persona = self._build_persona(companion)
             response_text = self._generate_response_text(
                 item_id=item_id,
                 companion_id=companion_id,
                 persona=persona,
                 llm_messages=llm_messages,
+                purpose_prompt=CHAT_PROMPT,
             )
             companion_message = self._save_companion_message(
                 repository=repository,
@@ -502,7 +562,7 @@ def create_chatroom_router(
         openai_settings=openai_settings,
         companion_repository_factory=companion_repository_factory,
         model_class=Chatroom,
-        create_schema=ChatroomCreate,
+        create_schema=ChatroomCreateWithAnonymousId,
         update_schema=ChatroomUpdate,
         db_session_factory=db_session_factory,
         repository_factory=repository_factory,

@@ -20,6 +20,7 @@ export {
   isCompanion,
   isUser,
   messageSchema,
+  MessageStatus,
   SenderType,
 } from "./chatroom";
 export type { Chatroom, ChatroomCreate, Message } from "./chatroom";
