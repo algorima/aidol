@@ -60,7 +60,7 @@ export function LockedCompanionSheet({
           onClick={onClose}
           className="btn btn-primary text-label-l h-auto min-h-0 w-full rounded-lg py-4"
         >
-          {t("common.confirm")}
+          {t("chat.confirm")}
         </button>
       </div>
     </Modal>

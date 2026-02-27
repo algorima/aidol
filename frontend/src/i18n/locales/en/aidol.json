@@ -6,7 +6,6 @@
   },
   "common": {
     "close": "Close",
-    "confirm": "OK",
     "save": "Save",
     "saved": "Saved successfully.",
     "deleted": "Deleted successfully.",
