@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
+import { LockedCompanionSheet } from "@/components/companion";
 import { InboxBlock } from "@/components/inbox";
 import { Loading } from "@/components/Loading";
 import { getCurrentActivity } from "@/lib/activity";
@@ -43,6 +44,10 @@ export default function InboxPage() {
   );
   const [groupName, setGroupName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [lockedCompanion, setLockedCompanion] = useState<{
+    name: string;
+    imageUrl?: string;
+  } | null>(null);
 
   const activity = useMemo(() => getCurrentActivity(), []);
 
@@ -126,12 +131,16 @@ export default function InboxPage() {
   const handleRoomClick = useCallback(
     (chatroomId: string, companionId: string, active: boolean) => {
       if (!active) {
-        // TODO: 대화 제한 안내 모달 표시 (별도 브랜치에서 작업 중)
+        const companion = companionMap.get(companionId);
+        setLockedCompanion({
+          name: companion?.name ?? "",
+          imageUrl: companion?.profilePictureUrl,
+        });
         return;
       }
       router.push(`/${params.lang}/chatrooms/${chatroomId}/${companionId}`);
     },
-    [params.lang, router],
+    [companionMap, params.lang, router],
   );
 
   const formatLastMessageAt = useCallback(
@@ -208,6 +217,13 @@ export default function InboxPage() {
           })
         )}
       </div>
+
+      <LockedCompanionSheet
+        isOpen={lockedCompanion !== null}
+        onClose={() => setLockedCompanion(null)}
+        companionName={lockedCompanion?.name ?? ""}
+        companionImageUrl={lockedCompanion?.imageUrl}
+      />
     </div>
   );
 }
