@@ -1,4 +1,4 @@
-import { ShareIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import { UserGroupIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
@@ -48,35 +48,20 @@ export function GroupProfile({
 
       <div className="flex flex-col gap-2">
         <button
-          className="btn btn-primary text-label-l w-full rounded-lg shadow-[0_0_4px_rgba(0,0,0,0.1)]"
+          className="btn bg-base-300 text-label-l h-auto min-h-0 w-full rounded-lg py-3 shadow-[0_0_4px_rgba(0,0,0,0.1)]"
           onClick={onChemistryClick}
         >
           {t("group.chemistryButton")}
         </button>
-        {onFollowClick ? (
+        {onFollowClick && (
           <div className="flex gap-2">
             <button
-              className="btn bg-base-300 text-base-content text-label-l flex-1 rounded-lg"
+              className="btn bg-base-100 border-base-400 text-base-content text-label-l h-auto min-h-0 w-full rounded-lg border py-3"
               onClick={onFollowClick}
             >
               {t("group.followButton")}
             </button>
-            <button
-              className="btn bg-base-300 text-label-l disabled:bg-base-300 disabled:text-base-content/40 flex-1 rounded-lg"
-              disabled
-            >
-              {t("share")}
-              <ShareIcon className="size-5" />
-            </button>
           </div>
-        ) : (
-          <button
-            className="btn bg-base-300 text-label-l disabled:bg-base-300 disabled:text-base-content/40 w-full rounded-lg"
-            disabled
-          >
-            {t("share")}
-            <ShareIcon className="size-5" />
-          </button>
         )}
       </div>
     </div>

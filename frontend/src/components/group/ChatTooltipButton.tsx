@@ -5,7 +5,11 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export function ChatTooltipButton() {
+interface ChatTooltipButtonProps {
+  onClick?: () => void;
+}
+
+export function ChatTooltipButton({ onClick }: ChatTooltipButtonProps) {
   const { t } = useTranslation();
   const [isFirstVisit, setIsFirstVisit] = useState(() => {
     if (typeof window === "undefined") return true;
@@ -52,9 +56,10 @@ export function ChatTooltipButton() {
     >
       <button
         type="button"
-        className="relative z-50 flex size-10 items-center justify-center"
+        className="relative z-50 flex size-10 cursor-pointer items-center justify-center"
+        onClick={onClick}
       >
-        <ChatBubbleLeftEllipsisIcon className="text-base-content/20 size-6" />
+        <ChatBubbleLeftEllipsisIcon className="text-base-content size-6" />
       </button>
       {showTooltip && (
         <>
@@ -73,9 +78,9 @@ export function ChatTooltipButton() {
               isVisible ? "opacity-100" : "opacity-0",
             )}
           >
-            <div className="border-b-neutral absolute -top-2 right-3 size-0 border-x-8 border-b-8 border-x-transparent" />
-            <div className="bg-neutral text-neutral-content text-label-m rounded-lg px-4 py-3 whitespace-nowrap">
-              {t("aidol:myGroup.chatComingSoon")}
+            <div className="border-b-primary absolute -top-2 right-3 size-0 border-x-8 border-b-8 border-x-transparent" />
+            <div className="bg-primary text-primary-content text-label-m rounded-lg px-2 py-1 font-bold whitespace-nowrap">
+              {t("aidol:myGroup.chatNotification")}
             </div>
           </div>
         </>

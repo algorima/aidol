@@ -263,7 +263,7 @@
   },
   "myGroup": {
     "header": "내 그룹",
-    "chatComingSoon": "멤버들과 채팅 준비중👋",
+    "chatNotification": "멤버들이 할 말이 있대요! 👋",
     "settings": "설정",
     "highlights": "하이라이트",
     "empty": {

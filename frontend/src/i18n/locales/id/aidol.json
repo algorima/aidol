@@ -263,7 +263,7 @@
   },
   "myGroup": {
     "header": "Grup Saya",
-    "chatComingSoon": "Chat dengan member segera hadir👋",
+    "chatNotification": "Member punya sesuatu untuk disampaikan! 👋",
     "settings": "Pengaturan",
     "highlights": "Sorotan",
     "empty": {
