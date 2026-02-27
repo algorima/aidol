@@ -24,18 +24,17 @@ export default function InboxPage() {
   const { t } = useTranslation("aidol");
   const { showToast } = useToast();
 
-  const apiService = useMemo(() => getApiService(), []);
   const chatroomRepository = useMemo(
-    () => new ChatroomRepository(apiService),
-    [apiService],
+    () => new ChatroomRepository(getApiService()),
+    [],
   );
   const companionRepository = useMemo(
-    () => new CompanionRepository(apiService),
-    [apiService],
+    () => new CompanionRepository(getApiService()),
+    [],
   );
   const aidolRepository = useMemo(
-    () => new AIdolRepository(apiService),
-    [apiService],
+    () => new AIdolRepository(getApiService()),
+    [],
   );
 
   const [chatrooms, setChatrooms] = useState<MyChatroomItem[]>([]);
