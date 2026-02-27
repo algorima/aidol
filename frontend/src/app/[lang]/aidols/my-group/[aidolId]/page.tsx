@@ -190,7 +190,9 @@ export default function GroupPage() {
         onDropdownClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
         <ChatTooltipButton
-          onClick={() => router.push(`/${params.lang}/chatrooms`)}
+          onClick={() =>
+            router.push(`/${params.lang}/aidols/${params.aidolId}/chatrooms`)
+          }
         />
         <button
           type="button"
