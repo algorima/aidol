@@ -379,7 +379,7 @@
       "hoursAgo": "{{count}} giờ trước",
       "am": "SA",
       "pm": "CH",
-      "absolute": "{{time}} $t(chat.time.{{ampm}})",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{hour}}:{{minute}} {{period}}"
     }
   }

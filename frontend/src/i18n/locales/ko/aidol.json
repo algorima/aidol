@@ -379,7 +379,7 @@
       "hoursAgo": "{{count}}시간 전",
       "am": "오전",
       "pm": "오후",
-      "absolute": "$t(chat.time.{{ampm}}) {{time}}",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{period}} {{hour}}:{{minute}}"
     }
   }

@@ -17,7 +17,7 @@ export interface RelativeTime {
  * - < 1 min → chat.time.justNow
  * - < 60 min → chat.time.minutesAgo { count }
  * - < 24 hours → chat.time.hoursAgo { count }
- * - >= 24 hours → chat.time.absolute { time, ampm }
+ * - >= 24 hours → chat.time.absolute { month, day, time }
  */
 export const getRelativeTime = (
   dateStr: string,
@@ -38,14 +38,14 @@ export const getRelativeTime = (
   if (diffHour < 24)
     return { key: "chat.time.hoursAgo", params: { count: diffHour } };
 
-  const hours = date.getHours();
-  const ampm = hours < 12 ? "am" : "pm";
-  const displayHour = hours % 12 || 12;
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = String(date.getHours()).padStart(2, "0");
   const minute = String(date.getMinutes()).padStart(2, "0");
 
   return {
     key: "chat.time.absolute",
-    params: { time: `${displayHour}:${minute}`, ampm },
+    params: { month, day, time: `${hours}:${minute}` },
   };
 };
 

@@ -379,7 +379,7 @@
       "hoursAgo": "{{count}}小时前",
       "am": "上午",
       "pm": "下午",
-      "absolute": "$t(chat.time.{{ampm}}) {{time}}",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{period}} {{hour}}:{{minute}}"
     }
   }

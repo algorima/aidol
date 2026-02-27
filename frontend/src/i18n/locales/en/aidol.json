@@ -379,7 +379,7 @@
       "hoursAgo": "{{count}}h ago",
       "am": "AM",
       "pm": "PM",
-      "absolute": "{{time}} $t(chat.time.{{ampm}})",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
