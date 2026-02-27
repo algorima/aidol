@@ -134,7 +134,7 @@ export default function InboxPage() {
         const companion = companionMap.get(companionId);
         setLockedCompanion({
           name: companion?.name ?? "",
-          imageUrl: companion?.profilePictureUrl,
+          imageUrl: companion?.profilePictureUrl ?? undefined,
         });
         return;
       }
