@@ -60,13 +60,17 @@ export default function InboxPage() {
         setChatrooms(myChatrooms);
 
         // Secondary task: Generate initial AI response for empty chatrooms
+        // Runs sequentially to avoid flooding the server with N simultaneous requests
         const emptyChatrooms = myChatrooms.filter(
           (c) => c.lastMessage === null,
         );
-        for (const chatroom of emptyChatrooms) {
-          chatroomRepo
-            .generateInitialResponse(chatroom.id, chatroom.companionId)
-            .then((response) => {
+        void (async () => {
+          for (const chatroom of emptyChatrooms) {
+            try {
+              const response = await chatroomRepo.generateInitialResponse(
+                chatroom.id,
+                chatroom.companionId,
+              );
               setChatrooms((prev) =>
                 prev.map((room) =>
                   room.id === chatroom.id
@@ -80,14 +84,14 @@ export default function InboxPage() {
                     : room,
                 ),
               );
-            })
-            .catch((error) => {
+            } catch (error) {
               console.error(
                 `Initial response failed for chatroom ${chatroom.id}:`,
                 error,
               );
-            });
-        }
+            }
+          }
+        })();
       } catch (error) {
         console.error("Failed to fetch chatrooms:", error);
         showToast(t("inbox.error.load"), "error");
