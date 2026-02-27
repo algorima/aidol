@@ -121,7 +121,7 @@ export default function InboxPage() {
 
   const handleRoomClick = useCallback(
     (roomId: string) => {
-      router.push(`/${params.lang}/aidols/chatrooms/${roomId}/companion`);
+      router.push(`/${params.lang}/chatrooms/${roomId}/companion`);
     },
     [params.lang, router],
   );
