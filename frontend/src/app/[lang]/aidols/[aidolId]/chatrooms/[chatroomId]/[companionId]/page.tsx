@@ -200,6 +200,10 @@ export default function Chatpage() {
     [chatroomId, companionId, chatroomRepo, delay, displayBubbles],
   );
 
+  const handleBack = useCallback(() => {
+    router.push(`/${lang}/aidols/${aidolId}/chatrooms`);
+  }, [router, lang, aidolId]);
+
   const handleResend = useCallback(
     (message: Message) => {
       setMessages((prev) =>
@@ -234,9 +238,7 @@ export default function Chatpage() {
         companionName={companion?.name ?? undefined}
         companionImageUrl={companion?.profilePictureUrl}
         activity={getCurrentActivity()}
-        onBack={() =>
-          router.push(`/${lang}/aidols/${aidolId}/chatrooms`)
-        }
+        onBack={handleBack}
       />
 
       <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">
