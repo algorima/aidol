@@ -150,8 +150,8 @@ export default function ChatPage({ params }: ChatPageProps): JSX.Element {
   );
 
   const handleBack = useCallback(() => {
-    router.push(`/${lang}/chatrooms`);
-  }, [lang, router]);
+    router.push(`/${lang}/my/companions/${companionId}`);
+  }, [companionId, lang, router]);
 
   const isLoading = isLoadingMessages || isLoadingCompanion;
 
