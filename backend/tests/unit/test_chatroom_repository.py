@@ -49,6 +49,7 @@ class TestChatroomRepository(unittest.TestCase):
             id="chatroom-a",
             name="A",
             language="ko",
+            companion_id="companion-a",
             created_at=datetime(2026, 2, 16, 1, 0, 0),
             updated_at=datetime(2026, 2, 16, 1, 1, 0),
         )
@@ -56,6 +57,7 @@ class TestChatroomRepository(unittest.TestCase):
             id="chatroom-b",
             name="B",
             language="ko",
+            companion_id="companion-b",
             created_at=datetime(2026, 2, 16, 1, 2, 0),
             updated_at=datetime(2026, 2, 16, 1, 3, 0),
         )
@@ -70,6 +72,7 @@ class TestChatroomRepository(unittest.TestCase):
 
         self.assertEqual(len(items), 2)
         self.assertEqual(items[0].id, "chatroom-a")
+        self.assertEqual(items[0].companion_id, "companion-a")
         first_last_message = items[0].last_message
         self.assertIsNotNone(first_last_message)
         if first_last_message is None:
@@ -78,6 +81,7 @@ class TestChatroomRepository(unittest.TestCase):
         self.assertIsNotNone(first_last_message.created_at.tzinfo)
         self.assertIsNotNone(items[0].created_at.tzinfo)
         self.assertEqual(items[1].id, "chatroom-b")
+        self.assertEqual(items[1].companion_id, "companion-b")
         self.assertIsNone(items[1].last_message)
 
 

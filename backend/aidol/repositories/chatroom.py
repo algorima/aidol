@@ -31,6 +31,7 @@ def _convert_db_chatroom_to_model(db_chatroom: DBChatroom) -> Chatroom:
         id=db_chatroom.id,
         name=db_chatroom.name,
         language=db_chatroom.language,
+        companion_id=db_chatroom.companion_id,
         created_at=db_chatroom.created_at.replace(tzinfo=timezone.utc),
         updated_at=db_chatroom.updated_at.replace(tzinfo=timezone.utc),
     )
@@ -206,6 +207,7 @@ class ChatroomRepository(
                     id=chatroom.id,
                     name=chatroom.name,
                     language=chatroom.language,
+                    companion_id=chatroom.companion_id,
                     created_at=chatroom.created_at.replace(tzinfo=timezone.utc),
                     updated_at=chatroom.updated_at.replace(tzinfo=timezone.utc),
                     last_message=last_message,

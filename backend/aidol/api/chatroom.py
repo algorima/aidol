@@ -336,9 +336,11 @@ class ChatroomRouter(
         async def create_chatroom(
             request: ChatroomCreate,
             anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
+            db_session: Session = Depends(self.get_db_dep),
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """Create a new chatroom."""
+            self._get_companion_or_404(db_session, request.companion_id)
             create_data = ChatroomCreateWithAnonymousId(
                 **request.model_dump(),
                 anonymous_id=anonymous_id,
