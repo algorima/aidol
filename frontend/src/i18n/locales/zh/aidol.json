@@ -110,10 +110,6 @@
     "addMember": "添加成员",
     "signed": "已签约 🥺",
     "grade": "{{grade}} 级",
-    "locked": {
-      "title": "与{{name}}的对话即将开放！",
-      "subtitle": "和{{name}}更亲近就能创建其他成员了💖"
-    },
     "tab": {
       "profile": "简介",
       "stats": "能力值"

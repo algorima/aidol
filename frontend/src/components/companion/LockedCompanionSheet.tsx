@@ -47,10 +47,10 @@ export function LockedCompanionSheet({
         {/* 텍스트 */}
         <div className="flex flex-col items-center gap-2">
           <p className="text-title-s text-base-content max-w-1/2 text-center break-keep">
-            {t("companion.locked.title", { name: companionName, particle })}
+            {t("chat.comingSoon", { name: companionName, particle })}
           </p>
           <p className="text-body-s text-base-content/50 text-center">
-            {t("companion.locked.subtitle", { name: companionName, particle })}
+            {t("chat.unlockHint", { name: companionName, particle })}
           </p>
         </div>
 

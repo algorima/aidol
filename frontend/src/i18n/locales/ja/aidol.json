@@ -110,10 +110,6 @@
     "addMember": "メンバー追加",
     "signed": "契約完了 🥺",
     "grade": "{{grade}} ランク",
-    "locked": {
-      "title": "{{name}}との会話はまもなく開放予定です！",
-      "subtitle": "{{name}}ともっと仲良くなると他のメンバーも作れるよ💖"
-    },
     "tab": {
       "profile": "プロフィール",
       "stats": "能力値"

@@ -110,10 +110,6 @@
     "addMember": "Magdagdag ng Miyembro",
     "signed": "Naka-kontrata na 🥺",
     "grade": "Grade {{grade}}",
-    "locked": {
-      "title": "Malapit nang mabukas ang chat kay {{name}}!",
-      "subtitle": "Maging mas malapit kay {{name}} para ma-unlock ang iba pang miyembro💖"
-    },
     "tab": {
       "profile": "Profile",
       "stats": "Stats"
