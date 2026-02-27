@@ -222,6 +222,8 @@
     "error": {
       "update": "저장에 실패했습니다.",
       "generateImage": "이미지 생성에 실패했습니다.",
+      "promptTooLong": "프롬프트는 200자 이내로 입력해 주세요.",
+      "promptEmpty": "프롬프트를 입력해 주세요.",
       "load": "연습생 목록을 불러오는데 실패했습니다."
     },
     "gender": {
