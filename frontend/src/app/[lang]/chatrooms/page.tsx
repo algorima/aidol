@@ -172,8 +172,7 @@ export default function InboxPage() {
         ) : (
           chatrooms.map((room) => {
             const companion = companionMap.get(room.companionId);
-            // TODO: active 상태는 기획 확정 후 구현
-            const active = false;
+            const active = room.lastMessage !== null;
             return (
               <InboxBlock
                 key={room.id}
