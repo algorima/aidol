@@ -358,6 +358,7 @@
     "header": "Obrolan",
     "beta": "BETA",
     "empty": "Belum ada ruang obrolan",
+    "meetSoon": "Sampai jumpa!",
     "error": {
       "load": "Gagal memuat ruang obrolan"
     }

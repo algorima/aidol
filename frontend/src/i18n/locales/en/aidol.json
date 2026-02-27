@@ -358,6 +358,7 @@
     "header": "Chat",
     "beta": "BETA",
     "empty": "No chatrooms yet",
+    "meetSoon": "See you soon!",
     "error": {
       "load": "Failed to load chatrooms"
     }

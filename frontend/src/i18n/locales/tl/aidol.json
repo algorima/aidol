@@ -358,6 +358,7 @@
     "header": "Chat",
     "beta": "BETA",
     "empty": "Wala pang chatroom",
+    "meetSoon": "Magkita tayo!",
     "error": {
       "load": "Hindi na-load ang mga chatroom"
     }

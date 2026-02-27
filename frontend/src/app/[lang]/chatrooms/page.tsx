@@ -104,7 +104,11 @@ export default function InboxPage() {
   }, [router]);
 
   const handleRoomClick = useCallback(
-    (chatroomId: string, companionId: string) => {
+    (chatroomId: string, companionId: string, active: boolean) => {
+      if (!active) {
+        // TODO: 대화 제한 안내 모달 표시 (별도 브랜치에서 작업 중)
+        return;
+      }
       router.push(`/${params.lang}/chatrooms/${chatroomId}/${companionId}`);
     },
     [params.lang, router],
@@ -177,7 +181,9 @@ export default function InboxPage() {
                 lastMessageAt={formatLastMessageAt(
                   room.lastMessage?.createdAt ?? null,
                 )}
-                onClick={() => handleRoomClick(room.id, room.companionId)}
+                onClick={() =>
+                  handleRoomClick(room.id, room.companionId, active)
+                }
               />
             );
           })

@@ -358,6 +358,7 @@
     "header": "채팅",
     "beta": "BETA",
     "empty": "채팅방이 없습니다",
+    "meetSoon": "곧 만나요!",
     "error": {
       "load": "채팅방 목록을 불러오지 못했습니다"
     }

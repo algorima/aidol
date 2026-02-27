@@ -358,6 +358,7 @@
     "header": "Chat",
     "beta": "BETA",
     "empty": "No hay salas de chat",
+    "meetSoon": "¡Nos vemos pronto!",
     "error": {
       "load": "No se pudieron cargar las salas de chat"
     }

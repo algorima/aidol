@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import type { Activity } from "@/constants/activity";
 
 import { ActivityBadge } from "../common/ActivityBadge";
@@ -22,6 +24,10 @@ export function InboxBlock({
   lastMessageAt,
   onClick,
 }: InboxBlockProps) {
+  const { t } = useTranslation("aidol");
+
+  const subtitle = active ? lastMessage : t("inbox.meetSoon");
+
   return (
     <button
       type="button"
@@ -45,11 +51,9 @@ export function InboxBlock({
           )}
         </div>
 
-        {lastMessage && (
-          <span className="text-body-s text-base-content w-full truncate text-left opacity-50">
-            {lastMessage}
-          </span>
-        )}
+        <span className="text-body-s text-base-content w-full truncate text-left opacity-50">
+          {subtitle}
+        </span>
       </div>
     </button>
   );
