@@ -222,6 +222,8 @@
     "error": {
       "update": "Failed to save.",
       "generateImage": "Failed to generate image.",
+      "promptTooLong": "Prompt must be 200 characters or less.",
+      "promptEmpty": "Please enter a prompt.",
       "load": "Failed to load trainees."
     },
     "gender": {
@@ -261,7 +263,7 @@
   },
   "myGroup": {
     "header": "My Group",
-    "chatComingSoon": "Chat with members coming soon👋",
+    "chatNotification": "Your members have something to say! 👋",
     "settings": "Settings",
     "highlights": "Highlights",
     "empty": {
@@ -352,6 +354,17 @@
       "nicknamePlaceholder": "e.g.) Squad, Besties"
     }
   },
+  "inbox": {
+    "header": "Chat",
+    "beta": "BETA",
+    "empty": "No chatrooms yet",
+    "meetSoon": "See you soon!",
+    "waitingForResponse": "Please wait a moment...",
+    "fallbackGreeting": "Hey! I'm {{name}}\n\nThis is our first time talking here.\nNice to meet you.\n\nFeel free to chat with me",
+    "error": {
+      "load": "Failed to load chatrooms"
+    }
+  },
   "chat": {
     "comingSoon": "Chat with {{name}}\nis coming soon!",
     "unlockHint": "Get closer to {{name}} to unlock other members 💖",
@@ -367,7 +380,9 @@
       "minutesAgo": "{{count}}m ago",
       "hoursAgo": "{{count}}h ago",
       "am": "AM",
-      "pm": "PM"
+      "pm": "PM",
+      "absolute": "{{month}}/{{day}} {{time}}",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

@@ -222,6 +222,8 @@
     "error": {
       "update": "Error al guardar.",
       "generateImage": "Error al generar imagen.",
+      "promptTooLong": "El texto debe tener 200 caracteres o menos.",
+      "promptEmpty": "Por favor, ingresa un texto.",
       "load": "Error al cargar aprendices."
     },
     "gender": {
@@ -261,7 +263,7 @@
   },
   "myGroup": {
     "header": "Mi Grupo",
-    "chatComingSoon": "Chat con miembros próximamente👋",
+    "chatNotification": "¡Los miembros tienen algo que decirte! 👋",
     "settings": "Configuración",
     "highlights": "Destacados",
     "empty": {
@@ -352,6 +354,17 @@
       "nicknamePlaceholder": "ej.) Squad, Mejores"
     }
   },
+  "inbox": {
+    "header": "Chat",
+    "beta": "BETA",
+    "empty": "No hay salas de chat",
+    "meetSoon": "¡Nos vemos pronto!",
+    "waitingForResponse": "Espera un momento...",
+    "fallbackGreeting": "¡Hola! Soy {{name}}\n\nEs la primera vez que hablamos aquí.\nEncantado de conocerte.\n\nHáblame con confianza",
+    "error": {
+      "load": "No se pudieron cargar las salas de chat"
+    }
+  },
   "chat": {
     "comingSoon": "¡La conversación con {{name}}\nse abrirá pronto!",
     "unlockHint": "Acércate más a {{name}} para conocer a otros miembros 💖",
@@ -367,7 +380,9 @@
       "minutesAgo": "Hace {{count}}min",
       "hoursAgo": "Hace {{count}}h",
       "am": "a.m.",
-      "pm": "p.m."
+      "pm": "p.m.",
+      "absolute": "{{month}}/{{day}} {{time}}",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

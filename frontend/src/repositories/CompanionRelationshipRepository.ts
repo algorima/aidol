@@ -1,5 +1,6 @@
 import { BaseCrudRepository } from "@aioia/core";
 
+import { MAX_MEMBERS } from "../constants/companion";
 import type { CompanionRelationship } from "../schemas";
 import { companionRelationshipSchema } from "../schemas";
 
@@ -12,8 +13,9 @@ export class CompanionRelationshipRepository extends BaseCrudRepository<Companio
 
   async getByFromCompanionId(fromCompanionId: string) {
     return this.getList({
+      pagination: { pageSize: MAX_MEMBERS },
       filters: [
-        { field: "from_companion_id", operator: "eq", value: fromCompanionId },
+        { field: "fromCompanionId", operator: "eq", value: fromCompanionId },
       ],
     });
   }

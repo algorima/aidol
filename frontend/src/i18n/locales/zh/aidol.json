@@ -222,6 +222,8 @@
     "error": {
       "update": "保存失败。",
       "generateImage": "生成图片失败。",
+      "promptTooLong": "提示词不能超过200个字符。",
+      "promptEmpty": "请输入提示词。",
       "load": "加载练习生列表失败。"
     },
     "gender": {
@@ -261,7 +263,7 @@
   },
   "myGroup": {
     "header": "我的组合",
-    "chatComingSoon": "与成员聊天即将上线👋",
+    "chatNotification": "成员们有话想对你说！ 👋",
     "settings": "设置",
     "highlights": "精彩集锦",
     "empty": {
@@ -352,6 +354,17 @@
       "nicknamePlaceholder": "例）同龄组、闺蜜组"
     }
   },
+  "inbox": {
+    "header": "聊天",
+    "beta": "BETA",
+    "empty": "暂无聊天室",
+    "meetSoon": "很快见面！",
+    "waitingForResponse": "请稍等...",
+    "fallbackGreeting": "嗨！我是{{name}}\n\n第一次在这里聊天呢。\n很高兴认识你。\n\n随便聊聊吧",
+    "error": {
+      "load": "无法加载聊天室"
+    }
+  },
   "chat": {
     "comingSoon": "与{{name}}的聊天\n即将开放！",
     "unlockHint": "和{{name}}更亲近就能遇到其他成员 💖",
@@ -367,7 +380,9 @@
       "minutesAgo": "{{count}}分钟前",
       "hoursAgo": "{{count}}小时前",
       "am": "上午",
-      "pm": "下午"
+      "pm": "下午",
+      "absolute": "{{month}}/{{day}} {{time}}",
+      "format": "{{period}} {{hour}}:{{minute}}"
     }
   }
 }

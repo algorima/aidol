@@ -222,6 +222,8 @@
     "error": {
       "update": "Gagal menyimpan.",
       "generateImage": "Gagal membuat gambar.",
+      "promptTooLong": "Prompt harus 200 karakter atau kurang.",
+      "promptEmpty": "Silakan masukkan prompt.",
       "load": "Gagal memuat daftar trainee."
     },
     "gender": {
@@ -261,7 +263,7 @@
   },
   "myGroup": {
     "header": "Grup Saya",
-    "chatComingSoon": "Chat dengan member segera hadir👋",
+    "chatNotification": "Member punya sesuatu untuk disampaikan! 👋",
     "settings": "Pengaturan",
     "highlights": "Sorotan",
     "empty": {
@@ -352,6 +354,17 @@
       "nicknamePlaceholder": "cth.) Squad, Besties"
     }
   },
+  "inbox": {
+    "header": "Obrolan",
+    "beta": "BETA",
+    "empty": "Belum ada ruang obrolan",
+    "meetSoon": "Sampai jumpa!",
+    "waitingForResponse": "Tunggu sebentar...",
+    "fallbackGreeting": "Hai! Aku {{name}}\n\nIni pertama kalinya kita ngobrol di sini.\nSenang kenalan.\n\nSantai aja ngobrolnya",
+    "error": {
+      "load": "Gagal memuat ruang obrolan"
+    }
+  },
   "chat": {
     "comingSoon": "Obrolan dengan {{name}}\nakan segera dibuka!",
     "unlockHint": "Berteman lebih dekat dengan {{name}} untuk bertemu anggota lain 💖",
@@ -367,7 +380,9 @@
       "minutesAgo": "{{count}} menit lalu",
       "hoursAgo": "{{count}} jam lalu",
       "am": "AM",
-      "pm": "PM"
+      "pm": "PM",
+      "absolute": "{{month}}/{{day}} {{time}}",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

@@ -63,13 +63,18 @@ export default function CompanionProfilePage({
   }, [companionId, companionRepository]);
 
   const handleStartChat = useCallback(async () => {
+    if (!companion?.aidolId) return;
+    const { aidolId } = companion;
+
     // Check localStorage for existing chatroom
     const existingChatroomId =
       LocalChatroomIdsRepository.getChatroomId(companionId);
 
     if (existingChatroomId) {
       // Navigate to existing chatroom
-      router.push(`/${lang}/chatrooms/${existingChatroomId}/${companionId}`);
+      router.push(
+        `/${lang}/aidols/${aidolId}/chatrooms/${existingChatroomId}/${companionId}`,
+      );
       return;
     }
 
@@ -79,20 +84,26 @@ export default function CompanionProfilePage({
       setCreateError(null);
 
       const response = await chatroomRepository.create<ChatroomCreate>({
-        variables: { name: companion?.name ?? "Chat", language: lang },
+        variables: {
+          companionId,
+          name: companion.name ?? "Chat",
+          language: lang,
+        },
       });
 
       // Save to localStorage
       LocalChatroomIdsRepository.setChatroomId(companionId, response.data.id);
 
       // Navigate to new chatroom
-      router.push(`/${lang}/chatrooms/${response.data.id}/${companionId}`);
+      router.push(
+        `/${lang}/aidols/${aidolId}/chatrooms/${response.data.id}/${companionId}`,
+      );
     } catch (err) {
       setCreateError(err as Error);
     } finally {
       setIsCreatingChatroom(false);
     }
-  }, [chatroomRepository, companion?.name, companionId, lang, router]);
+  }, [chatroomRepository, companion, companionId, lang, router]);
 
   if (isLoading) {
     return (

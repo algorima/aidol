@@ -3,6 +3,8 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
+const PROMPT_MAX_LENGTH = 200;
+
 interface ProfileImageGeneratorProps {
   prompt: string;
   onPromptChange: (prompt: string) => void;
@@ -24,18 +26,31 @@ export function ProfileImageGenerator({
 
   return (
     <div className="flex flex-col gap-4">
-      <textarea
-        value={prompt}
-        onChange={(e) => {
-          onPromptChange(e.target.value);
-          const target = e.target;
-          target.style.height = "auto";
-          target.style.height = `${target.scrollHeight}px`;
-        }}
-        placeholder={t("aidol:companionCreate.image.promptPlaceholder")}
-        className="textarea border-base-400 bg-base-200 min-h-0 w-full resize-none overflow-hidden rounded-lg px-4 py-3"
-        rows={1}
-      />
+      <div>
+        <textarea
+          value={prompt}
+          onChange={(e) => {
+            onPromptChange(e.target.value);
+            const target = e.target;
+            target.style.height = "auto";
+            target.style.height = `${target.scrollHeight}px`;
+          }}
+          placeholder={t("aidol:companionCreate.image.promptPlaceholder")}
+          maxLength={PROMPT_MAX_LENGTH}
+          className="textarea border-base-400 bg-base-200 min-h-0 w-full resize-none overflow-hidden rounded-lg px-4 py-3"
+          rows={1}
+        />
+        <div
+          className={clsx(
+            "text-label-s mt-1 text-right",
+            prompt.length >= PROMPT_MAX_LENGTH
+              ? "text-error"
+              : "text-base-content/50",
+          )}
+        >
+          {prompt.length}/{PROMPT_MAX_LENGTH}
+        </div>
+      </div>
       <button
         type="button"
         onClick={onGenerate}

@@ -40,6 +40,11 @@ const writeStorage = (data: Record<string, string>): void => {
  * Maps companionId to chatroomId for persistence across sessions.
  */
 export const LocalChatroomIdsRepository = {
+  /** Returns the full { companionId → chatroomId } map from localStorage. */
+  getAll(): Record<string, string> {
+    return readStorage();
+  },
+
   getChatroomId(companionId: string): string | null {
     const data = readStorage();
     return data[companionId] ?? null;

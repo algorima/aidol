@@ -14,6 +14,7 @@ from typing import Literal
 import PIL.Image
 from google import genai
 from google.genai import errors as genai_errors
+from google.genai import types
 
 from aidol.settings import GoogleGenAISettings
 
@@ -88,6 +89,9 @@ class ImageGenerationService:
             response = self.client.models.generate_content(
                 model="gemini-3-pro-image-preview",
                 contents=[prompt],  # type: ignore[arg-type]
+                config=types.GenerateContentConfig(
+                    response_modalities=["IMAGE"],
+                ),
             )
 
             # Iterate parts to find the image

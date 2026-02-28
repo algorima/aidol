@@ -19,6 +19,9 @@ export * from "./group";
 // Highlight components
 export * from "./highlight";
 
+// Inbox components
+export * from "./inbox";
+
 // Landing page components
 export * from "./landing";
 

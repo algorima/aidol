@@ -126,6 +126,7 @@ class ChatroomBase(BaseModel):
 
     name: str = Field(..., description="Chatroom name")
     language: str = Field(default="en", description="Chatroom language")
+    companion_id: str = Field(..., description="Companion ID")
 
 
 class Chatroom(ChatroomBase):

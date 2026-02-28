@@ -222,6 +222,8 @@
     "error": {
       "update": "บันทึกไม่สำเร็จ",
       "generateImage": "สร้างรูปไม่สำเร็จ",
+      "promptTooLong": "ข้อความต้องไม่เกิน 200 ตัวอักษร",
+      "promptEmpty": "กรุณากรอกข้อความ",
       "load": "ไม่สามารถโหลดรายชื่อเทรนนี่ได้"
     },
     "gender": {
@@ -261,7 +263,7 @@
   },
   "myGroup": {
     "header": "กรุ๊ปของฉัน",
-    "chatComingSoon": "แชทกับสมาชิกเร็วๆ นี้👋",
+    "chatNotification": "สมาชิกมีเรื่องอยากบอก! 👋",
     "settings": "ตั้งค่า",
     "highlights": "ไฮไลท์",
     "empty": {
@@ -352,6 +354,17 @@
       "nicknamePlaceholder": "เช่น) กลุ่มเพื่อน, คู่ซี้"
     }
   },
+  "inbox": {
+    "header": "แชท",
+    "beta": "BETA",
+    "empty": "ยังไม่มีห้องแชท",
+    "meetSoon": "เจอกันเร็วๆ นี้!",
+    "waitingForResponse": "รอสักครู่...",
+    "fallbackGreeting": "หวัดดี! เรา{{name}}นะ\n\nนี่เป็นครั้งแรกที่เราคุยกันที่นี่เลย\nยินดีที่ได้รู้จักนะ\n\nคุยสบายๆ เลยนะ",
+    "error": {
+      "load": "ไม่สามารถโหลดห้องแชทได้"
+    }
+  },
   "chat": {
     "comingSoon": "แชทกับ{{name}}\nจะเปิดให้บริการเร็วๆ นี้!",
     "unlockHint": "สนิทกับ{{name}}มากขึ้นเพื่อพบสมาชิกคนอื่น 💖",
@@ -367,7 +380,9 @@
       "minutesAgo": "{{count}} นาทีที่แล้ว",
       "hoursAgo": "{{count}} ชั่วโมงที่แล้ว",
       "am": "AM",
-      "pm": "PM"
+      "pm": "PM",
+      "absolute": "{{month}}/{{day}} {{time}}",
+      "format": "{{hour}}:{{minute}} {{period}}"
     }
   }
 }

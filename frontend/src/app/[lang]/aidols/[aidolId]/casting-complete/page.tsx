@@ -6,14 +6,13 @@ import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
 import { CastingComplete } from "@/components/casting-board";
+import { MAX_MEMBERS } from "@/constants/companion";
 import { CompanionRepository } from "@/repositories/CompanionRepository";
 import { getApiService } from "@/services/ApiService";
 
 interface CastingCompletePageProps {
   params: { lang: string; aidolId: string };
 }
-
-const MAX_MEMBERS = 25;
 
 export default function CastingCompletePage({
   params,
@@ -32,9 +31,7 @@ export default function CastingCompletePage({
   useEffect(() => {
     const fetchMemberCount = async () => {
       try {
-        const response = await companionRepository.getList({
-          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
-        });
+        const response = await companionRepository.getByAidolId(aidolId);
         setRemainingSlots(MAX_MEMBERS - response.data.length);
       } catch {
         showToast(t("aidol:castingComplete.error.load"), "error");
