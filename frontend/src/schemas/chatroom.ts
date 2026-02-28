@@ -39,6 +39,7 @@ export interface Chatroom extends BaseRecord {
 }
 
 export interface ChatroomCreate {
+  companionId: string;
   name: string;
   language?: string;
 }

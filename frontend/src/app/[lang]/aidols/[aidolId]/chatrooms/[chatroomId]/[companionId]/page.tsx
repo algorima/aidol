@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -16,12 +16,14 @@ import { getApiService } from "@/services/ApiService";
 
 const PAGE_SIZE = 100;
 
-interface ChatpageProps {
-  params: { lang: string; chatroomId: string; companionId: string };
-}
-
-export default function Chatpage({ params }: ChatpageProps) {
-  const { chatroomId, companionId } = params;
+export default function Chatpage() {
+  const params = useParams<{
+    lang: string;
+    aidolId: string;
+    chatroomId: string;
+    companionId: string;
+  }>();
+  const { chatroomId, companionId, lang, aidolId } = params;
   const router = useRouter();
   const [companion, setCompanion] = useState<Companion | null>(null);
   const [messages, setMessages] = useState<Message[] | undefined>(undefined);
@@ -31,11 +33,11 @@ export default function Chatpage({ params }: ChatpageProps) {
   const { t } = useTranslation("aidol");
   const { showToast } = useToast();
 
-  const chatroomRepo = useMemo(
+  const chatroomRepository = useMemo(
     () => new ChatroomRepository(getApiService()),
     [],
   );
-  const companionRepo = useMemo(
+  const companionRepository = useMemo(
     () => new CompanionRepository(getApiService()),
     [],
   );
@@ -45,7 +47,7 @@ export default function Chatpage({ params }: ChatpageProps) {
       const [, companionResult] = await Promise.allSettled([
         (async () => {
           try {
-            const fetched = await chatroomRepo.getMessages(chatroomId, {
+            const fetched = await chatroomRepository.getMessages(chatroomId, {
               limit: PAGE_SIZE,
             });
             setMessages(fetched);
@@ -57,7 +59,7 @@ export default function Chatpage({ params }: ChatpageProps) {
             setHasMore(false);
           }
         })(),
-        companionRepo.getOne({ id: companionId }),
+        companionRepository.getOne({ id: companionId }),
       ]);
 
       if (companionResult.status === "fulfilled") {
@@ -67,14 +69,21 @@ export default function Chatpage({ params }: ChatpageProps) {
         showToast(t("common.error.load"), "error");
       }
     })();
-  }, [chatroomId, chatroomRepo, companionId, companionRepo, showToast]);
+  }, [
+    chatroomId,
+    chatroomRepository,
+    companionId,
+    companionRepository,
+    showToast,
+    t,
+  ]);
 
   const handleLoadMore = useCallback(async () => {
     if (isLoadingMore) return;
     setIsLoadingMore(true);
     try {
       const offset = messages?.length ?? 0;
-      const fetched = await chatroomRepo.getMessages(chatroomId, {
+      const fetched = await chatroomRepository.getMessages(chatroomId, {
         limit: PAGE_SIZE,
         offset,
       });
@@ -85,7 +94,7 @@ export default function Chatpage({ params }: ChatpageProps) {
     } finally {
       setIsLoadingMore(false);
     }
-  }, [isLoadingMore, messages?.length, chatroomRepo, chatroomId]);
+  }, [isLoadingMore, messages?.length, chatroomRepository, chatroomId]);
 
   const delay = useCallback(
     (ms: number) => new Promise((resolve) => setTimeout(resolve, ms)),
@@ -122,7 +131,10 @@ export default function Chatpage({ params }: ChatpageProps) {
 
   const generateWithTyping = useCallback(async () => {
     try {
-      const response = chatroomRepo.generateResponse(chatroomId, companionId);
+      const response = chatroomRepository.generateResponse(
+        chatroomId,
+        companionId,
+      );
       setIsTyping(true);
       const [generated] = await Promise.all([response, delay(3000)]);
       await displayBubbles(generated);
@@ -138,12 +150,15 @@ export default function Chatpage({ params }: ChatpageProps) {
       };
       setMessages((prev) => [errorMessage, ...(prev ?? [])]);
     }
-  }, [chatroomId, companionId, chatroomRepo, delay, displayBubbles]);
+  }, [chatroomId, companionId, chatroomRepository, delay, displayBubbles]);
 
   const sendAndGenerate = useCallback(
     async (content: string, tempId: string) => {
       try {
-        const userMessage = await chatroomRepo.sendMessage(chatroomId, content);
+        const userMessage = await chatroomRepository.sendMessage(
+          chatroomId,
+          content,
+        );
         setMessages((prev) =>
           prev?.map((m) =>
             m.id === tempId
@@ -163,7 +178,7 @@ export default function Chatpage({ params }: ChatpageProps) {
 
       await generateWithTyping();
     },
-    [chatroomId, chatroomRepo, generateWithTyping],
+    [chatroomId, chatroomRepository, generateWithTyping],
   );
 
   const handleRetryGenerate = useCallback(
@@ -176,7 +191,7 @@ export default function Chatpage({ params }: ChatpageProps) {
 
       const retry = async () => {
         try {
-          const response = chatroomRepo.generateResponse(
+          const response = chatroomRepository.generateResponse(
             chatroomId,
             companionId,
           );
@@ -195,8 +210,12 @@ export default function Chatpage({ params }: ChatpageProps) {
 
       void retry();
     },
-    [chatroomId, companionId, chatroomRepo, delay, displayBubbles],
+    [chatroomId, companionId, chatroomRepository, delay, displayBubbles],
   );
+
+  const handleBack = useCallback(() => {
+    router.push(`/${lang}/aidols/${aidolId}/chatrooms`);
+  }, [router, lang, aidolId]);
 
   const handleResend = useCallback(
     (message: Message) => {
@@ -232,7 +251,7 @@ export default function Chatpage({ params }: ChatpageProps) {
         companionName={companion?.name ?? undefined}
         companionImageUrl={companion?.profilePictureUrl}
         activity={getCurrentActivity()}
-        onBack={() => router.back()}
+        onBack={handleBack}
       />
 
       <div className="bg-neutral text-neutral-content flex h-11.5 items-center justify-center">

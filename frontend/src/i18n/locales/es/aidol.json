@@ -354,6 +354,17 @@
       "nicknamePlaceholder": "ej.) Squad, Mejores"
     }
   },
+  "inbox": {
+    "header": "Chat",
+    "beta": "BETA",
+    "empty": "No hay salas de chat",
+    "meetSoon": "¡Nos vemos pronto!",
+    "waitingForResponse": "Espera un momento...",
+    "fallbackGreeting": "¡Hola! Soy {{name}}\n\nEs la primera vez que hablamos aquí.\nEncantado de conocerte.\n\nHáblame con confianza",
+    "error": {
+      "load": "No se pudieron cargar las salas de chat"
+    }
+  },
   "chat": {
     "comingSoon": "¡La conversación con {{name}}\nse abrirá pronto!",
     "unlockHint": "Acércate más a {{name}} para conocer a otros miembros 💖",
@@ -370,6 +381,7 @@
       "hoursAgo": "Hace {{count}}h",
       "am": "a.m.",
       "pm": "p.m.",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{hour}}:{{minute}} {{period}}"
     }
   }

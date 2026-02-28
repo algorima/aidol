@@ -354,6 +354,17 @@
       "nicknamePlaceholder": "예)동갑즈, 멍멍즈"
     }
   },
+  "inbox": {
+    "header": "채팅",
+    "beta": "BETA",
+    "empty": "채팅방이 없습니다",
+    "meetSoon": "곧 만나요!",
+    "waitingForResponse": "잠시만 기다려주세요...",
+    "fallbackGreeting": "안녕! 나 {{name}}이야\n\n여기서 처음 이야기하게 됐네.\n반가워.\n\n편하게 이야기해줘",
+    "error": {
+      "load": "채팅방 목록을 불러오지 못했습니다"
+    }
+  },
   "chat": {
     "comingSoon": "{{name}}{{particle}}의 대화는\n곧 열릴 예정이에요!",
     "unlockHint": "{{name}}{{particle}} 더 친해지면 다른 멤버들도 만날 수 있어요💖",
@@ -370,6 +381,7 @@
       "hoursAgo": "{{count}}시간 전",
       "am": "오전",
       "pm": "오후",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{period}} {{hour}}:{{minute}}"
     }
   }

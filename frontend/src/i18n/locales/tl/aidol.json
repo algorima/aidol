@@ -354,6 +354,17 @@
       "nicknamePlaceholder": "hal.) Squad, Besties"
     }
   },
+  "inbox": {
+    "header": "Chat",
+    "beta": "BETA",
+    "empty": "Wala pang chatroom",
+    "meetSoon": "Magkita tayo!",
+    "waitingForResponse": "Sandali lang...",
+    "fallbackGreeting": "Hoy! Ako si {{name}}\n\nFirst time nating mag-usap dito.\nNice na makilala ka.\n\nKwentuhan mo ko ha",
+    "error": {
+      "load": "Hindi na-load ang mga chatroom"
+    }
+  },
   "chat": {
     "comingSoon": "Ang chat kay {{name}} ay\nmalapit nang magbukas!",
     "unlockHint": "Maging mas malapit kay {{name}} para makilala ang ibang miyembro 💖",
@@ -370,6 +381,7 @@
       "hoursAgo": "{{count}} oras ang nakalipas",
       "am": "AM",
       "pm": "PM",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{hour}}:{{minute}} {{period}}"
     }
   }

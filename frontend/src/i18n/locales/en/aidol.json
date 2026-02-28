@@ -354,6 +354,17 @@
       "nicknamePlaceholder": "e.g.) Squad, Besties"
     }
   },
+  "inbox": {
+    "header": "Chat",
+    "beta": "BETA",
+    "empty": "No chatrooms yet",
+    "meetSoon": "See you soon!",
+    "waitingForResponse": "Please wait a moment...",
+    "fallbackGreeting": "Hey! I'm {{name}}\n\nThis is our first time talking here.\nNice to meet you.\n\nFeel free to chat with me",
+    "error": {
+      "load": "Failed to load chatrooms"
+    }
+  },
   "chat": {
     "comingSoon": "Chat with {{name}}\nis coming soon!",
     "unlockHint": "Get closer to {{name}} to unlock other members 💖",
@@ -370,6 +381,7 @@
       "hoursAgo": "{{count}}h ago",
       "am": "AM",
       "pm": "PM",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{hour}}:{{minute}} {{period}}"
     }
   }

@@ -354,6 +354,17 @@
       "nicknamePlaceholder": "cth.) Squad, Besties"
     }
   },
+  "inbox": {
+    "header": "Obrolan",
+    "beta": "BETA",
+    "empty": "Belum ada ruang obrolan",
+    "meetSoon": "Sampai jumpa!",
+    "waitingForResponse": "Tunggu sebentar...",
+    "fallbackGreeting": "Hai! Aku {{name}}\n\nIni pertama kalinya kita ngobrol di sini.\nSenang kenalan.\n\nSantai aja ngobrolnya",
+    "error": {
+      "load": "Gagal memuat ruang obrolan"
+    }
+  },
   "chat": {
     "comingSoon": "Obrolan dengan {{name}}\nakan segera dibuka!",
     "unlockHint": "Berteman lebih dekat dengan {{name}} untuk bertemu anggota lain 💖",
@@ -370,6 +381,7 @@
       "hoursAgo": "{{count}} jam lalu",
       "am": "AM",
       "pm": "PM",
+      "absolute": "{{month}}/{{day}} {{time}}",
       "format": "{{hour}}:{{minute}} {{period}}"
     }
   }

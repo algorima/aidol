@@ -9,6 +9,31 @@ import {
 } from "../schemas";
 
 /**
+ * Schema for "my chatrooms" list item (GET /me/chatrooms response)
+ */
+const lastMessageSchema = z.object({
+  content: z.string(),
+  createdAt: z.string(),
+});
+
+const myChatroomItemSchema = z.object({
+  id: z.string(),
+  companionId: z.string(),
+  lastMessage: lastMessageSchema.nullable(),
+});
+
+export interface MyChatroomLastMessage {
+  content: string;
+  createdAt: string;
+}
+
+export interface MyChatroomItem {
+  id: string;
+  companionId: string;
+  lastMessage: MyChatroomLastMessage | null;
+}
+
+/**
  * Response schema for generate AI response endpoint
  */
 const generateResponseSchema = z.object({
@@ -107,5 +132,42 @@ export class ChatroomRepository extends BaseCrudRepository<Chatroom> {
     });
 
     return this.validateResponse(rawResponse, generateResponseSchema);
+  }
+
+  /**
+   * Generate initial AI response for an empty chatroom
+   * POST /chatrooms/{id}/companions/{companionId}/initial-response
+   *
+   * Only works for chatrooms with no messages.
+   * Returns 409 Conflict if the chatroom already has messages.
+   */
+  async generateInitialResponse(
+    chatroomId: string,
+    companionId: string,
+    fetchOptions?: RequestInit,
+  ): Promise<GenerateResponse> {
+    const url = this.apiService.buildUrl(
+      `${this.resource}/${chatroomId}/companions/${companionId}/initial-response`,
+    );
+
+    const rawResponse = await this.apiService.request(url, {
+      ...fetchOptions,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    return this.validateResponse(rawResponse, generateResponseSchema);
+  }
+
+  /**
+   * Get the current user's chatroom list
+   * GET /me/chatrooms
+   */
+  async getMyChatrooms(fetchOptions?: RequestInit): Promise<MyChatroomItem[]> {
+    const url = this.apiService.buildUrl(`me/${this.resource}`);
+    const raw = (await this.apiService.request(url, fetchOptions)) as {
+      data: unknown[];
+    };
+    return myChatroomItemSchema.array().parse(raw.data);
   }
 }
