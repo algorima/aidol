@@ -359,6 +359,7 @@
     "beta": "BETA",
     "empty": "No chatrooms yet",
     "meetSoon": "See you soon!",
+    "waitingForResponse": "Please wait a moment...",
     "error": {
       "load": "Failed to load chatrooms"
     }

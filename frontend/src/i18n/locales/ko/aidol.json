@@ -359,6 +359,7 @@
     "beta": "BETA",
     "empty": "채팅방이 없습니다",
     "meetSoon": "곧 만나요!",
+    "waitingForResponse": "잠시만 기다려주세요...",
     "error": {
       "load": "채팅방 목록을 불러오지 못했습니다"
     }

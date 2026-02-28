@@ -46,6 +46,17 @@ export const LongName: Story = {
   },
 };
 
+export const Pending: Story = {
+  args: {
+    name: "데프레임",
+    imageUrl: sampleImage,
+    active: false,
+    pending: true,
+    activity: "PRACTICING",
+    lastMessageAt: "방금 전",
+  },
+};
+
 export const NoImage: Story = {
   args: {
     name: "드리머즈",

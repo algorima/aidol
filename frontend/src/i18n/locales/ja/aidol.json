@@ -359,6 +359,7 @@
     "beta": "BETA",
     "empty": "チャットルームがありません",
     "meetSoon": "もうすぐ会えるよ！",
+    "waitingForResponse": "少々お待ちください...",
     "error": {
       "load": "チャットルームの読み込みに失敗しました"
     }

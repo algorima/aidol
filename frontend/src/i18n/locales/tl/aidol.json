@@ -359,6 +359,7 @@
     "beta": "BETA",
     "empty": "Wala pang chatroom",
     "meetSoon": "Magkita tayo!",
+    "waitingForResponse": "Sandali lang...",
     "error": {
       "load": "Hindi na-load ang mga chatroom"
     }

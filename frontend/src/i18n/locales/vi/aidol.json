@@ -359,6 +359,7 @@
     "beta": "BETA",
     "empty": "Chưa có phòng trò chuyện",
     "meetSoon": "Hẹn gặp lại!",
+    "waitingForResponse": "Xin chờ một chút...",
     "error": {
       "load": "Không thể tải phòng trò chuyện"
     }

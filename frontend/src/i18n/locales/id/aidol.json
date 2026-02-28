@@ -359,6 +359,7 @@
     "beta": "BETA",
     "empty": "Belum ada ruang obrolan",
     "meetSoon": "Sampai jumpa!",
+    "waitingForResponse": "Tunggu sebentar...",
     "error": {
       "load": "Gagal memuat ruang obrolan"
     }

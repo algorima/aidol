@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
 import type { Activity } from "@/constants/activity";
@@ -9,6 +10,7 @@ interface InboxBlockProps {
   name: string;
   imageUrl?: string | null;
   active: boolean;
+  pending?: boolean;
   activity?: Activity;
   lastMessage?: string | null;
   lastMessageAt?: string | null;
@@ -19,6 +21,7 @@ export function InboxBlock({
   name,
   imageUrl,
   active,
+  pending = false,
   activity,
   lastMessage,
   lastMessageAt,
@@ -26,15 +29,23 @@ export function InboxBlock({
 }: InboxBlockProps) {
   const { t } = useTranslation("aidol");
 
-  const subtitle = active ? lastMessage : t("inbox.meetSoon");
+  const showActive = active || pending;
+  const subtitle = pending
+    ? t("inbox.waitingForResponse")
+    : active
+      ? lastMessage
+      : t("inbox.meetSoon");
 
   return (
     <button
       type="button"
       onClick={onClick}
-      className="flex w-full items-center gap-3 px-6 py-4"
+      className={clsx(
+        "flex w-full items-center gap-3 px-6 py-4",
+        pending && "opacity-50",
+      )}
     >
-      <CompanionAvatar imageUrl={imageUrl} name={name} active={active} />
+      <CompanionAvatar imageUrl={imageUrl} name={name} active={showActive} />
 
       <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
         <div className="flex w-full items-center justify-between">
@@ -42,9 +53,9 @@ export function InboxBlock({
             <span className="text-title-s text-base-content max-w-[140px] truncate">
               {name}
             </span>
-            {active && activity && <ActivityBadge activity={activity} />}
+            {showActive && activity && <ActivityBadge activity={activity} />}
           </div>
-          {active && lastMessageAt && (
+          {showActive && lastMessageAt && (
             <span className="text-label-m text-base-content shrink-0 opacity-50">
               {lastMessageAt}
             </span>

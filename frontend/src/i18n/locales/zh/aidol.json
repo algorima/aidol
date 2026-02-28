@@ -359,6 +359,7 @@
     "beta": "BETA",
     "empty": "暂无聊天室",
     "meetSoon": "很快见面！",
+    "waitingForResponse": "请稍等...",
     "error": {
       "load": "无法加载聊天室"
     }

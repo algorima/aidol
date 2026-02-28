@@ -43,6 +43,9 @@ export default function InboxPage() {
   );
   const [groupName, setGroupName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [pendingChatroomIds, setPendingChatroomIds] = useState<Set<string>>(
+    new Set(),
+  );
   const [lockedCompanion, setLockedCompanion] = useState<{
     name: string;
     imageUrl?: string;
@@ -87,69 +90,53 @@ export default function InboxPage() {
               companionId: randomCompanion.id,
             },
           });
-          try {
-            const response = await chatroomRepository.generateInitialResponse(
-              newChatroom.id,
-              randomCompanion.id,
-            );
-            setChatrooms([
-              {
-                id: newChatroom.id,
-                companionId: randomCompanion.id,
-                lastMessage: {
-                  content: response.content,
-                  createdAt: new Date().toISOString(),
-                },
-              },
-            ]);
-          } catch (error) {
-            console.error(
-              `Initial response failed for chatroom ${newChatroom.id}:`,
-              error,
-            );
-            setChatrooms([
-              {
-                id: newChatroom.id,
-                companionId: randomCompanion.id,
-                lastMessage: null,
-              },
-            ]);
-          }
-        } else {
-          // Path A: 채팅방 있음 → 목록 표시 + 빈 채팅방 선발화 fire-and-forget
-          setChatrooms(filteredChatrooms);
-          const emptyChatrooms = filteredChatrooms.filter(
-            (c) => c.lastMessage === null,
-          );
+
+          // 채팅방을 즉시 표시하고 pending 상태로 설정
+          setChatrooms([
+            {
+              id: newChatroom.id,
+              companionId: randomCompanion.id,
+              lastMessage: null,
+            },
+          ]);
+          setPendingChatroomIds(new Set([newChatroom.id]));
+
+          // 선제발화 fire-and-forget
           void (async () => {
-            for (const chatroom of emptyChatrooms) {
-              try {
-                const response =
-                  await chatroomRepository.generateInitialResponse(
-                    chatroom.id,
-                    chatroom.companionId,
-                  );
-                setChatrooms((prev) =>
-                  prev.map((room) =>
-                    room.id === chatroom.id
-                      ? {
-                          ...room,
-                          lastMessage: {
-                            content: response.content,
-                            createdAt: new Date().toISOString(),
-                          },
-                        }
-                      : room,
-                  ),
-                );
-              } catch (error) {
-                console.error(
-                  `Initial response failed for chatroom ${chatroom.id}:`,
-                  error,
-                );
-              }
+            try {
+              const response = await chatroomRepository.generateInitialResponse(
+                newChatroom.id,
+                randomCompanion.id,
+              );
+              setChatrooms((prev) =>
+                prev.map((room) =>
+                  room.id === newChatroom.id
+                    ? {
+                        ...room,
+                        lastMessage: {
+                          content: response.content,
+                          createdAt: new Date().toISOString(),
+                        },
+                      }
+                    : room,
+                ),
+              );
+            } catch (error) {
+              console.error(
+                `Initial response failed for chatroom ${newChatroom.id}:`,
+                error,
+              );
+            } finally {
+              setPendingChatroomIds((prev) => {
+                const next = new Set(prev);
+                next.delete(newChatroom.id);
+                return next;
+              });
             }
           })();
+        } else {
+          // Path A: 채팅방 있음 → 목록 그대로 표시
+          setChatrooms(filteredChatrooms);
         }
       } catch (error) {
         console.error("Failed to fetch chatrooms:", error);
@@ -176,6 +163,7 @@ export default function InboxPage() {
 
   const handleRoomClick = useCallback(
     (chatroomId: string, companionId: string, active: boolean) => {
+      if (pendingChatroomIds.has(chatroomId)) return;
       if (!active) {
         const companion = companionMap.get(companionId);
         setLockedCompanion({
@@ -188,7 +176,7 @@ export default function InboxPage() {
         `/${params.lang}/aidols/${params.aidolId}/chatrooms/${chatroomId}/${companionId}`,
       );
     },
-    [companionMap, params.aidolId, params.lang, router],
+    [companionMap, params.aidolId, params.lang, pendingChatroomIds, router],
   );
 
   const formatLastMessageAt = useCallback(
@@ -245,6 +233,7 @@ export default function InboxPage() {
         ) : (
           chatrooms.map((room) => {
             const companion = companionMap.get(room.companionId);
+            const pending = pendingChatroomIds.has(room.id);
             const active = room.lastMessage !== null;
             return (
               <InboxBlock
@@ -252,11 +241,14 @@ export default function InboxPage() {
                 name={companion?.name ?? ""}
                 imageUrl={companion?.profilePictureUrl ?? null}
                 active={active}
-                activity={active ? activity : undefined}
+                pending={pending}
+                activity={active || pending ? activity : undefined}
                 lastMessage={room.lastMessage?.content ?? null}
-                lastMessageAt={formatLastMessageAt(
-                  room.lastMessage?.createdAt ?? null,
-                )}
+                lastMessageAt={
+                  pending
+                    ? formatLastMessageAt(new Date().toISOString())
+                    : formatLastMessageAt(room.lastMessage?.createdAt ?? null)
+                }
                 onClick={() =>
                   handleRoomClick(room.id, room.companionId, active)
                 }
