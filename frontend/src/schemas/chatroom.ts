@@ -15,12 +15,6 @@ export const chatroomSchema = z.object({
   companionId: z.string(),
   name: z.string(),
   language: z.string(),
-  lastMessage: z
-    .object({
-      content: z.string(),
-      createdAt: z.string(),
-    })
-    .nullable(),
   createdAt: z.string(),
   updatedAt: z.string(),
 });
@@ -30,10 +24,6 @@ export interface Chatroom extends BaseRecord {
   companionId: string;
   name: string;
   language: string;
-  lastMessage: {
-    content: string;
-    createdAt: string;
-  } | null;
   createdAt: string;
   updatedAt: string;
 }
