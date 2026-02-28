@@ -360,6 +360,7 @@
     "empty": "チャットルームがありません",
     "meetSoon": "もうすぐ会えるよ！",
     "waitingForResponse": "少々お待ちください...",
+    "fallbackGreeting": "やっほー！{{name}}だよ\n\nここで初めて話すことになったね。\nよろしくね。\n\n気軽に話してね",
     "error": {
       "load": "チャットルームの読み込みに失敗しました"
     }

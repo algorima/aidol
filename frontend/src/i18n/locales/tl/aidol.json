@@ -360,6 +360,7 @@
     "empty": "Wala pang chatroom",
     "meetSoon": "Magkita tayo!",
     "waitingForResponse": "Sandali lang...",
+    "fallbackGreeting": "Hoy! Ako si {{name}}\n\nFirst time nating mag-usap dito.\nNice na makilala ka.\n\nKwentuhan mo ko ha",
     "error": {
       "load": "Hindi na-load ang mga chatroom"
     }

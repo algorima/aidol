@@ -360,6 +360,7 @@
     "empty": "No chatrooms yet",
     "meetSoon": "See you soon!",
     "waitingForResponse": "Please wait a moment...",
+    "fallbackGreeting": "Hey! I'm {{name}}\n\nThis is our first time talking here.\nNice to meet you.\n\nFeel free to chat with me",
     "error": {
       "load": "Failed to load chatrooms"
     }

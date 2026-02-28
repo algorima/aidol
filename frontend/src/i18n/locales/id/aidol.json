@@ -360,6 +360,7 @@
     "empty": "Belum ada ruang obrolan",
     "meetSoon": "Sampai jumpa!",
     "waitingForResponse": "Tunggu sebentar...",
+    "fallbackGreeting": "Hai! Aku {{name}}\n\nIni pertama kalinya kita ngobrol di sini.\nSenang kenalan.\n\nSantai aja ngobrolnya",
     "error": {
       "load": "Gagal memuat ruang obrolan"
     }

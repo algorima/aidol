@@ -133,6 +133,22 @@ export default function InboxPage() {
                 `Initial response failed for chatroom ${newChatroom.id}:`,
                 error,
               );
+              const fallbackContent = t("inbox.fallbackGreeting", {
+                name: randomCompanion.name ?? "",
+              });
+              setChatrooms((prev) =>
+                prev.map((room) =>
+                  room.id === newChatroom.id
+                    ? {
+                        ...room,
+                        lastMessage: {
+                          content: fallbackContent,
+                          createdAt: new Date().toISOString(),
+                        },
+                      }
+                    : room,
+                ),
+              );
             } finally {
               setPendingChatroomIds((prev) => {
                 const next = new Set(prev);

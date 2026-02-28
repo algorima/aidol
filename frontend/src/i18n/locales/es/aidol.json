@@ -360,6 +360,7 @@
     "empty": "No hay salas de chat",
     "meetSoon": "¡Nos vemos pronto!",
     "waitingForResponse": "Espera un momento...",
+    "fallbackGreeting": "¡Hola! Soy {{name}}\n\nEs la primera vez que hablamos aquí.\nEncantado de conocerte.\n\nHáblame con confianza",
     "error": {
       "load": "No se pudieron cargar las salas de chat"
     }
