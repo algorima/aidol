@@ -38,6 +38,7 @@ export default function InboxPage() {
   );
 
   const [chatrooms, setChatrooms] = useState<MyChatroomItem[]>([]);
+  const [companions, setCompanions] = useState<Companion[]>([]);
   const [companionMap, setCompanionMap] = useState<Map<string, Companion>>(
     new Map(),
   );
@@ -53,6 +54,11 @@ export default function InboxPage() {
 
   const activity = useMemo(() => getCurrentActivity(), []);
 
+  const chatroomMap = useMemo(
+    () => new Map(chatrooms.map((c) => [c.companionId, c])),
+    [chatrooms],
+  );
+
   useEffect(() => {
     const fetchChatrooms = async () => {
       setIsLoading(true);
@@ -65,6 +71,7 @@ export default function InboxPage() {
           ]);
 
         setGroupName(aidol.name ?? null);
+        setCompanions(companions);
 
         const companionIdSet = new Set(companions.map((c) => c.id));
         const newCompanionMap = new Map(companions.map((c) => [c.id, c]));
@@ -161,9 +168,9 @@ export default function InboxPage() {
     router.back();
   }, [router]);
 
-  const handleRoomClick = useCallback(
-    (chatroomId: string, companionId: string, active: boolean) => {
-      if (pendingChatroomIds.has(chatroomId)) return;
+  const handleCompanionClick = useCallback(
+    (companionId: string, chatroomId: string | undefined, active: boolean) => {
+      if (chatroomId && pendingChatroomIds.has(chatroomId)) return;
       if (!active) {
         const companion = companionMap.get(companionId);
         setLockedCompanion({
@@ -226,31 +233,37 @@ export default function InboxPage() {
 
       {/* Chatroom list */}
       <div className="scrollbar-hide flex flex-1 flex-col overflow-y-auto">
-        {chatrooms.length === 0 ? (
+        {companions.length === 0 ? (
           <p className="text-body-m text-base-content/60 py-20 text-center">
             {t("inbox.empty")}
           </p>
         ) : (
-          chatrooms.map((room) => {
-            const companion = companionMap.get(room.companionId);
-            const pending = pendingChatroomIds.has(room.id);
-            const active = room.lastMessage !== null;
+          companions.map((companion) => {
+            const chatroom = chatroomMap.get(companion.id);
+            const pending = chatroom
+              ? pendingChatroomIds.has(chatroom.id)
+              : false;
+            const active =
+              chatroom?.lastMessage !== null &&
+              chatroom?.lastMessage !== undefined;
             return (
               <InboxBlock
-                key={room.id}
-                name={companion?.name ?? ""}
-                imageUrl={companion?.profilePictureUrl ?? null}
+                key={companion.id}
+                name={companion.name ?? ""}
+                imageUrl={companion.profilePictureUrl ?? null}
                 active={active}
                 pending={pending}
                 activity={active || pending ? activity : undefined}
-                lastMessage={room.lastMessage?.content ?? null}
+                lastMessage={chatroom?.lastMessage?.content ?? null}
                 lastMessageAt={
                   pending
                     ? formatLastMessageAt(new Date().toISOString())
-                    : formatLastMessageAt(room.lastMessage?.createdAt ?? null)
+                    : formatLastMessageAt(
+                        chatroom?.lastMessage?.createdAt ?? null,
+                      )
                 }
                 onClick={() =>
-                  handleRoomClick(room.id, room.companionId, active)
+                  handleCompanionClick(companion.id, chatroom?.id, active)
                 }
               />
             );
