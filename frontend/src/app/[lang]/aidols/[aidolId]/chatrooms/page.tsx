@@ -198,7 +198,7 @@ export default function InboxPage() {
   ]);
 
   const handleBack = useCallback(() => {
-    router.push(`/${params.lang}/aidols/${params.aidolId}`);
+    router.push(`/${params.lang}/aidols/my-group/${params.aidolId}`);
   }, [router, params.lang, params.aidolId]);
 
   const handleCompanionClick = useCallback(
