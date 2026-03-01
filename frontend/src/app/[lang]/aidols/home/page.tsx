@@ -46,7 +46,10 @@ export default function GroupsPage() {
     const fetchData = async () => {
       try {
         const [aidolRes, companionRes, highlightRes] = await Promise.all([
-          aidolRepo.getList(),
+          aidolRepo.getList({
+            filters: [{ field: "status", operator: "eq", value: "PUBLISHED" }],
+            pagination: { current: 1, pageSize: 100 },
+          }),
           companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
           highlightRepo.getList({
             filters: [{ field: "isPremium", operator: "eq", value: false }],
