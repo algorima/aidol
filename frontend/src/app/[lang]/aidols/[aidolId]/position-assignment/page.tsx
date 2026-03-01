@@ -42,9 +42,7 @@ export default function PositionPage({ params }: PositionPageProps) {
     const fetchCompanions = async () => {
       setIsLoading(true);
       try {
-        const response = await companionRepository.getList({
-          filters: [{ field: "aidolId", operator: "eq", value: aidolId }],
-        });
+        const response = await companionRepository.getByAidolId(aidolId);
         setCompanions(response.data);
       } catch (error) {
         console.error("Failed to fetch companions:", error);
@@ -103,7 +101,7 @@ export default function PositionPage({ params }: PositionPageProps) {
   };
 
   return (
-    <div className="bg-base-100 flex h-screen flex-col">
+    <div className="bg-base-100 flex min-h-screen flex-col">
       <Header title={t("aidol:position.header")} />
       <PositionBoard
         companions={companions}
