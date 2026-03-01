@@ -59,6 +59,23 @@ export default function InboxPage() {
     [chatrooms],
   );
 
+  const sortedCompanions = useMemo(() => {
+    return [...companions].sort((a, b) => {
+      const chatroomA = chatroomMap.get(a.id);
+      const chatroomB = chatroomMap.get(b.id);
+
+      const activeA = chatroomA?.lastMessage != null;
+      const activeB = chatroomB?.lastMessage != null;
+      const pendingA = chatroomA ? pendingChatroomIds.has(chatroomA.id) : false;
+      const pendingB = chatroomB ? pendingChatroomIds.has(chatroomB.id) : false;
+
+      const priorityA = activeA ? 2 : pendingA ? 1 : 0;
+      const priorityB = activeB ? 2 : pendingB ? 1 : 0;
+
+      return priorityB - priorityA;
+    });
+  }, [companions, chatroomMap, pendingChatroomIds]);
+
   useEffect(() => {
     const fetchChatrooms = async () => {
       setIsLoading(true);
@@ -181,8 +198,8 @@ export default function InboxPage() {
   ]);
 
   const handleBack = useCallback(() => {
-    router.back();
-  }, [router]);
+    router.push(`/${params.lang}/aidols/${params.aidolId}`);
+  }, [router, params.lang, params.aidolId]);
 
   const handleCompanionClick = useCallback(
     (companionId: string, chatroomId: string | undefined, active: boolean) => {
@@ -249,12 +266,12 @@ export default function InboxPage() {
 
       {/* Chatroom list */}
       <div className="scrollbar-hide flex flex-1 flex-col overflow-y-auto">
-        {companions.length === 0 ? (
+        {sortedCompanions.length === 0 ? (
           <p className="text-body-m text-base-content/60 py-20 text-center">
             {t("inbox.empty")}
           </p>
         ) : (
-          companions.map((companion) => {
+          sortedCompanions.map((companion) => {
             const chatroom = chatroomMap.get(companion.id);
             const pending = chatroom
               ? pendingChatroomIds.has(chatroom.id)
