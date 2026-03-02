@@ -11,7 +11,7 @@ from aioia_core.auth import UserInfoProvider
 from aioia_core.errors import ErrorResponse
 from aioia_core.fastapi import BaseCrudRouter
 from aioia_core.settings import JWTSettings, OpenAIAPISettings
-from fastapi import APIRouter, Cookie, Depends, HTTPException, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, Query, status
 from humps import camelize
 from litellm.exceptions import BadRequestError, RateLimitError, ServiceUnavailableError
 from pydantic import BaseModel, ConfigDict, Field
@@ -315,11 +315,24 @@ class ChatroomRouter(
         )
         async def list_my_chatrooms(
             anonymous_id: Annotated[str, Depends(get_required_anonymous_id)],
+            aidol_id: str | None = Query(
+                None,
+                alias="aidolId",
+                description="AIdol group ID to filter chatrooms by companion ownership",
+            ),
+            filters_param: str | None = Query(
+                None,
+                alias="filters",
+                description="Filter conditions (JSON format)",
+            ),
             repository: ChatroomRepositoryProtocol = Depends(self.get_repository_dep),
         ):
             """List my chatrooms with last message summary."""
+            _, filter_list = self._parse_query_params(None, filters_param)
             items = repository.get_my_chatrooms_with_last_message(
-                anonymous_id=anonymous_id
+                anonymous_id=anonymous_id,
+                aidol_id=aidol_id,
+                filters=filter_list,
             )
             return ChatroomListResponse(data=items)
 
