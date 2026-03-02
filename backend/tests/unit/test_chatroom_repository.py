@@ -5,7 +5,7 @@ from __future__ import annotations
 import unittest
 from datetime import datetime
 from types import SimpleNamespace
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 from aidol.models import DBChatroom
 from aidol.repositories.chatroom import ChatroomRepository
@@ -95,9 +95,6 @@ class TestChatroomRepository(unittest.TestCase):
             {"field": "companion_id", "operator": "eq", "value": "companion-a"}
         ]
         filter_condition = DBChatroom.companion_id == "companion-a"
-        repository._build_filter_conditions = MagicMock(
-            return_value=[filter_condition]
-        )  # type: ignore[method-assign]
 
         ranked_messages = _build_ranked_messages_mock()
 
@@ -113,9 +110,16 @@ class TestChatroomRepository(unittest.TestCase):
 
         mock_session.query.side_effect = [first_query, second_query]
 
-        repository.get_my_chatrooms_with_last_message("owner-1", filters=filter_payload)
+        with patch.object(
+            repository,
+            "_build_filter_conditions",
+            return_value=[filter_condition],
+        ) as build_filter_conditions_mock:
+            repository.get_my_chatrooms_with_last_message(
+                "owner-1", filters=filter_payload
+            )
 
-        repository._build_filter_conditions.assert_called_once_with(filter_payload)  # type: ignore[attr-defined]
+        build_filter_conditions_mock.assert_called_once_with(filter_payload)
         self.assertGreaterEqual(second_query.filter.call_count, 2)
 
     def test_get_my_chatrooms_with_last_message_joins_companion_for_aidol_id(
