@@ -45,9 +45,11 @@ export default function GroupsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [aidolRes, companionRes, highlightRes] = await Promise.all([
-          aidolRepo.getList(),
-          companionRepo.getList({ pagination: { current: 1, pageSize: 100 } }),
+        const [aidolRes, highlightRes] = await Promise.all([
+          aidolRepo.getList({
+            filters: [{ field: "status", operator: "eq", value: "PUBLISHED" }],
+            pagination: { current: 1, pageSize: 100 },
+          }),
           highlightRepo.getList({
             filters: [{ field: "isPremium", operator: "eq", value: false }],
             pagination: { current: 1, pageSize: 100 },
@@ -55,6 +57,12 @@ export default function GroupsPage() {
         ]);
 
         setGroups(aidolRes.data);
+
+        const aidolIds = aidolRes.data.map((a) => a.id);
+        const companionRes = await companionRepo.getList({
+          filters: [{ field: "aidolId", operator: "in", value: aidolIds }],
+          pagination: { current: 1, pageSize: 100 },
+        });
 
         const countMap: Record<string, number> = {};
         for (const companion of companionRes.data) {

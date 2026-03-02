@@ -7,7 +7,7 @@ Platform-specific integrators implement these protocols via adapters.
 
 # pylint: disable=unnecessary-ellipsis
 
-from typing import Protocol
+from typing import Any, Protocol
 
 import PIL.Image
 from aioia_core import CrudRepositoryProtocol
@@ -86,12 +86,17 @@ class ChatroomRepositoryProtocol(
         ...
 
     def get_my_chatrooms_with_last_message(
-        self, anonymous_id: str
+        self,
+        anonymous_id: str,
+        aidol_id: str | None = None,
+        filters: list[dict[str, Any]] | None = None,
     ) -> list[ChatroomWithLastMessage]:
         """Get my chatrooms with each chatroom's last message.
 
         Args:
             anonymous_id: Chatroom owner anonymous identifier.
+            aidol_id: Optional AIdol group identifier.
+            filters: Optional filter criteria.
         """
         ...
 

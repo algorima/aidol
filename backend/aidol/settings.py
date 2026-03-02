@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     """Environment-based settings for aidol module."""
 
     openai_model: str = "gpt-4o-mini"
-    gemini_model: str = "gemini-3-pro-preview"
+    gemini_model: str = "gemini-3-flash-preview"
     gemini_reasoning_effort: str = "low"
 
     class Config:

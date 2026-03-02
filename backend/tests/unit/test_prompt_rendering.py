@@ -51,6 +51,11 @@ class TestPromptRendering(unittest.TestCase):
         self.assertIn("Main vocal trainee.", prompt)
         self.assertIn("- 등급: B", prompt)
         self.assertIn("INFP", prompt)  # MBTI is derived by calculate_mbti()
+        self.assertIn("## MBTI 상세 프로필", prompt)
+        self.assertIn(
+            "You are known for your idealistic, empathetic, and introspective nature.",
+            prompt,
+        )
         self.assertIn("- 에너지: [점수: 8/10]", prompt)
         self.assertIn("- 인식: [점수: 7/10]", prompt)
         self.assertIn("- 판단: [점수: 9/10]", prompt)
@@ -103,6 +108,7 @@ class TestPromptRendering(unittest.TestCase):
         self.assertIn("- 등급: B", prompt)
         self.assertIn("- 서사(배경): 서사 정보 없음", prompt)
         self.assertIn("- MBTI 성향: 정보 없음", prompt)
+        self.assertIn("- MBTI 상세 프로필: 정보 없음", prompt)
         self.assertIn("- 에너지: [점수: 미정] 자연스럽고 무난한 인사", prompt)
         self.assertIn("- 인식: [점수: 미정] 균형 잡힌 표현", prompt)
         self.assertIn("- 판단: [점수: 미정] 적당한 감정 표현", prompt)
