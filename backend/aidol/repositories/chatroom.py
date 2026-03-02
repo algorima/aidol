@@ -6,12 +6,13 @@ Implements BaseRepository pattern for BaseCrudRouter compatibility.
 
 import uuid
 from datetime import datetime, timezone
+from typing import Any
 
 from aioia_core.repositories import BaseRepository
 from sqlalchemy import and_, func, select
 from sqlalchemy.orm import Session
 
-from aidol.models import DBChatroom, DBMessage
+from aidol.models import DBChatroom, DBCompanion, DBMessage
 from aidol.schemas import (
     Chatroom,
     ChatroomCreateWithAnonymousId,
@@ -146,13 +147,28 @@ class ChatroomRepository(
         return [_convert_db_message_to_model(msg) for msg in db_messages]
 
     def get_my_chatrooms_with_last_message(
-        self, anonymous_id: str
+        self,
+        anonymous_id: str,
+        aidol_id: str | None = None,
+        filters: list[dict[str, Any]] | None = None,
     ) -> list[ChatroomWithLastMessage]:
         """Get chatrooms owned by anonymous_id with last message summary."""
+        filter_conditions: list[Any] = []
+        if filters:
+            filter_conditions = self._build_filter_conditions(filters)
+
         # Pre-filter: only consider chatrooms owned by this user
-        my_chatroom_ids = select(DBChatroom.id).where(
+        my_chatroom_ids_query = select(DBChatroom.id).where(
             DBChatroom.anonymous_id == anonymous_id
         )
+        if aidol_id:
+            my_chatroom_ids_query = my_chatroom_ids_query.join(
+                DBCompanion, DBCompanion.id == DBChatroom.companion_id
+            ).where(DBCompanion.aidol_id == aidol_id)
+        if filter_conditions:
+            my_chatroom_ids_query = my_chatroom_ids_query.where(
+                and_(*filter_conditions)
+            )
 
         ranked_messages = (
             self.db_session.query(
@@ -166,11 +182,11 @@ class ChatroomRepository(
                 )
                 .label("rn"),
             )
-            .filter(DBMessage.chatroom_id.in_(my_chatroom_ids))
+            .filter(DBMessage.chatroom_id.in_(my_chatroom_ids_query))
             .subquery()
         )
 
-        rows = (
+        rows_query = (
             self.db_session.query(
                 DBChatroom,
                 ranked_messages.c.created_at.label("last_message_created_at"),
@@ -184,13 +200,19 @@ class ChatroomRepository(
                 ),
             )
             .filter(DBChatroom.anonymous_id == anonymous_id)
-            .order_by(
-                ranked_messages.c.created_at.is_(None),
-                ranked_messages.c.created_at.desc(),
-                DBChatroom.id.desc(),
-            )
-            .all()
         )
+        if aidol_id:
+            rows_query = rows_query.join(
+                DBCompanion, DBCompanion.id == DBChatroom.companion_id
+            ).filter(DBCompanion.aidol_id == aidol_id)
+        if filter_conditions:
+            rows_query = rows_query.filter(and_(*filter_conditions))
+
+        rows = rows_query.order_by(
+            ranked_messages.c.created_at.is_(None),
+            ranked_messages.c.created_at.desc(),
+            DBChatroom.id.desc(),
+        ).all()
 
         result: list[ChatroomWithLastMessage] = []
         for chatroom, last_created_at, last_content in rows:
