@@ -7,6 +7,7 @@ from datetime import datetime
 from types import SimpleNamespace
 from unittest.mock import MagicMock
 
+from aidol.models import DBChatroom
 from aidol.repositories.chatroom import ChatroomRepository
 
 
@@ -83,6 +84,70 @@ class TestChatroomRepository(unittest.TestCase):
         self.assertEqual(items[1].id, "chatroom-b")
         self.assertEqual(items[1].companion_id, "companion-b")
         self.assertIsNone(items[1].last_message)
+        second_query.join.assert_not_called()
+
+    def test_get_my_chatrooms_with_last_message_applies_filters(self) -> None:
+        """Builds DB filter conditions when filters are provided."""
+        mock_session = MagicMock()
+        repository = ChatroomRepository(mock_session)
+
+        filter_payload = [
+            {"field": "companion_id", "operator": "eq", "value": "companion-a"}
+        ]
+        filter_condition = DBChatroom.companion_id == "companion-a"
+        repository._build_filter_conditions = MagicMock(
+            return_value=[filter_condition]
+        )  # type: ignore[method-assign]
+
+        ranked_messages = _build_ranked_messages_mock()
+
+        first_query = MagicMock()
+        first_query.filter.return_value = first_query
+        first_query.subquery.return_value = ranked_messages
+
+        second_query = MagicMock()
+        second_query.outerjoin.return_value = second_query
+        second_query.filter.return_value = second_query
+        second_query.order_by.return_value = second_query
+        second_query.all.return_value = []
+
+        mock_session.query.side_effect = [first_query, second_query]
+
+        repository.get_my_chatrooms_with_last_message(
+            "owner-1", filters=filter_payload
+        )
+
+        repository._build_filter_conditions.assert_called_once_with(filter_payload)  # type: ignore[attr-defined]
+        self.assertGreaterEqual(second_query.filter.call_count, 2)
+
+    def test_get_my_chatrooms_with_last_message_joins_companion_for_aidol_id(
+        self,
+    ) -> None:
+        """Applies companion join only when aidol_id filter is provided."""
+        mock_session = MagicMock()
+        repository = ChatroomRepository(mock_session)
+
+        ranked_messages = _build_ranked_messages_mock()
+
+        first_query = MagicMock()
+        first_query.filter.return_value = first_query
+        first_query.subquery.return_value = ranked_messages
+
+        second_query = MagicMock()
+        second_query.outerjoin.return_value = second_query
+        second_query.join.return_value = second_query
+        second_query.filter.return_value = second_query
+        second_query.order_by.return_value = second_query
+        second_query.all.return_value = []
+
+        mock_session.query.side_effect = [first_query, second_query]
+
+        repository.get_my_chatrooms_with_last_message(
+            "owner-1",
+            aidol_id="aidol-1",
+        )
+
+        second_query.join.assert_called_once()
 
 
 if __name__ == "__main__":
