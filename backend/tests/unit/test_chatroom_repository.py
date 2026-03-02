@@ -120,12 +120,12 @@ class TestChatroomRepository(unittest.TestCase):
             )
 
         build_filter_conditions_mock.assert_called_once_with(filter_payload)
-        self.assertGreaterEqual(second_query.filter.call_count, 2)
+        second_query.filter.assert_called_once()
 
-    def test_get_my_chatrooms_with_last_message_joins_companion_for_aidol_id(
+    def test_get_my_chatrooms_with_last_message_reuses_prefiltered_ids_for_rows(
         self,
     ) -> None:
-        """Applies companion join only when aidol_id filter is provided."""
+        """Rows query should not duplicate aidol/filters join conditions."""
         mock_session = MagicMock()
         repository = ChatroomRepository(mock_session)
 
@@ -149,7 +149,7 @@ class TestChatroomRepository(unittest.TestCase):
             aidol_id="aidol-1",
         )
 
-        second_query.join.assert_called_once()
+        second_query.join.assert_not_called()
 
 
 if __name__ == "__main__":

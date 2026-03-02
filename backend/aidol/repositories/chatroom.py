@@ -191,22 +191,16 @@ class ChatroomRepository(
                 DBChatroom,
                 ranked_messages.c.created_at.label("last_message_created_at"),
                 ranked_messages.c.content.label("last_message_content"),
-            )
-            .outerjoin(
+            ).outerjoin(
                 ranked_messages,
                 and_(
                     ranked_messages.c.chatroom_id == DBChatroom.id,
                     ranked_messages.c.rn == 1,
                 ),
             )
-            .filter(DBChatroom.anonymous_id == anonymous_id)
+            # Reuse pre-filtered chatroom ids to avoid duplicating filter logic.
+            .filter(DBChatroom.id.in_(my_chatroom_ids_query))
         )
-        if aidol_id:
-            rows_query = rows_query.join(
-                DBCompanion, DBCompanion.id == DBChatroom.companion_id
-            ).filter(DBCompanion.aidol_id == aidol_id)
-        if filter_conditions:
-            rows_query = rows_query.filter(and_(*filter_conditions))
 
         rows = rows_query.order_by(
             ranked_messages.c.created_at.is_(None),
