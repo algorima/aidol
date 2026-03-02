@@ -113,9 +113,7 @@ class TestChatroomRepository(unittest.TestCase):
 
         mock_session.query.side_effect = [first_query, second_query]
 
-        repository.get_my_chatrooms_with_last_message(
-            "owner-1", filters=filter_payload
-        )
+        repository.get_my_chatrooms_with_last_message("owner-1", filters=filter_payload)
 
         repository._build_filter_conditions.assert_called_once_with(filter_payload)  # type: ignore[attr-defined]
         self.assertGreaterEqual(second_query.filter.call_count, 2)
