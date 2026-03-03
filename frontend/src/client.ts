@@ -30,10 +30,14 @@ export { ChatRoom } from "./components/chatroom";
 export { MessageInput } from "./components/chatroom";
 export { MessageList } from "./components/chatroom";
 
+// Inbox components
+export { InboxBlock } from "./components/inbox";
+
 // Companion components
 export { AddMemberButton } from "./components/companion";
 export { Card } from "./components/companion";
 export { ImagePreview } from "./components/companion";
+export { LockedCompanionSheet } from "./components/companion";
 export { ProfileContent } from "./components/companion";
 export { PromptInput } from "./components/companion";
 
