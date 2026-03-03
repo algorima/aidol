@@ -1,5 +1,7 @@
 import { type Activity, DAILY_SCHEDULE } from "@/constants/activity";
 
+export type { Activity };
+
 /**
  * Returns the current activity based on the time of day.
  * Handles midnight-crossing slots (e.g., 19:00-06:00).

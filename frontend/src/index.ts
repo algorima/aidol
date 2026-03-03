@@ -39,6 +39,7 @@ export {
   isUser,
   messageSchema,
   SenderType,
+  MessageStatus,
 } from "./schemas/chatroom";
 
 export type {
@@ -76,6 +77,16 @@ export type { RelationshipType } from "./constants/relationship";
 
 // Utils (server-safe)
 export { getParticle } from "./lib/koreanParticle";
+export { getCurrentActivity } from "./lib/activity";
+export type { Activity } from "./lib/activity";
+export { getRelativeTime } from "./lib/date";
+export type { RelativeTime } from "./lib/date";
+
+// Chatroom types
+export type {
+  MyChatroomItem,
+  MyChatroomLastMessage,
+} from "./repositories/ChatroomRepository";
 
 // i18n - Server-safe exports (JSON resources and constants)
 export { AIDOL_NS, aidolTranslations } from "./i18n/translations";
