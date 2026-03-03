@@ -78,6 +78,7 @@ export type { RelationshipType } from "./constants/relationship";
 // Utils (server-safe)
 export { getParticle } from "./lib/koreanParticle";
 export { getCurrentActivity } from "./lib/activity";
+export type { Activity } from "./lib/activity";
 export { getRelativeTime } from "./lib/date";
 export type { RelativeTime } from "./lib/date";
 
