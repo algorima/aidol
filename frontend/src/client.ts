@@ -26,6 +26,7 @@ export { HighlightSectionHeader } from "./components/group";
 export { MemberProfileCard } from "./components/group";
 
 // Chatroom components
+export { ChatHeader } from "./components/chatroom";
 export { ChatRoom } from "./components/chatroom";
 export { MessageInput } from "./components/chatroom";
 export { MessageList } from "./components/chatroom";

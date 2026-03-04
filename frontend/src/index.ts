@@ -69,6 +69,7 @@ export {
 } from "./schemas/highlight";
 
 // Constants (server-safe)
+export { MAX_MEMBERS } from "./constants/companion";
 export {
   INTIMACY_TO_RELATIONSHIP_TYPE,
   RELATIONSHIP_TYPE_TO_INTIMACY,
