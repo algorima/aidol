@@ -66,6 +66,10 @@ class GeminiLLMProvider:
         if model.startswith("gemini/") and self._settings.api_key:
             kwargs["api_key"] = self._settings.api_key
 
+        # Vertex AI mode: use global location (required for Gemini 3 models).
+        if self._settings.cloud_project:
+            kwargs["vertex_location"] = "global"
+
         if model_settings.seed is not None:
             kwargs["seed"] = model_settings.seed
         if model_settings.frequency_penalty != 0.0:
