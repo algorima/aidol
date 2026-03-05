@@ -2,7 +2,7 @@
 
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useParams, useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useToast } from "@/app/providers/Toast";
@@ -53,6 +53,7 @@ export default function InboxPage() {
   } | null>(null);
 
   const activity = useMemo(() => getCurrentActivity(), []);
+  const creatingRef = useRef(false);
 
   const chatroomMap = useMemo(
     () => new Map(chatrooms.map((c) => [c.companionId, c])),
@@ -77,14 +78,17 @@ export default function InboxPage() {
   }, [companions, chatroomMap, pendingChatroomIds]);
 
   useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     const fetchChatrooms = async () => {
       setIsLoading(true);
       try {
         const [myChatrooms, { data: companions }, { data: aidol }] =
           await Promise.all([
-            chatroomRepository.getMyChatrooms(),
+            chatroomRepository.getMyChatrooms({ signal }),
             companionRepository.getByAidolId(params.aidolId),
-            aidolRepository.getOne({ id: params.aidolId }),
+            aidolRepository.getOne({ id: params.aidolId }, { signal }),
           ]);
 
         setGroupName(aidol.name ?? null);
@@ -99,6 +103,9 @@ export default function InboxPage() {
         );
 
         if (filteredChatrooms.length === 0) {
+          if (creatingRef.current) return;
+          creatingRef.current = true;
+
           // Path B: 채팅방 없음 → 랜덤 컴패니언으로 1개 생성
           const randomCompanion =
             companions[Math.floor(Math.random() * companions.length)];
@@ -131,6 +138,7 @@ export default function InboxPage() {
               const response = await chatroomRepository.generateInitialResponse(
                 newChatroom.id,
                 randomCompanion.id,
+                { signal },
               );
               setChatrooms((prev) =>
                 prev.map((room) =>
@@ -146,6 +154,7 @@ export default function InboxPage() {
                 ),
               );
             } catch (error) {
+              if (signal.aborted) return;
               console.error(
                 `Initial response failed for chatroom ${newChatroom.id}:`,
                 error,
@@ -179,6 +188,7 @@ export default function InboxPage() {
           setChatrooms(filteredChatrooms);
         }
       } catch (error) {
+        if (signal.aborted) return;
         console.error("Failed to fetch chatrooms:", error);
         showToast(t("inbox.error.load"), "error");
       } finally {
@@ -187,6 +197,10 @@ export default function InboxPage() {
     };
 
     void fetchChatrooms();
+
+    return () => {
+      abortController.abort();
+    };
   }, [
     aidolRepository,
     chatroomRepository,
