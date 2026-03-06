@@ -19,7 +19,6 @@ export { CompanionRelationshipRepository } from "./repositories/CompanionRelatio
 export { CompanionRepository } from "./repositories/CompanionRepository";
 export { HighlightRepository } from "./repositories/HighlightRepository";
 export { LeadsRepository } from "./repositories/LeadsRepository";
-export { LocalChatroomIdsRepository } from "./repositories/LocalChatroomIdsRepository";
 
 // Types & Schemas (server-safe)
 export type {

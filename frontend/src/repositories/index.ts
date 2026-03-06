@@ -9,4 +9,3 @@ export { CompanionRelationshipRepository } from "./CompanionRelationshipReposito
 export { CompanionRepository } from "./CompanionRepository";
 export { HighlightRepository } from "./HighlightRepository";
 export { LeadsRepository } from "./LeadsRepository";
-export { LocalChatroomIdsRepository } from "./LocalChatroomIdsRepository";
